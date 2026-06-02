@@ -13,6 +13,9 @@ data/
 frontend/dist/
 backend/.pytest_cache/
 backend/pythonos_backend.egg-info/
+backend/codenda_backend.egg-info/
 backend/*.egg-info/
 .idea/
 .vscode/
+backend/csharp-runner/bin/
+backend/csharp-runner/obj/
