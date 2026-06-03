@@ -1,0 +1,276 @@
+track: sde
+algos:
+- two-sum
+- contains-duplicate
+- valid-anagram
+- best-time-stock
+- group-anagrams
+- top-k-frequent
+- valid-palindrome
+- two-sum-ii
+- 3sum
+- container-water
+- longest-substring
+- min-window-substring
+- valid-parentheses
+- min-stack
+- binary-search
+- search-rotated
+- reverse-linked-list
+- merge-two-lists
+- linked-list-cycle
+- max-depth-tree
+- invert-tree
+- validate-bst
+- climbing-stairs
+- house-robber
+- coin-change
+- number-islands
+- course-schedule
+- merge-intervals
+first_lang: csharp
+second_lang: python
+card_cap: 40
+card_cap_light: 12
+inactivity_days: 3
+sections:
+- id: w01-big-o-s1
+  title: O(1), O(n), O(n²)
+  week_id: w01-big-o
+- id: w01-big-o-s2
+  title: O(log n) and O(n log n)
+  week_id: w01-big-o
+- id: w01-big-o-s3
+  title: Time vs space
+  week_id: w01-big-o
+- id: w01-big-o-s4
+  title: How you say it
+  week_id: w01-big-o
+- id: w01-big-o-s5
+  title: Big O close
+  week_id: w01-big-o
+- id: w02-rest-s1
+  title: Status codes
+  week_id: w02-rest
+- id: w02-rest-s2
+  title: Idempotency
+  week_id: w02-rest
+- id: w02-rest-s3
+  title: Pagination
+  week_id: w02-rest
+- id: w02-rest-s4
+  title: Versioning
+  week_id: w02-rest
+- id: w02-rest-s5
+  title: eLink
+  week_id: w02-rest
+- id: w03-sql-s1
+  title: Joins
+  week_id: w03-sql
+- id: w03-sql-s2
+  title: Indexes
+  week_id: w03-sql
+- id: w03-sql-s3
+  title: Normalization
+  week_id: w03-sql
+- id: w03-sql-s4
+  title: Transactions
+  week_id: w03-sql
+- id: w03-sql-s5
+  title: N+1 and tuning
+  week_id: w03-sql
+- id: w04-git-s1
+  title: Branch and merge
+  week_id: w04-git
+- id: w04-git-s2
+  title: Pull request
+  week_id: w04-git
+- id: w04-git-s3
+  title: Code review
+  week_id: w04-git
+- id: w04-git-s4
+  title: Pipeline
+  week_id: w04-git
+- id: w04-git-s5
+  title: The migration
+  week_id: w04-git
+- id: w05-azdo-s1
+  title: Map
+  week_id: w05-azdo
+- id: w05-azdo-s2
+  title: YAML pipeline
+  week_id: w05-azdo
+- id: w05-azdo-s3
+  title: Artifacts
+  week_id: w05-azdo
+- id: w05-azdo-s4
+  title: Secrets
+  week_id: w05-azdo
+- id: w05-azdo-s5
+  title: What you did
+  week_id: w05-azdo
+- id: w06-tests-s1
+  title: Unit vs integration
+  week_id: w06-tests
+- id: w06-tests-s2
+  title: AAA
+  week_id: w06-tests
+- id: w06-tests-s3
+  title: What to mock
+  week_id: w06-tests
+- id: w06-tests-s4
+  title: xUnit / Moq
+  week_id: w06-tests
+- id: w06-tests-s5
+  title: An eLink test
+  week_id: w06-tests
+- id: w07-async-cs-s1
+  title: Task vs thread
+  week_id: w07-async-cs
+- id: w07-async-cs-s2
+  title: await
+  week_id: w07-async-cs
+- id: w07-async-cs-s3
+  title: Deadlocks
+  week_id: w07-async-cs
+- id: w07-async-cs-s4
+  title: ConfigureAwait
+  week_id: w07-async-cs
+- id: w07-async-cs-s5
+  title: Cancellation
+  week_id: w07-async-cs
+- id: w08-concurrency-s1
+  title: Race and lock
+  week_id: w08-concurrency
+- id: w08-concurrency-s2
+  title: Sync vs async I/O
+  week_id: w08-concurrency
+- id: w08-concurrency-s3
+  title: Parallel vs concurrent
+  week_id: w08-concurrency
+- id: w08-concurrency-s4
+  title: Queue + worker
+  week_id: w08-concurrency
+- id: w08-concurrency-s5
+  title: State in an API
+  week_id: w08-concurrency
+- id: w09-linq-s1
+  title: Deferred
+  week_id: w09-linq
+- id: w09-linq-s2
+  title: IEnumerable vs IQueryable
+  week_id: w09-linq
+- id: w09-linq-s3
+  title: Operators
+  week_id: w09-linq
+- id: w09-linq-s4
+  title: LINQ and N+1
+  week_id: w09-linq
+- id: w09-linq-s5
+  title: Now or later?
+  week_id: w09-linq
+- id: w10-ef-s1
+  title: Migrations
+  week_id: w10-ef
+- id: w10-ef-s2
+  title: Tracking
+  week_id: w10-ef
+- id: w10-ef-s3
+  title: N+1
+  week_id: w10-ef
+- id: w10-ef-s4
+  title: SaveChanges
+  week_id: w10-ef
+- id: w10-ef-s5
+  title: A query of yours
+  week_id: w10-ef
+- id: w11-di-asp-s1
+  title: Transient / scoped / singleton
+  week_id: w11-di-asp
+- id: w11-di-asp-s2
+  title: What you inject
+  week_id: w11-di-asp
+- id: w11-di-asp-s3
+  title: Middleware vs filters
+  week_id: w11-di-asp
+- id: w11-di-asp-s4
+  title: Pipeline
+  week_id: w11-di-asp
+- id: w11-di-asp-s5
+  title: Razor
+  week_id: w11-di-asp
+- id: w12-solid-s1
+  title: S and O
+  week_id: w12-solid
+- id: w12-solid-s2
+  title: L, I, D
+  week_id: w12-solid
+- id: w12-solid-s3
+  title: Repository / facade
+  week_id: w12-solid
+- id: w12-solid-s4
+  title: Strategy / decorator
+  week_id: w12-solid
+- id: w12-solid-s5
+  title: Three names
+  week_id: w12-solid
+- id: w13-scale-s1
+  title: Cache
+  week_id: w13-scale
+- id: w13-scale-s2
+  title: Horizontal and LB
+  week_id: w13-scale
+- id: w13-scale-s3
+  title: Queue / Rabbit
+  week_id: w13-scale
+- id: w13-scale-s4
+  title: Logs and traces
+  week_id: w13-scale
+- id: w13-scale-s5
+  title: A 500
+  week_id: w13-scale
+- id: w14-gc-asyncio-s1
+  title: GC .NET
+  week_id: w14-gc-asyncio
+- id: w14-gc-asyncio-s2
+  title: What not to recite
+  week_id: w14-gc-asyncio
+- id: w14-gc-asyncio-s3
+  title: Event loop
+  week_id: w14-gc-asyncio
+- id: w14-gc-asyncio-s4
+  title: asyncio vs threads
+  week_id: w14-gc-asyncio
+- id: w14-gc-asyncio-s5
+  title: Contrast
+  week_id: w14-gc-asyncio
+- id: w15-gil-py-s1
+  title: GIL
+  week_id: w15-gil-py
+- id: w15-gil-py-s2
+  title: When which
+  week_id: w15-gil-py
+- id: w15-gil-py-s3
+  title: Decorators and with
+  week_id: w15-gil-py
+- id: w15-gil-py-s4
+  title: Generators
+  week_id: w15-gil-py
+- id: w15-gil-py-s5
+  title: Typing
+  week_id: w15-gil-py
+- id: w16-sa-pytest-s1
+  title: venv / poetry
+  week_id: w16-sa-pytest
+- id: w16-sa-pytest-s2
+  title: SQLAlchemy vs EF
+  week_id: w16-sa-pytest
+- id: w16-sa-pytest-s3
+  title: pytest fixtures
+  week_id: w16-sa-pytest
+- id: w16-sa-pytest-s4
+  title: Python mocks
+  week_id: w16-sa-pytest
+- id: w16-sa-pytest-s5
+  title: Python close
+  week_id: w16-sa-pytest

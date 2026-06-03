@@ -1,0 +1,33 @@
+drills:
+- id: sql-01
+  prompt: INNER JOIN orders and customers on customer_id. Select order_id and name.
+  prompt_es: INNER JOIN orders y customers por customer_id. Selecciona order_id y name.
+  expected: select o.order_id, c.name from orders o inner join customers c on o.customer_id = c.customer_id
+- id: sql-02
+  prompt: LEFT JOIN for customers with no orders.
+  prompt_es: LEFT JOIN para clientes sin órdenes.
+  expected: select c.name, o.order_id from customers c left join orders o on c.id = o.customer_id
+- id: sql-03
+  prompt: Index on orders(customer_id).
+  prompt_es: Índice en orders(customer_id).
+  expected: create index ix_orders_customer_id on orders(customer_id)
+- id: sql-04
+  prompt: Orders with more than 3 lines (GROUP BY HAVING).
+  prompt_es: Pedidos con más de 3 líneas (GROUP BY HAVING).
+  expected: select order_id from order_lines group by order_id having count(*) > 3
+- id: sql-05
+  prompt: 'Transaction: insert order + lines or nothing.'
+  prompt_es: 'Transacción: insert order + lines o nada.'
+  expected: begin transaction; insert into orders; insert into order_lines; commit;
+- id: sql-06
+  prompt: 'N+1: rewrite as 1 query with a join instead of a loop.'
+  prompt_es: 'N+1: reescribe 1 query con join en vez de loop.'
+  expected: select o.id, l.sku from orders o join order_lines l on l.order_id = o.id
+- id: sql-07
+  prompt: Idempotent stock UPDATE by sku.
+  prompt_es: UPDATE idempotente de stock por sku.
+  expected: update inventory set qty = qty - 1 where sku = @sku and qty >= 1
+- id: sql-08
+  prompt: 'Keyset pagination: WHERE id > @last ORDER BY id FETCH 50.'
+  prompt_es: 'Cursor de paginación: WHERE id > @last ORDER BY id FETCH 50.'
+  expected: select * from listings where id > @last order by id fetch next 50 rows only
