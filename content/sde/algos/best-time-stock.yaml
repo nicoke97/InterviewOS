@@ -1,0 +1,329 @@
+id: best-time-stock
+title: Best Time to Buy and Sell Stock
+leetcode_id: lc-best-time-stock
+test_cases:
+- args:
+  - - 7
+    - 1
+    - 5
+    - 3
+    - 6
+    - 4
+  expected: 5
+- args:
+  - - 7
+    - 6
+    - 4
+    - 3
+    - 1
+  expected: 0
+voice:
+  prompt: ¿Cuál es la complejidad temporal y espacial?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - búsquedas
+  - conteos
+  - trade
+  - espacio
+  - extra
+  - tiempo
+languages:
+  csharp:
+    fn_name: MaxProfit
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxProfit(int[] nums)\n{\n    ___\n    foreach (var p in nums)\n    {\n     \
+        \   low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n    }\n    return best;\n\
+        }\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxProfit(int[] arr)\n{\n    ___\n    foreach (var p in arr)\n    {\n       \
+        \ low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n    }\n    return best;\n\
+        }\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxProfit(int[] xs)\n{\n    ___\n    foreach (var p in xs)\n    {\n        low\
+        \ = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n    }\n    return best;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxProfit(int[] values)\n{\n    ___\n    foreach (var p in values)\n    {\n \
+        \       low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n    }\n    return best;\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxProfit(int[] items)\n{\n    ___\n    foreach (var p in items)\n    {\n   \
+        \     low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n    }\n    return best;\n\
+        }\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxProfit(int[] nums)\n{\n    int best = 0, low = int.MaxValue;\n    ___\n  \
+        \  }\n    return best;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxProfit(int[] arr)\n{\n    int best = 0, low = int.MaxValue;\n    ___\n   \
+        \ }\n    return best;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxProfit(int[] xs)\n{\n    int best = 0, low = int.MaxValue;\n    ___\n    }\n\
+        \    return best;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxProfit(int[] values)\n{\n    int best = 0, low = int.MaxValue;\n    ___\n\
+        \    }\n    return best;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxProfit(int[] items)\n{\n    int best = 0, low = int.MaxValue;\n    ___\n \
+        \   }\n    return best;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxProfit(int[] nums)\n{\n    int best = 0, low = int.MaxValue;\n    foreach\
+        \ (var p in nums)\n    {\n        low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n\
+        \    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxProfit(int[] arr)\n{\n    int best = 0, low = int.MaxValue;\n    foreach (var\
+        \ p in arr)\n    {\n        low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n\
+        \    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxProfit(int[] xs)\n{\n    int best = 0, low = int.MaxValue;\n    foreach (var\
+        \ p in xs)\n    {\n        low = Math.Min(low, p);\n        best = Math.Max(best, p - low);\n\
+        \    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxProfit(int[] values)\n{\n    int best = 0, low = int.MaxValue;\n    foreach\
+        \ (var p in values)\n    {\n        low = Math.Min(low, p);\n        best = Math.Max(best, p -\
+        \ low);\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MaxProfit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxProfit(int[] items)\n{\n    int best = 0, low = int.MaxValue;\n    foreach\
+        \ (var p in items)\n    {\n        low = Math.Min(low, p);\n        best = Math.Max(best, p -\
+        \ low);\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MaxProfit
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxProfit(int[] nums)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MaxProfit
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxProfit(int[] arr)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MaxProfit
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int MaxProfit(int[] xs)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: max_profit
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_profit(nums):\n    ___\n    low = float('inf')\n    for p in nums:\n    \
+        \    low = min(low, p)\n        best = max(best, p - low)\n    return best\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_profit(arr):\n    ___\n    low = float('inf')\n    for p in arr:\n      \
+        \  low = min(low, p)\n        best = max(best, p - low)\n    return best\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_profit(xs):\n    ___\n    low = float('inf')\n    for p in xs:\n        low\
+        \ = min(low, p)\n        best = max(best, p - low)\n    return best\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_profit(values):\n    ___\n    low = float('inf')\n    for p in values:\n\
+        \        low = min(low, p)\n        best = max(best, p - low)\n    return best\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_profit(items):\n    ___\n    low = float('inf')\n    for p in items:\n  \
+        \      low = min(low, p)\n        best = max(best, p - low)\n    return best\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_profit(nums):\n    best = 0\n    low = float('inf')\n    ___\n    return\
+        \ best\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_profit(arr):\n    best = 0\n    low = float('inf')\n    ___\n    return best\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_profit(xs):\n    best = 0\n    low = float('inf')\n    ___\n    return best\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_profit(values):\n    best = 0\n    low = float('inf')\n    ___\n    return\
+        \ best\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_profit(items):\n    best = 0\n    low = float('inf')\n    ___\n    return\
+        \ best\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_profit(nums):\n    best = 0\n    low = float('inf')\n    for p in nums:\n\
+        \        low = min(low, p)\n        best = max(best, p - low)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_profit(arr):\n    best = 0\n    low = float('inf')\n    for p in arr:\n \
+        \       low = min(low, p)\n        best = max(best, p - low)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_profit(xs):\n    best = 0\n    low = float('inf')\n    for p in xs:\n   \
+        \     low = min(low, p)\n        best = max(best, p - low)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_profit(values):\n    best = 0\n    low = float('inf')\n    for p in values:\n\
+        \        low = min(low, p)\n        best = max(best, p - low)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: max_profit
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_profit(items):\n    best = 0\n    low = float('inf')\n    for p in items:\n\
+        \        low = min(low, p)\n        best = max(best, p - low)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: max_profit
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_profit(nums):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: max_profit
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_profit(arr):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: max_profit
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def max_profit(xs):\n    return 0\n"

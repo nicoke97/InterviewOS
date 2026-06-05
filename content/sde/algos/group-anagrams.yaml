@@ -1,0 +1,346 @@
+id: group-anagrams
+title: Group Anagrams
+leetcode_id: lc-group-anagrams
+test_cases:
+- args:
+  - - eat
+    - tea
+    - tan
+    - ate
+    - nat
+    - bat
+  expected:
+  - - bat
+  - - nat
+    - tan
+  - - ate
+    - eat
+    - tea
+voice:
+  prompt: ¿Cuál es la complejidad temporal y espacial?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - búsquedas
+  - conteos
+  - trade
+  - espacio
+  - extra
+  - tiempo
+languages:
+  csharp:
+    fn_name: GroupAnagrams
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string[][] GroupAnagrams(string[] nums)\n{\n    ___\n    foreach (var s in nums)\n\
+        \    {\n        var chars = s.ToCharArray();\n        Array.Sort(chars);\n        var key = new\
+        \ string(chars);\n        if (!groups.ContainsKey(key)) groups[key] = new List<string>();\n  \
+        \      groups[key].Add(s);\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string[][] GroupAnagrams(string[] arr)\n{\n    ___\n    foreach (var s in arr)\n\
+        \    {\n        var chars = s.ToCharArray();\n        Array.Sort(chars);\n        var key = new\
+        \ string(chars);\n        if (!groups.ContainsKey(key)) groups[key] = new List<string>();\n  \
+        \      groups[key].Add(s);\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string[][] GroupAnagrams(string[] xs)\n{\n    ___\n    foreach (var s in xs)\n  \
+        \  {\n        var chars = s.ToCharArray();\n        Array.Sort(chars);\n        var key = new\
+        \ string(chars);\n        if (!groups.ContainsKey(key)) groups[key] = new List<string>();\n  \
+        \      groups[key].Add(s);\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string[][] GroupAnagrams(string[] values)\n{\n    ___\n    foreach (var s in values)\n\
+        \    {\n        var chars = s.ToCharArray();\n        Array.Sort(chars);\n        var key = new\
+        \ string(chars);\n        if (!groups.ContainsKey(key)) groups[key] = new List<string>();\n  \
+        \      groups[key].Add(s);\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string[][] GroupAnagrams(string[] items)\n{\n    ___\n    foreach (var s in items)\n\
+        \    {\n        var chars = s.ToCharArray();\n        Array.Sort(chars);\n        var key = new\
+        \ string(chars);\n        if (!groups.ContainsKey(key)) groups[key] = new List<string>();\n  \
+        \      groups[key].Add(s);\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string[][] GroupAnagrams(string[] nums)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    ___\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string[][] GroupAnagrams(string[] arr)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    ___\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string[][] GroupAnagrams(string[] xs)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    ___\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string[][] GroupAnagrams(string[] values)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    ___\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string[][] GroupAnagrams(string[] items)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    ___\n    }\n    return groups.Values.Select(v => v.ToArray()).ToArray();\n\
+        }\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string[][] GroupAnagrams(string[] nums)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    foreach (var s in nums)\n    {\n        var chars = s.ToCharArray();\n\
+        \        Array.Sort(chars);\n        var key = new string(chars);\n        if (!groups.ContainsKey(key))\
+        \ groups[key] = new List<string>();\n        groups[key].Add(s);\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string[][] GroupAnagrams(string[] arr)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    foreach (var s in arr)\n    {\n        var chars = s.ToCharArray();\n\
+        \        Array.Sort(chars);\n        var key = new string(chars);\n        if (!groups.ContainsKey(key))\
+        \ groups[key] = new List<string>();\n        groups[key].Add(s);\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string[][] GroupAnagrams(string[] xs)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    foreach (var s in xs)\n    {\n        var chars = s.ToCharArray();\n \
+        \       Array.Sort(chars);\n        var key = new string(chars);\n        if (!groups.ContainsKey(key))\
+        \ groups[key] = new List<string>();\n        groups[key].Add(s);\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string[][] GroupAnagrams(string[] values)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    foreach (var s in values)\n    {\n        var chars = s.ToCharArray();\n\
+        \        Array.Sort(chars);\n        var key = new string(chars);\n        if (!groups.ContainsKey(key))\
+        \ groups[key] = new List<string>();\n        groups[key].Add(s);\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: GroupAnagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string[][] GroupAnagrams(string[] items)\n{\n    var groups = new Dictionary<string,\
+        \ List<string>>();\n    foreach (var s in items)\n    {\n        var chars = s.ToCharArray();\n\
+        \        Array.Sort(chars);\n        var key = new string(chars);\n        if (!groups.ContainsKey(key))\
+        \ groups[key] = new List<string>();\n        groups[key].Add(s);\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: GroupAnagrams
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "string[][] GroupAnagrams(string[] nums)\n{\n    return new string[][] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: GroupAnagrams
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "string[][] GroupAnagrams(string[] arr)\n{\n    return new string[][] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: GroupAnagrams
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "string[][] GroupAnagrams(string[] xs)\n{\n    return new string[][] {};\n}\n"
+  python:
+    fn_name: group_anagrams
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def group_anagrams(nums):\n    ___\n    for s in nums:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    return list(groups.values())\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def group_anagrams(arr):\n    ___\n    for s in arr:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    return list(groups.values())\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def group_anagrams(xs):\n    ___\n    for s in xs:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    return list(groups.values())\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def group_anagrams(items):\n    ___\n    for s in items:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    return list(groups.values())\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def group_anagrams(items):\n    ___\n    for s in items:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    return list(groups.values())\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def group_anagrams(nums):\n    groups = {}\n    ___\n    return list(groups.values())\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def group_anagrams(arr):\n    groups = {}\n    ___\n    return list(groups.values())\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def group_anagrams(xs):\n    groups = {}\n    ___\n    return list(groups.values())\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def group_anagrams(items):\n    groups = {}\n    ___\n    return list(groups.values())\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def group_anagrams(items):\n    groups = {}\n    ___\n    return list(groups.values())\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def group_anagrams(nums):\n    groups = {}\n    for s in nums:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def group_anagrams(arr):\n    groups = {}\n    for s in arr:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def group_anagrams(xs):\n    groups = {}\n    for s in xs:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def group_anagrams(items):\n    groups = {}\n    for s in items:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: group_anagrams
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def group_anagrams(items):\n    groups = {}\n    for s in items:\n        key = tuple(sorted(s))\n\
+        \        groups.setdefault(key, []).append(s)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: group_anagrams
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def group_anagrams(nums):\n    return []\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: group_anagrams
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def group_anagrams(arr):\n    return []\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: group_anagrams
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def group_anagrams(xs):\n    return []\n"

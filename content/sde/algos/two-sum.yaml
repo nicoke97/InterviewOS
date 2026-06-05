@@ -1,0 +1,315 @@
+id: two-sum
+title: Two Sum
+leetcode_id: lc-two-sum
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 0
+  - 1
+- args:
+  - - 3
+    - 2
+    - 4
+  - 6
+  expected:
+  - 1
+  - 2
+- args:
+  - - 3
+    - 3
+  - 6
+  expected:
+  - 0
+  - 1
+voice:
+  prompt: ¿Qué guarda el diccionario y por qué Two Sum es O(n)?
+  prompt_en: What does the dictionary store and why is Two Sum O(n)?
+  keywords:
+  - diccionario
+  - dictionary
+  - mapa
+  - complemento
+  - índice
+  - index
+  - o(n)
+  - hash
+languages:
+  csharp:
+    fn_name: TwoSum
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    var seen = ___;\n    for (int i = 0;\
+        \ i < nums.Length; i++)\n    {\n        int want = target - nums[i];\n        if (seen.ContainsKey(want))\n\
+        \            return new[] { seen[want], i };\n        seen[nums[i]] = i;\n    }\n    return new\
+        \ int[] {};\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "int[] TwoSum(int[] arr, int k)\n{\n    var seen = ___;\n    for (int i = 0; i < arr.Length;\
+        \ i++)\n    {\n        int want = k - arr[i];\n        if (seen.ContainsKey(want))\n         \
+        \   return new[] { seen[want], i };\n        seen[arr[i]] = i;\n    }\n    return new int[] {};\n\
+        }\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "int[] TwoSum(int[] xs, int need)\n{\n    var seen = ___;\n    for (int i = 0; i <\
+        \ xs.Length; i++)\n    {\n        int want = need - xs[i];\n        if (seen.ContainsKey(want))\n\
+        \            return new[] { seen[want], i };\n        seen[xs[i]] = i;\n    }\n    return new\
+        \ int[] {};\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "int[] TwoSum(int[] values, int goal)\n{\n    var seen = ___;\n    for (int i = 0;\
+        \ i < values.Length; i++)\n    {\n        int want = goal - values[i];\n        if (seen.ContainsKey(want))\n\
+        \            return new[] { seen[want], i };\n        seen[values[i]] = i;\n    }\n    return\
+        \ new int[] {};\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "int[] TwoSum(int[] items, int sumTo)\n{\n    var seen = ___;\n    for (int i = 0;\
+        \ i < items.Length; i++)\n    {\n        int want = sumTo - items[i];\n        if (seen.ContainsKey(want))\n\
+        \            return new[] { seen[want], i };\n        seen[items[i]] = i;\n    }\n    return new\
+        \ int[] {};\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "int[] TwoSum(int[] arr, int k)\n{\n    var seen = new Dictionary<int, int>();\n \
+        \   ___\n    return new int[] {};\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "int[] TwoSum(int[] xs, int need)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "int[] TwoSum(int[] values, int goal)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "int[] TwoSum(int[] items, int sumTo)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    for (int i = 0; i < nums.Length; i++)\n    {\n        int want = target - nums[i];\n    \
+        \    if (seen.ContainsKey(want))\n            ___;\n        seen[nums[i]] = i;\n    }\n    ___\n\
+        }\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "int[] TwoSum(int[] arr, int k)\n{\n    var seen = new Dictionary<int, int>();\n \
+        \   for (int i = 0; i < arr.Length; i++)\n    {\n        int want = k - arr[i];\n        if (seen.ContainsKey(want))\n\
+        \            ___;\n        seen[arr[i]] = i;\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "int[] TwoSum(int[] xs, int need)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    for (int i = 0; i < xs.Length; i++)\n    {\n        int want = need - xs[i];\n        if\
+        \ (seen.ContainsKey(want))\n            ___;\n        seen[xs[i]] = i;\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "int[] TwoSum(int[] values, int goal)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    for (int i = 0; i < values.Length; i++)\n    {\n        int want = goal - values[i];\n  \
+        \      if (seen.ContainsKey(want))\n            ___;\n        seen[values[i]] = i;\n    }\n  \
+        \  ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: TwoSum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "int[] TwoSum(int[] items, int sumTo)\n{\n    var seen = new Dictionary<int, int>();\n\
+        \    for (int i = 0; i < items.Length; i++)\n    {\n        int want = sumTo - items[i];\n   \
+        \     if (seen.ContainsKey(want))\n            ___;\n        seen[items[i]] = i;\n    }\n    ___\n\
+        }\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: TwoSum
+      prompt: Algoritmo completo. Ármalo a la primera.
+      starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    // arma el algoritmo completo\n    return\
+        \ new int[] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: TwoSum
+      prompt: Algoritmo completo. Ármalo a la primera.
+      starter_code: "int[] TwoSum(int[] arr, int k)\n{\n    // arma el algoritmo completo\n    return\
+        \ new int[] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: TwoSum
+      prompt: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int[] TwoSum(int[] xs, int need)\n{\n    // arma el algoritmo completo\n    return\
+        \ new int[] {};\n}\n"
+  python:
+    fn_name: two_sum
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "def two_sum(nums, target):\n    seen = ___\n    for i, n in enumerate(nums):\n  \
+        \      want = target - n\n        if want in seen:\n            return [seen[want], i]\n     \
+        \   seen[n] = i\n    return []\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "def two_sum(arr, k):\n    seen = ___\n    for i, n in enumerate(arr):\n        want\
+        \ = k - n\n        if want in seen:\n            return [seen[want], i]\n        seen[n] = i\n\
+        \    return []\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "def two_sum(xs, need):\n    seen = ___\n    for i, n in enumerate(xs):\n        want\
+        \ = need - n\n        if want in seen:\n            return [seen[want], i]\n        seen[n] =\
+        \ i\n    return []\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "def two_sum(values, goal):\n    seen = ___\n    for i, n in enumerate(values):\n\
+        \        want = goal - n\n        if want in seen:\n            return [seen[want], i]\n     \
+        \   seen[n] = i\n    return []\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 1: crea el mapa (diccionario vacío). Variables distintas.'
+      starter_code: "def two_sum(items, sum_to):\n    seen = ___\n    for i, n in enumerate(items):\n\
+        \        want = sum_to - n\n        if want in seen:\n            return [seen[want], i]\n   \
+        \     seen[n] = i\n    return []\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "def two_sum(nums, target):\n    seen = {}\n    ___\n    return []\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "def two_sum(arr, k):\n    seen = {}\n    ___\n    return []\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "def two_sum(xs, need):\n    seen = {}\n    ___\n    return []\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "def two_sum(values, goal):\n    seen = {}\n    ___\n    return []\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 2: el recorrido y la búsqueda del complemento.'
+      starter_code: "def two_sum(items, sum_to):\n    seen = {}\n    ___\n    return []\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n   \
+        \     want = target - n\n        if want in seen:\n            ___\n        seen[n] = i\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "def two_sum(arr, k):\n    seen = {}\n    for i, n in enumerate(arr):\n        want\
+        \ = k - n\n        if want in seen:\n            ___\n        seen[n] = i\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "def two_sum(xs, need):\n    seen = {}\n    for i, n in enumerate(xs):\n        want\
+        \ = need - n\n        if want in seen:\n            ___\n        seen[n] = i\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "def two_sum(values, goal):\n    seen = {}\n    for i, n in enumerate(values):\n \
+        \       want = goal - n\n        if want in seen:\n            ___\n        seen[n] = i\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: two_sum
+      prompt: 'Peldaño 3: qué regresas cuando hay pareja y cuando no.'
+      starter_code: "def two_sum(items, sum_to):\n    seen = {}\n    for i, n in enumerate(items):\n \
+        \       want = sum_to - n\n        if want in seen:\n            ___\n        seen[n] = i\n  \
+        \  ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: two_sum
+      prompt: Algoritmo completo. Ármalo a la primera.
+      starter_code: "def two_sum(nums, target):\n    # arma el algoritmo completo\n    return []\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: two_sum
+      prompt: Algoritmo completo. Ármalo a la primera.
+      starter_code: "def two_sum(arr, k):\n    # arma el algoritmo completo\n    return []\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: two_sum
+      prompt: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def two_sum(xs, need):\n    # arma el algoritmo completo\n    return []\n"

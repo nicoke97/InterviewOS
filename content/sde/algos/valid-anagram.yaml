@@ -1,0 +1,278 @@
+id: valid-anagram
+title: Valid Anagram
+leetcode_id: lc-valid-anagram
+test_cases:
+- args:
+  - anagram
+  - nagaram
+  expected: true
+- args:
+  - rat
+  - car
+  expected: false
+voice:
+  prompt: ¿Qué comparas para saber si es anagrama?
+  prompt_en: What do you compare to know it is an anagram?
+  keywords:
+  - frecuencia
+  - count
+  - longitud
+  - letra
+  - o(n)
+languages:
+  csharp:
+    fn_name: IsAnagram
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 1.
+      starter_code: "bool IsAnagram(string s, string t)\n{\n    if (s.Length != t.Length) ___;\n    var\
+        \ count = new int[26];\n    foreach (var c in s) count[c - 'a']++;\n    foreach (var c in t)\n\
+        \    {\n        if (--count[c - 'a'] < 0) return false;\n    }\n    return true;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 1.
+      starter_code: "bool IsAnagram(string a, string b)\n{\n    if (a.Length != b.Length) ___;\n    var\
+        \ count = new int[26];\n    foreach (var c in a) count[c - 'a']++;\n    foreach (var c in b)\n\
+        \    {\n        if (--count[c - 'a'] < 0) return false;\n    }\n    return true;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 1.
+      starter_code: "bool IsAnagram(string left, string right)\n{\n    if (left.Length != right.Length)\
+        \ ___;\n    var count = new int[26];\n    foreach (var c in left) count[c - 'a']++;\n    foreach\
+        \ (var c in right)\n    {\n        if (--count[c - 'a'] < 0) return false;\n    }\n    return\
+        \ true;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 1.
+      starter_code: "bool IsAnagram(string src, string dst)\n{\n    if (src.Length != dst.Length) ___;\n\
+        \    var count = new int[26];\n    foreach (var c in src) count[c - 'a']++;\n    foreach (var\
+        \ c in dst)\n    {\n        if (--count[c - 'a'] < 0) return false;\n    }\n    return true;\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 1.
+      starter_code: "bool IsAnagram(string x, string y)\n{\n    if (x.Length != y.Length) ___;\n    var\
+        \ count = new int[26];\n    foreach (var c in x) count[c - 'a']++;\n    foreach (var c in y)\n\
+        \    {\n        if (--count[c - 'a'] < 0) return false;\n    }\n    return true;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 2.
+      starter_code: "bool IsAnagram(string s, string t)\n{\n    ___\n    return false;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 2.
+      starter_code: "bool IsAnagram(string a, string b)\n{\n    ___\n    return false;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 2.
+      starter_code: "bool IsAnagram(string left, string right)\n{\n    ___\n    return false;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 2.
+      starter_code: "bool IsAnagram(string src, string dst)\n{\n    ___\n    return false;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 2.
+      starter_code: "bool IsAnagram(string x, string y)\n{\n    ___\n    return false;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 3.
+      starter_code: "bool IsAnagram(string s, string t)\n{\n    if (s.Length != t.Length) ___\n    var\
+        \ count = new int[26];\n    foreach (var c in s) count[c - 'a']++;\n    foreach (var c in t)\n\
+        \    {\n        if (--count[c - 'a'] < 0) ___\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 3.
+      starter_code: "bool IsAnagram(string a, string b)\n{\n    if (a.Length != b.Length) ___\n    var\
+        \ count = new int[26];\n    foreach (var c in a) count[c - 'a']++;\n    foreach (var c in b)\n\
+        \    {\n        if (--count[c - 'a'] < 0) ___\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 3.
+      starter_code: "bool IsAnagram(string left, string right)\n{\n    if (left.Length != right.Length)\
+        \ ___\n    var count = new int[26];\n    foreach (var c in left) count[c - 'a']++;\n    foreach\
+        \ (var c in right)\n    {\n        if (--count[c - 'a'] < 0) ___\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 3.
+      starter_code: "bool IsAnagram(string src, string dst)\n{\n    if (src.Length != dst.Length) ___\n\
+        \    var count = new int[26];\n    foreach (var c in src) count[c - 'a']++;\n    foreach (var\
+        \ c in dst)\n    {\n        if (--count[c - 'a'] < 0) ___\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: IsAnagram
+      prompt: Peldaño 3.
+      starter_code: "bool IsAnagram(string x, string y)\n{\n    if (x.Length != y.Length) ___\n    var\
+        \ count = new int[26];\n    foreach (var c in x) count[c - 'a']++;\n    foreach (var c in y)\n\
+        \    {\n        if (--count[c - 'a'] < 0) ___\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: IsAnagram
+      prompt: Completo.
+      starter_code: "bool IsAnagram(string s, string t)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: IsAnagram
+      prompt: Completo.
+      starter_code: "bool IsAnagram(string a, string b)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: IsAnagram
+      prompt: Día 2 / pool.
+      starter_code: "bool IsAnagram(string left, string right)\n{\n    return false;\n}\n"
+  python:
+    fn_name: is_anagram
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 1.
+      starter_code: "def is_anagram(s, t):\n    if len(s) != len(t):\n        ___\n    return False\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 1.
+      starter_code: "def is_anagram(a, b):\n    if len(a) != len(b):\n        ___\n    return False\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 1.
+      starter_code: "def is_anagram(left, right):\n    if len(left) != len(right):\n        ___\n    return\
+        \ False\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 1.
+      starter_code: "def is_anagram(src, dst):\n    if len(src) != len(dst):\n        ___\n    return\
+        \ False\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 1.
+      starter_code: "def is_anagram(x, y):\n    if len(x) != len(y):\n        ___\n    return False\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 2.
+      starter_code: "def is_anagram(s, t):\n    ___\n    return False\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 2.
+      starter_code: "def is_anagram(a, b):\n    ___\n    return False\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 2.
+      starter_code: "def is_anagram(left, right):\n    ___\n    return False\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 2.
+      starter_code: "def is_anagram(src, dst):\n    ___\n    return False\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 2.
+      starter_code: "def is_anagram(x, y):\n    ___\n    return False\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 3.
+      starter_code: "def is_anagram(s, t):\n    if len(s) != len(t):\n        ___\n    count = {}\n  \
+        \  for c in s:\n        count[c] = count.get(c, 0) + 1\n    for c in t:\n        if c not in count\
+        \ or count[c] == 0:\n            ___\n        count[c] -= 1\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 3.
+      starter_code: "def is_anagram(a, b):\n    if len(a) != len(b):\n        ___\n    count = {}\n  \
+        \  for c in a:\n        count[c] = count.get(c, 0) + 1\n    for c in b:\n        if c not in count\
+        \ or count[c] == 0:\n            ___\n        count[c] -= 1\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 3.
+      starter_code: "def is_anagram(left, right):\n    if len(left) != len(right):\n        ___\n    count\
+        \ = {}\n    for c in left:\n        count[c] = count.get(c, 0) + 1\n    for c in right:\n    \
+        \    if c not in count or count[c] == 0:\n            ___\n        count[c] -= 1\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 3.
+      starter_code: "def is_anagram(src, dst):\n    if len(src) != len(dst):\n        ___\n    count =\
+        \ {}\n    for c in src:\n        count[c] = count.get(c, 0) + 1\n    for c in dst:\n        if\
+        \ c not in count or count[c] == 0:\n            ___\n        count[c] -= 1\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: is_anagram
+      prompt: Peldaño 3.
+      starter_code: "def is_anagram(x, y):\n    if len(x) != len(y):\n        ___\n    count = {}\n  \
+        \  for c in x:\n        count[c] = count.get(c, 0) + 1\n    for c in y:\n        if c not in count\
+        \ or count[c] == 0:\n            ___\n        count[c] -= 1\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: is_anagram
+      prompt: Completo.
+      starter_code: "def is_anagram(s, t):\n    return False\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: is_anagram
+      prompt: Completo.
+      starter_code: "def is_anagram(a, b):\n    return False\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: is_anagram
+      prompt: Día 2 / pool.
+      starter_code: "def is_anagram(left, right):\n    return False\n"

@@ -1,0 +1,273 @@
+id: contains-duplicate
+title: Contains Duplicate
+leetcode_id: lc-contains-duplicate
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 1
+  expected: true
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+  expected: false
+voice:
+  prompt: ¿Por qué un set y no un loop O(n²)?
+  prompt_en: Why a set instead of an O(n²) loop?
+  keywords:
+  - set
+  - hash
+  - o(n)
+  - visto
+  - duplicado
+languages:
+  csharp:
+    fn_name: ContainsDuplicate
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "bool ContainsDuplicate(int[] nums)\n{\n    var seen = ___;\n    foreach (var n in\
+        \ nums)\n    {\n        if (!seen.Add(n)) return true;\n    }\n    return false;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "bool ContainsDuplicate(int[] arr)\n{\n    var seen = ___;\n    foreach (var n in\
+        \ arr)\n    {\n        if (!seen.Add(n)) return true;\n    }\n    return false;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "bool ContainsDuplicate(int[] xs)\n{\n    var seen = ___;\n    foreach (var n in xs)\n\
+        \    {\n        if (!seen.Add(n)) return true;\n    }\n    return false;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "bool ContainsDuplicate(int[] values)\n{\n    var seen = ___;\n    foreach (var n\
+        \ in values)\n    {\n        if (!seen.Add(n)) return true;\n    }\n    return false;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "bool ContainsDuplicate(int[] items)\n{\n    var seen = ___;\n    foreach (var n in\
+        \ items)\n    {\n        if (!seen.Add(n)) return true;\n    }\n    return false;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "bool ContainsDuplicate(int[] nums)\n{\n    var seen = new HashSet<int>();\n    ___\n\
+        \    return false;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "bool ContainsDuplicate(int[] arr)\n{\n    var seen = new HashSet<int>();\n    ___\n\
+        \    return false;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "bool ContainsDuplicate(int[] xs)\n{\n    var seen = new HashSet<int>();\n    ___\n\
+        \    return false;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "bool ContainsDuplicate(int[] values)\n{\n    var seen = new HashSet<int>();\n   \
+        \ ___\n    return false;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "bool ContainsDuplicate(int[] items)\n{\n    var seen = new HashSet<int>();\n    ___\n\
+        \    return false;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "bool ContainsDuplicate(int[] nums)\n{\n    var seen = new HashSet<int>();\n    foreach\
+        \ (var n in nums)\n    {\n        if (!seen.Add(n)) ___;\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "bool ContainsDuplicate(int[] arr)\n{\n    var seen = new HashSet<int>();\n    foreach\
+        \ (var n in arr)\n    {\n        if (!seen.Add(n)) ___;\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "bool ContainsDuplicate(int[] xs)\n{\n    var seen = new HashSet<int>();\n    foreach\
+        \ (var n in xs)\n    {\n        if (!seen.Add(n)) ___;\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "bool ContainsDuplicate(int[] values)\n{\n    var seen = new HashSet<int>();\n   \
+        \ foreach (var n in values)\n    {\n        if (!seen.Add(n)) ___;\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: ContainsDuplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "bool ContainsDuplicate(int[] items)\n{\n    var seen = new HashSet<int>();\n    foreach\
+        \ (var n in items)\n    {\n        if (!seen.Add(n)) ___;\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: ContainsDuplicate
+      prompt: Completo.
+      starter_code: "bool ContainsDuplicate(int[] nums)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: ContainsDuplicate
+      prompt: Completo.
+      starter_code: "bool ContainsDuplicate(int[] arr)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: ContainsDuplicate
+      prompt: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "bool ContainsDuplicate(int[] xs)\n{\n    return false;\n}\n"
+  python:
+    fn_name: contains_duplicate
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "def contains_duplicate(nums):\n    seen = ___\n    for n in nums:\n        if n in\
+        \ seen:\n            return True\n        seen.add(n)\n    return False\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "def contains_duplicate(arr):\n    seen = ___\n    for n in arr:\n        if n in\
+        \ seen:\n            return True\n        seen.add(n)\n    return False\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "def contains_duplicate(xs):\n    seen = ___\n    for n in xs:\n        if n in seen:\n\
+        \            return True\n        seen.add(n)\n    return False\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "def contains_duplicate(values):\n    seen = ___\n    for n in values:\n        if\
+        \ n in seen:\n            return True\n        seen.add(n)\n    return False\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 1: crea el set.'
+      starter_code: "def contains_duplicate(items):\n    seen = ___\n    for n in items:\n        if n\
+        \ in seen:\n            return True\n        seen.add(n)\n    return False\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "def contains_duplicate(nums):\n    seen = set()\n    ___\n    return False\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "def contains_duplicate(arr):\n    seen = set()\n    ___\n    return False\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "def contains_duplicate(xs):\n    seen = set()\n    ___\n    return False\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "def contains_duplicate(values):\n    seen = set()\n    ___\n    return False\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 2: recorre y detecta el repetido.'
+      starter_code: "def contains_duplicate(items):\n    seen = set()\n    ___\n    return False\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "def contains_duplicate(nums):\n    seen = set()\n    for n in nums:\n        if n\
+        \ in seen:\n            ___\n        seen.add(n)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "def contains_duplicate(arr):\n    seen = set()\n    for n in arr:\n        if n in\
+        \ seen:\n            ___\n        seen.add(n)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "def contains_duplicate(xs):\n    seen = set()\n    for n in xs:\n        if n in\
+        \ seen:\n            ___\n        seen.add(n)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "def contains_duplicate(values):\n    seen = set()\n    for n in values:\n       \
+        \ if n in seen:\n            ___\n        seen.add(n)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: contains_duplicate
+      prompt: 'Peldaño 3: true / false.'
+      starter_code: "def contains_duplicate(items):\n    seen = set()\n    for n in items:\n        if\
+        \ n in seen:\n            ___\n        seen.add(n)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: contains_duplicate
+      prompt: Completo.
+      starter_code: "def contains_duplicate(nums):\n    return False\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: contains_duplicate
+      prompt: Completo.
+      starter_code: "def contains_duplicate(arr):\n    return False\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: contains_duplicate
+      prompt: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def contains_duplicate(xs):\n    return False\n"
