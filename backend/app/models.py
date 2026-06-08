@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import os
 from datetime import date, datetime
-from pathlib import Path
 
 from sqlalchemy import (
     JSON,
@@ -18,18 +16,16 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT / "data"
-DATA_DIR.mkdir(exist_ok=True)
-DB_PATH = DATA_DIR / "progress.db"
-DATABASE_URL = f"sqlite:///{DB_PATH}"
+from .config import DATA_DIR, DATABASE_URL, engine_connect_args
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+engine = create_engine(DATABASE_URL, connect_args=engine_connect_args())
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
 @event.listens_for(engine, "connect")
 def _sqlite_pragmas(dbapi_conn, _connection_record):
+    if not DATABASE_URL.startswith("sqlite"):
+        return
     cursor = dbapi_conn.cursor()
     cursor.execute("PRAGMA journal_mode=WAL")
     cursor.execute("PRAGMA busy_timeout=5000")
@@ -123,7 +119,13 @@ class LeetCodeProgress(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     problem_id: Mapped[str] = mapped_column(String(64), index=True)
     level: Mapped[str] = mapped_column(String(8))
+    track: Mapped[str] = mapped_column(String(16), default="kumon", index=True)
     tier_passed: Mapped[int] = mapped_column(Integer, default=0)  # highest tier passed (1-3)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    solid_mastery: Mapped[bool] = mapped_column(Boolean, default=False)
+    topic: Mapped[str] = mapped_column(String(32), default="")
+    global_order: Mapped[int] = mapped_column(Integer, default=0)
+    last_practiced_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
 
 class InterviewProgress(Base):
@@ -229,6 +231,22 @@ class LevelExamProgress(Base):
     passed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
 
+class ReturnExam(Base):
+    """Retention quiz after several days away. Failed items force a full set repeat."""
+
+    __tablename__ = "return_exams"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    last_active_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    inactivity_days: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(16), default="pending")  # pending | completed
+    items: Mapped[list] = mapped_column(JSON, default=list)
+    results: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    failed_sets: Mapped[list] = mapped_column(JSON, default=list)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
 def _migrate_schema() -> None:
     """Lightweight SQLite migrations for columns added after first deploy."""
     from sqlalchemy import inspect, text
@@ -269,6 +287,20 @@ def _migrate_schema() -> None:
                 conn.execute(
                     text("ALTER TABLE daily_plans ADD COLUMN session_number INTEGER DEFAULT 1")
                 )
+    if "leetcode_progress" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("leetcode_progress")}
+        lc_migrations = [
+            ("track", "VARCHAR(16) DEFAULT 'kumon'"),
+            ("attempts", "INTEGER DEFAULT 0"),
+            ("solid_mastery", "BOOLEAN DEFAULT 0"),
+            ("topic", "VARCHAR(32) DEFAULT ''"),
+            ("global_order", "INTEGER DEFAULT 0"),
+            ("last_practiced_at", "DATETIME"),
+        ]
+        for col, typ in lc_migrations:
+            if col not in cols:
+                with engine.begin() as conn:
+                    conn.execute(text(f"ALTER TABLE leetcode_progress ADD COLUMN {col} {typ}"))
 
 
 def init_db() -> None:
@@ -282,6 +314,8 @@ def init_db() -> None:
             db.add(AppSettings(key="focus_mode", value="false"))
         if not db.query(AppSettings).filter_by(key="dev_mode").first():
             db.add(AppSettings(key="dev_mode", value="false"))
+        if not db.query(AppSettings).filter_by(key="locale").first():
+            db.add(AppSettings(key="locale", value="en"))
         if not db.query(StudyDay).first():
             db.add(StudyDay(date=date.today(), day_number=1, active_block="A.A"))
         db.commit()

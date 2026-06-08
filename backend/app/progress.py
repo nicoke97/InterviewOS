@@ -6,7 +6,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from .content_loader import get_block_pages, get_set_pages, load_curriculum
-from .kumon_hierarchy import all_block_order, block_title, level_sets, list_route_levels, route_level
+from .kumon_hierarchy import all_block_order, block_title, core_level_sets, level_sets, list_route_levels, route_level
 from .models import Attempt, SetProgress, Streak
 from .set_engine import (
     current_target,
@@ -122,6 +122,17 @@ def get_month_calendar(db: Session, year: int, month: int) -> dict:
         .all()
     )
 
+    repeat_counts = dict(
+        db.query(SetProgress.repeat_scheduled_for, func.count(SetProgress.id))
+        .filter(
+            SetProgress.repeat_scheduled_for.isnot(None),
+            SetProgress.repeat_scheduled_for >= grid_start,
+            SetProgress.repeat_scheduled_for <= grid_end,
+        )
+        .group_by(SetProgress.repeat_scheduled_for)
+        .all()
+    )
+
     today = date.today()
     days = []
     d = grid_start
@@ -136,6 +147,7 @@ def get_month_calendar(db: Session, year: int, month: int) -> dict:
             "level": level,
             "morning_done": passed >= 5,
             "evening_done": level == "complete",
+            "repeat_scheduled": repeat_counts.get(d, 0),
         })
         d += timedelta(days=1)
 
@@ -202,7 +214,7 @@ def _level_page_progress_from_map(
 ) -> dict:
     level = route_level(level)
     curriculum = curriculum or load_curriculum()
-    sets = level_sets(level)
+    sets = core_level_sets(level)
     total_pages = 0
     completed_pages = 0
     mastered_sets = 0
@@ -225,7 +237,11 @@ def _level_page_progress_from_map(
     }
 
 
-def get_block_accuracy(db: Session, progress: dict[tuple[str, int], SetProgress] | None = None) -> list[dict]:
+def get_block_accuracy(
+    db: Session,
+    progress: dict[tuple[str, int], SetProgress] | None = None,
+    locale: str = "en",
+) -> list[dict]:
     progress = progress if progress is not None else load_set_progress_map(db)
     curriculum = load_curriculum()
     accuracy = []
@@ -236,7 +252,7 @@ def get_block_accuracy(db: Session, progress: dict[tuple[str, int], SetProgress]
         mastered = sum(1 for p in pages if _page_completed_from_map(progress, p))
         accuracy.append({
             "block": block_id,
-            "block_title": block_title(block_id),
+            "block_title": block_title(block_id, locale),
             "accuracy": round(mastered / len(pages) * 100),
             "mastered": mastered,
             "total": len(pages),
