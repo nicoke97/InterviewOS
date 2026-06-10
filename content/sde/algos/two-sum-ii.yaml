@@ -1,0 +1,301 @@
+id: two-sum-ii
+title: Two Sum II
+leetcode_id: lc-two-sum-ii
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 1
+  - 2
+- args:
+  - - 2
+    - 3
+    - 4
+  - 6
+  expected:
+  - 1
+  - 3
+voice:
+  prompt: ¿Por qué dos punteros y no un diccionario aquí?
+  prompt_en: Why two pointers and not a dictionary here?
+  keywords:
+  - ordenado
+  - puntero
+  - left
+  - right
+  - o(1)
+  - espacio
+languages:
+  csharp:
+    fn_name: TwoSumII
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 1.
+      starter_code: "int[] TwoSumII(int[] nums, int target)\n{\n    int left = ___, right = ___;\n   \
+        \ while (left < right)\n    {\n        int s = nums[left] + nums[right];\n        if (s == target)\
+        \ return new[] { left + 1, right + 1 };\n        if (s < target) left++;\n        else right--;\n\
+        \    }\n    return new int[] {};\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 1.
+      starter_code: "int[] TwoSumII(int[] arr, int k)\n{\n    int left = ___, right = ___;\n    while\
+        \ (left < right)\n    {\n        int s = arr[left] + arr[right];\n        if (s == k) return new[]\
+        \ { left + 1, right + 1 };\n        if (s < k) left++;\n        else right--;\n    }\n    return\
+        \ new int[] {};\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 1.
+      starter_code: "int[] TwoSumII(int[] xs, int need)\n{\n    int left = ___, right = ___;\n    while\
+        \ (left < right)\n    {\n        int s = xs[left] + xs[right];\n        if (s == need) return\
+        \ new[] { left + 1, right + 1 };\n        if (s < need) left++;\n        else right--;\n    }\n\
+        \    return new int[] {};\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 1.
+      starter_code: "int[] TwoSumII(int[] values, int goal)\n{\n    int left = ___, right = ___;\n   \
+        \ while (left < right)\n    {\n        int s = values[left] + values[right];\n        if (s ==\
+        \ goal) return new[] { left + 1, right + 1 };\n        if (s < goal) left++;\n        else right--;\n\
+        \    }\n    return new int[] {};\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 1.
+      starter_code: "int[] TwoSumII(int[] items, int sumTo)\n{\n    int left = ___, right = ___;\n   \
+        \ while (left < right)\n    {\n        int s = items[left] + items[right];\n        if (s == sumTo)\
+        \ return new[] { left + 1, right + 1 };\n        if (s < sumTo) left++;\n        else right--;\n\
+        \    }\n    return new int[] {};\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 2.
+      starter_code: "int[] TwoSumII(int[] nums, int target)\n{\n    int left = 0, right = nums.Length\
+        \ - 1;\n    ___\n    return new int[] {};\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 2.
+      starter_code: "int[] TwoSumII(int[] arr, int k)\n{\n    int left = 0, right = arr.Length - 1;\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 2.
+      starter_code: "int[] TwoSumII(int[] xs, int need)\n{\n    int left = 0, right = xs.Length - 1;\n\
+        \    ___\n    return new int[] {};\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 2.
+      starter_code: "int[] TwoSumII(int[] values, int goal)\n{\n    int left = 0, right = values.Length\
+        \ - 1;\n    ___\n    return new int[] {};\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 2.
+      starter_code: "int[] TwoSumII(int[] items, int sumTo)\n{\n    int left = 0, right = items.Length\
+        \ - 1;\n    ___\n    return new int[] {};\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 3.
+      starter_code: "int[] TwoSumII(int[] nums, int target)\n{\n    int left = 0, right = nums.Length\
+        \ - 1;\n    while (left < right)\n    {\n        int s = nums[left] + nums[right];\n        if\
+        \ (s == target) ___;\n        if (s < target) left++;\n        else right--;\n    }\n    ___\n\
+        }\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 3.
+      starter_code: "int[] TwoSumII(int[] arr, int k)\n{\n    int left = 0, right = arr.Length - 1;\n\
+        \    while (left < right)\n    {\n        int s = arr[left] + arr[right];\n        if (s == k)\
+        \ ___;\n        if (s < k) left++;\n        else right--;\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 3.
+      starter_code: "int[] TwoSumII(int[] xs, int need)\n{\n    int left = 0, right = xs.Length - 1;\n\
+        \    while (left < right)\n    {\n        int s = xs[left] + xs[right];\n        if (s == need)\
+        \ ___;\n        if (s < need) left++;\n        else right--;\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 3.
+      starter_code: "int[] TwoSumII(int[] values, int goal)\n{\n    int left = 0, right = values.Length\
+        \ - 1;\n    while (left < right)\n    {\n        int s = values[left] + values[right];\n     \
+        \   if (s == goal) ___;\n        if (s < goal) left++;\n        else right--;\n    }\n    ___\n\
+        }\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: TwoSumII
+      prompt: Peldaño 3.
+      starter_code: "int[] TwoSumII(int[] items, int sumTo)\n{\n    int left = 0, right = items.Length\
+        \ - 1;\n    while (left < right)\n    {\n        int s = items[left] + items[right];\n       \
+        \ if (s == sumTo) ___;\n        if (s < sumTo) left++;\n        else right--;\n    }\n    ___\n\
+        }\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: TwoSumII
+      prompt: Completo.
+      starter_code: "int[] TwoSumII(int[] nums, int target)\n{\n    return new int[] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: TwoSumII
+      prompt: Completo.
+      starter_code: "int[] TwoSumII(int[] arr, int k)\n{\n    return new int[] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: TwoSumII
+      prompt: Día 2 / pool.
+      starter_code: "int[] TwoSumII(int[] xs, int need)\n{\n    return new int[] {};\n}\n"
+  python:
+    fn_name: two_sum_ii
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 1.
+      starter_code: "def two_sum_ii(nums, target):\n    left, right = ___\n    return []\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 1.
+      starter_code: "def two_sum_ii(arr, k):\n    left, right = ___\n    return []\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 1.
+      starter_code: "def two_sum_ii(xs, need):\n    left, right = ___\n    return []\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 1.
+      starter_code: "def two_sum_ii(values, goal):\n    left, right = ___\n    return []\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 1.
+      starter_code: "def two_sum_ii(items, sum_to):\n    left, right = ___\n    return []\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 2.
+      starter_code: "def two_sum_ii(nums, target):\n    left, right = 0, len(nums) - 1\n    ___\n    return\
+        \ []\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 2.
+      starter_code: "def two_sum_ii(arr, k):\n    left, right = 0, len(arr) - 1\n    ___\n    return []\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 2.
+      starter_code: "def two_sum_ii(xs, need):\n    left, right = 0, len(xs) - 1\n    ___\n    return\
+        \ []\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 2.
+      starter_code: "def two_sum_ii(values, goal):\n    left, right = 0, len(values) - 1\n    ___\n  \
+        \  return []\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 2.
+      starter_code: "def two_sum_ii(items, sum_to):\n    left, right = 0, len(items) - 1\n    ___\n  \
+        \  return []\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 3.
+      starter_code: "def two_sum_ii(nums, target):\n    left, right = 0, len(nums) - 1\n    while left\
+        \ < right:\n        s = nums[left] + nums[right]\n        if s == target:\n            ___\n \
+        \       if s < target:\n            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 3.
+      starter_code: "def two_sum_ii(arr, k):\n    left, right = 0, len(arr) - 1\n    while left < right:\n\
+        \        s = arr[left] + arr[right]\n        if s == k:\n            ___\n        if s < k:\n\
+        \            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 3.
+      starter_code: "def two_sum_ii(xs, need):\n    left, right = 0, len(xs) - 1\n    while left < right:\n\
+        \        s = xs[left] + xs[right]\n        if s == need:\n            ___\n        if s < need:\n\
+        \            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 3.
+      starter_code: "def two_sum_ii(values, goal):\n    left, right = 0, len(values) - 1\n    while left\
+        \ < right:\n        s = values[left] + values[right]\n        if s == goal:\n            ___\n\
+        \        if s < goal:\n            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: two_sum_ii
+      prompt: Peldaño 3.
+      starter_code: "def two_sum_ii(items, sum_to):\n    left, right = 0, len(items) - 1\n    while left\
+        \ < right:\n        s = items[left] + items[right]\n        if s == sum_to:\n            ___\n\
+        \        if s < sum_to:\n            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: two_sum_ii
+      prompt: Completo.
+      starter_code: "def two_sum_ii(nums, target):\n    return []\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: two_sum_ii
+      prompt: Completo.
+      starter_code: "def two_sum_ii(arr, k):\n    return []\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: two_sum_ii
+      prompt: Día 2 / pool.
+      starter_code: "def two_sum_ii(xs, need):\n    return []\n"

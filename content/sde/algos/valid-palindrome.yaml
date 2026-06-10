@@ -1,0 +1,302 @@
+id: valid-palindrome
+title: Valid Palindrome
+leetcode_id: lc-valid-palindrome
+test_cases:
+- args:
+  - 'A man, a plan, a canal: Panama'
+  expected: true
+- args:
+  - race a car
+  expected: false
+voice:
+  prompt: ¿Por qué two pointers y no hash map aquí?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - puntero
+  - izquierdo
+  - derecho
+  - arrays
+  - ordenados
+  - cuándo
+languages:
+  csharp:
+    fn_name: IsPalindrome
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsPalindrome(string s)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsPalindrome(string text)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsPalindrome(string src)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsPalindrome(string word)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsPalindrome(string raw)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsPalindrome(string s)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsPalindrome(string text)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsPalindrome(string src)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsPalindrome(string word)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsPalindrome(string raw)\n{\n    ___\n    return cleaned.SequenceEqual(cleaned.Reverse());\n\
+        }\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsPalindrome(string s)\n{\n    var cleaned = s.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();\n\
+        \    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsPalindrome(string text)\n{\n    var cleaned = text.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();\n\
+        \    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsPalindrome(string src)\n{\n    var cleaned = src.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();\n\
+        \    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsPalindrome(string word)\n{\n    var cleaned = word.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();\n\
+        \    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: IsPalindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsPalindrome(string raw)\n{\n    var cleaned = raw.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();\n\
+        \    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: IsPalindrome
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool IsPalindrome(string s)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: IsPalindrome
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool IsPalindrome(string text)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: IsPalindrome
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "bool IsPalindrome(string src)\n{\n    return false;\n}\n"
+  python:
+    fn_name: is_palindrome
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_palindrome(s):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_palindrome(text):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_palindrome(src):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_palindrome(word):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_palindrome(raw):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_palindrome(s):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_palindrome(text):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_palindrome(src):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_palindrome(word):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_palindrome(raw):\n    ___\n    return cleaned == cleaned[::-1]\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_palindrome(s):\n    cleaned = [c.lower() for c in s if c.isalnum()]\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_palindrome(text):\n    cleaned = [c.lower() for c in text if c.isalnum()]\n\
+        \    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_palindrome(src):\n    cleaned = [c.lower() for c in src if c.isalnum()]\n\
+        \    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_palindrome(word):\n    cleaned = [c.lower() for c in word if c.isalnum()]\n\
+        \    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: is_palindrome
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_palindrome(raw):\n    cleaned = [c.lower() for c in raw if c.isalnum()]\n\
+        \    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: is_palindrome
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def is_palindrome(s):\n    return False\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: is_palindrome
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def is_palindrome(text):\n    return False\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: is_palindrome
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def is_palindrome(src):\n    return False\n"

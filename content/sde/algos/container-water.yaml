@@ -1,0 +1,350 @@
+id: container-water
+title: Container With Most Water
+leetcode_id: lc-container-water
+test_cases:
+- args:
+  - - 1
+    - 8
+    - 6
+    - 2
+    - 5
+    - 4
+    - 8
+    - 3
+    - 7
+  expected: 49
+- args:
+  - - 1
+    - 1
+  expected: 1
+voice:
+  prompt: ¿Por qué two pointers y no hash map aquí?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - puntero
+  - izquierdo
+  - derecho
+  - arrays
+  - ordenados
+  - cuándo
+languages:
+  csharp:
+    fn_name: MaxArea
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxArea(int[] nums)\n{\n    ___\n    while (left < right)\n    {\n        best\
+        \ = Math.Max(best, Math.Min(nums[left], nums[right]) * (right - left));\n        if (nums[left]\
+        \ < nums[right]) left++;\n        else right--;\n    }\n    return best;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxArea(int[] arr)\n{\n    ___\n    while (left < right)\n    {\n        best\
+        \ = Math.Max(best, Math.Min(arr[left], arr[right]) * (right - left));\n        if (arr[left] <\
+        \ arr[right]) left++;\n        else right--;\n    }\n    return best;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxArea(int[] xs)\n{\n    ___\n    while (left < right)\n    {\n        best\
+        \ = Math.Max(best, Math.Min(xs[left], xs[right]) * (right - left));\n        if (xs[left] < xs[right])\
+        \ left++;\n        else right--;\n    }\n    return best;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxArea(int[] values)\n{\n    ___\n    while (left < right)\n    {\n        best\
+        \ = Math.Max(best, Math.Min(values[left], values[right]) * (right - left));\n        if (values[left]\
+        \ < values[right]) left++;\n        else right--;\n    }\n    return best;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxArea(int[] items)\n{\n    ___\n    while (left < right)\n    {\n        best\
+        \ = Math.Max(best, Math.Min(items[left], items[right]) * (right - left));\n        if (items[left]\
+        \ < items[right]) left++;\n        else right--;\n    }\n    return best;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxArea(int[] nums)\n{\n    int left = 0, right = nums.Length - 1, best = 0;\n\
+        \    ___\n    }\n    return best;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxArea(int[] arr)\n{\n    int left = 0, right = arr.Length - 1, best = 0;\n\
+        \    ___\n    }\n    return best;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxArea(int[] xs)\n{\n    int left = 0, right = xs.Length - 1, best = 0;\n  \
+        \  ___\n    }\n    return best;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxArea(int[] values)\n{\n    int left = 0, right = values.Length - 1, best =\
+        \ 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxArea(int[] items)\n{\n    int left = 0, right = items.Length - 1, best = 0;\n\
+        \    ___\n    }\n    return best;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxArea(int[] nums)\n{\n    int left = 0, right = nums.Length - 1, best = 0;\n\
+        \    while (left < right)\n    {\n        best = Math.Max(best, Math.Min(nums[left], nums[right])\
+        \ * (right - left));\n        if (nums[left] < nums[right]) left++;\n        else right--;\n \
+        \   }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxArea(int[] arr)\n{\n    int left = 0, right = arr.Length - 1, best = 0;\n\
+        \    while (left < right)\n    {\n        best = Math.Max(best, Math.Min(arr[left], arr[right])\
+        \ * (right - left));\n        if (arr[left] < arr[right]) left++;\n        else right--;\n   \
+        \ }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxArea(int[] xs)\n{\n    int left = 0, right = xs.Length - 1, best = 0;\n  \
+        \  while (left < right)\n    {\n        best = Math.Max(best, Math.Min(xs[left], xs[right]) *\
+        \ (right - left));\n        if (xs[left] < xs[right]) left++;\n        else right--;\n    }\n\
+        \    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxArea(int[] values)\n{\n    int left = 0, right = values.Length - 1, best =\
+        \ 0;\n    while (left < right)\n    {\n        best = Math.Max(best, Math.Min(values[left], values[right])\
+        \ * (right - left));\n        if (values[left] < values[right]) left++;\n        else right--;\n\
+        \    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MaxArea
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxArea(int[] items)\n{\n    int left = 0, right = items.Length - 1, best = 0;\n\
+        \    while (left < right)\n    {\n        best = Math.Max(best, Math.Min(items[left], items[right])\
+        \ * (right - left));\n        if (items[left] < items[right]) left++;\n        else right--;\n\
+        \    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MaxArea
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxArea(int[] nums)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MaxArea
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxArea(int[] arr)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MaxArea
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int MaxArea(int[] xs)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: max_area
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_area(nums):\n    ___\n    best = 0\n    while left < right:\n        best\
+        \ = max(best, min(nums[left], nums[right]) * (right - left))\n        if nums[left] < nums[right]:\n\
+        \            left += 1\n        else:\n            right -= 1\n    return best\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_area(arr):\n    ___\n    best = 0\n    while left < right:\n        best\
+        \ = max(best, min(arr[left], arr[right]) * (right - left))\n        if arr[left] < arr[right]:\n\
+        \            left += 1\n        else:\n            right -= 1\n    return best\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_area(xs):\n    ___\n    best = 0\n    while left < right:\n        best =\
+        \ max(best, min(xs[left], xs[right]) * (right - left))\n        if xs[left] < xs[right]:\n   \
+        \         left += 1\n        else:\n            right -= 1\n    return best\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_area(values):\n    ___\n    best = 0\n    while left < right:\n        best\
+        \ = max(best, min(values[left], values[right]) * (right - left))\n        if values[left] < values[right]:\n\
+        \            left += 1\n        else:\n            right -= 1\n    return best\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_area(items):\n    ___\n    best = 0\n    while left < right:\n        best\
+        \ = max(best, min(items[left], items[right]) * (right - left))\n        if items[left] < items[right]:\n\
+        \            left += 1\n        else:\n            right -= 1\n    return best\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_area(nums):\n    left, right = 0, len(nums) - 1\n    best = 0\n    ___\n\
+        \    return best\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_area(arr):\n    left, right = 0, len(arr) - 1\n    best = 0\n    ___\n  \
+        \  return best\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_area(xs):\n    left, right = 0, len(xs) - 1\n    best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_area(values):\n    left, right = 0, len(values) - 1\n    best = 0\n    ___\n\
+        \    return best\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_area(items):\n    left, right = 0, len(items) - 1\n    best = 0\n    ___\n\
+        \    return best\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_area(nums):\n    left, right = 0, len(nums) - 1\n    best = 0\n    while\
+        \ left < right:\n        best = max(best, min(nums[left], nums[right]) * (right - left))\n   \
+        \     if nums[left] < nums[right]:\n            left += 1\n        else:\n            right -=\
+        \ 1\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_area(arr):\n    left, right = 0, len(arr) - 1\n    best = 0\n    while left\
+        \ < right:\n        best = max(best, min(arr[left], arr[right]) * (right - left))\n        if\
+        \ arr[left] < arr[right]:\n            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_area(xs):\n    left, right = 0, len(xs) - 1\n    best = 0\n    while left\
+        \ < right:\n        best = max(best, min(xs[left], xs[right]) * (right - left))\n        if xs[left]\
+        \ < xs[right]:\n            left += 1\n        else:\n            right -= 1\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_area(values):\n    left, right = 0, len(values) - 1\n    best = 0\n    while\
+        \ left < right:\n        best = max(best, min(values[left], values[right]) * (right - left))\n\
+        \        if values[left] < values[right]:\n            left += 1\n        else:\n            right\
+        \ -= 1\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: max_area
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_area(items):\n    left, right = 0, len(items) - 1\n    best = 0\n    while\
+        \ left < right:\n        best = max(best, min(items[left], items[right]) * (right - left))\n \
+        \       if items[left] < items[right]:\n            left += 1\n        else:\n            right\
+        \ -= 1\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: max_area
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_area(nums):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: max_area
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_area(arr):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: max_area
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def max_area(xs):\n    return 0\n"
