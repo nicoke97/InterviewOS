@@ -11,9 +11,10 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEDULE_DIR = ROOT / "content" / "schedule"
 LEVELS_PATH = SCHEDULE_DIR / "kumon-levels.yaml"
 ODOO_LEVELS_PATH = SCHEDULE_DIR / "odoo-levels.yaml"
+CSHARP_LEVELS_PATH = SCHEDULE_DIR / "csharp-levels.yaml"
 
 # All curriculum files, in order. Each may define its own `track`.
-LEVEL_FILES = [LEVELS_PATH, ODOO_LEVELS_PATH]
+LEVEL_FILES = [LEVELS_PATH, ODOO_LEVELS_PATH, CSHARP_LEVELS_PATH]
 
 
 @dataclass(frozen=True)
@@ -35,6 +36,7 @@ class BlockDef:
     page_end: int
     block_id: str
     level: str
+    extra: bool = False
 
 
 @dataclass(frozen=True)
@@ -90,6 +92,7 @@ def _parse_all_levels(_mtimes: tuple[float, ...]) -> dict[str, LevelDef]:
                     page_end=block_data["page_end"],
                     block_id=bid,
                     level=level_letter,
+                    extra=bool(block_data.get("extra")),
                 )
                 block_start = block_data["page_start"]
                 for i, set_data in enumerate(block_data.get("sets") or []):
@@ -145,13 +148,17 @@ def route_level(level: str) -> str:
     return normalize_level(level).lower()
 
 
-def page_belongs_to_level(page_id: str, level: str) -> bool:
-    prefix = f"{normalize_level(level)}-"
-    return page_id.upper().startswith(prefix)
-
-
 def page_id(level: str, page_num: int) -> str:
-    return f"{normalize_level(level)}-{page_num:03d}"
+    return f"{normalize_level(level)}{page_num}"
+
+
+def page_belongs_to_level(page_id: str, level: str) -> bool:
+    lvl = normalize_level(level)
+    pid = page_id.upper()
+    if not pid.startswith(lvl):
+        return False
+    rest = pid[len(lvl):]
+    return rest.isdigit() and int(rest) > 0
 
 
 def page_to_set(page_num: int, pages_per_set: int = 10) -> int:
@@ -200,16 +207,20 @@ def get_block_def(bid: str) -> BlockDef | None:
     return level_def.blocks.get(block_letter.upper())
 
 
-def block_title(bid: str) -> str:
+def block_title(bid: str, locale: str = "en") -> str:
+    from .schedule_i18n import localize_title
+
     block = get_block_def(bid)
-    return block.title if block else bid
+    title = block.title if block else bid
+    return localize_title(title, locale)
 
 
-def block_instruction(bid: str) -> str:
-    return load_block_instructions().get(
-        bid,
-        "Resuelve cada problema. Revisa todas tus respuestas al terminar.",
-    )
+def block_instruction(bid: str, locale: str = "en") -> str:
+    from .schedule_i18n import localize_instruction
+
+    default = "Resuelve cada problema. Revisa todas tus respuestas al terminar."
+    instruction = load_block_instructions().get(bid, default)
+    return localize_instruction(bid, instruction, locale)
 
 
 def block_for_page(level: str, page_num: int) -> str | None:
@@ -247,9 +258,12 @@ def set_count(level: str) -> int:
     return len(level_sets(level))
 
 
-def set_title(level: str, set_number: int) -> str:
+def set_title(level: str, set_number: int, locale: str = "en") -> str:
+    from .schedule_i18n import localize_title
+
     s = get_set_def(level, set_number)
-    return s.title if s else f"Set {set_number}"
+    title = s.title if s else f"Set {set_number}"
+    return localize_title(title, locale)
 
 
 def set_standard_seconds(level: str, set_number: int) -> int:
@@ -268,6 +282,37 @@ def block_letter_for_set(level: str, set_number: int) -> str:
 
 def sets_in_block(level: str, block_letter: str) -> list[SetDef]:
     return [s for s in level_sets(level) if s.block_letter == block_letter.upper()]
+
+
+def is_extra_block(level: str, block_letter: str) -> bool:
+    level_def = load_kumon_levels().get(normalize_level(level))
+    if not level_def:
+        return False
+    block = level_def.blocks.get(block_letter.upper())
+    return bool(block and block.extra)
+
+
+def is_extra_set(level: str, set_number: int) -> bool:
+    return is_extra_block(level, block_letter_for_set(level, set_number))
+
+
+def core_level_sets(level: str) -> list[SetDef]:
+    """Sets that count toward level mastery (excludes optional extra blocks)."""
+    return [s for s in level_sets(level) if not is_extra_block(level, s.block_letter)]
+
+
+def display_set_number(level: str, set_number: int) -> int:
+    """Student-facing set index within the block (1..N), not the global 1..20 index."""
+    block = block_letter_for_set(level, set_number)
+    block_sets = sorted(sets_in_block(level, block), key=lambda s: s.set_number)
+    for i, s in enumerate(block_sets, start=1):
+        if s.set_number == set_number:
+            return i
+    level_def = load_kumon_levels().get(normalize_level(level))
+    per_block = 5
+    if level_def and level_def.pages_per_set:
+        per_block = max(1, level_def.pages_per_block // level_def.pages_per_set)
+    return ((set_number - 1) % per_block) + 1
 
 
 def level_checkpoints(level: str) -> dict[str, list[str]]:
@@ -302,6 +347,12 @@ def level_track(level: str) -> str:
     return defn.track if defn else "python"
 
 
+def language_for_level(level: str) -> str:
+    """Execution language for a level. Only the csharp track runs C#; the
+    python and odoo tracks both execute Python."""
+    return "csharp" if level_track(level) == "csharp" else "python"
+
+
 def is_valid_route_level(level: str) -> bool:
     return normalize_level(level) in load_kumon_levels()
 
@@ -313,12 +364,14 @@ def coerce_route_level(level: str) -> str:
     return levels[0] if levels else "a"
 
 
-def levels_for_api(track: str = "python") -> list[dict]:
+def levels_for_api(track: str = "python", locale: str = "en") -> list[dict]:
+    from .schedule_i18n import localize_title
+
     return [
         {
             "id": route_level(defn.letter),
             "letter": defn.letter,
-            "title": defn.title,
+            "title": localize_title(defn.title, locale),
             "track": defn.track,
         }
         for defn in sorted(load_kumon_levels().values(), key=lambda d: d.letter)
@@ -338,5 +391,6 @@ def blocks_metadata() -> dict[str, dict]:
                 "page_start": block.page_start,
                 "page_end": block.page_end,
                 "order": (block.page_start - 1) // level_def.pages_per_block + 1,
+                "extra": block.extra,
             }
     return meta

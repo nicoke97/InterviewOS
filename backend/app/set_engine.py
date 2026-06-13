@@ -17,12 +17,25 @@ from datetime import date, datetime, timedelta
 
 from sqlalchemy.orm import Session
 
-from .content_loader import Curriculum, get_set_pages, load_curriculum
+from .content_loader import (
+    Curriculum,
+    get_set_pages,
+    interview_payload,
+    load_curriculum,
+    page_payload,
+    problem_description,
+    problem_title,
+)
 from .executor import run_kumon_code, run_leetcode_code
 from .kumon_hierarchy import (
     block_instruction,
     block_title,
     checkpoint_for_block,
+    core_level_sets,
+    get_block_def,
+    is_extra_block,
+    is_extra_set,
+    language_for_level,
     level_checkpoints,
     level_exam,
     level_sets,
@@ -30,6 +43,7 @@ from .kumon_hierarchy import (
     list_route_levels,
     normalize_level,
     route_level,
+    display_set_number,
     set_count,
     set_standard_seconds,
     set_title,
@@ -151,6 +165,19 @@ def set_mastered(db: Session, level: str, set_number: int) -> bool:
     return bool(sp and sp.status == "mastered")
 
 
+def set_unlocks_progress(db: Session, level: str, set_number: int) -> bool:
+    """True if the set still counts toward unlocking later levels.
+
+    A return-exam remaster temporarily sets status to repeating, but the
+    learner already passed this set once (`mastered_at`), so later levels
+    must stay open.
+    """
+    if set_mastered(db, level, set_number):
+        return True
+    sp = _set_prog(db, level, set_number, create=False)
+    return bool(sp and sp.mastered_at)
+
+
 def block_mastered(db: Session, level: str, block_letter: str) -> bool:
     block_letter = block_letter.upper()
     sets = [s for s in level_sets(level) if s.block_letter == block_letter]
@@ -172,7 +199,7 @@ def exam_passed(db: Session, level: str) -> bool:
 
 
 def _level_complete(db: Session, level: str) -> bool:
-    if not all(set_mastered(db, level, s.set_number) for s in level_sets(level)):
+    if not all(set_unlocks_progress(db, level, s.set_number) for s in core_level_sets(level)):
         return False
     cps = level_checkpoints(level)
     if not all(checkpoint_passed(db, level, bl) for bl, ids in cps.items() if ids):
@@ -208,7 +235,7 @@ def _has_exam(level: str) -> bool:
 def _exam_available(db: Session, level: str) -> bool:
     if dev_mode_enabled(db):
         return True
-    if not all(set_mastered(db, level, s.set_number) for s in level_sets(level)):
+    if not all(set_mastered(db, level, s.set_number) for s in core_level_sets(level)):
         return False
     cps = level_checkpoints(level)
     return all(checkpoint_passed(db, level, bl) for bl, ids in cps.items() if ids)
@@ -222,7 +249,7 @@ def current_target(db: Session, level: str) -> dict:
     block_letters = _level_block_letters(level)
     first_block = block_letters[0] if block_letters else None
     checkpoints_cfg = level_checkpoints(level)
-    sets = sorted(level_sets(level), key=lambda s: s.set_number)
+    sets = sorted(core_level_sets(level), key=lambda s: s.set_number)
 
     for s in sets:
         bl = s.block_letter
@@ -236,11 +263,14 @@ def current_target(db: Session, level: str) -> dict:
             return {
                 "type": "set",
                 "set_number": s.set_number,
+                "display_set_number": display_set_number(level, s.set_number),
                 "repeating": bool(sp and sp.status == "repeating"),
             }
 
     # all sets mastered → remaining checkpoints then exam
     for bl in block_letters:
+        if is_extra_block(level, bl):
+            continue
         if checkpoints_cfg.get(bl) and not checkpoint_passed(db, level, bl):
             return {"type": "checkpoint", "block": bl}
     if _has_exam(level) and not exam_passed(db, level):
@@ -253,6 +283,11 @@ def current_target(db: Session, level: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def _set_status(db: Session, level: str, set_number: int, target: dict) -> str:
+    if is_extra_set(level, set_number):
+        sp = _set_prog(db, level, set_number, create=False)
+        if sp and sp.status == "mastered":
+            return "mastered"
+        return "extra"
     sp = _set_prog(db, level, set_number, create=False)
     today = date.today()
     if sp and sp.status == "mastered":
@@ -265,7 +300,7 @@ def _set_status(db: Session, level: str, set_number: int, target: dict) -> str:
     return "locked"
 
 
-def level_roadmap(db: Session, level: str) -> dict:
+def level_roadmap(db: Session, level: str, locale: str = "en") -> dict:
     level = route_level(level)
     sets = level_sets(level)
     target = current_target(db, level)
@@ -277,8 +312,9 @@ def level_roadmap(db: Session, level: str) -> dict:
         total = len(get_set_pages(curriculum, level, s.set_number)) or 10
         set_rows.append({
             "set_number": s.set_number,
+            "display_set_number": display_set_number(level, s.set_number),
             "block": s.block_letter,
-            "title": s.title,
+            "title": set_title(level, s.set_number, locale),
             "page_start": s.page_start,
             "page_end": s.page_end,
             "standard_seconds": s.standard_seconds,
@@ -296,15 +332,20 @@ def level_roadmap(db: Session, level: str) -> dict:
     checkpoints = level_checkpoints(level)
     for letter in _level_block_letters(level):
         bid = f"{normalize_level(level)}.{letter}"
+        bdef = get_block_def(bid)
         cp = _checkpoint_prog(db, level, letter, create=False)
         block_set_nums = [s.set_number for s in sets if s.block_letter == letter]
+        block_set_count = len(block_set_nums)
         has_cp = bool(checkpoints.get(letter))
         blocks.append({
             "letter": letter,
-            "title": block_title(bid),
-            "instruction": block_instruction(bid),
-            "set_start": min(block_set_nums) if block_set_nums else 0,
-            "set_end": max(block_set_nums) if block_set_nums else 0,
+            "title": block_title(bid, locale),
+            "instruction": block_instruction(bid, locale),
+            "set_start": 1 if block_set_count else 0,
+            "set_end": block_set_count,
+            "page_start": bdef.page_start if bdef else 0,
+            "page_end": bdef.page_end if bdef else 0,
+            "extra": is_extra_block(level, letter),
             "checkpoint": {
                 "problems": checkpoints.get(letter, []),
                 "passed": bool(cp and cp.passed) or not has_cp,
@@ -324,7 +365,8 @@ def level_roadmap(db: Session, level: str) -> dict:
         "exists": _has_exam(level),
     }
 
-    mastered_count = sum(1 for r in set_rows if r["status"] == "mastered")
+    mastered_count = sum(1 for r in set_rows if r["status"] == "mastered" and not is_extra_set(level, r["set_number"]))
+    core_total = len(core_level_sets(level))
     return {
         "level": level,
         "unlocked": level_unlocked(db, level),
@@ -333,7 +375,7 @@ def level_roadmap(db: Session, level: str) -> dict:
         "blocks": blocks,
         "exam": exam,
         "mastered_sets": mastered_count,
-        "total_sets": len(set_rows),
+        "total_sets": core_total,
     }
 
 
@@ -341,18 +383,51 @@ def level_roadmap(db: Session, level: str) -> dict:
 # flexible study session
 # ---------------------------------------------------------------------------
 
-def _page_payload(p) -> dict:
+def _page_payload(p, locale: str = "en") -> dict:
+    return page_payload(p, locale)
+
+
+def build_review_session(db: Session, level: str, set_number: int, count: int = 10, *, locale: str = "en") -> dict:
+    """Practice a mastered set — corrections use /api/run, not set submit."""
+    level = route_level(level)
+    sp = _set_prog(db, level, set_number, create=False)
+    if not sp or sp.status != "mastered":
+        if is_extra_set(level, set_number):
+            pass  # extra sets are always open for practice
+        elif not dev_mode_enabled(db):
+            from fastapi import HTTPException
+            raise HTTPException(400, "Solo puedes repasar sets dominados")
+
+    curriculum = load_curriculum()
+    pages = get_set_pages(curriculum, level, set_number)
+    count = max(1, min(count, len(pages)))
+    session_pages = pages if count >= len(pages) else pages[:count]
+
+    s_def = next((s for s in level_sets(level) if s.set_number == set_number), None)
+    block_letter = block_letter_for_set_num(level, set_number)
+    bid = f"{normalize_level(level)}.{block_letter}"
     return {
-        "id": p.id, "level": p.level, "page": p.page, "set": p.set,
-        "block": p.block, "block_id": p.block_id, "order": p.order,
-        "scaffolding": p.scaffolding, "prompt": p.prompt,
-        "starter_code": p.starter_code, "slot_answers": p.slot_answers,
-        "reference_code": p.reference_code, "hints": p.hints,
-        "time_estimate_seconds": p.time_estimate_seconds,
+        "type": "set",
+        "mode": "review",
+        "level": level,
+        "set_number": set_number,
+        "display_set_number": display_set_number(level, set_number),
+        "set_title": set_title(level, set_number, locale),
+        "block": block_letter,
+        "block_title": block_title(bid, locale),
+        "instruction": block_instruction(bid, locale),
+        "standard_seconds": set_standard_seconds(level, set_number),
+        "status": "mastered",
+        "attempts": sp.attempts if sp else 0,
+        "completed": len(pages),
+        "total": len(pages),
+        "accumulated_time_ms": sp.accumulated_time_ms if sp else 0,
+        "page_range": f"{pages[0].page}-{pages[-1].page}" if pages else "",
+        "drills": [_page_payload(p, locale) for p in session_pages],
     }
 
 
-def build_session(db: Session, level: str, count: int = 10) -> dict:
+def build_session(db: Session, level: str, count: int = 10, *, locale: str = "en") -> dict:
     level = route_level(level)
     target = current_target(db, level)
     if target.get("type") != "set":
@@ -374,10 +449,11 @@ def build_session(db: Session, level: str, count: int = 10) -> dict:
         "type": "set",
         "level": level,
         "set_number": set_number,
-        "set_title": s_def.title if s_def else set_title(level, set_number),
+        "display_set_number": display_set_number(level, set_number),
+        "set_title": set_title(level, set_number, locale),
         "block": block_letter,
-        "block_title": block_title(bid),
-        "instruction": block_instruction(bid),
+        "block_title": block_title(bid, locale),
+        "instruction": block_instruction(bid, locale),
         "standard_seconds": set_standard_seconds(level, set_number),
         "status": sp.status,
         "attempts": sp.attempts,
@@ -385,7 +461,7 @@ def build_session(db: Session, level: str, count: int = 10) -> dict:
         "total": len(pages),
         "accumulated_time_ms": sp.accumulated_time_ms,
         "page_range": f"{pages[0].page}-{pages[-1].page}" if pages else "",
-        "drills": [_page_payload(p) for p in session_pages],
+        "drills": [_page_payload(p, locale) for p in session_pages],
     }
 
 
@@ -430,16 +506,27 @@ def submit_set(
     pages = get_set_pages(curriculum, level, set_number)
     total_pages = len(pages) or 10
     completed = set(sp.completed_pages or [])
+
+    # Retry or stale partial state — do not carry over old time.
+    if len(completed) >= total_pages and sp.status != "mastered":
+        sp.accumulated_time_ms = 0
+        sp.completed_pages = []
+        completed = set()
+    elif not completed and sp.accumulated_time_ms > 0:
+        sp.accumulated_time_ms = 0
+
     results: dict[str, dict] = {}
     failed = 0
     per_time = time_ms // max(len(answers), 1)
     passed_count = 0
+    answered_in_batch = 0
 
     for item in answers:
         d = curriculum.kumon.get(item.exercise_id)
         if not d or d.set != set_number or route_level(d.level) != level:
             continue
-        res = run_kumon_code(item.code, d.validation)
+        answered_in_batch += 1
+        res = run_kumon_code(item.code, d.validation, language=language_for_level(d.level))
         passed = res.get("passed", False)
         results[item.exercise_id] = {
             "passed": passed,
@@ -461,7 +548,11 @@ def submit_set(
 
     sp.completed_pages = [p.id for p in pages if p.id in completed]
     sp.errors += failed
-    sp.accumulated_time_ms += time_ms
+    if answered_in_batch >= total_pages:
+        # Full set in one submit — time_ms is total session time (incl. rechecks).
+        sp.accumulated_time_ms = time_ms
+    else:
+        sp.accumulated_time_ms += time_ms
 
     std_ms = int(set_standard_seconds(level, set_number) * 1000 * _time_tolerance())
     outcome = "in_progress"
@@ -538,7 +629,7 @@ def submit_set(
 # checkpoints
 # ---------------------------------------------------------------------------
 
-def get_checkpoint(db: Session, level: str, block_letter: str) -> dict:
+def get_checkpoint(db: Session, level: str, block_letter: str, locale: str = "en") -> dict:
     level = route_level(level)
     block_letter = block_letter.upper()
     curriculum = load_curriculum()
@@ -549,8 +640,8 @@ def get_checkpoint(db: Session, level: str, block_letter: str) -> dict:
         prog = db.query(LeetCodeProgress).filter_by(problem_id=pid).first()
         problems.append({
             "id": pid,
-            "title": p.title if p else pid,
-            "description": p.description if p else "",
+            "title": problem_title(p, locale, pid),
+            "description": problem_description(p, locale) if p else "",
             "passed": bool(prog and prog.tier_passed >= 1),
         })
     cp = _checkpoint_prog(db, level, block_letter, create=False)
@@ -558,7 +649,7 @@ def get_checkpoint(db: Session, level: str, block_letter: str) -> dict:
     return {
         "level": level,
         "block": block_letter,
-        "block_title": block_title(bid),
+        "block_title": block_title(bid, locale),
         "available": block_mastered(db, level, block_letter) or dev_mode_enabled(db),
         "passed": bool(cp and cp.passed),
         "problems": problems,
@@ -594,7 +685,7 @@ def submit_checkpoint(db: Session, level: str, problem_id: str, code: str) -> di
     p = curriculum.leetcode.get(problem_id)
     if not p:
         return {"passed": False, "error": "Problema no encontrado"}
-    res = run_leetcode_code(code, p.test_cases, p.fn_name)
+    res = run_leetcode_code(code, p.test_cases, p.fn_name, language=language_for_level(level))
     passed = res.get("passed", False)
     today = date.today()
     if passed:
@@ -627,7 +718,7 @@ def submit_checkpoint(db: Session, level: str, problem_id: str, code: str) -> di
 # level completion exam
 # ---------------------------------------------------------------------------
 
-def get_exam(db: Session, level: str) -> dict:
+def get_exam(db: Session, level: str, locale: str = "en") -> dict:
     level = route_level(level)
     curriculum = load_curriculum()
     cfg = level_exam(level)
@@ -639,19 +730,26 @@ def get_exam(db: Session, level: str) -> dict:
         prog = db.query(LeetCodeProgress).filter_by(problem_id=pid).first()
         leetcode.append({
             "id": pid,
-            "title": p.title if p else pid,
-            "description": p.description if p else "",
+            "title": problem_title(p, locale, pid),
+            "description": problem_description(p, locale) if p else "",
             "passed": bool(prog and prog.tier_passed >= 1),
         })
     interview = []
     for qid in cfg.get("interview", []):
         q = curriculum.interview.get(qid)
         prog = db.query(InterviewProgress).filter_by(question_id=qid).first()
-        interview.append({
-            "id": qid,
-            "question": q.question if q else qid,
-            "completed": bool(prog and prog.completed),
-        })
+        if q:
+            payload = interview_payload(q, locale)
+            interview.append({
+                **payload,
+                "completed": bool(prog and prog.completed),
+            })
+        else:
+            interview.append({
+                "id": qid,
+                "question": qid,
+                "completed": bool(prog and prog.completed),
+            })
     ep = _exam_prog(db, level, create=False)
     return {
         "level": level,
@@ -692,7 +790,7 @@ def submit_exam(db: Session, level: str, exercise_id: str, exercise_type: str,
         p = curriculum.leetcode.get(exercise_id)
         if not p:
             return {"passed": False, "error": "Problema no encontrado"}
-        result = run_leetcode_code(code, p.test_cases, p.fn_name)
+        result = run_leetcode_code(code, p.test_cases, p.fn_name, language=language_for_level(level))
         passed = result.get("passed", False)
         if passed:
             prog = db.query(LeetCodeProgress).filter_by(problem_id=exercise_id).first()
