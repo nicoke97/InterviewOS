@@ -1,0 +1,453 @@
+id: min-stack
+title: Min Stack
+leetcode_id: lc-min-stack
+test_cases:
+- args:
+  - - - push
+      - -2
+    - - push
+      - 0
+    - - push
+      - -3
+    - - getMin
+    - - pop
+    - - top
+    - - getMin
+  expected:
+  - null
+  - null
+  - null
+  - -3
+  - null
+  - 0
+  - -2
+voice:
+  prompt: ¿Por qué stack y no otro enfoque?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - stack
+  - paréntesis
+  - expresiones
+  - monotonic
+  - mínimos
+  - máximos
+languages:
+  csharp:
+    fn_name: MinStackOps
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "object[] MinStackOps(object[][] nums)\n{\n    ___\n    var mins = new List<int>();\n\
+        \    var output = new List<object>();\n    foreach (var op in nums)\n    {\n        var name =\
+        \ Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n            int v = Convert.ToInt32(op[1]);\n\
+        \            stack.Add(v);\n            mins.Add(mins.Count == 0 ? v : Math.Min(v, mins[mins.Count\
+        \ - 1]));\n            output.Add(null);\n        }\n        else if (name == \"pop\")\n     \
+        \   {\n            stack.RemoveAt(stack.Count - 1);\n            mins.RemoveAt(mins.Count - 1);\n\
+        \            output.Add(null);\n        }\n        else if (name == \"top\")\n            output.Add(stack[stack.Count\
+        \ - 1]);\n        else if (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n\
+        \    }\n    return output.ToArray();\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "object[] MinStackOps(object[][] arr)\n{\n    ___\n    var mins = new List<int>();\n\
+        \    var output = new List<object>();\n    foreach (var op in arr)\n    {\n        var name =\
+        \ Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n            int v = Convert.ToInt32(op[1]);\n\
+        \            stack.Add(v);\n            mins.Add(mins.Count == 0 ? v : Math.Min(v, mins[mins.Count\
+        \ - 1]));\n            output.Add(null);\n        }\n        else if (name == \"pop\")\n     \
+        \   {\n            stack.RemoveAt(stack.Count - 1);\n            mins.RemoveAt(mins.Count - 1);\n\
+        \            output.Add(null);\n        }\n        else if (name == \"top\")\n            output.Add(stack[stack.Count\
+        \ - 1]);\n        else if (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n\
+        \    }\n    return output.ToArray();\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "object[] MinStackOps(object[][] xs)\n{\n    ___\n    var mins = new List<int>();\n\
+        \    var output = new List<object>();\n    foreach (var op in xs)\n    {\n        var name = Convert.ToString(op[0]);\n\
+        \        if (name == \"push\")\n        {\n            int v = Convert.ToInt32(op[1]);\n     \
+        \       stack.Add(v);\n            mins.Add(mins.Count == 0 ? v : Math.Min(v, mins[mins.Count\
+        \ - 1]));\n            output.Add(null);\n        }\n        else if (name == \"pop\")\n     \
+        \   {\n            stack.RemoveAt(stack.Count - 1);\n            mins.RemoveAt(mins.Count - 1);\n\
+        \            output.Add(null);\n        }\n        else if (name == \"top\")\n            output.Add(stack[stack.Count\
+        \ - 1]);\n        else if (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n\
+        \    }\n    return output.ToArray();\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "object[] MinStackOps(object[][] values)\n{\n    ___\n    var mins = new List<int>();\n\
+        \    var output = new List<object>();\n    foreach (var op in values)\n    {\n        var name\
+        \ = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n            int v = Convert.ToInt32(op[1]);\n\
+        \            stack.Add(v);\n            mins.Add(mins.Count == 0 ? v : Math.Min(v, mins[mins.Count\
+        \ - 1]));\n            output.Add(null);\n        }\n        else if (name == \"pop\")\n     \
+        \   {\n            stack.RemoveAt(stack.Count - 1);\n            mins.RemoveAt(mins.Count - 1);\n\
+        \            output.Add(null);\n        }\n        else if (name == \"top\")\n            output.Add(stack[stack.Count\
+        \ - 1]);\n        else if (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n\
+        \    }\n    return output.ToArray();\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "object[] MinStackOps(object[][] items)\n{\n    ___\n    var mins = new List<int>();\n\
+        \    var output = new List<object>();\n    foreach (var op in items)\n    {\n        var name\
+        \ = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n            int v = Convert.ToInt32(op[1]);\n\
+        \            stack.Add(v);\n            mins.Add(mins.Count == 0 ? v : Math.Min(v, mins[mins.Count\
+        \ - 1]));\n            output.Add(null);\n        }\n        else if (name == \"pop\")\n     \
+        \   {\n            stack.RemoveAt(stack.Count - 1);\n            mins.RemoveAt(mins.Count - 1);\n\
+        \            output.Add(null);\n        }\n        else if (name == \"top\")\n            output.Add(stack[stack.Count\
+        \ - 1]);\n        else if (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n\
+        \    }\n    return output.ToArray();\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "object[] MinStackOps(object[][] nums)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    ___\n    }\n    return output.ToArray();\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "object[] MinStackOps(object[][] arr)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    ___\n    }\n    return output.ToArray();\n\
+        }\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "object[] MinStackOps(object[][] xs)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    ___\n    }\n    return output.ToArray();\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "object[] MinStackOps(object[][] values)\n{\n    var stack = new List<int>();\n  \
+        \  var mins = new List<int>();\n    var output = new List<object>();\n    ___\n    }\n    return\
+        \ output.ToArray();\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "object[] MinStackOps(object[][] items)\n{\n    var stack = new List<int>();\n   \
+        \ var mins = new List<int>();\n    var output = new List<object>();\n    ___\n    }\n    return\
+        \ output.ToArray();\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "object[] MinStackOps(object[][] nums)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    foreach (var op in nums)\n\
+        \    {\n        var name = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n\
+        \            int v = Convert.ToInt32(op[1]);\n            stack.Add(v);\n            mins.Add(mins.Count\
+        \ == 0 ? v : Math.Min(v, mins[mins.Count - 1]));\n            output.Add(null);\n        }\n \
+        \       else if (name == \"pop\")\n        {\n            stack.RemoveAt(stack.Count - 1);\n \
+        \           mins.RemoveAt(mins.Count - 1);\n            output.Add(null);\n        }\n       \
+        \ else if (name == \"top\")\n            output.Add(stack[stack.Count - 1]);\n        else if\
+        \ (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "object[] MinStackOps(object[][] arr)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    foreach (var op in arr)\n\
+        \    {\n        var name = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n\
+        \            int v = Convert.ToInt32(op[1]);\n            stack.Add(v);\n            mins.Add(mins.Count\
+        \ == 0 ? v : Math.Min(v, mins[mins.Count - 1]));\n            output.Add(null);\n        }\n \
+        \       else if (name == \"pop\")\n        {\n            stack.RemoveAt(stack.Count - 1);\n \
+        \           mins.RemoveAt(mins.Count - 1);\n            output.Add(null);\n        }\n       \
+        \ else if (name == \"top\")\n            output.Add(stack[stack.Count - 1]);\n        else if\
+        \ (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "object[] MinStackOps(object[][] xs)\n{\n    var stack = new List<int>();\n    var\
+        \ mins = new List<int>();\n    var output = new List<object>();\n    foreach (var op in xs)\n\
+        \    {\n        var name = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n\
+        \            int v = Convert.ToInt32(op[1]);\n            stack.Add(v);\n            mins.Add(mins.Count\
+        \ == 0 ? v : Math.Min(v, mins[mins.Count - 1]));\n            output.Add(null);\n        }\n \
+        \       else if (name == \"pop\")\n        {\n            stack.RemoveAt(stack.Count - 1);\n \
+        \           mins.RemoveAt(mins.Count - 1);\n            output.Add(null);\n        }\n       \
+        \ else if (name == \"top\")\n            output.Add(stack[stack.Count - 1]);\n        else if\
+        \ (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "object[] MinStackOps(object[][] values)\n{\n    var stack = new List<int>();\n  \
+        \  var mins = new List<int>();\n    var output = new List<object>();\n    foreach (var op in values)\n\
+        \    {\n        var name = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n\
+        \            int v = Convert.ToInt32(op[1]);\n            stack.Add(v);\n            mins.Add(mins.Count\
+        \ == 0 ? v : Math.Min(v, mins[mins.Count - 1]));\n            output.Add(null);\n        }\n \
+        \       else if (name == \"pop\")\n        {\n            stack.RemoveAt(stack.Count - 1);\n \
+        \           mins.RemoveAt(mins.Count - 1);\n            output.Add(null);\n        }\n       \
+        \ else if (name == \"top\")\n            output.Add(stack[stack.Count - 1]);\n        else if\
+        \ (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MinStackOps
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "object[] MinStackOps(object[][] items)\n{\n    var stack = new List<int>();\n   \
+        \ var mins = new List<int>();\n    var output = new List<object>();\n    foreach (var op in items)\n\
+        \    {\n        var name = Convert.ToString(op[0]);\n        if (name == \"push\")\n        {\n\
+        \            int v = Convert.ToInt32(op[1]);\n            stack.Add(v);\n            mins.Add(mins.Count\
+        \ == 0 ? v : Math.Min(v, mins[mins.Count - 1]));\n            output.Add(null);\n        }\n \
+        \       else if (name == \"pop\")\n        {\n            stack.RemoveAt(stack.Count - 1);\n \
+        \           mins.RemoveAt(mins.Count - 1);\n            output.Add(null);\n        }\n       \
+        \ else if (name == \"top\")\n            output.Add(stack[stack.Count - 1]);\n        else if\
+        \ (name == \"getMin\")\n            output.Add(mins[mins.Count - 1]);\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MinStackOps
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "object[] MinStackOps(object[][] nums)\n{\n    return new object[] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MinStackOps
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "object[] MinStackOps(object[][] arr)\n{\n    return new object[] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MinStackOps
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "object[] MinStackOps(object[][] xs)\n{\n    return new object[] {};\n}\n"
+  python:
+    fn_name: min_stack_ops
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_stack_ops(nums):\n    ___\n    mins = []\n    out = []\n    for op in nums:\n\
+        \        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    return out\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_stack_ops(arr):\n    ___\n    mins = []\n    out = []\n    for op in arr:\n\
+        \        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    return out\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_stack_ops(xs):\n    ___\n    mins = []\n    out = []\n    for op in xs:\n\
+        \        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    return out\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_stack_ops(values):\n    ___\n    mins = []\n    out = []\n    for op in values:\n\
+        \        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    return out\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_stack_ops(items):\n    ___\n    mins = []\n    out = []\n    for op in items:\n\
+        \        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    return out\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_stack_ops(nums):\n    stack = []\n    mins = []\n    out = []\n    ___\n\
+        \    return out\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_stack_ops(arr):\n    stack = []\n    mins = []\n    out = []\n    ___\n \
+        \   return out\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_stack_ops(xs):\n    stack = []\n    mins = []\n    out = []\n    ___\n  \
+        \  return out\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_stack_ops(values):\n    stack = []\n    mins = []\n    out = []\n    ___\n\
+        \    return out\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_stack_ops(items):\n    stack = []\n    mins = []\n    out = []\n    ___\n\
+        \    return out\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_stack_ops(nums):\n    stack = []\n    mins = []\n    out = []\n    for op\
+        \ in nums:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n        \
+        \    stack.append(v)\n            mins.append(v if not mins else min(v, mins[-1]))\n         \
+        \   out.append(None)\n        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n\
+        \            out.append(None)\n        elif name == 'top':\n            out.append(stack[-1])\n\
+        \        elif name == 'getMin':\n            out.append(mins[-1])\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_stack_ops(arr):\n    stack = []\n    mins = []\n    out = []\n    for op\
+        \ in arr:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n         \
+        \   stack.append(v)\n            mins.append(v if not mins else min(v, mins[-1]))\n          \
+        \  out.append(None)\n        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n\
+        \            out.append(None)\n        elif name == 'top':\n            out.append(stack[-1])\n\
+        \        elif name == 'getMin':\n            out.append(mins[-1])\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_stack_ops(xs):\n    stack = []\n    mins = []\n    out = []\n    for op in\
+        \ xs:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            mins.append(v if not mins else min(v, mins[-1]))\n            out.append(None)\n\
+        \        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(mins[-1])\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_stack_ops(values):\n    stack = []\n    mins = []\n    out = []\n    for\
+        \ op in values:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n   \
+        \         stack.append(v)\n            mins.append(v if not mins else min(v, mins[-1]))\n    \
+        \        out.append(None)\n        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n\
+        \            out.append(None)\n        elif name == 'top':\n            out.append(stack[-1])\n\
+        \        elif name == 'getMin':\n            out.append(mins[-1])\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: min_stack_ops
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_stack_ops(items):\n    stack = []\n    mins = []\n    out = []\n    for op\
+        \ in items:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n       \
+        \     stack.append(v)\n            mins.append(v if not mins else min(v, mins[-1]))\n        \
+        \    out.append(None)\n        elif name == 'pop':\n            stack.pop()\n            mins.pop()\n\
+        \            out.append(None)\n        elif name == 'top':\n            out.append(stack[-1])\n\
+        \        elif name == 'getMin':\n            out.append(mins[-1])\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: min_stack_ops
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def min_stack_ops(nums):\n    stack = []\n    mins = []\n    out = []\n    for op\
+        \ in nums:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n        \
+        \    stack.append(v)\n            # update mins\n        elif name == 'pop':\n            pass\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(___)\n    return out\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: min_stack_ops
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def min_stack_ops(arr):\n    stack = []\n    mins = []\n    out = []\n    for op\
+        \ in arr:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n         \
+        \   stack.append(v)\n            # update mins\n        elif name == 'pop':\n            pass\n\
+        \        elif name == 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n\
+        \            out.append(___)\n    return out\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: min_stack_ops
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def min_stack_ops(xs):\n    stack = []\n    mins = []\n    out = []\n    for op in\
+        \ xs:\n        name = op[0]\n        if name == 'push':\n            v = op[1]\n            stack.append(v)\n\
+        \            # update mins\n        elif name == 'pop':\n            pass\n        elif name ==\
+        \ 'top':\n            out.append(stack[-1])\n        elif name == 'getMin':\n            out.append(___)\n\
+        \    return out\n"

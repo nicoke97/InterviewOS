@@ -1,0 +1,470 @@
+id: min-window-substring
+title: Minimum Window Substring
+leetcode_id: lc-min-window-substring
+test_cases:
+- args:
+  - ADOBECODEBANC
+  - ABC
+  expected: BANC
+- args:
+  - a
+  - a
+  expected: a
+voice:
+  prompt: ¿Cómo garantizas que no revisas de más cada posición?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - ventana
+  - variable
+  - actualizar
+  - contadores
+  - entrar
+  - salir
+languages:
+  csharp:
+    fn_name: MinWindow
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string MinWindow(string s, string text)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in text)\n        need[c] = need.GetValueOrDefault(c) + 1;\n   \
+        \ int missing = text.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < s.Length; right++)\n    {\n        char c = s[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = s.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = s[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    return best;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string MinWindow(string text, string src)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in src)\n        need[c] = need.GetValueOrDefault(c) + 1;\n    int\
+        \ missing = src.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right =\
+        \ 0; right < text.Length; right++)\n    {\n        char c = text[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = text.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = text[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    return best;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string MinWindow(string src, string word)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in word)\n        need[c] = need.GetValueOrDefault(c) + 1;\n   \
+        \ int missing = word.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < src.Length; right++)\n    {\n        char c = src[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = src.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = src[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    return best;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string MinWindow(string word, string raw)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in raw)\n        need[c] = need.GetValueOrDefault(c) + 1;\n    int\
+        \ missing = raw.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right =\
+        \ 0; right < word.Length; right++)\n    {\n        char c = word[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = word.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = word[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    return best;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "string MinWindow(string raw, string chunk)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in chunk)\n        need[c] = need.GetValueOrDefault(c) + 1;\n  \
+        \  int missing = chunk.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < raw.Length; right++)\n    {\n        char c = raw[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = raw.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = raw[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    return best;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string MinWindow(string s, string text)\n{\n    if (string.IsNullOrEmpty(text)) return\
+        \ \"\";\n    var need = new Dictionary<char, int>();\n    ___\n        }\n    }\n    return best;\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string MinWindow(string text, string src)\n{\n    if (string.IsNullOrEmpty(src))\
+        \ return \"\";\n    var need = new Dictionary<char, int>();\n    ___\n        }\n    }\n    return\
+        \ best;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string MinWindow(string src, string word)\n{\n    if (string.IsNullOrEmpty(word))\
+        \ return \"\";\n    var need = new Dictionary<char, int>();\n    ___\n        }\n    }\n    return\
+        \ best;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string MinWindow(string word, string raw)\n{\n    if (string.IsNullOrEmpty(raw))\
+        \ return \"\";\n    var need = new Dictionary<char, int>();\n    ___\n        }\n    }\n    return\
+        \ best;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "string MinWindow(string raw, string chunk)\n{\n    if (string.IsNullOrEmpty(chunk))\
+        \ return \"\";\n    var need = new Dictionary<char, int>();\n    ___\n        }\n    }\n    return\
+        \ best;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string MinWindow(string s, string text)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in text)\n        need[c] = need.GetValueOrDefault(c) + 1;\n   \
+        \ int missing = text.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < s.Length; right++)\n    {\n        char c = s[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = s.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = s[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string MinWindow(string text, string src)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in src)\n        need[c] = need.GetValueOrDefault(c) + 1;\n    int\
+        \ missing = src.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right =\
+        \ 0; right < text.Length; right++)\n    {\n        char c = text[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = text.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = text[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string MinWindow(string src, string word)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in word)\n        need[c] = need.GetValueOrDefault(c) + 1;\n   \
+        \ int missing = word.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < src.Length; right++)\n    {\n        char c = src[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = src.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = src[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string MinWindow(string word, string raw)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in raw)\n        need[c] = need.GetValueOrDefault(c) + 1;\n    int\
+        \ missing = raw.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right =\
+        \ 0; right < word.Length; right++)\n    {\n        char c = word[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = word.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = word[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MinWindow
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "string MinWindow(string raw, string chunk)\n{\n    ___\n    var need = new Dictionary<char,\
+        \ int>();\n    foreach (var c in chunk)\n        need[c] = need.GetValueOrDefault(c) + 1;\n  \
+        \  int missing = chunk.Length, left = 0, bestLen = 0;\n    string best = \"\";\n    for (int right\
+        \ = 0; right < raw.Length; right++)\n    {\n        char c = raw[right];\n        if (need.ContainsKey(c))\n\
+        \        {\n            if (need[c] > 0) missing--;\n            need[c]--;\n        }\n     \
+        \   while (missing == 0)\n        {\n            if (bestLen == 0 || right - left + 1 < bestLen)\n\
+        \            {\n                bestLen = right - left + 1;\n                best = raw.Substring(left,\
+        \ bestLen);\n            }\n            char leftC = raw[left];\n            if (need.ContainsKey(leftC))\n\
+        \            {\n                need[leftC]++;\n                if (need[leftC] > 0) missing++;\n\
+        \            }\n            left++;\n        }\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MinWindow
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "string MinWindow(string s, string text)\n{\n    return \"\";\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MinWindow
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "string MinWindow(string text, string src)\n{\n    return \"\";\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MinWindow
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "string MinWindow(string src, string word)\n{\n    return \"\";\n}\n"
+  python:
+    fn_name: min_window
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_window(s, text):\n    ___\n        return \"\"\n    need = {}\n    for c\
+        \ in text:\n        need[c] = need.get(c, 0) + 1\n    missing = len(text)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(s):\n        if c in need:\n\
+        \            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n       \
+        \ while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n        \
+        \        best_len = right - left + 1\n                start = left\n                best = s[left:right\
+        \ + 1]\n            left_c = s[left]\n            if left_c in need:\n                need[left_c]\
+        \ += 1\n                if need[left_c] > 0:\n                    missing += 1\n            left\
+        \ += 1\n    return best\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_window(text, src):\n    ___\n        return \"\"\n    need = {}\n    for\
+        \ c in src:\n        need[c] = need.get(c, 0) + 1\n    missing = len(src)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(text):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = text[left:right + 1]\n            left_c = text[left]\n            if left_c in need:\n  \
+        \              need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    return best\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_window(src, word):\n    ___\n        return \"\"\n    need = {}\n    for\
+        \ c in word:\n        need[c] = need.get(c, 0) + 1\n    missing = len(word)\n    left = start\
+        \ = 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(src):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = src[left:right + 1]\n            left_c = src[left]\n            if left_c in need:\n    \
+        \            need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    return best\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_window(word, raw):\n    ___\n        return \"\"\n    need = {}\n    for\
+        \ c in raw:\n        need[c] = need.get(c, 0) + 1\n    missing = len(raw)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(word):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = word[left:right + 1]\n            left_c = word[left]\n            if left_c in need:\n  \
+        \              need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    return best\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def min_window(raw, chunk):\n    ___\n        return \"\"\n    need = {}\n    for\
+        \ c in chunk:\n        need[c] = need.get(c, 0) + 1\n    missing = len(chunk)\n    left = start\
+        \ = 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(raw):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = raw[left:right + 1]\n            left_c = raw[left]\n            if left_c in need:\n    \
+        \            need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    return best\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_window(s, text):\n    if not text:\n        return \"\"\n    need = {}\n\
+        \    ___\n    return best\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_window(text, src):\n    if not src:\n        return \"\"\n    need = {}\n\
+        \    ___\n    return best\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_window(src, word):\n    if not word:\n        return \"\"\n    need = {}\n\
+        \    ___\n    return best\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_window(word, raw):\n    if not raw:\n        return \"\"\n    need = {}\n\
+        \    ___\n    return best\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def min_window(raw, chunk):\n    if not chunk:\n        return \"\"\n    need = {}\n\
+        \    ___\n    return best\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_window(s, text):\n    if not text:\n        ___\n    need = {}\n    for c\
+        \ in text:\n        need[c] = need.get(c, 0) + 1\n    missing = len(text)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(s):\n        if c in need:\n\
+        \            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n       \
+        \ while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n        \
+        \        best_len = right - left + 1\n                start = left\n                best = s[left:right\
+        \ + 1]\n            left_c = s[left]\n            if left_c in need:\n                need[left_c]\
+        \ += 1\n                if need[left_c] > 0:\n                    missing += 1\n            left\
+        \ += 1\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_window(text, src):\n    if not src:\n        ___\n    need = {}\n    for\
+        \ c in src:\n        need[c] = need.get(c, 0) + 1\n    missing = len(src)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(text):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = text[left:right + 1]\n            left_c = text[left]\n            if left_c in need:\n  \
+        \              need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_window(src, word):\n    if not word:\n        ___\n    need = {}\n    for\
+        \ c in word:\n        need[c] = need.get(c, 0) + 1\n    missing = len(word)\n    left = start\
+        \ = 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(src):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = src[left:right + 1]\n            left_c = src[left]\n            if left_c in need:\n    \
+        \            need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_window(word, raw):\n    if not raw:\n        ___\n    need = {}\n    for\
+        \ c in raw:\n        need[c] = need.get(c, 0) + 1\n    missing = len(raw)\n    left = start =\
+        \ 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(word):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = word[left:right + 1]\n            left_c = word[left]\n            if left_c in need:\n  \
+        \              need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: min_window
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def min_window(raw, chunk):\n    if not chunk:\n        ___\n    need = {}\n    for\
+        \ c in chunk:\n        need[c] = need.get(c, 0) + 1\n    missing = len(chunk)\n    left = start\
+        \ = 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(raw):\n        if c in\
+        \ need:\n            if need[c] > 0:\n                missing -= 1\n            need[c] -= 1\n\
+        \        while missing == 0:\n            if best_len == 0 or right - left + 1 < best_len:\n \
+        \               best_len = right - left + 1\n                start = left\n                best\
+        \ = raw[left:right + 1]\n            left_c = raw[left]\n            if left_c in need:\n    \
+        \            need[left_c] += 1\n                if need[left_c] > 0:\n                    missing\
+        \ += 1\n            left += 1\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: min_window
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def min_window(s, text):\n    return \"\"\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: min_window
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def min_window(text, src):\n    return \"\"\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: min_window
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def min_window(src, word):\n    return \"\"\n"

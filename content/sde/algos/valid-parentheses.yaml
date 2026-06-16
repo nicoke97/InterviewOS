@@ -1,0 +1,363 @@
+id: valid-parentheses
+title: Valid Parentheses
+leetcode_id: lc-valid-parentheses
+test_cases:
+- args:
+  - ()
+  expected: true
+- args:
+  - ()[]{}
+  expected: true
+- args:
+  - (]
+  expected: false
+voice:
+  prompt: ¿Por qué stack y no otro enfoque?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - stack
+  - paréntesis
+  - expresiones
+  - monotonic
+  - mínimos
+  - máximos
+languages:
+  csharp:
+    fn_name: IsValidParen
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsValidParen(string s)\n{\n    ___\n    var pairs = new Dictionary<char, char>\
+        \ { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c in s)\n    {\n        if (pairs.ContainsKey(c))\n\
+        \        {\n            if (stack.Count == 0 || stack.Pop() != pairs[c]) return false;\n     \
+        \   }\n        else stack.Push(c);\n    }\n    return stack.Count == 0;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsValidParen(string text)\n{\n    ___\n    var pairs = new Dictionary<char,\
+        \ char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c in text)\n    {\n     \
+        \   if (pairs.ContainsKey(c))\n        {\n            if (stack.Count == 0 || stack.Pop() != pairs[c])\
+        \ return false;\n        }\n        else stack.Push(c);\n    }\n    return stack.Count == 0;\n\
+        }\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsValidParen(string src)\n{\n    ___\n    var pairs = new Dictionary<char, char>\
+        \ { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c in src)\n    {\n        if (pairs.ContainsKey(c))\n\
+        \        {\n            if (stack.Count == 0 || stack.Pop() != pairs[c]) return false;\n     \
+        \   }\n        else stack.Push(c);\n    }\n    return stack.Count == 0;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsValidParen(string word)\n{\n    ___\n    var pairs = new Dictionary<char,\
+        \ char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c in word)\n    {\n     \
+        \   if (pairs.ContainsKey(c))\n        {\n            if (stack.Count == 0 || stack.Pop() != pairs[c])\
+        \ return false;\n        }\n        else stack.Push(c);\n    }\n    return stack.Count == 0;\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool IsValidParen(string raw)\n{\n    ___\n    var pairs = new Dictionary<char, char>\
+        \ { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c in raw)\n    {\n        if (pairs.ContainsKey(c))\n\
+        \        {\n            if (stack.Count == 0 || stack.Pop() != pairs[c]) return false;\n     \
+        \   }\n        else stack.Push(c);\n    }\n    return stack.Count == 0;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsValidParen(string s)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    ___\n    }\n  \
+        \  return stack.Count == 0;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsValidParen(string text)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    ___\n    }\n  \
+        \  return stack.Count == 0;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsValidParen(string src)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    ___\n    }\n  \
+        \  return stack.Count == 0;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsValidParen(string word)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    ___\n    }\n  \
+        \  return stack.Count == 0;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool IsValidParen(string raw)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    ___\n    }\n  \
+        \  return stack.Count == 0;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsValidParen(string s)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c\
+        \ in s)\n    {\n        if (pairs.ContainsKey(c))\n        {\n            ___\n        }\n   \
+        \     else stack.Push(c);\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsValidParen(string text)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c\
+        \ in text)\n    {\n        if (pairs.ContainsKey(c))\n        {\n            ___\n        }\n\
+        \        else stack.Push(c);\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsValidParen(string src)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c\
+        \ in src)\n    {\n        if (pairs.ContainsKey(c))\n        {\n            ___\n        }\n \
+        \       else stack.Push(c);\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsValidParen(string word)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c\
+        \ in word)\n    {\n        if (pairs.ContainsKey(c))\n        {\n            ___\n        }\n\
+        \        else stack.Push(c);\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: IsValidParen
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool IsValidParen(string raw)\n{\n    var stack = new Stack<char>();\n    var pairs\
+        \ = new Dictionary<char, char> { [')'] = '(', ['}'] = '{', [']'] = '[' };\n    foreach (var c\
+        \ in raw)\n    {\n        if (pairs.ContainsKey(c))\n        {\n            ___\n        }\n \
+        \       else stack.Push(c);\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: IsValidParen
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool IsValidParen(string s)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: IsValidParen
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool IsValidParen(string text)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: IsValidParen
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "bool IsValidParen(string src)\n{\n    return false;\n}\n"
+  python:
+    fn_name: is_valid_paren
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_valid_paren(s):\n    ___\n    pairs = {')': '(', '}': '{', ']': '['}\n   \
+        \ for c in s:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n  \
+        \              return False\n            stack.pop()\n        else:\n            stack.append(c)\n\
+        \    return not stack\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_valid_paren(text):\n    ___\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    for c in text:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                return False\n            stack.pop()\n        else:\n            stack.append(c)\n\
+        \    return not stack\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_valid_paren(src):\n    ___\n    pairs = {')': '(', '}': '{', ']': '['}\n \
+        \   for c in src:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                return False\n            stack.pop()\n        else:\n            stack.append(c)\n\
+        \    return not stack\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_valid_paren(word):\n    ___\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    for c in word:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                return False\n            stack.pop()\n        else:\n            stack.append(c)\n\
+        \    return not stack\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def is_valid_paren(raw):\n    ___\n    pairs = {')': '(', '}': '{', ']': '['}\n \
+        \   for c in raw:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                return False\n            stack.pop()\n        else:\n            stack.append(c)\n\
+        \    return not stack\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_valid_paren(s):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    ___\n    return not stack\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_valid_paren(text):\n    stack = []\n    pairs = {')': '(', '}': '{', ']':\
+        \ '['}\n    ___\n    return not stack\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_valid_paren(src):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    ___\n    return not stack\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_valid_paren(word):\n    stack = []\n    pairs = {')': '(', '}': '{', ']':\
+        \ '['}\n    ___\n    return not stack\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def is_valid_paren(raw):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    ___\n    return not stack\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_valid_paren(s):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    for c in s:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                ___\n            stack.pop()\n        else:\n            stack.append(c)\n  \
+        \  ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_valid_paren(text):\n    stack = []\n    pairs = {')': '(', '}': '{', ']':\
+        \ '['}\n    for c in text:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                ___\n            stack.pop()\n        else:\n            stack.append(c)\n  \
+        \  ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_valid_paren(src):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    for c in src:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                ___\n            stack.pop()\n        else:\n            stack.append(c)\n  \
+        \  ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_valid_paren(word):\n    stack = []\n    pairs = {')': '(', '}': '{', ']':\
+        \ '['}\n    for c in word:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                ___\n            stack.pop()\n        else:\n            stack.append(c)\n  \
+        \  ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: is_valid_paren
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def is_valid_paren(raw):\n    stack = []\n    pairs = {')': '(', '}': '{', ']': '['}\n\
+        \    for c in raw:\n        if c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n\
+        \                ___\n            stack.pop()\n        else:\n            stack.append(c)\n  \
+        \  ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: is_valid_paren
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def is_valid_paren(s):\n    return False\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: is_valid_paren
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def is_valid_paren(text):\n    return False\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: is_valid_paren
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def is_valid_paren(src):\n    return False\n"

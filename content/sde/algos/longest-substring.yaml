@@ -1,0 +1,351 @@
+id: longest-substring
+title: Longest Substring Without Repeating
+leetcode_id: lc-longest-substring
+test_cases:
+- args:
+  - abcabcbb
+  expected: 3
+- args:
+  - bbbbb
+  expected: 1
+- args:
+  - pwwkew
+  expected: 3
+voice:
+  prompt: ¿Cómo garantizas que no revisas de más cada posición?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - ventana
+  - variable
+  - actualizar
+  - contadores
+  - entrar
+  - salir
+languages:
+  csharp:
+    fn_name: LengthOfLongest
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int LengthOfLongest(string s)\n{\n    ___\n    int left = 0, best = 0;\n    for (int\
+        \ right = 0; right < s.Length; right++)\n    {\n        char ch = s[right];\n        if (last.ContainsKey(ch)\
+        \ && last[ch] >= left)\n            left = last[ch] + 1;\n        last[ch] = right;\n        best\
+        \ = Math.Max(best, right - left + 1);\n    }\n    return best;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int LengthOfLongest(string text)\n{\n    ___\n    int left = 0, best = 0;\n    for\
+        \ (int right = 0; right < text.Length; right++)\n    {\n        char ch = text[right];\n     \
+        \   if (last.ContainsKey(ch) && last[ch] >= left)\n            left = last[ch] + 1;\n        last[ch]\
+        \ = right;\n        best = Math.Max(best, right - left + 1);\n    }\n    return best;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int LengthOfLongest(string src)\n{\n    ___\n    int left = 0, best = 0;\n    for\
+        \ (int right = 0; right < src.Length; right++)\n    {\n        char ch = src[right];\n       \
+        \ if (last.ContainsKey(ch) && last[ch] >= left)\n            left = last[ch] + 1;\n        last[ch]\
+        \ = right;\n        best = Math.Max(best, right - left + 1);\n    }\n    return best;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int LengthOfLongest(string word)\n{\n    ___\n    int left = 0, best = 0;\n    for\
+        \ (int right = 0; right < word.Length; right++)\n    {\n        char ch = word[right];\n     \
+        \   if (last.ContainsKey(ch) && last[ch] >= left)\n            left = last[ch] + 1;\n        last[ch]\
+        \ = right;\n        best = Math.Max(best, right - left + 1);\n    }\n    return best;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int LengthOfLongest(string raw)\n{\n    ___\n    int left = 0, best = 0;\n    for\
+        \ (int right = 0; right < raw.Length; right++)\n    {\n        char ch = raw[right];\n       \
+        \ if (last.ContainsKey(ch) && last[ch] >= left)\n            left = last[ch] + 1;\n        last[ch]\
+        \ = right;\n        best = Math.Max(best, right - left + 1);\n    }\n    return best;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int LengthOfLongest(string s)\n{\n    var last = new Dictionary<char, int>();\n \
+        \   int left = 0, best = 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int LengthOfLongest(string text)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int LengthOfLongest(string src)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int LengthOfLongest(string word)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int LengthOfLongest(string raw)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    ___\n    }\n    return best;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int LengthOfLongest(string s)\n{\n    var last = new Dictionary<char, int>();\n \
+        \   int left = 0, best = 0;\n    for (int right = 0; right < s.Length; right++)\n    {\n     \
+        \   char ch = s[right];\n        if (last.ContainsKey(ch) && last[ch] >= left)\n            left\
+        \ = last[ch] + 1;\n        last[ch] = right;\n        best = Math.Max(best, right - left + 1);\n\
+        \    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int LengthOfLongest(string text)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    for (int right = 0; right < text.Length; right++)\n    {\n \
+        \       char ch = text[right];\n        if (last.ContainsKey(ch) && last[ch] >= left)\n      \
+        \      left = last[ch] + 1;\n        last[ch] = right;\n        best = Math.Max(best, right -\
+        \ left + 1);\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int LengthOfLongest(string src)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    for (int right = 0; right < src.Length; right++)\n    {\n  \
+        \      char ch = src[right];\n        if (last.ContainsKey(ch) && last[ch] >= left)\n        \
+        \    left = last[ch] + 1;\n        last[ch] = right;\n        best = Math.Max(best, right - left\
+        \ + 1);\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int LengthOfLongest(string word)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    for (int right = 0; right < word.Length; right++)\n    {\n \
+        \       char ch = word[right];\n        if (last.ContainsKey(ch) && last[ch] >= left)\n      \
+        \      left = last[ch] + 1;\n        last[ch] = right;\n        best = Math.Max(best, right -\
+        \ left + 1);\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: LengthOfLongest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int LengthOfLongest(string raw)\n{\n    var last = new Dictionary<char, int>();\n\
+        \    int left = 0, best = 0;\n    for (int right = 0; right < raw.Length; right++)\n    {\n  \
+        \      char ch = raw[right];\n        if (last.ContainsKey(ch) && last[ch] >= left)\n        \
+        \    left = last[ch] + 1;\n        last[ch] = right;\n        best = Math.Max(best, right - left\
+        \ + 1);\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: LengthOfLongest
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int LengthOfLongest(string s)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: LengthOfLongest
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int LengthOfLongest(string text)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: LengthOfLongest
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int LengthOfLongest(string src)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: length_of_longest
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def length_of_longest(s):\n    ___\n    left = best = 0\n    for right, ch in enumerate(s):\n\
+        \        if ch in last and last[ch] >= left:\n            left = last[ch] + 1\n        last[ch]\
+        \ = right\n        best = max(best, right - left + 1)\n    return best\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def length_of_longest(text):\n    ___\n    left = best = 0\n    for right, ch in\
+        \ enumerate(text):\n        if ch in last and last[ch] >= left:\n            left = last[ch] +\
+        \ 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    return best\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def length_of_longest(src):\n    ___\n    left = best = 0\n    for right, ch in enumerate(src):\n\
+        \        if ch in last and last[ch] >= left:\n            left = last[ch] + 1\n        last[ch]\
+        \ = right\n        best = max(best, right - left + 1)\n    return best\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def length_of_longest(word):\n    ___\n    left = best = 0\n    for right, ch in\
+        \ enumerate(word):\n        if ch in last and last[ch] >= left:\n            left = last[ch] +\
+        \ 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    return best\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def length_of_longest(raw):\n    ___\n    left = best = 0\n    for right, ch in enumerate(raw):\n\
+        \        if ch in last and last[ch] >= left:\n            left = last[ch] + 1\n        last[ch]\
+        \ = right\n        best = max(best, right - left + 1)\n    return best\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def length_of_longest(s):\n    last = {}\n    left = best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def length_of_longest(text):\n    last = {}\n    left = best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def length_of_longest(src):\n    last = {}\n    left = best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def length_of_longest(word):\n    last = {}\n    left = best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def length_of_longest(raw):\n    last = {}\n    left = best = 0\n    ___\n    return\
+        \ best\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def length_of_longest(s):\n    last = {}\n    left = best = 0\n    for right, ch\
+        \ in enumerate(s):\n        if ch in last and last[ch] >= left:\n            left = last[ch] +\
+        \ 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def length_of_longest(text):\n    last = {}\n    left = best = 0\n    for right,\
+        \ ch in enumerate(text):\n        if ch in last and last[ch] >= left:\n            left = last[ch]\
+        \ + 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def length_of_longest(src):\n    last = {}\n    left = best = 0\n    for right, ch\
+        \ in enumerate(src):\n        if ch in last and last[ch] >= left:\n            left = last[ch]\
+        \ + 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def length_of_longest(word):\n    last = {}\n    left = best = 0\n    for right,\
+        \ ch in enumerate(word):\n        if ch in last and last[ch] >= left:\n            left = last[ch]\
+        \ + 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: length_of_longest
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def length_of_longest(raw):\n    last = {}\n    left = best = 0\n    for right, ch\
+        \ in enumerate(raw):\n        if ch in last and last[ch] >= left:\n            left = last[ch]\
+        \ + 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: length_of_longest
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def length_of_longest(s):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: length_of_longest
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def length_of_longest(text):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: length_of_longest
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def length_of_longest(src):\n    return 0\n"

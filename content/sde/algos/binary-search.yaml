@@ -1,0 +1,347 @@
+id: binary-search
+title: Binary Search
+leetcode_id: lc-binary-search
+test_cases:
+- args:
+  - - -1
+    - 0
+    - 3
+    - 5
+    - 9
+    - 12
+  - 9
+  expected: 4
+- args:
+  - - -1
+    - 0
+    - 3
+    - 5
+    - 9
+    - 12
+  - 2
+  expected: -1
+voice:
+  prompt: ¿Por qué O(log n) y cuándo no aplica?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - invariante
+  - respuesta
+  - diferencia
+  - buscar
+  - valor
+  - exacto
+languages:
+  csharp:
+    fn_name: BinarySearch
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int BinarySearch(int[] nums, int target)\n{\n    ___\n    while (lo <= hi)\n    {\n\
+        \        int mid = lo + (hi - lo) / 2;\n        if (nums[mid] == target) return mid;\n       \
+        \ if (nums[mid] < target) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int BinarySearch(int[] arr, int goal)\n{\n    ___\n    while (lo <= hi)\n    {\n\
+        \        int mid = lo + (hi - lo) / 2;\n        if (arr[mid] == goal) return mid;\n        if\
+        \ (arr[mid] < goal) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int BinarySearch(int[] xs, int want)\n{\n    ___\n    while (lo <= hi)\n    {\n \
+        \       int mid = lo + (hi - lo) / 2;\n        if (xs[mid] == want) return mid;\n        if (xs[mid]\
+        \ < want) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int BinarySearch(int[] values, int cap)\n{\n    ___\n    while (lo <= hi)\n    {\n\
+        \        int mid = lo + (hi - lo) / 2;\n        if (values[mid] == cap) return mid;\n        if\
+        \ (values[mid] < cap) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int BinarySearch(int[] items, int limit)\n{\n    ___\n    while (lo <= hi)\n    {\n\
+        \        int mid = lo + (hi - lo) / 2;\n        if (items[mid] == limit) return mid;\n       \
+        \ if (items[mid] < limit) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    return -1;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int BinarySearch(int[] nums, int target)\n{\n    int lo = 0, hi = nums.Length - 1;\n\
+        \    ___\n    }\n    return -1;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int BinarySearch(int[] arr, int goal)\n{\n    int lo = 0, hi = arr.Length - 1;\n\
+        \    ___\n    }\n    return -1;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int BinarySearch(int[] xs, int want)\n{\n    int lo = 0, hi = xs.Length - 1;\n  \
+        \  ___\n    }\n    return -1;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int BinarySearch(int[] values, int cap)\n{\n    int lo = 0, hi = values.Length -\
+        \ 1;\n    ___\n    }\n    return -1;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int BinarySearch(int[] items, int limit)\n{\n    int lo = 0, hi = items.Length -\
+        \ 1;\n    ___\n    }\n    return -1;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int BinarySearch(int[] nums, int target)\n{\n    int lo = 0, hi = nums.Length - 1;\n\
+        \    while (lo <= hi)\n    {\n        int mid = lo + (hi - lo) / 2;\n        ___\n        if (nums[mid]\
+        \ < target) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int BinarySearch(int[] arr, int goal)\n{\n    int lo = 0, hi = arr.Length - 1;\n\
+        \    while (lo <= hi)\n    {\n        int mid = lo + (hi - lo) / 2;\n        ___\n        if (arr[mid]\
+        \ < goal) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int BinarySearch(int[] xs, int want)\n{\n    int lo = 0, hi = xs.Length - 1;\n  \
+        \  while (lo <= hi)\n    {\n        int mid = lo + (hi - lo) / 2;\n        ___\n        if (xs[mid]\
+        \ < want) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int BinarySearch(int[] values, int cap)\n{\n    int lo = 0, hi = values.Length -\
+        \ 1;\n    while (lo <= hi)\n    {\n        int mid = lo + (hi - lo) / 2;\n        ___\n      \
+        \  if (values[mid] < cap) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: BinarySearch
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int BinarySearch(int[] items, int limit)\n{\n    int lo = 0, hi = items.Length -\
+        \ 1;\n    while (lo <= hi)\n    {\n        int mid = lo + (hi - lo) / 2;\n        ___\n      \
+        \  if (items[mid] < limit) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: BinarySearch
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int BinarySearch(int[] nums, int target)\n{\n    return -1;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: BinarySearch
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int BinarySearch(int[] arr, int goal)\n{\n    return -1;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: BinarySearch
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int BinarySearch(int[] xs, int want)\n{\n    return -1;\n}\n"
+  python:
+    fn_name: binary_search
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def binary_search(nums, target):\n    ___\n    while lo <= hi:\n        mid = (lo\
+        \ + hi) // 2\n        if nums[mid] == target:\n            return mid\n        if nums[mid] <\
+        \ target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def binary_search(arr, goal):\n    ___\n    while lo <= hi:\n        mid = (lo +\
+        \ hi) // 2\n        if arr[mid] == goal:\n            return mid\n        if arr[mid] < goal:\n\
+        \            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def binary_search(xs, want):\n    ___\n    while lo <= hi:\n        mid = (lo + hi)\
+        \ // 2\n        if xs[mid] == want:\n            return mid\n        if xs[mid] < want:\n    \
+        \        lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def binary_search(values, cap):\n    ___\n    while lo <= hi:\n        mid = (lo\
+        \ + hi) // 2\n        if values[mid] == cap:\n            return mid\n        if values[mid] <\
+        \ cap:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def binary_search(items, limit):\n    ___\n    while lo <= hi:\n        mid = (lo\
+        \ + hi) // 2\n        if items[mid] == limit:\n            return mid\n        if items[mid] <\
+        \ limit:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def binary_search(nums, target):\n    lo, hi = 0, len(nums) - 1\n    ___\n    return\
+        \ -1\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def binary_search(arr, goal):\n    lo, hi = 0, len(arr) - 1\n    ___\n    return\
+        \ -1\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def binary_search(xs, want):\n    lo, hi = 0, len(xs) - 1\n    ___\n    return -1\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def binary_search(values, cap):\n    lo, hi = 0, len(values) - 1\n    ___\n    return\
+        \ -1\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def binary_search(items, limit):\n    lo, hi = 0, len(items) - 1\n    ___\n    return\
+        \ -1\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def binary_search(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <=\
+        \ hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            ___\n      \
+        \  if nums[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n\
+        \    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def binary_search(arr, goal):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n\
+        \        mid = (lo + hi) // 2\n        if arr[mid] == goal:\n            ___\n        if arr[mid]\
+        \ < goal:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def binary_search(xs, want):\n    lo, hi = 0, len(xs) - 1\n    while lo <= hi:\n\
+        \        mid = (lo + hi) // 2\n        if xs[mid] == want:\n            ___\n        if xs[mid]\
+        \ < want:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def binary_search(values, cap):\n    lo, hi = 0, len(values) - 1\n    while lo <=\
+        \ hi:\n        mid = (lo + hi) // 2\n        if values[mid] == cap:\n            ___\n       \
+        \ if values[mid] < cap:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n \
+        \   ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: binary_search
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def binary_search(items, limit):\n    lo, hi = 0, len(items) - 1\n    while lo <=\
+        \ hi:\n        mid = (lo + hi) // 2\n        if items[mid] == limit:\n            ___\n      \
+        \  if items[mid] < limit:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n\
+        \    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: binary_search
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def binary_search(nums, target):\n    return -1\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: binary_search
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def binary_search(arr, goal):\n    return -1\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: binary_search
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def binary_search(xs, want):\n    return -1\n"
