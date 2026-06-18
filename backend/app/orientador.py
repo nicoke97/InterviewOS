@@ -11,7 +11,10 @@ from .content_loader import get_set_pages, load_curriculum
 from .kumon_hierarchy import (
     block_instruction,
     block_title,
+    display_set_number,
     level_sets,
+    level_track,
+    list_route_levels,
     normalize_level,
     route_level,
     set_standard_seconds,
@@ -45,10 +48,26 @@ def orientador_config() -> dict:
         "minute_presets": orientador.get("minute_presets", [20, 30, 40, 60]),
         "min_minutes": int(orientador.get("min_minutes", 15)),
         "max_minutes": int(orientador.get("max_minutes", 90)),
+        "default_minutes": int(orientador.get("default_minutes", 15)),
         "first_attempt_threshold": float(mastery.get("first_attempt_threshold", 0.90)),
         "pre_exam_enabled": bool(pre_exam.get("enabled", True)),
         "pre_exam_max_sets": int(pre_exam.get("max_sets", 3)),
     }
+
+
+def orientador_config_for(track: str = "python") -> dict:
+    if track == "leetcodes":
+        cfg = load_curriculum().leetcodes_schedule.orientador or {}
+        return {
+            "minute_presets": cfg.get("minute_presets", [45, 60, 90]),
+            "min_minutes": int(cfg.get("min_minutes", 30)),
+            "max_minutes": int(cfg.get("max_minutes", 90)),
+            "default_minutes": int(cfg.get("default_minutes", 60)),
+            "hint_lock_minutes": int(cfg.get("hint_lock_minutes", 25)),
+            "focus_topics": cfg.get("focus_topics") or ["arrays_hashing", "two_pointers"],
+            "max_problems_per_session": int(cfg.get("max_problems_per_session", 1)),
+        }
+    return orientador_config()
 
 
 def _clamp_minutes(minutes: int) -> int:
@@ -122,11 +141,13 @@ def get_active_plan(db: Session, track: str = "python") -> DailyPlan | None:
 
 
 def _due_repeats(db: Session, level: str, today: date) -> list[dict]:
-    level = route_level(level)
+    """Due repeats for the whole track so a failed return-exam set in a
+    previous level still comes first in today's plan."""
+    levels = list_route_levels(level_track(level))
     rows = (
         db.query(SetProgress)
         .filter(
-            SetProgress.level == level,
+            SetProgress.level.in_(levels),
             SetProgress.repeat_scheduled_for.isnot(None),
             SetProgress.repeat_scheduled_for <= today,
         )
@@ -136,14 +157,11 @@ def _due_repeats(db: Session, level: str, today: date) -> list[dict]:
     for sp in rows:
         if sp.repeat_completed_at == today:
             continue
-        out.append({
-            "type": "set",
-            "level": level,
-            "set_number": sp.set_number,
-            "reason": "repeat",
-            "estimated_minutes": _set_minutes(level, sp.set_number),
-        })
-    out.sort(key=lambda a: a["set_number"])
+        item = _set_item(sp.level, sp.set_number, "repeat")
+        if "return_exam" in (sp.failure_flags or []):
+            item["from_return_exam"] = True
+        out.append(item)
+    out.sort(key=lambda a: (a["level"], a["set_number"]))
     return out
 
 
@@ -172,13 +190,7 @@ def _pre_exam_sets(db: Session, level: str) -> list[dict]:
     out: list[dict] = []
     for set_number, _sp in candidates[: cfg["pre_exam_max_sets"]]:
         if set_mastered(db, level, set_number):
-            out.append({
-                "type": "set",
-                "level": level,
-                "set_number": set_number,
-                "reason": "pre_exam",
-                "estimated_minutes": _set_minutes(level, set_number),
-            })
+            out.append(_set_item(level, set_number, "pre_exam"))
     return out
 
 
@@ -187,6 +199,7 @@ def _set_item(level: str, set_number: int, reason: str, *, lap: int = 0) -> dict
         "type": "set",
         "level": route_level(level),
         "set_number": set_number,
+        "display_set_number": display_set_number(level, set_number),
         "reason": reason,
         "estimated_minutes": _set_minutes(level, set_number),
     }
@@ -335,7 +348,7 @@ def _assignments_match(a: dict, b: dict) -> bool:
 
 
 def _remap_completed_indices(old_assignments: list[dict], new_assignments: list[dict], old_completed: list[int]) -> list[int]:
-    """Keep completion state when the plan is rebuilt (indices shift)."""
+    """Keep completion state when the plan is rebuilt (índices shift)."""
     done_items: list[dict] = []
     for idx in sorted(old_completed):
         if 0 <= idx < len(old_assignments):
@@ -465,18 +478,22 @@ def calculate_session(
     new_session: bool = False,
 ) -> DailyPlan:
     track = track or "python"
+    if track == "leetcodes":
+        from .leetcodes_orientador import calculate_leetcodes_session
+        return calculate_leetcodes_session(db, minutes, plan_id=plan_id, new_session=new_session)
+
     minutes = _clamp_minutes(minutes)
     today = date.today()
 
     if new_session:
         if get_active_plan(db, track):
-            raise HTTPException(400, "Termina la sesion activa antes de anadir otra")
+            raise HTTPException(400, "Termina la sesión activa antes de añadir otra")
         return _create_new_session(db, minutes, track, today)
 
     if plan_id is not None:
         plan = _get_plan_today(db, plan_id, track)
         if plan.status == "completed":
-            raise HTTPException(400, "La sesion ya esta completada")
+            raise HTTPException(400, "La sesión ya está completada")
         return _adjust_session_minutes(db, plan, minutes, track)
 
     existing = get_active_plan(db, track)
@@ -508,7 +525,7 @@ def plan_to_dict(plan: DailyPlan) -> dict:
         "total_count": len(plan.assignments or []),
         "estimated_minutes": round(total_min, 1),
         "calculated_at": plan.calculated_at.isoformat() if plan.calculated_at else None,
-        "config": orientador_config(),
+        "config": orientador_config_for(plan.track),
     }
 
 
@@ -519,7 +536,7 @@ def get_active_plan_response(db: Session, track: str = "python") -> dict:
     base: dict = {
         "sessions": sessions,
         "active_plan_id": active.id if active else None,
-        "config": orientador_config(),
+        "config": orientador_config_for(track),
         "active": active is not None,
     }
     if active:
@@ -544,7 +561,14 @@ def _set_progress_detail(db: Session, level: str, set_number: int) -> dict | Non
     }
 
 
-def _explain_assignment(db: Session, assignment: dict, today: date) -> dict:
+def _explain_assignment(db: Session, assignment: dict, today: date, locale: str = "en") -> dict:
+    from .orientador_i18n import (
+        assignment_title,
+        explain_checkpoint_summary,
+        explain_exam_summary,
+        explain_set_summary,
+    )
+
     reason = assignment.get("reason", "")
     atype = assignment.get("type", "")
     level = route_level(assignment.get("level", "a"))
@@ -554,93 +578,56 @@ def _explain_assignment(db: Session, assignment: dict, today: date) -> dict:
     if atype == "set":
         sn = assignment.get("set_number", 0)
         detail = _set_progress_detail(db, level, sn) or {}
-        flags = detail.get("failure_flags") or []
-        acc = detail.get("first_attempt_accuracy")
-        acc_pct = round(acc * 100) if acc is not None else None
-
-        if reason == "repeat":
-            parts = [f"Repeticion programada para hoy ({detail.get('repeat_scheduled_for')})."]
-            if "too_slow" in flags:
-                parts.append("En el primer intento completo superaste el tiempo estandar del set.")
-            if "low_accuracy" in flags:
-                parts.append(
-                    f"En el primer intento completo tu precision fue {acc_pct}% "
-                    f"(umbral {round(threshold * 100)}%)."
-                )
-            if not flags:
-                parts.append("Necesitas consolidar este set antes de seguir avanzando.")
-            summary = " ".join(parts)
-        elif reason == "pre_exam":
-            summary = (
-                "Repaso obligatorio antes del examen de nivel: este set ya lo dominaste "
-                "pero no alcanzo dominio solido"
-            )
-            if acc_pct is not None:
-                summary += f" (primer intento {acc_pct}%)."
-            else:
-                summary += "."
-        elif reason == "repaso":
-            if detail.get("solid_mastery"):
-                summary = (
-                    "Set dominado con buen desempeno. Se incluye como repaso para mantener "
-                    "velocidad y precision."
-                )
-            else:
-                summary = (
-                    "Set dominado pero con historial de fallas o precision baja. "
-                    "Conviene repasarlo antes de avanzar."
-                )
-                if acc_pct is not None:
-                    summary += f" Primer intento: {acc_pct}%."
-        elif reason == "repaso_extra":
-            lap = assignment.get("lap", 1)
-            summary = (
-                f"Repaso adicional (vuelta {lap}) para aprovechar el tiempo libre de tu sesion. "
-                "Mismo contenido ya dominado — refuerza memoria y velocidad."
-            )
-        elif reason == "new":
-            summary = (
-                "Es tu set actual en el nivel: el siguiente paso del camino que aun no has "
-                "dominado por completo."
-            )
-        else:
-            summary = "Actividad de set incluida en tu plan de hoy."
-
+        summary = explain_set_summary(
+            reason,
+            detail,
+            threshold,
+            lap=assignment.get("lap", 1),
+            locale=locale,
+        )
         return {
-            "title": f"Set {sn} · Nivel {level.upper()}",
+            "title": assignment_title(assignment, locale),
             "reason": reason,
             "summary": summary,
             "set_progress": detail,
         }
 
     if atype == "checkpoint":
-        block = assignment.get("block", "")
         return {
-            "title": f"Checkpoint Bloque {block} · Nivel {level.upper()}",
+            "title": assignment_title(assignment, locale),
             "reason": reason,
-            "summary": (
-                "Completaste las paginas del bloque pero falta el checkpoint de LeetCode "
-                "para desbloquear el siguiente bloque."
-            ),
+            "summary": explain_checkpoint_summary(locale),
             "set_progress": None,
         }
 
     if atype == "exam":
         return {
-            "title": f"Examen · Nivel {level.upper()}",
+            "title": assignment_title(assignment, locale),
             "reason": reason,
-            "summary": "Dominaste los 20 sets del nivel. Falta el examen de conclusion para pasar al siguiente nivel.",
+            "summary": explain_exam_summary(locale),
             "set_progress": None,
         }
 
-    return {"title": "Actividad", "reason": reason, "summary": "", "set_progress": None}
+    return {
+        "title": assignment_title(assignment, locale),
+        "reason": reason,
+        "summary": "",
+        "set_progress": None,
+    }
 
 
-def get_orientador_insight(db: Session, track: str = "python") -> dict:
+def get_orientador_insight(db: Session, track: str = "python", locale: str = "en") -> dict:
+    track = track or "python"
+    if track == "leetcodes":
+        from .leetcodes_orientador import get_leetcodes_orientador_insight
+        return get_leetcodes_orientador_insight(db, locale=locale)
+
     today = date.today()
     active_level = get_active_level(db, track)
     cfg = orientador_config()
     plan = get_active_plan(db, track)
+
+    from .orientador_i18n import python_priority_rules
 
     set_history: list[dict] = []
     for s in level_sets(active_level):
@@ -656,45 +643,12 @@ def get_orientador_insight(db: Session, track: str = "python") -> dict:
             set_history.append({
                 "level": active_level,
                 "set_number": s.set_number,
-                "title": s.title,
+                "display_set_number": display_set_number(active_level, s.set_number),
+                "title": set_title(active_level, s.set_number, locale),
                 **detail,
             })
 
-    priority_rules = [
-        {
-            "order": 1,
-            "id": "repeat",
-            "label": "Repeticiones vencidas",
-            "description": (
-                "Sets con repeticion programada para hoy (fallaste tiempo o precision "
-                f"< {round(cfg['first_attempt_threshold'] * 100)}% en el primer intento)."
-            ),
-        },
-        {
-            "order": 2,
-            "id": "pre_exam",
-            "label": "Repaso pre-examen",
-            "description": "Sets dominados pero no solidos, cuando el examen de nivel esta disponible.",
-        },
-        {
-            "order": 3,
-            "id": "new",
-            "label": "Set nuevo",
-            "description": "El siguiente set que aun no dominas en tu nivel activo.",
-        },
-        {
-            "order": 4,
-            "id": "repaso",
-            "label": "Repaso de sets dominados",
-            "description": "Sets ya aprobados que conviene mantener frescos.",
-        },
-        {
-            "order": 5,
-            "id": "repaso_extra",
-            "label": "Repaso adicional",
-            "description": "Si sobra tiempo en tu presupuesto, se repiten sets de repaso para llenar la sesion.",
-        },
-    ]
+    priority_rules = python_priority_rules(round(cfg["first_attempt_threshold"] * 100), locale)
 
     result: dict = {
         "date": str(today),
@@ -711,7 +665,7 @@ def get_orientador_insight(db: Session, track: str = "python") -> dict:
         for a in plan_dict["assignments"]:
             explained.append({
                 **a,
-                "explain": _explain_assignment(db, a, today),
+                "explain": _explain_assignment(db, a, today, locale=locale),
             })
         result["plan"] = {**plan_dict, "assignments": explained}
 
@@ -750,7 +704,7 @@ def validate_assignment(
 
     expected = assignments[index]
     if expected.get("type") != assignment_type:
-        raise HTTPException(403, "Tipo de asignacion no coincide con el plan")
+        raise HTTPException(403, "Tipo de asignación no coincide con el plan")
     if route_level(expected.get("level", "")) != route_level(level):
         raise HTTPException(403, "Nivel no coincide con el plan")
 
@@ -793,7 +747,7 @@ def get_next_assignment(db: Session, plan_id: int) -> dict | None:
     return None
 
 
-def get_assignment_session(db: Session, plan_id: int, index: int) -> dict:
+def get_assignment_session(db: Session, plan_id: int, index: int, *, locale: str = "en") -> dict:
     plan = db.query(DailyPlan).filter_by(id=plan_id).first()
     if not plan:
         raise HTTPException(404, "Plan no encontrado")
@@ -803,6 +757,11 @@ def get_assignment_session(db: Session, plan_id: int, index: int) -> dict:
 
     assignment = assignments[index]
     atype = assignment.get("type")
+
+    if atype == "leetcode_practice":
+        from .leetcodes_orientador import get_leetcodes_assignment_session
+        return get_leetcodes_assignment_session(db, plan_id, index, locale=locale)
+
     level = route_level(assignment["level"])
 
     base = {
@@ -830,10 +789,11 @@ def get_assignment_session(db: Session, plan_id: int, index: int) -> dict:
             "type": "set",
             "level": level,
             "set_number": set_number,
-            "set_title": s_def.title if s_def else set_title(level, set_number),
+            "display_set_number": display_set_number(level, set_number),
+            "set_title": set_title(level, set_number, locale),
             "block": block_letter,
-            "block_title": block_title(bid),
-            "instruction": block_instruction(bid),
+            "block_title": block_title(bid, locale),
+            "instruction": block_instruction(bid, locale),
             "standard_seconds": set_standard_seconds(level, set_number),
             "status": sp.status,
             "attempts": sp.attempts,
@@ -841,16 +801,19 @@ def get_assignment_session(db: Session, plan_id: int, index: int) -> dict:
             "total": len(pages),
             "accumulated_time_ms": sp.accumulated_time_ms,
             "page_range": f"{pages[0].page}-{pages[-1].page}" if pages else "",
-            "drills": [_page_payload(p) for p in pages],
+            "drills": [_page_payload(p, locale) for p in pages],
+            "failure_flags": list(sp.failure_flags or []),
+            "first_attempt_accuracy": sp.first_attempt_accuracy,
+            "explain": _explain_assignment(db, assignment, date.today(), locale=locale),
         }
 
     if atype == "checkpoint":
         block = assignment["block"].upper()
-        cp = get_checkpoint(db, level, block)
+        cp = get_checkpoint(db, level, block, locale=locale)
         return {**base, "type": "checkpoint", "level": level, "checkpoint": cp}
 
     if atype == "exam":
-        exam = get_exam(db, level)
+        exam = get_exam(db, level, locale=locale)
         return {**base, "type": "exam", "level": level, "exam": exam}
 
-    raise HTTPException(400, "Tipo de asignacion desconocido")
+    raise HTTPException(400, "Tipo de asignación desconocido")

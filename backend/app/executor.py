@@ -47,7 +47,11 @@ def _check_ast(code: str) -> str | None:
     return None
 
 
-def run_kumon_code(code: str, validation: dict[str, Any], timeout: int = 5) -> dict[str, Any]:
+def run_kumon_code(code: str, validation: dict[str, Any], timeout: int = 5, language: str = "python") -> dict[str, Any]:
+    if language == "csharp":
+        from .csharp_executor import run_csharp_kumon
+        return run_csharp_kumon(code, validation, timeout)
+
     err = _check_ast(code)
     if err:
         return {"passed": False, "error": err, "stdout": "", "expected": validation.get("expected", "")}
@@ -91,7 +95,11 @@ def run_kumon_code(code: str, validation: dict[str, Any], timeout: int = 5) -> d
     return {"passed": False, "error": f"Unknown validation type: {vtype}"}
 
 
-def run_leetcode_code(code: str, test_cases: list[dict], fn_name: str = "solution", timeout: int = 5) -> dict[str, Any]:
+def run_leetcode_code(code: str, test_cases: list[dict], fn_name: str = "solution", timeout: int = 5, language: str = "python") -> dict[str, Any]:
+    if language == "csharp":
+        from .csharp_executor import run_csharp_leetcode
+        return run_csharp_leetcode(code, test_cases, fn_name, timeout)
+
     err = _check_ast(code)
     if err:
         return {"passed": False, "error": err, "results": []}
@@ -105,7 +113,7 @@ def run_leetcode_code(code: str, test_cases: list[dict], fn_name: str = "solutio
 {code}
 
 import json
-_args = {json.dumps(args)}
+_args = {repr(args)}
 _result = {fn_name}(*_args) if len(_args) > 1 else ({fn_name}(_args[0]) if len(_args) == 1 else {fn_name}())
 print(json.dumps(_result))
 """

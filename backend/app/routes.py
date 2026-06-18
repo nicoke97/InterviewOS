@@ -2,15 +2,17 @@ from __future__ import annotations
 
 from datetime import date, datetime, timedelta
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from .content_loader import load_curriculum
+from .content_i18n import localize_starter_code
+from .content_loader import guide_fields, interview_payload, load_curriculum, problem_description, problem_title
 from .executor import run_kumon_code, run_leetcode_code
 from .kumon_hierarchy import (
     is_valid_route_level,
+    language_for_level,
     levels_for_api,
     route_level,
 )
@@ -29,6 +31,12 @@ from .progress import (
     get_unlock_status,
     load_set_progress_map,
 )
+from .leetcodes_practice import (
+    get_leetcodes_problem_detail,
+    leetcodes_roadmap,
+    submit_practice,
+)
+from .leetcodes_orientador import submit_guided_step
 from .orientador import (
     calculate_session,
     get_active_plan_response,
@@ -39,8 +47,15 @@ from .orientador import (
     plan_to_dict,
     validate_assignment,
 )
+from .i18n import locale_from_request, t
+from .return_exam import (
+    get_exam_response as get_return_exam_response,
+    get_status as get_return_exam_status,
+    submit as submit_return_exam,
+)
 from .set_engine import (
     build_session,
+    build_review_session,
     current_target,
     get_checkpoint,
     get_exam,
@@ -109,14 +124,27 @@ class SessionEndRequest(BaseModel):
     duration_seconds: int
 
 
+class LeetcodesPracticeSubmitRequest(BaseModel):
+    problem_id: str
+    tier: int = 1
+    code: str
+    plan_id: int | None = None
+    assignment_index: int | None = None
+
+
+class ReturnExamSubmitRequest(BaseModel):
+    answers: list[SheetAnswerItem]
+
+
 class SettingsUpdate(BaseModel):
     focus_mode: bool | None = None
     dev_mode: bool | None = None
+    locale: str | None = None
 
 
-def _require_level(level: str) -> str:
+def _require_level(level: str, locale: str = "en") -> str:
     if not is_valid_route_level(level):
-        raise HTTPException(404, f"Nivel desconocido: {level}")
+        raise HTTPException(404, t("unknown_level", locale, level=level))
     return route_level(level)
 
 
@@ -130,14 +158,17 @@ def health():
 
 
 @router.get("/curriculum")
-def curriculum(db: Session = Depends(get_db)):
+def curriculum(request: Request, db: Session = Depends(get_db)):
     c = load_curriculum()
+    locale = locale_from_request(request)
     return {
         "kumon_count": len(c.kumon),
         "leetcode_count": len(c.leetcode),
+        "leetcodes_count": len(c.leetcodes),
         "interview_count": len(c.interview),
-        "levels": levels_for_api("python"),
-        "odoo_levels": levels_for_api("odoo"),
+        "levels": levels_for_api("python", locale),
+        "odoo_levels": levels_for_api("odoo", locale),
+        "csharp_levels": levels_for_api("csharp", locale),
         "unlocks": get_unlock_status(db),
     }
 
@@ -147,15 +178,25 @@ def curriculum(db: Session = Depends(get_db)):
 # ---------------------------------------------------------------------------
 
 @router.get("/level/{level}/roadmap")
-def roadmap(level: str, db: Session = Depends(get_db)):
-    level = _require_level(level)
-    return level_roadmap(db, level)
+def roadmap(level: str, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    level = _require_level(level, locale)
+    return level_roadmap(db, level, locale=locale)
 
 
 @router.get("/level/{level}/session")
-def session(level: str, count: int = 10, db: Session = Depends(get_db)):
-    level = _require_level(level)
-    return build_session(db, level, count)
+def session(
+    level: str,
+    request: Request,
+    count: int = 10,
+    set_number: int | None = None,
+    db: Session = Depends(get_db),
+):
+    locale = locale_from_request(request)
+    level = _require_level(level, locale)
+    if set_number is not None:
+        return build_review_session(db, level, set_number, count, locale=locale)
+    return build_session(db, level, count, locale=locale)
 
 
 @router.post("/set/submit")
@@ -187,7 +228,10 @@ def set_submit(req: SetSubmitRequest, db: Session = Depends(get_db)):
 # ---------------------------------------------------------------------------
 
 @router.post("/orientador/calculate")
-def orientador_calculate(req: OrientadorCalculateRequest, db: Session = Depends(get_db)):
+def orientador_calculate(req: OrientadorCalculateRequest, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    if req.track != "leetcodes" and get_return_exam_status(db).get("needed"):
+        raise HTTPException(400, t("return_exam_required", locale))
     plan = calculate_session(
         db,
         req.minutes,
@@ -200,17 +244,49 @@ def orientador_calculate(req: OrientadorCalculateRequest, db: Session = Depends(
 
 @router.get("/orientador/active")
 def orientador_active(track: str = "python", db: Session = Depends(get_db)):
-    return get_active_plan_response(db, track)
+    data = get_active_plan_response(db, track)
+    data["return_exam"] = get_return_exam_status(db)
+    return data
 
 
 @router.get("/orientador/insight")
-def orientador_insight(track: str = "python", db: Session = Depends(get_db)):
-    return get_orientador_insight(db, track)
+def orientador_insight(request: Request, track: str = "python", db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    return get_orientador_insight(db, track, locale=locale)
 
 
 @router.get("/orientador/session/{plan_id}/{index}")
-def orientador_session(plan_id: int, index: int, db: Session = Depends(get_db)):
-    return get_assignment_session(db, plan_id, index)
+def orientador_session(plan_id: int, index: int, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    return get_assignment_session(db, plan_id, index, locale=locale)
+
+
+# ---------------------------------------------------------------------------
+# LeetCodes interview practice track
+# ---------------------------------------------------------------------------
+
+@router.get("/leetcodes/roadmap")
+def leetcodes_roadmap_route(db: Session = Depends(get_db)):
+    return leetcodes_roadmap(db)
+
+
+@router.get("/leetcodes/problem/{problem_id}")
+def leetcodes_problem(problem_id: str, request: Request, tier: int = 1):
+    locale = locale_from_request(request)
+    detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale)
+    if not detail:
+        raise HTTPException(404, t("problem_not_found", locale))
+    return detail
+
+
+@router.post("/leetcodes/practice/submit")
+def leetcodes_practice_submit(req: LeetcodesPracticeSubmitRequest, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    if req.plan_id is not None and req.assignment_index is not None:
+        return submit_guided_step(
+            db, req.plan_id, req.assignment_index, req.tier, req.code,
+        )
+    return submit_practice(db, req.problem_id, req.tier, req.code, locale=locale)
 
 
 # ---------------------------------------------------------------------------
@@ -218,9 +294,10 @@ def orientador_session(plan_id: int, index: int, db: Session = Depends(get_db)):
 # ---------------------------------------------------------------------------
 
 @router.get("/level/{level}/checkpoint/{block}")
-def checkpoint(level: str, block: str, db: Session = Depends(get_db)):
-    level = _require_level(level)
-    return get_checkpoint(db, level, block)
+def checkpoint(level: str, block: str, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    level = _require_level(level, locale)
+    return get_checkpoint(db, level, block, locale=locale)
 
 
 @router.post("/checkpoint/submit")
@@ -234,9 +311,10 @@ def checkpoint_submit(req: CheckpointSubmitRequest, db: Session = Depends(get_db
 # ---------------------------------------------------------------------------
 
 @router.get("/level/{level}/exam")
-def exam(level: str, db: Session = Depends(get_db)):
-    level = _require_level(level)
-    return get_exam(db, level)
+def exam(level: str, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    level = _require_level(level, locale)
+    return get_exam(db, level, locale=locale)
 
 
 @router.post("/exam/submit")
@@ -251,33 +329,40 @@ def exam_submit(req: ExamSubmitRequest, db: Session = Depends(get_db)):
 # ---------------------------------------------------------------------------
 
 @router.get("/problem/{problem_id}")
-def get_problem(problem_id: str, tier: int = 1, db: Session = Depends(get_db)):
+def get_problem(problem_id: str, request: Request, tier: int = 1, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
     c = load_curriculum()
+    if problem_id in c.leetcodes:
+        detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale)
+        if detail:
+            return detail
     p = c.leetcode.get(problem_id)
     if not p:
-        raise HTTPException(404, "Problema no encontrado")
+        raise HTTPException(404, t("problem_not_found", locale))
     tier_data = p.tiers.get(tier, {}) or p.tiers.get(1, {})
+    guide = guide_fields(p, tier_data, tier, locale)
+    explain_checklist = guide.pop("explain_checklist", tier_data.get("explain_checklist", []))
+    narration_prompts = guide.pop("narration_prompts", tier_data.get("narration_prompts", []))
     return {
-        "id": p.id, "title": p.title, "description": p.description,
+        "id": p.id, "title": problem_title(p, locale, p.title), "description": problem_description(p, locale),
         "tier": tier, "fn_name": p.fn_name,
-        "starter_code": tier_data.get("starter_code", ""),
-        "explain_checklist": tier_data.get("explain_checklist", []),
-        "narration_prompts": tier_data.get("narration_prompts", []),
-        "hints_allowed": tier_data.get("hints_allowed", tier < 3),
+        "language": language_for_level(p.level),
+        "starter_code": localize_starter_code(tier_data.get("starter_code", ""), locale),
+        "explain_checklist": explain_checklist,
+        "narration_prompts": narration_prompts,
         "test_cases_preview": p.test_cases[:2],
+        **guide,
     }
 
 
 @router.get("/question/{question_id}")
-def get_question(question_id: str):
+def get_question(question_id: str, request: Request):
+    locale = locale_from_request(request)
     c = load_curriculum()
     q = c.interview.get(question_id)
     if not q:
-        raise HTTPException(404, "Pregunta no encontrada")
-    return {
-        "id": q.id, "category": q.category, "question": q.question,
-        "type": q.question_type, "rubric": q.rubric, "sample_answer": q.sample_answer,
-    }
+        raise HTTPException(404, t("question_not_found", locale))
+    return interview_payload(q, locale)
 
 
 # ---------------------------------------------------------------------------
@@ -291,12 +376,12 @@ def run_code(req: RunRequest):
         d = c.kumon.get(req.exercise_id)
         if not d:
             raise HTTPException(404)
-        return run_kumon_code(req.code, d.validation)
+        return run_kumon_code(req.code, d.validation, language=language_for_level(d.level))
     if req.exercise_type == "leetcode":
-        p = c.leetcode.get(req.exercise_id)
+        p = c.leetcodes.get(req.exercise_id) or c.leetcode.get(req.exercise_id)
         if not p:
             raise HTTPException(404)
-        return run_leetcode_code(req.code, p.test_cases, p.fn_name)
+        return run_leetcode_code(req.code, p.test_cases, p.fn_name, language=language_for_level(p.level))
     raise HTTPException(400, "Tipo de ejercicio desconocido")
 
 
@@ -336,7 +421,8 @@ def calendar_month(year: int | None = None, month: int | None = None, db: Sessio
 
 
 @router.get("/stats")
-def stats(db: Session = Depends(get_db)):
+def stats(request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
     streak = db.query(Streak).first()
     today = date.today()
     thirty_ago = today - timedelta(days=30)
@@ -359,13 +445,35 @@ def stats(db: Session = Depends(get_db)):
     return {
         "streak": get_effective_streak(db, streak),
         "minutes_chart": minutes_chart,
-        "block_accuracy": get_block_accuracy(db, progress_map),
+        "block_accuracy": get_block_accuracy(db, progress_map, locale=locale),
         "today_activity": get_today_activity(db),
         "total_attempts": total_attempts,
         "pass_rate": round(passed_attempts / total_attempts * 100, 1) if total_attempts else 0,
         "day_number": distinct_days,
         "unlocks": get_unlock_status(db, progress_map),
+        "return_exam": get_return_exam_status(db),
     }
+
+
+# ---------------------------------------------------------------------------
+# return exam (after inactivity)
+# ---------------------------------------------------------------------------
+
+@router.get("/return-exam/status")
+def return_exam_status(db: Session = Depends(get_db)):
+    return get_return_exam_status(db)
+
+
+@router.get("/return-exam")
+def return_exam_get(request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    return get_return_exam_response(db, locale=locale, create=True)
+
+
+@router.post("/return-exam/submit")
+def return_exam_submit(req: ReturnExamSubmitRequest, request: Request, db: Session = Depends(get_db)):
+    locale = locale_from_request(request)
+    return submit_return_exam(db, req.answers, locale=locale)
 
 
 # ---------------------------------------------------------------------------
@@ -385,11 +493,25 @@ def _set_bool_setting(db: Session, key: str, value: bool) -> None:
     s.value = "true" if value else "false"
 
 
+def _str_setting(db: Session, key: str, default: str = "en") -> str:
+    s = db.query(AppSettings).filter_by(key=key).first()
+    return s.value if s else default
+
+
+def _set_str_setting(db: Session, key: str, value: str) -> None:
+    s = db.query(AppSettings).filter_by(key=key).first()
+    if not s:
+        s = AppSettings(key=key, value=value)
+        db.add(s)
+    s.value = value
+
+
 @router.get("/settings")
 def get_settings(db: Session = Depends(get_db)):
     return {
         "focus_mode": _bool_setting(db, "focus_mode"),
         "dev_mode": _bool_setting(db, "dev_mode"),
+        "locale": _str_setting(db, "locale", "en"),
     }
 
 
@@ -401,6 +523,9 @@ def update_settings(req: SettingsUpdate, db: Session = Depends(get_db)):
         changed = True
     if req.dev_mode is not None:
         _set_bool_setting(db, "dev_mode", req.dev_mode)
+        changed = True
+    if req.locale is not None and req.locale in ("en", "es"):
+        _set_str_setting(db, "locale", req.locale)
         changed = True
     if changed:
         db.commit()
