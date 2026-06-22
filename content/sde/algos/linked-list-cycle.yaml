@@ -1,0 +1,293 @@
+id: linked-list-cycle
+title: Linked List Cycle
+leetcode_id: lc-linked-list-cycle
+test_cases:
+- args:
+  - - 3
+    - 2
+    - 0
+    - -4
+  - 1
+  expected: true
+- args:
+  - - 1
+    - 2
+  - 0
+  expected: true
+- args:
+  - - 1
+  - -1
+  expected: false
+voice:
+  prompt: ¿Complejidad temporal y espacial?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - dummy
+  - evitar
+  - casos
+  - especiales
+  - pointers
+  - ciclos
+languages:
+  csharp:
+    fn_name: HasCycle
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool HasCycle(int[] nums, int n)\n{\n    ___\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool HasCycle(int[] arr, int m)\n{\n    ___\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool HasCycle(int[] xs, int k)\n{\n    ___\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool HasCycle(int[] values, int steps)\n{\n    ___\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool HasCycle(int[] items, int cap)\n{\n    ___\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool HasCycle(int[] nums, int n)\n{\n    ___\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool HasCycle(int[] arr, int m)\n{\n    ___\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool HasCycle(int[] xs, int k)\n{\n    ___\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool HasCycle(int[] values, int steps)\n{\n    ___\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool HasCycle(int[] items, int cap)\n{\n    ___\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool HasCycle(int[] nums, int n)\n{\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool HasCycle(int[] arr, int m)\n{\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool HasCycle(int[] xs, int k)\n{\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool HasCycle(int[] values, int steps)\n{\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: HasCycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool HasCycle(int[] items, int cap)\n{\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: HasCycle
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool HasCycle(int[] nums, int n)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: HasCycle
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool HasCycle(int[] arr, int m)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: HasCycle
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "bool HasCycle(int[] xs, int k)\n{\n    return false;\n}\n"
+  python:
+    fn_name: has_cycle
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def has_cycle(nums, n):\n    ___\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def has_cycle(arr, m):\n    ___\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def has_cycle(xs, k):\n    ___\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def has_cycle(values, steps):\n    ___\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def has_cycle(items, cap):\n    ___\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def has_cycle(nums, n):\n    ___\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def has_cycle(arr, m):\n    ___\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def has_cycle(xs, k):\n    ___\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def has_cycle(values, steps):\n    ___\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def has_cycle(items, cap):\n    ___\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def has_cycle(nums, n):\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def has_cycle(arr, m):\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def has_cycle(xs, k):\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def has_cycle(values, steps):\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: has_cycle
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def has_cycle(items, cap):\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: has_cycle
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def has_cycle(nums, n):\n    return n >= 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: has_cycle
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def has_cycle(arr, m):\n    return m >= 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: has_cycle
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def has_cycle(xs, k):\n    return k >= 0\n"

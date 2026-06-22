@@ -1,0 +1,336 @@
+id: max-depth-tree
+title: Maximum Depth of Binary Tree
+leetcode_id: lc-max-depth-tree
+test_cases:
+- args:
+  - - 3
+    - 9
+    - 20
+    - null
+    - null
+    - 15
+    - 7
+  expected: 3
+- args:
+  - - 1
+    - null
+    - 2
+  expected: 2
+voice:
+  prompt: ¿Recursivo o iterativo — cuándo cada uno?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - recursivo
+  - iterativo
+  - stack
+  - niveles
+  - propagar
+  - validation
+languages:
+  csharp:
+    fn_name: MaxDepth
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxDepth(int?[] nums)\n{\n    ___\n    int Dfs(int i)\n    {\n        if (i >=\
+        \ nums.Length || nums[i] == null) return 0;\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2\
+        \ * i + 2));\n    }\n    return Dfs(0);\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxDepth(int?[] arr)\n{\n    ___\n    int Dfs(int i)\n    {\n        if (i >=\
+        \ arr.Length || arr[i] == null) return 0;\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 *\
+        \ i + 2));\n    }\n    return Dfs(0);\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxDepth(int?[] xs)\n{\n    ___\n    int Dfs(int i)\n    {\n        if (i >=\
+        \ xs.Length || xs[i] == null) return 0;\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i\
+        \ + 2));\n    }\n    return Dfs(0);\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxDepth(int?[] values)\n{\n    ___\n    int Dfs(int i)\n    {\n        if (i\
+        \ >= values.Length || values[i] == null) return 0;\n        return 1 + Math.Max(Dfs(2 * i + 1),\
+        \ Dfs(2 * i + 2));\n    }\n    return Dfs(0);\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int MaxDepth(int?[] items)\n{\n    ___\n    int Dfs(int i)\n    {\n        if (i\
+        \ >= items.Length || items[i] == null) return 0;\n        return 1 + Math.Max(Dfs(2 * i + 1),\
+        \ Dfs(2 * i + 2));\n    }\n    return Dfs(0);\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxDepth(int?[] nums)\n{\n    if (nums == null || nums.Length == 0) return 0;\n\
+        \    ___\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i + 2));\n    }\n    return Dfs(0);\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxDepth(int?[] arr)\n{\n    if (arr == null || arr.Length == 0) return 0;\n\
+        \    ___\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i + 2));\n    }\n    return Dfs(0);\n\
+        }\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxDepth(int?[] xs)\n{\n    if (xs == null || xs.Length == 0) return 0;\n   \
+        \ ___\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i + 2));\n    }\n    return Dfs(0);\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxDepth(int?[] values)\n{\n    if (values == null || values.Length == 0) return\
+        \ 0;\n    ___\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i + 2));\n    }\n    return\
+        \ Dfs(0);\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int MaxDepth(int?[] items)\n{\n    if (items == null || items.Length == 0) return\
+        \ 0;\n    ___\n        return 1 + Math.Max(Dfs(2 * i + 1), Dfs(2 * i + 2));\n    }\n    return\
+        \ Dfs(0);\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxDepth(int?[] nums)\n{\n    ___\n    int Dfs(int i)\n    {\n        ___\n \
+        \       ___\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxDepth(int?[] arr)\n{\n    ___\n    int Dfs(int i)\n    {\n        ___\n  \
+        \      ___\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxDepth(int?[] xs)\n{\n    ___\n    int Dfs(int i)\n    {\n        ___\n   \
+        \     ___\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxDepth(int?[] values)\n{\n    ___\n    int Dfs(int i)\n    {\n        ___\n\
+        \        ___\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MaxDepth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int MaxDepth(int?[] items)\n{\n    ___\n    int Dfs(int i)\n    {\n        ___\n\
+        \        ___\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MaxDepth
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxDepth(int?[] nums)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MaxDepth
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int MaxDepth(int?[] arr)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MaxDepth
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int MaxDepth(int?[] xs)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: max_depth
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_depth(nums):\n    ___\n        return 0\n    def dfs(i):\n        if i >=\
+        \ len(nums) or nums[i] is None:\n            return 0\n        return 1 + max(dfs(2 * i + 1),\
+        \ dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_depth(arr):\n    ___\n        return 0\n    def dfs(i):\n        if i >=\
+        \ len(arr) or arr[i] is None:\n            return 0\n        return 1 + max(dfs(2 * i + 1), dfs(2\
+        \ * i + 2))\n    return dfs(0)\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_depth(xs):\n    ___\n        return 0\n    def dfs(i):\n        if i >= len(xs)\
+        \ or xs[i] is None:\n            return 0\n        return 1 + max(dfs(2 * i + 1), dfs(2 * i +\
+        \ 2))\n    return dfs(0)\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_depth(values):\n    ___\n        return 0\n    def dfs(i):\n        if i\
+        \ >= len(values) or values[i] is None:\n            return 0\n        return 1 + max(dfs(2 * i\
+        \ + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def max_depth(items):\n    ___\n        return 0\n    def dfs(i):\n        if i >=\
+        \ len(items) or items[i] is None:\n            return 0\n        return 1 + max(dfs(2 * i + 1),\
+        \ dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_depth(nums):\n    if not nums:\n        return 0\n    def dfs(i):\n     \
+        \   ___\n        return 1 + max(dfs(2 * i + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_depth(arr):\n    if not arr:\n        return 0\n    def dfs(i):\n       \
+        \ ___\n        return 1 + max(dfs(2 * i + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_depth(xs):\n    if not xs:\n        return 0\n    def dfs(i):\n        ___\n\
+        \        return 1 + max(dfs(2 * i + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_depth(values):\n    if not values:\n        return 0\n    def dfs(i):\n \
+        \       ___\n        return 1 + max(dfs(2 * i + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def max_depth(items):\n    if not items:\n        return 0\n    def dfs(i):\n   \
+        \     ___\n        return 1 + max(dfs(2 * i + 1), dfs(2 * i + 2))\n    return dfs(0)\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_depth(nums):\n    if not nums:\n        ___\n    def dfs(i):\n        if\
+        \ i >= len(nums) or nums[i] is None:\n            ___\n        ___\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_depth(arr):\n    if not arr:\n        ___\n    def dfs(i):\n        if i\
+        \ >= len(arr) or arr[i] is None:\n            ___\n        ___\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_depth(xs):\n    if not xs:\n        ___\n    def dfs(i):\n        if i >=\
+        \ len(xs) or xs[i] is None:\n            ___\n        ___\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_depth(values):\n    if not values:\n        ___\n    def dfs(i):\n      \
+        \  if i >= len(values) or values[i] is None:\n            ___\n        ___\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: max_depth
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def max_depth(items):\n    if not items:\n        ___\n    def dfs(i):\n        if\
+        \ i >= len(items) or items[i] is None:\n            ___\n        ___\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: max_depth
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_depth(nums):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: max_depth
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def max_depth(arr):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: max_depth
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def max_depth(xs):\n    return 0\n"

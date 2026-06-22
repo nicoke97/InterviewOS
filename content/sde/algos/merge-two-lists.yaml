@@ -1,0 +1,366 @@
+id: merge-two-lists
+title: Merge Two Sorted Lists
+leetcode_id: lc-merge-two-lists
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 4
+  - - 1
+    - 3
+    - 4
+  expected:
+  - 1
+  - 1
+  - 2
+  - 3
+  - 4
+  - 4
+- args:
+  - []
+  - []
+  expected: []
+voice:
+  prompt: ¿Complejidad temporal y espacial?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - dummy
+  - evitar
+  - casos
+  - especiales
+  - pointers
+  - ciclos
+languages:
+  csharp:
+    fn_name: MergeLists
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] MergeLists(int[] nums, int[] arr)\n{\n    ___\n    var output = new List<int>();\n\
+        \    while (i < nums.Length && j < arr.Length)\n    {\n        if (nums[i] <= arr[j]) output.Add(nums[i++]);\n\
+        \        else output.Add(arr[j++]);\n    }\n    while (i < nums.Length) output.Add(nums[i++]);\n\
+        \    while (j < arr.Length) output.Add(arr[j++]);\n    return output.ToArray();\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] MergeLists(int[] arr, int[] xs)\n{\n    ___\n    var output = new List<int>();\n\
+        \    while (i < arr.Length && j < xs.Length)\n    {\n        if (arr[i] <= xs[j]) output.Add(arr[i++]);\n\
+        \        else output.Add(xs[j++]);\n    }\n    while (i < arr.Length) output.Add(arr[i++]);\n\
+        \    while (j < xs.Length) output.Add(xs[j++]);\n    return output.ToArray();\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] MergeLists(int[] xs, int[] values)\n{\n    ___\n    var output = new List<int>();\n\
+        \    while (i < xs.Length && j < values.Length)\n    {\n        if (xs[i] <= values[j]) output.Add(xs[i++]);\n\
+        \        else output.Add(values[j++]);\n    }\n    while (i < xs.Length) output.Add(xs[i++]);\n\
+        \    while (j < values.Length) output.Add(values[j++]);\n    return output.ToArray();\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] MergeLists(int[] values, int[] items)\n{\n    ___\n    var output = new List<int>();\n\
+        \    while (i < values.Length && j < items.Length)\n    {\n        if (values[i] <= items[j])\
+        \ output.Add(values[i++]);\n        else output.Add(items[j++]);\n    }\n    while (i < values.Length)\
+        \ output.Add(values[i++]);\n    while (j < items.Length) output.Add(items[j++]);\n    return output.ToArray();\n\
+        }\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] MergeLists(int[] items, int[] data)\n{\n    ___\n    var output = new List<int>();\n\
+        \    while (i < items.Length && j < data.Length)\n    {\n        if (items[i] <= data[j]) output.Add(items[i++]);\n\
+        \        else output.Add(data[j++]);\n    }\n    while (i < items.Length) output.Add(items[i++]);\n\
+        \    while (j < data.Length) output.Add(data[j++]);\n    return output.ToArray();\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] MergeLists(int[] nums, int[] arr)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    ___\n    return output.ToArray();\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] MergeLists(int[] arr, int[] xs)\n{\n    int i = 0, j = 0;\n    var output =\
+        \ new List<int>();\n    ___\n    return output.ToArray();\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] MergeLists(int[] xs, int[] values)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    ___\n    return output.ToArray();\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] MergeLists(int[] values, int[] items)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    ___\n    return output.ToArray();\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] MergeLists(int[] items, int[] data)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    ___\n    return output.ToArray();\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] MergeLists(int[] nums, int[] arr)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    while (i < nums.Length && j < arr.Length)\n    {\n        if (nums[i]\
+        \ <= arr[j]) output.Add(nums[i++]);\n        else output.Add(arr[j++]);\n    }\n    while (i <\
+        \ nums.Length) output.Add(nums[i++]);\n    while (j < arr.Length) output.Add(arr[j++]);\n    ___\n\
+        }\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] MergeLists(int[] arr, int[] xs)\n{\n    int i = 0, j = 0;\n    var output =\
+        \ new List<int>();\n    while (i < arr.Length && j < xs.Length)\n    {\n        if (arr[i] <=\
+        \ xs[j]) output.Add(arr[i++]);\n        else output.Add(xs[j++]);\n    }\n    while (i < arr.Length)\
+        \ output.Add(arr[i++]);\n    while (j < xs.Length) output.Add(xs[j++]);\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] MergeLists(int[] xs, int[] values)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    while (i < xs.Length && j < values.Length)\n    {\n        if (xs[i]\
+        \ <= values[j]) output.Add(xs[i++]);\n        else output.Add(values[j++]);\n    }\n    while\
+        \ (i < xs.Length) output.Add(xs[i++]);\n    while (j < values.Length) output.Add(values[j++]);\n\
+        \    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] MergeLists(int[] values, int[] items)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    while (i < values.Length && j < items.Length)\n    {\n        if (values[i]\
+        \ <= items[j]) output.Add(values[i++]);\n        else output.Add(items[j++]);\n    }\n    while\
+        \ (i < values.Length) output.Add(values[i++]);\n    while (j < items.Length) output.Add(items[j++]);\n\
+        \    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MergeLists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] MergeLists(int[] items, int[] data)\n{\n    int i = 0, j = 0;\n    var output\
+        \ = new List<int>();\n    while (i < items.Length && j < data.Length)\n    {\n        if (items[i]\
+        \ <= data[j]) output.Add(items[i++]);\n        else output.Add(data[j++]);\n    }\n    while (i\
+        \ < items.Length) output.Add(items[i++]);\n    while (j < data.Length) output.Add(data[j++]);\n\
+        \    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MergeLists
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[] MergeLists(int[] nums, int[] arr)\n{\n    return new int[] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MergeLists
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[] MergeLists(int[] arr, int[] xs)\n{\n    return new int[] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MergeLists
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int[] MergeLists(int[] xs, int[] values)\n{\n    return new int[] {};\n}\n"
+  python:
+    fn_name: merge_lists
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_lists(nums, arr):\n    ___\n    out = []\n    while i < len(nums) and j\
+        \ < len(arr):\n        if nums[i] <= arr[j]:\n            out.append(nums[i])\n            i +=\
+        \ 1\n        else:\n            out.append(arr[j])\n            j += 1\n    out.extend(nums[i:])\n\
+        \    out.extend(arr[j:])\n    return out\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_lists(arr, xs):\n    ___\n    out = []\n    while i < len(arr) and j <\
+        \ len(xs):\n        if arr[i] <= xs[j]:\n            out.append(arr[i])\n            i += 1\n\
+        \        else:\n            out.append(xs[j])\n            j += 1\n    out.extend(arr[i:])\n \
+        \   out.extend(xs[j:])\n    return out\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_lists(xs, values):\n    ___\n    out = []\n    while i < len(xs) and j\
+        \ < len(values):\n        if xs[i] <= values[j]:\n            out.append(xs[i])\n            i\
+        \ += 1\n        else:\n            out.append(values[j])\n            j += 1\n    out.extend(xs[i:])\n\
+        \    out.extend(values[j:])\n    return out\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_lists(values, items):\n    ___\n    out = []\n    while i < len(values)\
+        \ and j < len(items):\n        if values[i] <= items[j]:\n            out.append(values[i])\n\
+        \            i += 1\n        else:\n            out.append(items[j])\n            j += 1\n   \
+        \ out.extend(values[i:])\n    out.extend(items[j:])\n    return out\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_lists(items, data):\n    ___\n    out = []\n    while i < len(items) and\
+        \ j < len(data):\n        if items[i] <= data[j]:\n            out.append(items[i])\n        \
+        \    i += 1\n        else:\n            out.append(data[j])\n            j += 1\n    out.extend(items[i:])\n\
+        \    out.extend(data[j:])\n    return out\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_lists(nums, arr):\n    i = j = 0\n    out = []\n    ___\n    return out\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_lists(arr, xs):\n    i = j = 0\n    out = []\n    ___\n    return out\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_lists(xs, values):\n    i = j = 0\n    out = []\n    ___\n    return out\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_lists(values, items):\n    i = j = 0\n    out = []\n    ___\n    return\
+        \ out\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_lists(items, data):\n    i = j = 0\n    out = []\n    ___\n    return out\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_lists(nums, arr):\n    i = j = 0\n    out = []\n    while i < len(nums)\
+        \ and j < len(arr):\n        if nums[i] <= arr[j]:\n            out.append(nums[i])\n        \
+        \    i += 1\n        else:\n            out.append(arr[j])\n            j += 1\n    out.extend(nums[i:])\n\
+        \    out.extend(arr[j:])\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_lists(arr, xs):\n    i = j = 0\n    out = []\n    while i < len(arr) and\
+        \ j < len(xs):\n        if arr[i] <= xs[j]:\n            out.append(arr[i])\n            i +=\
+        \ 1\n        else:\n            out.append(xs[j])\n            j += 1\n    out.extend(arr[i:])\n\
+        \    out.extend(xs[j:])\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_lists(xs, values):\n    i = j = 0\n    out = []\n    while i < len(xs)\
+        \ and j < len(values):\n        if xs[i] <= values[j]:\n            out.append(xs[i])\n      \
+        \      i += 1\n        else:\n            out.append(values[j])\n            j += 1\n    out.extend(xs[i:])\n\
+        \    out.extend(values[j:])\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_lists(values, items):\n    i = j = 0\n    out = []\n    while i < len(values)\
+        \ and j < len(items):\n        if values[i] <= items[j]:\n            out.append(values[i])\n\
+        \            i += 1\n        else:\n            out.append(items[j])\n            j += 1\n   \
+        \ out.extend(values[i:])\n    out.extend(items[j:])\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: merge_lists
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_lists(items, data):\n    i = j = 0\n    out = []\n    while i < len(items)\
+        \ and j < len(data):\n        if items[i] <= data[j]:\n            out.append(items[i])\n    \
+        \        i += 1\n        else:\n            out.append(data[j])\n            j += 1\n    out.extend(items[i:])\n\
+        \    out.extend(data[j:])\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: merge_lists
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def merge_lists(nums, arr):\n    return []\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: merge_lists
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def merge_lists(arr, xs):\n    return []\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: merge_lists
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def merge_lists(xs, values):\n    return []\n"

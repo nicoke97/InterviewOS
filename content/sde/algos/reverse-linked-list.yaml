@@ -1,0 +1,295 @@
+id: reverse-linked-list
+title: Reverse Linked List
+leetcode_id: lc-reverse-linked-list
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  expected:
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+- args:
+  - - 1
+    - 2
+  expected:
+  - 2
+  - 1
+voice:
+  prompt: ¿Complejidad temporal y espacial?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - dummy
+  - evitar
+  - casos
+  - especiales
+  - pointers
+  - ciclos
+languages:
+  csharp:
+    fn_name: ReverseList
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] ReverseList(int[] nums)\n{\n    ___\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] ReverseList(int[] arr)\n{\n    ___\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] ReverseList(int[] xs)\n{\n    ___\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] ReverseList(int[] values)\n{\n    ___\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[] ReverseList(int[] items)\n{\n    ___\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] ReverseList(int[] nums)\n{\n    ___\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] ReverseList(int[] arr)\n{\n    ___\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] ReverseList(int[] xs)\n{\n    ___\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] ReverseList(int[] values)\n{\n    ___\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[] ReverseList(int[] items)\n{\n    ___\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] ReverseList(int[] nums)\n{\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] ReverseList(int[] arr)\n{\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] ReverseList(int[] xs)\n{\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] ReverseList(int[] values)\n{\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: ReverseList
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[] ReverseList(int[] items)\n{\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: ReverseList
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[] ReverseList(int[] nums)\n{\n    return nums;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: ReverseList
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[] ReverseList(int[] arr)\n{\n    return arr;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: ReverseList
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int[] ReverseList(int[] xs)\n{\n    return xs;\n}\n"
+  python:
+    fn_name: reverse_list
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def reverse_list(nums):\n    ___\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def reverse_list(arr):\n    ___\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def reverse_list(xs):\n    ___\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def reverse_list(values):\n    ___\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def reverse_list(items):\n    ___\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def reverse_list(nums):\n    ___\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def reverse_list(arr):\n    ___\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def reverse_list(xs):\n    ___\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def reverse_list(values):\n    ___\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def reverse_list(items):\n    ___\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def reverse_list(nums):\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def reverse_list(arr):\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def reverse_list(xs):\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def reverse_list(values):\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: reverse_list
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def reverse_list(items):\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: reverse_list
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def reverse_list(nums):\n    return nums\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: reverse_list
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def reverse_list(arr):\n    return arr\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: reverse_list
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def reverse_list(xs):\n    return xs\n"

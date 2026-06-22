@@ -1,0 +1,529 @@
+id: invert-tree
+title: Invert Binary Tree
+leetcode_id: lc-invert-tree
+test_cases:
+- args:
+  - - 4
+    - 2
+    - 7
+    - 1
+    - 3
+    - 6
+    - 9
+  expected:
+  - 4
+  - 7
+  - 2
+  - 9
+  - 6
+  - 3
+  - 1
+voice:
+  prompt: ¿Recursivo o iterativo — cuándo cada uno?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - recursivo
+  - iterativo
+  - stack
+  - niveles
+  - propagar
+  - validation
+languages:
+  csharp:
+    fn_name: InvertTree
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] nums)\n{\n    ___\n    TNode Build(int i)\n    {\n        if (i >= nums.Length)\
+        \ return null;\n        return new TNode { V = nums[i], L = Build(2 * i + 1), R = Build(2 * i\
+        \ + 2) };\n    }\n    TNode Invert(TNode n)\n    {\n        if (n == null) return null;\n    \
+        \    var left = Invert(n.R);\n        var right = Invert(n.L);\n        n.L = left;\n        n.R\
+        \ = right;\n        return n;\n    }\n    int[] Serialize(TNode root)\n    {\n        if (root\
+        \ == null) return new int[] {};\n        var output = new List<int>();\n        var q = new Queue<TNode>();\n\
+        \        q.Enqueue(root);\n        while (q.Count > 0)\n        {\n            var cur = q.Dequeue();\n\
+        \            output.Add(cur.V);\n            if (cur.L != null) q.Enqueue(cur.L);\n          \
+        \  if (cur.R != null) q.Enqueue(cur.R);\n        }\n        return output.ToArray();\n    }\n\
+        \    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] arr)\n{\n    ___\n    TNode Build(int i)\n    {\n        if (i >= arr.Length)\
+        \ return null;\n        return new TNode { V = arr[i], L = Build(2 * i + 1), R = Build(2 * i +\
+        \ 2) };\n    }\n    TNode Invert(TNode n)\n    {\n        if (n == null) return null;\n      \
+        \  var left = Invert(n.R);\n        var right = Invert(n.L);\n        n.L = left;\n        n.R\
+        \ = right;\n        return n;\n    }\n    int[] Serialize(TNode root)\n    {\n        if (root\
+        \ == null) return new int[] {};\n        var output = new List<int>();\n        var q = new Queue<TNode>();\n\
+        \        q.Enqueue(root);\n        while (q.Count > 0)\n        {\n            var cur = q.Dequeue();\n\
+        \            output.Add(cur.V);\n            if (cur.L != null) q.Enqueue(cur.L);\n          \
+        \  if (cur.R != null) q.Enqueue(cur.R);\n        }\n        return output.ToArray();\n    }\n\
+        \    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] xs)\n{\n    ___\n    TNode Build(int i)\n    {\n        if (i >= xs.Length)\
+        \ return null;\n        return new TNode { V = xs[i], L = Build(2 * i + 1), R = Build(2 * i +\
+        \ 2) };\n    }\n    TNode Invert(TNode n)\n    {\n        if (n == null) return null;\n      \
+        \  var left = Invert(n.R);\n        var right = Invert(n.L);\n        n.L = left;\n        n.R\
+        \ = right;\n        return n;\n    }\n    int[] Serialize(TNode root)\n    {\n        if (root\
+        \ == null) return new int[] {};\n        var output = new List<int>();\n        var q = new Queue<TNode>();\n\
+        \        q.Enqueue(root);\n        while (q.Count > 0)\n        {\n            var cur = q.Dequeue();\n\
+        \            output.Add(cur.V);\n            if (cur.L != null) q.Enqueue(cur.L);\n          \
+        \  if (cur.R != null) q.Enqueue(cur.R);\n        }\n        return output.ToArray();\n    }\n\
+        \    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] values)\n{\n    ___\n    TNode Build(int i)\n    {\n        if (i >= values.Length)\
+        \ return null;\n        return new TNode { V = values[i], L = Build(2 * i + 1), R = Build(2 *\
+        \ i + 2) };\n    }\n    TNode Invert(TNode n)\n    {\n        if (n == null) return null;\n  \
+        \      var left = Invert(n.R);\n        var right = Invert(n.L);\n        n.L = left;\n      \
+        \  n.R = right;\n        return n;\n    }\n    int[] Serialize(TNode root)\n    {\n        if\
+        \ (root == null) return new int[] {};\n        var output = new List<int>();\n        var q =\
+        \ new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n        {\n    \
+        \        var cur = q.Dequeue();\n            output.Add(cur.V);\n            if (cur.L != null)\
+        \ q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n        }\n        return\
+        \ output.ToArray();\n    }\n    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] items)\n{\n    ___\n    TNode Build(int i)\n    {\n        if (i >= items.Length)\
+        \ return null;\n        return new TNode { V = items[i], L = Build(2 * i + 1), R = Build(2 * i\
+        \ + 2) };\n    }\n    TNode Invert(TNode n)\n    {\n        if (n == null) return null;\n    \
+        \    var left = Invert(n.R);\n        var right = Invert(n.L);\n        n.L = left;\n        n.R\
+        \ = right;\n        return n;\n    }\n    int[] Serialize(TNode root)\n    {\n        if (root\
+        \ == null) return new int[] {};\n        var output = new List<int>();\n        var q = new Queue<TNode>();\n\
+        \        q.Enqueue(root);\n        while (q.Count > 0)\n        {\n            var cur = q.Dequeue();\n\
+        \            output.Add(cur.V);\n            if (cur.L != null) q.Enqueue(cur.L);\n          \
+        \  if (cur.R != null) q.Enqueue(cur.R);\n        }\n        return output.ToArray();\n    }\n\
+        \    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] nums)\n{\n    if (nums == null || nums.Length == 0) return nums;\n    TNode\
+        \ Build(int i)\n    {\n        if (i >= nums.Length) return null;\n        return new TNode {\
+        \ V = nums[i], L = Build(2 * i + 1), R = Build(2 * i + 2) };\n    }\n    TNode Invert(TNode n)\n\
+        \    {\n        if (n == null) return null;\n        var left = Invert(n.R);\n        var right\
+        \ = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        return n;\n    }\n    int[]\
+        \ Serialize(TNode root)\n    {\n        if (root == null) return new int[] {};\n        var output\
+        \ = new List<int>();\n        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        ___\n\
+        \    }\n    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] arr)\n{\n    if (arr == null || arr.Length == 0) return arr;\n    TNode\
+        \ Build(int i)\n    {\n        if (i >= arr.Length) return null;\n        return new TNode { V\
+        \ = arr[i], L = Build(2 * i + 1), R = Build(2 * i + 2) };\n    }\n    TNode Invert(TNode n)\n\
+        \    {\n        if (n == null) return null;\n        var left = Invert(n.R);\n        var right\
+        \ = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        return n;\n    }\n    int[]\
+        \ Serialize(TNode root)\n    {\n        if (root == null) return new int[] {};\n        var output\
+        \ = new List<int>();\n        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        ___\n\
+        \    }\n    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] xs)\n{\n    if (xs == null || xs.Length == 0) return xs;\n    TNode Build(int\
+        \ i)\n    {\n        if (i >= xs.Length) return null;\n        return new TNode { V = xs[i], L\
+        \ = Build(2 * i + 1), R = Build(2 * i + 2) };\n    }\n    TNode Invert(TNode n)\n    {\n     \
+        \   if (n == null) return null;\n        var left = Invert(n.R);\n        var right = Invert(n.L);\n\
+        \        n.L = left;\n        n.R = right;\n        return n;\n    }\n    int[] Serialize(TNode\
+        \ root)\n    {\n        if (root == null) return new int[] {};\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        ___\n    }\n    return\
+        \ Serialize(Invert(Build(0)));\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] values)\n{\n    if (values == null || values.Length == 0) return values;\n\
+        \    TNode Build(int i)\n    {\n        if (i >= values.Length) return null;\n        return new\
+        \ TNode { V = values[i], L = Build(2 * i + 1), R = Build(2 * i + 2) };\n    }\n    TNode Invert(TNode\
+        \ n)\n    {\n        if (n == null) return null;\n        var left = Invert(n.R);\n        var\
+        \ right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        return n;\n    }\n\
+        \    int[] Serialize(TNode root)\n    {\n        if (root == null) return new int[] {};\n    \
+        \    var output = new List<int>();\n        var q = new Queue<TNode>();\n        q.Enqueue(root);\n\
+        \        ___\n    }\n    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] items)\n{\n    if (items == null || items.Length == 0) return items;\n\
+        \    TNode Build(int i)\n    {\n        if (i >= items.Length) return null;\n        return new\
+        \ TNode { V = items[i], L = Build(2 * i + 1), R = Build(2 * i + 2) };\n    }\n    TNode Invert(TNode\
+        \ n)\n    {\n        if (n == null) return null;\n        var left = Invert(n.R);\n        var\
+        \ right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        return n;\n    }\n\
+        \    int[] Serialize(TNode root)\n    {\n        if (root == null) return new int[] {};\n    \
+        \    var output = new List<int>();\n        var q = new Queue<TNode>();\n        q.Enqueue(root);\n\
+        \        ___\n    }\n    return Serialize(Invert(Build(0)));\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] nums)\n{\n    ___\n    TNode Build(int i)\n    {\n        ___\n       \
+        \ ___\n    }\n    TNode Invert(TNode n)\n    {\n        ___\n        var left = Invert(n.R);\n\
+        \        var right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        ___\n  \
+        \  }\n    int[] Serialize(TNode root)\n    {\n        ___\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n\
+        \        {\n            var cur = q.Dequeue();\n            output.Add(cur.V);\n            if\
+        \ (cur.L != null) q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n      \
+        \  }\n        ___\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] arr)\n{\n    ___\n    TNode Build(int i)\n    {\n        ___\n        ___\n\
+        \    }\n    TNode Invert(TNode n)\n    {\n        ___\n        var left = Invert(n.R);\n     \
+        \   var right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        ___\n    }\n\
+        \    int[] Serialize(TNode root)\n    {\n        ___\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n\
+        \        {\n            var cur = q.Dequeue();\n            output.Add(cur.V);\n            if\
+        \ (cur.L != null) q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n      \
+        \  }\n        ___\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] xs)\n{\n    ___\n    TNode Build(int i)\n    {\n        ___\n        ___\n\
+        \    }\n    TNode Invert(TNode n)\n    {\n        ___\n        var left = Invert(n.R);\n     \
+        \   var right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        ___\n    }\n\
+        \    int[] Serialize(TNode root)\n    {\n        ___\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n\
+        \        {\n            var cur = q.Dequeue();\n            output.Add(cur.V);\n            if\
+        \ (cur.L != null) q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n      \
+        \  }\n        ___\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] values)\n{\n    ___\n    TNode Build(int i)\n    {\n        ___\n     \
+        \   ___\n    }\n    TNode Invert(TNode n)\n    {\n        ___\n        var left = Invert(n.R);\n\
+        \        var right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        ___\n  \
+        \  }\n    int[] Serialize(TNode root)\n    {\n        ___\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n\
+        \        {\n            var cur = q.Dequeue();\n            output.Add(cur.V);\n            if\
+        \ (cur.L != null) q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n      \
+        \  }\n        ___\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: InvertTree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] items)\n{\n    ___\n    TNode Build(int i)\n    {\n        ___\n      \
+        \  ___\n    }\n    TNode Invert(TNode n)\n    {\n        ___\n        var left = Invert(n.R);\n\
+        \        var right = Invert(n.L);\n        n.L = left;\n        n.R = right;\n        ___\n  \
+        \  }\n    int[] Serialize(TNode root)\n    {\n        ___\n        var output = new List<int>();\n\
+        \        var q = new Queue<TNode>();\n        q.Enqueue(root);\n        while (q.Count > 0)\n\
+        \        {\n            var cur = q.Dequeue();\n            output.Add(cur.V);\n            if\
+        \ (cur.L != null) q.Enqueue(cur.L);\n            if (cur.R != null) q.Enqueue(cur.R);\n      \
+        \  }\n        ___\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: InvertTree
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] nums)\n{\n    return nums;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: InvertTree
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] arr)\n{\n    return arr;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: InvertTree
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "class TNode\n{\n    public int V;\n    public TNode L;\n    public TNode R;\n}\n\n\
+        int[] InvertTree(int[] xs)\n{\n    return xs;\n}\n"
+  python:
+    fn_name: invert_tree
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def invert_tree(nums):\n    ___\n        return nums\n    def build(i):\n       \
+        \ if i >= len(nums) or nums[i] is None:\n            return None\n        return {'v': nums[i],\
+        \ 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n\
+        \            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        while q:\n            cur = q.pop(0)\n        \
+        \    if cur is None:\n                out.append(None)\n                continue\n           \
+        \ out.append(cur['v'])\n            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n\
+        \        while out and out[-1] is None:\n            out.pop()\n        return out\n    return\
+        \ serialize(invert(build(0)))\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def invert_tree(arr):\n    ___\n        return arr\n    def build(i):\n        if\
+        \ i >= len(arr) or arr[i] is None:\n            return None\n        return {'v': arr[i], 'l':\
+        \ build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n    \
+        \        return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n  \
+        \      return node\n    def serialize(node):\n        if not node:\n            return []\n  \
+        \      out = []\n        q = [node]\n        while q:\n            cur = q.pop(0)\n          \
+        \  if cur is None:\n                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        return out\n    return serialize(invert(build(0)))\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def invert_tree(xs):\n    ___\n        return xs\n    def build(i):\n        if i\
+        \ >= len(xs) or xs[i] is None:\n            return None\n        return {'v': xs[i], 'l': build(2\
+        \ * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n            return\
+        \ None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n        return node\n\
+        \    def serialize(node):\n        if not node:\n            return []\n        out = []\n   \
+        \     q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        return out\n    return serialize(invert(build(0)))\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def invert_tree(values):\n    ___\n        return values\n    def build(i):\n   \
+        \     if i >= len(values) or values[i] is None:\n            return None\n        return {'v':\
+        \ values[i], 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if\
+        \ not node:\n            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        while q:\n            cur = q.pop(0)\n        \
+        \    if cur is None:\n                out.append(None)\n                continue\n           \
+        \ out.append(cur['v'])\n            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n\
+        \        while out and out[-1] is None:\n            out.pop()\n        return out\n    return\
+        \ serialize(invert(build(0)))\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def invert_tree(items):\n    ___\n        return items\n    def build(i):\n     \
+        \   if i >= len(items) or items[i] is None:\n            return None\n        return {'v': items[i],\
+        \ 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n\
+        \            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        while q:\n            cur = q.pop(0)\n        \
+        \    if cur is None:\n                out.append(None)\n                continue\n           \
+        \ out.append(cur['v'])\n            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n\
+        \        while out and out[-1] is None:\n            out.pop()\n        return out\n    return\
+        \ serialize(invert(build(0)))\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def invert_tree(nums):\n    if not nums:\n        return nums\n    def build(i):\n\
+        \        if i >= len(nums) or nums[i] is None:\n            return None\n        return {'v':\
+        \ nums[i], 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not\
+        \ node:\n            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        ___\n    return serialize(invert(build(0)))\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def invert_tree(arr):\n    if not arr:\n        return arr\n    def build(i):\n \
+        \       if i >= len(arr) or arr[i] is None:\n            return None\n        return {'v': arr[i],\
+        \ 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n\
+        \            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        ___\n    return serialize(invert(build(0)))\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def invert_tree(xs):\n    if not xs:\n        return xs\n    def build(i):\n    \
+        \    if i >= len(xs) or xs[i] is None:\n            return None\n        return {'v': xs[i], 'l':\
+        \ build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not node:\n    \
+        \        return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n  \
+        \      return node\n    def serialize(node):\n        if not node:\n            return []\n  \
+        \      out = []\n        q = [node]\n        ___\n    return serialize(invert(build(0)))\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def invert_tree(values):\n    if not values:\n        return values\n    def build(i):\n\
+        \        if i >= len(values) or values[i] is None:\n            return None\n        return {'v':\
+        \ values[i], 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if\
+        \ not node:\n            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        ___\n    return serialize(invert(build(0)))\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def invert_tree(items):\n    if not items:\n        return items\n    def build(i):\n\
+        \        if i >= len(items) or items[i] is None:\n            return None\n        return {'v':\
+        \ items[i], 'l': build(2 * i + 1), 'r': build(2 * i + 2)}\n    def invert(node):\n        if not\
+        \ node:\n            return None\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        return node\n    def serialize(node):\n        if not node:\n            return []\n\
+        \        out = []\n        q = [node]\n        ___\n    return serialize(invert(build(0)))\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def invert_tree(nums):\n    if not nums:\n        ___\n    def build(i):\n      \
+        \  if i >= len(nums) or nums[i] is None:\n            ___\n        ___\n    def invert(node):\n\
+        \        if not node:\n            ___\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        ___\n    def serialize(node):\n        if not node:\n            ___\n        out = []\n\
+        \        q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        ___\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def invert_tree(arr):\n    if not arr:\n        ___\n    def build(i):\n        if\
+        \ i >= len(arr) or arr[i] is None:\n            ___\n        ___\n    def invert(node):\n    \
+        \    if not node:\n            ___\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        ___\n    def serialize(node):\n        if not node:\n            ___\n        out = []\n\
+        \        q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        ___\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def invert_tree(xs):\n    if not xs:\n        ___\n    def build(i):\n        if\
+        \ i >= len(xs) or xs[i] is None:\n            ___\n        ___\n    def invert(node):\n      \
+        \  if not node:\n            ___\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        ___\n    def serialize(node):\n        if not node:\n            ___\n        out = []\n\
+        \        q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        ___\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def invert_tree(values):\n    if not values:\n        ___\n    def build(i):\n  \
+        \      if i >= len(values) or values[i] is None:\n            ___\n        ___\n    def invert(node):\n\
+        \        if not node:\n            ___\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        ___\n    def serialize(node):\n        if not node:\n            ___\n        out = []\n\
+        \        q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        ___\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: invert_tree
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def invert_tree(items):\n    if not items:\n        ___\n    def build(i):\n    \
+        \    if i >= len(items) or items[i] is None:\n            ___\n        ___\n    def invert(node):\n\
+        \        if not node:\n            ___\n        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n\
+        \        ___\n    def serialize(node):\n        if not node:\n            ___\n        out = []\n\
+        \        q = [node]\n        while q:\n            cur = q.pop(0)\n            if cur is None:\n\
+        \                out.append(None)\n                continue\n            out.append(cur['v'])\n\
+        \            q.append(cur.get('l'))\n            q.append(cur.get('r'))\n        while out and\
+        \ out[-1] is None:\n            out.pop()\n        ___\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: invert_tree
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def invert_tree(nums):\n    return nums\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: invert_tree
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def invert_tree(arr):\n    return arr\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: invert_tree
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def invert_tree(xs):\n    return xs\n"
