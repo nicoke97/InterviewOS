@@ -6,6 +6,10 @@ interface CodeEditorProps {
   readOnly?: boolean;
   height?: string;
   drillId?: string;
+  /** Monaco language id, e.g. 'python' or 'csharp'. */
+  language?: string;
+  /** When false, skip the outer editor-shell border (parent provides chrome). */
+  chrome?: boolean;
 }
 
 /** Convert Kumon ___ markers into Monaco tab-stop placeholders. */
@@ -14,25 +18,25 @@ function toSnippet(code: string): string {
   return code.replace(/___/g, () => `\${${n++}:}`);
 }
 
-export function CodeEditor({ value, onChange, readOnly, height = '280px', drillId }: CodeEditorProps) {
+export function CodeEditor({ value, onChange, readOnly, height = '280px', drillId, language = 'python', chrome = true }: CodeEditorProps) {
   const handleMount: OnMount = (editor) => {
     if (!value.includes('___')) return;
 
     const snippet = toSnippet(value);
     editor.setValue('');
-    editor.trigger('pythonos', 'editor.action.insertSnippet', {
+    editor.trigger('codenda', 'editor.action.insertSnippet', {
       snippet,
-      language: 'python',
+      language,
     });
     onChange(editor.getValue());
   };
 
   return (
-    <div className="editor-shell">
+    <div className={chrome ? 'editor-shell' : 'rounded-lg'}>
       <Editor
-        key={drillId ?? 'editor'}
+        key={`${drillId ?? 'editor'}-${language}`}
         height={height}
-        language="python"
+        language={language}
         theme="vs-dark"
         defaultValue={value}
         onChange={(v) => onChange(v ?? '')}
@@ -40,6 +44,7 @@ export function CodeEditor({ value, onChange, readOnly, height = '280px', drillI
         options={{
           readOnly,
           minimap: { enabled: false },
+          scrollbar: { alwaysConsumeMouseWheel: false },
           fontSize: 14,
           fontFamily: '"JetBrains Mono", ui-monospace, monospace',
           lineNumbers: 'on',

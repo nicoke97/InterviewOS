@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { acceptChar, acceptText, backspaceTyped } from '../lib/flexibleTyping';
 import { assembleTemplate, inferSlotAnswers } from '../lib/slotAnswers';
+import { useI18n } from '../i18n/context';
 
 type CharCell = { ch: string; inSlot: boolean };
 
@@ -48,22 +50,6 @@ function groupLineCells(cells: CharCell[]): CharCell[][] {
   return groups;
 }
 
-function acceptChar(expected: string, typed: string, ch: string): string | null {
-  const next = typed.length;
-  if (next >= expected.length || ch !== expected[next]) return null;
-  return typed + ch;
-}
-
-function acceptText(expected: string, typed: string, text: string): string {
-  let updated = typed;
-  for (const ch of text) {
-    const next = acceptChar(expected, updated, ch);
-    if (next === null) break;
-    updated = next;
-  }
-  return updated;
-}
-
 interface KumonCodeInputProps {
   template: string;
   prompt: string;
@@ -79,6 +65,7 @@ export function KumonCodeInput({
   referenceCode = '',
   onChange,
 }: KumonCodeInputProps) {
+  const { t } = useI18n();
   const normalizedTemplate = template.replace(/\r\n/g, '\n');
 
   const slotAnswers = useMemo(() => {
@@ -109,7 +96,7 @@ export function KumonCodeInput({
     if (e.key === 'Backspace') {
       e.preventDefault();
       if (typed.length > 0) {
-        const next = typed.slice(0, -1);
+        const next = backspaceTyped(expected, typed);
         setTyped(next);
         onChange(next);
       }
@@ -153,7 +140,7 @@ export function KumonCodeInput({
         className="min-h-[4.5rem] rounded border border-dashed px-2 py-2 text-xs"
         style={{ borderColor: '#a8a29e', background: '#f5f5f4', color: '#78716c' }}
       >
-        Click and type your answer here.
+        {t('kumonCodeInput.emptyPrompt')}
       </div>
     );
   }
@@ -199,7 +186,7 @@ export function KumonCodeInput({
       ref={surfaceRef}
       tabIndex={0}
       role="textbox"
-      aria-label="Type the code"
+      aria-label={t('kumonCodeInput.ariaTypeCode')}
       aria-multiline
       onKeyDown={handleKeyDown}
       onPaste={handlePaste}
