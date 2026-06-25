@@ -1,0 +1,13 @@
+id: a2-008
+block: a2-conditionals
+order: 8
+scaffolding: minimal
+prompt: Given age=15, print 'minor'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: minor
+  setup: age = 15
+starter_code: '# Given age=15, print ''minor''
+
+  '

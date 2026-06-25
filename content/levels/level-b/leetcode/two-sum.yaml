@@ -1,0 +1,32 @@
+id: two-sum
+title: Two Sum
+fn_name: two_sum
+description: Return indices of two numbers that add to target.
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 0
+  - 1
+tiers:
+  1:
+    starter_code: "def two_sum(nums, target):\n    # brute force nested loop\n   \
+      \ for i in range(len(nums)):\n        for j in range(i+1, len(nums)):\n    \
+      \        if ___:\n                return [i, j]"
+    explain_checklist:
+    - Why j starts at i+1?
+    hints_allowed: true
+  2:
+    starter_code: "def two_sum(nums, target):\n    pass"
+    narration_prompts:
+    - State brute force O(n^2)
+    - Can hash map help?
+    hints_allowed: true
+  3:
+    starter_code: "def two_sum(nums, target):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

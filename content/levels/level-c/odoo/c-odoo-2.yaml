@@ -1,0 +1,10 @@
+id: c-odoo-2
+question: Describe the Sales → Delivery → Invoice flow.
+rubric:
+- SO confirmation
+- Delivery order
+- Invoice from delivered qty
+- Stock impact
+sample_answer: Confirm sale order → generate delivery → validate picking reduces stock
+  → create invoice from delivered quantities.
+category: odoo

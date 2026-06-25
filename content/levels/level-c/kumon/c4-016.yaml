@@ -1,0 +1,10 @@
+id: c4-016
+block: c4-git
+order: 16
+scaffolding: none
+prompt: 'Type the command: mkdir'
+hints: []
+starter_code: ''
+validation:
+  type: exact_match
+  expected: mkdir new_folder

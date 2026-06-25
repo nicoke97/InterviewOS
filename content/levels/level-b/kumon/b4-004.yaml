@@ -1,0 +1,15 @@
+id: b4-004
+block: b4-errors
+order: 4
+scaffolding: minimal
+prompt: Finally runs
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2'
+starter_code: '# Finally runs
+
+  '
+_reference_code: "try:\n    print(1)\nfinally:\n    print(2)"

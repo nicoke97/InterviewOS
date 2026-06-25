@@ -1,0 +1,10 @@
+id: a-py-1
+question: What is the difference between dynamic and static typing?
+rubric:
+- Python checks types at runtime
+- C#/Java check at compile time
+- Variables can be rebound to different types
+sample_answer: 'Python is dynamically typed: variable types are checked at runtime
+  and a name can refer to different types over its lifetime. C# is statically typed:
+  the compiler enforces types before the program runs.'
+category: python

@@ -1,0 +1,15 @@
+id: c3-004
+block: c3-nested
+order: 4
+scaffolding: minimal
+prompt: Sum sales
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '35'
+starter_code: '# Sum sales
+
+  '
+_reference_code: 'sales = [{''amt'': 10}, {''amt'': 20}, {''amt'': 5}]
+
+  print(sum(s[''amt''] for s in sales))'

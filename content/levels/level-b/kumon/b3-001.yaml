@@ -1,0 +1,14 @@
+id: b3-001
+block: b3-strings
+order: 1
+scaffolding: full
+prompt: Split string
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: '[''a'', ''b'', ''c'']'
+starter_code: '# Fill in
+
+  ___'
+_reference_code: print('a,b,c'.split(','))

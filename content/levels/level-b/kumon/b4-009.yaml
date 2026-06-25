@@ -1,0 +1,15 @@
+id: b4-009
+block: b4-errors
+order: 9
+scaffolding: minimal
+prompt: Type check
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: '# Type check
+
+  '
+_reference_code: 'x = ''5''
+
+  print(int(x) + 1)'

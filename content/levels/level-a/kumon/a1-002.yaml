@@ -1,0 +1,19 @@
+id: a1-002
+block: a1-variables
+order: 2
+scaffolding: full
+prompt: 'Declare name=''Bob'' and age=25, then print: ''Bob is 25 years old'''
+hints:
+- 'Use f-string: f''{name} is {age} years old'''
+- 'Remember: strings use quotes, ints do not'
+validation:
+  type: run_and_match_stdout
+  expected: Bob is 25 years old
+starter_code: 'name = ___  # str
+
+  age = ___   # int
+
+  print(___)
+
+  '
+csharp_note: 'In C#: string name = "Alice"; int age = 30;'

@@ -1,0 +1,11 @@
+id: c4-003
+block: c4-git
+order: 3
+scaffolding: full
+prompt: 'Type the command: git commit'
+hints:
+- No spaces before command
+starter_code: ___
+validation:
+  type: exact_match
+  expected: git commit -m "fix bug"

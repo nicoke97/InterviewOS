@@ -1,0 +1,9 @@
+id: b-py-2
+question: When would you use a set vs a list?
+rubric:
+- Uniqueness
+- O(1) lookup
+- Order preservation
+sample_answer: Use a set for unique items and fast membership tests. Use a list when
+  order matters or duplicates are allowed.
+category: python

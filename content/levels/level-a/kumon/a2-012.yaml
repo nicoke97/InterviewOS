@@ -1,0 +1,11 @@
+id: a2-012
+block: a2-conditionals
+order: 12
+scaffolding: none
+prompt: Given n=9, evaluate and print 'Fizz'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Fizz
+  setup: n = 9
+starter_code: ''

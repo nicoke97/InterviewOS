@@ -1,0 +1,10 @@
+id: a4-015
+block: a4-functions
+order: 15
+scaffolding: none
+prompt: 'Write a function and call it to output: ''14'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '14'
+starter_code: ''

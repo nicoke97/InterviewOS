@@ -1,0 +1,13 @@
+id: a2-004
+block: a2-conditionals
+order: 4
+scaffolding: minimal
+prompt: Given score=85, print the letter grade (B)
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: B
+  setup: score = 85
+starter_code: '# Given score=85, print the letter grade (B)
+
+  '

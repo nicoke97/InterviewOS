@@ -1,0 +1,49 @@
+blocks:
+  a1-variables:
+    level: a
+    title: "Variables, Types & f-strings"
+    order: 1
+  a2-conditionals:
+    level: a
+    title: "Conditionals"
+    order: 2
+  a3-loops:
+    level: a
+    title: "Loops"
+    order: 3
+  a4-functions:
+    level: a
+    title: "Functions"
+    order: 4
+  b1-lists:
+    level: b
+    title: "Lists & Slicing"
+    order: 1
+  b2-dicts:
+    level: b
+    title: "Dictionaries"
+    order: 2
+  b3-strings:
+    level: b
+    title: "String Methods"
+    order: 3
+  b4-errors:
+    level: b
+    title: "Error Handling"
+    order: 4
+  c1-classes:
+    level: c
+    title: "Classes & OOP"
+    order: 1
+  c2-inheritance:
+    level: c
+    title: "Inheritance"
+    order: 2
+  c3-nested:
+    level: c
+    title: "Nested Structures"
+    order: 3
+  c4-git:
+    level: c
+    title: "Git & Linux"
+    order: 4

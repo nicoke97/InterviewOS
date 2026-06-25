@@ -1,0 +1,36 @@
+id: group-anagrams
+title: Group Anagrams
+fn_name: group_anagrams
+description: Group strings that are anagrams.
+test_cases:
+- args:
+  - - eat
+    - tea
+    - tan
+    - ate
+    - nat
+    - bat
+  expected:
+  - - eat
+    - tea
+    - ate
+  - - tan
+    - nat
+  - - bat
+tiers:
+  1:
+    starter_code: "def group_anagrams(strs):\n    groups = {}\n    for s in strs:\n\
+      \        key = tuple(sorted(s))\n        groups.setdefault(key, []).append(s)\n\
+      \    return ___"
+    explain_checklist:
+    - Sorted tuple as dict key
+    hints_allowed: true
+  2:
+    starter_code: "def group_anagrams(strs):\n    pass"
+    narration_prompts:
+    - Why tuple key?
+    hints_allowed: true
+  3:
+    starter_code: "def group_anagrams(strs):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

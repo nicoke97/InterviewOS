@@ -1,0 +1,12 @@
+id: c1-018
+block: c1-classes
+order: 18
+scaffolding: none
+prompt: Class drill 18
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '18'
+starter_code: ''
+_reference_code: "class N:\n    def __init__(self, v):\n        self.v = v\n    def\
+  \ get(self):\n        return self.v\nprint(N(18).get())"

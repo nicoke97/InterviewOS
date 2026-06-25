@@ -1,0 +1,10 @@
+id: c-py-1
+question: Explain the four pillars of OOP.
+rubric:
+- Encapsulation
+- Abstraction
+- Inheritance
+- Polymorphism
+sample_answer: Encapsulation bundles data and methods. Abstraction hides complexity.
+  Inheritance reuses behavior. Polymorphism allows substituting subtypes.
+category: python

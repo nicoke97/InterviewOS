@@ -1,0 +1,10 @@
+id: a3-018
+block: a3-loops
+order: 18
+scaffolding: none
+prompt: 'Write code that outputs: ''9'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

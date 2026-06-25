@@ -1,0 +1,15 @@
+id: c2-003
+block: c2-inheritance
+order: 3
+scaffolding: full
+prompt: Super call
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: Hi there
+starter_code: '# Fill in
+
+  ___'
+_reference_code: "class A:\n    def greet(self):\n        return 'Hi'\nclass B(A):\n\
+  \    def greet(self):\n        return super().greet() + ' there'\nprint(B().greet())"

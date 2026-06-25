@@ -1,0 +1,9 @@
+id: a-odoo-1
+question: What is Odoo and what does ERP mean?
+rubric:
+- Integrated business apps
+- CRM, sales, inventory, accounting
+- Open source
+sample_answer: 'Odoo is an open-source ERP: integrated business applications (CRM,
+  sales, inventory, accounting) sharing one database.'
+category: odoo

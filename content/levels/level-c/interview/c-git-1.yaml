@@ -1,0 +1,10 @@
+id: c-git-1
+question: Explain git branch and pull request workflow.
+rubric:
+- Branch from main
+- Commit changes
+- PR for review
+- Merge
+sample_answer: Create a branch from main, commit changes, push branch, open PR for
+  review, merge after approval.
+category: python

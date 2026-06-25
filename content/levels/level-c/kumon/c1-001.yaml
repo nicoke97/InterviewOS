@@ -1,0 +1,16 @@
+id: c1-001
+block: c1-classes
+order: 1
+scaffolding: full
+prompt: Basic class
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: Rex says woof!
+starter_code: '# Fill in
+
+  ___'
+_reference_code: "class Dog:\n    def __init__(self, name):\n        self.name = name\n\
+  \    def bark(self):\n        return f'{self.name} says woof!'\nd = Dog('Rex')\n\
+  print(d.bark())"

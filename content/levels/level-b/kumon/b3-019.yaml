@@ -1,0 +1,11 @@
+id: b3-019
+block: b3-strings
+order: 19
+scaffolding: none
+prompt: Normalize spaces
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''a'', ''b'']'
+starter_code: ''
+_reference_code: print('  a   b  '.split())

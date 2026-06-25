@@ -1,0 +1,16 @@
+id: b1-002
+block: b1-lists
+order: 2
+scaffolding: full
+prompt: Print last element of [10,20,30]
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: '# Fill in
+
+  ___'
+_reference_code: 'items = [10, 20, 30]
+
+  print(items[-1])'

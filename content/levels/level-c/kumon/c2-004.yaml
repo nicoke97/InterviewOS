@@ -1,0 +1,15 @@
+id: c2-004
+block: c2-inheritance
+order: 4
+scaffolding: minimal
+prompt: Override init
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 1 2
+starter_code: '# Override init
+
+  '
+_reference_code: "class Base:\n    def __init__(self, x):\n        self.x = x\nclass\
+  \ Child(Base):\n    def __init__(self, x, y):\n        super().__init__(x)\n   \
+  \     self.y = y\nc = Child(1, 2)\nprint(c.x, c.y)"

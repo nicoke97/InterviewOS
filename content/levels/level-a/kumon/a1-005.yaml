@@ -1,0 +1,13 @@
+id: a1-005
+block: a1-variables
+order: 5
+scaffolding: minimal
+prompt: 'Declare name=''Eve'' and age=35, then print: ''Eve is 35 years old'''
+hints:
+- Use an f-string
+validation:
+  type: run_and_match_stdout
+  expected: Eve is 35 years old
+starter_code: '# Print: ''Eve is 35 years old''
+
+  '

@@ -1,0 +1,10 @@
+id: c4-018
+block: c4-git
+order: 18
+scaffolding: none
+prompt: 'Type the command: chmod'
+hints: []
+starter_code: ''
+validation:
+  type: exact_match
+  expected: chmod +x script.sh

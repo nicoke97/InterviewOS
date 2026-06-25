@@ -1,0 +1,10 @@
+id: b-odoo-2
+question: How do you read unfamiliar Python code in Odoo modules?
+rubric:
+- Start with model definition
+- Follow inheritance
+- Check decorators
+- Read tests
+sample_answer: Find the model class, check _name and _inherit, follow method calls,
+  note @api decorators, look at manifest and tests for context.
+category: odoo

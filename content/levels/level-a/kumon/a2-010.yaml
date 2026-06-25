@@ -1,0 +1,13 @@
+id: a2-010
+block: a2-conditionals
+order: 10
+scaffolding: minimal
+prompt: Given n=-3, evaluate and print 'negative'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: negative
+  setup: n = -3
+starter_code: '# Given n=-3, evaluate and print ''negative''
+
+  '

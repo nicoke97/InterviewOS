@@ -1,0 +1,15 @@
+id: b2-013
+block: b2-dicts
+order: 13
+scaffolding: none
+prompt: Invert dict
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: ''
+_reference_code: 'd = {''a'': 1, ''b'': 2}
+
+  inv = {v: k for k, v in d.items()}
+
+  print(inv[1])'

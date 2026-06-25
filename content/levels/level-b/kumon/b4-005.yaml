@@ -1,0 +1,15 @@
+id: b4-005
+block: b4-errors
+order: 5
+scaffolding: minimal
+prompt: Empty list check
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: empty
+starter_code: '# Empty list check
+
+  '
+_reference_code: 'items = []
+
+  print(''empty'' if not items else ''ok'')'

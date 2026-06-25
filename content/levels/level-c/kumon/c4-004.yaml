@@ -1,0 +1,12 @@
+id: c4-004
+block: c4-git
+order: 4
+scaffolding: minimal
+prompt: 'Type the command: git branch'
+hints: []
+starter_code: '# git branch
+
+  '
+validation:
+  type: exact_match
+  expected: git branch feature-x

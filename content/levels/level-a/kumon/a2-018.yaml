@@ -1,0 +1,13 @@
+id: a2-018
+block: a2-conditionals
+order: 18
+scaffolding: none
+prompt: Given a and b, print 'yes'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'yes'
+  setup: 'a = 1
+
+    b = 1'
+starter_code: ''

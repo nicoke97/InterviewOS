@@ -1,0 +1,13 @@
+id: b3-010
+block: b3-strings
+order: 10
+scaffolding: minimal
+prompt: Count char
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: '# Count char
+
+  '
+_reference_code: print('hello'.count('l'))

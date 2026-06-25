@@ -1,0 +1,13 @@
+id: b4-017
+block: b4-errors
+order: 17
+scaffolding: none
+prompt: Or default
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Guest
+starter_code: ''
+_reference_code: 'name = None
+
+  print(name or ''Guest'')'

@@ -1,0 +1,11 @@
+id: a2-015
+block: a2-conditionals
+order: 15
+scaffolding: none
+prompt: Given n=7, evaluate and print '7'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+  setup: n = 7
+starter_code: ''

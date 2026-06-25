@@ -1,0 +1,13 @@
+id: b2-006
+block: b2-dicts
+order: 6
+scaffolding: minimal
+prompt: Keys list
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''x'', ''y'']'
+starter_code: '# Keys list
+
+  '
+_reference_code: 'print(list({''x'': 1, ''y'': 2}.keys()))'

@@ -1,0 +1,17 @@
+id: b1-004
+block: b1-lists
+order: 4
+scaffolding: minimal
+prompt: Append 4 to [1,2,3]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3, 4]'
+starter_code: '# Append 4 to [1,2,3]
+
+  '
+_reference_code: 'items = [1, 2, 3]
+
+  items.append(4)
+
+  print(items)'

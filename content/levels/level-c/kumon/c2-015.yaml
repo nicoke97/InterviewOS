@@ -1,0 +1,11 @@
+id: c2-015
+block: c2-inheritance
+order: 15
+scaffolding: none
+prompt: Inherit drill 15
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ''
+_reference_code: "class P:\n    def v(self): return 15\nclass C(P):\n    pass\nprint(C().v())"

@@ -1,0 +1,12 @@
+id: b4-012
+block: b4-errors
+order: 12
+scaffolding: none
+prompt: Raise error
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: oops
+starter_code: ''
+_reference_code: "try:\n    raise ValueError('oops')\nexcept ValueError as e:\n  \
+  \  print(str(e))"

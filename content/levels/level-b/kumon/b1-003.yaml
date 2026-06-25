@@ -1,0 +1,16 @@
+id: b1-003
+block: b1-lists
+order: 3
+scaffolding: full
+prompt: Slice first 2 of [1,2,3,4]
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: '# Fill in
+
+  ___'
+_reference_code: 'items = [1, 2, 3, 4]
+
+  print(items[:2])'

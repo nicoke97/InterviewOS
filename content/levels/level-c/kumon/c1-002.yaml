@@ -1,0 +1,16 @@
+id: c1-002
+block: c1-classes
+order: 2
+scaffolding: full
+prompt: Cliente class
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: Hola, Ana
+starter_code: '# Fill in
+
+  ___'
+_reference_code: "class Cliente:\n    def __init__(self, name):\n        self.name\
+  \ = name\n    def saludar(self):\n        return f'Hola, {self.name}'\nc = Cliente('Ana')\n\
+  print(c.saludar())"

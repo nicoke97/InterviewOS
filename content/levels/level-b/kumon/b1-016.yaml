@@ -1,0 +1,17 @@
+id: b1-016
+block: b1-lists
+order: 16
+scaffolding: none
+prompt: Copy list
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ''
+_reference_code: 'a = [1, 2, 3]
+
+  b = a.copy()
+
+  b.append(4)
+
+  print(a)'

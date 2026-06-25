@@ -1,0 +1,12 @@
+id: a3-003
+block: a3-loops
+order: 3
+scaffolding: full
+prompt: 'Write code that outputs: ''3 6 9 12 15 18 21 24 27 30'''
+hints:
+- Use for i in range(...)
+- end=' ' keeps output on same line
+validation:
+  type: run_and_match_stdout
+  expected: 3 6 9 12 15 18 21 24 27 30
+starter_code: "# Use a for loop\nfor ___ in ___:\n    ___\nprint(___)"

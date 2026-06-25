@@ -1,0 +1,11 @@
+id: c2-011
+block: c2-inheritance
+order: 11
+scaffolding: none
+prompt: Inherit drill 11
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '11'
+starter_code: ''
+_reference_code: "class P:\n    def v(self): return 11\nclass C(P):\n    pass\nprint(C().v())"

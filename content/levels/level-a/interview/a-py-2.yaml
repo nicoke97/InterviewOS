@@ -1,0 +1,9 @@
+id: a-py-2
+question: Why use 'is None' instead of '== None'?
+rubric:
+- Identity vs equality
+- __eq__ can be overridden
+- None is singleton
+sample_answer: is checks object identity. == checks equality which can be overridden.
+  None is a singleton so is None is the idiomatic, safe check.
+category: python

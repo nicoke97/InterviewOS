@@ -1,0 +1,10 @@
+id: a1-014
+block: a1-variables
+order: 14
+scaffolding: none
+prompt: 'Declare name=''Noah'' and age=32, then print: ''Noah is 32 years old'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Noah is 32 years old
+starter_code: ''

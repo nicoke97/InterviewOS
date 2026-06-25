@@ -1,0 +1,12 @@
+id: a4-010
+block: a4-functions
+order: 10
+scaffolding: minimal
+prompt: 'Write a function and call it to output: ''Fizz'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Fizz
+starter_code: '# Output: ''Fizz''
+
+  '

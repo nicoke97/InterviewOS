@@ -1,0 +1,32 @@
+id: erp-join
+title: ERP Join Query
+fn_name: sales_per_client
+description: Given clients and orders, return total sales per client name.
+test_cases:
+- args:
+  - - id: 1
+      name: A
+  - - client_id: 1
+      amount: 10
+    - client_id: 1
+      amount: 5
+  expected:
+    A: 15
+tiers:
+  1:
+    starter_code: "def sales_per_client(clients, orders):\n    totals = {}\n    for\
+      \ o in orders:\n        c = next(c for c in clients if c['id'] == o['client_id'])\n\
+      \        totals[c['name']] = totals.get(c['name'], 0) + o['amount']\n    return\
+      \ ___"
+    explain_checklist:
+    - JOIN then GROUP BY in Python
+    hints_allowed: true
+  2:
+    starter_code: "def sales_per_client(clients, orders):\n    pass"
+    narration_prompts:
+    - Map to SQL JOIN + GROUP BY
+    hints_allowed: true
+  3:
+    starter_code: "def sales_per_client(clients, orders):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,11 @@
+id: b2-016
+block: b2-dicts
+order: 16
+scaffolding: none
+prompt: Len dict
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''
+_reference_code: 'print(len({''a'': 1, ''b'': 2, ''c'': 3}))'

@@ -1,0 +1,14 @@
+id: b4-008
+block: b4-errors
+order: 8
+scaffolding: minimal
+prompt: Safe key
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: no key
+starter_code: '# Safe key
+
+  '
+_reference_code: "d = {}\ntry:\n    print(d['x'])\nexcept KeyError:\n    print('no\
+  \ key')"

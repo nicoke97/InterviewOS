@@ -1,0 +1,13 @@
+id: b2-014
+block: b2-dicts
+order: 14
+scaffolding: none
+prompt: Nested dict
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Bob
+starter_code: ''
+_reference_code: 'd = {''user'': {''name'': ''Bob''}}
+
+  print(d[''user''][''name''])'

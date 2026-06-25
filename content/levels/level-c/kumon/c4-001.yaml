@@ -1,0 +1,11 @@
+id: c4-001
+block: c4-git
+order: 1
+scaffolding: full
+prompt: 'Type the command: git status command'
+hints:
+- No spaces before command
+starter_code: ___
+validation:
+  type: exact_match
+  expected: git status

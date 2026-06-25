@@ -1,0 +1,30 @@
+id: fizzbuzz
+title: FizzBuzz
+fn_name: fizzbuzz
+description: Return a list of strings from 1 to n with FizzBuzz rules.
+test_cases:
+- args:
+  - 5
+  expected:
+  - '1'
+  - '2'
+  - Fizz
+  - '4'
+  - FizzBuzz
+tiers:
+  1:
+    starter_code: "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n\
+      \        # fill in conditions\n        pass\n    return result"
+    explain_checklist:
+    - Divisibility order matters
+    hints_allowed: true
+  2:
+    starter_code: "def fizzbuzz(n):\n    pass"
+    narration_prompts:
+    - Explain modulo checks
+    - Why check 15 first?
+    hints_allowed: true
+  3:
+    starter_code: "def fizzbuzz(n):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

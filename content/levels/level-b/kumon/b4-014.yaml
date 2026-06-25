@@ -1,0 +1,12 @@
+id: b4-014
+block: b4-errors
+order: 14
+scaffolding: none
+prompt: Guard clause
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''
+_reference_code: "def f(n):\n    if n is None:\n        return 0\n    return n * 2\n\
+  print(f(None))"

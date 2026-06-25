@@ -1,0 +1,26 @@
+rules:
+  intro:
+    assign: "block:all"
+    morning_split: [1, 10]
+    evening_split: [11, 20]
+  repeat:
+    assign: "block:all"
+    within_days: 1
+  bridge:
+    review: "block_prev:last_half"
+    new: "block_next:first_half"
+  advance:
+    assign: "block:all"
+  maintenance:
+    review: "block_prev:last_10"
+    new: "block_next:first_5"
+
+sheet_size:
+  min: 8
+  max: 12
+
+mastery:
+  passes_required: 2
+  no_hint_from_drill: 4
+  repeat_pass_rate: 0.9
+  maintenance_sheets_for_unlock: 5

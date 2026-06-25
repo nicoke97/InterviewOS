@@ -1,0 +1,12 @@
+id: c4-010
+block: c4-git
+order: 10
+scaffolding: minimal
+prompt: 'Type the command: git diff'
+hints: []
+starter_code: '# git diff
+
+  '
+validation:
+  type: exact_match
+  expected: git diff

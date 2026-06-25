@@ -1,0 +1,12 @@
+id: c4-008
+block: c4-git
+order: 8
+scaffolding: minimal
+prompt: 'Type the command: git push'
+hints: []
+starter_code: '# git push
+
+  '
+validation:
+  type: exact_match
+  expected: git push origin main

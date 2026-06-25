@@ -1,0 +1,15 @@
+id: c3-008
+block: c3-nested
+order: 8
+scaffolding: minimal
+prompt: ERP drill 8
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: '# ERP drill 8
+
+  '
+_reference_code: 'data = [{''x'': 8}, {''x'': 9}]
+
+  print(len(data))'

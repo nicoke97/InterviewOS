@@ -1,0 +1,11 @@
+id: a2-011
+block: a2-conditionals
+order: 11
+scaffolding: none
+prompt: Given n=0, evaluate and print 'zero'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: zero
+  setup: n = 0
+starter_code: ''

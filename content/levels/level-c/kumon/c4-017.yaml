@@ -1,0 +1,10 @@
+id: c4-017
+block: c4-git
+order: 17
+scaffolding: none
+prompt: 'Type the command: rm file'
+hints: []
+starter_code: ''
+validation:
+  type: exact_match
+  expected: rm file.txt

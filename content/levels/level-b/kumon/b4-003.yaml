@@ -1,0 +1,14 @@
+id: b4-003
+block: b4-errors
+order: 3
+scaffolding: full
+prompt: Handle ValueError
+hints:
+- Think step by step
+validation:
+  type: run_and_match_stdout
+  expected: bad
+starter_code: '# Fill in
+
+  ___'
+_reference_code: "try:\n    int('abc')\nexcept ValueError:\n    print('bad')"

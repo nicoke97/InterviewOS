@@ -1,0 +1,30 @@
+id: max-of-three
+title: Maximum of Three
+fn_name: max_of_three
+description: Return the maximum of three integers.
+test_cases:
+- args:
+  - 1
+  - 9
+  - 3
+  expected: 9
+- args:
+  - -1
+  - -5
+  - -2
+  expected: -1
+tiers:
+  1:
+    starter_code: "def max_of_three(a, b, c):\n    # use if/elif\n    return ___"
+    explain_checklist:
+    - Compare pairs step by step
+    hints_allowed: true
+  2:
+    starter_code: "def max_of_three(a, b, c):\n    pass"
+    narration_prompts:
+    - Walk through comparisons
+    hints_allowed: true
+  3:
+    starter_code: "def max_of_three(a, b, c):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

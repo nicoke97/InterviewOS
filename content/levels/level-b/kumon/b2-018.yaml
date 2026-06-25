@@ -1,0 +1,17 @@
+id: b2-018
+block: b2-dicts
+order: 18
+scaffolding: none
+prompt: Copy dict
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''
+_reference_code: 'a = {''x'': 1}
+
+  b = a.copy()
+
+  b[''x''] = 2
+
+  print(a[''x''])'

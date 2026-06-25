@@ -1,0 +1,13 @@
+id: b2-007
+block: b2-dicts
+order: 7
+scaffolding: minimal
+prompt: Values sum
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: '# Values sum
+
+  '
+_reference_code: 'print(sum({''a'': 1, ''b'': 2, ''c'': 3}.values()))'

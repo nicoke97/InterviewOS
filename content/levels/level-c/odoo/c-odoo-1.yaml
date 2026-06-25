@@ -1,0 +1,9 @@
+id: c-odoo-1
+question: Explain model inheritance with _inherit in Odoo.
+rubric:
+- Extend existing model
+- Add fields/methods
+- Don't create new table
+sample_answer: _inherit extends an existing model in-place, adding fields or overriding
+  methods without a new database table.
+category: odoo

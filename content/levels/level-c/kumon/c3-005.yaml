@@ -1,0 +1,17 @@
+id: c3-005
+block: c3-nested
+order: 5
+scaffolding: minimal
+prompt: Find max order
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: '# Find max order
+
+  '
+_reference_code: 'orders = [{''id'': 1, ''total'': 50}, {''id'': 2, ''total'': 30}]
+
+  best = max(orders, key=lambda o: o[''total''])
+
+  print(best[''id''])'

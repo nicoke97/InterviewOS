@@ -1,0 +1,13 @@
+id: c3-011
+block: c3-nested
+order: 11
+scaffolding: none
+prompt: ERP drill 11
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''
+_reference_code: 'data = [{''x'': 11}, {''x'': 12}]
+
+  print(len(data))'

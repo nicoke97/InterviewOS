@@ -1,0 +1,10 @@
+id: a3-016
+block: a3-loops
+order: 16
+scaffolding: none
+prompt: 'Write code that outputs: ''4'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

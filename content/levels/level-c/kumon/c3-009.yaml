@@ -1,0 +1,15 @@
+id: c3-009
+block: c3-nested
+order: 9
+scaffolding: minimal
+prompt: ERP drill 9
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: '# ERP drill 9
+
+  '
+_reference_code: 'data = [{''x'': 9}, {''x'': 10}]
+
+  print(len(data))'

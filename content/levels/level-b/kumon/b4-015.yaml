@@ -1,0 +1,12 @@
+id: b4-015
+block: b4-errors
+order: 15
+scaffolding: none
+prompt: Default empty list
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1]'
+starter_code: ''
+_reference_code: "def f(items=None):\n    if items is None:\n        items = []\n\
+  \    items.append(1)\n    return items\nprint(f())"

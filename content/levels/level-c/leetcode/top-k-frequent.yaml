@@ -1,0 +1,32 @@
+id: top-k-frequent
+title: Top K Frequent
+fn_name: top_k_frequent
+description: Return k most frequent elements.
+test_cases:
+- args:
+  - - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 3
+  - 2
+  expected:
+  - 1
+  - 2
+tiers:
+  1:
+    starter_code: "def top_k_frequent(nums, k):\n    freq = {}\n    for n in nums:\n\
+      \        freq[n] = freq.get(n, 0) + 1\n    return ___"
+    explain_checklist:
+    - Count frequencies first
+    hints_allowed: true
+  2:
+    starter_code: "def top_k_frequent(nums, k):\n    pass"
+    narration_prompts:
+    - Sort by frequency
+    hints_allowed: true
+  3:
+    starter_code: "def top_k_frequent(nums, k):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,11 @@
+id: a2-013
+block: a2-conditionals
+order: 13
+scaffolding: none
+prompt: Given n=10, evaluate and print 'Buzz'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Buzz
+  setup: n = 10
+starter_code: ''

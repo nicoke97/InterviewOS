@@ -1,0 +1,11 @@
+id: c2-018
+block: c2-inheritance
+order: 18
+scaffolding: none
+prompt: Inherit drill 18
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '18'
+starter_code: ''
+_reference_code: "class P:\n    def v(self): return 18\nclass C(P):\n    pass\nprint(C().v())"

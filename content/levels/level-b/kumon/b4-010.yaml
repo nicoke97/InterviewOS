@@ -1,0 +1,13 @@
+id: b4-010
+block: b4-errors
+order: 10
+scaffolding: minimal
+prompt: Multiple except
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: fail
+starter_code: '# Multiple except
+
+  '
+_reference_code: "try:\n    int('x')\nexcept (ValueError, TypeError):\n    print('fail')"

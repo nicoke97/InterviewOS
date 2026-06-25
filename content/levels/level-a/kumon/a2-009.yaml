@@ -1,0 +1,13 @@
+id: a2-009
+block: a2-conditionals
+order: 9
+scaffolding: minimal
+prompt: Given n=5, evaluate and print 'positive'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: positive
+  setup: n = 5
+starter_code: '# Given n=5, evaluate and print ''positive''
+
+  '
