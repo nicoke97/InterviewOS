@@ -1,0 +1,16 @@
+id: C-175
+level: C
+page: 175
+set: 18
+block: D
+block_id: C.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Intercambia mayus/minus de 'Hola Mundo' con swapcase
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: hOLA mUNDO
+starter_code: ''

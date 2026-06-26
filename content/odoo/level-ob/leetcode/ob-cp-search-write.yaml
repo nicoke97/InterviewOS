@@ -1,0 +1,35 @@
+id: ob-cp-search-write
+title: Search + write
+fn_name: close_big
+description: Pon state='done' a los registros con amount>100 y retorna cuantos cambiaron.
+test_cases:
+- args:
+  - - id: 1
+      amount: 120
+      state: open
+    - id: 2
+      amount: 80
+      state: open
+  expected: 1
+- args:
+  - - id: 1
+      amount: 50
+      state: open
+  expected: 0
+tiers:
+  1:
+    starter_code: "def close_big(records):\n    cambiados = 0\n    # recorre, si amount\
+      \ > 100 -> state 'done'\n    return cambiados"
+    explain_checklist:
+    - Identifica el dominio/condicion
+    - Recuerda el patron de Odoo
+    hints_allowed: true
+  2:
+    starter_code: "def close_big(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque
+    hints_allowed: true
+  3:
+    starter_code: "def close_big(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

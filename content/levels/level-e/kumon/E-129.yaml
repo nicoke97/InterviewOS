@@ -1,0 +1,16 @@
+id: E-129
+level: E
+page: 129
+set: 13
+block: C
+block_id: E.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Contador con atributo de CLASE total=0 que aumenta en cada __init__;
+  crea 3 instancias e imprime Contador.total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

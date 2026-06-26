@@ -1,8 +1,0 @@
-id: b-py-3
-question: What is a defaultdict and when is it useful?
-rubric:
-- Auto-default values
-- Grouping/counting patterns
-sample_answer: defaultdict provides a default value for missing keys, useful for grouping
-  or counting without checking key existence.
-category: python

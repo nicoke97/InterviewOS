@@ -1,0 +1,16 @@
+id: A-056
+level: A
+page: 56
+set: 6
+block: B
+block_id: A.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Une las palabras 'Python' y 'rocks' con un espacio e imprime el resultado.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Python rocks
+starter_code: ''

@@ -1,0 +1,10 @@
+id: e-int-1
+question: Que es __init__ y que significa self en una clase?
+rubric:
+- __init__ es el constructor
+- self es la instancia actual
+- los atributos se guardan en self
+sample_answer: __init__ es el metodo que se ejecuta al crear un objeto e inicializa
+  sus atributos. self es la referencia a la instancia actual, por eso guardamos datos
+  como self.nombre.
+category: python

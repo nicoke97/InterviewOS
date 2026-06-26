@@ -1,0 +1,16 @@
+id: E-169
+level: E
+page: 169
+set: 17
+block: D
+block_id: E.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Empleado con metodo rol() -> 'empleado'; define RH(Empleado) que sobrescriba
+  rol() -> 'recursos humanos'; imprime RH().rol().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: recursos humanos
+starter_code: ''

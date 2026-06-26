@@ -1,0 +1,16 @@
+id: D-117
+level: D
+page: 117
+set: 12
+block: C
+block_id: D.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Agrega los numeros 1,2,3 a un set y muestra el total
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

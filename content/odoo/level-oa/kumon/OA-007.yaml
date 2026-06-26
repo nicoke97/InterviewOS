@@ -1,0 +1,16 @@
+id: OA-007
+level: OA
+page: 7
+set: 1
+block: A
+block_id: OA.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea un producto con price=200 y qty=3; imprime el subtotal (price*qty).
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '600'
+starter_code: ''

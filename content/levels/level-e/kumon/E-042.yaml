@@ -1,0 +1,21 @@
+id: E-042
+level: E
+page: 42
+set: 5
+block: A
+block_id: E.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Define Ticket con titulo y estado; crea Ticket(''Error pago'', ''cerrado'')
+  e imprime: ''<titulo> [<estado>]''.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Error pago [cerrado]
+starter_code: "class Ticket:\n    def __init__(self, titulo, estado):\n        self.titulo\
+  \ = titulo\n        self.estado = estado\nt = ___\nprint(___)"
+reference_code: "class Ticket:\n    def __init__(self, titulo, estado):\n        self.titulo\
+  \ = titulo\n        self.estado = estado\nt = Ticket('Error pago', 'cerrado')\n\
+  print(f'{t.titulo} [{t.estado}]')"

@@ -1,0 +1,17 @@
+id: C-141
+level: C
+page: 141
+set: 15
+block: C
+block_id: C.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Usa comprehension para poner en mayuscula ['a','b','c']
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''A'', ''B'', ''C'']'
+starter_code: print(___)
+reference_code: print([c.upper() for c in ['a', 'b', 'c']])

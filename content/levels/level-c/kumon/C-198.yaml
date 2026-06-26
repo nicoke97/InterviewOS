@@ -1,0 +1,15 @@
+id: C-198
+level: C
+page: 198
+set: 20
+block: D
+block_id: C.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime el binario de 10 con f-string
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1010'
+starter_code: ''

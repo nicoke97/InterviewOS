@@ -1,0 +1,15 @@
+id: A-138
+level: A
+page: 138
+set: 14
+block: C
+block_id: A.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Dado temp=30: imprime True si NO (temp<10 o temp>40)'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

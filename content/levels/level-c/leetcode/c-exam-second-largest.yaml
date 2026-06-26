@@ -1,0 +1,33 @@
+id: c-exam-second-largest
+title: Segundo mayor
+fn_name: segundo_mayor
+description: Retorna el segundo numero mas grande (distintos).
+test_cases:
+- args:
+  - - 3
+    - 1
+    - 4
+    - 1
+    - 5
+  expected: 4
+- args:
+  - - 10
+    - 20
+  expected: 10
+tiers:
+  1:
+    starter_code: "def segundo_mayor(nums):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def segundo_mayor(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def segundo_mayor(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

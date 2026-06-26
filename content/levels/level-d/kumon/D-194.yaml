@@ -1,0 +1,16 @@
+id: D-194
+level: D
+page: 194
+set: 20
+block: D
+block_id: D.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Guard clause: lista vacia -> ''vacia'', si no su primer elemento'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: vacia
+starter_code: ''

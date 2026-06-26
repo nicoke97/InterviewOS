@@ -1,0 +1,20 @@
+id: E-102
+level: E
+page: 102
+set: 11
+block: C
+block_id: E.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Punto con x,y y __str__ que devuelva '(x, y)'; imprime el objeto Punto(3,
+  4).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: (3, 4)
+starter_code: ___
+reference_code: "class Punto:\n    def __init__(self, x, y):\n        self.x = x\n\
+  \        self.y = y\n    def __str__(self):\n        return f'({self.x}, {self.y})'\n\
+  print(Punto(3, 4))"

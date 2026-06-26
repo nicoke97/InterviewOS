@@ -1,0 +1,15 @@
+id: C-118
+level: C
+page: 118
+set: 12
+block: C
+block_id: C.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Desempaqueta (1,(2,3)) en a,(b,c) e imprime b+c
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

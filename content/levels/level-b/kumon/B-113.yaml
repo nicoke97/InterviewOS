@@ -1,0 +1,18 @@
+id: B-113
+level: B
+page: 113
+set: 12
+block: C
+block_id: B.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dadas las listas [10, 20] y ['kg', 'm'], imprime cada par unido usando zip.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10kg 20m '
+starter_code: ___
+reference_code: "for a, b in zip([10, 20], ['kg', 'm']):\n    print(f'{a}{b}', end='\
+  \ ')"

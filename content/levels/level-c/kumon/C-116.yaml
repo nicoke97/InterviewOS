@@ -1,0 +1,16 @@
+id: C-116
+level: C
+page: 116
+set: 12
+block: C
+block_id: C.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Usa *inicio,ultimo = [1,2,3,4] e imprime ultimo
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

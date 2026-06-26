@@ -1,0 +1,17 @@
+id: E-116
+level: E
+page: 116
+set: 12
+block: C
+block_id: E.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Item con id en __init__ y __repr__ que devuelva 'Item(<id>)'; imprime
+  repr(Item(99)).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Item(99)
+starter_code: ''

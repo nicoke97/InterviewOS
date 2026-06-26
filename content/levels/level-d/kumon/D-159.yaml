@@ -1,0 +1,15 @@
+id: D-159
+level: D
+page: 159
+set: 16
+block: D
+block_id: D.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Intenta 100/5 e imprime 'ok' al final con else
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ok
+starter_code: ''

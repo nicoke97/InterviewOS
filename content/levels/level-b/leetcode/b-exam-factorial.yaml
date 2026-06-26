@@ -1,0 +1,28 @@
+id: b-exam-factorial
+title: Factorial
+fn_name: factorial
+description: Retorna n! con un bucle.
+test_cases:
+- args:
+  - 5
+  expected: 120
+- args:
+  - 0
+  expected: 1
+tiers:
+  1:
+    starter_code: "def factorial(n):\n    r = 1\n    # bucle\n    return r"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def factorial(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def factorial(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

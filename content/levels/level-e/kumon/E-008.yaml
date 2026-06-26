@@ -1,0 +1,15 @@
+id: E-008
+level: E
+page: 8
+set: 1
+block: A
+block_id: E.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea clase Contador, asigna n=0, sumale 1 tres veces, imprime n
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

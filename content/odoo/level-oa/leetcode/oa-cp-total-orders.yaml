@@ -1,0 +1,34 @@
+id: oa-cp-total-orders
+title: Total facturado
+fn_name: total_done
+description: Suma el 'amount' de las ordenes cuyo state sea 'done'.
+test_cases:
+- args:
+  - - amount: 100
+      state: done
+    - amount: 50
+      state: open
+    - amount: 30
+      state: done
+  expected: 130
+- args:
+  - - amount: 10
+      state: open
+  expected: 0
+tiers:
+  1:
+    starter_code: "def total_done(orders):\n    # suma amount donde state == 'done'\n\
+      \    return ___"
+    explain_checklist:
+    - Identifica el dominio/condicion
+    - Recuerda el patron de Odoo
+    hints_allowed: true
+  2:
+    starter_code: "def total_done(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque
+    hints_allowed: true
+  3:
+    starter_code: "def total_done(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

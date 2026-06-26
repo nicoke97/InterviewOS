@@ -1,0 +1,16 @@
+id: A-005
+level: A
+page: 5
+set: 1
+block: A
+block_id: A.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 36
+prompt: 'Imprime exactamente el texto: Bienvenido'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Bienvenido
+starter_code: ''

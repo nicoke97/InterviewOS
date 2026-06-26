@@ -1,0 +1,17 @@
+id: D-053
+level: D
+page: 53
+set: 6
+block: B
+block_id: D.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Usa un dict comprehension para mapear cada numero de 1 a 5 con su cuadrado.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}'
+starter_code: ___
+reference_code: 'print({i: i * i for i in range(1, 6)})'

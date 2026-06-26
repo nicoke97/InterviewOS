@@ -1,0 +1,15 @@
+id: A-079
+level: A
+page: 79
+set: 8
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Verifica si 'python' empieza con 'py'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

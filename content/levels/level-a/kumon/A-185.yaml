@@ -1,0 +1,16 @@
+id: A-185
+level: A
+page: 185
+set: 19
+block: D
+block_id: A.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado hora=14: imprime ''tarde'' si 12<=hora<19 si no ''otro'''
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: tarde
+starter_code: ''

@@ -1,0 +1,15 @@
+id: C-039
+level: C
+page: 39
+set: 4
+block: A
+block_id: C.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada [9,8,7,6], quita los dos ultimos con pop dos veces
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[9, 8]'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: B-156
+level: B
+page: 156
+set: 16
+block: D
+block_id: B.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define longitud(s) que retorne len(s) y llamala con 'odoo'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

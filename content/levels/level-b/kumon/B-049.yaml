@@ -1,0 +1,15 @@
+id: B-049
+level: B
+page: 49
+set: 5
+block: A
+block_id: B.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Cuenta cuantas 'o' hay en 'odoo' con un bucle
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

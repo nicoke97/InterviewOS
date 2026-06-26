@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize the PythonOS SQLite database."""
+"""Initialize the InterviewOS SQLite database."""
 import sys
 from pathlib import Path
 

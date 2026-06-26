@@ -1,0 +1,16 @@
+id: OC-034
+level: OC
+page: 34
+set: 4
+block: A
+block_id: OC.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Reporte: imprime el estado con MAS tickets.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: new
+starter_code: ''

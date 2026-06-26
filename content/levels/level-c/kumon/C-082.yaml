@@ -1,0 +1,22 @@
+id: C-082
+level: C
+page: 82
+set: 9
+block: B
+block_id: C.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dada la matriz [[5, 6, 7], [8, 9, 10]], imprime el elemento fila 0, columna
+  2.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: 'm = ___
+
+  print(___)'
+reference_code: 'm = [[5, 6, 7], [8, 9, 10]]
+
+  print(m[0][2])'

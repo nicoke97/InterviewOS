@@ -1,0 +1,19 @@
+id: E-052
+level: E
+page: 52
+set: 6
+block: B
+block_id: E.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Calc con metodo sumar(self, a, b) que retorne a+b; crea Calc() e imprime
+  sumar(10, 5).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ___
+reference_code: "class Calc:\n    def sumar(self, a, b):\n        return a + b\nc\
+  \ = Calc()\nprint(c.sumar(10, 5))"

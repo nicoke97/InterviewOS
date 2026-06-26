@@ -1,4 +1,4 @@
-# PythonOS — Kumon × LeetCode × Odoo Interview Trainer
+# InterviewOS — Kumon × LeetCode × Odoo Interview Trainer
 
 Local-first gamified Python learning app for Odoo Technical Support Engineer interview prep.
 
@@ -22,11 +22,11 @@ npm install
 # 3. Initialize database
 python scripts/init-db.py
 
-# 4. Run (API on :8000, UI on :5173)
+# 4. Run (API on :8001, UI on :5174)
 npm run dev
 ```
 
-Open http://localhost:5173
+Open http://localhost:5174
 
 ## Daily rhythm
 

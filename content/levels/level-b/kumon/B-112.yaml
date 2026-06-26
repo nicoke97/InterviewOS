@@ -1,0 +1,18 @@
+id: B-112
+level: B
+page: 112
+set: 12
+block: C
+block_id: B.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dadas las listas ['a', 'b'] y [1, 2], imprime cada par unido usando zip.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'a1 b2 '
+starter_code: "for a, b in zip(['a', 'b'], [1, 2]):\n    print(___)"
+reference_code: "for a, b in zip(['a', 'b'], [1, 2]):\n    print(f'{a}{b}', end='\
+  \ ')"

@@ -1,0 +1,34 @@
+id: a-cp-fizzbuzz
+title: FizzBuzz de un numero
+fn_name: fizzbuzz
+description: Retorna 'Fizz','Buzz','FizzBuzz' o el numero como texto.
+test_cases:
+- args:
+  - 3
+  expected: Fizz
+- args:
+  - 5
+  expected: Buzz
+- args:
+  - 15
+  expected: FizzBuzz
+- args:
+  - 7
+  expected: '7'
+tiers:
+  1:
+    starter_code: "def fizzbuzz(n):\n    # usa n % 3 y n % 5\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def fizzbuzz(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def fizzbuzz(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

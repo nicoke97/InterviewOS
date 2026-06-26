@@ -1,0 +1,16 @@
+id: C-097
+level: C
+page: 97
+set: 10
+block: B
+block_id: C.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Copia [10,20,30] e invierte solo la copia
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[30, 20, 10]'
+starter_code: ''

@@ -1,0 +1,30 @@
+id: a-cp-sum-pair
+title: Suma de dos numeros
+fn_name: suma
+description: Retorna a + b.
+test_cases:
+- args:
+  - 2
+  - 3
+  expected: 5
+- args:
+  - 10
+  - 90
+  expected: 100
+tiers:
+  1:
+    starter_code: "def suma(a, b):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def suma(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def suma(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

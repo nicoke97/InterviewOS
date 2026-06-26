@@ -1,0 +1,19 @@
+id: A-182
+level: A
+page: 182
+set: 19
+block: D
+block_id: A.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado anio=2024: imprime True si es bisiesto'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ___
+reference_code: 'a = 2024
+
+  print(a % 4 == 0 and (a % 100 != 0 or a % 400 == 0))'

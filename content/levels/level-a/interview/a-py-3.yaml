@@ -1,9 +1,0 @@
-id: a-py-3
-question: What is the time complexity of checking if a string is a palindrome?
-rubric:
-- O(n) time
-- O(n) space if copied
-- O(1) extra space with two pointers
-sample_answer: O(n) time to compare characters. O(n) extra space if we reverse/copy
-  the string; O(1) extra with two pointers from both ends.
-category: python

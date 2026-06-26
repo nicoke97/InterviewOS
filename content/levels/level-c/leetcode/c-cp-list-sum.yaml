@@ -1,0 +1,31 @@
+id: c-cp-list-sum
+title: Suma de lista
+fn_name: suma_lista
+description: Suma todos los elementos.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+  expected: 10
+- args:
+  - []
+  expected: 0
+tiers:
+  1:
+    starter_code: "def suma_lista(nums):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def suma_lista(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def suma_lista(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

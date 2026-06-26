@@ -1,0 +1,15 @@
+id: E-009
+level: E
+page: 9
+set: 1
+block: A
+block_id: E.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea clase Libro, asigna paginas=200 e imprime cuantas faltan para 250
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '50'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: A-167
+level: A
+page: 167
+set: 17
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Calcula cuantos minutos hay en 2.5 horas
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '150.0'
+starter_code: ''

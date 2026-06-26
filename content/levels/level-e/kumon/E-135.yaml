@@ -1,0 +1,17 @@
+id: E-135
+level: E
+page: 135
+set: 14
+block: C
+block_id: E.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Temperatura con celsius en __init__ y metodo fahrenheit() (c*9/5+32);
+  imprime la fahrenheit de Temperatura(10).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '50.0'
+starter_code: ''

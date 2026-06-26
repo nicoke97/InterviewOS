@@ -1,0 +1,18 @@
+id: D-042
+level: D
+page: 42
+set: 5
+block: A
+block_id: D.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado {''x'': 10}, recorre items() e imprime ''clave:valor'' por cada par.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'x:10 '
+starter_code: "d = ___\nfor k, v in d.items():\n    print(___)"
+reference_code: "d = {'x': 10}\nfor k, v in d.items():\n    print(f'{k}:{v}', end='\
+  \ ')"

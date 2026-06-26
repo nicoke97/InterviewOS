@@ -1,0 +1,19 @@
+id: E-123
+level: E
+page: 123
+set: 13
+block: C
+block_id: E.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Contador con atributo de CLASE total=0 que aumenta en cada __init__;
+  crea 1 instancias e imprime Contador.total.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ___
+reference_code: "class Contador:\n    total = 0\n    def __init__(self):\n       \
+  \ Contador.total += 1\nContador()\nprint(Contador.total)"

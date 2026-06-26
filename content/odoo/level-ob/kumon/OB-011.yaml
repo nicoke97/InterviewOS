@@ -1,0 +1,29 @@
+id: OB-011
+level: OB
+page: 11
+set: 2
+block: A
+block_id: OB.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'create: agrega un registro nuevo (id autoincrement) e imprime su id.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'records = ___
+
+  new = ___
+
+  records.append(new)
+
+  print(___)'
+reference_code: 'records = [{''id'': 1}, {''id'': 2}]
+
+  new = {''id'': len(records) + 1, ''name'': ''C''}
+
+  records.append(new)
+
+  print(new[''id''])'

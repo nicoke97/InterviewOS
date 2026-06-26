@@ -1,0 +1,9 @@
+id: a-int-2
+question: Que hace una f-string y por que es util? Muestra un ejemplo.
+rubric:
+- interpola variables dentro del texto
+- sintaxis f'...{var}...'
+- mas legible que concatenar
+sample_answer: 'Una f-string inserta el valor de variables o expresiones dentro de
+  un texto: f''{nombre} tiene {edad} anios''. Es mas legible que concatenar con +.'
+category: python

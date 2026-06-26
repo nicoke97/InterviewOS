@@ -1,0 +1,15 @@
+id: A-040
+level: A
+page: 40
+set: 4
+block: A
+block_id: A.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Declara name=''Pablo'' y age=29, luego imprime: ''Pablo tiene 29 anios'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Pablo tiene 29 anios
+starter_code: ''

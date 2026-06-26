@@ -1,0 +1,15 @@
+id: C-178
+level: C
+page: 178
+set: 18
+block: D
+block_id: C.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Pon en mayuscula solo la primera letra de 'python'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Python
+starter_code: ''

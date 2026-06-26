@@ -1,0 +1,20 @@
+id: D-022
+level: D
+page: 22
+set: 3
+block: A
+block_id: D.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Dado {''x'': 10}, usa .get(''x'', -1) y muestra el resultado (la clave puede
+  no existir).'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ___
+reference_code: 'd = {''x'': 10}
+
+  print(d.get(''x'', -1))'

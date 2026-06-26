@@ -1,0 +1,16 @@
+id: B-057
+level: B
+page: 57
+set: 6
+block: B
+block_id: B.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Usa while para imprimir de 1 a 7 separados por espacio.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 3 4 5 6 7 '
+starter_code: ''

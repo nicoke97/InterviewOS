@@ -1,0 +1,16 @@
+id: D-177
+level: D
+page: 177
+set: 18
+block: D
+block_id: D.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Maneja IndexError accediendo al ultimo de []
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: vacia
+starter_code: ''

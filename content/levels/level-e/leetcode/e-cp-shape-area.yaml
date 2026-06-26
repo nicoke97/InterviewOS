@@ -1,0 +1,32 @@
+id: e-cp-shape-area
+title: Area por herencia
+fn_name: square_area
+description: Define Shape base y Square(Shape) que sobrescribe area(); retorna el
+  area.
+test_cases:
+- args:
+  - 4
+  expected: 16
+- args:
+  - 3
+  expected: 9
+tiers:
+  1:
+    starter_code: "def square_area(side):\n    class Shape:\n        def area(self):\n\
+      \            return 0\n    class Square(Shape):\n        def __init__(self,\
+      \ s):\n            self.s = s\n        def area(self):\n            return ___\n\
+      \    return Square(side).area()"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def square_area(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def square_area(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

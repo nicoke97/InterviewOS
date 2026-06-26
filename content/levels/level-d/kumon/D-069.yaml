@@ -1,0 +1,15 @@
+id: D-069
+level: D
+page: 69
+set: 7
+block: B
+block_id: D.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'a a a b b' e imprime el dict.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''a'': 3, ''b'': 2}'
+starter_code: ''

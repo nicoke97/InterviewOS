@@ -1,0 +1,17 @@
+id: E-156
+level: E
+page: 156
+set: 16
+block: D
+block_id: E.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Animal con metodo hablar() que retorne 'sonido'; define Oveja(Animal)
+  que sobrescriba hablar() para retornar 'bee'; imprime Oveja().hablar().
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: bee
+starter_code: ''

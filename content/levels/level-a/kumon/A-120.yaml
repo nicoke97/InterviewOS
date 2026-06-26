@@ -1,0 +1,15 @@
+id: A-120
+level: A
+page: 120
+set: 12
+block: C
+block_id: A.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dado n=1, imprime 'par' si es par o 'impar' si es impar.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: impar
+starter_code: ''

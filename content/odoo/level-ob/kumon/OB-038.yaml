@@ -1,0 +1,15 @@
+id: OB-038
+level: OB
+page: 38
+set: 4
+block: A
+block_id: OB.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'search domain AND: state ''open'' Y amount>100; imprime ids.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1]'
+starter_code: ''

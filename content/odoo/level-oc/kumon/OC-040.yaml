@@ -1,0 +1,15 @@
+id: OC-040
+level: OC
+page: 40
+set: 4
+block: A
+block_id: OC.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Reporte agrupado: imprime {estado: cantidad} ordenado por estado.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''done'': 1, ''open'': 2}'
+starter_code: ''

@@ -1,0 +1,20 @@
+id: E-091
+level: E
+page: 91
+set: 10
+block: B
+block_id: E.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Cuenta con saldo=0; metodo depositar(self, n) suma al saldo; metodo
+  saldo_actual(self) lo retorna. Deposita [100, 50] e imprime el saldo final.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '150'
+starter_code: ___
+reference_code: "class Cuenta:\n    def __init__(self):\n        self.saldo = 0\n\
+  \    def depositar(self, n):\n        self.saldo += n\n    def saldo_actual(self):\n\
+  \        return self.saldo\nc = Cuenta()\nc.depositar(100)\nc.depositar(50)\nprint(c.saldo_actual())"

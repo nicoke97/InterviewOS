@@ -1,0 +1,17 @@
+id: B-093
+level: B
+page: 93
+set: 10
+block: B
+block_id: B.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Calcula el factorial de 6 usando un bucle while.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '720'
+starter_code: ___
+reference_code: "n, r = 6, 1\nwhile n > 1:\n    r *= n\n    n -= 1\nprint(r)"

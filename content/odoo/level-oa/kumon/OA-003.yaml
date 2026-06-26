@@ -1,0 +1,19 @@
+id: OA-003
+level: OA
+page: 3
+set: 1
+block: A
+block_id: OA.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Crea un ticket con subject='Error' y state='new'; imprime el state.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: new
+starter_code: ___
+reference_code: 'rec = {''subject'': ''Error'', ''state'': ''new''}
+
+  print(rec[''state''])'

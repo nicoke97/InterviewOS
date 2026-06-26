@@ -1,0 +1,17 @@
+id: A-145
+level: A
+page: 145
+set: 15
+block: C
+block_id: A.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado n=9: imprime ''FizzBuzz'' si es multiplo de 15, ''Fizz'' de 3, ''Buzz''
+  de 5, si no el numero.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Fizz
+starter_code: ''

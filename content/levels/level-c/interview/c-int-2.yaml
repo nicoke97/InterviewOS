@@ -1,0 +1,9 @@
+id: c-int-2
+question: Que es slicing y como obtendrias los ultimos dos elementos de una lista?
+rubric:
+- slicing extrae una porcion con [inicio:fin:paso]
+- indices negativos cuentan desde el final
+- lista[-2:] da los ultimos dos
+sample_answer: 'Slicing extrae una sublista con lista[inicio:fin:paso]. Para los ultimos
+  dos: lista[-2:], usando indices negativos que cuentan desde el final.'
+category: python

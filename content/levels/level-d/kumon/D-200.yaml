@@ -1,0 +1,15 @@
+id: D-200
+level: D
+page: 200
+set: 20
+block: D
+block_id: D.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Valida con guard que el numero sea par, si no lanza error; llama con 4
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

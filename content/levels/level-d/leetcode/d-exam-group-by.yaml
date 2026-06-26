@@ -1,0 +1,32 @@
+id: d-exam-group-by
+title: Agrupar y contar
+fn_name: agrupar
+description: Cuenta la frecuencia de cada elemento.
+test_cases:
+- args:
+  - - x
+    - y
+    - x
+    - z
+    - x
+  expected:
+    x: 3
+    y: 1
+    z: 1
+tiers:
+  1:
+    starter_code: "def agrupar(items):\n    d = {}\n    return d"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def agrupar(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def agrupar(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

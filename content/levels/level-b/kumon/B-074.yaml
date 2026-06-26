@@ -1,0 +1,17 @@
+id: B-074
+level: B
+page: 74
+set: 8
+block: B
+block_id: B.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Recorre de 1 a 10 e imprime los numeros, pero DETENTE (break) al llegar a
+  3.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 '
+starter_code: ''

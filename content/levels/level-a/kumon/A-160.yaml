@@ -1,0 +1,15 @@
+id: A-160
+level: A
+page: 160
+set: 16
+block: D
+block_id: A.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Mochila'' y precio=80, imprime: ''Mochila cuesta 80'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Mochila cuesta 80
+starter_code: ''

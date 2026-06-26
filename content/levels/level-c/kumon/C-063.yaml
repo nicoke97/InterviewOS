@@ -1,0 +1,17 @@
+id: C-063
+level: C
+page: 63
+set: 7
+block: B
+block_id: C.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Invierte el texto 'python' con slicing
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: nohtyp
+starter_code: ___
+reference_code: print('python'[::-1])

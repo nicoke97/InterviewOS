@@ -1,0 +1,15 @@
+id: D-198
+level: D
+page: 198
+set: 20
+block: D
+block_id: D.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Lanza y captura un KeyError personalizado
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '''falta'''
+starter_code: ''

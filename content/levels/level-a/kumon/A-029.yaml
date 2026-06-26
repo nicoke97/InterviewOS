@@ -1,0 +1,15 @@
+id: A-029
+level: A
+page: 29
+set: 3
+block: A
+block_id: A.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de 3 * 9
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '27'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: C-057
+level: C
+page: 57
+set: 6
+block: B
+block_id: C.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada ['p', 'q', 'r', 's'], imprime el slice [2:4].
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''r'', ''s'']'
+starter_code: ''

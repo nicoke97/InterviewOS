@@ -1,0 +1,20 @@
+id: A-142
+level: A
+page: 142
+set: 15
+block: C
+block_id: A.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado n=5: imprime ''FizzBuzz'' si es multiplo de 15, ''Fizz'' de 3, ''Buzz''
+  de 5, si no el numero.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Buzz
+starter_code: "n = ___\nif n % 15 == 0:\n    print(___)\nelif n % 3 == 0:\n    print(___)\n\
+  elif n % 5 == 0:\n    print(___)\nelse:\n    print(___)"
+reference_code: "n = 5\nif n % 15 == 0:\n    print('FizzBuzz')\nelif n % 3 == 0:\n\
+  \    print('Fizz')\nelif n % 5 == 0:\n    print('Buzz')\nelse:\n    print(n)"

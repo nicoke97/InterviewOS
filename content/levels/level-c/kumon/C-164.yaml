@@ -1,0 +1,16 @@
+id: C-164
+level: C
+page: 164
+set: 17
+block: D
+block_id: C.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Reemplaza todas las 'a' por '@' en 'banana'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: b@n@n@
+starter_code: ''

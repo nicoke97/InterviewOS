@@ -1,0 +1,19 @@
+id: E-033
+level: E
+page: 33
+set: 4
+block: A
+block_id: E.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define Persona con nombre y edad; crea Persona('Mia', 19) e imprime ambos
+  atributos separados por espacio.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Mia 19
+starter_code: ___
+reference_code: "class Persona:\n    def __init__(self, nombre, edad):\n        self.nombre\
+  \ = nombre\n        self.edad = edad\np = Persona('Mia', 19)\nprint(p.nombre, p.edad)"

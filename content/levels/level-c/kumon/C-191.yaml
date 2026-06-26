@@ -1,0 +1,17 @@
+id: C-191
+level: C
+page: 191
+set: 20
+block: D
+block_id: C.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Imprime 3.14159 con 2 decimales usando format()
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3.14'
+starter_code: print(___)
+reference_code: print('{:.2f}'.format(3.14159))

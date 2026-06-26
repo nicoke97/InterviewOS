@@ -1,0 +1,15 @@
+id: A-198
+level: A
+page: 198
+set: 20
+block: D
+block_id: A.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Dado monto=1234.5: imprime con formato ''$1,234.50'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: $1,234.50
+starter_code: ''

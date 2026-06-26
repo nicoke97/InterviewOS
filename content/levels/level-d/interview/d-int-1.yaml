@@ -1,0 +1,10 @@
+id: d-int-1
+question: Cuando usarias un diccionario y cuando un set? Da un ejemplo de cada uno.
+rubric:
+- dict mapea claves a valores
+- set guarda elementos unicos sin orden
+- dict para asociaciones; set para unicidad/pertenencia
+sample_answer: 'Un dict asocia claves con valores (ej. {''precio'': 100}); un set
+  guarda elementos unicos y permite comprobar pertenencia rapido (ej. quitar duplicados).
+  Uso dict para mapear datos y set para unicidad.'
+category: python

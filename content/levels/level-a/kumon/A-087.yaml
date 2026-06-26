@@ -1,0 +1,16 @@
+id: A-087
+level: A
+page: 87
+set: 9
+block: B
+block_id: A.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara a=15 y b=5, luego imprime: ''La suma de 15 y 5 es 20'''
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: La suma de 15 y 5 es 20
+starter_code: ''

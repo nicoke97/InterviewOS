@@ -1,0 +1,16 @@
+id: OC-046
+level: OC
+page: 46
+set: 5
+block: A
+block_id: OC.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Deduplica clientes de dos fuentes por id; imprime cuantos unicos hay.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

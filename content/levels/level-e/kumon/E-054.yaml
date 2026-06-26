@@ -1,0 +1,17 @@
+id: E-054
+level: E
+page: 54
+set: 6
+block: B
+block_id: E.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Calc con metodo sumar(self, a, b) que retorne a+b; crea Calc() e imprime
+  sumar(100, 1).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '101'
+starter_code: ''

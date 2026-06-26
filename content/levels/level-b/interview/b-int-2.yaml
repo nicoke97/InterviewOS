@@ -1,0 +1,9 @@
+id: b-int-2
+question: Que hace la palabra return en una funcion y en que se diferencia de print?
+rubric:
+- return devuelve un valor al que llama
+- print solo muestra en pantalla
+- el valor retornado se puede reutilizar
+sample_answer: return entrega un valor a quien llamo la funcion para poder usarlo
+  despues; print solo muestra texto en consola y no devuelve nada utilizable.
+category: python

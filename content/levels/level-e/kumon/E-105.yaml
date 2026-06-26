@@ -1,0 +1,17 @@
+id: E-105
+level: E
+page: 105
+set: 11
+block: C
+block_id: E.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Punto con x,y y __str__ que devuelva '(x, y)'; imprime el objeto Punto(10,
+  20).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: (10, 20)
+starter_code: ''

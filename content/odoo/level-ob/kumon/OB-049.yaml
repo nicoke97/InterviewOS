@@ -1,0 +1,15 @@
+id: OB-049
+level: OB
+page: 49
+set: 5
+block: A
+block_id: OB.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'many2one: agrupa los names de partner por sus ordenes e imprime la lista.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''B'', ''A'', ''B'']'
+starter_code: ''

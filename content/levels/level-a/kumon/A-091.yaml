@@ -1,0 +1,17 @@
+id: A-091
+level: A
+page: 91
+set: 10
+block: B
+block_id: A.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Repite el texto 'ab' 4 veces
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: abababab
+starter_code: print(___)
+reference_code: print('ab' * 4)

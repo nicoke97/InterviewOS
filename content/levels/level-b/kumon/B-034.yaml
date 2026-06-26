@@ -1,0 +1,16 @@
+id: B-034
+level: B
+page: 34
+set: 4
+block: A
+block_id: B.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime una cuenta regresiva de 8 a 1 separada por espacio.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '8 7 6 5 4 3 2 1 '
+starter_code: ''

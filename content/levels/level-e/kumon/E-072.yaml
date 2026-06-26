@@ -1,0 +1,20 @@
+id: E-072
+level: E
+page: 72
+set: 8
+block: B
+block_id: E.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Saludo con nombre en __init__ y metodo saludar(self, otro) que retorne
+  'Hola <otro>, soy <nombre>'; usa nombre='Bot', otro='Sam'.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Hola Sam, soy Bot
+starter_code: ___
+reference_code: "class Saludo:\n    def __init__(self, nombre):\n        self.nombre\
+  \ = nombre\n    def saludar(self, otro):\n        return f'Hola {otro}, soy {self.nombre}'\n\
+  s = Saludo('Bot')\nprint(s.saludar('Sam'))"

@@ -1,0 +1,34 @@
+id: b-cp-count-positive
+title: Contar positivos
+fn_name: contar_pos
+description: Cuenta cuantos numeros son > 0.
+test_cases:
+- args:
+  - - 1
+    - -2
+    - 3
+    - 0
+    - 5
+  expected: 3
+- args:
+  - - -1
+    - -2
+  expected: 0
+tiers:
+  1:
+    starter_code: "def contar_pos(nums):\n    c = 0\n    # recorre nums\n    return\
+      \ c"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def contar_pos(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def contar_pos(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

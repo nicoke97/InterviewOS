@@ -1,0 +1,30 @@
+id: c-exam-anagram
+title: Anagrama
+fn_name: es_anagrama
+description: True si t es anagrama de s.
+test_cases:
+- args:
+  - roma
+  - amor
+  expected: true
+- args:
+  - abc
+  - abd
+  expected: false
+tiers:
+  1:
+    starter_code: "def es_anagrama(s, t):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def es_anagrama(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def es_anagrama(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

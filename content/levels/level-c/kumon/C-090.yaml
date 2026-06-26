@@ -1,0 +1,15 @@
+id: C-090
+level: C
+page: 90
+set: 9
+block: B
+block_id: C.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dada la matriz [['x'], ['y']], imprime el elemento fila 1, columna 0.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: y
+starter_code: ''

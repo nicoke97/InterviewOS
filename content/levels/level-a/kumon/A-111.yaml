@@ -1,0 +1,17 @@
+id: A-111
+level: A
+page: 111
+set: 12
+block: C
+block_id: A.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dado n=4, imprime 'par' si es par o 'impar' si es impar.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: par
+starter_code: "n = ___\nif n % 2 == 0:\n    print(___)\nelse:\n    print(___)"
+reference_code: "n = 4\nif n % 2 == 0:\n    print('par')\nelse:\n    print('impar')"

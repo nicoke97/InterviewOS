@@ -1,0 +1,16 @@
+id: D-146
+level: D
+page: 146
+set: 15
+block: C
+block_id: D.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Imprime True si 'z' NO esta en {'a','b'}
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

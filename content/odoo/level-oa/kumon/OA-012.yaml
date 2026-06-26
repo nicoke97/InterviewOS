@@ -1,0 +1,21 @@
+id: OA-012
+level: OA
+page: 12
+set: 2
+block: A
+block_id: OA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado un recordset de productos, imprime el name del primero.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: A
+starter_code: 'products = ___
+
+  print(___)'
+reference_code: 'products = [{''name'': ''A''}, {''name'': ''B''}]
+
+  print(products[0][''name''])'

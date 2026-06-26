@@ -1,0 +1,15 @@
+id: C-150
+level: C
+page: 150
+set: 15
+block: C
+block_id: C.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Convierte [1,2,3] en sus negativos
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[-1, -2, -3]'
+starter_code: ''

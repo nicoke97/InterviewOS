@@ -9,38 +9,72 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content" / "levels"
+SCHEDULE = ROOT / "content" / "schedule"
 REQUIRED_BLOCKS = 12
-REQUIRED_DRILLS_PER_BLOCK = 20
+REQUIRED_PAGES_PER_BLOCK = 20
+REQUIRED_PAGES_PER_LEVEL = 80
 REQUIRED_LEETCODE_PER_LEVEL = 4
 REQUIRED_INTERVIEW_PER_LEVEL = 3
 
 
+def page_to_set(page: int) -> int:
+    return (page - 1) // 10 + 1
+
+
 def main() -> int:
     errors: list[str] = []
-    drill_counts: dict[str, int] = {}
+    page_counts_by_block: dict[str, int] = {}
+    page_counts_by_level: dict[str, int] = {}
+    seen_ids: set[str] = set()
     leetcode_counts: dict[str, int] = {}
     interview_counts: dict[str, int] = {}
     odoo_counts: dict[str, int] = {}
+
+    levels_yaml = yaml.safe_load((SCHEDULE / "kumon-levels.yaml").read_text(encoding="utf-8"))
+    expected_blocks = {
+        f"{lvl}.{blk}"
+        for lvl, ldata in (levels_yaml.get("levels") or {}).items()
+        for blk in (ldata.get("blocks") or {})
+    }
 
     for level_dir in sorted(CONTENT.glob("level-*")):
         level = level_dir.name.replace("level-", "")
         kumon_dir = level_dir / "kumon"
         if kumon_dir.exists():
-            for f in kumon_dir.glob("*.yaml"):
+            for f in sorted(kumon_dir.glob("*.yaml")):
                 data = yaml.safe_load(f.read_text(encoding="utf-8"))
                 if not data:
                     errors.append(f"Empty file: {f}")
                     continue
-                for field in ("id", "block", "order", "prompt", "validation"):
+                for field in ("id", "level", "page", "set", "block", "block_id", "order", "prompt", "validation"):
                     if field not in data:
                         errors.append(f"{f}: missing {field}")
-                block = data.get("block", "")
-                drill_counts[block] = drill_counts.get(block, 0) + 1
+                page_id = data.get("id", "")
+                if page_id in seen_ids:
+                    errors.append(f"Duplicate page id: {page_id}")
+                seen_ids.add(page_id)
+
+                level_letter = str(data.get("level", "")).upper()
+                page_num = data.get("page", 0)
+                expected_id = f"{level_letter}-{page_num:03d}"
+                if page_id != expected_id:
+                    errors.append(f"{f}: id {page_id} != expected {expected_id}")
+
+                if data.get("set") != page_to_set(page_num):
+                    errors.append(f"{f}: set {data.get('set')} != expected {page_to_set(page_num)}")
+
+                block_id = data.get("block_id", "")
+                if block_id not in expected_blocks:
+                    errors.append(f"{f}: unknown block_id {block_id}")
+
+                page_counts_by_block[block_id] = page_counts_by_block.get(block_id, 0) + 1
+                page_counts_by_level[level_letter] = page_counts_by_level.get(level_letter, 0) + 1
+
                 order = data.get("order", 0)
                 if order <= 3 and data.get("scaffolding", "full") != "full":
-                    errors.append(f"{f}: drills 1-3 should have scaffolding=full")
+                    errors.append(f"{f}: pages 1-3 in block should have scaffolding=full")
                 if order > 3 and data.get("scaffolding") == "full":
-                    errors.append(f"{f}: drill {order} should not have full scaffolding")
+                    errors.append(f"{f}: page order {order} should not have full scaffolding")
 
         lc_dir = level_dir / "leetcode"
         if lc_dir.exists():
@@ -62,12 +96,19 @@ def main() -> int:
                         errors.append(f"{f}: missing question")
                     counter[level] = counter.get(level, 0) + 1
 
-    for block, count in drill_counts.items():
-        if count != REQUIRED_DRILLS_PER_BLOCK:
-            errors.append(f"Block {block}: expected {REQUIRED_DRILLS_PER_BLOCK} drills, got {count}")
+    for block_id, count in page_counts_by_block.items():
+        if count != REQUIRED_PAGES_PER_BLOCK:
+            errors.append(f"Block {block_id}: expected {REQUIRED_PAGES_PER_BLOCK} pages, got {count}")
 
-    if len(drill_counts) != REQUIRED_BLOCKS:
-        errors.append(f"Expected {REQUIRED_BLOCKS} blocks, got {len(drill_counts)}")
+    if len(page_counts_by_block) != REQUIRED_BLOCKS:
+        errors.append(f"Expected {REQUIRED_BLOCKS} blocks, got {len(page_counts_by_block)}")
+
+    for level_letter in ("A", "B", "C"):
+        if page_counts_by_level.get(level_letter, 0) != REQUIRED_PAGES_PER_LEVEL:
+            errors.append(
+                f"Level {level_letter}: expected {REQUIRED_PAGES_PER_LEVEL} pages, "
+                f"got {page_counts_by_level.get(level_letter, 0)}"
+            )
 
     for level in ("a", "b", "c"):
         if leetcode_counts.get(level, 0) != REQUIRED_LEETCODE_PER_LEVEL:
@@ -77,8 +118,8 @@ def main() -> int:
         if odoo_counts.get(level, 0) != REQUIRED_INTERVIEW_PER_LEVEL:
             errors.append(f"Level {level}: expected {REQUIRED_INTERVIEW_PER_LEVEL} odoo, got {odoo_counts.get(level, 0)}")
 
-    total_drills = sum(drill_counts.values())
-    print(f"Validated {total_drills} kumon drills, {sum(leetcode_counts.values())} leetcode, "
+    total_pages = sum(page_counts_by_level.values())
+    print(f"Validated {total_pages} kumon pages, {sum(leetcode_counts.values())} leetcode, "
           f"{sum(interview_counts.values())} interview, {sum(odoo_counts.values())} odoo")
 
     if errors:

@@ -1,0 +1,32 @@
+id: e-cp-bank
+title: Saldo final
+fn_name: final_balance
+description: Crea una clase Cuenta con deposito y retorna el saldo final.
+test_cases:
+- args:
+  - - 10
+    - 20
+    - 5
+  expected: 35
+- args:
+  - []
+  expected: 0
+tiers:
+  1:
+    starter_code: "def final_balance(deps):\n    class Cuenta:\n        def __init__(self):\n\
+      \            self.s = 0\n        def deposito(self, n):\n            self.s\
+      \ += n\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def final_balance(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def final_balance(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

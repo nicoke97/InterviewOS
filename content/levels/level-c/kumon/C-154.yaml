@@ -1,0 +1,16 @@
+id: C-154
+level: C
+page: 154
+set: 16
+block: D
+block_id: C.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Une ['2024','06','25'] con guiones (fecha)
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2024-06-25'
+starter_code: ''

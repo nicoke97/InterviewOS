@@ -1,0 +1,33 @@
+id: c-cp-evens
+title: Filtrar pares
+fn_name: pares
+description: Retorna solo los numeros pares.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  expected:
+  - 2
+  - 4
+  - 6
+tiers:
+  1:
+    starter_code: "def pares(nums):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def pares(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def pares(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

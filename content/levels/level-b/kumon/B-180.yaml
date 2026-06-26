@@ -1,0 +1,15 @@
+id: B-180
+level: B
+page: 180
+set: 18
+block: D
+block_id: B.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define inicial(nombre, sufijo='.') y llamala con 'Ana'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: A.
+starter_code: ''

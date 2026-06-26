@@ -1,0 +1,15 @@
+id: C-199
+level: C
+page: 199
+set: 20
+block: D
+block_id: C.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime 255 en hexadecimal con f-string
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ff
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OB-045
+level: OB
+page: 45
+set: 5
+block: A
+block_id: OB.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'one2many: suma los subtotales (qty*price) de las lineas de la orden.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: ''

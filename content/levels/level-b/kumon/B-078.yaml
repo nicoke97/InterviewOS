@@ -1,0 +1,16 @@
+id: B-078
+level: B
+page: 78
+set: 8
+block: B
+block_id: B.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Recorre de 1 a 10 e imprime los numeros, pero DETENTE (break) al llegar a
+  2.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1 '
+starter_code: ''

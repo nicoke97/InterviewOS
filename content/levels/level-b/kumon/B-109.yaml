@@ -1,0 +1,15 @@
+id: B-109
+level: B
+page: 109
+set: 11
+block: C
+block_id: B.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado ['si', 'no'], imprime 'indice:valor' por cada elemento usando enumerate.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0:si 1:no '
+starter_code: ''

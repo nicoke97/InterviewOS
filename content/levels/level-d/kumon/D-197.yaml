@@ -1,0 +1,16 @@
+id: D-197
+level: D
+page: 197
+set: 20
+block: D
+block_id: D.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Usa assert para verificar que 2+2==4 e imprime 'ok'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ok
+starter_code: ''

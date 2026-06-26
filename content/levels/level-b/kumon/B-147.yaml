@@ -1,0 +1,16 @@
+id: B-147
+level: B
+page: 147
+set: 15
+block: C
+block_id: B.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado ['p', 'q', 'p'], cuenta cuantas veces aparece 'p' e imprime el conteo.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

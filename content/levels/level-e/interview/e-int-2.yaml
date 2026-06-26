@@ -1,0 +1,10 @@
+id: e-int-2
+question: Explica que es la herencia y para que sirve sobrescribir un metodo.
+rubric:
+- una subclase hereda de una clase base
+- reutiliza y extiende comportamiento
+- sobrescribir cambia el comportamiento heredado
+sample_answer: La herencia permite que una subclase reutilice atributos y metodos
+  de una clase base. Sobrescribir un metodo redefine su comportamiento en la subclase,
+  logrando polimorfismo.
+category: python

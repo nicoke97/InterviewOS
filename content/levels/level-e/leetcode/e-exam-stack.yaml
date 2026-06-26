@@ -1,0 +1,32 @@
+id: e-exam-stack
+title: Pila (Stack)
+fn_name: stack_top
+description: Crea una Stack con push/pop; aplica las operaciones y retorna el tope.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+  expected: 3
+- args:
+  - - 5
+  expected: 5
+tiers:
+  1:
+    starter_code: "def stack_top(valores):\n    class Stack:\n        def __init__(self):\n\
+      \            self.data = []\n        def push(self, x):\n            self.data.append(x)\n\
+      \        def top(self):\n            return self.data[-1]\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def stack_top(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def stack_top(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

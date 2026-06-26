@@ -1,0 +1,16 @@
+id: A-157
+level: A
+page: 157
+set: 16
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Lampara'' y precio=33, imprime: ''Lampara cuesta 33'''
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lampara cuesta 33
+starter_code: ''

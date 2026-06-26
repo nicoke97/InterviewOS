@@ -1,0 +1,16 @@
+id: E-160
+level: E
+page: 160
+set: 16
+block: D
+block_id: E.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Animal con metodo hablar() que retorne 'sonido'; define Pollo(Animal)
+  que sobrescriba hablar() para retornar 'pio'; imprime Pollo().hablar().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: pio
+starter_code: ''

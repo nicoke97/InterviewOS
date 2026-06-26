@@ -1,0 +1,15 @@
+id: OC-029
+level: OC
+page: 29
+set: 3
+block: A
+block_id: OC.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Top 2 tickets por prioridad: imprime sus subjects.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''b'', ''c'']'
+starter_code: ''

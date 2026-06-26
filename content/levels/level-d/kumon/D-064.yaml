@@ -1,0 +1,16 @@
+id: D-064
+level: D
+page: 64
+set: 7
+block: B
+block_id: D.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'uno uno dos' e imprime el dict.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''uno'': 2, ''dos'': 1}'
+starter_code: ''

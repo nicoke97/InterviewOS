@@ -1,0 +1,19 @@
+id: D-062
+level: D
+page: 62
+set: 7
+block: B
+block_id: D.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'sol luna sol sol' e imprime el dict.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''sol'': 3, ''luna'': 1}'
+starter_code: "texto = ___\nfreq = ___\nfor w in ___:\n    freq[w] = freq.get(w, 0)\
+  \ + 1\nprint(___)"
+reference_code: "texto = 'sol luna sol sol'\nfreq = {}\nfor w in texto.split():\n\
+  \    freq[w] = freq.get(w, 0) + 1\nprint(freq)"

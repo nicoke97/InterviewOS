@@ -1,0 +1,10 @@
+id: c-int-1
+question: Cual es la diferencia entre una lista y una tupla en Python?
+rubric:
+- la lista es mutable
+- la tupla es inmutable
+- tuplas para datos fijos, listas para datos que cambian
+sample_answer: Una lista es mutable (puedes agregar/quitar/cambiar elementos); una
+  tupla es inmutable (no cambia tras crearse). Usas tuplas para datos fijos como coordenadas
+  y listas para colecciones que cambian.
+category: python

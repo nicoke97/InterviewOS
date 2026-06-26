@@ -1,0 +1,15 @@
+id: D-179
+level: D
+page: 179
+set: 18
+block: D
+block_id: D.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Recorre indices 0..3 de [1,2] capturando IndexError
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 - - '
+starter_code: ''

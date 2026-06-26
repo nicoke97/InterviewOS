@@ -1,0 +1,15 @@
+id: C-050
+level: C
+page: 50
+set: 5
+block: A
+block_id: C.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dada [6, 5, 4], recorre con un bucle y acumula la suma; imprime el total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ''

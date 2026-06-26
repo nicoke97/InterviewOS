@@ -1,0 +1,15 @@
+id: A-059
+level: A
+page: 59
+set: 6
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Une las palabras 'gran' y 'equipo' con un espacio e imprime el resultado.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: gran equipo
+starter_code: ''

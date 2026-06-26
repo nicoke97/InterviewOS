@@ -1,0 +1,16 @@
+id: C-146
+level: C
+page: 146
+set: 15
+block: C
+block_id: C.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Filtra palabras de >3 letras en [' a','casa','sol','arbol'] (usa strip)
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''casa'', ''arbol'']'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: E-014
+level: E
+page: 14
+set: 2
+block: A
+block_id: E.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define clase Perro con __init__(self, nombre); crea Perro('Max') e imprime
+  su .nombre.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Max
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OB-047
+level: OB
+page: 47
+set: 5
+block: A
+block_id: OB.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'many2many: imprime las etiquetas (tags) de un ticket.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''urgente'', ''bug'']'
+starter_code: ''

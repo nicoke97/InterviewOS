@@ -1,0 +1,16 @@
+id: A-196
+level: A
+page: 196
+set: 20
+block: D
+block_id: A.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Dado lista de notas [80,90,70]: imprime el promedio'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '80.0'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OC-005
+level: OC
+page: 5
+set: 1
+block: A
+block_id: OC.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Imprime True si la transicion de 'new' a 'in_progress' es valida.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

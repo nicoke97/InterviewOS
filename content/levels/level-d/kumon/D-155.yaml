@@ -1,0 +1,16 @@
+id: D-155
+level: D
+page: 155
+set: 16
+block: D
+block_id: D.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Captura el error de 1/0 e imprime el tipo del error
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ZeroDivisionError
+starter_code: ''

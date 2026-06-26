@@ -1,0 +1,30 @@
+id: c-cp-reverse-list
+title: Invertir lista
+fn_name: invertir_lista
+description: Retorna la lista invertida.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+  expected:
+  - 3
+  - 2
+  - 1
+tiers:
+  1:
+    starter_code: "def invertir_lista(nums):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def invertir_lista(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def invertir_lista(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

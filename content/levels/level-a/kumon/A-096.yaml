@@ -1,0 +1,16 @@
+id: A-096
+level: A
+page: 96
+set: 10
+block: B
+block_id: A.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Invierte el texto 'abc' con slicing
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: cba
+starter_code: ''

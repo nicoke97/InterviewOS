@@ -1,0 +1,16 @@
+id: C-064
+level: C
+page: 64
+set: 7
+block: B
+block_id: C.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [10,20,30,40,50], imprime los ultimos 2 con [-2:]
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[40, 50]'
+starter_code: ''

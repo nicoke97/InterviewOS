@@ -1,0 +1,17 @@
+id: B-171
+level: B
+page: 171
+set: 18
+block: D
+block_id: B.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define saludo(nombre='Invitado') y llamala SIN argumentos
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Hola, Invitado
+starter_code: ___
+reference_code: "def saludo(nombre='Invitado'):\n    return f'Hola, {nombre}'\nprint(saludo())"

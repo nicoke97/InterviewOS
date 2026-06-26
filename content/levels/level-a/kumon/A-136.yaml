@@ -1,0 +1,16 @@
+id: A-136
+level: A
+page: 136
+set: 14
+block: C
+block_id: A.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado dia=''sabado'': imprime True si es sabado o domingo'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

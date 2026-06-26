@@ -1,0 +1,21 @@
+id: A-132
+level: A
+page: 132
+set: 14
+block: C
+block_id: A.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Dado a=-1, b=4: imprime True si ALGUNO es positivo'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: 'a, b = -1, 4
+
+  print(___)'
+reference_code: 'a, b = -1, 4
+
+  print(a > 0 or b > 0)'

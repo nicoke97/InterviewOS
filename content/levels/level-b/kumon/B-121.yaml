@@ -1,0 +1,19 @@
+id: B-121
+level: B
+page: 121
+set: 13
+block: C
+block_id: B.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Usa dos bucles anidados para contar cuantas parejas (i,j) hay con i,j en range(3).
+  Imprime el total.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: "c = ___\nfor i in ___:\n    for j in ___:\n        c += 1\nprint(c)"
+reference_code: "c = 0\nfor i in range(3):\n    for j in range(3):\n        c += 1\n\
+  print(c)"

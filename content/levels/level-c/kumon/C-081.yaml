@@ -1,0 +1,21 @@
+id: C-081
+level: C
+page: 81
+set: 9
+block: B
+block_id: C.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dada la matriz [[1, 2], [3, 4]], imprime el elemento fila 1, columna 0.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'm = ___
+
+  print(___)'
+reference_code: 'm = [[1, 2], [3, 4]]
+
+  print(m[1][0])'

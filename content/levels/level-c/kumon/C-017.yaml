@@ -1,0 +1,16 @@
+id: C-017
+level: C
+page: 17
+set: 2
+block: A
+block_id: C.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea [5] y agrega los numeros 6,7 en un bucle
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[5, 6, 7]'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: OB-025
+level: OB
+page: 25
+set: 3
+block: A
+block_id: OB.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'write condicional: marca ''done'' los tickets con priority 3; cuenta cuantos
+  cambiaron.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

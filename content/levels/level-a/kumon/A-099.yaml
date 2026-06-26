@@ -1,0 +1,15 @@
+id: A-099
+level: A
+page: 99
+set: 10
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Imprime ''Total: $1500'' usando una variable monto=1500'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'Total: $1500'
+starter_code: ''

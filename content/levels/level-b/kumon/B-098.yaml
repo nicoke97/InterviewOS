@@ -1,0 +1,15 @@
+id: B-098
+level: B
+page: 98
+set: 10
+block: B
+block_id: B.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Calcula el factorial de 1 usando un bucle while.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

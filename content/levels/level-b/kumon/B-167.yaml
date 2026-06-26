@@ -1,0 +1,16 @@
+id: B-167
+level: B
+page: 167
+set: 17
+block: D
+block_id: B.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define sumar(a, b) que retorne a+b y llamala con 0 y 9.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

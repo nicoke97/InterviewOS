@@ -1,0 +1,16 @@
+id: A-027
+level: A
+page: 27
+set: 3
+block: A
+block_id: A.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de 8 + 9
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '17'
+starter_code: ''

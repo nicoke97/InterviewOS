@@ -1,0 +1,15 @@
+id: B-199
+level: B
+page: 199
+set: 20
+block: D
+block_id: B.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define total(precios) que sume una lista; llamala con [10,20,30]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '60'
+starter_code: ''

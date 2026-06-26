@@ -1,0 +1,25 @@
+id: OC-041
+level: OC
+page: 41
+set: 5
+block: A
+block_id: OC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Integra ordenes con clientes por partner_id; imprime los names de cliente.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''ACME'', ''Globex'']'
+starter_code: 'partners = ___
+
+  orders = ___
+
+  print(___)'
+reference_code: 'partners = {1: ''ACME'', 2: ''Globex''}
+
+  orders = [{''partner_id'': 1}, {''partner_id'': 2}]
+
+  print([partners[o[''partner_id'']] for o in orders])'

@@ -1,0 +1,16 @@
+id: C-044
+level: C
+page: 44
+set: 5
+block: A
+block_id: C.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dada [100], recorre con un bucle y acumula la suma; imprime el total.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

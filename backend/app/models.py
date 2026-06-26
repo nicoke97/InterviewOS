@@ -14,6 +14,7 @@ from sqlalchemy import (
     String,
     Text,
     create_engine,
+    event,
 )
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 
@@ -25,6 +26,14 @@ DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+
+
+@event.listens_for(engine, "connect")
+def _sqlite_pragmas(dbapi_conn, _connection_record):
+    cursor = dbapi_conn.cursor()
+    cursor.execute("PRAGMA journal_mode=WAL")
+    cursor.execute("PRAGMA busy_timeout=5000")
+    cursor.close()
 
 
 class Base(DeclarativeBase):
@@ -101,6 +110,7 @@ class DailySheet(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     date: Mapped[date] = mapped_column(Date, index=True)
     slot: Mapped[str] = mapped_column(String(16))
+    level: Mapped[str] = mapped_column(String(8), default="a", index=True)
     drill_ids: Mapped[list] = mapped_column(JSON)
     completed_ids: Mapped[list] = mapped_column(JSON, default=list)
     generated_by_rule: Mapped[str] = mapped_column(String(32))
@@ -141,19 +151,139 @@ class StudyDay(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     date: Mapped[date] = mapped_column(Date, unique=True, index=True)
     day_number: Mapped[int] = mapped_column(Integer, default=1)
-    active_block: Mapped[str] = mapped_column(String(32), default="a1-variables")
+    active_block: Mapped[str] = mapped_column(String(32), default="A.A")
+    curriculum_advanced: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+# ---------------------------------------------------------------------------
+# New Kumon mastery model (set-based, domain progression)
+# ---------------------------------------------------------------------------
+
+class SetProgress(Base):
+    """Progress for a single set of 10 pages within a level.
+
+    A set is "mastered" only when all 10 pages have been answered correctly
+    (self-correction allowed) AND the accumulated time is within the set's
+    standard time. Otherwise it goes into "repeating" and the page progress
+    resets so it must be solved again — the Kumon repetition loop.
+    """
+
+    __tablename__ = "set_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    track: Mapped[str] = mapped_column(String(16), default="python", index=True)
+    level: Mapped[str] = mapped_column(String(8), index=True)        # route level: a..e, oa..
+    set_number: Mapped[int] = mapped_column(Integer, index=True)     # 1..20
+    status: Mapped[str] = mapped_column(String(16), default="current")  # current|mastered|repeating
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    completed_pages: Mapped[list] = mapped_column(JSON, default=list)   # page ids passed this attempt
+    errors: Mapped[int] = mapped_column(Integer, default=0)             # failed checks this attempt
+    accumulated_time_ms: Mapped[int] = mapped_column(Integer, default=0)
+    best_time_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    last_time_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    mastered_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    first_attempt_accuracy: Mapped[float | None] = mapped_column(Float, nullable=True)
+    first_attempt_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    solid_mastery: Mapped[bool] = mapped_column(Boolean, default=False)
+    repeat_scheduled_for: Mapped[date | None] = mapped_column(Date, nullable=True)
+    repeat_completed_at: Mapped[date | None] = mapped_column(Date, nullable=True)
+    failure_flags: Mapped[list] = mapped_column(JSON, default=list)
+
+
+class DailyPlan(Base):
+    """Orientador session plan for a calendar day (one or more per day)."""
+
+    __tablename__ = "daily_plans"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    date: Mapped[date] = mapped_column(Date, index=True)
+    track: Mapped[str] = mapped_column(String(16), default="python", index=True)
+    session_number: Mapped[int] = mapped_column(Integer, default=1)
+    minutes_budget: Mapped[int] = mapped_column(Integer, default=20)
+    assignments: Mapped[list] = mapped_column(JSON, default=list)
+    completed_indices: Mapped[list] = mapped_column(JSON, default=list)
+    calculated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    status: Mapped[str] = mapped_column(String(16), default="active")  # active | completed
+
+
+class CheckpointProgress(Base):
+    """LeetCode checkpoint at the end of each 50-page block."""
+
+    __tablename__ = "checkpoint_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    level: Mapped[str] = mapped_column(String(8), index=True)
+    block_letter: Mapped[str] = mapped_column(String(4))
+    passed: Mapped[bool] = mapped_column(Boolean, default=False)
+    passed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
+class LevelExamProgress(Base):
+    """Level completion exam (LeetCode + interview) at page 200."""
+
+    __tablename__ = "level_exam_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    level: Mapped[str] = mapped_column(String(8), unique=True, index=True)
+    passed: Mapped[bool] = mapped_column(Boolean, default=False)
+    passed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
+def _migrate_schema() -> None:
+    """Lightweight SQLite migrations for columns added after first deploy."""
+    from sqlalchemy import inspect, text
+
+    insp = inspect(engine)
+    if "study_days" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("study_days")}
+        if "curriculum_advanced" not in cols:
+            with engine.begin() as conn:
+                conn.execute(
+                    text("ALTER TABLE study_days ADD COLUMN curriculum_advanced BOOLEAN DEFAULT 0")
+                )
+    if "daily_sheets" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("daily_sheets")}
+        if "level" not in cols:
+            with engine.begin() as conn:
+                conn.execute(
+                    text("ALTER TABLE daily_sheets ADD COLUMN level VARCHAR(8) DEFAULT 'a'")
+                )
+    if "set_progress" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("set_progress")}
+        migrations = [
+            ("first_attempt_accuracy", "FLOAT"),
+            ("first_attempt_at", "DATETIME"),
+            ("solid_mastery", "BOOLEAN DEFAULT 0"),
+            ("repeat_scheduled_for", "DATE"),
+            ("repeat_completed_at", "DATE"),
+            ("failure_flags", "TEXT DEFAULT '[]'"),
+        ]
+        for col, typ in migrations:
+            if col not in cols:
+                with engine.begin() as conn:
+                    conn.execute(text(f"ALTER TABLE set_progress ADD COLUMN {col} {typ}"))
+    if "daily_plans" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("daily_plans")}
+        if "session_number" not in cols:
+            with engine.begin() as conn:
+                conn.execute(
+                    text("ALTER TABLE daily_plans ADD COLUMN session_number INTEGER DEFAULT 1")
+                )
 
 
 def init_db() -> None:
     Base.metadata.create_all(bind=engine)
+    _migrate_schema()
     db = SessionLocal()
     try:
         if not db.query(Streak).first():
             db.add(Streak())
         if not db.query(AppSettings).filter_by(key="focus_mode").first():
             db.add(AppSettings(key="focus_mode", value="false"))
+        if not db.query(AppSettings).filter_by(key="dev_mode").first():
+            db.add(AppSettings(key="dev_mode", value="false"))
         if not db.query(StudyDay).first():
-            db.add(StudyDay(date=date.today(), day_number=1, active_block="a1-variables"))
+            db.add(StudyDay(date=date.today(), day_number=1, active_block="A.A"))
         db.commit()
     finally:
         db.close()

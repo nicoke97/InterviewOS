@@ -1,0 +1,16 @@
+id: D-077
+level: D
+page: 77
+set: 8
+block: B
+block_id: D.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado un dict anidado, agrega una clave al sub-dict
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''cfg'': {''on'': True, ''nivel'': 5}}'
+starter_code: ''

@@ -2,8 +2,10 @@
   "name": "pythonos",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
-    "dev:api": "cd backend && python -m uvicorn app.main:app --reload --port 8000",
+    "dev": "npm run dev:clean && concurrently -k \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "cd backend && python -m uvicorn app.main:app --reload --reload-dir app --port 8001 --reload-delay 1",
+    "dev:api:stable": "cd backend && python -m uvicorn app.main:app --port 8001",
+    "dev:clean": "powershell -ExecutionPolicy Bypass -File scripts/dev-clean.ps1",
     "dev:web": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "init-db": "python scripts/init-db.py",

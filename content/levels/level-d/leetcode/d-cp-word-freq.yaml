@@ -1,0 +1,28 @@
+id: d-cp-word-freq
+title: Frecuencia de palabras
+fn_name: frecuencia
+description: Cuenta cada palabra y retorna un dict.
+test_cases:
+- args:
+  - a b a
+  expected:
+    a: 2
+    b: 1
+tiers:
+  1:
+    starter_code: "def frecuencia(texto):\n    freq = {}\n    # recorre texto.split()\n\
+      \    return freq"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def frecuencia(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def frecuencia(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,16 @@
+id: OA-034
+level: OA
+page: 34
+set: 4
+block: A
+block_id: OA.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'mapped sobre relacion: imprime el name del partner de cada orden.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''X'', ''Y'']'
+starter_code: ''

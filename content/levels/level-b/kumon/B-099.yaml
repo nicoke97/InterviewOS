@@ -1,0 +1,15 @@
+id: B-099
+level: B
+page: 99
+set: 10
+block: B
+block_id: B.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Calcula el factorial de 9 usando un bucle while.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '362880'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OB-004
+level: OB
+page: 4
+set: 1
+block: A
+block_id: OB.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define un modelo con un campo Float price con default 0.0; imprime su tipo.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: float
+starter_code: ''

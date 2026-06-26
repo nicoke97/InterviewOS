@@ -1,0 +1,16 @@
+id: A-077
+level: A
+page: 77
+set: 8
+block: B
+block_id: A.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Reemplaza 'l' por 'L' en 'hello'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: heLLo
+starter_code: ''

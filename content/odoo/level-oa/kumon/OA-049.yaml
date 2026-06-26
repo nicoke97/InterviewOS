@@ -1,0 +1,15 @@
+id: OA-049
+level: OA
+page: 49
+set: 5
+block: A
+block_id: OA.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Cuenta cuantos productos tienen stock 0.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

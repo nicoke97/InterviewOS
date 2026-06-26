@@ -1,0 +1,10 @@
+id: d-int-2
+question: Para que sirve try/except y por que es mejor que dejar que el programa falle?
+rubric:
+- captura errores en tiempo de ejecucion
+- permite manejar el fallo con gracia
+- evita que el programa se caiga
+sample_answer: try/except captura excepciones para manejarlas (mostrar un mensaje,
+  usar un valor por defecto) en lugar de que el programa se detenga abruptamente,
+  haciendolo mas robusto.
+category: python

@@ -1,0 +1,16 @@
+id: A-197
+level: A
+page: 197
+set: 20
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Dado nombre=''ana perez'': imprime las iniciales en mayuscula'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: AP
+starter_code: ''

@@ -1,0 +1,21 @@
+id: C-013
+level: C
+page: 13
+set: 2
+block: A
+block_id: C.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea [2,3] e inserta 1 al inicio con insert
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ___
+reference_code: 'items = [2, 3]
+
+  items.insert(0, 1)
+
+  print(items)'

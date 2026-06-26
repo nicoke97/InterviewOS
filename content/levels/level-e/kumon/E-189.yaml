@@ -1,0 +1,16 @@
+id: E-189
+level: E
+page: 189
+set: 19
+block: D
+block_id: E.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 78
+prompt: Define A con metodo saludo() -> 'Hola'; define B(A) cuyo saludo() retorne
+  super().saludo() + ' Python'; imprime B().saludo().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Hola Python
+starter_code: ''

@@ -1,0 +1,16 @@
+id: C-076
+level: C
+page: 76
+set: 8
+block: B
+block_id: C.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Ordena [10,2,33,4] por su numero de digitos
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[2, 4, 10, 33]'
+starter_code: ''

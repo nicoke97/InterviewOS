@@ -1,0 +1,15 @@
+id: OA-039
+level: OA
+page: 39
+set: 4
+block: A
+block_id: OA.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'mapped con filtro: names de productos con price>50.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''A'']'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: B-106
+level: B
+page: 106
+set: 11
+block: C
+block_id: B.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado ['uno'], imprime 'indice:valor' por cada elemento usando enumerate.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0:uno '
+starter_code: ''

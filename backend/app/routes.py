@@ -9,24 +9,53 @@ from sqlalchemy.orm import Session
 
 from .content_loader import load_curriculum
 from .executor import run_kumon_code, run_leetcode_code
+from .kumon_hierarchy import (
+    is_valid_route_level,
+    levels_for_api,
+    route_level,
+)
 from .models import (
     AppSettings,
     Attempt,
-    DailySheet,
-    DrillMastery,
-    InterviewProgress,
-    LeetCodeProgress,
     Session as StudySession,
     Streak,
-    StudyDay,
     get_db,
-    init_db,
 )
-from .progress import get_unlock_status, interview_unlocked, leetcode_unlocked, update_streak
-from .sheet_composer import advance_study_day, build_sheet, update_drill_mastery
+from .progress import (
+    get_block_accuracy,
+    get_effective_streak,
+    get_month_calendar,
+    get_today_activity,
+    get_unlock_status,
+    load_set_progress_map,
+)
+from .orientador import (
+    calculate_session,
+    get_active_plan_response,
+    get_assignment_session,
+    get_orientador_insight,
+    get_next_assignment,
+    mark_assignment_done,
+    plan_to_dict,
+    validate_assignment,
+)
+from .set_engine import (
+    build_session,
+    current_target,
+    get_checkpoint,
+    get_exam,
+    level_roadmap,
+    submit_checkpoint,
+    submit_exam,
+    submit_set,
+)
 
 router = APIRouter()
 
+
+# ---------------------------------------------------------------------------
+# request models
+# ---------------------------------------------------------------------------
 
 class RunRequest(BaseModel):
     code: str
@@ -35,19 +64,44 @@ class RunRequest(BaseModel):
     tier: int = 1
 
 
-class SubmitRequest(BaseModel):
-    code: str
+class SheetAnswerItem(BaseModel):
     exercise_id: str
-    exercise_type: str = "kumon"
-    tier: int = 1
-    hints_used: int = 0
+    code: str
+
+
+class SetSubmitRequest(BaseModel):
+    level: str
+    set_number: int
+    answers: list[SheetAnswerItem]
     time_ms: int = 0
+    plan_id: int | None = None
+    assignment_index: int | None = None
+
+
+class OrientadorCalculateRequest(BaseModel):
+    minutes: int
+    track: str = "python"
+    plan_id: int | None = None
+    new_session: bool = False
+
+
+class CheckpointSubmitRequest(BaseModel):
+    level: str
+    problem_id: str
+    code: str
+
+
+class ExamSubmitRequest(BaseModel):
+    level: str
+    exercise_id: str
+    exercise_type: str = "leetcode"
+    code: str = ""
     self_score: int | None = None
     answer_text: str | None = None
 
 
 class SessionStartRequest(BaseModel):
-    slot: str
+    slot: str = "study"
 
 
 class SessionEndRequest(BaseModel):
@@ -57,7 +111,18 @@ class SessionEndRequest(BaseModel):
 
 class SettingsUpdate(BaseModel):
     focus_mode: bool | None = None
+    dev_mode: bool | None = None
 
+
+def _require_level(level: str) -> str:
+    if not is_valid_route_level(level):
+        raise HTTPException(404, f"Nivel desconocido: {level}")
+    return route_level(level)
+
+
+# ---------------------------------------------------------------------------
+# meta
+# ---------------------------------------------------------------------------
 
 @router.get("/health")
 def health():
@@ -67,86 +132,131 @@ def health():
 @router.get("/curriculum")
 def curriculum(db: Session = Depends(get_db)):
     c = load_curriculum()
-    unlocks = get_unlock_status(db)
     return {
         "kumon_count": len(c.kumon),
         "leetcode_count": len(c.leetcode),
         "interview_count": len(c.interview),
-        "blocks": c.blocks,
-        "unlocks": unlocks,
+        "levels": levels_for_api("python"),
+        "odoo_levels": levels_for_api("odoo"),
+        "unlocks": get_unlock_status(db),
     }
 
 
-@router.get("/sheet/today")
-def sheet_today(slot: str = "morning", db: Session = Depends(get_db)):
-    sheet = build_sheet(db, slot)
-    curriculum = load_curriculum()
-    drills = []
-    for did in sheet.drill_ids:
-        d = curriculum.kumon.get(did)
-        if d:
-            drills.append({
-                "id": d.id,
-                "block": d.block,
-                "order": d.order,
-                "scaffolding": d.scaffolding,
-                "prompt": d.prompt,
-                "starter_code": d.starter_code,
-                "hints": d.hints,
-                "csharp_note": d.csharp_note,
-                "completed": did in (sheet.completed_ids or []),
-            })
-    study_day = db.query(StudyDay).filter_by(date=date.today()).first()
-    return {
-        "sheet_id": sheet.id,
-        "slot": sheet.slot,
-        "rule": sheet.generated_by_rule,
-        "current_index": sheet.current_index,
-        "drills": drills,
-        "day_number": study_day.day_number if study_day else 1,
-        "active_block": study_day.active_block if study_day else "a1-variables",
-    }
+# ---------------------------------------------------------------------------
+# roadmap + flexible session
+# ---------------------------------------------------------------------------
+
+@router.get("/level/{level}/roadmap")
+def roadmap(level: str, db: Session = Depends(get_db)):
+    level = _require_level(level)
+    return level_roadmap(db, level)
 
 
-@router.get("/kumon/{drill_id}")
-def get_kumon(drill_id: str):
-    c = load_curriculum()
-    d = c.kumon.get(drill_id)
-    if not d:
-        raise HTTPException(404, "Drill not found")
-    return {
-        "id": d.id, "block": d.block, "order": d.order,
-        "scaffolding": d.scaffolding, "prompt": d.prompt,
-        "starter_code": d.starter_code, "hints": d.hints,
-        "csharp_note": d.csharp_note,
-    }
+@router.get("/level/{level}/session")
+def session(level: str, count: int = 10, db: Session = Depends(get_db)):
+    level = _require_level(level)
+    return build_session(db, level, count)
 
 
-@router.get("/leetcode")
-def list_leetcode(level: str = "a", db: Session = Depends(get_db)):
-    if not leetcode_unlocked(db, level):
-        return {"unlocked": False, "problems": []}
-    c = load_curriculum()
-    problems = []
-    for p in c.leetcode.values():
-        if p.level != level:
-            continue
-        prog = db.query(LeetCodeProgress).filter_by(problem_id=p.id).first()
-        problems.append({
-            "id": p.id, "title": p.title, "tier_passed": prog.tier_passed if prog else 0,
-        })
-    return {"unlocked": True, "problems": problems}
+@router.post("/set/submit")
+def set_submit(req: SetSubmitRequest, db: Session = Depends(get_db)):
+    level = _require_level(req.level)
+    is_repeat = False
+    if req.plan_id is not None and req.assignment_index is not None:
+        va = validate_assignment(
+            db, req.plan_id, req.assignment_index,
+            assignment_type="set", level=level, set_number=req.set_number,
+        )
+        is_repeat = va.get("assignment", {}).get("reason") == "repeat"
+    result = submit_set(
+        db, level, req.set_number, req.answers, req.time_ms, is_repeat=is_repeat,
+    )
+    if req.plan_id is not None and req.assignment_index is not None:
+        if result.get("mastered") or result.get("outcome") in ("mastered", "too_slow"):
+            mark_assignment_done(db, req.plan_id, req.assignment_index)
+            nxt = get_next_assignment(db, req.plan_id)
+            if nxt:
+                result["next_assignment"] = nxt
+            else:
+                result["session_complete"] = True
+    return result
 
 
-@router.get("/leetcode/{problem_id}")
-def get_leetcode(problem_id: str, tier: int = 1, db: Session = Depends(get_db)):
+# ---------------------------------------------------------------------------
+# orientador
+# ---------------------------------------------------------------------------
+
+@router.post("/orientador/calculate")
+def orientador_calculate(req: OrientadorCalculateRequest, db: Session = Depends(get_db)):
+    plan = calculate_session(
+        db,
+        req.minutes,
+        req.track,
+        plan_id=req.plan_id,
+        new_session=req.new_session,
+    )
+    return plan_to_dict(plan)
+
+
+@router.get("/orientador/active")
+def orientador_active(track: str = "python", db: Session = Depends(get_db)):
+    return get_active_plan_response(db, track)
+
+
+@router.get("/orientador/insight")
+def orientador_insight(track: str = "python", db: Session = Depends(get_db)):
+    return get_orientador_insight(db, track)
+
+
+@router.get("/orientador/session/{plan_id}/{index}")
+def orientador_session(plan_id: int, index: int, db: Session = Depends(get_db)):
+    return get_assignment_session(db, plan_id, index)
+
+
+# ---------------------------------------------------------------------------
+# checkpoints
+# ---------------------------------------------------------------------------
+
+@router.get("/level/{level}/checkpoint/{block}")
+def checkpoint(level: str, block: str, db: Session = Depends(get_db)):
+    level = _require_level(level)
+    return get_checkpoint(db, level, block)
+
+
+@router.post("/checkpoint/submit")
+def checkpoint_submit(req: CheckpointSubmitRequest, db: Session = Depends(get_db)):
+    level = _require_level(req.level)
+    return submit_checkpoint(db, level, req.problem_id, req.code)
+
+
+# ---------------------------------------------------------------------------
+# level exam
+# ---------------------------------------------------------------------------
+
+@router.get("/level/{level}/exam")
+def exam(level: str, db: Session = Depends(get_db)):
+    level = _require_level(level)
+    return get_exam(db, level)
+
+
+@router.post("/exam/submit")
+def exam_submit(req: ExamSubmitRequest, db: Session = Depends(get_db)):
+    level = _require_level(req.level)
+    return submit_exam(db, level, req.exercise_id, req.exercise_type,
+                       code=req.code, self_score=req.self_score, answer_text=req.answer_text)
+
+
+# ---------------------------------------------------------------------------
+# problem / question detail (for checkpoint & exam editors)
+# ---------------------------------------------------------------------------
+
+@router.get("/problem/{problem_id}")
+def get_problem(problem_id: str, tier: int = 1, db: Session = Depends(get_db)):
     c = load_curriculum()
     p = c.leetcode.get(problem_id)
     if not p:
-        raise HTTPException(404, "Problem not found")
-    if not leetcode_unlocked(db, p.level):
-        raise HTTPException(403, "LeetCode not unlocked for this level")
-    tier_data = p.tiers.get(tier, {})
+        raise HTTPException(404, "Problema no encontrado")
+    tier_data = p.tiers.get(tier, {}) or p.tiers.get(1, {})
     return {
         "id": p.id, "title": p.title, "description": p.description,
         "tier": tier, "fn_name": p.fn_name,
@@ -158,47 +268,21 @@ def get_leetcode(problem_id: str, tier: int = 1, db: Session = Depends(get_db)):
     }
 
 
-@router.get("/interview")
-def list_interview(level: str = "a", category: str | None = None, db: Session = Depends(get_db)):
-    if not interview_unlocked(db, level):
-        return {"unlocked": False, "questions": []}
-    c = load_curriculum()
-    questions = []
-    for q in c.interview.values():
-        if q.level != level:
-            continue
-        if category and q.category != category:
-            continue
-        prog = db.query(InterviewProgress).filter_by(question_id=q.id).first()
-        questions.append({
-            "id": q.id, "category": q.category, "question": q.question,
-            "completed": prog.completed if prog else False,
-        })
-    return {"unlocked": True, "questions": questions}
-
-
-@router.get("/interview/{question_id}")
-def get_interview(question_id: str, db: Session = Depends(get_db)):
+@router.get("/question/{question_id}")
+def get_question(question_id: str):
     c = load_curriculum()
     q = c.interview.get(question_id)
     if not q:
-        raise HTTPException(404, "Question not found")
-    if not interview_unlocked(db, q.level):
-        raise HTTPException(403, "Interview not unlocked")
+        raise HTTPException(404, "Pregunta no encontrada")
     return {
         "id": q.id, "category": q.category, "question": q.question,
-        "type": q.question_type,
+        "type": q.question_type, "rubric": q.rubric, "sample_answer": q.sample_answer,
     }
 
 
-@router.get("/interview/{question_id}/answer")
-def get_interview_answer(question_id: str, db: Session = Depends(get_db)):
-    c = load_curriculum()
-    q = c.interview.get(question_id)
-    if not q:
-        raise HTTPException(404)
-    return {"rubric": q.rubric, "sample_answer": q.sample_answer}
-
+# ---------------------------------------------------------------------------
+# run (editor "Run" button)
+# ---------------------------------------------------------------------------
 
 @router.post("/run")
 def run_code(req: RunRequest):
@@ -213,81 +297,12 @@ def run_code(req: RunRequest):
         if not p:
             raise HTTPException(404)
         return run_leetcode_code(req.code, p.test_cases, p.fn_name)
-    raise HTTPException(400, "Unknown exercise type")
+    raise HTTPException(400, "Tipo de ejercicio desconocido")
 
 
-@router.post("/submit")
-def submit(req: SubmitRequest, db: Session = Depends(get_db)):
-    c = load_curriculum()
-    today = date.today()
-    passed = False
-    result = {}
-
-    if req.exercise_type == "kumon":
-        d = c.kumon.get(req.exercise_id)
-        if not d:
-            raise HTTPException(404)
-        result = run_kumon_code(req.code, d.validation)
-        passed = result.get("passed", False)
-        update_drill_mastery(db, d.id, d.block, passed, req.hints_used)
-
-        sheet = db.query(DailySheet).filter_by(date=today, slot="morning").first()
-        for slot in ("morning", "evening"):
-            sheet = db.query(DailySheet).filter_by(date=today, slot=slot).first()
-            if sheet and req.exercise_id in (sheet.drill_ids or []):
-                completed = list(sheet.completed_ids or [])
-                if passed and req.exercise_id not in completed:
-                    completed.append(req.exercise_id)
-                    sheet.completed_ids = completed
-                    sheet.current_index = min(sheet.current_index + 1, len(sheet.drill_ids))
-                db.commit()
-
-    elif req.exercise_type == "leetcode":
-        p = c.leetcode.get(req.exercise_id)
-        if not p:
-            raise HTTPException(404)
-        result = run_leetcode_code(req.code, p.test_cases, p.fn_name)
-        passed = result.get("passed", False)
-        if passed:
-            prog = db.query(LeetCodeProgress).filter_by(problem_id=p.id).first()
-            if not prog:
-                prog = LeetCodeProgress(problem_id=p.id, level=p.level, tier_passed=req.tier)
-                db.add(prog)
-            else:
-                prog.tier_passed = max(prog.tier_passed, req.tier)
-            db.commit()
-
-    elif req.exercise_type == "interview":
-        q = c.interview.get(req.exercise_id)
-        if not q:
-            raise HTTPException(404)
-        passed = True
-        prog = db.query(InterviewProgress).filter_by(question_id=q.id).first()
-        if not prog:
-            prog = InterviewProgress(question_id=q.id, level=q.level, category=q.category)
-            db.add(prog)
-        prog.self_score = req.self_score or 0
-        prog.completed = True
-        db.commit()
-        result = {"passed": True}
-
-    attempt = Attempt(
-        exercise_id=req.exercise_id,
-        exercise_type=req.exercise_type,
-        tier=req.tier,
-        hints_used=req.hints_used,
-        passed=passed,
-        time_ms=req.time_ms,
-        code_snapshot=req.code,
-        self_score=req.self_score,
-        attempt_date=today,
-    )
-    db.add(attempt)
-    update_streak(db)
-    db.commit()
-
-    return {"passed": passed, "result": result}
-
+# ---------------------------------------------------------------------------
+# session timer
+# ---------------------------------------------------------------------------
 
 @router.post("/session/start")
 def session_start(req: SessionStartRequest, db: Session = Depends(get_db)):
@@ -306,6 +321,20 @@ def session_end(req: SessionEndRequest, db: Session = Depends(get_db)):
     return {"ok": True}
 
 
+# ---------------------------------------------------------------------------
+# calendar + stats
+# ---------------------------------------------------------------------------
+
+@router.get("/calendar")
+def calendar_month(year: int | None = None, month: int | None = None, db: Session = Depends(get_db)):
+    today = date.today()
+    y = year if year is not None else today.year
+    m = month if month is not None else today.month
+    if not 1 <= m <= 12:
+        raise HTTPException(400, "month must be 1-12")
+    return get_month_calendar(db, y, m)
+
+
 @router.get("/stats")
 def stats(db: Session = Depends(get_db)):
     streak = db.query(Streak).first()
@@ -320,65 +349,71 @@ def stats(db: Session = Depends(get_db)):
     )
     minutes_chart = [{"date": str(d), "minutes": round(s / 60, 1)} for d, s in daily_minutes]
 
-    attempts_by_block = {}
-    for m in db.query(DrillMastery).all():
-        total = m.times_passed + (0 if m.status != "shaky" else 1)
-        if m.block_id not in attempts_by_block:
-            attempts_by_block[m.block_id] = {"passed": 0, "total": 20}
-        attempts_by_block[m.block_id]["passed"] = m.times_passed
-
-    accuracy = []
-    for block_id, data in attempts_by_block.items():
-        accuracy.append({"block": block_id, "accuracy": min(100, round(data["passed"] / 20 * 100))})
-
     total_attempts = db.query(Attempt).count()
     passed_attempts = db.query(Attempt).filter_by(passed=True).count()
 
-    study_day = db.query(StudyDay).filter_by(date=today).first()
+    distinct_days = db.query(func.count(func.distinct(Attempt.attempt_date))).scalar() or 0
+
+    progress_map = load_set_progress_map(db)
 
     return {
-        "streak": {
-            "current": streak.current_streak if streak else 0,
-            "best": streak.best_streak if streak else 0,
-        },
+        "streak": get_effective_streak(db, streak),
         "minutes_chart": minutes_chart,
-        "block_accuracy": accuracy,
+        "block_accuracy": get_block_accuracy(db, progress_map),
+        "today_activity": get_today_activity(db),
         "total_attempts": total_attempts,
         "pass_rate": round(passed_attempts / total_attempts * 100, 1) if total_attempts else 0,
-        "day_number": study_day.day_number if study_day else 1,
-        "unlocks": get_unlock_status(db),
+        "day_number": distinct_days,
+        "unlocks": get_unlock_status(db, progress_map),
     }
+
+
+# ---------------------------------------------------------------------------
+# settings
+# ---------------------------------------------------------------------------
+
+def _bool_setting(db: Session, key: str, default: bool = False) -> bool:
+    s = db.query(AppSettings).filter_by(key=key).first()
+    return s.value == "true" if s else default
+
+
+def _set_bool_setting(db: Session, key: str, value: bool) -> None:
+    s = db.query(AppSettings).filter_by(key=key).first()
+    if not s:
+        s = AppSettings(key=key, value="false")
+        db.add(s)
+    s.value = "true" if value else "false"
 
 
 @router.get("/settings")
 def get_settings(db: Session = Depends(get_db)):
-    focus = db.query(AppSettings).filter_by(key="focus_mode").first()
-    return {"focus_mode": focus.value == "true" if focus else False}
+    return {
+        "focus_mode": _bool_setting(db, "focus_mode"),
+        "dev_mode": _bool_setting(db, "dev_mode"),
+    }
 
 
 @router.post("/settings")
 def update_settings(req: SettingsUpdate, db: Session = Depends(get_db)):
+    changed = False
     if req.focus_mode is not None:
-        s = db.query(AppSettings).filter_by(key="focus_mode").first()
-        if not s:
-            s = AppSettings(key="focus_mode", value="false")
-            db.add(s)
-        s.value = "true" if req.focus_mode else "false"
+        _set_bool_setting(db, "focus_mode", req.focus_mode)
+        changed = True
+    if req.dev_mode is not None:
+        _set_bool_setting(db, "dev_mode", req.dev_mode)
+        changed = True
+    if changed:
         db.commit()
     return get_settings(db)
 
 
-@router.post("/study/advance-day")
-def study_advance(db: Session = Depends(get_db)):
-    advance_study_day(db)
-    sd = db.query(StudyDay).filter_by(date=date.today()).first()
-    return {"day_number": sd.day_number if sd else 1, "active_block": sd.active_block if sd else "a1-variables"}
-
+# ---------------------------------------------------------------------------
+# export
+# ---------------------------------------------------------------------------
 
 @router.get("/export")
 def export_progress(db: Session = Depends(get_db)):
     attempts = db.query(Attempt).all()
-    mastery = db.query(DrillMastery).all()
     return {
         "exported_at": datetime.utcnow().isoformat(),
         "attempts": [
@@ -386,30 +421,5 @@ def export_progress(db: Session = Depends(get_db)):
              "time_ms": a.time_ms, "date": str(a.attempt_date)}
             for a in attempts
         ],
-        "mastery": [
-            {"drill_id": m.drill_id, "status": m.status, "times_passed": m.times_passed}
-            for m in mastery
-        ],
         "unlocks": get_unlock_status(db),
-    }
-
-
-@router.post("/mock/start")
-def mock_start(level: str = "a", db: Session = Depends(get_db)):
-    c = load_curriculum()
-    if not leetcode_unlocked(db, level):
-        raise HTTPException(403, "Complete Kumon blocks first")
-    problems = [p for p in c.leetcode.values() if p.level == level]
-    import random
-    p = random.choice(problems) if problems else None
-    if not p:
-        raise HTTPException(404)
-    return {
-        "mode": "mock",
-        "problem_id": p.id,
-        "title": p.title,
-        "description": p.description,
-        "tier": 3,
-        "time_limit_minutes": 25,
-        "starter_code": p.tiers.get(3, {}).get("starter_code", "def solution():\n    pass"),
     }

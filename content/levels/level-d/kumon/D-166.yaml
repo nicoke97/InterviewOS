@@ -1,0 +1,16 @@
+id: D-166
+level: D
+page: 166
+set: 17
+block: D
+block_id: D.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Captura ValueError de int('1,000') e imprime el nombre del error
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ValueError
+starter_code: ''

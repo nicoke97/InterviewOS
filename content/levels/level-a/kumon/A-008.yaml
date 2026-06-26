@@ -1,0 +1,15 @@
+id: A-008
+level: A
+page: 8
+set: 1
+block: A
+block_id: A.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 36
+prompt: 'Imprime exactamente el texto: Codigo'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Codigo
+starter_code: ''

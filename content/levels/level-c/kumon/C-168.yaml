@@ -1,0 +1,15 @@
+id: C-168
+level: C
+page: 168
+set: 17
+block: D
+block_id: C.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Reemplaza 'http' por 'https' en 'http://x'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: https://x
+starter_code: ''

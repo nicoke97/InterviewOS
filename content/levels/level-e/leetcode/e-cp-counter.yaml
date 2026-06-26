@@ -1,0 +1,30 @@
+id: e-cp-counter
+title: Contador con clase
+fn_name: run_counter
+description: Crea una clase Counter, incrementa n veces y retorna el conteo.
+test_cases:
+- args:
+  - 3
+  expected: 3
+- args:
+  - 0
+  expected: 0
+tiers:
+  1:
+    starter_code: "def run_counter(n):\n    class Counter:\n        def __init__(self):\n\
+      \            self.c = 0\n        def inc(self):\n            self.c += 1\n \
+      \   # crea, incrementa n veces y retorna\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def run_counter(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def run_counter(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

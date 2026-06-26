@@ -1,0 +1,17 @@
+id: D-113
+level: D
+page: 113
+set: 12
+block: C
+block_id: D.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un set vacio, agrega 'a','b','a' e imprime su tamano
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: "s = set()\nfor x in ['a', 'b', 'a']:\n    s.add(x)\nprint(len(s))"

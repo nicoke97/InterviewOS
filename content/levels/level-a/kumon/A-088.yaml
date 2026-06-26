@@ -1,0 +1,15 @@
+id: A-088
+level: A
+page: 88
+set: 9
+block: B
+block_id: A.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Declara a=20 y b=13, luego imprime: ''La suma de 20 y 13 es 33'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: La suma de 20 y 13 es 33
+starter_code: ''

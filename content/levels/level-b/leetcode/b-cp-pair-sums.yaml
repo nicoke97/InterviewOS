@@ -1,0 +1,33 @@
+id: b-cp-pair-sums
+title: Sumas por pares
+fn_name: pares
+description: Con zip, suma elemento a elemento de dos listas.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+  - - 4
+    - 5
+    - 6
+  expected:
+  - 5
+  - 7
+  - 9
+tiers:
+  1:
+    starter_code: "def pares(a, b):\n    # usa zip\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def pares(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def pares(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

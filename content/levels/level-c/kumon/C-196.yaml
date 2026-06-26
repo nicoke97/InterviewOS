@@ -1,0 +1,16 @@
+id: C-196
+level: C
+page: 196
+set: 20
+block: D
+block_id: C.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Usa format posicional: ''{0} y {1}'' con ''a'',''b'''
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: a y b
+starter_code: ''

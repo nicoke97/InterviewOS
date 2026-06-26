@@ -1,0 +1,16 @@
+id: E-018
+level: E
+page: 18
+set: 2
+block: A
+block_id: E.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define clase Perro con __init__(self, nombre); crea Perro('Zeus') e imprime
+  su .nombre.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Zeus
+starter_code: ''

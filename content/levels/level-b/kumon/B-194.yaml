@@ -1,0 +1,16 @@
+id: B-194
+level: B
+page: 194
+set: 20
+block: D
+block_id: B.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define componer aplicando cuadrado luego +1 sobre 4
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '17'
+starter_code: ''

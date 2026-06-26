@@ -1,0 +1,16 @@
+id: A-037
+level: A
+page: 37
+set: 4
+block: A
+block_id: A.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Declara name=''Lucia'' y age=24, luego imprime: ''Lucia tiene 24 anios'''
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lucia tiene 24 anios
+starter_code: ''

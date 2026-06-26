@@ -1,0 +1,15 @@
+id: C-200
+level: C
+page: 200
+set: 20
+block: D
+block_id: C.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Imprime ''Total: $99.90'' con un float 99.9'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'Total: $99.90'
+starter_code: ''

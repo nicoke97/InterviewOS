@@ -1,0 +1,15 @@
+id: D-169
+level: D
+page: 169
+set: 17
+block: D
+block_id: D.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Maneja int('') con ValueError devolviendo -1
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '-1'
+starter_code: ''

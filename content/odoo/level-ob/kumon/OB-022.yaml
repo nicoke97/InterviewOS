@@ -1,0 +1,19 @@
+id: OB-022
+level: OB
+page: 22
+set: 3
+block: A
+block_id: OB.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'write: cambia el state del ticket id=2 a ''done''; imprime el state.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: done
+starter_code: "tickets = ___\nfor t in ___:\n    if t['id'] == 2:\n        t['state']\
+  \ = 'done'\nprint(___)"
+reference_code: "tickets = [{'id': 1, 'state': 'new'}, {'id': 2, 'state': 'new'}]\n\
+  for t in tickets:\n    if t['id'] == 2:\n        t['state'] = 'done'\nprint(tickets[1]['state'])"

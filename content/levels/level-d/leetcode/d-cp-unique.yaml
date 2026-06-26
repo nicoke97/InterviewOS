@@ -1,0 +1,29 @@
+id: d-cp-unique
+title: Elementos unicos
+fn_name: unicos
+description: Retorna la cantidad de elementos unicos.
+test_cases:
+- args:
+  - - 1
+    - 1
+    - 2
+    - 3
+    - 3
+  expected: 3
+tiers:
+  1:
+    starter_code: "def unicos(nums):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def unicos(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def unicos(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

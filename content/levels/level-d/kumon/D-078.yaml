@@ -1,0 +1,15 @@
+id: D-078
+level: D
+page: 78
+set: 8
+block: B
+block_id: D.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {'team':{'a':1,'b':2}}, imprime la suma de valores internos
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

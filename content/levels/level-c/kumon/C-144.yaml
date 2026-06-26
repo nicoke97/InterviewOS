@@ -1,0 +1,16 @@
+id: C-144
+level: C
+page: 144
+set: 15
+block: C
+block_id: C.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Convierte ['1','2','3'] a enteros con comprehension
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ''

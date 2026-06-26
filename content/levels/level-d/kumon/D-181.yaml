@@ -1,0 +1,19 @@
+id: D-181
+level: D
+page: 181
+set: 19
+block: D
+block_id: D.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Usa try/finally: imprime 1 en try y 2 en finally'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2'
+starter_code: "try:\n    print(___)\nfinally:\n    print(___)"
+reference_code: "try:\n    print(1)\nfinally:\n    print(2)"

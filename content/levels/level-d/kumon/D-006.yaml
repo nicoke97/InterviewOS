@@ -1,0 +1,16 @@
+id: D-006
+level: D
+page: 6
+set: 1
+block: A
+block_id: D.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''uno'': 1, ''dos'': 2} e imprime el valor de la clave ''dos''.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

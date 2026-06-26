@@ -1,0 +1,16 @@
+id: D-157
+level: D
+page: 157
+set: 16
+block: D
+block_id: D.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Maneja division por cero devolviendo 0
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

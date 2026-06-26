@@ -1,0 +1,21 @@
+id: OB-002
+level: OB
+page: 2
+set: 1
+block: A
+block_id: OB.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define un modelo partner con name, email y active=True; imprime el dict.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''name'': '''', ''email'': '''', ''active'': True}'
+starter_code: 'partner = ___
+
+  print(___)'
+reference_code: 'partner = {''name'': '''', ''email'': '''', ''active'': True}
+
+  print(partner)'

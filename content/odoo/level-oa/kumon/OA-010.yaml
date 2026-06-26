@@ -1,0 +1,15 @@
+id: OA-010
+level: OA
+page: 10
+set: 1
+block: A
+block_id: OA.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Crea un registro con active=True; cambialo a False e imprime el registro.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''name'': ''Old'', ''active'': False}'
+starter_code: ''

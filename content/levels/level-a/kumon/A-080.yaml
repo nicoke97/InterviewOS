@@ -1,0 +1,15 @@
+id: A-080
+level: A
+page: 80
+set: 8
+block: B
+block_id: A.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Verifica si 'archivo.txt' termina con '.txt'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

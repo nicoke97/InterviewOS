@@ -1,0 +1,18 @@
+id: C-042
+level: C
+page: 42
+set: 5
+block: A
+block_id: C.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada [10, 10, 10], recorre con un bucle y acumula la suma; imprime el total.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: "nums = ___\ntotal = ___\nfor n in ___:\n    total += n\nprint(___)"
+reference_code: "nums = [10, 10, 10]\ntotal = 0\nfor n in nums:\n    total += n\n\
+  print(total)"

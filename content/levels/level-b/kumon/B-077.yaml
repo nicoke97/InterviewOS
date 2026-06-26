@@ -1,0 +1,17 @@
+id: B-077
+level: B
+page: 77
+set: 8
+block: B
+block_id: B.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Recorre de 1 a 10 e imprime los numeros, pero DETENTE (break) al llegar a
+  9.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 3 4 5 6 7 8 '
+starter_code: ''

@@ -1,0 +1,28 @@
+id: a-exam-temperature
+title: Celsius a Fahrenheit
+fn_name: c_a_f
+description: Convierte celsius a fahrenheit (c*9/5+32).
+test_cases:
+- args:
+  - 0
+  expected: 32.0
+- args:
+  - 100
+  expected: 212.0
+tiers:
+  1:
+    starter_code: "def c_a_f(c):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def c_a_f(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def c_a_f(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

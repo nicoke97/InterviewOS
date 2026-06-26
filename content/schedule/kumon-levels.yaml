@@ -1,0 +1,308 @@
+# Python track — 5 levels (A–E), 200 pages each.
+# Each level = 4 blocks x 50 pages = 20 sets x 10 pages.
+# Each set drills ONE micro-skill with 10 incremental variations
+# (scaffolding ramps full -> minimal -> none within the set).
+# standard_seconds = Kumon "tiempo estandar" for the whole set of 10 pages.
+
+track: python
+
+levels:
+  A:
+    title: "Level A — Fundamentos"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Variables y tipos"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Imprimir valores", standard_seconds: 360 }
+          - { title: "Variables y asignacion", standard_seconds: 420 }
+          - { title: "Aritmetica con enteros", standard_seconds: 480 }
+          - { title: "f-strings basicas", standard_seconds: 480 }
+          - { title: "Tipos y conversion", standard_seconds: 540 }
+      B:
+        title: "Strings"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Concatenacion y longitud", standard_seconds: 480 }
+          - { title: "Indices de string", standard_seconds: 480 }
+          - { title: "Metodos basicos de string", standard_seconds: 540 }
+          - { title: "f-strings con calculo", standard_seconds: 540 }
+          - { title: "Repeticion y formato", standard_seconds: 540 }
+      C:
+        title: "Operadores y condicionales"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Comparaciones", standard_seconds: 480 }
+          - { title: "if / else", standard_seconds: 540 }
+          - { title: "if / elif / else", standard_seconds: 600 }
+          - { title: "Operadores logicos", standard_seconds: 600 }
+          - { title: "Condicionales anidados", standard_seconds: 660 }
+      D:
+        title: "Repaso de fundamentos"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Variables y f-strings (repaso)", standard_seconds: 540 }
+          - { title: "Aritmetica aplicada", standard_seconds: 600 }
+          - { title: "Strings y condicionales", standard_seconds: 600 }
+          - { title: "Condicionales combinados", standard_seconds: 660 }
+          - { title: "Mini-retos integrados", standard_seconds: 720 }
+  B:
+    title: "Level B — Bucles y funciones"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "for y range"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "for sobre range", standard_seconds: 540 }
+          - { title: "Suma acumulada", standard_seconds: 540 }
+          - { title: "range con paso", standard_seconds: 600 }
+          - { title: "Cuenta regresiva", standard_seconds: 600 }
+          - { title: "Iterar strings y listas", standard_seconds: 600 }
+      B:
+        title: "while, break y continue"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "while basico", standard_seconds: 540 }
+          - { title: "while con condicion", standard_seconds: 600 }
+          - { title: "break", standard_seconds: 600 }
+          - { title: "continue", standard_seconds: 600 }
+          - { title: "Acumuladores con while", standard_seconds: 660 }
+      C:
+        title: "Patrones de bucle"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "enumerate", standard_seconds: 600 }
+          - { title: "zip", standard_seconds: 600 }
+          - { title: "Bucles anidados", standard_seconds: 720 }
+          - { title: "Maximo y minimo manual", standard_seconds: 660 }
+          - { title: "Contar coincidencias", standard_seconds: 660 }
+      D:
+        title: "Funciones"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "def y return", standard_seconds: 600 }
+          - { title: "Parametros multiples", standard_seconds: 600 }
+          - { title: "Valores por defecto", standard_seconds: 660 }
+          - { title: "Funciones con condicionales", standard_seconds: 720 }
+          - { title: "Componer funciones", standard_seconds: 720 }
+  C:
+    title: "Level C — Listas, tuplas y strings"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Listas basicas"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Crear e indexar listas", standard_seconds: 540 }
+          - { title: "append e insert", standard_seconds: 600 }
+          - { title: "len, sum, min, max", standard_seconds: 600 }
+          - { title: "pop y remove", standard_seconds: 600 }
+          - { title: "Recorrer y acumular", standard_seconds: 660 }
+      B:
+        title: "Slicing y orden"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Slicing basico", standard_seconds: 600 }
+          - { title: "Paso e inversion", standard_seconds: 600 }
+          - { title: "sort y sorted", standard_seconds: 660 }
+          - { title: "Listas anidadas", standard_seconds: 720 }
+          - { title: "Copiar listas", standard_seconds: 600 }
+      C:
+        title: "Tuplas y comprehensions"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Tuplas", standard_seconds: 600 }
+          - { title: "Desempaquetado", standard_seconds: 600 }
+          - { title: "List comprehension", standard_seconds: 660 }
+          - { title: "Comprehension con filtro", standard_seconds: 720 }
+          - { title: "Comprehension con transformacion", standard_seconds: 720 }
+      D:
+        title: "Metodos de string"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "split y join", standard_seconds: 600 }
+          - { title: "strip y replace", standard_seconds: 600 }
+          - { title: "Mayusculas y titulo", standard_seconds: 540 }
+          - { title: "find, count, startswith", standard_seconds: 600 }
+          - { title: "format y f-strings", standard_seconds: 660 }
+  D:
+    title: "Level D — Diccionarios, sets y errores"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Diccionarios basicos"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Crear y acceder", standard_seconds: 600 }
+          - { title: "Agregar y actualizar", standard_seconds: 600 }
+          - { title: "get con default", standard_seconds: 600 }
+          - { title: "keys, values, items", standard_seconds: 660 }
+          - { title: "Recorrer items", standard_seconds: 660 }
+      B:
+        title: "Diccionarios avanzados"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "dict comprehension", standard_seconds: 720 }
+          - { title: "Contar frecuencias", standard_seconds: 720 }
+          - { title: "Diccionarios anidados", standard_seconds: 720 }
+          - { title: "Invertir un dict", standard_seconds: 660 }
+          - { title: "setdefault y merge", standard_seconds: 660 }
+      C:
+        title: "Sets"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Crear sets y unicidad", standard_seconds: 600 }
+          - { title: "add y remove", standard_seconds: 600 }
+          - { title: "Union e interseccion", standard_seconds: 660 }
+          - { title: "Diferencia", standard_seconds: 660 }
+          - { title: "Membership y dedupe", standard_seconds: 660 }
+      D:
+        title: "Manejo de errores"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "try / except", standard_seconds: 660 }
+          - { title: "ValueError y casting", standard_seconds: 660 }
+          - { title: "IndexError y KeyError", standard_seconds: 660 }
+          - { title: "finally y else", standard_seconds: 660 }
+          - { title: "Guard clauses y raise", standard_seconds: 720 }
+  E:
+    title: "Level E — Clases y OOP"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Objetos y atributos"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Clase y atributo", standard_seconds: 600 }
+          - { title: "__init__ con un atributo", standard_seconds: 660 }
+          - { title: "__init__ con dos atributos", standard_seconds: 660 }
+          - { title: "Acceder atributos", standard_seconds: 600 }
+          - { title: "Atributos e impresion", standard_seconds: 660 }
+      B:
+        title: "Metodos"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Metodo que retorna", standard_seconds: 660 }
+          - { title: "Metodo que usa self", standard_seconds: 660 }
+          - { title: "Metodo con parametro", standard_seconds: 720 }
+          - { title: "Multiples metodos", standard_seconds: 720 }
+          - { title: "Metodo que cambia estado", standard_seconds: 720 }
+      C:
+        title: "Dunder y composicion"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "__str__", standard_seconds: 660 }
+          - { title: "__repr__", standard_seconds: 660 }
+          - { title: "Atributo de clase vs instancia", standard_seconds: 720 }
+          - { title: "Metodos que calculan", standard_seconds: 720 }
+          - { title: "Objeto que contiene una lista", standard_seconds: 780 }
+      D:
+        title: "Herencia"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Herencia basica", standard_seconds: 720 }
+          - { title: "Override de metodo", standard_seconds: 720 }
+          - { title: "super().__init__", standard_seconds: 780 }
+          - { title: "super() en metodos", standard_seconds: 780 }
+          - { title: "isinstance y polimorfismo", standard_seconds: 840 }
+
+# Instruccion mostrada arriba de cada hoja (por bloque).
+instructions:
+  A.A: "Declara variables e imprime valores. Escribe el codigo de cada problema."
+  A.B: "Trabaja con cadenas de texto (strings). Escribe Python para cada problema."
+  A.C: "Usa comparaciones y if/elif/else. Escribe tu codigo debajo de cada pregunta."
+  A.D: "Repaso de fundamentos. Resuelve cada problema en orden."
+  B.A: "Usa bucles for y range(). Escribe codigo que produzca la salida esperada."
+  B.B: "Usa while con break y continue. Resuelve cada problema."
+  B.C: "Aplica patrones de bucle: enumerate, zip y anidados."
+  B.D: "Escribe una funcion para cada problema y llamala para imprimir el resultado."
+  C.A: "Trabaja con listas: crear, indexar y modificar."
+  C.B: "Usa slicing y ordenamiento de listas."
+  C.C: "Usa tuplas y comprehensions."
+  C.D: "Usa metodos de string para resolver cada problema."
+  D.A: "Trabaja con diccionarios: crear, acceder y recorrer."
+  D.B: "Aplica tecnicas avanzadas con diccionarios."
+  D.C: "Usa sets para unicidad y operaciones de conjuntos."
+  D.D: "Maneja errores con try/except y guard clauses."
+  E.A: "Define clases y trabaja con atributos."
+  E.B: "Agrega metodos a tus clases."
+  E.C: "Usa metodos dunder y composicion de objetos."
+  E.D: "Aplica herencia y polimorfismo."
+
+# Checkpoint de LeetCode al cerrar cada bloque (cada 50 paginas).
+checkpoints:
+  a:
+    A: [a-cp-sum-pair]
+    B: [a-cp-reverse-string]
+    C: [a-cp-fizzbuzz]
+    D: [a-cp-grade]
+  b:
+    A: [b-cp-sum-range]
+    B: [b-cp-count-positive]
+    C: [b-cp-pair-sums]
+    D: [b-cp-apply-twice]
+  c:
+    A: [c-cp-list-sum]
+    B: [c-cp-reverse-list]
+    C: [c-cp-evens]
+    D: [c-cp-word-count]
+  d:
+    A: [d-cp-merge-dicts]
+    B: [d-cp-word-freq]
+    C: [d-cp-unique]
+    D: [d-cp-safe-div]
+  e:
+    A: [e-cp-counter]
+    B: [e-cp-bank]
+    C: [e-cp-point-str]
+    D: [e-cp-shape-area]
+
+# Examen de conclusion de nivel (pagina 200): LeetCode + Interview de todo el nivel.
+completion_exam:
+  a:
+    leetcode: [a-exam-temperature, a-exam-leap-year]
+    interview: [a-int-1, a-int-2]
+  b:
+    leetcode: [b-exam-factorial, b-exam-collatz]
+    interview: [b-int-1, b-int-2]
+  c:
+    leetcode: [c-exam-second-largest, c-exam-anagram]
+    interview: [c-int-1, c-int-2]
+  d:
+    leetcode: [d-exam-group-by, d-exam-two-sum]
+    interview: [d-int-1, d-int-2]
+  e:
+    leetcode: [e-exam-stack, e-exam-shapes]
+    interview: [e-int-1, e-int-2]

@@ -1,0 +1,18 @@
+id: OC-003
+level: OC
+page: 3
+set: 1
+block: A
+block_id: OC.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define next_state(s) con el flujo new->in_progress->done; llamala con 'new'.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: in_progress
+starter_code: ___
+reference_code: "def next_state(s):\n    flujo = {'new': 'in_progress', 'in_progress':\
+  \ 'done'}\n    return flujo.get(s, s)\nprint(next_state('new'))"

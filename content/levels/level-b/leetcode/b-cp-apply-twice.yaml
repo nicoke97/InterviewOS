@@ -1,0 +1,29 @@
+id: b-cp-apply-twice
+title: Aplicar dos veces
+fn_name: doble_func
+description: Aplica f(f(x)).
+test_cases:
+- args:
+  - 3
+  expected: 5
+- args:
+  - 10
+  expected: 12
+tiers:
+  1:
+    starter_code: "def inc(n):\n    return n + 1\n\ndef doble_func(x):\n    # aplica\
+      \ inc dos veces\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def doble_func(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def doble_func(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

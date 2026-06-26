@@ -1,0 +1,17 @@
+id: A-102
+level: A
+page: 102
+set: 11
+block: C
+block_id: A.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (True/False) de: 5 == 5'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: print(___)
+reference_code: print(5 == 5)

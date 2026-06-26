@@ -1,0 +1,16 @@
+id: B-165
+level: B
+page: 165
+set: 17
+block: D
+block_id: B.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define sumar(a, b) que retorne a+b y llamala con 5 y 5.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

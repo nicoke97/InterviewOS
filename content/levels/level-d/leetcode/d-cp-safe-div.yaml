@@ -1,0 +1,30 @@
+id: d-cp-safe-div
+title: Division segura
+fn_name: div_segura
+description: Retorna a/b o 0 si b es 0.
+test_cases:
+- args:
+  - 10
+  - 2
+  expected: 5.0
+- args:
+  - 5
+  - 0
+  expected: 0
+tiers:
+  1:
+    starter_code: "def div_segura(a, b):\n    # usa try/except\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def div_segura(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def div_segura(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

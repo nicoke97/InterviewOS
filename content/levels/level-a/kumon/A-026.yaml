@@ -1,0 +1,16 @@
+id: A-026
+level: A
+page: 26
+set: 3
+block: A
+block_id: A.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de 2 ** 5
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '32'
+starter_code: ''

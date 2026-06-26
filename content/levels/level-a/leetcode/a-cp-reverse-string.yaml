@@ -1,0 +1,28 @@
+id: a-cp-reverse-string
+title: Invertir texto
+fn_name: invertir
+description: Retorna el texto al reves.
+test_cases:
+- args:
+  - python
+  expected: nohtyp
+- args:
+  - ana
+  expected: ana
+tiers:
+  1:
+    starter_code: "def invertir(s):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def invertir(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def invertir(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

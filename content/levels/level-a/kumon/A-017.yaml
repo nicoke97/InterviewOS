@@ -1,0 +1,16 @@
+id: A-017
+level: A
+page: 17
+set: 2
+block: A
+block_id: A.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 42
+prompt: Crea la variable equipo con el valor 'Odoo' e imprime la variable.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Odoo
+starter_code: ''

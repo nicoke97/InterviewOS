@@ -1,0 +1,15 @@
+id: C-008
+level: C
+page: 8
+set: 1
+block: A
+block_id: C.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dada la lista ['rojo', 'azul'], imprime el elemento en el indice 1.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: azul
+starter_code: ''

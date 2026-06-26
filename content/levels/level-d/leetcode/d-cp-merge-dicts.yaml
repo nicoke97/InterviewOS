@@ -1,0 +1,28 @@
+id: d-cp-merge-dicts
+title: Combinar dicts
+fn_name: combinar
+description: Combina dos dicts (b sobreescribe a).
+test_cases:
+- args:
+  - a: 1
+  - b: 2
+  expected:
+    a: 1
+    b: 2
+tiers:
+  1:
+    starter_code: "def combinar(a, b):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def combinar(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def combinar(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

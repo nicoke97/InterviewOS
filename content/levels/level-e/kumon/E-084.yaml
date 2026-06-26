@@ -1,0 +1,17 @@
+id: E-084
+level: E
+page: 84
+set: 9
+block: B
+block_id: E.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Rectangulo con base y altura; agrega area() y perimetro(); crea Rectangulo(6,
+  6) e imprime area y perimetro separados por espacio.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 36 24
+starter_code: ''

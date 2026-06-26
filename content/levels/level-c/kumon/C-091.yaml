@@ -1,0 +1,29 @@
+id: C-091
+level: C
+page: 91
+set: 10
+block: B
+block_id: C.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Copia [1,2,3] con .copy(), agrega 4 a la copia, imprime la ORIGINAL
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: 'a = ___
+
+  b = ___
+
+  b.append(4)
+
+  print(a)'
+reference_code: 'a = [1, 2, 3]
+
+  b = a.copy()
+
+  b.append(4)
+
+  print(a)'

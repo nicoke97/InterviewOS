@@ -1,0 +1,21 @@
+id: OB-013
+level: OB
+page: 13
+set: 2
+block: A
+block_id: OB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'create con valores por defecto: state=''draft'' si no se especifica.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''state'': ''draft'', ''name'': ''T''}'
+starter_code: ___
+reference_code: 'vals = {''name'': ''T''}
+
+  rec = {''state'': ''draft'', **vals}
+
+  print(rec)'

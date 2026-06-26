@@ -1,0 +1,69 @@
+# Track Odoo independiente — niveles OA, OB, OC (50 paginas c/u = 5 sets x 10).
+# Mismo motor de sets por dominio. Cada nivel cierra con un checkpoint practico.
+# Los ejercicios simulan patrones reales de Odoo (recordsets, dominios, ORM)
+# usando Python ejecutable para poder validar la respuesta.
+
+track: odoo
+
+levels:
+  OA:
+    title: "Odoo A — Registros y dominios"
+    pages_per_level: 50
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Recordsets, dominios y mapped"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Un registro como dict", standard_seconds: 540 }
+          - { title: "Recordset (lista de registros)", standard_seconds: 600 }
+          - { title: "filtered: dominios", standard_seconds: 660 }
+          - { title: "mapped: extraer un campo", standard_seconds: 660 }
+          - { title: "Agregar y sumar campos", standard_seconds: 660 }
+  OB:
+    title: "Odoo B — ORM y modelos"
+    pages_per_level: 50
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "create, write, search y relaciones"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Definir un modelo (campos)", standard_seconds: 600 }
+          - { title: "create: nuevo registro", standard_seconds: 600 }
+          - { title: "write: actualizar registro", standard_seconds: 660 }
+          - { title: "search: filtrar por dominio", standard_seconds: 660 }
+          - { title: "Relaciones many2one", standard_seconds: 720 }
+  OC:
+    title: "Odoo C — Flujos y soporte"
+    pages_per_level: 50
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Estados, validaciones y reportes"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Estados de un ticket", standard_seconds: 660 }
+          - { title: "Validaciones y guard clauses", standard_seconds: 660 }
+          - { title: "Prioridades y SLA (orden)", standard_seconds: 720 }
+          - { title: "Reportes: agrupar y contar", standard_seconds: 720 }
+          - { title: "Integrar varias fuentes", standard_seconds: 720 }
+
+instructions:
+  OA.A: "Trabaja con registros de Odoo representados como diccionarios y listas (recordsets)."
+  OB.A: "Simula el ORM de Odoo: create, write y search sobre una lista de registros."
+  OC.A: "Modela flujos de soporte: estados, validaciones, prioridades y reportes."
+
+checkpoints:
+  oa:
+    A: [oa-cp-total-orders]
+  ob:
+    A: [ob-cp-search-write]
+  oc:
+    A: [oc-cp-group-tickets]

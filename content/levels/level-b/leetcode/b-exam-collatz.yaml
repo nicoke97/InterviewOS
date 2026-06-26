@@ -1,0 +1,29 @@
+id: b-exam-collatz
+title: Pasos de Collatz
+fn_name: collatz
+description: Cuenta pasos hasta llegar a 1 (par->/2, impar->*3+1).
+test_cases:
+- args:
+  - 1
+  expected: 0
+- args:
+  - 8
+  expected: 3
+tiers:
+  1:
+    starter_code: "def collatz(n):\n    pasos = 0\n    while n > 1:\n        # ...\n\
+      \        pasos += 1\n    return pasos"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def collatz(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def collatz(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

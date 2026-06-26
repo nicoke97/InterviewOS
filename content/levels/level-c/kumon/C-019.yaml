@@ -1,0 +1,15 @@
+id: C-019
+level: C
+page: 19
+set: 2
+block: A
+block_id: C.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Concatena [1,2] + [3,4] e imprime
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3, 4]'
+starter_code: ''

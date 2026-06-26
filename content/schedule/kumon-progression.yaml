@@ -1,26 +1,37 @@
-rules:
-  intro:
-    assign: "block:all"
-    morning_split: [1, 10]
-    evening_split: [11, 20]
-  repeat:
-    assign: "block:all"
-    within_days: 1
-  bridge:
-    review: "block_prev:last_half"
-    new: "block_next:first_half"
-  advance:
-    assign: "block:all"
-  maintenance:
-    review: "block_prev:last_10"
-    new: "block_next:first_5"
+# Reglas de progresion del modelo Kumon por dominio + Orientador de sesion.
 
-sheet_size:
-  min: 8
-  max: 12
+model: domain_mastery
+
+session:
+  default_pages: 10
+  min_pages: 3
+  options: [3, 5, 10]
 
 mastery:
-  passes_required: 2
-  no_hint_from_drill: 4
-  repeat_pass_rate: 0.9
-  maintenance_sheets_for_unlock: 5
+  require_all_correct: true
+  self_correction_allowed: true
+  time_tolerance: 1.0
+  first_attempt_threshold: 0.90
+
+repeat:
+  on_fail: schedule_next_day
+  spaced_repeat_days: 1
+
+orientador:
+  minute_presets: [20, 30, 40, 60]
+  min_minutes: 15
+  max_minutes: 90
+  min_activity_minutes: 5
+
+pre_exam:
+  enabled: true
+  include_failure_history: true
+  max_sets: 3
+
+checkpoint:
+  every_pages: 50
+  required_to_advance_block: true
+
+exam:
+  at_page: 200
+  unlocks_next_level: true

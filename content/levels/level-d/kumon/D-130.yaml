@@ -1,0 +1,15 @@
+id: D-130
+level: D
+page: 130
+set: 13
+block: C
+block_id: D.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dados los sets [9] y [8, 9], imprime su UNION ordenada y su INTERSECCION ordenada.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[8, 9] [9]'
+starter_code: ''

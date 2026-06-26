@@ -1,0 +1,15 @@
+id: C-010
+level: C
+page: 10
+set: 1
+block: A
+block_id: C.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dada la lista [4, 5, 6, 7, 8], imprime el elemento en el indice -1.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

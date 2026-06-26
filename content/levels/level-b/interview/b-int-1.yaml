@@ -1,0 +1,11 @@
+id: b-int-1
+question: Cual es la diferencia entre un bucle for y un while? Cuando usarias cada
+  uno?
+rubric:
+- for itera sobre una secuencia o rango conocido
+- while repite mientras una condicion sea verdadera
+- for cuando sabes cuantas veces; while cuando depende de una condicion
+sample_answer: for se usa cuando recorres una secuencia o sabes el numero de iteraciones
+  (range). while se usa cuando repites hasta que se cumpla/deje de cumplir una condicion,
+  sin saber cuantas veces.
+category: python

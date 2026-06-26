@@ -1,0 +1,15 @@
+id: A-188
+level: A
+page: 188
+set: 19
+block: D
+block_id: A.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado nota=70: imprime ''aprobado'' si nota>=61'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: aprobado
+starter_code: ''

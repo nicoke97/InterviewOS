@@ -1,0 +1,19 @@
+id: B-131
+level: B
+page: 131
+set: 14
+block: C
+block_id: B.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado [3, 9, 2, 7], encuentra e imprime el valor MAXIMO sin usar max().
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: "nums = ___\nm = ___\nfor n in ___:\n    if n > m:\n        m = ___\n\
+  print(m)"
+reference_code: "nums = [3, 9, 2, 7]\nm = nums[0]\nfor n in nums:\n    if n > m:\n\
+  \        m = n\nprint(m)"

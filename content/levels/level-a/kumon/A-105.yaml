@@ -1,0 +1,16 @@
+id: A-105
+level: A
+page: 105
+set: 11
+block: C
+block_id: A.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (True/False) de: 4 != 4'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

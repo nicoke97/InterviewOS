@@ -1,0 +1,17 @@
+id: E-044
+level: E
+page: 44
+set: 5
+block: A
+block_id: E.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Define Ticket con titulo y estado; crea Ticket(''Crash app'', ''en progreso'')
+  e imprime: ''<titulo> [<estado>]''.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Crash app [en progreso]
+starter_code: ''

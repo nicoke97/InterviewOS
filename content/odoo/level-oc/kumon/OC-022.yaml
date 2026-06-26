@@ -1,0 +1,20 @@
+id: OC-022
+level: OC
+page: 22
+set: 3
+block: A
+block_id: OC.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Imprime el subject del ticket de mayor prioridad.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: b
+starter_code: ___
+reference_code: 'tickets = [{''subject'': ''a'', ''priority'': 1}, {''subject'': ''b'',
+  ''priority'': 3}]
+
+  print(max(tickets, key=lambda t: t[''priority''])[''subject''])'

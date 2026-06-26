@@ -1,0 +1,28 @@
+id: e-cp-point-str
+title: Punto como texto
+fn_name: point_str
+description: Crea Punto con __str__ '(x, y)' y retorna str(Punto).
+test_cases:
+- args:
+  - 1
+  - 2
+  expected: (1, 2)
+tiers:
+  1:
+    starter_code: "def point_str(x, y):\n    class Punto:\n        def __init__(self,\
+      \ x, y):\n            self.x = x\n            self.y = y\n        def __str__(self):\n\
+      \            return f'({self.x}, {self.y})'\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def point_str(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def point_str(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

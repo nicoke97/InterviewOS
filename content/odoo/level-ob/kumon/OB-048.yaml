@@ -1,0 +1,15 @@
+id: OB-048
+level: OB
+page: 48
+set: 5
+block: A
+block_id: OB.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Relacion anidada: imprime el name de la ciudad del partner de la orden.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Lima
+starter_code: ''

@@ -1,9 +1,0 @@
-id: b-py-1
-question: What is the difference between mutable and immutable types in Python?
-rubric:
-- list vs tuple
-- dict vs frozenset
-- str is immutable
-sample_answer: Mutable objects (list, dict, set) can change in place. Immutable objects
-  (int, str, tuple, frozenset) cannot be changed after creation.
-category: python

@@ -1,0 +1,15 @@
+id: OA-038
+level: OA
+page: 38
+set: 4
+block: A
+block_id: OA.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'mapped a mayusculas: imprime los names en mayuscula.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''A'', ''B'']'
+starter_code: ''

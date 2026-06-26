@@ -1,0 +1,15 @@
+id: A-049
+level: A
+page: 49
+set: 5
+block: A
+block_id: A.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime el booleano de bool(0)
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

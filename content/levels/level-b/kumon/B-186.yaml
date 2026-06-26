@@ -1,0 +1,17 @@
+id: B-186
+level: B
+page: 186
+set: 19
+block: D
+block_id: B.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define nota_letra(score) (>=90 'A', >=80 'B', >=70 'C', si no 'F') y llamala
+  con 80.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: ''

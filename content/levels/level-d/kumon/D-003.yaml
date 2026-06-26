@@ -1,0 +1,19 @@
+id: D-003
+level: D
+page: 3
+set: 1
+block: A
+block_id: D.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''x'': 10, ''y'': 20} e imprime el valor de la clave ''y''.'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ___
+reference_code: 'd = {''x'': 10, ''y'': 20}
+
+  print(d[''y''])'

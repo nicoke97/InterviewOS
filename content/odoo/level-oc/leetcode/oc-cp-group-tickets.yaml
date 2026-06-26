@@ -1,0 +1,32 @@
+id: oc-cp-group-tickets
+title: Agrupar tickets
+fn_name: group_by_state
+description: 'Devuelve un dict {state: cantidad} contando los tickets por estado.'
+test_cases:
+- args:
+  - - state: new
+    - state: new
+    - state: done
+  expected:
+    new: 2
+    done: 1
+- args:
+  - []
+  expected: {}
+tiers:
+  1:
+    starter_code: "def group_by_state(tickets):\n    rep = {}\n    # cuenta por state\n\
+      \    return rep"
+    explain_checklist:
+    - Identifica el dominio/condicion
+    - Recuerda el patron de Odoo
+    hints_allowed: true
+  2:
+    starter_code: "def group_by_state(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque
+    hints_allowed: true
+  3:
+    starter_code: "def group_by_state(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

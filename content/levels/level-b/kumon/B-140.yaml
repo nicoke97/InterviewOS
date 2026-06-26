@@ -1,0 +1,15 @@
+id: B-140
+level: B
+page: 140
+set: 14
+block: C
+block_id: B.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado [11, 22, 5], encuentra e imprime el valor MAXIMO sin usar max().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '22'
+starter_code: ''

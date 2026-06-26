@@ -1,0 +1,16 @@
+id: OC-035
+level: OC
+page: 35
+set: 4
+block: A
+block_id: OC.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Reporte: total facturado (suma de amounts de ordenes ''done'').'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OA-026
+level: OA
+page: 26
+set: 3
+block: A
+block_id: OA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Filtra productos cuyo name empiece con 'A' e imprime los names.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''Apple'', ''Avocado'']'
+starter_code: ''

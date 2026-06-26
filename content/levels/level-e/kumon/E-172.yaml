@@ -1,0 +1,23 @@
+id: E-172
+level: E
+page: 172
+set: 18
+block: D
+block_id: E.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define Base con __init__(self, x) que guarde self.x; define Hija(Base) con
+  __init__(self, x, y) que llame super().__init__(x) y guarde self.y; crea Hija(10,
+  5) e imprime x+y.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: "class Base:\n    def __init__(self, x):\n        self.x = x\nclass\
+  \ Hija(Base):\n    def __init__(self, x, y):\n        super().__init__(x)\n    \
+  \    self.y = y\nh = ___\nprint(___)"
+reference_code: "class Base:\n    def __init__(self, x):\n        self.x = x\nclass\
+  \ Hija(Base):\n    def __init__(self, x, y):\n        super().__init__(x)\n    \
+  \    self.y = y\nh = Hija(10, 5)\nprint(h.x + h.y)"

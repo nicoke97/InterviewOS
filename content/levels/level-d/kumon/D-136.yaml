@@ -1,0 +1,17 @@
+id: D-136
+level: D
+page: 136
+set: 14
+block: C
+block_id: D.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dados [10, 20, 30] y [20], imprime los elementos de A que NO estan en B (diferencia,
+  ordenada).
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[10, 30]'
+starter_code: ''

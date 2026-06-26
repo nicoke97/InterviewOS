@@ -1,0 +1,15 @@
+id: D-180
+level: D
+page: 180
+set: 18
+block: D
+block_id: D.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Captura (IndexError, KeyError) juntos accediendo a {}['a']
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: faltante
+starter_code: ''

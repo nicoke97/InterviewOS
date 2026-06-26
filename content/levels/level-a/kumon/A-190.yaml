@@ -1,0 +1,15 @@
+id: A-190
+level: A
+page: 190
+set: 19
+block: D
+block_id: A.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado temp=38: imprime ''fiebre'' si temp>=37.5'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: fiebre
+starter_code: ''

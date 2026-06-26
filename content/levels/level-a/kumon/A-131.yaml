@@ -1,0 +1,21 @@
+id: A-131
+level: A
+page: 131
+set: 14
+block: C
+block_id: A.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Dado a=5, b=3: imprime True si AMBOS son positivos'
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: 'a, b = 5, 3
+
+  print(___)'
+reference_code: 'a, b = 5, 3
+
+  print(a > 0 and b > 0)'

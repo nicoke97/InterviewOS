@@ -1,9 +1,0 @@
-id: c-git-2
-question: What is the difference between merge and rebase?
-rubric:
-- Merge creates merge commit
-- Rebase rewrites history
-- Team conventions
-sample_answer: Merge combines histories with a merge commit. Rebase replays commits
-  on top of another branch for linear history.
-category: python

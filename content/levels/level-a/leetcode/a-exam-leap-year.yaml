@@ -1,0 +1,31 @@
+id: a-exam-leap-year
+title: Anio bisiesto
+fn_name: bisiesto
+description: Retorna True si el anio es bisiesto.
+test_cases:
+- args:
+  - 2024
+  expected: true
+- args:
+  - 1900
+  expected: false
+- args:
+  - 2000
+  expected: true
+tiers:
+  1:
+    starter_code: "def bisiesto(a):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def bisiesto(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def bisiesto(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

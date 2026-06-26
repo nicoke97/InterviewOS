@@ -1,0 +1,21 @@
+id: A-011
+level: A
+page: 11
+set: 2
+block: A
+block_id: A.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 42
+prompt: Crea la variable ciudad con el valor 'Lima' e imprime la variable.
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lima
+starter_code: 'ciudad = ___
+
+  print(ciudad)'
+reference_code: 'ciudad = ''Lima''
+
+  print(ciudad)'

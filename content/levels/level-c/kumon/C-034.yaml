@@ -1,0 +1,16 @@
+id: C-034
+level: C
+page: 34
+set: 4
+block: A
+block_id: C.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [5,6,7], imprime el valor que devuelve pop()
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

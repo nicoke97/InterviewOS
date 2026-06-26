@@ -1,0 +1,16 @@
+id: OC-007
+level: OC
+page: 7
+set: 1
+block: A
+block_id: OC.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Avanza un ticket dos pasos desde 'new' e imprime el estado final.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: done
+starter_code: ''

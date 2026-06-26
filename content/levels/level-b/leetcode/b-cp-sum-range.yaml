@@ -1,0 +1,29 @@
+id: b-cp-sum-range
+title: Suma de 1 a n
+fn_name: suma_rango
+description: Retorna la suma de 1..n con un bucle.
+test_cases:
+- args:
+  - 5
+  expected: 15
+- args:
+  - 10
+  expected: 55
+tiers:
+  1:
+    starter_code: "def suma_rango(n):\n    total = 0\n    # bucle for\n    return\
+      \ total"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def suma_rango(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def suma_rango(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

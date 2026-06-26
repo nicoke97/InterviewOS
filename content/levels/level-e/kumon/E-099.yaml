@@ -1,0 +1,16 @@
+id: E-099
+level: E
+page: 99
+set: 10
+block: B
+block_id: E.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Cuenta con saldo=0; metodo depositar(self, n) suma al saldo; metodo
+  saldo_actual(self) lo retorna. Deposita [33, 67] e imprime el saldo final.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

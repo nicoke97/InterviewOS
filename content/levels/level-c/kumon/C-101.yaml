@@ -1,0 +1,21 @@
+id: C-101
+level: C
+page: 101
+set: 11
+block: C
+block_id: C.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea la tupla (1,2,3) e imprime el primer elemento
+hints:
+- Lee con atencion lo que se pide imprimir y construye el codigo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: 't = ___
+
+  print(___)'
+reference_code: 't = (1, 2, 3)
+
+  print(t[0])'

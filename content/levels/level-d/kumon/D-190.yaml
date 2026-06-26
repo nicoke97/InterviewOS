@@ -1,0 +1,19 @@
+id: D-190
+level: D
+page: 190
+set: 19
+block: D
+block_id: D.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Demuestra el orden: try->else->finally con prints 1,2,3'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3'
+starter_code: ''

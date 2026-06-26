@@ -1,0 +1,34 @@
+id: a-cp-grade
+title: Nota a letra
+fn_name: nota
+description: Retorna 'A','B','C' o 'F' segun el score.
+test_cases:
+- args:
+  - 95
+  expected: A
+- args:
+  - 82
+  expected: B
+- args:
+  - 71
+  expected: C
+- args:
+  - 50
+  expected: F
+tiers:
+  1:
+    starter_code: "def nota(score):\n    return ___"
+    explain_checklist:
+    - Identifica entradas y salidas
+    - Piensa en casos borde
+    hints_allowed: true
+  2:
+    starter_code: "def nota(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta
+    - Cual es la complejidad?
+    hints_allowed: true
+  3:
+    starter_code: "def nota(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false
