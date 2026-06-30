@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
+import { useI18n } from '../i18n/context';
 
 export interface CurriculumLevel {
   id: string;
@@ -7,30 +8,27 @@ export interface CurriculumLevel {
   title: string;
 }
 
-export const FALLBACK_LEVELS: CurriculumLevel[] = [
-  { id: 'a', letter: 'A', title: 'Level A — Fundamentos' },
-  { id: 'b', letter: 'B', title: 'Level B — Bucles y funciones' },
-  { id: 'c', letter: 'C', title: 'Level C — Listas, tuplas y strings' },
-  { id: 'd', letter: 'D', title: 'Level D — Diccionarios, sets y errores' },
-  { id: 'e', letter: 'E', title: 'Level E — Clases y OOP' },
-];
-
-export async function fetchCurriculumLevels(): Promise<CurriculumLevel[]> {
-  try {
-    const data = await api.curriculum();
-    const levels = data.levels as CurriculumLevel[] | undefined;
-    if (levels?.length) return levels;
-  } catch {
-    // use fallback
-  }
-  return FALLBACK_LEVELS;
-}
+const FALLBACK_KEYS = ['a', 'b', 'c', 'd', 'e'] as const;
 
 export function useCurriculumLevels(): CurriculumLevel[] {
-  const [levels, setLevels] = useState<CurriculumLevel[]>(FALLBACK_LEVELS);
+  const { t } = useI18n();
+  const [levels, setLevels] = useState<CurriculumLevel[]>(() =>
+    FALLBACK_KEYS.map((id) => ({
+      id,
+      letter: id.toUpperCase(),
+      title: t(`levels.${id}`),
+    })),
+  );
+
   useEffect(() => {
-    fetchCurriculumLevels().then(setLevels).catch(() => {});
-  }, []);
+    api.curriculum()
+      .then((data) => {
+        const apiLevels = data.levels as CurriculumLevel[] | undefined;
+        if (apiLevels?.length) setLevels(apiLevels);
+      })
+      .catch(() => {});
+  }, [t]);
+
   return levels;
 }
 
@@ -38,4 +36,15 @@ export function useRouteLevel(levelParam: string | undefined): string | null {
   const levels = useCurriculumLevels();
   const ids = levels.map((l) => l.id);
   return levelParam && ids.includes(levelParam.toLowerCase()) ? levelParam.toLowerCase() : null;
+}
+
+export async function fetchCurriculumLevels(): Promise<CurriculumLevel[]> {
+  try {
+    const data = await api.curriculum();
+    const levels = data.levels as CurriculumLevel[] | undefined;
+    if (levels?.length) return levels;
+  } catch {
+    /* use fallback */
+  }
+  return FALLBACK_KEYS.map((id) => ({ id, letter: id.toUpperCase(), title: `Level ${id.toUpperCase()}` }));
 }

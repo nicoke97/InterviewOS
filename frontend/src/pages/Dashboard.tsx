@@ -4,17 +4,31 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
   BarChart, Bar, CartesianGrid,
 } from 'recharts';
+import { continueStudyPath } from '../lib/continueStudy';
 import { useCurriculumLevels } from '../lib/levels';
-import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig } from '../lib/api';
-import { assignmentLabel, REASON_LABEL, reasonBadgeClass } from '../lib/orientadorLabels';
+import { dashboardReasonHint } from '../lib/reasonContext';
+import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig, type ReturnExamStatus } from '../lib/api';
+import { assignmentLabel, orientadorAssignmentPath, reasonBadgeClass, reasonLabel } from '../lib/orientadorLabels';
 import { StudyCalendar } from '../components/StudyCalendar';
+import { CodiMascot } from '../components/CodiMascot';
+import { InterviewStoryCard } from '../components/StudyRitual';
+import { buildCodiMessage, useCodi } from '../lib/codi';
+import { useI18n } from '../i18n/context';
+import {
+  STUDY_LANG_LABEL,
+  defaultMinutesForTrack,
+  languageOfDay,
+  readOrientadorTrack,
+  writeOrientadorTrack,
+  type OrientadorTrack,
+} from '../lib/studySession';
 
 const chartTooltip = {
-  background: '#1f2937',
-  border: '1px solid #374151',
-  borderRadius: '8px',
+  background: '#ffffff',
+  border: '1px solid #ddd6f3',
+  borderRadius: '12px',
   fontSize: '12px',
-  color: '#f3f4f6',
+  color: '#242746',
 };
 
 interface LevelProgress {
@@ -27,9 +41,9 @@ interface LevelProgress {
   progress_pct: number;
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, dateLocale: string): string {
   const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString('es-ES', {
+  return new Date(y, m - 1, d).toLocaleDateString(dateLocale, {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -76,10 +90,12 @@ function applyOrientadorResponse(
     setPlan(null);
     setPlanActive(false);
     setSelectedPlanId(null);
+    setMinutes(o.config?.default_minutes ?? 15);
   }
 }
 
 export function Dashboard() {
+  const { t, locale } = useI18n();
   const location = useLocation();
   const [stats, setStats] = useState<Record<string, unknown> | null>(null);
   const [plan, setPlan] = useState<DailyPlanData | null>(null);
@@ -87,41 +103,53 @@ export function Dashboard() {
   const [selectedPlanId, setSelectedPlanId] = useState<number | null>(null);
   const [planActive, setPlanActive] = useState(false);
   const [config, setConfig] = useState<OrientadorConfig | null>(null);
-  const [minutes, setMinutes] = useState(30);
+  const [orientadorTrack, setOrientadorTrack] = useState<OrientadorTrack>(readOrientadorTrack);
+  const [minutes, setMinutes] = useState(() => defaultMinutesForTrack(readOrientadorTrack()));
   const [calculating, setCalculating] = useState(false);
   const [orientadorReady, setOrientadorReady] = useState(false);
   const [statsLoading, setStatsLoading] = useState(true);
   const [statsError, setStatsError] = useState(false);
   const [calcError, setCalcError] = useState('');
+  const [returnExam, setReturnExam] = useState<ReturnExamStatus | null>(null);
   const levels = useCurriculumLevels();
 
-  const load = useCallback(() => {
+  const load = useCallback((track: OrientadorTrack = orientadorTrack) => {
+    void locale;
     setOrientadorReady(false);
     setStatsLoading(true);
     setStatsError(false);
 
-    api.orientadorActive()
+    api.orientadorActive(track)
       .then((o) => {
         applyOrientadorResponse(
           o, setConfig, setSessions, setPlan, setPlanActive, setMinutes, setSelectedPlanId,
         );
+        if (o.return_exam) setReturnExam(o.return_exam);
         setOrientadorReady(true);
       })
       .catch(() => setOrientadorReady(true));
 
+    api.returnExamStatus()
+      .then(setReturnExam)
+      .catch(() => {});
+
     api.stats()
-      .then(setStats)
+      .then((s) => {
+        setStats(s);
+        const re = s.return_exam as ReturnExamStatus | undefined;
+        if (re) setReturnExam(re);
+      })
       .catch(() => setStatsError(true))
       .finally(() => setStatsLoading(false));
-  }, []);
+  }, [orientadorTrack, locale]);
 
   useEffect(() => {
-    if (location.pathname === '/') load();
-  }, [load, location.pathname]);
+    if (location.pathname === '/') load(orientadorTrack);
+  }, [load, location.pathname, orientadorTrack]);
 
   useEffect(() => {
     const refresh = () => {
-      if (document.visibilityState === 'visible' && location.pathname === '/') load();
+      if (document.visibilityState === 'visible' && location.pathname === '/') load(orientadorTrack);
     };
     document.addEventListener('visibilitychange', refresh);
     return () => document.removeEventListener('visibilitychange', refresh);
@@ -141,6 +169,7 @@ export function Dashboard() {
     const allDone = sessions.length > 0 && sessions.every((s) => s.status === 'completed');
     try {
       const p = await api.orientadorCalculate(Number(minutes), {
+        track: orientadorTrack,
         planId: isActive && !opts?.newSession ? viewing?.id : undefined,
         newSession: opts?.newSession ?? allDone,
       });
@@ -159,7 +188,7 @@ export function Dashboard() {
       setMinutes(p.minutes_budget);
       setConfig(p.config);
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'No se pudo calcular la sesion';
+      const msg = err instanceof Error ? err.message : t('dashboard.calcErrorDefault');
       setCalcError(msg);
     } finally {
       setCalculating(false);
@@ -175,127 +204,217 @@ export function Dashboard() {
   }, [blockAccuracyRaw]);
   const todayPages = (stats?.today_activity as { pages_passed_today?: number } | undefined)?.pages_passed_today ?? 0;
   const unlocks = (stats?.unlocks as Record<string, LevelProgress>) || {};
-  const presets = config?.minute_presets ?? [20, 30, 40, 60];
+  const presets = config?.minute_presets ?? (orientadorTrack === 'leetcodes' ? [45, 60, 90] : [15, 20, 30, 40, 60]);
+  const examNeeded = Boolean(returnExam?.needed);
+  const continuePath = examNeeded ? '/return-exam' : continueStudyPath(planActive ? plan : null);
+  const nextPending = plan?.assignments.find((a) => !a.completed);
 
   if (!orientadorReady) {
-    return <p className="text-text-muted">Cargando sesion…</p>;
+    return <p className="text-text-muted">{t('dashboard.loadingSession')}</p>;
   }
 
   const sessionDate = plan?.date ?? new Date().toISOString().slice(0, 10);
 
+  const statValue = (value: string | number) => (statsLoading && !stats ? '…' : String(value));
+
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-4">
+    <div className="space-y-12">
+      <CodiGreeting />
+
+      <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
-          <h1 className="page-title">Dashboard</h1>
-          <p className="page-subtitle">Tu progreso de entrenamiento</p>
+          <h1 className="page-title">{t('dashboard.title')}</h1>
+          <p className="page-subtitle">{t('dashboard.subtitle')}</p>
         </div>
-      <div className="flex flex-wrap items-center gap-2">
-          <span className="badge-brand">{streak?.current ?? 0} dias seguidos</span>
-          <span className="badge-muted">Mejor: {streak?.best ?? 0}</span>
-          <span className="badge-muted">{String(stats?.day_number ?? 0)} dias activos</span>
-          {statsLoading && <span className="badge-muted">Actualizando stats…</span>}
-        </div>
+        <dl className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <div>
+            <dt className="text-text-dim">{t('dashboard.metricStreak')}</dt>
+            <dd className="mt-0.5 tabular-nums text-text">{statValue(streak?.current ?? 0)}</dd>
+          </div>
+          <div>
+            <dt className="text-text-dim">{t('dashboard.passRate')}</dt>
+            <dd className="mt-0.5 tabular-nums text-text">{statValue(`${stats?.pass_rate ?? 0}%`)}</dd>
+          </div>
+          <div>
+            <dt className="text-text-dim">{t('dashboard.metricActive')}</dt>
+            <dd className="mt-0.5 tabular-nums text-text">{statValue(Number(stats?.day_number ?? 0))}</dd>
+          </div>
+          <div>
+            <dt className="text-text-dim">{t('dashboard.pagesToday')}</dt>
+            <dd className="mt-0.5 tabular-nums text-text">{statValue(todayPages)}</dd>
+          </div>
+        </dl>
       </div>
 
-      <OrientadorCard
-        date={sessionDate}
-        minutes={minutes}
-        setMinutes={setMinutes}
-        presets={presets}
-        minMinutes={config?.min_minutes ?? 15}
-        maxMinutes={config?.max_minutes ?? 90}
-        sessions={sessions}
-        selectedPlanId={selectedPlanId}
-        onSelectSession={selectSession}
-        plan={planActive ? plan : null}
-        calculating={calculating}
-        calcError={calcError}
-        onCalculate={calculate}
-      />
+      {examNeeded ? (
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-amber-500/30 pb-8">
+          <div>
+            <p className="text-base font-medium text-text">{t('dashboard.returnExamTitle')}</p>
+            <p className="mt-1 text-sm text-text-muted">
+              {t('dashboard.returnExamDesc', { days: returnExam?.inactivity_days ?? returnExam?.threshold_days ?? 3 })}
+            </p>
+          </div>
+          <Link to="/return-exam" className="btn-primary shrink-0">
+            {t('dashboard.returnExamStart')}
+          </Link>
+        </div>
+      ) : continuePath && nextPending && plan?.status === 'active' ? (
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-8">
+          <div>
+            <p className="text-base font-medium text-text">{assignmentLabel(nextPending, locale)}</p>
+            <p className="mt-1 text-sm text-text-muted">
+              {dashboardReasonHint(nextPending, locale) ?? reasonLabel(nextPending.reason, locale, nextPending.type)}
+            </p>
+          </div>
+          <Link to={continuePath} className="btn-primary shrink-0">
+            {t('dashboard.startNow')}
+          </Link>
+        </div>
+      ) : sessions.length === 0 ? (
+        <p className="text-sm text-text-muted">
+          {t(orientadorTrack === 'leetcodes' ? 'dashboard.emptyHintLeetcodes' : 'dashboard.emptyHint').split(/(\*\*.*?\*\*)/g).map((part, i) =>
+            part.startsWith('**') && part.endsWith('**')
+              ? <strong key={i} className="font-medium text-text">{part.slice(2, -2)}</strong>
+              : part,
+          )}
+        </p>
+      ) : null}
+
+      <div className="space-y-6">
+        <div className="flex gap-6 border-b border-border text-sm">
+          {(['leetcodes', 'python'] as const).map((trackKey) => (
+            <button
+              key={trackKey}
+              type="button"
+              onClick={() => {
+                writeOrientadorTrack(trackKey);
+                setOrientadorTrack(trackKey);
+                setMinutes(defaultMinutesForTrack(trackKey));
+              }}
+              className={`-mb-px border-b-2 pb-2 transition ${
+                orientadorTrack === trackKey
+                  ? 'border-brand text-text'
+                  : 'border-transparent text-text-muted hover:text-text'
+              }`}
+            >
+              {trackKey === 'python' ? t('dashboard.trackPython') : t('common.leetcodes')}
+            </button>
+          ))}
+        </div>
+
+        <OrientadorCard
+          date={sessionDate}
+          track={orientadorTrack}
+          minutes={minutes}
+          setMinutes={setMinutes}
+          presets={presets}
+          minMinutes={config?.min_minutes ?? (orientadorTrack === 'leetcodes' ? 30 : 15)}
+          maxMinutes={config?.max_minutes ?? 90}
+          sessions={sessions}
+          selectedPlanId={selectedPlanId}
+          onSelectSession={selectSession}
+          plan={planActive ? plan : null}
+          calculating={calculating}
+          calcError={calcError}
+          onCalculate={calculate}
+          examNeeded={examNeeded}
+        />
+      </div>
 
       {statsError && (
-        <div className="card flex flex-wrap items-center justify-between gap-3 border-amber-500/30">
-          <p className="text-sm text-text-muted">No se pudieron cargar las estadisticas.</p>
-          <button type="button" onClick={load} className="btn-secondary text-sm">Reintentar</button>
+        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+          <p className="text-text-muted">{t('dashboard.statsError')}</p>
+          <button type="button" onClick={() => load()} className="text-brand">{t('common.retry')}</button>
         </div>
       )}
 
-      <StudyCalendar />
+      <div className="grid items-start gap-12 lg:grid-cols-2">
+        <section>
+          <StudyCalendar />
+        </section>
 
-      <div>
-        <h2 className="mb-3 font-medium text-text">Niveles</h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {levels.map((lvl) => {
-            const u = unlocks[lvl.id];
-            const mastered = u?.sets_mastered ?? 0;
-            const totalSets = u?.total_sets ?? 20;
-            const pagesDone = u?.pages_completed ?? 0;
-            const totalPages = u?.total_pages ?? 200;
-            const pct = u?.progress_pct ?? (totalPages ? Math.round((pagesDone / totalPages) * 100) : 0);
-            return (
-              <Link key={lvl.id} to={`/${lvl.id}/roadmap`} className="card transition hover:border-brand/40">
-                <p className="text-sm font-semibold text-text">{lvl.title}</p>
-                <div className="mt-3 mb-1.5 flex justify-between text-xs text-text-muted">
-                  <span>{pagesDone}/{totalPages} paginas · {mastered}/{totalSets} sets</span>
-                  <span className="font-medium text-text">{pct}%</span>
-                </div>
-                <div className="progress-bar"><div className="progress-fill" style={{ width: `${pct}%` }} /></div>
-              </Link>
-            );
-          })}
-        </div>
+        <section>
+          <h2 className="dash-section-title mb-4">{t('common.levels')}</h2>
+          <div className="divide-y divide-border">
+            {levels.map((lvl) => {
+              const u = unlocks[lvl.id];
+              const mastered = u?.sets_mastered ?? 0;
+              const totalSets = u?.total_sets ?? 20;
+              const pagesDone = u?.pages_completed ?? 0;
+              const totalPages = u?.total_pages ?? 200;
+              const pct = u?.progress_pct ?? (totalPages ? Math.round((pagesDone / totalPages) * 100) : 0);
+              const subtitle = lvl.title.replace(/^Level \w+ — /, '').replace(/^Nivel \w+ — /, '');
+              return (
+                <Link
+                  key={lvl.id}
+                  to={`/${lvl.id}/roadmap`}
+                  className="flex items-center gap-4 py-3.5 first:pt-0 last:pb-0"
+                >
+                  <span className="w-5 shrink-0 text-sm text-text-dim">{lvl.letter}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <p className="truncate text-sm text-text">{subtitle}</p>
+                      <span className="shrink-0 text-sm tabular-nums text-text-muted">{pct}%</span>
+                    </div>
+                    <p className="mt-0.5 text-xs text-text-dim">
+                      {t('dashboard.levelsPages', { pagesDone, totalPages })}
+                      {' · '}
+                      {t('dashboard.levelsSets', { mastered, totalSets })}
+                    </p>
+                    <div className="progress-bar mt-2">
+                      <div className="progress-fill" style={{ width: `${pct}%` }} />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Tasa de aciertos" value={statsLoading && !stats ? '…' : `${String(stats?.pass_rate ?? 0)}%`} highlight />
-        <StatCard label="Intentos totales" value={statsLoading && !stats ? '…' : String(stats?.total_attempts ?? 0)} />
-        <StatCard label="Paginas hoy" value={statsLoading && !stats ? '…' : String(todayPages)} />
-      </div>
-
-      <div className="grid gap-4 lg:grid-cols-2">
-        <div className="card">
-          <h2 className="font-medium text-text">Minutos de estudio</h2>
-          <p className="mb-4 text-xs text-text-dim">Ultimos 30 dias</p>
+      <section className="grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 className="dash-section-title">{t('dashboard.chartMinutesTitle')}</h2>
+          <p className="mb-4 text-sm text-text-dim">{t('dashboard.chartMinutesSubtitle')}</p>
           {statsLoading && !stats ? (
-            <p className="py-16 text-center text-sm text-text-muted">Cargando grafico…</p>
+            <p className="py-16 text-sm text-text-muted">{t('dashboard.chartLoading')}</p>
           ) : (
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={200}>
             <LineChart data={minutesChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#6b7280' }} axisLine={false} tickLine={false} />
-              <YAxis stroke="#6b7280" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#eceaf3" vertical={false} />
+              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#8b8eaa' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="#8b8eaa" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Line type="monotone" dataKey="minutes" stroke="#26d0a4" strokeWidth={2} dot={false}
-                activeDot={{ r: 4, fill: '#26d0a4', stroke: '#111827', strokeWidth: 2 }} />
+              <Line type="monotone" dataKey="minutes" stroke="#7e4bde" strokeWidth={1.75} dot={false} />
             </LineChart>
           </ResponsiveContainer>
           )}
         </div>
-        <div className="card">
-          <h2 className="font-medium text-text">Dominio por bloque</h2>
-          <p className="mb-4 text-xs text-text-dim">Paginas completadas por bloque (sets en curso incluidos)</p>
+        <div>
+          <h2 className="dash-section-title">{t('dashboard.chartBlocksTitle')}</h2>
+          <p className="mb-4 text-sm text-text-dim">{t('dashboard.chartBlocksSubtitle')}</p>
           {statsLoading && !stats ? (
-            <p className="py-16 text-center text-sm text-text-muted">Cargando grafico…</p>
+            <p className="py-16 text-sm text-text-muted">{t('dashboard.chartLoading')}</p>
           ) : (
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={200}>
             <BarChart data={blockAccuracy}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-              <XAxis dataKey="block_title" tick={{ fontSize: 9, fill: '#6b7280' }} axisLine={false} tickLine={false} />
-              <YAxis stroke="#6b7280" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#eceaf3" vertical={false} />
+              <XAxis dataKey="block_title" tick={{ fontSize: 9, fill: '#8b8eaa' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="#8b8eaa" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Bar dataKey="accuracy" fill="#26d0a4" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="accuracy" fill="#7e4bde" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           )}
         </div>
-      </div>
+      </section>
     </div>
   );
 }
 
 function OrientadorCard({
   date,
+  track,
   minutes,
   setMinutes,
   presets,
@@ -308,8 +427,10 @@ function OrientadorCard({
   calculating,
   calcError,
   onCalculate,
+  examNeeded,
 }: {
   date: string;
+  track: 'python' | 'leetcodes';
   minutes: number;
   setMinutes: (n: number) => void;
   presets: number[];
@@ -322,10 +443,22 @@ function OrientadorCard({
   calculating: boolean;
   calcError: string;
   onCalculate: (opts?: { newSession?: boolean }) => void;
+  examNeeded?: boolean;
 }) {
+  const { t, locale, dateLocale } = useI18n();
   const nextPending = plan?.assignments.find((a) => !a.completed);
   const allDone = plan && plan.total_count > 0 && plan.completed_count >= plan.total_count;
-  const planStale = plan != null && plan.status === 'active' && Number(minutes) !== Number(plan.minutes_budget);
+  const overProblemCap = Boolean(
+    plan
+    && track === 'leetcodes'
+    && plan.status === 'active'
+    && plan.assignments.length > (plan.config?.max_problems_per_session ?? 1),
+  );
+  const planStale = Boolean(
+    plan
+    && plan.status === 'active'
+    && (Number(minutes) !== Number(plan.minutes_budget) || overProblemCap),
+  );
   const hasActiveSession = sessions.some((s) => s.status === 'active');
   const allSessionsDone = sessions.length > 0 && sessions.every((s) => s.status === 'completed');
   const isViewingActive = plan?.status === 'active';
@@ -335,13 +468,23 @@ function OrientadorCard({
   const showAdd = allSessionsDone && !hasActiveSession;
 
   return (
-    <div className="card space-y-4 border-brand/30">
+    <div className="space-y-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold text-text">Sesion de {formatDate(date)}</h2>
+          <h2 className="text-lg font-semibold text-text">
+            {t('dashboard.sessionTitle', {
+              track: track === 'leetcodes' ? t('common.leetcodes') : 'Python',
+              date: formatDate(date, dateLocale),
+            })}
+          </h2>
           <p className="text-sm text-text-muted">
-            Elige cuantos minutos tienes. Calculamos repeticiones, repaso y nuevos sets que quepan en ese tiempo.
+            {track === 'leetcodes' ? t('dashboard.descLeetcodes') : t('dashboard.descPython')}
           </p>
+          {track === 'leetcodes' && (
+            <p className="mt-2 text-xs text-text-dim">
+              {t('studySession.langToday', { lang: STUDY_LANG_LABEL[languageOfDay()] })}
+            </p>
+          )}
         </div>
         {plan && plan.total_count > 0 && (
           <span className="badge-brand">
@@ -349,6 +492,13 @@ function OrientadorCard({
           </span>
         )}
       </div>
+
+      {track === 'leetcodes' && (
+        <div className="space-y-2">
+          <h3 className="text-sm font-medium text-text">{t('studySession.storiesTitle')}</h3>
+          <InterviewStoryCard />
+        </div>
+      )}
 
       {sessions.length > 0 && (
         <div className="flex flex-wrap gap-2">
@@ -360,49 +510,53 @@ function OrientadorCard({
                 key={s.id}
                 type="button"
                 onClick={() => onSelectSession(s)}
-                className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+                className={`rounded-full px-3 py-1 text-sm transition ${
                   selected
-                    ? 'bg-brand text-bg'
-                    : 'bg-surface-2 text-text-muted hover:text-text'
+                    ? 'bg-brand text-on-brand'
+                    : 'text-text-muted hover:text-text'
                 }`}
               >
-                Sesion {s.session_number}
-                {done ? ' · completada' : ` · ${s.completed_count}/${s.total_count}`}
+                {t('dashboard.sessionTab', { n: s.session_number })}
+                {done ? t('dashboard.sessionCompleted') : t('dashboard.sessionProgress', { done: s.completed_count, total: s.total_count })}
                 {' · '}
-                {s.minutes_budget} min
+                {t('dashboard.minutesN', { n: s.minutes_budget })}
               </button>
             );
           })}
         </div>
       )}
 
-      {(isViewingActive || allSessionsDone || sessions.length === 0) && (
+      {examNeeded && (
+        <p className="text-sm text-amber-700">{t('dashboard.returnExamBlockCalc')}</p>
+      )}
+
+      {(isViewingActive || allSessionsDone || sessions.length === 0) && !examNeeded && (
       <div className="space-y-3">
-        <p className="text-sm font-medium text-text">Tiempo disponible</p>
+        <p className="text-sm font-medium text-text">{t('dashboard.timeAvailable')}</p>
         <div className="flex flex-wrap items-center gap-2">
           {presets.map((p) => (
             <button
               key={p}
               type="button"
               onClick={() => setMinutes(p)}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
-                minutes === p ? 'bg-brand text-bg' : 'bg-surface-2 text-text-muted hover:text-text'
+              className={`rounded-full px-3 py-1 text-sm transition ${
+                minutes === p ? 'bg-brand text-on-brand' : 'text-text-muted hover:text-text'
               }`}
             >
-              {p} min
+              {t('dashboard.minutesN', { n: p })}
             </button>
           ))}
           <label className="flex items-center gap-2 text-sm text-text-muted">
-            <span>Otro:</span>
+            <span>{t('dashboard.other')}</span>
             <input
               type="number"
               min={minMinutes}
               max={maxMinutes}
               value={minutes}
               onChange={(e) => setMinutes(Number(e.target.value))}
-              className="w-20 rounded-lg border border-border bg-surface-2 px-2 py-1 text-text"
+              className="w-16 border-b border-border bg-transparent px-1 py-1 text-text outline-none"
             />
-            <span>min</span>
+            <span>{t('common.min')}</span>
           </label>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -413,7 +567,7 @@ function OrientadorCard({
               disabled={calculating}
               className="btn-primary"
             >
-              {calculating ? 'Calculando…' : showFirstCalc ? 'Calcular sesion' : 'Recalcular sesion'}
+              {calculating ? t('dashboard.calculating') : showFirstCalc ? t('dashboard.calcFirst') : t('dashboard.calcRecalc')}
             </button>
           )}
           {showAdd && (
@@ -423,22 +577,24 @@ function OrientadorCard({
               disabled={calculating}
               className="btn-primary"
             >
-              {calculating ? 'Calculando…' : 'Anadir sesion'}
+              {calculating ? t('dashboard.calculating') : t('dashboard.calcAdd')}
             </button>
           )}
         </div>
         {calcError && (
-          <p className="text-sm text-red-400">
-            {calcError}. ¿Está corriendo <code className="text-brand">npm run dev</code>?
+          <p className="text-sm text-red-600">
+            {t('dashboard.calcErrorHint', { msg: calcError })}
           </p>
         )}
         {planStale && isViewingActive && (
-          <p className="text-xs text-amber-400">
-            {minutes > (plan?.minutes_budget ?? 0)
-              ? 'Mas tiempo: se anadiran actividades que quepan en la diferencia.'
-              : overBudget
-                ? 'Menos tiempo, pero el plan ya supera ese presupuesto — se mantiene igual.'
-                : 'Menos tiempo: se recalcula el plan conservando lo ya hecho.'}
+          <p className="text-xs text-amber-600">
+            {overProblemCap
+              ? t('dashboard.staleTooManyProblems')
+              : minutes > (plan?.minutes_budget ?? 0)
+                ? t('dashboard.staleMoreTime')
+                : overBudget
+                  ? t('dashboard.staleOverBudget')
+                  : t('dashboard.staleLessTime')}
           </p>
         )}
       </div>
@@ -446,49 +602,53 @@ function OrientadorCard({
 
       {plan && plan.assignments.length === 0 && (
         <p className="text-sm text-text-muted">
-          Con {plan.minutes_budget} min no entra ninguna actividad. Prueba con mas tiempo.
+          {t('dashboard.noActivities', { min: plan.minutes_budget })}
         </p>
       )}
 
       {plan && plan.assignments.length > 0 && (
         <div className="space-y-3 border-t border-border pt-4">
           <p className="text-sm text-text-muted">
-            Sesion {plan.session_number}
+            {t('dashboard.sessionTab', { n: plan.session_number })}
             {' · '}
-            Plan para <span className="font-medium text-text">{plan.minutes_budget} min</span>
-            {' · '}
-            <span className="font-medium text-text">~{plan.estimated_minutes} min</span> en actividades
+            {t('dashboard.planSummary', { n: plan.session_number, budget: plan.minutes_budget, estimated: plan.estimated_minutes }).split('**').map((part, i) =>
+              i % 2 === 1 ? <span key={i} className="font-medium text-text">{part}</span> : part,
+            )}
             {plan.status === 'completed' && (
-              <span className="ml-2 text-emerald-400">· Completada</span>
+              <span className="ml-2 text-emerald-700">{t('dashboard.planCompleted')}</span>
             )}
           </p>
 
           {planStale && isViewingActive && (
-            <p className="text-xs text-amber-400">
-              Plan calculado para {plan.minutes_budget} min — recalcula si quieres otro presupuesto.
+            <p className="text-xs text-amber-600">
+              {t('dashboard.staleBanner', { min: plan.minutes_budget })}
             </p>
           )}
 
           {allDone ? (
-            <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
-              Sesion completada.
+            <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-700">
+              {t('dashboard.allDone')}
               {!hasActiveSession && sessions.length > 0 && (
-                <span> Puedes anadir otra sesion con el boton de arriba.</span>
+                <span> {t('dashboard.allDoneAddHint')}</span>
               )}
             </div>
           ) : nextPending && isViewingActive ? (
-            <div className="rounded-xl border border-brand/40 bg-brand/5 px-4 py-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand">Siguiente</p>
-              <p className="mt-1 text-lg font-semibold text-text">{assignmentLabel(nextPending)}</p>
+            <div className="py-1">
+              <p className="text-sm text-text-dim">{t('common.next')}</p>
+              <p className="mt-1 text-base font-medium text-text">{assignmentLabel(nextPending, locale)}</p>
               <p className="mt-1 text-sm text-text-muted">
-                {REASON_LABEL[nextPending.reason] ?? nextPending.reason}
-                {nextPending.estimated_minutes ? ` · ~${Math.round(nextPending.estimated_minutes)} min` : ''}
+                {dashboardReasonHint(nextPending, locale) ?? reasonLabel(nextPending.reason, locale, nextPending.type) ?? nextPending.reason}
+                {nextPending.estimated_minutes ? ` · ${t('dashboard.estimatedMin', { n: Math.round(nextPending.estimated_minutes) })}` : ''}
               </p>
               <Link
-                to={`/orientador/${plan.id}/${nextPending.index ?? plan.assignments.indexOf(nextPending)}`}
+                to={orientadorAssignmentPath(
+                  plan.id,
+                  nextPending.index ?? plan.assignments.indexOf(nextPending),
+                  nextPending,
+                )}
                 className="btn-primary mt-4 inline-block w-full text-center sm:w-auto"
               >
-                Empezar
+                {t('common.start')}
               </Link>
             </div>
           ) : null}
@@ -504,20 +664,23 @@ function OrientadorCard({
                 >
                   <span>
                     <span className={`text-xs font-medium ${reasonBadgeClass(a.reason)}`}>
-                      {REASON_LABEL[a.reason] ?? a.reason}
+                      {reasonLabel(a.reason, locale, a.type)}
                     </span>
                     {' · '}
-                    {assignmentLabel(a)}
+                    {assignmentLabel(a, locale)}
+                    {!a.completed && dashboardReasonHint(a, locale) && (
+                      <span className="block text-xs text-text-dim">{dashboardReasonHint(a, locale)}</span>
+                    )}
                   </span>
                   <span className="shrink-0 text-xs">
-                    {a.completed ? 'Hecho' : `~${Math.round(a.estimated_minutes ?? 0)} min`}
+                    {a.completed ? t('common.done') : t('dashboard.estimatedMin', { n: Math.round(a.estimated_minutes ?? 0) })}
                   </span>
                 </li>
               ))}
             </ul>
           )}
           <Link to="/orientador" className="text-sm text-brand hover:underline">
-            Ver por que se eligio cada actividad
+            {t('dashboard.whyLink')}
           </Link>
         </div>
       )}
@@ -525,11 +688,30 @@ function OrientadorCard({
   );
 }
 
-function StatCard({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
+function CodiGreeting() {
+  const { t } = useI18n();
+  const codi = useCodi();
+  const msg = buildCodiMessage(codi, t);
+
   return (
-    <div className="card">
-      <p className="stat-label">{label}</p>
-      <p className={`stat-value ${highlight ? 'text-brand' : ''}`}>{value}</p>
+    <div className="flex items-center gap-4 rounded-2xl border border-brand/20 bg-brand/5 p-4 sm:p-5">
+      <CodiMascot mood={msg.mood} size={76} className="shrink-0" />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-semibold text-brand">{t('codi.name')}</p>
+          {codi.streakCurrent > 0 && (
+            <span className="badge-brand">{t('codi.streakBadge', { n: codi.streakCurrent })}</span>
+          )}
+        </div>
+        <p className="mt-0.5 text-base font-medium text-text">{msg.headline}</p>
+        <p className="mt-0.5 text-sm text-text-muted">{msg.subline}</p>
+      </div>
+      {msg.ctaLabel && msg.ctaTo && (
+        <Link to={msg.ctaTo} className="btn-primary shrink-0 max-sm:hidden">
+          {msg.ctaLabel}
+        </Link>
+      )}
     </div>
   );
 }
+

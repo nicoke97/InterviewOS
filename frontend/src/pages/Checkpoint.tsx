@@ -3,8 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { api, type Checkpoint as CheckpointData } from '../lib/api';
 import { LeetcodePanel } from '../components/LeetcodePanel';
 import { LockIcon } from '../components/LockIcon';
+import { useI18n } from '../i18n/context';
 
 export function Checkpoint() {
+  const { t, locale } = useI18n();
   const { level: levelParam, block: blockParam } = useParams();
   const level = (levelParam || 'a').toLowerCase();
   const block = (blockParam || 'A').toUpperCase();
@@ -12,23 +14,24 @@ export function Checkpoint() {
   const [selected, setSelected] = useState<string | null>(null);
 
   const load = useCallback(() => {
+    void locale;
     api.checkpoint(level, block).then((d) => {
       setData(d);
       setSelected((cur) => cur ?? d.problems[0]?.id ?? null);
     });
-  }, [level, block]);
+  }, [level, block, locale]);
 
   useEffect(() => { load(); }, [load]);
 
-  if (!data) return <p className="text-text-muted">Cargando checkpoint…</p>;
+  if (!data) return <p className="text-text-muted">{t('checkpoint.loading')}</p>;
 
   if (!data.available) {
     return (
       <div className="locked-card mx-auto max-w-lg text-center">
         <LockIcon className="mx-auto h-10 w-10 text-warning/70" />
-        <h1 className="page-title mt-4">Checkpoint bloqueado</h1>
-        <p className="mt-3 text-text-muted">Domina los 5 sets del bloque {block} para desbloquear el checkpoint.</p>
-        <Link to={`/${level}/roadmap`} className="btn-secondary mt-4 inline-block">Ver mapa</Link>
+        <h1 className="page-title mt-4">{t('checkpoint.lockedTitle')}</h1>
+        <p className="mt-3 text-text-muted">{t('checkpoint.lockedDesc', { block })}</p>
+        <Link to={`/${level}/roadmap`} className="btn-secondary mt-4 inline-block">{t('common.viewMap')}</Link>
       </div>
     );
   }
@@ -44,25 +47,25 @@ export function Checkpoint() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="page-title">Checkpoint · Bloque {block}</h1>
-          <p className="page-subtitle">Nivel {level.toUpperCase()} · {data.block_title}</p>
+          <h1 className="page-title">{t('checkpoint.title', { block })}</h1>
+          <p className="page-subtitle">{t('checkpoint.subtitle', { level: level.toUpperCase(), blockTitle: data.block_title })}</p>
         </div>
         {data.passed ? (
-          <span className="badge-brand">Checkpoint aprobado</span>
+          <span className="badge-brand">{t('checkpoint.passed')}</span>
         ) : (
-          <Link to={`/${level}/roadmap`} className="btn-secondary text-sm">Volver al mapa</Link>
+          <Link to={`/${level}/roadmap`} className="btn-secondary text-sm">{t('common.backToMap')}</Link>
         )}
       </div>
 
       {data.passed && (
         <div className="alert-success">
-          Aprobaste el checkpoint del bloque {block}. El siguiente bloque esta desbloqueado.
+          {t('checkpoint.success', { block })}
         </div>
       )}
 
-      <div className="grid gap-5 lg:grid-cols-4">
-        <div className="space-y-1.5">
-          <p className="px-1 text-xs font-medium uppercase tracking-wide text-text-dim">Problemas</p>
+      <div className="grid gap-5 xl:grid-cols-5">
+        <div className="space-y-1.5 xl:col-span-1">
+          <p className="px-1 text-xs font-medium uppercase tracking-wide text-text-dim">{t('common.problems')}</p>
           {data.problems.map((p) => (
             <button
               key={p.id}
@@ -71,12 +74,12 @@ export function Checkpoint() {
               className={selected === p.id ? 'list-item-active' : 'list-item'}
             >
               <p className="font-medium text-text">{p.title}</p>
-              <p className="mt-0.5 text-xs text-text-muted">{p.passed ? 'Resuelto' : 'Pendiente'}</p>
+              <p className="mt-0.5 text-xs text-text-muted">{p.passed ? t('common.solved') : t('common.pending')}</p>
             </button>
           ))}
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="xl:col-span-4">
           {selected ? (
             <LeetcodePanel
               problemId={selected}
@@ -84,7 +87,7 @@ export function Checkpoint() {
               onSubmit={submit}
             />
           ) : (
-            <div className="empty-state"><p className="text-text-muted">Selecciona un problema.</p></div>
+            <div className="empty-state"><p className="text-text-muted">{t('checkpoint.selectProblem')}</p></div>
           )}
         </div>
       </div>
