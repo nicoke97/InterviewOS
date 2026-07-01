@@ -1,34 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Mimo-inspired: clean dark slate + single mint accent */
-  --color-bg: #111827;
-  --color-surface: #1f2937;
-  --color-surface-2: #273449;
-  --color-border: #374151;
-  --color-border-light: #4b5563;
+  /* Mimo brand: Ebony Clay + Medium Purple on a light lavender canvas */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f3f8;
+  --color-border: #eceaf3;
+  --color-border-light: #ddd9ea;
 
-  --color-brand: #26d0a4;
-  --color-brand-hover: #2ee4b6;
-  --color-brand-muted: #1a9e7c;
+  --color-brand: #7e4bde;
+  --color-brand-hover: #6a3ad0;
+  --color-brand-muted: #9b74e8;
+  --color-on-brand: #ffffff;
+  --color-ink: #242746;
 
-  --color-text: #f3f4f6;
-  --color-text-muted: #9ca3af;
-  --color-text-dim: #6b7280;
+  --color-text: #242746;
+  --color-text-muted: #6a6d8c;
+  --color-text-dim: #8b8eaa;
 
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-success: #26d0a4;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-success: #059669;
 
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.2);
-  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.15);
+  --shadow-sm: none;
+  --shadow-card: none;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -49,11 +51,122 @@ body {
   background: var(--color-bg);
 }
 
+@media (min-width: 768px) {
+  .app-shell {
+    display: flex;
+  }
+}
+
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: 100vh;
+  width: 16rem;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 1rem 0.75rem 1rem;
+}
+
+.app-sidebar-drawer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 60;
+  display: flex;
+  box-shadow: 12px 0 40px rgb(36 39 70 / 0.12);
+}
+
+.app-sidebar-nav {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow-y: auto;
+}
+
+.app-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 0.7rem 1rem;
+}
+
+.app-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.app-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgb(36 39 70 / 0.32);
+}
+
+.sidebar-item {
+  @apply flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-surface-2 hover:text-text;
+}
+
+.sidebar-item-nested {
+  @apply py-1.5 pl-3 text-[13px] font-medium;
+}
+
+.sidebar-item-active {
+  @apply bg-brand/10 text-brand hover:bg-brand/15 hover:text-brand;
+}
+
+.sidebar-icon {
+  display: grid;
+  height: 1.15rem;
+  width: 1.15rem;
+  flex-shrink: 0;
+  place-items: center;
+}
+
+.sidebar-icon svg {
+  height: 1.15rem;
+  width: 1.15rem;
+}
+
+.sidebar-branch {
+  margin: 0.15rem 0 0.35rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.4rem;
+}
+
+.sidebar-leaf {
+  margin: 0.1rem 0 0.25rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.3rem;
+}
+
 /* ── Components ── */
 
 .card {
   @apply rounded-2xl border border-border bg-surface p-5;
-  box-shadow: var(--shadow-card);
 }
 
 .page-title {
@@ -81,15 +194,15 @@ body {
 }
 
 .btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40 bg-brand text-bg hover:bg-brand-hover;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40 bg-brand text-on-brand hover:bg-brand-hover;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40 border border-border bg-surface text-text hover:border-border-light hover:bg-surface-2;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:pointer-events-none disabled:opacity-40 border border-border bg-surface text-text hover:border-border-light hover:bg-surface-2;
 }
 
 .btn-ghost {
@@ -108,17 +221,30 @@ body {
   @apply rounded-lg px-3.5 py-1.5 text-sm font-medium text-text shadow-sm bg-surface-2;
 }
 
-.nav-dropdown {
-  @apply absolute left-0 top-full z-50 mt-1 min-w-[10rem] rounded-xl border border-border bg-surface py-1 shadow-lg;
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
-.nav-dropdown-item {
-  @apply flex flex-col items-start gap-0.5 px-3.5 py-2 text-sm text-text-muted transition-colors hover:bg-surface-2 hover:text-text;
+.brand-mark-badge {
+  display: grid;
+  height: 1.75rem;
+  width: 1.75rem;
+  place-items: center;
+  border-radius: 0.5rem;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
 }
 
-.nav-dropdown-item-locked {
-  @apply text-text-dim hover:bg-warning/5 hover:text-warning;
+.brand-mark-word {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-ink);
 }
+
 
 .list-item {
   @apply block w-full rounded-xl border border-transparent bg-surface p-3.5 text-left text-sm transition-colors duration-150 hover:bg-surface-2;
@@ -165,7 +291,7 @@ body {
 }
 
 .drill-dot-done {
-  @apply flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-xs font-medium text-bg transition-colors duration-150;
+  @apply flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-xs font-medium text-on-brand transition-colors duration-150;
 }
 
 .drill-dot-current {
@@ -197,8 +323,16 @@ body {
   @apply h-1.5 overflow-hidden rounded-full bg-surface-2;
 }
 
+.progress-bar-lg {
+  @apply h-2.5 overflow-hidden rounded-full bg-surface-2;
+}
+
 .progress-fill {
   @apply h-full rounded-full bg-brand transition-all duration-300;
+}
+
+.dash-section-title {
+  @apply text-base font-semibold text-text;
 }
 
 .empty-state {
@@ -212,11 +346,9 @@ body {
 /* ── Study calendar ── */
 
 .calendar-widget {
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  padding: 1.25rem;
-  box-shadow: var(--shadow-card);
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .calendar-header {
@@ -288,6 +420,10 @@ body {
   color: var(--color-text-muted);
 }
 
+.calendar-day-missed {
+  color: var(--color-text-dim);
+}
+
 .calendar-day-partial {
   background: color-mix(in oklab, var(--color-warning) 30%, transparent);
   color: var(--color-warning);
@@ -296,12 +432,18 @@ body {
 
 .calendar-day-complete {
   background: var(--color-brand);
-  color: var(--color-bg);
+  color: var(--color-on-brand);
+  font-weight: 600;
+}
+
+.calendar-day-repeat {
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--color-warning) 70%, transparent);
+  color: var(--color-warning);
   font-weight: 600;
 }
 
 .calendar-day-today {
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-brand);
+  box-shadow: inset 0 0 0 1.5px var(--color-brand);
 }
 
 .calendar-legend {
@@ -334,10 +476,328 @@ body {
   box-shadow: inset 0 0 0 1px var(--color-border);
 }
 
+.calendar-legend-missed {
+  background: color-mix(in oklab, var(--color-error) 22%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-error) 45%, transparent);
+}
+
 .calendar-legend-partial {
   background: color-mix(in oklab, var(--color-warning) 30%, transparent);
 }
 
 .calendar-legend-complete {
   background: var(--color-brand);
+}
+
+.calendar-legend-repeat {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--color-warning) 70%, transparent);
+}
+
+/* ── LeetCode workspace ── */
+
+.lc-workspace {
+  position: relative;
+}
+
+.lc-workspace::before {
+  content: none;
+}
+
+.lc-panel {
+  @apply overflow-hidden rounded-2xl border border-border bg-surface;
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px color-mix(in oklab, white 3%, transparent) inset;
+}
+
+.lc-panel-header {
+  @apply flex items-center gap-2.5 border-b border-border px-4 py-3;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-surface-2) 60%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+.lc-panel-body {
+  @apply p-4 xl:p-5;
+}
+
+.lc-panel-scroll {
+  @apply overflow-y-auto;
+}
+
+.lc-section {
+  @apply rounded-xl border border-border/60 bg-surface-2/40 p-4;
+}
+
+.lc-section + .lc-section {
+  @apply mt-3;
+}
+
+.lc-section-title {
+  @apply flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-text-dim;
+}
+
+.lc-section-icon {
+  @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand/10 text-brand;
+}
+
+.lc-difficulty {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide;
+}
+
+.lc-difficulty-easy {
+  @apply bg-emerald-500/15 text-emerald-700 ring-1 ring-emerald-500/25;
+}
+
+.lc-difficulty-medium {
+  @apply bg-amber-500/15 text-amber-700 ring-1 ring-amber-500/25;
+}
+
+.lc-difficulty-hard {
+  @apply bg-rose-500/15 text-rose-700 ring-1 ring-rose-500/25;
+}
+
+.lc-ref-badge {
+  @apply inline-flex items-center rounded-md bg-surface-2 px-2 py-0.5 font-mono text-xs text-text-dim ring-1 ring-border;
+}
+
+.lc-test-case {
+  @apply overflow-hidden rounded-xl border border-border bg-bg/60;
+}
+
+.lc-test-case-label {
+  @apply border-b border-border bg-surface-2/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-text-dim;
+}
+
+.lc-test-case-value {
+  @apply overflow-x-auto px-3 py-2.5 font-mono text-xs leading-relaxed text-text-muted;
+  word-break: break-word;
+}
+
+.lc-test-case-output {
+  @apply text-brand;
+}
+
+.lc-checklist-item {
+  @apply flex items-start gap-3 rounded-lg border border-transparent px-2 py-2 text-sm text-text-muted transition-colors hover:border-border/50 hover:bg-surface-2/50;
+}
+
+.lc-checklist-box {
+  @apply mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border border-border-light bg-surface text-[10px] text-brand;
+}
+
+.lc-hint-card {
+  @apply relative overflow-hidden rounded-xl border border-brand/20 bg-gradient-to-br from-brand/8 to-transparent px-4 py-3 text-sm leading-relaxed text-text-muted;
+}
+
+.lc-hint-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-brand);
+  border-radius: 3px 0 0 3px;
+}
+
+.lc-hint-btn {
+  @apply inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3.5 py-2 text-sm font-medium text-brand transition-all hover:border-brand/50 hover:bg-brand/15 active:scale-[0.98];
+}
+
+.lc-guide-card {
+  @apply rounded-xl border border-border/70 bg-surface-2/30 p-4;
+}
+
+.lc-learning-item {
+  @apply flex items-start gap-2.5 rounded-lg bg-brand/5 px-3 py-2 text-sm text-text-muted ring-1 ring-brand/10;
+}
+
+.lc-interview-item {
+  @apply flex items-start gap-2.5 rounded-lg border border-border/50 bg-bg/40 px-3 py-2.5 text-sm leading-relaxed text-text-muted;
+}
+
+.lc-narration-card {
+  @apply rounded-xl border border-sky-500/25 bg-gradient-to-br from-sky-500/10 to-transparent px-4 py-3 text-sm leading-relaxed text-sky-800;
+}
+
+.lc-editor-toolbar {
+  @apply flex items-center justify-between gap-3 border-b border-border px-4 py-2.5;
+  background: linear-gradient(180deg, #1a2332 0%, #151d2b 100%);
+}
+
+.lc-editor-dots {
+  @apply flex items-center gap-1.5;
+}
+
+.lc-editor-dot {
+  @apply h-2.5 w-2.5 rounded-full;
+}
+
+.lc-lang-badge {
+  @apply inline-flex items-center gap-1.5 rounded-md bg-surface-2/80 px-2 py-0.5 text-[11px] font-medium text-text-dim ring-1 ring-border;
+}
+
+.lc-result-cases {
+  @apply mt-3 flex flex-wrap gap-2;
+}
+
+.lc-result-case {
+  @apply inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium;
+}
+
+.lc-result-case-pass {
+  @apply bg-brand/15 text-brand ring-1 ring-brand/25;
+}
+
+.lc-result-case-fail {
+  @apply bg-error/15 text-error ring-1 ring-error/25;
+}
+
+.lc-skeleton {
+  @apply animate-pulse rounded-lg bg-surface-2;
+}
+
+.lc-tier-pill {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ring-1;
+}
+
+.lc-tier-pill-active {
+  @apply bg-brand text-on-brand ring-brand shadow-[0_0_20px_-4px] shadow-brand/40;
+}
+
+.lc-tier-pill-inactive {
+  @apply bg-surface-2 text-text-muted ring-border hover:bg-surface hover:text-text;
+}
+
+.lc-copy-btn {
+  @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-2.5 py-1 text-xs font-medium text-brand transition-colors hover:border-brand/40 hover:bg-brand/10;
+}
+
+.lc-hint-progress {
+  @apply h-1 overflow-hidden rounded-full bg-surface-2;
+}
+
+.lc-hint-progress-fill {
+  @apply h-full rounded-full bg-brand transition-all duration-300;
+}
+
+/* ── Codi mascot ── */
+
+@keyframes codi-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.codi-bob { animation: codi-bob 3s ease-in-out infinite; transform-origin: center bottom; }
+
+@keyframes codi-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
+}
+.codi-blink { animation: codi-blink 4.5s ease-in-out infinite; transform-origin: center; }
+
+@keyframes codi-antenna {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.codi-antenna { animation: codi-antenna 1.1s steps(1, end) infinite; }
+
+@keyframes codi-wave-l {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-16deg); }
+}
+.codi-wave-l { animation: codi-wave-l 0.9s ease-in-out infinite; transform-origin: 22px 66px; }
+
+@keyframes codi-wave-r {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(16deg); }
+}
+.codi-wave-r { animation: codi-wave-r 0.9s ease-in-out infinite; transform-origin: 98px 66px; }
+
+@keyframes codi-sparkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+.codi-sparkle { animation: codi-sparkle 1.4s ease-in-out infinite; transform-origin: center; }
+
+@keyframes codi-zzz {
+  0% { opacity: 0; transform: translate(0, 4px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translate(4px, -8px); }
+}
+.codi-zzz { animation: codi-zzz 2.6s ease-in-out infinite; }
+
+@keyframes codi-pop {
+  0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.codi-pop { animation: codi-pop 0.22s ease-out; }
+
+.codi-fab {
+  @apply fixed bottom-5 right-5 z-[60] flex items-center justify-center rounded-full border border-border bg-surface shadow-lg transition-transform hover:scale-105 active:scale-95;
+  height: 4.25rem;
+  width: 4.25rem;
+}
+
+.codi-panel {
+  @apply fixed bottom-24 right-5 z-[60] w-[min(20rem,calc(100vw-2.5rem))] rounded-2xl border border-border bg-surface p-4 shadow-xl;
+}
+
+.codi-bubble {
+  @apply fixed bottom-24 right-5 z-[60] max-w-[min(17rem,calc(100vw-2.5rem))] rounded-2xl rounded-br-md border border-border bg-surface px-3.5 py-2.5 text-sm text-text shadow-lg;
+}
+
+.codi-dot {
+  @apply absolute right-1 top-1 h-3 w-3 rounded-full border-2 border-surface bg-warning;
+}
+
+.lc-start-guide {
+  @apply rounded-xl border border-brand/30 bg-gradient-to-br from-brand/10 to-transparent p-4 ring-1 ring-brand/20;
+}
+
+.lc-start-banner {
+  @apply rounded-xl border border-border bg-surface-2/50 px-4 py-3;
+}
+
+.lc-start-guide-header {
+  @apply flex items-start justify-between gap-3;
+}
+
+.lc-start-progress-label {
+  @apply shrink-0 rounded-full bg-brand/15 px-2.5 py-0.5 text-xs font-medium text-brand;
+}
+
+.lc-start-step {
+  @apply overflow-hidden rounded-xl border border-border/70 bg-surface/60 transition-colors;
+}
+
+.lc-start-step-open {
+  @apply border-brand/30 bg-surface;
+}
+
+.lc-start-step-done {
+  @apply border-brand/20 bg-brand/5;
+}
+
+.lc-start-step-head {
+  @apply flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-surface-2/50;
+}
+
+.lc-start-step-body {
+  @apply border-t border-border/60 px-3 pb-3 pt-2;
+}
+
+.lc-start-check {
+  @apply flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-border-light bg-surface text-xs font-semibold text-text-muted transition-colors;
+}
+
+.lc-start-check-done {
+  @apply border-brand bg-brand text-on-brand;
+}
+
+.lc-start-stuck {
+  @apply w-full rounded-lg border border-dashed border-brand/40 bg-brand/5 px-3 py-2 text-center text-sm font-medium text-brand transition-colors hover:border-brand/60 hover:bg-brand/10;
 }
