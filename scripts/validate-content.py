@@ -8,6 +8,9 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "backend"))
+from app.kumon_hierarchy import page_id as expected_page_id  # noqa: E402
+
 CONTENT = ROOT / "content" / "levels"
 SCHEDULE = ROOT / "content" / "schedule"
 REQUIRED_BLOCKS = 12
@@ -56,7 +59,7 @@ def main() -> int:
 
                 level_letter = str(data.get("level", "")).upper()
                 page_num = data.get("page", 0)
-                expected_id = f"{level_letter}-{page_num:03d}"
+                expected_id = expected_page_id(level_letter, page_num)
                 if page_id != expected_id:
                     errors.append(f"{f}: id {page_id} != expected {expected_id}")
 

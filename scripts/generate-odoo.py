@@ -287,7 +287,7 @@ def generate_kumon() -> int:
                 expected = run_capture(d["code"])
                 scaff = scaffolding_for(order)
                 data = {
-                    "id": f"{level}-{page:03d}",
+                    "id": f"{level}{page}",
                     "level": level,
                     "page": page,
                     "set": set_number,

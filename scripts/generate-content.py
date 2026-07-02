@@ -10,8 +10,10 @@ out of sync with its answers.
 """
 from __future__ import annotations
 
+import argparse
 import contextlib
 import io
+import re
 import shutil
 from pathlib import Path
 
@@ -44,12 +46,22 @@ def write_yaml(path: Path, data: dict) -> None:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
-def drill(prompt: str, code: str) -> dict:
-    return {"prompt": prompt, "code": code}
+def drill(prompt: str, code: str, *, hint: str | None = None) -> dict:
+    d: dict = {"prompt": prompt, "code": code}
+    if hint:
+        d["hint"] = hint
+    return d
 
 
-def explicit(items: list[tuple[str, str]]) -> list[dict]:
-    return [drill(p, c) for p, c in items]
+def explicit(items: list) -> list[dict]:
+    out: list[dict] = []
+    for item in items:
+        if isinstance(item, dict):
+            out.append(item)
+        else:
+            prompt, code = item
+            out.append(drill(prompt, code))
+    return out
 
 
 def mapped(prompt_fn, code_fn, data) -> list[dict]:
@@ -75,7 +87,7 @@ def level_a() -> list[list[dict]]:
     sets.append(mapped(
         lambda v: f"Imprime exactamente el texto: {v}",
         lambda v: f"print({v!r})",
-        ["Hola, mundo", "Python", "Odoo", "InterviewOS", "Bienvenido",
+        ["Hola, mundo", "Python", "Odoo", "Codenda", "Bienvenido",
          "Aprendiendo", "Listo", "Codigo", "Practica", "Avanzando"],
     ))
     sets.append(mapped(
@@ -85,56 +97,145 @@ def level_a() -> list[list[dict]]:
          ("fruta", "mango"), ("lenguaje", "Python"), ("equipo", "Odoo"), ("mes", "enero"),
          ("dia", "lunes"), ("plato", "ceviche")],
     ))
+    _arith_notes = {
+        "20 // 3": " (division entera, sin decimales)",
+        "20 % 3": " (resto de la division)",
+        "2 ** 5": " (potencia)",
+    }
     sets.append(mapped(
-        lambda e: f"Calcula e imprime el resultado de {e}",
+        lambda e: f"Calcula e imprime el resultado de {e}{_arith_notes.get(e, '')}",
         lambda e: f"print({e})",
-        ["7 + 5", "10 - 3", "4 * 6", "20 // 3", "20 % 3",
-         "2 ** 5", "8 + 9", "15 - 7", "3 * 9", "100 // 7"],
-    ))
-    sets.append(mapped(
-        lambda t: f"Declara name={t[0]!r} y age={t[1]}, luego imprime: '{t[0]} tiene {t[1]} anios'",
-        lambda t: f"name = {t[0]!r}\nage = {t[1]}\nprint(f'{{name}} tiene {{age}} anios')",
-        [("Ana", 22), ("Luis", 30), ("Mia", 19), ("Carlos", 41), ("Sofia", 27),
-         ("Diego", 35), ("Lucia", 24), ("Mateo", 18), ("Elena", 33), ("Pablo", 29)],
+        ["7 + 5", "20 // 3", "20 % 3", "10 - 3", "4 * 6", "2 ** 5",
+         "8 + 9", "15 - 7", "3 * 9", "100 // 7"],
     ))
     sets.append(explicit([
-        ("Convierte '5' a entero y sumale 3", "print(int('5') + 3)"),
-        ("Convierte el numero 42 a texto y agrega '!'", "print(str(42) + '!')"),
-        ("Convierte '2.5' a flotante y sumale 0.5", "print(float('2.5') + 0.5)"),
+        (
+            "Asigna name='Ana' y age=22. Usa f-string para presentarla "
+            "(formato: nombre tiene edad años).",
+            "name = 'Ana'\nage = 22\nprint(f'{name} tiene {age} años')",
+        ),
+        (
+            "Asigna city='Lima' y country='Perú'. Imprime la ubicación con f-string "
+            "(formato: ciudad, país).",
+            "city = 'Lima'\ncountry = 'Perú'\nprint(f'{city}, {country}')",
+        ),
+        (
+            "Asigna producto='Libro' y precio=25. Con f-string muestra qué producto es "
+            "y cuánto cuesta (formato: producto cuesta precio).",
+            "producto = 'Libro'\nprecio = 25\nprint(f'{producto} cuesta {precio}')",
+        ),
+        (
+            "Asigna lenguaje='Python' y anio=1991. Imprime con f-string en qué año "
+            "apareció (formato: lenguaje nació en anio).",
+            "lenguaje = 'Python'\nanio = 1991\nprint(f'{lenguaje} nació en {anio}')",
+        ),
+        (
+            "Asigna animal='gato' y sonido='miau'. Usa f-string para describir el animal "
+            "(formato: El animal dice sonido).",
+            "animal = 'gato'\nsonido = 'miau'\nprint(f'El {animal} dice {sonido}')",
+        ),
+        (
+            "Asigna equipo='Odoo' e integrantes=5. Imprime con f-string cuántas personas "
+            "hay en el equipo (formato: equipo tiene N integrantes).",
+            "equipo = 'Odoo'\nintegrantes = 5\nprint(f'{equipo} tiene {integrantes} integrantes')",
+        ),
+        (
+            "Con a=4 y b=6, calcula la suma en una variable y usa f-string "
+            "(formato: Suma: resultado).",
+            "a = 4\nb = 6\ntotal = a + b\nprint(f'Suma: {total}')",
+        ),
+        (
+            "Con nombre='Mia', saluda con f-string (formato: Hola, nombre).",
+            "nombre = 'Mia'\nprint(f'Hola, {nombre}')",
+        ),
+        (
+            "Asigna color='azul' y objeto='cielo'. Describe con f-string "
+            "(formato: El objeto es color).",
+            "color = 'azul'\nobjeto = 'cielo'\nprint(f'El {objeto} es {color}')",
+        ),
+        (
+            "Presenta a Pablo, 29 años, con f-string (formato: nombre tiene edad años). "
+            "Crea las variables que necesites.",
+            "name = 'Pablo'\nage = 29\nprint(f'{name} tiene {age} años')",
+        ),
+    ]))
+    sets.append(explicit([
+        drill("Convierte '5' a entero con int() y sumale 3", "print(int('5') + 3)",
+              hint="int(texto) convierte texto a entero. Imprime el resultado con print()."),
+        drill("Imprime el booleano de bool(1)", "print(bool(1))",
+              hint="bool(valor) convierte un valor a True o False. Imprime con print()."),
+        drill("Convierte el numero 42 a texto con str() y agrega '!'", "print(str(42) + '!')",
+              hint="str(numero) convierte un numero a texto."),
+        drill("Convierte '2.5' a flotante con float() y sumale 0.5", "print(float('2.5') + 0.5)",
+              hint="float(texto) convierte texto a numero decimal."),
         ("Convierte 3.9 a entero (trunca los decimales)", "print(int(3.9))"),
-        ("Convierte '100' a entero y dividelo entre 4 (division entera)", "print(int('100') // 4)"),
-        ("Repite el texto '7' tres veces", "print('7' * 3)"),
-        ("Suma int('12') + int('8')", "print(int('12') + int('8'))"),
-        ("Redondea 3.14159 a 2 decimales", "print(round(3.14159, 2))"),
         ("Imprime el booleano de bool(0)", "print(bool(0))"),
-        ("Suma int(True) + 1", "print(int(True) + 1)"),
+        drill("Redondea 3.14159 a 2 decimales con round()", "print(round(3.14159, 2))",
+              hint="round(numero, decimales) redondea un flotante. Imprime con print()."),
+        ("Suma int('12') + int('8')", "print(int('12') + int('8'))"),
+        ("Convierte '100' a entero y dividelo entre 4 (division entera)", "print(int('100') // 4)"),
+        ("Convierte True a entero con int() y sumale 1", "print(int(True) + 1)"),
     ]))
 
     # A.B — Strings
-    sets.append(mapped(
-        lambda t: f"Une las palabras {t[0]!r} y {t[1]!r} con un espacio e imprime el resultado.",
-        lambda t: f"a = {t[0]!r}\nb = {t[1]!r}\nprint(a + ' ' + b)",
-        [("Hola", "mundo"), ("buen", "dia"), ("Odoo", "ERP"), ("codigo", "limpio"),
-         ("muy", "bien"), ("Python", "rocks"), ("hasta", "luego"), ("café", "caliente"),
-         ("gran", "equipo"), ("nuevo", "reto")],
-    ))
-    sets.append(mapped(
-        lambda w: f"Dada s={w!r}, imprime el primer y ultimo caracter separados por un guion.",
-        lambda w: f"s = {w!r}\nprint(s[0] + '-' + s[-1])",
-        ["python", "odoo", "kumon", "leetcode", "variable",
-         "funcion", "objeto", "cadena", "entero", "programa"],
-    ))
     sets.append(explicit([
-        ("Imprime 'hola' en mayusculas", "print('hola'.upper())"),
-        ("Imprime 'PYTHON' en minusculas", "print('PYTHON'.lower())"),
-        ("Imprime la longitud de 'interview'", "print(len('interview'))"),
-        ("Capitaliza 'odoo developer'", "print('odoo developer'.capitalize())"),
-        ("Pon en formato titulo 'soporte tecnico'", "print('soporte tecnico'.title())"),
-        ("Cuenta cuantas 'a' hay en 'banana'", "print('banana'.count('a'))"),
-        ("Reemplaza 'l' por 'L' en 'hello'", "print('hello'.replace('l', 'L'))"),
-        ("Quita espacios de '  hola  '", "print('  hola  '.strip())"),
-        ("Verifica si 'python' empieza con 'py'", "print('python'.startswith('py'))"),
-        ("Verifica si 'archivo.txt' termina con '.txt'", "print('archivo.txt'.endswith('.txt'))"),
+        ("Une las palabras 'Hola' y 'mundo' con un espacio e imprime el resultado.",
+         "a = 'Hola'\nb = 'mundo'\nprint(a + ' ' + b)"),
+        ("Une las palabras 'buen' y 'dia' con un espacio e imprime el resultado.",
+         "a = 'buen'\nb = 'dia'\nprint(a + ' ' + b)"),
+        ("Une las palabras 'Odoo' y 'ERP' con un espacio e imprime el resultado.",
+         "a = 'Odoo'\nb = 'ERP'\nprint(a + ' ' + b)"),
+        ("Une las palabras 'Python' y 'rocks' con un espacio e imprime el resultado.",
+         "a = 'Python'\nb = 'rocks'\nprint(a + ' ' + b)"),
+        ("Une las palabras 'hasta' y 'luego' con un espacio e imprime el resultado.",
+         "a = 'hasta'\nb = 'luego'\nprint(a + ' ' + b)"),
+        drill("Dada s='interview', imprime cuantos caracteres tiene con len()",
+              "s = 'interview'\nprint(len(s))",
+              hint="len(texto) devuelve cuantos caracteres tiene una cadena."),
+        ("Dada s='odoo', imprime la longitud de s", "s = 'odoo'\nprint(len(s))"),
+        ("Une 'muy' y 'bien' con espacio e imprime la longitud del resultado",
+         "a = 'muy'\nb = 'bien'\nprint(len(a + ' ' + b))"),
+        ("Dada palabra='python', imprime len(palabra)", "palabra = 'python'\nprint(len(palabra))"),
+        ("Dada frase='buen dia', imprime cuantos caracteres tiene (incluye el espacio)",
+         "frase = 'buen dia'\nprint(len(frase))"),
+    ]))
+    sets.append(explicit([
+        drill("Dada s='python', imprime el primer caracter con s[0]",
+              "s = 'python'\nprint(s[0])",
+              hint="s[0] es el primer caracter; s[-1] es el ultimo."),
+        drill("Dada s='odoo', imprime el ultimo caracter con s[-1]",
+              "s = 'odoo'\nprint(s[-1])",
+              hint="Los indices negativos cuentan desde el final: s[-1] es el ultimo."),
+        ("Dada s='kumon', imprime el primer y ultimo caracter separados por un guion",
+         "s = 'kumon'\nprint(s[0] + '-' + s[-1])"),
+        drill("Dada s='python', imprime los primeros 3 caracteres con s[:3]",
+              "s = 'python'\nprint(s[:3])",
+              hint="s[inicio:fin] extrae una parte del texto; s[:3] toma los primeros 3."),
+        drill("Dada s='abc', invierte el texto con s[::-1]",
+              "s = 'abc'\nprint(s[::-1])",
+              hint="s[::-1] invierte el texto completo."),
+    ] + [
+        drill(f"Dada s={w!r}, imprime el primer y ultimo caracter separados por un guion.",
+              f"s = {w!r}\nprint(s[0] + '-' + s[-1])")
+        for w in ["variable", "funcion", "objeto", "cadena", "entero"]
+    ]))
+    sets.append(explicit([
+        drill("Imprime 'hola' en mayusculas con .upper()", "print('hola'.upper())",
+              hint="Los metodos de string van despues del punto: texto.upper()."),
+        drill("Imprime 'PYTHON' en minusculas con .lower()", "print('PYTHON'.lower())",
+              hint="texto.lower() convierte todas las letras a minusculas."),
+        drill("Capitaliza 'odoo developer' con .capitalize()", "print('odoo developer'.capitalize())",
+              hint=".capitalize() pone en mayuscula solo la primera letra."),
+        ("Pon en formato titulo 'soporte tecnico' con .title()", "print('soporte tecnico'.title())"),
+        ("Quita espacios de '  hola  ' con .strip()", "print('  hola  '.strip())"),
+        ("Reemplaza 'l' por 'L' en 'hello' con .replace()", "print('hello'.replace('l', 'L'))"),
+        ("Cuenta cuantas 'a' hay en 'banana' con .count()", "print('banana'.count('a'))"),
+        ("Verifica si 'python' empieza con 'py' (.startswith)", "print('python'.startswith('py'))"),
+        drill("Dado s='hola mundo', divide en palabras con .split() e imprime cuantas hay",
+              "s = 'hola mundo'\nprint(len(s.split()))",
+              hint=".split() divide un texto en palabras usando espacios."),
+        ("Dado s='ana perez', imprime la primera palabra con .split()[0]",
+         "s = 'ana perez'\nprint(s.split()[0])"),
     ]))
     sets.append(mapped(
         lambda t: f"Declara a={t[0]} y b={t[1]}, luego imprime: 'La suma de {t[0]} y {t[1]} es {t[0]+t[1]}'",
@@ -142,24 +243,41 @@ def level_a() -> list[list[dict]]:
         [(2, 3), (10, 5), (7, 8), (12, 4), (9, 1), (6, 6), (15, 5), (20, 13), (3, 19), (11, 7)],
     ))
     sets.append(explicit([
-        ("Repite el texto 'ab' 4 veces", "print('ab' * 4)"),
-        ("Imprime 'rojo, verde, azul' (une una lista con ', ')", "print(', '.join(['rojo', 'verde', 'azul']))"),
-        ("Imprime el numero 3.5 con 1 decimal usando f-string", "x = 3.5\nprint(f'{x:.1f}')"),
-        ("Imprime 42 con 3 digitos rellenando ceros", "print(f'{42:03d}')"),
-        ("Rellena '5' a 4 caracteres con ceros a la izquierda", "print('5'.zfill(4))"),
-        ("Invierte el texto 'abc' con slicing", "print('abc'[::-1])"),
-        ("Imprime los primeros 3 caracteres de 'python'", "print('python'[:3])"),
-        ("Une ['a', 'b', 'c'] con guiones", "print('-'.join(['a', 'b', 'c']))"),
-        ("Imprime 'Total: $1500' usando una variable monto=1500", "monto = 1500\nprint(f'Total: ${monto}')"),
-        ("Centra la palabra 'ok' en 6 espacios con guiones", "print('ok'.center(6, '-'))"),
+        drill("Repite el texto 'ab' 4 veces con el operador *", "print('ab' * 4)",
+              hint="texto * n repite el texto n veces."),
+        drill("Repite 'o' 5 veces", "print('o' * 5)",
+              hint="texto * n repite el texto n veces."),
+        ("Con n=3, imprime 'o' repetido (n+1) veces", "n = 3\nprint('o' * (n + 1))"),
+        drill("Imprime el numero 3.5 con 1 decimal usando f-string (formato: 3.5)",
+              "x = 3.5\nprint(f'{x:.1f}')",
+              hint="En f-strings, {x:.1f} muestra un decimal."),
+        drill("Imprime 42 con 3 digitos rellenando ceros (formato: 042)", "print(f'{42:03d}')",
+              hint="{numero:03d} rellena con ceros hasta 3 digitos."),
+        drill("Rellena '5' a 4 caracteres con ceros a la izquierda usando .zfill(4)",
+              "print('5'.zfill(4))",
+              hint=".zfill(n) rellena con ceros a la izquierda hasta n caracteres."),
+        ("Imprime 'Total: $1500' usando monto=1500 (formato exacto)",
+         "monto = 1500\nprint(f'Total: ${monto}')"),
+        drill("Centra 'ok' en 6 caracteres con guiones usando .center(6, '-')",
+              "print('ok'.center(6, '-'))",
+              hint=".center(ancho, relleno) centra el texto rellenando a los lados."),
+        drill("Une 'rojo', 'verde', 'azul' con ', ' usando .join (formato: rojo, verde, azul)",
+              "print(', '.join(['rojo', 'verde', 'azul']))",
+              hint="', '.join(lista) une palabras separadas por comas."),
+        drill("Imprime monto=1234.5 como '$1,234.50' con f-string",
+              "monto = 1234.5\nprint(f'${monto:,.2f}')",
+              hint="{monto:,.2f} formatea con comas y dos decimales."),
     ]))
 
     # A.C — Operadores y condicionales
     sets.append(mapped(
-        lambda e: f"Imprime el resultado (True/False) de: {e}",
+        lambda e: (
+            f"Imprime el resultado (True/False) de: {e}"
+            + (" (comparacion encadenada)" if e == "3 < 5 < 9" else "")
+        ),
         lambda e: f"print({e})",
-        ["7 > 3", "5 == 5", "10 < 2", "8 >= 8", "4 != 4",
-         "3 < 5 < 9", "100 > 99", "0 == False", "7 % 2 == 1", "15 <= 10"],
+        ["7 > 3", "3 < 5 < 9", "5 == 5", "10 < 2", "8 >= 8", "4 != 4",
+         "100 > 99", "bool(0) == False", "7 % 2 == 1", "15 <= 10"],
     ))
     sets.append(mapped(
         lambda n: f"Dado n={n}, imprime 'par' si es par o 'impar' si es impar.",
@@ -176,26 +294,61 @@ def level_a() -> list[list[dict]]:
         [95, 85, 75, 60, 90, 80, 70, 99, 64, 88],
     ))
     sets.append(explicit([
-        ("Dado a=5, b=3: imprime True si AMBOS son positivos", "a, b = 5, 3\nprint(a > 0 and b > 0)"),
-        ("Dado a=-1, b=4: imprime True si ALGUNO es positivo", "a, b = -1, 4\nprint(a > 0 or b > 0)"),
-        ("Dado activo=False: imprime el valor de 'not activo'", "activo = False\nprint(not activo)"),
+        drill("Dado a=5, b=3: imprime True si AMBOS son positivos (usa and)",
+              "a, b = 5, 3\nprint(a > 0 and b > 0)",
+              hint="and exige que las dos condiciones sean True."),
+        drill("Dado a=-1, b=4: imprime True si ALGUNO es positivo (usa or)",
+              "a, b = -1, 4\nprint(a > 0 or b > 0)",
+              hint="or es True si al menos una condicion lo es."),
+        drill("Dado letra='a', imprime True si la letra esta en 'aeiou' (usa in)",
+              "letra = 'a'\nprint(letra in 'aeiou')",
+              hint="x in texto comprueba si x aparece dentro del texto."),
+        ("Dado activo=False: imprime el valor de not activo", "activo = False\nprint(not activo)"),
         ("Dado edad=20: imprime True si edad>=18 and edad<65", "edad = 20\nprint(edad >= 18 and edad < 65)"),
         ("Dado x=0: imprime True si x==0 or x>100", "x = 0\nprint(x == 0 or x > 100)"),
         ("Dado dia='sabado': imprime True si es sabado o domingo", "dia = 'sabado'\nprint(dia == 'sabado' or dia == 'domingo')"),
         ("Dado n=12: imprime True si es divisible por 3 Y por 4", "n = 12\nprint(n % 3 == 0 and n % 4 == 0)"),
         ("Dado temp=30: imprime True si NO (temp<10 o temp>40)", "temp = 30\nprint(not (temp < 10 or temp > 40))"),
-        ("Dado letra='a': imprime True si es vocal", "letra = 'a'\nprint(letra in 'aeiou')"),
-        ("Dado saldo=0: imprime True si saldo es 'falsy'", "saldo = 0\nprint(not saldo)"),
+        ("Dado saldo=0: imprime True si saldo es igual a 0", "saldo = 0\nprint(saldo == 0)"),
     ]))
-    sets.append(mapped(
-        lambda n: f"Dado n={n}: imprime 'FizzBuzz' si es multiplo de 15, 'Fizz' de 3, 'Buzz' de 5, si no el numero.",
-        lambda n: (f"n = {n}\n"
-                   "if n % 15 == 0:\n    print('FizzBuzz')\n"
-                   "elif n % 3 == 0:\n    print('Fizz')\n"
-                   "elif n % 5 == 0:\n    print('Buzz')\n"
-                   "else:\n    print(n)"),
-        [3, 5, 15, 7, 9, 10, 30, 11, 45, 8],
-    ))
+
+    def _nested_fizzbuzz(n: int) -> str:
+        return (
+            f"n = {n}\n"
+            "if n % 3 == 0:\n"
+            "    if n % 5 == 0:\n"
+            "        print('FizzBuzz')\n"
+            "    else:\n"
+            "        print('Fizz')\n"
+            "elif n % 5 == 0:\n"
+            "    print('Buzz')\n"
+            "else:\n"
+            "    print(n)"
+        )
+
+    sets.append(explicit([
+        drill(
+            "Dado n=3: si es multiplo de 3 imprime 'Fizz', si no el numero (usa if anidado)",
+            _nested_fizzbuzz(3),
+            hint="Anida un if dentro de otro para combinar condiciones.",
+        ),
+        drill(
+            "Dado n=5: aplica FizzBuzz con if anidado (multiplo de 3, de 5, o el numero)",
+            _nested_fizzbuzz(5),
+            hint="Primero verifica multiplo de 3; dentro, verifica multiplo de 5.",
+        ),
+        drill(
+            "Dado n=15: aplica FizzBuzz con if anidado",
+            _nested_fizzbuzz(15),
+            hint="15 es multiplo de 3 y de 5, asi que imprime 'FizzBuzz'.",
+        ),
+    ] + [
+        drill(
+            f"Dado n={n}: aplica FizzBuzz con if anidado",
+            _nested_fizzbuzz(n),
+        )
+        for n in [7, 9, 10, 30, 11, 45, 8]
+    ]))
 
     # A.D — Repaso de fundamentos
     sets.append(mapped(
@@ -211,10 +364,12 @@ def level_a() -> list[list[dict]]:
         ("Calcula el 20% de 250", "print(250 * 0.20)"),
         ("Calcula el perimetro de un cuadrado de lado 7", "lado = 7\nprint(lado * 4)"),
         ("Suma 3 horas + 45 min en minutos (3*60+45)", "print(3 * 60 + 45)"),
-        ("Calcula cuantos minutos hay en 2.5 horas", "print(2.5 * 60)"),
+        ("Calcula cuantos minutos hay en 2.5 horas (resultado puede ser decimal)",
+         "print(2.5 * 60)"),
         ("Calcula el total de 3 articulos de 19.99 cada uno", "print(round(3 * 19.99, 2))"),
         ("Calcula el cambio de pagar 50 por algo de 32", "print(50 - 32)"),
-        ("Calcula el area de un circulo r=2 (usa 3.1416)", "r = 2\nprint(round(3.1416 * r ** 2, 4))"),
+        ("Calcula el area de un circulo r=2 (usa 3.1416, redondea a 4 decimales)",
+         "r = 2\nprint(round(3.1416 * r ** 2, 4))"),
     ]))
     sets.append(mapped(
         lambda w: f"Dado nombre={w!r}: imprime '{w} (corto)' si tiene menos de 5 letras, si no '{w} (largo)'.",
@@ -224,28 +379,301 @@ def level_a() -> list[list[dict]]:
         ["Ana", "Carlos", "Ivan", "Sebastian", "Leo", "Valentina", "Sara", "Maximiliano", "Noa", "Gabriela"],
     ))
     sets.append(explicit([
-        ("Dado num=7: imprime 'positivo', 'negativo' o 'cero'", "num = 7\nprint('positivo' if num > 0 else ('negativo' if num < 0 else 'cero'))"),
-        ("Dado anio=2024: imprime True si es bisiesto", "a = 2024\nprint(a % 4 == 0 and (a % 100 != 0 or a % 400 == 0))"),
-        ("Dado edad=16: imprime 'menor' si <18 si no 'adulto'", "edad = 16\nprint('menor' if edad < 18 else 'adulto')"),
-        ("Dado total=120: aplica 10% descuento si total>100", "total = 120\nprint(total * 0.9 if total > 100 else total)"),
-        ("Dado hora=14: imprime 'tarde' si 12<=hora<19 si no 'otro'", "hora = 14\nprint('tarde' if 12 <= hora < 19 else 'otro')"),
-        ("Dado n=49: imprime True si es un cuadrado perfecto", "n = 49\nprint(int(n ** 0.5) ** 2 == n)"),
-        ("Dado pwd='abc12': imprime True si tiene 5+ chars y un digito", "pwd = 'abc12'\nprint(len(pwd) >= 5 and any(c.isdigit() for c in pwd))"),
-        ("Dado nota=70: imprime 'aprobado' si nota>=61", "nota = 70\nprint('aprobado' if nota >= 61 else 'reprobado')"),
-        ("Dado a=10,b=10: imprime 'iguales' o 'distintos'", "a, b = 10, 10\nprint('iguales' if a == b else 'distintos')"),
-        ("Dado temp=38: imprime 'fiebre' si temp>=37.5", "temp = 38\nprint('fiebre' if temp >= 37.5 else 'normal')"),
+        ("Dado num=7: usa if/elif/else para imprimir 'positivo', 'negativo' o 'cero'",
+         "num = 7\nif num > 0:\n    print('positivo')\nelif num < 0:\n    print('negativo')\nelse:\n    print('cero')"),
+        ("Dado edad=16: usa if/else para imprimir 'menor' o 'adulto'",
+         "edad = 16\nif edad < 18:\n    print('menor')\nelse:\n    print('adulto')"),
+        ("Dado nota=70: imprime 'aprobado' si nota>=61, si no 'reprobado'",
+         "nota = 70\nif nota >= 61:\n    print('aprobado')\nelse:\n    print('reprobado')"),
+        ("Dado total=120: si total>100 imprime total con 10% descuento, si no el total",
+         "total = 120\nif total > 100:\n    print(total * 0.9)\nelse:\n    print(total)"),
+        ("Dado hora=14: imprime 'tarde' si 12<=hora<19, si no 'otro'",
+         "hora = 14\nif 12 <= hora < 19:\n    print('tarde')\nelse:\n    print('otro')"),
+        ("Dado a=10,b=10: imprime 'iguales' o 'distintos'",
+         "a, b = 10, 10\nif a == b:\n    print('iguales')\nelse:\n    print('distintos')"),
+        ("Dado pwd='abc12': True si len>=5 AND contiene el digito '1'",
+         "pwd = 'abc12'\nprint(len(pwd) >= 5 and '1' in pwd)"),
+        ("Dado temp=38: imprime 'fiebre' si temp>=37.5, si no 'normal'",
+         "temp = 38\nif temp >= 37.5:\n    print('fiebre')\nelse:\n    print('normal')"),
+        ("Dado dia='domingo': True si es sabado o domingo",
+         "dia = 'domingo'\nprint(dia == 'sabado' or dia == 'domingo')"),
+        ("Dado n=12: True si es divisible por 3 y por 4",
+         "n = 12\nprint(n % 3 == 0 and n % 4 == 0)"),
     ]))
     sets.append(explicit([
-        ("Imprime los numeros pares del 1 al 10 separados por espacio (sin bucle, usa una expresion)", "print(' '.join(str(n) for n in range(2, 11, 2)))"),
-        ("Dado precio=80, calcula precio con IVA 16% redondeado a 2 decimales", "precio = 80\nprint(round(precio * 1.16, 2))"),
-        ("Dado s='Hola Mundo': imprime cuantas palabras tiene", "s = 'Hola Mundo'\nprint(len(s.split()))"),
-        ("Dado n=5: imprime 'n es 5 y es impar' usando f-string y condicion", "n = 5\nprint(f'n es {n} y es {\"par\" if n % 2 == 0 else \"impar\"}')"),
+        ("Imprime '2 4 6 8 10' (numeros pares del 1 al 10, separados por espacio)",
+         "print('2 4 6 8 10')"),
+        ("Dado precio=80, calcula precio con IVA 16% redondeado a 2 decimales",
+         "precio = 80\nprint(round(precio * 1.16, 2))"),
+        ("Dado s='Hola Mundo', imprime cuantas palabras tiene con .split()",
+         "s = 'Hola Mundo'\nprint(len(s.split()))"),
+        ("Dado n=5: imprime 'n es 5 y es impar' usando f-string e if/else",
+         "n = 5\nif n % 2 == 0:\n    tipo = 'par'\nelse:\n    tipo = 'impar'\nprint(f'n es {n} y es {tipo}')"),
         ("Dado celsius=25: convierte a Fahrenheit (c*9/5+32)", "c = 25\nprint(c * 9 / 5 + 32)"),
-        ("Dado lista de notas [80,90,70]: imprime el promedio", "notas = [80, 90, 70]\nprint(sum(notas) / len(notas))"),
-        ("Dado nombre='ana perez': imprime las iniciales en mayuscula", "nombre = 'ana perez'\nprint(''.join(p[0].upper() for p in nombre.split()))"),
-        ("Dado monto=1234.5: imprime con formato '$1,234.50'", "monto = 1234.5\nprint(f'${monto:,.2f}')"),
+        ("Calcula el promedio de las notas 80, 90 y 70 sin usar listas",
+         "print((80 + 90 + 70) / 3)"),
+        ("Dado nombre='ana perez', imprime 'AP' (iniciales en mayuscula con .split())",
+         "nombre = 'ana perez'\nparts = nombre.split()\nprint(parts[0][0].upper() + parts[1][0].upper())"),
+        ("Dado monto=1234.5: imprime con formato '$1,234.50'",
+         "monto = 1234.5\nprint(f'${monto:,.2f}')"),
         ("Dado n=3: imprime 'oooo' (n+1 letras o)", "n = 3\nprint('o' * (n + 1))"),
-        ("Dado edad=30: imprime 'Tienes 30 anios' o 'Tienes 1 anio' segun corresponda", "edad = 30\nprint(f'Tienes {edad} anio' + ('' if edad == 1 else 's'))"),
+        ("Dado edad=30: imprime 'Tienes 30 anios' o 'Tienes 1 anio' segun corresponda",
+         "edad = 30\nprint(f'Tienes {edad} anio' + ('' if edad == 1 else 's'))"),
+    ]))
+
+    sets.extend(level_a_extra_hashmaps())
+    return sets
+
+
+def level_a_extra_hashmaps() -> list[list[dict]]:
+    """Block Extra — hashmaps O(1), always-available practice (sets 21–25)."""
+    sets: list[list[dict]] = []
+
+    # Extra.1 — par llave → valor
+    sets.append(explicit([
+        (
+            "Crea un diccionario llamado d donde la clave 2 guarda el valor 0. Imprime el valor asociado a la clave 2.",
+            "d = {2: 0}\nprint(d[2])",
+        ),
+        (
+            "Crea un diccionario donde la clave 7 guarda el texto 'Marco'. Imprime lo que hay guardado bajo la clave 7.",
+            "d = {7: 'Marco'}\nprint(d[7])",
+        ),
+        (
+            "Crea un diccionario vacio llamado seen. Guarda en la clave 5 el valor 3. Imprime el valor de la clave 5.",
+            "seen = {}\nseen[5] = 3\nprint(seen[5])",
+        ),
+        (
+            "Crea un diccionario vacio llamado seen. Registra que el numero 10 aparecio en el indice 4 "
+            "(el numero es la clave, el indice es el valor). Imprime el diccionario completo.",
+            "seen = {}\nseen[10] = 4\nprint(seen)",
+        ),
+        (
+            "Tienes un diccionario seen que mapea numeros a indices: el 2 esta en el indice 0 y el 7 en el 1. "
+            "Imprime en que indice viste el 2.",
+            "seen = {2: 0, 7: 1}\nprint(seen[2])",
+        ),
+        (
+            "Mismo diccionario: el 2 esta en el indice 0 y el 7 en el 1. Imprime en que indice viste el 7.",
+            "seen = {2: 0, 7: 1}\nprint(seen[7])",
+        ),
+        (
+            "Crea un diccionario vacio. Primero guarda 14 bajo la clave 7, luego sobrescribe esa misma clave "
+            "con el texto 'Marco'. Imprime el diccionario (debe quedar una sola entrada).",
+            "seen = {}\nseen[7] = 14\nseen[7] = 'Marco'\nprint(seen)",
+        ),
+        (
+            "Si escribes un diccionario con la clave 7 dos veces (primero valor 14, luego 'Marco'), "
+            "cuantas claves distintas quedan? Imprime ese numero.",
+            "print(len({7: 14, 7: 'Marco'}))",
+        ),
+        (
+            "Tienes seen con el 3 en el indice 0 y el 5 en el indice 1. "
+            "Imprime ambos indices separados por un espacio.",
+            "seen = {3: 0, 5: 1}\nprint(seen[3], seen[5])",
+        ),
+        (
+            "Tienes un diccionario d con 'a' -> 1 y 'b' -> 2. Imprime la suma de ambos valores.",
+            "d = {'a': 1, 'b': 2}\nprint(d['a'] + d['b'])",
+        ),
+    ]))
+
+    # Extra.2 — buscar por llave (in)
+    sets.append(explicit([
+        (
+            "Tienes el diccionario {'a': 1, 'b': 2}. Imprime True o False segun si 'a' es una de sus claves.",
+            "print('a' in {'a': 1, 'b': 2})",
+        ),
+        (
+            "Tienes el diccionario {1: 99, 2: 88}. Imprime True o False segun si 99 es una clave "
+            "(ojo: 99 es un valor, no una clave).",
+            "print(99 in {1: 99, 2: 88})",
+        ),
+        (
+            "Tienes el diccionario {0: 2, 1: 7} (indices como claves, numeros como valores). "
+            "Imprime True o False segun si 2 es una clave.",
+            "print(2 in {0: 2, 1: 7})",
+        ),
+        (
+            "Mismo diccionario {0: 2, 1: 7}. Ahora imprime True o False segun si 2 aparece entre los valores.",
+            "d = {0: 2, 1: 7}\nprint(2 in d.values())",
+        ),
+        (
+            "Tienes seen = {2: 0} y necesitas el numero 2. Imprime True o False segun si ese numero "
+            "ya esta registrado como clave.",
+            "seen = {2: 0}\nneed = 2\nprint(need in seen)",
+        ),
+        (
+            "Tienes seen = {2: 0} y necesitas el numero 7. Imprime True o False segun si ese numero "
+            "ya esta registrado como clave.",
+            "seen = {2: 0}\nneed = 7\nprint(need in seen)",
+        ),
+        (
+            "Tienes seen = {4: 1} y need = 4. Si need ya esta en seen, imprime el valor guardado para esa clave.",
+            "seen = {4: 1}\nneed = 4\nif need in seen:\n    print(seen[need])",
+        ),
+        (
+            "Tienes el diccionario {5: 'x', 9: 'y'}. Imprime True o False segun si 5 es una clave.",
+            "print(5 in {5: 'x', 9: 'y'})",
+        ),
+        (
+            "Tienes el diccionario {'a': 1}. Imprime True o False segun si 'z' es una clave.",
+            "print('z' in {'a': 1})",
+        ),
+        (
+            "Tienes el diccionario {3: 10}. En dos lineas, imprime: (1) si 3 es clave, (2) si 10 es clave.",
+            "d = {3: 10}\nprint(3 in d)\nprint(10 in d)",
+        ),
+    ]))
+
+    # Extra.3 — que va como llave
+    sets.append(explicit([
+        (
+            "Tienes la lista [2, 7, 11, 15]. Guarda solo el primer elemento en un diccionario seen "
+            "mapeando numero -> indice. Imprime seen.",
+            "nums = [2, 7, 11, 15]\nseen = {}\nfor i, num in enumerate(nums[:1]):\n    seen[num] = i\nprint(seen)",
+        ),
+        (
+            "Tienes la lista [2, 7, 11, 15]. Guarda los dos primeros elementos en seen "
+            "(cada numero como clave, su indice como valor). Imprime seen.",
+            "nums = [2, 7, 11, 15]\nseen = {}\nfor i, num in enumerate(nums[:2]):\n    seen[num] = i\nprint(seen)",
+        ),
+        (
+            "El numero actual es 7 y el target es 9. Imprime cuanto falta para llegar al target "
+            "(el complemento: target menos el numero).",
+            "num = 7\ntarget = 9\nneed = target - num\nprint(need)",
+        ),
+        (
+            "Ya viste el 2 en el indice 0 (seen = {2: 0}). El complemento que buscas es 2. "
+            "Imprime el indice donde lo viste.",
+            "seen = {2: 0}\nneed = 2\nprint(seen[need])",
+        ),
+        (
+            "Recorre la lista [3, 5] y construye seen donde cada NUMERO es la clave y su INDICE es el valor "
+            "(no al reves). Imprime seen.",
+            "nums = [3, 5]\nseen = {}\nfor i, num in enumerate(nums):\n    seen[num] = i\nprint(seen)",
+        ),
+        (
+            "Imprime en dos lineas: primero el diccionario correcto numero->indice para 2 en 0 y 7 en 1; "
+            "luego el incorrecto indice->numero (0: 2, 1: 7).",
+            "print({2: 0, 7: 1})\nprint({0: 2, 1: 7})",
+        ),
+        (
+            "Recorre [2, 7] guardando cada numero como clave y su indice como valor. "
+            "Imprime el diccionario y, en la siguiente linea, si el 2 ya esta registrado.",
+            "nums = [2, 7]\nseen = {}\nfor i, num in enumerate(nums):\n    seen[num] = i\nprint(seen)\nprint(2 in seen)",
+        ),
+        (
+            "Ya viste el 2 en el indice 0. El numero actual es 7 y el target es 9. "
+            "Calcula el complemento; si ya lo viste, imprime su indice.",
+            "seen = {2: 0}\nnum = 7\ntarget = 9\nneed = target - num\nif need in seen:\n    print(seen[need])",
+        ),
+        (
+            "Para poder preguntar rapido '¿ya vi el 7?', el 7 debe ser llave o valor? "
+            "Imprime la palabra 'llave' o 'valor'.",
+            "print('llave' if 7 in {7: 1} else 'valor')",
+        ),
+        (
+            "Recorre [4, 5, 4] guardando numero -> indice (si un numero se repite, queda el ultimo indice). "
+            "Imprime el diccionario.",
+            "nums = [4, 5, 4]\nseen = {}\nfor i, num in enumerate(nums):\n    seen[num] = i\nprint(seen)",
+        ),
+    ]))
+
+    # Extra.4 — patron seen
+    sets.append(explicit([
+        (
+            "Recorre la lista [1, 2, 3] y construye un diccionario que mapee cada numero a su indice. "
+            "Imprime el diccionario.",
+            "nums = [1, 2, 3]\nseen = {}\nfor i, num in enumerate(nums):\n    seen[num] = i\nprint(seen)",
+        ),
+        (
+            "Tienes seen = {1: 0, 2: 1, 3: 2}. Imprime True o False segun si el numero 2 ya esta registrado.",
+            "seen = {1: 0, 2: 1, 3: 2}\nprint(2 in seen)",
+        ),
+        (
+            "En la lista [1, 2, 2, 3], encuentra el indice de la primera repeticion "
+            "(el segundo 2) usando un diccionario de vistos. Imprime ese indice.",
+            "nums = [1, 2, 2, 3]\nseen = {}\nfor i, num in enumerate(nums):\n    if num in seen:\n        print(i)\n        break\n    seen[num] = i",
+        ),
+        (
+            "Cuenta cuantas veces aparece cada letra en 'aabbc'. Imprime el diccionario de frecuencias.",
+            "texto = 'aabbc'\nfreq = {}\nfor ch in texto:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(freq)",
+        ),
+        (
+            "Recorre [1, 2, 3, 1] una sola vez. Imprime True si hay algun numero repetido, False si no.",
+            "nums = [1, 2, 3, 1]\nseen = set()\ndup = False\nfor n in nums:\n    if n in seen:\n        dup = True\n        break\n    seen.add(n)\nprint(dup)",
+        ),
+        (
+            "El target es 6 y el numero actual es 2. Imprime cuanto falta para llegar al target.",
+            "num = 2\ntarget = 6\nprint(target - num)",
+        ),
+        (
+            "Ya viste el 2 en el indice 1. Estas en el indice 2 con el numero 4 y el target es 6. "
+            "Si el complemento ya esta en seen, imprime la lista [indice_viejo, indice_actual].",
+            "seen = {2: 1}\nnum = 4\ntarget = 6\ni = 2\nneed = target - num\nif need in seen:\n    print([seen[need], i])",
+        ),
+        (
+            "Encuentra dos numeros en [3, 2, 4] que sumen 6. Imprime la lista de sus indices "
+            "(usa un diccionario de vistos en un solo recorrido).",
+            "nums = [3, 2, 4]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En la lista [4, 9, 9], imprime el indice de la primera vez que aparece el 9 "
+            "(usa un diccionario que solo guarda la primera aparicion de cada numero).",
+            "nums = [4, 9, 9]\nseen = {}\nfor i, num in enumerate(nums):\n    if num not in seen:\n        seen[num] = i\nprint(seen[9])",
+        ),
+        (
+            "Cuenta cuantas veces aparece cada letra en 'hello'. Imprime el diccionario de frecuencias.",
+            "texto = 'hello'\nfreq = {}\nfor ch in texto:\n    freq[ch] = freq.get(ch, 0) + 1\nprint(freq)",
+        ),
+    ]))
+
+    # Extra.5 — Two Sum y variantes
+    sets.append(explicit([
+        (
+            "En [2, 7, 11, 15], encuentra dos numeros que sumen 9. Imprime la lista de sus indices.",
+            "nums = [2, 7, 11, 15]\ntarget = 9\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [3, 2, 4], encuentra dos numeros que sumen 6. Imprime la lista de sus indices.",
+            "nums = [3, 2, 4]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [3, 3], encuentra dos numeros que sumen 6. Imprime la lista de sus indices.",
+            "nums = [3, 3]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "Ya viste el 2 en el indice 0. El complemento es 2 y el indice actual es 1. "
+            "Imprime la lista [indice_viejo, indice_actual] (no el diccionario entero).",
+            "seen = {2: 0}\nneed = 2\ni = 1\nprint([seen[need], i])",
+        ),
+        (
+            "En [3, 3] busca dos que sumen 6. Importante: revisa si el complemento ya esta en seen "
+            "ANTES de registrar el numero actual. Imprime los indices.",
+            "nums = [3, 3]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [10, 20, 30], encuentra dos numeros que sumen 50. Imprime la lista de esos dos valores "
+            "(no los indices).",
+            "nums = [10, 20, 30]\ntarget = 50\nseen = {}\nfor num in nums:\n    need = target - num\n    if need in seen:\n        print([need, num])\n        break\n    seen[num] = True",
+        ),
+        (
+            "En [1, 5, 3, 7], encuentra dos numeros que sumen 8. Imprime la lista de sus indices.",
+            "nums = [1, 5, 3, 7]\ntarget = 8\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [0, 4, 3, 0], encuentra dos numeros que sumen 0. Imprime la lista de sus indices.",
+            "nums = [0, 4, 3, 0]\ntarget = 0\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [5, 1, 7], encuentra dos numeros que sumen 6. Imprime la lista de sus indices.",
+            "nums = [5, 1, 7]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
+        (
+            "En [4, 6, 1, 9], encuentra dos numeros que sumen 10. Imprime la lista de sus indices.",
+            "nums = [4, 6, 1, 9]\ntarget = 10\nseen = {}\nfor i, num in enumerate(nums):\n    need = target - num\n    if need in seen:\n        print([seen[need], i])\n        break\n    seen[num] = i",
+        ),
     ]))
 
     return sets
@@ -1038,7 +1466,19 @@ def level_e() -> list[list[dict]]:
 
 
 LEVEL_BUILDERS = {"A": level_a, "B": level_b, "C": level_c, "D": level_d, "E": level_e}
-BLOCK_LETTERS = ["A", "B", "C", "D"]
+EXPECTED_CORE_SETS = 20
+
+
+def load_level_blocks(level: str) -> list[tuple[str, dict]]:
+    """Return ordered (block_letter, block_data) pairs from kumon-levels.yaml."""
+    with open(STD_PATH, encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    level_data = data["levels"][level.upper()]
+    return [(k.upper(), v) for k, v in level_data.get("blocks", {}).items()]
+
+
+def expected_set_count(level: str) -> int:
+    return sum(len(b[1].get("sets", [])) for b in load_level_blocks(level))
 
 
 # ---------------------------------------------------------------------------
@@ -1051,61 +1491,136 @@ def load_set_standards() -> dict[str, list[int]]:
     out: dict[str, list[int]] = {}
     for level, ldata in data["levels"].items():
         stds: list[int] = []
-        for bl in BLOCK_LETTERS:
-            for s in ldata["blocks"][bl].get("sets", []):
+        for _bl, block_data in ldata.get("blocks", {}).items():
+            for s in block_data.get("sets", []):
                 stds.append(s.get("standard_seconds", 600))
-        out[level] = stds
+        out[level.upper()] = stds
     return out
 
 
-def hint_for_set(prompt: str) -> str:
-    return "Lee con atencion lo que se pide imprimir y construye el codigo paso a paso."
+def _code_uses(code: str, name: str) -> bool:
+    return bool(re.search(rf"\b{re.escape(name)}\s*\(", code))
+
+
+def _has_membership_in(code: str) -> bool:
+    """True for `x in y` membership, not `for x in y` loops."""
+    stripped = re.sub(r"\bfor\s+[^:\n]+\s+in\b", " ", code)
+    return bool(re.search(r"\bin\b", stripped))
+
+
+def hint_for_drill(prompt: str, code: str, custom: str | None = None) -> str:
+    if custom:
+        return custom
+    p = prompt.lower()
+    c = code.lower()
+    if "break" in c or "detente" in p:
+        return "Usa break para salir del bucle cuando se cumple la condicion."
+    if "continue" in c:
+        return "Usa continue para saltar a la siguiente iteracion."
+    uses_conditional = (
+        "if/elif" in p or "si no" in p or " elif " in c
+        or bool(re.search(r"(?m)^\s*if\s+", code))
+    )
+    if uses_conditional and "f-string" not in p:
+        return "Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama."
+    if "f-string" in p or "f'" in c or 'f"' in c:
+        return (
+            "Pon f delante de las comillas e inserta variables con {nombre}. "
+            "Puedes calcular expresiones dentro de { }."
+        )
+    if _code_uses(code, "int") and not _code_uses(code, "bool"):
+        return "int(valor) convierte a entero. Imprime el resultado con print()."
+    if _code_uses(code, "str"):
+        return "str(valor) convierte a texto. Imprime el resultado con print()."
+    if _code_uses(code, "float"):
+        return "float(valor) convierte a numero decimal. Imprime el resultado con print()."
+    if _code_uses(code, "bool"):
+        return "bool(valor) convierte un valor a True o False. Imprime con print()."
+    if _code_uses(code, "round"):
+        return "round(numero, decimales) redondea un flotante. Imprime con print()."
+    if _code_uses(code, "len"):
+        return "len(x) devuelve cuantos elementos tiene x."
+    if ".upper()" in c or ".lower()" in c:
+        return "Los metodos de string van despues del punto: texto.upper(), texto.lower()."
+    if ".split(" in c:
+        return ".split(sep) divide un texto usando el separador (espacio por defecto)."
+    if " * " in c and "'" in c:
+        return "texto * n repite el texto n veces."
+    if _has_membership_in(code) and "print(" in c:
+        if "seen" in c or "dict" in p or "clave" in p or "diccionario" in p or "{" in code:
+            return (
+                "x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido "
+                "debe ser la llave (ej. el numero), no el indice."
+            )
+        return "x in coleccion comprueba si x aparece en la coleccion."
+    if "seen[" in c or ".get(" in c:
+        return (
+            "La llave es lo que buscas despues (ej. el numero). "
+            "El valor es informacion extra (ej. el indice): seen[num] = i."
+        )
+    if re.search(r"\b(and|or|not)\b", code):
+        return "Combina condiciones con and, or y not. Imprime True o False."
+    if "s[0]" in c or "s[-1]" in c or "s[:" in c:
+        return "s[i] accede a un caracter; s[:n] toma los primeros n; s[::-1] invierte."
+    if "//" in code or "**" in code or re.search(r"\d\s*%\s*\d", code):
+        return "Calcula la expresion dentro de print() e imprime el resultado."
+    return "Lee con atención lo que se pide imprimir y construye el código paso a paso."
 
 
 # ---------------------------------------------------------------------------
 # write pages
 # ---------------------------------------------------------------------------
 
-def generate_kumon() -> int:
+def generate_kumon(*, levels: list[str] | None = None) -> int:
     standards = load_set_standards()
     count = 0
-    for level, builder in LEVEL_BUILDERS.items():
+    targets = levels or list(LEVEL_BUILDERS.keys())
+    for level in targets:
+        builder = LEVEL_BUILDERS[level]
         sets = builder()
-        if len(sets) != 20:
-            raise SystemExit(f"Level {level}: expected 20 sets, got {len(sets)}")
+        expected = expected_set_count(level)
+        if len(sets) != expected:
+            raise SystemExit(f"Level {level}: expected {expected} sets, got {len(sets)}")
         level_std = standards[level]
-        for set_idx, drills in enumerate(sets):
-            if len(drills) != PAGES_PER_SET:
-                raise SystemExit(f"Level {level} set {set_idx + 1}: expected 10 drills, got {len(drills)}")
-            set_number = set_idx + 1
-            block_letter = BLOCK_LETTERS[set_idx // 5]
-            std_seconds = level_std[set_idx] if set_idx < len(level_std) else 600
-            per_page = max(20, std_seconds // PAGES_PER_SET)
-            for j, d in enumerate(drills):
-                order = j + 1
-                page = set_idx * PAGES_PER_SET + order
-                code = d["code"]
-                expected = run_capture(code)
-                scaff = scaffolding_for(order)
-                data: dict = {
-                    "id": f"{level}-{page:03d}",
-                    "level": level,
-                    "page": page,
-                    "set": set_number,
-                    "block": block_letter,
-                    "block_id": f"{level}.{block_letter}",
-                    "order": order,
-                    "scaffolding": scaff,
-                    "time_estimate_seconds": per_page,
-                    "prompt": d["prompt"],
-                    "hints": [hint_for_set(d["prompt"])] if scaff != "none" else [],
-                    "validation": {"type": "run_and_match_stdout", "expected": expected},
-                    "starter_code": safe_starter(code, order) if scaff == "full" else "",
-                }
-                if scaff == "full":
-                    data["reference_code"] = code
-                write_yaml(CONTENT / f"level-{level.lower()}" / "kumon" / f"{data['id']}.yaml", data)
-                count += 1
+        blocks = load_level_blocks(level)
+        set_idx = 0
+        for block_letter, _block_data in blocks:
+            block_sets = _block_data.get("sets", [])
+            for set_i, _set_data in enumerate(block_sets):
+                drills = sets[set_idx]
+                if len(drills) != PAGES_PER_SET:
+                    raise SystemExit(
+                        f"Level {level} set {set_idx + 1}: expected 10 drills, got {len(drills)}"
+                    )
+                set_number = set_idx + 1
+                std_seconds = level_std[set_idx] if set_idx < len(level_std) else 600
+                per_page = max(20, std_seconds // PAGES_PER_SET)
+                for j, d in enumerate(drills):
+                    order = j + 1
+                    page = set_idx * PAGES_PER_SET + order
+                    code = d["code"]
+                    expected_out = run_capture(code)
+                    scaff = scaffolding_for(order)
+                    data: dict = {
+                        "id": f"{level}{page}",
+                        "level": level,
+                        "page": page,
+                        "set": set_number,
+                        "block": block_letter,
+                        "block_id": f"{level}.{block_letter}",
+                        "order": order,
+                        "scaffolding": scaff,
+                        "time_estimate_seconds": per_page,
+                        "prompt": d["prompt"],
+                        "hints": [hint_for_drill(d["prompt"], code, d.get("hint"))] if scaff != "none" else [],
+                        "validation": {"type": "run_and_match_stdout", "expected": expected_out},
+                        "starter_code": safe_starter(code, order) if scaff == "full" else "",
+                    }
+                    if scaff == "full":
+                        data["reference_code"] = code
+                    write_yaml(CONTENT / f"level-{level.lower()}" / "kumon" / f"{data['id']}.yaml", data)
+                    count += 1
+                set_idx += 1
     return count
 
 
@@ -1113,14 +1628,90 @@ def generate_kumon() -> int:
 # LeetCode checkpoints + level exams
 # ---------------------------------------------------------------------------
 
-def lc(pid, title, fn, desc, cases, starter1):
+def lc(pid, title, fn, desc, cases, starter1, *, hints=None, approach="", learning=None, interview_questions=None, solution_code=""):
+    default_hints = {
+        "suma": ["Suma directa: return a + b.", "No necesitas bucles ni estructuras extra."],
+        "invertir": ["Los strings son secuencias: prueba s[::-1] o un bucle.", "¿Qué pasa con string vacío?"],
+        "fizzbuzz": ["Divisible por 15 → FizzBuzz; por 3 → Fizz; por 5 → Buzz.", "Usa if/elif en ese orden."],
+        "nota": ["Define rangos: A >= 90, B >= 80, etc.", "Compara de mayor a menor con if/elif."],
+        "c_a_f": ["Fórmula: c * 9/5 + 32.", "Cuidado con enteros vs float."],
+        "bisiesto": ["Divisible por 400 → sí; por 100 (no 400) → no; por 4 → sí.", "Orden de las condiciones importa."],
+    }
+    default_solutions = {
+        "suma": "def suma(a, b):\n    return a + b",
+        "invertir": "def invertir(s):\n    return s[::-1]",
+        "fizzbuzz": "def fizzbuzz(n):\n    if n % 15 == 0:\n        return 'FizzBuzz'\n    if n % 3 == 0:\n        return 'Fizz'\n    if n % 5 == 0:\n        return 'Buzz'\n    return str(n)",
+        "nota": "def nota(score):\n    if score >= 90:\n        return 'A'\n    if score >= 80:\n        return 'B'\n    if score >= 70:\n        return 'C'\n    return 'F'",
+        "c_a_f": "def c_a_f(c):\n    return c * 9 / 5 + 32",
+        "bisiesto": "def bisiesto(a):\n    if a % 400 == 0:\n        return True\n    if a % 100 == 0:\n        return False\n    return a % 4 == 0",
+        "suma_rango": "def suma_rango(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total",
+        "contar_pos": "def contar_pos(nums):\n    c = 0\n    for n in nums:\n        if n > 0:\n            c += 1\n    return c",
+        "pares": "def pares(a, b):\n    return [x + y for x, y in zip(a, b)]",
+        "doble_func": "def inc(n):\n    return n + 1\n\ndef doble_func(x):\n    return inc(inc(x))",
+        "factorial": "def factorial(n):\n    r = 1\n    for i in range(2, n + 1):\n        r *= i\n    return r",
+        "collatz": "def collatz(n):\n    pasos = 0\n    while n > 1:\n        if n % 2 == 0:\n            n //= 2\n        else:\n            n = n * 3 + 1\n        pasos += 1\n    return pasos",
+        "suma_lista": "def suma_lista(nums):\n    return sum(nums)",
+        "invertir_lista": "def invertir_lista(nums):\n    return nums[::-1]",
+        "contar_palabras": "def contar_palabras(s):\n    return len(s.split()) if s.strip() else 0",
+        "segundo_mayor": "def segundo_mayor(nums):\n    uniq = sorted(set(nums), reverse=True)\n    return uniq[1]",
+        "es_anagrama": "def es_anagrama(s, t):\n    return sorted(s) == sorted(t)",
+        "combinar": "def combinar(a, b):\n    out = dict(a)\n    out.update(b)\n    return out",
+        "frecuencia": "def frecuencia(texto):\n    freq = {}\n    for w in texto.split():\n        freq[w] = freq.get(w, 0) + 1\n    return freq",
+        "unicos": "def unicos(nums):\n    return len(set(nums))",
+        "div_segura": "def div_segura(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 0",
+        "agrupar": "def agrupar(items):\n    d = {}\n    for x in items:\n        d[x] = d.get(x, 0) + 1\n    return d",
+        "two_sum": "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n        need = target - n\n        if need in seen:\n            return [seen[need], i]\n        seen[n] = i\n    return []",
+        "run_counter": "def run_counter(n):\n    class Counter:\n        def __init__(self):\n            self.c = 0\n        def inc(self):\n            self.c += 1\n    c = Counter()\n    for _ in range(n):\n        c.inc()\n    return c.c",
+        "final_balance": "def final_balance(deps):\n    class Cuenta:\n        def __init__(self):\n            self.s = 0\n        def deposito(self, n):\n            self.s += n\n    c = Cuenta()\n    for d in deps:\n        c.deposito(d)\n    return c.s",
+        "point_str": "def point_str(x, y):\n    class Punto:\n        def __init__(self, x, y):\n            self.x = x\n            self.y = y\n        def __str__(self):\n            return f'({self.x}, {self.y})'\n    return str(Punto(x, y))",
+        "square_area": "def square_area(side):\n    class Shape:\n        def area(self):\n            return 0\n    class Square(Shape):\n        def __init__(self, s):\n            self.s = s\n        def area(self):\n            return self.s * self.s\n    return Square(side).area()",
+        "stack_top": "def stack_top(valores):\n    class Stack:\n        def __init__(self):\n            self.data = []\n        def push(self, x):\n            self.data.append(x)\n        def top(self):\n            return self.data[-1]\n    s = Stack()\n    for v in valores:\n        s.push(v)\n    return s.top()",
+        "total_area": "def total_area(lados):\n    class Cuadrado:\n        def __init__(self, l):\n            self.l = l\n        def area(self):\n            return self.l * self.l\n    return sum(Cuadrado(l).area() for l in lados)",
+    }
+    fn_hints = hints or default_hints.get(fn, [
+        "Identifica qué operación pide el enunciado.",
+        "Empieza con el caso más simple y luego casos borde.",
+        "Prueba con los ejemplos del enunciado.",
+    ])
     return {
         "id": pid, "title": title, "fn_name": fn, "description": desc,
         "test_cases": cases,
+        "hints": fn_hints,
+        "approach": approach or "Lee el enunciado, identifica entradas/salida y resuelve paso a paso con la lógica que ya conoces.",
+        "learning": learning or [
+            "Traducir enunciado a código Python",
+            "Probar con los ejemplos dados",
+            "Manejar casos borde antes de enviar",
+        ],
+        "interview_questions": interview_questions or [
+            "¿Cuál es la complejidad de tu solución?",
+            "¿Qué casos borde consideraste?",
+            "¿Hay una forma más eficiente?",
+        ],
+        "solution_code": solution_code or default_solutions.get(fn, ""),
         "tiers": {
-            1: {"starter_code": starter1, "explain_checklist": ["Identifica entradas y salidas", "Piensa en casos borde"], "hints_allowed": True},
-            2: {"starter_code": f"def {fn}(*args):\n    pass", "narration_prompts": ["Explica tu enfoque en voz alta", "Cual es la complejidad?"], "hints_allowed": True},
-            3: {"starter_code": f"def {fn}(*args):\n    pass", "narration_prompts": [], "hints_allowed": False},
+            1: {
+                "starter_code": starter1,
+                "explain_checklist": [
+                    "Lee el enunciado y los ejemplos",
+                    "Identifica entradas, salida y casos borde",
+                    "Piensa en el patrón antes de escribir código",
+                ],
+                "hints_allowed": True,
+            },
+            2: {
+                "starter_code": f"def {fn}(*args):\n    pass",
+                "narration_prompts": [
+                    "Explica tu enfoque en voz alta paso a paso",
+                    "¿Cuál es la complejidad temporal y espacial?",
+                ],
+                "hints_allowed": True,
+            },
+            3: {
+                "starter_code": f"def {fn}(*args):\n    pass",
+                "narration_prompts": [],
+                "hints_allowed": False,
+            },
         },
     }
 
@@ -1176,7 +1767,8 @@ def generate_leetcode() -> int:
                "def invertir_lista(nums):\n    return ___"),
             lc("c-cp-evens", "Filtrar pares", "pares", "Retorna solo los numeros pares.",
                [{"args": [[1, 2, 3, 4, 5, 6]], "expected": [2, 4, 6]}],
-               "def pares(nums):\n    return ___"),
+               "def pares(nums):\n    return ___",
+               solution_code="def pares(nums):\n    return [n for n in nums if n % 2 == 0]"),
             lc("c-cp-word-count", "Contar palabras", "contar_palabras", "Cuenta cuantas palabras tiene el texto.",
                [{"args": ["hola mundo python"], "expected": 3}, {"args": [""], "expected": 0}],
                "def contar_palabras(s):\n    return ___"),
@@ -1297,6 +1889,26 @@ def generate_interview() -> int:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate Kumon and related content.")
+    parser.add_argument(
+        "--level",
+        action="append",
+        choices=list(LEVEL_BUILDERS.keys()),
+        help="Regenerate only these Kumon levels (may repeat). Omit to rebuild all levels.",
+    )
+    parser.add_argument(
+        "--kumon-only",
+        action="store_true",
+        help="Only regenerate Kumon YAML pages.",
+    )
+    args = parser.parse_args()
+
+    if args.level:
+        print(f"Regenerating Kumon level(s): {', '.join(args.level)}...")
+        k = generate_kumon(levels=[lv.upper() for lv in args.level])
+        print(f"  -> {k} Kumon pages")
+        return
+
     if CONTENT.exists():
         print("Cleaning old Python content...")
         shutil.rmtree(CONTENT)

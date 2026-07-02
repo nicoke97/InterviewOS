@@ -50,7 +50,7 @@ def build_starter(code: str, order: int) -> str:
         return ""
 
     if order == 3:
-        return "___" if "\n" not in code else "# Completa el codigo\n___"
+        return "___" if "\n" not in code else "# Completa el código\n___"
 
     lines = code.split("\n")
 
@@ -78,7 +78,7 @@ def build_starter(code: str, order: int) -> str:
 
     # order == 2 — more blanks, less fixed text
     if len(lines) == 1:
-        return "# Escribe tu codigo\nprint(___)" if code.startswith("print(") else "___"
+        return "# Escribe tu código\nprint(___)" if code.startswith("print(") else "___"
     out = []
     for line in lines:
         stripped = line.strip()

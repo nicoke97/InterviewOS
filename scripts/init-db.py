@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize the InterviewOS SQLite database."""
+"""Initialize the Codenda SQLite database."""
 import sys
 from pathlib import Path
 
