@@ -1,0 +1,462 @@
+id: number-islands
+title: Number of Islands
+leetcode_id: lc-number-islands
+test_cases:
+- args:
+  - - - '1'
+      - '1'
+      - '1'
+      - '1'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '1'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+  expected: 1
+- args:
+  - - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '1'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '1'
+  expected: 3
+voice:
+  prompt: '¿Representación: lista de adyacencia vs matriz?'
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - cuándo
+  - detección
+  - ciclos
+  - orden
+  - topológico
+  - grafo
+languages:
+  csharp:
+    fn_name: NumIslands
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int NumIslands(string[][] nums)\n{\n    ___\n    int rows = nums.Length, cols = nums[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        if (r < 0 || c < 0 || r >= rows || c\
+        \ >= cols || nums[r][c] != \"1\") return;\n        nums[r][c] = \"0\";\n        Dfs(r + 1, c);\
+        \ Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0; r < rows; r++)\n  \
+        \      for (int c = 0; c < cols; c++)\n            if (nums[r][c] == \"1\")\n            {\n \
+        \               count++;\n                Dfs(r, c);\n            }\n    return count;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int NumIslands(string[][] arr)\n{\n    ___\n    int rows = arr.Length, cols = arr[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        if (r < 0 || c < 0 || r >= rows || c\
+        \ >= cols || arr[r][c] != \"1\") return;\n        arr[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r\
+        \ - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0; r < rows; r++)\n        for\
+        \ (int c = 0; c < cols; c++)\n            if (arr[r][c] == \"1\")\n            {\n           \
+        \     count++;\n                Dfs(r, c);\n            }\n    return count;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int NumIslands(string[][] xs)\n{\n    ___\n    int rows = xs.Length, cols = xs[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        if (r < 0 || c < 0 || r >= rows || c\
+        \ >= cols || xs[r][c] != \"1\") return;\n        xs[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r\
+        \ - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0; r < rows; r++)\n        for\
+        \ (int c = 0; c < cols; c++)\n            if (xs[r][c] == \"1\")\n            {\n            \
+        \    count++;\n                Dfs(r, c);\n            }\n    return count;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int NumIslands(string[][] values)\n{\n    ___\n    int rows = values.Length, cols\
+        \ = values[0].Length, count = 0;\n    void Dfs(int r, int c)\n    {\n        if (r < 0 || c <\
+        \ 0 || r >= rows || c >= cols || values[r][c] != \"1\") return;\n        values[r][c] = \"0\"\
+        ;\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r\
+        \ = 0; r < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (values[r][c] ==\
+        \ \"1\")\n            {\n                count++;\n                Dfs(r, c);\n            }\n\
+        \    return count;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int NumIslands(string[][] items)\n{\n    ___\n    int rows = items.Length, cols =\
+        \ items[0].Length, count = 0;\n    void Dfs(int r, int c)\n    {\n        if (r < 0 || c < 0 ||\
+        \ r >= rows || c >= cols || items[r][c] != \"1\") return;\n        items[r][c] = \"0\";\n    \
+        \    Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0; r\
+        \ < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (items[r][c] == \"1\")\n\
+        \            {\n                count++;\n                Dfs(r, c);\n            }\n    return\
+        \ count;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int NumIslands(string[][] nums)\n{\n    if (nums == null || nums.Length == 0) return\
+        \ 0;\n    int rows = nums.Length, cols = nums[0].Length, count = 0;\n    void Dfs(int r, int c)\n\
+        \    {\n        if (r < 0 || c < 0 || r >= rows || c >= cols || nums[r][c] != \"1\") return;\n\
+        \        nums[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c -\
+        \ 1);\n    }\n    ___\n            }\n    return count;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int NumIslands(string[][] arr)\n{\n    if (arr == null || arr.Length == 0) return\
+        \ 0;\n    int rows = arr.Length, cols = arr[0].Length, count = 0;\n    void Dfs(int r, int c)\n\
+        \    {\n        if (r < 0 || c < 0 || r >= rows || c >= cols || arr[r][c] != \"1\") return;\n\
+        \        arr[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n\
+        \    }\n    ___\n            }\n    return count;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int NumIslands(string[][] xs)\n{\n    if (xs == null || xs.Length == 0) return 0;\n\
+        \    int rows = xs.Length, cols = xs[0].Length, count = 0;\n    void Dfs(int r, int c)\n    {\n\
+        \        if (r < 0 || c < 0 || r >= rows || c >= cols || xs[r][c] != \"1\") return;\n        xs[r][c]\
+        \ = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    ___\n\
+        \            }\n    return count;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int NumIslands(string[][] values)\n{\n    if (values == null || values.Length ==\
+        \ 0) return 0;\n    int rows = values.Length, cols = values[0].Length, count = 0;\n    void Dfs(int\
+        \ r, int c)\n    {\n        if (r < 0 || c < 0 || r >= rows || c >= cols || values[r][c] != \"\
+        1\") return;\n        values[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c +\
+        \ 1); Dfs(r, c - 1);\n    }\n    ___\n            }\n    return count;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int NumIslands(string[][] items)\n{\n    if (items == null || items.Length == 0)\
+        \ return 0;\n    int rows = items.Length, cols = items[0].Length, count = 0;\n    void Dfs(int\
+        \ r, int c)\n    {\n        if (r < 0 || c < 0 || r >= rows || c >= cols || items[r][c] != \"\
+        1\") return;\n        items[r][c] = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1);\
+        \ Dfs(r, c - 1);\n    }\n    ___\n            }\n    return count;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int NumIslands(string[][] nums)\n{\n    ___\n    int rows = nums.Length, cols = nums[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        ___\n        nums[r][c] = \"0\";\n  \
+        \      Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0;\
+        \ r < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (nums[r][c] == \"1\"\
+        )\n            {\n                count++;\n                Dfs(r, c);\n            }\n    ___\n\
+        }\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int NumIslands(string[][] arr)\n{\n    ___\n    int rows = arr.Length, cols = arr[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        ___\n        arr[r][c] = \"0\";\n   \
+        \     Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0;\
+        \ r < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (arr[r][c] == \"1\")\n\
+        \            {\n                count++;\n                Dfs(r, c);\n            }\n    ___\n\
+        }\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int NumIslands(string[][] xs)\n{\n    ___\n    int rows = xs.Length, cols = xs[0].Length,\
+        \ count = 0;\n    void Dfs(int r, int c)\n    {\n        ___\n        xs[r][c] = \"0\";\n    \
+        \    Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for (int r = 0; r\
+        \ < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (xs[r][c] == \"1\")\n \
+        \           {\n                count++;\n                Dfs(r, c);\n            }\n    ___\n\
+        }\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int NumIslands(string[][] values)\n{\n    ___\n    int rows = values.Length, cols\
+        \ = values[0].Length, count = 0;\n    void Dfs(int r, int c)\n    {\n        ___\n        values[r][c]\
+        \ = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for\
+        \ (int r = 0; r < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (values[r][c]\
+        \ == \"1\")\n            {\n                count++;\n                Dfs(r, c);\n           \
+        \ }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: NumIslands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int NumIslands(string[][] items)\n{\n    ___\n    int rows = items.Length, cols =\
+        \ items[0].Length, count = 0;\n    void Dfs(int r, int c)\n    {\n        ___\n        items[r][c]\
+        \ = \"0\";\n        Dfs(r + 1, c); Dfs(r - 1, c); Dfs(r, c + 1); Dfs(r, c - 1);\n    }\n    for\
+        \ (int r = 0; r < rows; r++)\n        for (int c = 0; c < cols; c++)\n            if (items[r][c]\
+        \ == \"1\")\n            {\n                count++;\n                Dfs(r, c);\n           \
+        \ }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: NumIslands
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int NumIslands(string[][] nums)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: NumIslands
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int NumIslands(string[][] arr)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: NumIslands
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int NumIslands(string[][] xs)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: num_islands
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def num_islands(nums):\n    ___\n        return 0\n    rows, cols = len(nums), len(nums[0])\n\
+        \    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or nums[r][c]\
+        \ != '1':\n            return\n        nums[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r\
+        \ - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for\
+        \ c in range(cols):\n            if nums[r][c] == '1':\n                count += 1\n         \
+        \       dfs(r, c)\n    return count\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def num_islands(arr):\n    ___\n        return 0\n    rows, cols = len(arr), len(arr[0])\n\
+        \    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or arr[r][c]\
+        \ != '1':\n            return\n        arr[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r -\
+        \ 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for\
+        \ c in range(cols):\n            if arr[r][c] == '1':\n                count += 1\n          \
+        \      dfs(r, c)\n    return count\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def num_islands(xs):\n    ___\n        return 0\n    rows, cols = len(xs), len(xs[0])\n\
+        \    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or xs[r][c]\
+        \ != '1':\n            return\n        xs[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r -\
+        \ 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for\
+        \ c in range(cols):\n            if xs[r][c] == '1':\n                count += 1\n           \
+        \     dfs(r, c)\n    return count\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def num_islands(values):\n    ___\n        return 0\n    rows, cols = len(values),\
+        \ len(values[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or\
+        \ c >= cols or values[r][c] != '1':\n            return\n        values[r][c] = '0'\n        dfs(r\
+        \ + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n\
+        \        for c in range(cols):\n            if values[r][c] == '1':\n                count +=\
+        \ 1\n                dfs(r, c)\n    return count\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def num_islands(items):\n    ___\n        return 0\n    rows, cols = len(items),\
+        \ len(items[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or\
+        \ c >= cols or items[r][c] != '1':\n            return\n        items[r][c] = '0'\n        dfs(r\
+        \ + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n\
+        \        for c in range(cols):\n            if items[r][c] == '1':\n                count += 1\n\
+        \                dfs(r, c)\n    return count\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def num_islands(nums):\n    if not nums:\n        return 0\n    rows, cols = len(nums),\
+        \ len(nums[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c\
+        \ >= cols or nums[r][c] != '1':\n            return\n        nums[r][c] = '0'\n        dfs(r +\
+        \ 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    ___\n    return\
+        \ count\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def num_islands(arr):\n    if not arr:\n        return 0\n    rows, cols = len(arr),\
+        \ len(arr[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c\
+        \ >= cols or arr[r][c] != '1':\n            return\n        arr[r][c] = '0'\n        dfs(r + 1,\
+        \ c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    ___\n    return\
+        \ count\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def num_islands(xs):\n    if not xs:\n        return 0\n    rows, cols = len(xs),\
+        \ len(xs[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >=\
+        \ cols or xs[r][c] != '1':\n            return\n        xs[r][c] = '0'\n        dfs(r + 1, c)\n\
+        \        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    ___\n    return count\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def num_islands(values):\n    if not values:\n        return 0\n    rows, cols =\
+        \ len(values), len(values[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or\
+        \ r >= rows or c >= cols or values[r][c] != '1':\n            return\n        values[r][c] = '0'\n\
+        \        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n\
+        \    ___\n    return count\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def num_islands(items):\n    if not items:\n        return 0\n    rows, cols = len(items),\
+        \ len(items[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or\
+        \ c >= cols or items[r][c] != '1':\n            return\n        items[r][c] = '0'\n        dfs(r\
+        \ + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    ___\n    return\
+        \ count\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def num_islands(nums):\n    if not nums:\n        ___\n    rows, cols = len(nums),\
+        \ len(nums[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c\
+        \ >= cols or nums[r][c] != '1':\n            ___\n        nums[r][c] = '0'\n        dfs(r + 1,\
+        \ c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n\
+        \        for c in range(cols):\n            if nums[r][c] == '1':\n                count += 1\n\
+        \                dfs(r, c)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def num_islands(arr):\n    if not arr:\n        ___\n    rows, cols = len(arr), len(arr[0])\n\
+        \    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or arr[r][c]\
+        \ != '1':\n            ___\n        arr[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r - 1,\
+        \ c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for c in\
+        \ range(cols):\n            if arr[r][c] == '1':\n                count += 1\n               \
+        \ dfs(r, c)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def num_islands(xs):\n    if not xs:\n        ___\n    rows, cols = len(xs), len(xs[0])\n\
+        \    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or xs[r][c]\
+        \ != '1':\n            ___\n        xs[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r - 1,\
+        \ c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for c in\
+        \ range(cols):\n            if xs[r][c] == '1':\n                count += 1\n                dfs(r,\
+        \ c)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def num_islands(values):\n    if not values:\n        ___\n    rows, cols = len(values),\
+        \ len(values[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or\
+        \ c >= cols or values[r][c] != '1':\n            ___\n        values[r][c] = '0'\n        dfs(r\
+        \ + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n\
+        \        for c in range(cols):\n            if values[r][c] == '1':\n                count +=\
+        \ 1\n                dfs(r, c)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: num_islands
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def num_islands(items):\n    if not items:\n        ___\n    rows, cols = len(items),\
+        \ len(items[0])\n    count = 0\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or\
+        \ c >= cols or items[r][c] != '1':\n            ___\n        items[r][c] = '0'\n        dfs(r\
+        \ + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n\
+        \        for c in range(cols):\n            if items[r][c] == '1':\n                count += 1\n\
+        \                dfs(r, c)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: num_islands
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def num_islands(nums):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: num_islands
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def num_islands(arr):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: num_islands
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def num_islands(xs):\n    return 0\n"

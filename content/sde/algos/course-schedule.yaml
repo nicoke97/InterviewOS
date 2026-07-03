@@ -1,0 +1,379 @@
+id: course-schedule
+title: Course Schedule
+leetcode_id: lc-course-schedule
+test_cases:
+- args:
+  - 2
+  - - - 1
+      - 0
+  expected: true
+- args:
+  - 2
+  - - - 1
+      - 0
+    - - 0
+      - 1
+  expected: false
+voice:
+  prompt: '¿Representación: lista de adyacencia vs matriz?'
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - cuándo
+  - detección
+  - ciclos
+  - orden
+  - topológico
+  - grafo
+languages:
+  csharp:
+    fn_name: CanFinish
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool CanFinish(int n, int[][] nums)\n{\n    ___\n    foreach (var p in nums)\n  \
+        \      adj[p[1]].Add(p[0]);\n    var state = new int[n];\n    bool Dfs(int u)\n    {\n       \
+        \ if (state[u] == 1) return false;\n        if (state[u] == 2) return true;\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            if (!Dfs(v)) return false;\n        state[u]\
+        \ = 2;\n        return true;\n    }\n    return Enumerable.Range(0, n).All(Dfs);\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool CanFinish(int m, int[][] arr)\n{\n    ___\n    foreach (var p in arr)\n    \
+        \    adj[p[1]].Add(p[0]);\n    var state = new int[m];\n    bool Dfs(int u)\n    {\n        if\
+        \ (state[u] == 1) return false;\n        if (state[u] == 2) return true;\n        state[u] = 1;\n\
+        \        foreach (var v in adj[u])\n            if (!Dfs(v)) return false;\n        state[u] =\
+        \ 2;\n        return true;\n    }\n    return Enumerable.Range(0, m).All(Dfs);\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool CanFinish(int k, int[][] xs)\n{\n    ___\n    foreach (var p in xs)\n      \
+        \  adj[p[1]].Add(p[0]);\n    var state = new int[k];\n    bool Dfs(int u)\n    {\n        if (state[u]\
+        \ == 1) return false;\n        if (state[u] == 2) return true;\n        state[u] = 1;\n      \
+        \  foreach (var v in adj[u])\n            if (!Dfs(v)) return false;\n        state[u] = 2;\n\
+        \        return true;\n    }\n    return Enumerable.Range(0, k).All(Dfs);\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool CanFinish(int steps, int[][] values)\n{\n    ___\n    foreach (var p in values)\n\
+        \        adj[p[1]].Add(p[0]);\n    var state = new int[steps];\n    bool Dfs(int u)\n    {\n \
+        \       if (state[u] == 1) return false;\n        if (state[u] == 2) return true;\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            if (!Dfs(v)) return false;\n        state[u]\
+        \ = 2;\n        return true;\n    }\n    return Enumerable.Range(0, steps).All(Dfs);\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "bool CanFinish(int cap, int[][] items)\n{\n    ___\n    foreach (var p in items)\n\
+        \        adj[p[1]].Add(p[0]);\n    var state = new int[cap];\n    bool Dfs(int u)\n    {\n   \
+        \     if (state[u] == 1) return false;\n        if (state[u] == 2) return true;\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            if (!Dfs(v)) return false;\n        state[u]\
+        \ = 2;\n        return true;\n    }\n    return Enumerable.Range(0, cap).All(Dfs);\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool CanFinish(int n, int[][] nums)\n{\n    var adj = Enumerable.Range(0, n).Select(_\
+        \ => new List<int>()).ToList();\n    ___\n    }\n    return Enumerable.Range(0, n).All(Dfs);\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool CanFinish(int m, int[][] arr)\n{\n    var adj = Enumerable.Range(0, m).Select(_\
+        \ => new List<int>()).ToList();\n    ___\n    }\n    return Enumerable.Range(0, m).All(Dfs);\n\
+        }\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool CanFinish(int k, int[][] xs)\n{\n    var adj = Enumerable.Range(0, k).Select(_\
+        \ => new List<int>()).ToList();\n    ___\n    }\n    return Enumerable.Range(0, k).All(Dfs);\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool CanFinish(int steps, int[][] values)\n{\n    var adj = Enumerable.Range(0, steps).Select(_\
+        \ => new List<int>()).ToList();\n    ___\n    }\n    return Enumerable.Range(0, steps).All(Dfs);\n\
+        }\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "bool CanFinish(int cap, int[][] items)\n{\n    var adj = Enumerable.Range(0, cap).Select(_\
+        \ => new List<int>()).ToList();\n    ___\n    }\n    return Enumerable.Range(0, cap).All(Dfs);\n\
+        }\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool CanFinish(int n, int[][] nums)\n{\n    var adj = Enumerable.Range(0, n).Select(_\
+        \ => new List<int>()).ToList();\n    foreach (var p in nums)\n        adj[p[1]].Add(p[0]);\n \
+        \   var state = new int[n];\n    bool Dfs(int u)\n    {\n        ___\n        ___\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            ___\n        state[u] = 2;\n        ___\n\
+        \    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool CanFinish(int m, int[][] arr)\n{\n    var adj = Enumerable.Range(0, m).Select(_\
+        \ => new List<int>()).ToList();\n    foreach (var p in arr)\n        adj[p[1]].Add(p[0]);\n  \
+        \  var state = new int[m];\n    bool Dfs(int u)\n    {\n        ___\n        ___\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            ___\n        state[u] = 2;\n        ___\n\
+        \    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool CanFinish(int k, int[][] xs)\n{\n    var adj = Enumerable.Range(0, k).Select(_\
+        \ => new List<int>()).ToList();\n    foreach (var p in xs)\n        adj[p[1]].Add(p[0]);\n   \
+        \ var state = new int[k];\n    bool Dfs(int u)\n    {\n        ___\n        ___\n        state[u]\
+        \ = 1;\n        foreach (var v in adj[u])\n            ___\n        state[u] = 2;\n        ___\n\
+        \    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool CanFinish(int steps, int[][] values)\n{\n    var adj = Enumerable.Range(0, steps).Select(_\
+        \ => new List<int>()).ToList();\n    foreach (var p in values)\n        adj[p[1]].Add(p[0]);\n\
+        \    var state = new int[steps];\n    bool Dfs(int u)\n    {\n        ___\n        ___\n     \
+        \   state[u] = 1;\n        foreach (var v in adj[u])\n            ___\n        state[u] = 2;\n\
+        \        ___\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: CanFinish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "bool CanFinish(int cap, int[][] items)\n{\n    var adj = Enumerable.Range(0, cap).Select(_\
+        \ => new List<int>()).ToList();\n    foreach (var p in items)\n        adj[p[1]].Add(p[0]);\n\
+        \    var state = new int[cap];\n    bool Dfs(int u)\n    {\n        ___\n        ___\n       \
+        \ state[u] = 1;\n        foreach (var v in adj[u])\n            ___\n        state[u] = 2;\n \
+        \       ___\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: CanFinish
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool CanFinish(int n, int[][] nums)\n{\n    return false;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: CanFinish
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "bool CanFinish(int m, int[][] arr)\n{\n    return false;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: CanFinish
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "bool CanFinish(int k, int[][] xs)\n{\n    return false;\n}\n"
+  python:
+    fn_name: can_finish
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def can_finish(n, nums):\n    ___\n    for a, b in nums:\n        adj[b].append(a)\n\
+        \    state = [0] * n\n    def dfs(u):\n        if state[u] == 1:\n            return False\n \
+        \       if state[u] == 2:\n            return True\n        state[u] = 1\n        for v in adj[u]:\n\
+        \            if not dfs(v):\n                return False\n        state[u] = 2\n        return\
+        \ True\n    return all(dfs(i) for i in range(n))\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def can_finish(m, arr):\n    ___\n    for a, b in arr:\n        adj[b].append(a)\n\
+        \    state = [0] * m\n    def dfs(u):\n        if state[u] == 1:\n            return False\n \
+        \       if state[u] == 2:\n            return True\n        state[u] = 1\n        for v in adj[u]:\n\
+        \            if not dfs(v):\n                return False\n        state[u] = 2\n        return\
+        \ True\n    return all(dfs(i) for i in range(m))\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def can_finish(k, xs):\n    ___\n    for a, b in xs:\n        adj[b].append(a)\n\
+        \    state = [0] * k\n    def dfs(u):\n        if state[u] == 1:\n            return False\n \
+        \       if state[u] == 2:\n            return True\n        state[u] = 1\n        for v in adj[u]:\n\
+        \            if not dfs(v):\n                return False\n        state[u] = 2\n        return\
+        \ True\n    return all(dfs(i) for i in range(k))\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def can_finish(steps, values):\n    ___\n    for a, b in values:\n        adj[b].append(a)\n\
+        \    state = [0] * steps\n    def dfs(u):\n        if state[u] == 1:\n            return False\n\
+        \        if state[u] == 2:\n            return True\n        state[u] = 1\n        for v in adj[u]:\n\
+        \            if not dfs(v):\n                return False\n        state[u] = 2\n        return\
+        \ True\n    return all(dfs(i) for i in range(steps))\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def can_finish(cap, items):\n    ___\n    for a, b in items:\n        adj[b].append(a)\n\
+        \    state = [0] * cap\n    def dfs(u):\n        if state[u] == 1:\n            return False\n\
+        \        if state[u] == 2:\n            return True\n        state[u] = 1\n        for v in adj[u]:\n\
+        \            if not dfs(v):\n                return False\n        state[u] = 2\n        return\
+        \ True\n    return all(dfs(i) for i in range(cap))\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def can_finish(n, nums):\n    ___\n    return all(dfs(i) for i in range(n))\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def can_finish(m, arr):\n    ___\n    return all(dfs(i) for i in range(m))\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def can_finish(k, xs):\n    ___\n    return all(dfs(i) for i in range(k))\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def can_finish(steps, values):\n    ___\n    return all(dfs(i) for i in range(steps))\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def can_finish(cap, items):\n    ___\n    return all(dfs(i) for i in range(cap))\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def can_finish(n, nums):\n    adj = [[] for _ in range(n)]\n    for a, b in nums:\n\
+        \        adj[b].append(a)\n    state = [0] * n\n    def dfs(u):\n        if state[u] == 1:\n \
+        \           ___\n        if state[u] == 2:\n            ___\n        state[u] = 1\n        for\
+        \ v in adj[u]:\n            if not dfs(v):\n                ___\n        state[u] = 2\n      \
+        \  ___\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def can_finish(m, arr):\n    adj = [[] for _ in range(m)]\n    for a, b in arr:\n\
+        \        adj[b].append(a)\n    state = [0] * m\n    def dfs(u):\n        if state[u] == 1:\n \
+        \           ___\n        if state[u] == 2:\n            ___\n        state[u] = 1\n        for\
+        \ v in adj[u]:\n            if not dfs(v):\n                ___\n        state[u] = 2\n      \
+        \  ___\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def can_finish(k, xs):\n    adj = [[] for _ in range(k)]\n    for a, b in xs:\n \
+        \       adj[b].append(a)\n    state = [0] * k\n    def dfs(u):\n        if state[u] == 1:\n  \
+        \          ___\n        if state[u] == 2:\n            ___\n        state[u] = 1\n        for\
+        \ v in adj[u]:\n            if not dfs(v):\n                ___\n        state[u] = 2\n      \
+        \  ___\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def can_finish(steps, values):\n    adj = [[] for _ in range(steps)]\n    for a,\
+        \ b in values:\n        adj[b].append(a)\n    state = [0] * steps\n    def dfs(u):\n        if\
+        \ state[u] == 1:\n            ___\n        if state[u] == 2:\n            ___\n        state[u]\
+        \ = 1\n        for v in adj[u]:\n            if not dfs(v):\n                ___\n        state[u]\
+        \ = 2\n        ___\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: can_finish
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def can_finish(cap, items):\n    adj = [[] for _ in range(cap)]\n    for a, b in\
+        \ items:\n        adj[b].append(a)\n    state = [0] * cap\n    def dfs(u):\n        if state[u]\
+        \ == 1:\n            ___\n        if state[u] == 2:\n            ___\n        state[u] = 1\n \
+        \       for v in adj[u]:\n            if not dfs(v):\n                ___\n        state[u] =\
+        \ 2\n        ___\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: can_finish
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def can_finish(n, nums):\n    return False\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: can_finish
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def can_finish(m, arr):\n    return False\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: can_finish
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def can_finish(k, xs):\n    return False\n"

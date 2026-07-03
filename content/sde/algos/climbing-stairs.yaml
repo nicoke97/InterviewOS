@@ -1,0 +1,326 @@
+id: climbing-stairs
+title: Climbing Stairs
+leetcode_id: lc-climbing-stairs
+test_cases:
+- args:
+  - 2
+  expected: 2
+- args:
+  - 3
+  expected: 3
+- args:
+  - 5
+  expected: 8
+voice:
+  prompt: ¿Cuál es tu estado y por qué?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - formular
+  - estado
+  - transición
+  - antes
+  - codear
+  - bottom
+languages:
+  csharp:
+    fn_name: ClimbStairs
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int ClimbStairs(int n)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= n; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ return b;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int ClimbStairs(int m)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= m; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ return b;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int ClimbStairs(int k)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= k; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ return b;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int ClimbStairs(int steps)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3;\
+        \ i <= steps; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n\
+        \    return b;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int ClimbStairs(int cap)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3;\
+        \ i <= cap; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n\
+        \    return b;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int ClimbStairs(int n)\n{\n    if (n <= 2) return n;\n    int a = 1, b = 2;\n   \
+        \ ___\n    }\n    return b;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int ClimbStairs(int m)\n{\n    if (m <= 2) return m;\n    int a = 1, b = 2;\n   \
+        \ ___\n    }\n    return b;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int ClimbStairs(int k)\n{\n    if (k <= 2) return k;\n    int a = 1, b = 2;\n   \
+        \ ___\n    }\n    return b;\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int ClimbStairs(int steps)\n{\n    if (steps <= 2) return steps;\n    int a = 1,\
+        \ b = 2;\n    ___\n    }\n    return b;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int ClimbStairs(int cap)\n{\n    if (cap <= 2) return cap;\n    int a = 1, b = 2;\n\
+        \    ___\n    }\n    return b;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int ClimbStairs(int n)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= n; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int ClimbStairs(int m)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= m; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int ClimbStairs(int k)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3; i\
+        \ <= k; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n   \
+        \ ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int ClimbStairs(int steps)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3;\
+        \ i <= steps; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n\
+        \    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: ClimbStairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int ClimbStairs(int cap)\n{\n    ___\n    int a = 1, b = 2;\n    for (int i = 3;\
+        \ i <= cap; i++)\n    {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n\
+        \    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: ClimbStairs
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int ClimbStairs(int n)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: ClimbStairs
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int ClimbStairs(int m)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: ClimbStairs
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int ClimbStairs(int k)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: climb_stairs
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def climb_stairs(n):\n    ___\n        return n\n    a, b = 1, 2\n    for _ in range(3,\
+        \ n + 1):\n        a, b = b, a + b\n    return b\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def climb_stairs(m):\n    ___\n        return m\n    a, b = 1, 2\n    for _ in range(3,\
+        \ m + 1):\n        a, b = b, a + b\n    return b\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def climb_stairs(k):\n    ___\n        return k\n    a, b = 1, 2\n    for _ in range(3,\
+        \ k + 1):\n        a, b = b, a + b\n    return b\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def climb_stairs(steps):\n    ___\n        return steps\n    a, b = 1, 2\n    for\
+        \ _ in range(3, steps + 1):\n        a, b = b, a + b\n    return b\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def climb_stairs(cap):\n    ___\n        return cap\n    a, b = 1, 2\n    for _ in\
+        \ range(3, cap + 1):\n        a, b = b, a + b\n    return b\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def climb_stairs(n):\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    ___\n\
+        \    return b\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def climb_stairs(m):\n    if m <= 2:\n        return m\n    a, b = 1, 2\n    ___\n\
+        \    return b\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def climb_stairs(k):\n    if k <= 2:\n        return k\n    a, b = 1, 2\n    ___\n\
+        \    return b\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def climb_stairs(steps):\n    if steps <= 2:\n        return steps\n    a, b = 1,\
+        \ 2\n    ___\n    return b\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def climb_stairs(cap):\n    if cap <= 2:\n        return cap\n    a, b = 1, 2\n \
+        \   ___\n    return b\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def climb_stairs(n):\n    if n <= 2:\n        ___\n    a, b = 1, 2\n    for _ in\
+        \ range(3, n + 1):\n        a, b = b, a + b\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def climb_stairs(m):\n    if m <= 2:\n        ___\n    a, b = 1, 2\n    for _ in\
+        \ range(3, m + 1):\n        a, b = b, a + b\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def climb_stairs(k):\n    if k <= 2:\n        ___\n    a, b = 1, 2\n    for _ in\
+        \ range(3, k + 1):\n        a, b = b, a + b\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def climb_stairs(steps):\n    if steps <= 2:\n        ___\n    a, b = 1, 2\n    for\
+        \ _ in range(3, steps + 1):\n        a, b = b, a + b\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: climb_stairs
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def climb_stairs(cap):\n    if cap <= 2:\n        ___\n    a, b = 1, 2\n    for _\
+        \ in range(3, cap + 1):\n        a, b = b, a + b\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: climb_stairs
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def climb_stairs(n):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: climb_stairs
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def climb_stairs(m):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: climb_stairs
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def climb_stairs(k):\n    return 0\n"

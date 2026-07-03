@@ -1,0 +1,389 @@
+id: merge-intervals
+title: Merge Intervals
+leetcode_id: lc-merge-intervals
+test_cases:
+- args:
+  - - - 1
+      - 3
+    - - 2
+      - 6
+    - - 8
+      - 10
+    - - 15
+      - 18
+  expected:
+  - - 1
+    - 6
+  - - 8
+    - 10
+  - - 15
+    - 18
+- args:
+  - - - 1
+      - 4
+    - - 4
+      - 5
+  expected:
+  - - 1
+    - 5
+voice:
+  prompt: ¿Por qué ordenar primero?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - primer
+  - siempre
+  - merge
+  - lineal
+  - después
+  - ordenar
+languages:
+  csharp:
+    fn_name: MergeIntervals
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[][] MergeIntervals(int[][] nums)\n{\n    ___\n    var ordered = nums.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    return merged.ToArray();\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[][] MergeIntervals(int[][] arr)\n{\n    ___\n    var ordered = arr.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    return merged.ToArray();\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[][] MergeIntervals(int[][] xs)\n{\n    ___\n    var ordered = xs.OrderBy(iv =>\
+        \ iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    return merged.ToArray();\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[][] MergeIntervals(int[][] values)\n{\n    ___\n    var ordered = values.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    return merged.ToArray();\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int[][] MergeIntervals(int[][] items)\n{\n    ___\n    var ordered = items.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    return merged.ToArray();\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[][] MergeIntervals(int[][] nums)\n{\n    if (nums == null || nums.Length == 0)\
+        \ return new int[][] {};\n    var ordered = nums.OrderBy(iv => iv[0]).ToArray();\n    var merged\
+        \ = new List<int[]> { (int[])ordered[0].Clone() };\n    ___\n    }\n    return merged.ToArray();\n\
+        }\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[][] MergeIntervals(int[][] arr)\n{\n    if (arr == null || arr.Length == 0) return\
+        \ new int[][] {};\n    var ordered = arr.OrderBy(iv => iv[0]).ToArray();\n    var merged = new\
+        \ List<int[]> { (int[])ordered[0].Clone() };\n    ___\n    }\n    return merged.ToArray();\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[][] MergeIntervals(int[][] xs)\n{\n    if (xs == null || xs.Length == 0) return\
+        \ new int[][] {};\n    var ordered = xs.OrderBy(iv => iv[0]).ToArray();\n    var merged = new\
+        \ List<int[]> { (int[])ordered[0].Clone() };\n    ___\n    }\n    return merged.ToArray();\n}\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[][] MergeIntervals(int[][] values)\n{\n    if (values == null || values.Length\
+        \ == 0) return new int[][] {};\n    var ordered = values.OrderBy(iv => iv[0]).ToArray();\n   \
+        \ var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    ___\n    }\n    return merged.ToArray();\n\
+        }\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int[][] MergeIntervals(int[][] items)\n{\n    if (items == null || items.Length ==\
+        \ 0) return new int[][] {};\n    var ordered = items.OrderBy(iv => iv[0]).ToArray();\n    var\
+        \ merged = new List<int[]> { (int[])ordered[0].Clone() };\n    ___\n    }\n    return merged.ToArray();\n\
+        }\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[][] MergeIntervals(int[][] nums)\n{\n    ___\n    var ordered = nums.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[][] MergeIntervals(int[][] arr)\n{\n    ___\n    var ordered = arr.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[][] MergeIntervals(int[][] xs)\n{\n    ___\n    var ordered = xs.OrderBy(iv =>\
+        \ iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[][] MergeIntervals(int[][] values)\n{\n    ___\n    var ordered = values.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: MergeIntervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int[][] MergeIntervals(int[][] items)\n{\n    ___\n    var ordered = items.OrderBy(iv\
+        \ => iv[0]).ToArray();\n    var merged = new List<int[]> { (int[])ordered[0].Clone() };\n    foreach\
+        \ (var iv in ordered.Skip(1))\n    {\n        if (iv[0] <= merged[merged.Count - 1][1])\n    \
+        \        merged[merged.Count - 1][1] = Math.Max(merged[merged.Count - 1][1], iv[1]);\n       \
+        \ else\n            merged.Add((int[])iv.Clone());\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: MergeIntervals
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[][] MergeIntervals(int[][] nums)\n{\n    return new int[][] {};\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: MergeIntervals
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int[][] MergeIntervals(int[][] arr)\n{\n    return new int[][] {};\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: MergeIntervals
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int[][] MergeIntervals(int[][] xs)\n{\n    return new int[][] {};\n}\n"
+  python:
+    fn_name: merge_intervals
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_intervals(nums):\n    ___\n        return []\n    nums.sort(key=lambda\
+        \ x: x[0])\n    merged = [nums[0][:]]\n    for start, end in nums[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    return merged\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_intervals(arr):\n    ___\n        return []\n    arr.sort(key=lambda x:\
+        \ x[0])\n    merged = [arr[0][:]]\n    for start, end in arr[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    return merged\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_intervals(xs):\n    ___\n        return []\n    xs.sort(key=lambda x: x[0])\n\
+        \    merged = [xs[0][:]]\n    for start, end in xs[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    return merged\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_intervals(values):\n    ___\n        return []\n    values.sort(key=lambda\
+        \ x: x[0])\n    merged = [values[0][:]]\n    for start, end in values[1:]:\n        if start <=\
+        \ merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n       \
+        \     merged.append([start, end])\n    return merged\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def merge_intervals(items):\n    ___\n        return []\n    items.sort(key=lambda\
+        \ x: x[0])\n    merged = [items[0][:]]\n    for start, end in items[1:]:\n        if start <=\
+        \ merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n       \
+        \     merged.append([start, end])\n    return merged\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_intervals(nums):\n    if not nums:\n        return []\n    nums.sort(key=lambda\
+        \ x: x[0])\n    merged = [nums[0][:]]\n    ___\n    return merged\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_intervals(arr):\n    if not arr:\n        return []\n    arr.sort(key=lambda\
+        \ x: x[0])\n    merged = [arr[0][:]]\n    ___\n    return merged\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_intervals(xs):\n    if not xs:\n        return []\n    xs.sort(key=lambda\
+        \ x: x[0])\n    merged = [xs[0][:]]\n    ___\n    return merged\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_intervals(values):\n    if not values:\n        return []\n    values.sort(key=lambda\
+        \ x: x[0])\n    merged = [values[0][:]]\n    ___\n    return merged\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def merge_intervals(items):\n    if not items:\n        return []\n    items.sort(key=lambda\
+        \ x: x[0])\n    merged = [items[0][:]]\n    ___\n    return merged\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_intervals(nums):\n    if not nums:\n        ___\n    nums.sort(key=lambda\
+        \ x: x[0])\n    merged = [nums[0][:]]\n    for start, end in nums[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_intervals(arr):\n    if not arr:\n        ___\n    arr.sort(key=lambda\
+        \ x: x[0])\n    merged = [arr[0][:]]\n    for start, end in arr[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_intervals(xs):\n    if not xs:\n        ___\n    xs.sort(key=lambda x:\
+        \ x[0])\n    merged = [xs[0][:]]\n    for start, end in xs[1:]:\n        if start <= merged[-1][1]:\n\
+        \            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+        \ end])\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_intervals(values):\n    if not values:\n        ___\n    values.sort(key=lambda\
+        \ x: x[0])\n    merged = [values[0][:]]\n    for start, end in values[1:]:\n        if start <=\
+        \ merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n       \
+        \     merged.append([start, end])\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: merge_intervals
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def merge_intervals(items):\n    if not items:\n        ___\n    items.sort(key=lambda\
+        \ x: x[0])\n    merged = [items[0][:]]\n    for start, end in items[1:]:\n        if start <=\
+        \ merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n       \
+        \     merged.append([start, end])\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: merge_intervals
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def merge_intervals(nums):\n    return []\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: merge_intervals
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def merge_intervals(arr):\n    return []\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: merge_intervals
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def merge_intervals(xs):\n    return []\n"

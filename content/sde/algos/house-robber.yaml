@@ -1,0 +1,325 @@
+id: house-robber
+title: House Robber
+leetcode_id: lc-house-robber
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 1
+  expected: 4
+- args:
+  - - 2
+    - 7
+    - 9
+    - 3
+    - 1
+  expected: 12
+voice:
+  prompt: ¿Cuál es tu estado y por qué?
+  prompt_en: Explain the approach and the complexity out loud.
+  keywords:
+  - o(n)
+  - o(1)
+  - complejidad
+  - enfoque
+  - formular
+  - estado
+  - transición
+  - antes
+  - codear
+  - bottom
+languages:
+  csharp:
+    fn_name: Rob
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int Rob(int[] nums)\n{\n    ___\n    foreach (var n in nums)\n    {\n        int\
+        \ cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 = cur;\n    }\n   \
+        \ return prev1;\n}\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int Rob(int[] arr)\n{\n    ___\n    foreach (var n in arr)\n    {\n        int cur\
+        \ = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 = cur;\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int Rob(int[] xs)\n{\n    ___\n    foreach (var n in xs)\n    {\n        int cur\
+        \ = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 = cur;\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int Rob(int[] values)\n{\n    ___\n    foreach (var n in values)\n    {\n       \
+        \ int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 = cur;\n    }\n\
+        \    return prev1;\n}\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "int Rob(int[] items)\n{\n    ___\n    foreach (var n in items)\n    {\n        int\
+        \ cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 = cur;\n    }\n   \
+        \ return prev1;\n}\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int Rob(int[] nums)\n{\n    int prev2 = 0, prev1 = 0;\n    ___\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int Rob(int[] arr)\n{\n    int prev2 = 0, prev1 = 0;\n    ___\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int Rob(int[] xs)\n{\n    int prev2 = 0, prev1 = 0;\n    ___\n    }\n    return prev1;\n\
+        }\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int Rob(int[] values)\n{\n    int prev2 = 0, prev1 = 0;\n    ___\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "int Rob(int[] items)\n{\n    int prev2 = 0, prev1 = 0;\n    ___\n    }\n    return\
+        \ prev1;\n}\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int Rob(int[] nums)\n{\n    int prev2 = 0, prev1 = 0;\n    foreach (var n in nums)\n\
+        \    {\n        int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 =\
+        \ cur;\n    }\n    ___\n}\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int Rob(int[] arr)\n{\n    int prev2 = 0, prev1 = 0;\n    foreach (var n in arr)\n\
+        \    {\n        int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 =\
+        \ cur;\n    }\n    ___\n}\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int Rob(int[] xs)\n{\n    int prev2 = 0, prev1 = 0;\n    foreach (var n in xs)\n\
+        \    {\n        int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 =\
+        \ cur;\n    }\n    ___\n}\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int Rob(int[] values)\n{\n    int prev2 = 0, prev1 = 0;\n    foreach (var n in values)\n\
+        \    {\n        int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 =\
+        \ cur;\n    }\n    ___\n}\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: Rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "int Rob(int[] items)\n{\n    int prev2 = 0, prev1 = 0;\n    foreach (var n in items)\n\
+        \    {\n        int cur = Math.Max(prev1, prev2 + n);\n        prev2 = prev1;\n        prev1 =\
+        \ cur;\n    }\n    ___\n}\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: Rob
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int Rob(int[] nums)\n{\n    return 0;\n}\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: Rob
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "int Rob(int[] arr)\n{\n    return 0;\n}\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: Rob
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "int Rob(int[] xs)\n{\n    return 0;\n}\n"
+  python:
+    fn_name: rob
+    sheets:
+    - id: r1-01
+      rung: 1
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def rob(nums):\n    ___\n    for n in nums:\n        prev2, prev1 = prev1, max(prev1,\
+        \ prev2 + n)\n    return prev1\n"
+    - id: r1-02
+      rung: 1
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def rob(arr):\n    ___\n    for n in arr:\n        prev2, prev1 = prev1, max(prev1,\
+        \ prev2 + n)\n    return prev1\n"
+    - id: r1-03
+      rung: 1
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def rob(xs):\n    ___\n    for n in xs:\n        prev2, prev1 = prev1, max(prev1,\
+        \ prev2 + n)\n    return prev1\n"
+    - id: r1-04
+      rung: 1
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def rob(values):\n    ___\n    for n in values:\n        prev2, prev1 = prev1, max(prev1,\
+        \ prev2 + n)\n    return prev1\n"
+    - id: r1-05
+      rung: 1
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 1: set up the start (structures / first line). Different variable names.'
+      prompt_es: 'Peldaño 1: arma el inicio (estructuras / primera línea). Otras variables.'
+      starter_code: "def rob(items):\n    ___\n    for n in items:\n        prev2, prev1 = prev1, max(prev1,\
+        \ prev2 + n)\n    return prev1\n"
+    - id: r2-01
+      rung: 2
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def rob(nums):\n    prev2 = prev1 = 0\n    ___\n    return prev1\n"
+    - id: r2-02
+      rung: 2
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def rob(arr):\n    prev2 = prev1 = 0\n    ___\n    return prev1\n"
+    - id: r2-03
+      rung: 2
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def rob(xs):\n    prev2 = prev1 = 0\n    ___\n    return prev1\n"
+    - id: r2-04
+      rung: 2
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def rob(values):\n    prev2 = prev1 = 0\n    ___\n    return prev1\n"
+    - id: r2-05
+      rung: 2
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 2: the loop / the middle idea.'
+      prompt_es: 'Peldaño 2: el recorrido / la idea del medio.'
+      starter_code: "def rob(items):\n    prev2 = prev1 = 0\n    ___\n    return prev1\n"
+    - id: r3-01
+      rung: 3
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def rob(nums):\n    prev2 = prev1 = 0\n    for n in nums:\n        prev2, prev1 =\
+        \ prev1, max(prev1, prev2 + n)\n    ___\n"
+    - id: r3-02
+      rung: 3
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def rob(arr):\n    prev2 = prev1 = 0\n    for n in arr:\n        prev2, prev1 = prev1,\
+        \ max(prev1, prev2 + n)\n    ___\n"
+    - id: r3-03
+      rung: 3
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def rob(xs):\n    prev2 = prev1 = 0\n    for n in xs:\n        prev2, prev1 = prev1,\
+        \ max(prev1, prev2 + n)\n    ___\n"
+    - id: r3-04
+      rung: 3
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def rob(values):\n    prev2 = prev1 = 0\n    for n in values:\n        prev2, prev1\
+        \ = prev1, max(prev1, prev2 + n)\n    ___\n"
+    - id: r3-05
+      rung: 3
+      kind: rung
+      fn_name: rob
+      prompt: 'Rung 3: the returns and the close.'
+      prompt_es: 'Peldaño 3: los return y el cierre.'
+      starter_code: "def rob(items):\n    prev2 = prev1 = 0\n    for n in items:\n        prev2, prev1\
+        \ = prev1, max(prev1, prev2 + n)\n    ___\n"
+    - id: full-01
+      rung: 4
+      kind: full
+      fn_name: rob
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def rob(nums):\n    return 0\n"
+    - id: full-02
+      rung: 4
+      kind: full
+      fn_name: rob
+      prompt: Full algorithm, first try.
+      prompt_es: Algoritmo completo, a la primera.
+      starter_code: "def rob(arr):\n    return 0\n"
+    - id: full-recall
+      rung: 4
+      kind: full
+      fn_name: rob
+      prompt: 'Day 2 / pool: the whole thing, first try.'
+      prompt_es: 'Día 2 / pool: el entero, a la primera.'
+      starter_code: "def rob(xs):\n    return 0\n"
