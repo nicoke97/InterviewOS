@@ -18,15 +18,22 @@ repeat:
   spaced_repeat_days: 1
 
 orientador:
-  minute_presets: [20, 30, 40, 60]
+  minute_presets: [15, 20, 30, 40, 60]
   min_minutes: 15
   max_minutes: 90
+  default_minutes: 15
   min_activity_minutes: 5
 
 pre_exam:
   enabled: true
   include_failure_history: true
   max_sets: 3
+
+return_exam:
+  enabled: true
+  inactivity_days: 3
+  min_exercises: 2
+  max_exercises: 3
 
 checkpoint:
   every_pages: 50

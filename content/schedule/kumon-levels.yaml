@@ -19,20 +19,20 @@ levels:
         page_end: 50
         sets:
           - { title: "Imprimir valores", standard_seconds: 360 }
-          - { title: "Variables y asignacion", standard_seconds: 420 }
-          - { title: "Aritmetica con enteros", standard_seconds: 480 }
-          - { title: "f-strings basicas", standard_seconds: 480 }
-          - { title: "Tipos y conversion", standard_seconds: 540 }
+          - { title: "Variables y asignación", standard_seconds: 420 }
+          - { title: "Aritmética con enteros", standard_seconds: 480 }
+          - { title: "f-strings básicas", standard_seconds: 480 }
+          - { title: "Tipos y conversión", standard_seconds: 540 }
       B:
         title: "Strings"
         page_start: 51
         page_end: 100
         sets:
-          - { title: "Concatenacion y longitud", standard_seconds: 480 }
-          - { title: "Indices de string", standard_seconds: 480 }
-          - { title: "Metodos basicos de string", standard_seconds: 540 }
-          - { title: "f-strings con calculo", standard_seconds: 540 }
-          - { title: "Repeticion y formato", standard_seconds: 540 }
+          - { title: "Concatenación y longitud", standard_seconds: 480 }
+          - { title: "Índices de string", standard_seconds: 480 }
+          - { title: "Métodos básicos de string", standard_seconds: 540 }
+          - { title: "f-strings con cálculo", standard_seconds: 540 }
+          - { title: "Repetición y formato", standard_seconds: 540 }
       C:
         title: "Operadores y condicionales"
         page_start: 101
@@ -41,7 +41,7 @@ levels:
           - { title: "Comparaciones", standard_seconds: 480 }
           - { title: "if / else", standard_seconds: 540 }
           - { title: "if / elif / else", standard_seconds: 600 }
-          - { title: "Operadores logicos", standard_seconds: 600 }
+          - { title: "Operadores lógicos", standard_seconds: 600 }
           - { title: "Condicionales anidados", standard_seconds: 660 }
       D:
         title: "Repaso de fundamentos"
@@ -49,10 +49,21 @@ levels:
         page_end: 200
         sets:
           - { title: "Variables y f-strings (repaso)", standard_seconds: 540 }
-          - { title: "Aritmetica aplicada", standard_seconds: 600 }
+          - { title: "Aritmética aplicada", standard_seconds: 600 }
           - { title: "Strings y condicionales", standard_seconds: 600 }
           - { title: "Condicionales combinados", standard_seconds: 660 }
           - { title: "Mini-retos integrados", standard_seconds: 720 }
+      Extra:
+        title: "Hashmaps O(1)"
+        extra: true
+        page_start: 201
+        page_end: 250
+        sets:
+          - { title: "Par llave → valor", standard_seconds: 600 }
+          - { title: "Buscar por llave (in)", standard_seconds: 600 }
+          - { title: "Qué va como llave", standard_seconds: 660 }
+          - { title: "Patrón seen", standard_seconds: 660 }
+          - { title: "Two Sum y variantes", standard_seconds: 720 }
   B:
     title: "Level B — Bucles y funciones"
     pages_per_level: 200
@@ -74,8 +85,8 @@ levels:
         page_start: 51
         page_end: 100
         sets:
-          - { title: "while basico", standard_seconds: 540 }
-          - { title: "while con condicion", standard_seconds: 600 }
+          - { title: "while básico", standard_seconds: 540 }
+          - { title: "while con condición", standard_seconds: 600 }
           - { title: "break", standard_seconds: 600 }
           - { title: "continue", standard_seconds: 600 }
           - { title: "Acumuladores con while", standard_seconds: 660 }
@@ -87,7 +98,7 @@ levels:
           - { title: "enumerate", standard_seconds: 600 }
           - { title: "zip", standard_seconds: 600 }
           - { title: "Bucles anidados", standard_seconds: 720 }
-          - { title: "Maximo y minimo manual", standard_seconds: 660 }
+          - { title: "Máximo y mínimo manual", standard_seconds: 660 }
           - { title: "Contar coincidencias", standard_seconds: 660 }
       D:
         title: "Funciones"
@@ -95,7 +106,7 @@ levels:
         page_end: 200
         sets:
           - { title: "def y return", standard_seconds: 600 }
-          - { title: "Parametros multiples", standard_seconds: 600 }
+          - { title: "Parámetros múltiples", standard_seconds: 600 }
           - { title: "Valores por defecto", standard_seconds: 660 }
           - { title: "Funciones con condicionales", standard_seconds: 720 }
           - { title: "Componer funciones", standard_seconds: 720 }
@@ -106,7 +117,7 @@ levels:
     pages_per_block: 50
     blocks:
       A:
-        title: "Listas basicas"
+        title: "Listas básicas"
         page_start: 1
         page_end: 50
         sets:
@@ -120,8 +131,8 @@ levels:
         page_start: 51
         page_end: 100
         sets:
-          - { title: "Slicing basico", standard_seconds: 600 }
-          - { title: "Paso e inversion", standard_seconds: 600 }
+          - { title: "Slicing básico", standard_seconds: 600 }
+          - { title: "Paso e inversión", standard_seconds: 600 }
           - { title: "sort y sorted", standard_seconds: 660 }
           - { title: "Listas anidadas", standard_seconds: 720 }
           - { title: "Copiar listas", standard_seconds: 600 }
@@ -134,15 +145,15 @@ levels:
           - { title: "Desempaquetado", standard_seconds: 600 }
           - { title: "List comprehension", standard_seconds: 660 }
           - { title: "Comprehension con filtro", standard_seconds: 720 }
-          - { title: "Comprehension con transformacion", standard_seconds: 720 }
+          - { title: "Comprehension con transformación", standard_seconds: 720 }
       D:
-        title: "Metodos de string"
+        title: "Métodos de string"
         page_start: 151
         page_end: 200
         sets:
           - { title: "split y join", standard_seconds: 600 }
           - { title: "strip y replace", standard_seconds: 600 }
-          - { title: "Mayusculas y titulo", standard_seconds: 540 }
+          - { title: "Mayúsculas y título", standard_seconds: 540 }
           - { title: "find, count, startswith", standard_seconds: 600 }
           - { title: "format y f-strings", standard_seconds: 660 }
   D:
@@ -152,7 +163,7 @@ levels:
     pages_per_block: 50
     blocks:
       A:
-        title: "Diccionarios basicos"
+        title: "Diccionarios básicos"
         page_start: 1
         page_end: 50
         sets:
@@ -178,7 +189,7 @@ levels:
         sets:
           - { title: "Crear sets y unicidad", standard_seconds: 600 }
           - { title: "add y remove", standard_seconds: 600 }
-          - { title: "Union e interseccion", standard_seconds: 660 }
+          - { title: "Unión e intersección", standard_seconds: 660 }
           - { title: "Diferencia", standard_seconds: 660 }
           - { title: "Membership y dedupe", standard_seconds: 660 }
       D:
@@ -206,59 +217,60 @@ levels:
           - { title: "__init__ con un atributo", standard_seconds: 660 }
           - { title: "__init__ con dos atributos", standard_seconds: 660 }
           - { title: "Acceder atributos", standard_seconds: 600 }
-          - { title: "Atributos e impresion", standard_seconds: 660 }
+          - { title: "Atributos e impresión", standard_seconds: 660 }
       B:
-        title: "Metodos"
+        title: "Métodos"
         page_start: 51
         page_end: 100
         sets:
-          - { title: "Metodo que retorna", standard_seconds: 660 }
-          - { title: "Metodo que usa self", standard_seconds: 660 }
-          - { title: "Metodo con parametro", standard_seconds: 720 }
-          - { title: "Multiples metodos", standard_seconds: 720 }
-          - { title: "Metodo que cambia estado", standard_seconds: 720 }
+          - { title: "Método que retorna", standard_seconds: 660 }
+          - { title: "Método que usa self", standard_seconds: 660 }
+          - { title: "Método con parámetro", standard_seconds: 720 }
+          - { title: "Múltiples métodos", standard_seconds: 720 }
+          - { title: "Método que cambia estado", standard_seconds: 720 }
       C:
-        title: "Dunder y composicion"
+        title: "Dunder y composición"
         page_start: 101
         page_end: 150
         sets:
           - { title: "__str__", standard_seconds: 660 }
           - { title: "__repr__", standard_seconds: 660 }
           - { title: "Atributo de clase vs instancia", standard_seconds: 720 }
-          - { title: "Metodos que calculan", standard_seconds: 720 }
+          - { title: "Métodos que calculan", standard_seconds: 720 }
           - { title: "Objeto que contiene una lista", standard_seconds: 780 }
       D:
         title: "Herencia"
         page_start: 151
         page_end: 200
         sets:
-          - { title: "Herencia basica", standard_seconds: 720 }
-          - { title: "Override de metodo", standard_seconds: 720 }
+          - { title: "Herencia básica", standard_seconds: 720 }
+          - { title: "Override de método", standard_seconds: 720 }
           - { title: "super().__init__", standard_seconds: 780 }
-          - { title: "super() en metodos", standard_seconds: 780 }
+          - { title: "super() en métodos", standard_seconds: 780 }
           - { title: "isinstance y polimorfismo", standard_seconds: 840 }
 
 # Instruccion mostrada arriba de cada hoja (por bloque).
 instructions:
-  A.A: "Declara variables e imprime valores. Escribe el codigo de cada problema."
+  A.A: "Declara variables e imprime valores. Escribe el código de cada problema."
   A.B: "Trabaja con cadenas de texto (strings). Escribe Python para cada problema."
-  A.C: "Usa comparaciones y if/elif/else. Escribe tu codigo debajo de cada pregunta."
+  A.C: "Usa comparaciones y if/elif/else. Escribe tu código debajo de cada pregunta."
   A.D: "Repaso de fundamentos. Resuelve cada problema en orden."
-  B.A: "Usa bucles for y range(). Escribe codigo que produzca la salida esperada."
+  A.Extra: "Práctica extra — hashmaps. Busca por llave (x in d); guarda datos extra como valor. Siempre disponible."
+  B.A: "Usa bucles for y range(). Escribe código que produzca la salida esperada."
   B.B: "Usa while con break y continue. Resuelve cada problema."
   B.C: "Aplica patrones de bucle: enumerate, zip y anidados."
-  B.D: "Escribe una funcion para cada problema y llamala para imprimir el resultado."
+  B.D: "Escribe una función para cada problema y llámala para imprimir el resultado."
   C.A: "Trabaja con listas: crear, indexar y modificar."
   C.B: "Usa slicing y ordenamiento de listas."
   C.C: "Usa tuplas y comprehensions."
-  C.D: "Usa metodos de string para resolver cada problema."
+  C.D: "Usa métodos de string para resolver cada problema."
   D.A: "Trabaja con diccionarios: crear, acceder y recorrer."
-  D.B: "Aplica tecnicas avanzadas con diccionarios."
+  D.B: "Aplica técnicas avanzadas con diccionarios."
   D.C: "Usa sets para unicidad y operaciones de conjuntos."
   D.D: "Maneja errores con try/except y guard clauses."
   E.A: "Define clases y trabaja con atributos."
-  E.B: "Agrega metodos a tus clases."
-  E.C: "Usa metodos dunder y composicion de objetos."
+  E.B: "Agrega métodos a tus clases."
+  E.C: "Usa métodos dunder y composición de objetos."
   E.D: "Aplica herencia y polimorfismo."
 
 # Checkpoint de LeetCode al cerrar cada bloque (cada 50 paginas).
