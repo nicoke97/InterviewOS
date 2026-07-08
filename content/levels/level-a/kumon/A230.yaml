@@ -1,0 +1,16 @@
+id: A230
+level: A
+page: 230
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Recorre [4, 5, 4] guardando numero -> indice (si un numero se repite, queda
+  el ultimo indice). Imprime el diccionario.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{4: 2, 5: 1}'
+starter_code: ''

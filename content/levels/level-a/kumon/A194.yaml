@@ -1,0 +1,17 @@
+id: A194
+level: A
+page: 194
+set: 20
+block: D
+block_id: A.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Dado n=5: imprime ''n es 5 y es impar'' usando f-string e if/else'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: n es 5 y es impar
+starter_code: ''

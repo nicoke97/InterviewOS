@@ -1,0 +1,19 @@
+id: A226
+level: A
+page: 226
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Imprime en dos lineas: primero el diccionario correcto numero->indice para
+  2 en 0 y 7 en 1; luego el incorrecto indice->numero (0: 2, 1: 7).'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{2: 0, 7: 1}
+
+    {0: 2, 1: 7}'
+starter_code: ''

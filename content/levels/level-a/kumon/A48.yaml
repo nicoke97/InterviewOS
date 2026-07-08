@@ -1,0 +1,15 @@
+id: A48
+level: A
+page: 48
+set: 5
+block: A
+block_id: A.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Suma int('12') + int('8')
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

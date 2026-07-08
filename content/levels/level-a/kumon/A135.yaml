@@ -1,0 +1,16 @@
+id: A135
+level: A
+page: 135
+set: 14
+block: C
+block_id: A.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado edad=20: imprime True si edad>=18 and edad<65'
+hints:
+- Combina condiciones con and, or y not. Imprime True o False.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

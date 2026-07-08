@@ -1,0 +1,16 @@
+id: A74
+level: A
+page: 74
+set: 8
+block: B
+block_id: A.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Pon en formato titulo 'soporte tecnico' con .title()
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Soporte Tecnico
+starter_code: ''

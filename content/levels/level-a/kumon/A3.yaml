@@ -1,0 +1,17 @@
+id: A3
+level: A
+page: 3
+set: 1
+block: A
+block_id: A.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 36
+prompt: 'Imprime exactamente el texto: Odoo'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Odoo
+starter_code: ___
+reference_code: print('Odoo')

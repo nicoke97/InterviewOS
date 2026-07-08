@@ -1,0 +1,15 @@
+id: A149
+level: A
+page: 149
+set: 15
+block: C
+block_id: A.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado n=45: aplica FizzBuzz con if anidado'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: FizzBuzz
+starter_code: ''

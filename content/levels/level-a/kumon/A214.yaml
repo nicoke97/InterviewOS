@@ -1,0 +1,18 @@
+id: A214
+level: A
+page: 214
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Mismo diccionario {0: 2, 1: 7}. Ahora imprime True o False segun si 2 aparece
+  entre los valores.'
+hints:
+- x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido debe ser la llave
+  (ej. el numero), no el indice.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

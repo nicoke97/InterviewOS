@@ -1,0 +1,16 @@
+id: A99
+level: A
+page: 99
+set: 10
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Une ''rojo'', ''verde'', ''azul'' con '', '' usando .join (formato: rojo,
+  verde, azul)'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: rojo, verde, azul
+starter_code: ''

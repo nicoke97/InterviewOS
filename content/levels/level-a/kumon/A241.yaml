@@ -1,0 +1,22 @@
+id: A241
+level: A
+page: 241
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: En [2, 7, 11, 15], encuentra dos numeros que sumen 9. Imprime la lista de
+  sus indices.
+hints:
+- Usa break para salir del bucle cuando se cumple la condicion.
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: "nums = ___\ntarget = ___\nseen = ___\nfor i, num in enumerate(nums):\n\
+  \    need = ___\n    if need in seen:\n        print([seen[need], i])\n        break\n\
+  \    seen[num] = i"
+reference_code: "nums = [2, 7, 11, 15]\ntarget = 9\nseen = {}\nfor i, num in enumerate(nums):\n\
+  \    need = target - num\n    if need in seen:\n        print([seen[need], i])\n\
+  \        break\n    seen[num] = i"

@@ -1,0 +1,17 @@
+id: A154
+level: A
+page: 154
+set: 16
+block: D
+block_id: A.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Monitor'' y precio=300, imprime: ''Monitor cuesta 300'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Monitor cuesta 300
+starter_code: ''

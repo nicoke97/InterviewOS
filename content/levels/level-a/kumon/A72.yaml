@@ -1,0 +1,17 @@
+id: A72
+level: A
+page: 72
+set: 8
+block: B
+block_id: A.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime 'PYTHON' en minusculas con .lower()
+hints:
+- texto.lower() convierte todas las letras a minusculas.
+validation:
+  type: run_and_match_stdout
+  expected: python
+starter_code: print(___)
+reference_code: print('PYTHON'.lower())

@@ -1,0 +1,16 @@
+id: A56
+level: A
+page: 56
+set: 6
+block: B
+block_id: A.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s='interview', imprime cuantos caracteres tiene con len()
+hints:
+- len(texto) devuelve cuantos caracteres tiene una cadena.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

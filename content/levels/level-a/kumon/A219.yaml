@@ -1,0 +1,16 @@
+id: A219
+level: A
+page: 219
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Tienes el diccionario {''a'': 1}. Imprime True o False segun si ''z'' es
+  una clave.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

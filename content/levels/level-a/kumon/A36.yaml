@@ -1,0 +1,18 @@
+id: A36
+level: A
+page: 36
+set: 4
+block: A
+block_id: A.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Asigna equipo=''Odoo'' e integrantes=5. Imprime con f-string cuántas personas
+  hay en el equipo (formato: equipo tiene N integrantes).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Odoo tiene 5 integrantes
+starter_code: ''

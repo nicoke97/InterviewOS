@@ -1,0 +1,18 @@
+id: A215
+level: A
+page: 215
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Tienes seen = {2: 0} y necesitas el numero 2. Imprime True o False segun
+  si ese numero ya esta registrado como clave.'
+hints:
+- x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido debe ser la llave
+  (ej. el numero), no el indice.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,23 @@
+id: A33
+level: A
+page: 33
+set: 4
+block: A
+block_id: A.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Asigna producto=''Libro'' y precio=25. Con f-string muestra qué producto
+  es y cuánto cuesta (formato: producto cuesta precio).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Libro cuesta 25
+starter_code: ___
+reference_code: 'producto = ''Libro''
+
+  precio = 25
+
+  print(f''{producto} cuesta {precio}'')'

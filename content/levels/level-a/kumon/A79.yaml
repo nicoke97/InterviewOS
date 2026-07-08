@@ -1,0 +1,15 @@
+id: A79
+level: A
+page: 79
+set: 8
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dado s='hola mundo', divide en palabras con .split() e imprime cuantas hay
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

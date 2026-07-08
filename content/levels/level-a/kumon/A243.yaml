@@ -1,0 +1,19 @@
+id: A243
+level: A
+page: 243
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: En [3, 3], encuentra dos numeros que sumen 6. Imprime la lista de sus indices.
+hints:
+- Usa break para salir del bucle cuando se cumple la condicion.
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ___
+reference_code: "nums = [3, 3]\ntarget = 6\nseen = {}\nfor i, num in enumerate(nums):\n\
+  \    need = target - num\n    if need in seen:\n        print([seen[need], i])\n\
+  \        break\n    seen[num] = i"

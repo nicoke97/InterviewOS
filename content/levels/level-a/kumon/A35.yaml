@@ -1,0 +1,18 @@
+id: A35
+level: A
+page: 35
+set: 4
+block: A
+block_id: A.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Asigna animal=''gato'' y sonido=''miau''. Usa f-string para describir el
+  animal (formato: El animal dice sonido).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: El gato dice miau
+starter_code: ''

@@ -1,0 +1,16 @@
+id: A47
+level: A
+page: 47
+set: 5
+block: A
+block_id: A.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Redondea 3.14159 a 2 decimales con round()
+hints:
+- round(numero, decimales) redondea un flotante. Imprime con print().
+validation:
+  type: run_and_match_stdout
+  expected: '3.14'
+starter_code: ''

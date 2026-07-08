@@ -1,0 +1,17 @@
+id: A237
+level: A
+page: 237
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Ya viste el 2 en el indice 1. Estas en el indice 2 con el numero 4 y el target
+  es 6. Si el complemento ya esta en seen, imprime la lista [indice_viejo, indice_actual].
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: ''

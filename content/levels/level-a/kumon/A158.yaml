@@ -1,0 +1,15 @@
+id: A158
+level: A
+page: 158
+set: 16
+block: D
+block_id: A.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Taza'' y precio=12, imprime: ''Taza cuesta 12'''
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Taza cuesta 12
+starter_code: ''

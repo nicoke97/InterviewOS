@@ -1,0 +1,16 @@
+id: A44
+level: A
+page: 44
+set: 5
+block: A
+block_id: A.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Convierte '2.5' a flotante con float() y sumale 0.5
+hints:
+- float(texto) convierte texto a numero decimal.
+validation:
+  type: run_and_match_stdout
+  expected: '3.0'
+starter_code: ''

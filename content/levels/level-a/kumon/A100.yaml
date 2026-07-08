@@ -1,0 +1,15 @@
+id: A100
+level: A
+page: 100
+set: 10
+block: B
+block_id: A.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime monto=1234.5 como '$1,234.50' con f-string
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: $1,234.50
+starter_code: ''

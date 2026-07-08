@@ -1,0 +1,16 @@
+id: A45
+level: A
+page: 45
+set: 5
+block: A
+block_id: A.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Convierte 3.9 a entero (trunca los decimales)
+hints:
+- int(valor) convierte a entero. Imprime el resultado con print().
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

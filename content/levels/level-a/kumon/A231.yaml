@@ -1,0 +1,21 @@
+id: A231
+level: A
+page: 231
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Recorre la lista [1, 2, 3] y construye un diccionario que mapee cada numero
+  a su indice. Imprime el diccionario.
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '{1: 0, 2: 1, 3: 2}'
+starter_code: "nums = ___\nseen = ___\nfor i, num in enumerate(nums):\n    seen[num]\
+  \ = i\nprint(seen)"
+reference_code: "nums = [1, 2, 3]\nseen = {}\nfor i, num in enumerate(nums):\n   \
+  \ seen[num] = i\nprint(seen)"

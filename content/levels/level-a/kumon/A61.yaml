@@ -1,0 +1,21 @@
+id: A61
+level: A
+page: 61
+set: 7
+block: B
+block_id: A.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Dada s='python', imprime el primer caracter con s[0]
+hints:
+- s[0] es el primer caracter; s[-1] es el ultimo.
+validation:
+  type: run_and_match_stdout
+  expected: p
+starter_code: 's = ___
+
+  print(___)'
+reference_code: 's = ''python''
+
+  print(s[0])'

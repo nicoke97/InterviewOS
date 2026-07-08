@@ -1,0 +1,16 @@
+id: A240
+level: A
+page: 240
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Cuenta cuantas veces aparece cada letra en 'hello'. Imprime el diccionario
+  de frecuencias.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''h'': 1, ''e'': 1, ''l'': 2, ''o'': 1}'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: A236
+level: A
+page: 236
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: El target es 6 y el numero actual es 2. Imprime cuanto falta para llegar al
+  target.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

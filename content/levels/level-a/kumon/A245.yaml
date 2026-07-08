@@ -1,0 +1,17 @@
+id: A245
+level: A
+page: 245
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'En [3, 3] busca dos que sumen 6. Importante: revisa si el complemento ya
+  esta en seen ANTES de registrar el numero actual. Imprime los indices.'
+hints:
+- Usa break para salir del bucle cuando se cumple la condicion.
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: A208
+level: A
+page: 208
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Si escribes un diccionario con la clave 7 dos veces (primero valor 14, luego
+  'Marco'), cuantas claves distintas quedan? Imprime ese numero.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

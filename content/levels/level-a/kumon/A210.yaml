@@ -1,0 +1,16 @@
+id: A210
+level: A
+page: 210
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Tienes un diccionario d con 'a' -> 1 y 'b' -> 2. Imprime la suma de ambos
+  valores.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

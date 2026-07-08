@@ -1,0 +1,16 @@
+id: A144
+level: A
+page: 144
+set: 15
+block: C
+block_id: A.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado n=7: aplica FizzBuzz con if anidado'
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

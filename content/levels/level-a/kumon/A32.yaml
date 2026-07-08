@@ -1,0 +1,27 @@
+id: A32
+level: A
+page: 32
+set: 4
+block: A
+block_id: A.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Asigna city=''Lima'' y country=''Perú''. Imprime la ubicación con f-string
+  (formato: ciudad, país).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Lima, Perú
+starter_code: 'city = ___
+
+  country = ___
+
+  print(___)'
+reference_code: 'city = ''Lima''
+
+  country = ''Perú''
+
+  print(f''{city}, {country}'')'

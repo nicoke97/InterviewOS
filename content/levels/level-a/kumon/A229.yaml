@@ -1,0 +1,16 @@
+id: A229
+level: A
+page: 229
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Para poder preguntar rapido '¿ya vi el 7?', el 7 debe ser llave o valor? Imprime
+  la palabra 'llave' o 'valor'.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: llave
+starter_code: ''

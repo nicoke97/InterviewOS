@@ -1,0 +1,16 @@
+id: A94
+level: A
+page: 94
+set: 10
+block: B
+block_id: A.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Imprime el numero 3.5 con 1 decimal usando f-string (formato: 3.5)'
+hints:
+- En f-strings, {x:.1f} muestra un decimal.
+validation:
+  type: run_and_match_stdout
+  expected: '3.5'
+starter_code: ''

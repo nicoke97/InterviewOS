@@ -1,0 +1,17 @@
+id: A125
+level: A
+page: 125
+set: 13
+block: C
+block_id: A.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado score=90, imprime la letra: >=90 ''A'', >=80 ''B'', >=70 ''C'', si no
+  ''F''.'
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: A
+starter_code: ''

@@ -1,0 +1,19 @@
+id: A211
+level: A
+page: 211
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Tienes el diccionario {''a'': 1, ''b'': 2}. Imprime True o False segun si
+  ''a'' es una de sus claves.'
+hints:
+- x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido debe ser la llave
+  (ej. el numero), no el indice.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: print(___)
+reference_code: 'print(''a'' in {''a'': 1, ''b'': 2})'

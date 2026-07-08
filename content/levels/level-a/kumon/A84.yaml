@@ -1,0 +1,17 @@
+id: A84
+level: A
+page: 84
+set: 9
+block: B
+block_id: A.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara a=12 y b=4, luego imprime: ''La suma de 12 y 4 es 16'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: La suma de 12 y 4 es 16
+starter_code: ''

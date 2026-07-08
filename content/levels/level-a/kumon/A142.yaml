@@ -1,0 +1,20 @@
+id: A142
+level: A
+page: 142
+set: 15
+block: C
+block_id: A.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado n=5: aplica FizzBuzz con if anidado (multiplo de 3, de 5, o el numero)'
+hints:
+- Primero verifica multiplo de 3; dentro, verifica multiplo de 5.
+validation:
+  type: run_and_match_stdout
+  expected: Buzz
+starter_code: "n = ___\nif n % 3 == 0:\n    if n % 5 == 0:\n        print(___)\n \
+  \   else:\n        print(___)\nelif n % 5 == 0:\n    print(___)\nelse:\n    print(___)"
+reference_code: "n = 5\nif n % 3 == 0:\n    if n % 5 == 0:\n        print('FizzBuzz')\n\
+  \    else:\n        print('Fizz')\nelif n % 5 == 0:\n    print('Buzz')\nelse:\n\
+  \    print(n)"

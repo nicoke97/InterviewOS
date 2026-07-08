@@ -1,0 +1,16 @@
+id: A95
+level: A
+page: 95
+set: 10
+block: B
+block_id: A.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Imprime 42 con 3 digitos rellenando ceros (formato: 042)'
+hints:
+- '{numero:03d} rellena con ceros hasta 3 digitos.'
+validation:
+  type: run_and_match_stdout
+  expected: '042'
+starter_code: ''

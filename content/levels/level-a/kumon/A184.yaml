@@ -1,0 +1,16 @@
+id: A184
+level: A
+page: 184
+set: 19
+block: D
+block_id: A.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado total=120: si total>100 imprime total con 10% descuento, si no el total'
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '108.0'
+starter_code: ''

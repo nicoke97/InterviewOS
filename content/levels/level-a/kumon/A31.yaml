@@ -1,0 +1,27 @@
+id: A31
+level: A
+page: 31
+set: 4
+block: A
+block_id: A.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Asigna name=''Ana'' y age=22. Usa f-string para presentarla (formato: nombre
+  tiene edad años).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Ana tiene 22 años
+starter_code: 'name = ___
+
+  age = ___
+
+  print(___)'
+reference_code: 'name = ''Ana''
+
+  age = 22
+
+  print(f''{name} tiene {age} años'')'

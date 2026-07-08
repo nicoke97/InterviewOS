@@ -1,0 +1,18 @@
+id: A37
+level: A
+page: 37
+set: 4
+block: A
+block_id: A.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Con a=4 y b=6, calcula la suma en una variable y usa f-string (formato: Suma:
+  resultado).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: 'Suma: 10'
+starter_code: ''

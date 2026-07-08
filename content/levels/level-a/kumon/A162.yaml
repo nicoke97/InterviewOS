@@ -1,0 +1,17 @@
+id: A162
+level: A
+page: 162
+set: 17
+block: D
+block_id: A.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Calcula el promedio de 10, 20 y 30
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20.0'
+starter_code: print(___)
+reference_code: print((10 + 20 + 30) / 3)

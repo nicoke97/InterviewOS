@@ -1,0 +1,15 @@
+id: A249
+level: A
+page: 249
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: En [5, 1, 7], encuentra dos numeros que sumen 6. Imprime la lista de sus indices.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ''

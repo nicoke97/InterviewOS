@@ -1,0 +1,16 @@
+id: A209
+level: A
+page: 209
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Tienes seen con el 3 en el indice 0 y el 5 en el indice 1. Imprime ambos indices
+  separados por un espacio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 0 1
+starter_code: ''

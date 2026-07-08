@@ -1,0 +1,18 @@
+id: A205
+level: A
+page: 205
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Tienes un diccionario seen que mapea numeros a indices: el 2 esta en el indice
+  0 y el 7 en el 1. Imprime en que indice viste el 2.'
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

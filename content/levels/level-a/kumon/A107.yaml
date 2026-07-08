@@ -1,0 +1,16 @@
+id: A107
+level: A
+page: 107
+set: 11
+block: C
+block_id: A.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (True/False) de: 100 > 99'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

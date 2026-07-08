@@ -1,0 +1,22 @@
+id: A201
+level: A
+page: 201
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un diccionario llamado d donde la clave 2 guarda el valor 0. Imprime
+  el valor asociado a la clave 2.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: 'd = ___
+
+  print(___)'
+reference_code: 'd = {2: 0}
+
+  print(d[2])'

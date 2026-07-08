@@ -1,0 +1,15 @@
+id: A110
+level: A
+page: 110
+set: 11
+block: C
+block_id: A.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (True/False) de: 15 <= 10'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

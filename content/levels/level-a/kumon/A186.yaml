@@ -1,0 +1,16 @@
+id: A186
+level: A
+page: 186
+set: 19
+block: D
+block_id: A.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado a=10,b=10: imprime ''iguales'' o ''distintos'''
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: iguales
+starter_code: ''

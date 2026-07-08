@@ -1,0 +1,19 @@
+id: A207
+level: A
+page: 207
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea un diccionario vacio. Primero guarda 14 bajo la clave 7, luego sobrescribe
+  esa misma clave con el texto 'Marco'. Imprime el diccionario (debe quedar una sola
+  entrada).
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '{7: ''Marco''}'
+starter_code: ''

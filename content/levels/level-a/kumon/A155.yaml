@@ -1,0 +1,17 @@
+id: A155
+level: A
+page: 155
+set: 16
+block: D
+block_id: A.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Cable'' y precio=8, imprime: ''Cable cuesta 8'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Cable cuesta 8
+starter_code: ''

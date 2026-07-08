@@ -1,0 +1,16 @@
+id: A96
+level: A
+page: 96
+set: 10
+block: B
+block_id: A.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Rellena '5' a 4 caracteres con ceros a la izquierda usando .zfill(4)
+hints:
+- .zfill(n) rellena con ceros a la izquierda hasta n caracteres.
+validation:
+  type: run_and_match_stdout
+  expected: '0005'
+starter_code: ''

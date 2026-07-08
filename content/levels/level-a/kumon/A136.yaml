@@ -1,0 +1,16 @@
+id: A136
+level: A
+page: 136
+set: 14
+block: C
+block_id: A.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado x=0: imprime True si x==0 or x>100'
+hints:
+- Combina condiciones con and, or y not. Imprime True o False.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

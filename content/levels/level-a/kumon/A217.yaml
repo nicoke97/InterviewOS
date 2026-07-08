@@ -1,0 +1,17 @@
+id: A217
+level: A
+page: 217
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Tienes seen = {4: 1} y need = 4. Si need ya esta en seen, imprime el valor
+  guardado para esa clave.'
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

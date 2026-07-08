@@ -1,0 +1,18 @@
+id: A34
+level: A
+page: 34
+set: 4
+block: A
+block_id: A.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Asigna lenguaje=''Python'' y anio=1991. Imprime con f-string en qué año apareció
+  (formato: lenguaje nació en anio).'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Python nació en 1991
+starter_code: ''

@@ -1,0 +1,16 @@
+id: A115
+level: A
+page: 115
+set: 12
+block: C
+block_id: A.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dado n=0, imprime 'par' si es par o 'impar' si es impar.
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: par
+starter_code: ''

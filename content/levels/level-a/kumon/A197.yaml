@@ -1,0 +1,16 @@
+id: A197
+level: A
+page: 197
+set: 20
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado nombre='ana perez', imprime 'AP' (iniciales en mayuscula con .split())
+hints:
+- 'Los metodos de string van despues del punto: texto.upper(), texto.lower().'
+validation:
+  type: run_and_match_stdout
+  expected: AP
+starter_code: ''

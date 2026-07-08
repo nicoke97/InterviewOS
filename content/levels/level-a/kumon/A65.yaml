@@ -1,0 +1,16 @@
+id: A65
+level: A
+page: 65
+set: 7
+block: B
+block_id: A.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s='abc', invierte el texto con s[::-1]
+hints:
+- s[::-1] invierte el texto completo.
+validation:
+  type: run_and_match_stdout
+  expected: cba
+starter_code: ''

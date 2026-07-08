@@ -1,0 +1,16 @@
+id: A228
+level: A
+page: 228
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Ya viste el 2 en el indice 0. El numero actual es 7 y el target es 9. Calcula
+  el complemento; si ya lo viste, imprime su indice.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

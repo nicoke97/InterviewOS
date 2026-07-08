@@ -1,0 +1,19 @@
+id: A233
+level: A
+page: 233
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: En la lista [1, 2, 2, 3], encuentra el indice de la primera repeticion (el
+  segundo 2) usando un diccionario de vistos. Imprime ese indice.
+hints:
+- Usa break para salir del bucle cuando se cumple la condicion.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: "nums = [1, 2, 2, 3]\nseen = {}\nfor i, num in enumerate(nums):\n\
+  \    if num in seen:\n        print(i)\n        break\n    seen[num] = i"

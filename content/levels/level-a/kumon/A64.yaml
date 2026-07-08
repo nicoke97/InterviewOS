@@ -1,0 +1,16 @@
+id: A64
+level: A
+page: 64
+set: 7
+block: B
+block_id: A.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s='python', imprime los primeros 3 caracteres con s[:3]
+hints:
+- s[inicio:fin] extrae una parte del texto; s[:3] toma los primeros 3.
+validation:
+  type: run_and_match_stdout
+  expected: pyt
+starter_code: ''

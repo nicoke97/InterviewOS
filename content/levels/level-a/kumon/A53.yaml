@@ -1,0 +1,21 @@
+id: A53
+level: A
+page: 53
+set: 6
+block: B
+block_id: A.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Une las palabras 'Odoo' y 'ERP' con un espacio e imprime el resultado.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Odoo ERP
+starter_code: ___
+reference_code: 'a = ''Odoo''
+
+  b = ''ERP''
+
+  print(a + '' '' + b)'

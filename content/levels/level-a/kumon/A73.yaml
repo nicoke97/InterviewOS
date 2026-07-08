@@ -1,0 +1,17 @@
+id: A73
+level: A
+page: 73
+set: 8
+block: B
+block_id: A.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Capitaliza 'odoo developer' con .capitalize()
+hints:
+- .capitalize() pone en mayuscula solo la primera letra.
+validation:
+  type: run_and_match_stdout
+  expected: Odoo developer
+starter_code: ___
+reference_code: print('odoo developer'.capitalize())

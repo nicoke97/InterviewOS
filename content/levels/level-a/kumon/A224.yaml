@@ -1,0 +1,18 @@
+id: A224
+level: A
+page: 224
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Ya viste el 2 en el indice 0 (seen = {2: 0}). El complemento que buscas es
+  2. Imprime el indice donde lo viste.'
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

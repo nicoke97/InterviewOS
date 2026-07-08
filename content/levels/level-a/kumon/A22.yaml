@@ -1,0 +1,17 @@
+id: A22
+level: A
+page: 22
+set: 3
+block: A
+block_id: A.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de 20 // 3 (division entera, sin decimales)
+hints:
+- Calcula la expresion dentro de print() e imprime el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: print(___)
+reference_code: print(20 // 3)

@@ -1,0 +1,16 @@
+id: A40
+level: A
+page: 40
+set: 4
+block: A
+block_id: A.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Presenta a Pablo, 29 años, con f-string (formato: nombre tiene edad años).
+  Crea las variables que necesites.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Pablo tiene 29 años
+starter_code: ''

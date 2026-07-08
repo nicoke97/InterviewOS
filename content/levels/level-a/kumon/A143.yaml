@@ -1,0 +1,19 @@
+id: A143
+level: A
+page: 143
+set: 15
+block: C
+block_id: A.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado n=15: aplica FizzBuzz con if anidado'
+hints:
+- 15 es multiplo de 3 y de 5, asi que imprime 'FizzBuzz'.
+validation:
+  type: run_and_match_stdout
+  expected: FizzBuzz
+starter_code: ___
+reference_code: "n = 15\nif n % 3 == 0:\n    if n % 5 == 0:\n        print('FizzBuzz')\n\
+  \    else:\n        print('Fizz')\nelif n % 5 == 0:\n    print('Buzz')\nelse:\n\
+  \    print(n)"

@@ -1,0 +1,16 @@
+id: A137
+level: A
+page: 137
+set: 14
+block: C
+block_id: A.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado dia=''sabado'': imprime True si es sabado o domingo'
+hints:
+- Combina condiciones con and, or y not. Imprime True o False.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

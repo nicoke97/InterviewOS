@@ -1,0 +1,16 @@
+id: A75
+level: A
+page: 75
+set: 8
+block: B
+block_id: A.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Quita espacios de '  hola  ' con .strip()
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: hola
+starter_code: ''

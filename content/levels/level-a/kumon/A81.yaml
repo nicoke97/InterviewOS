@@ -1,0 +1,26 @@
+id: A81
+level: A
+page: 81
+set: 9
+block: B
+block_id: A.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: 'Declara a=2 y b=3, luego imprime: ''La suma de 2 y 3 es 5'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: La suma de 2 y 3 es 5
+starter_code: 'a = ___
+
+  b = ___
+
+  print(___)'
+reference_code: 'a = 2
+
+  b = 3
+
+  print(f''La suma de {a} y {b} es {a + b}'')'

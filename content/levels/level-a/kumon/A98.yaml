@@ -1,0 +1,15 @@
+id: A98
+level: A
+page: 98
+set: 10
+block: B
+block_id: A.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Centra 'ok' en 6 caracteres con guiones usando .center(6, '-')
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: --ok--
+starter_code: ''

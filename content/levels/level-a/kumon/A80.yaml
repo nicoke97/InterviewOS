@@ -1,0 +1,15 @@
+id: A80
+level: A
+page: 80
+set: 8
+block: B
+block_id: A.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dado s='ana perez', imprime la primera palabra con .split()[0]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ana
+starter_code: ''

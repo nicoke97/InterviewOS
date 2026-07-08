@@ -1,0 +1,19 @@
+id: A181
+level: A
+page: 181
+set: 19
+block: D
+block_id: A.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Dado num=7: usa if/elif/else para imprimir ''positivo'', ''negativo'' o ''cero'''
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: positivo
+starter_code: "num = ___\nif num > 0:\n    print(___)\nelif num < 0:\n    print(___)\n\
+  else:\n    print(___)"
+reference_code: "num = 7\nif num > 0:\n    print('positivo')\nelif num < 0:\n    print('negativo')\n\
+  else:\n    print('cero')"

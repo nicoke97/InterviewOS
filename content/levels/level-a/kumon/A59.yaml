@@ -1,0 +1,15 @@
+id: A59
+level: A
+page: 59
+set: 6
+block: B
+block_id: A.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Dada palabra='python', imprime len(palabra)
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

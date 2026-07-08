@@ -1,0 +1,15 @@
+id: A138
+level: A
+page: 138
+set: 14
+block: C
+block_id: A.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Dado n=12: imprime True si es divisible por 3 Y por 4'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

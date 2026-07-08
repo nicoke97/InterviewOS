@@ -1,0 +1,19 @@
+id: A204
+level: A
+page: 204
+set: 21
+block: EXTRA
+block_id: A.EXTRA
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea un diccionario vacio llamado seen. Registra que el numero 10 aparecio
+  en el indice 4 (el numero es la clave, el indice es el valor). Imprime el diccionario
+  completo.
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '{10: 4}'
+starter_code: ''

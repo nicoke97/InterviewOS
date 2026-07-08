@@ -1,0 +1,15 @@
+id: A108
+level: A
+page: 108
+set: 11
+block: C
+block_id: A.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (True/False) de: bool(0) == False'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

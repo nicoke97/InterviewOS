@@ -1,0 +1,26 @@
+id: A152
+level: A
+page: 152
+set: 16
+block: D
+block_id: A.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Mouse'' y precio=15, imprime: ''Mouse cuesta 15'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Mouse cuesta 15
+starter_code: 'producto = ___
+
+  precio = ___
+
+  print(___)'
+reference_code: 'producto = ''Mouse''
+
+  precio = 15
+
+  print(f''{producto} cuesta {precio}'')'

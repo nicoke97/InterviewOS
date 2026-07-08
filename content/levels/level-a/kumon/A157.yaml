@@ -1,0 +1,17 @@
+id: A157
+level: A
+page: 157
+set: 16
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Declara producto=''Lampara'' y precio=33, imprime: ''Lampara cuesta 33'''
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Lampara cuesta 33
+starter_code: ''

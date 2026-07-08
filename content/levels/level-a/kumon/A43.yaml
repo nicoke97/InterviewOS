@@ -1,0 +1,17 @@
+id: A43
+level: A
+page: 43
+set: 5
+block: A
+block_id: A.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Convierte el numero 42 a texto con str() y agrega '!'
+hints:
+- str(numero) convierte un numero a texto.
+validation:
+  type: run_and_match_stdout
+  expected: 42!
+starter_code: ___
+reference_code: print(str(42) + '!')

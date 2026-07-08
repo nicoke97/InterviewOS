@@ -1,0 +1,18 @@
+id: A225
+level: A
+page: 225
+set: 23
+block: EXTRA
+block_id: A.EXTRA
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Recorre la lista [3, 5] y construye seen donde cada NUMERO es la clave y su
+  INDICE es el valor (no al reves). Imprime seen.
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '{3: 0, 5: 1}'
+starter_code: ''

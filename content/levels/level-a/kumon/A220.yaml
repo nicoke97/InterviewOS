@@ -1,0 +1,18 @@
+id: A220
+level: A
+page: 220
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Tienes el diccionario {3: 10}. En dos lineas, imprime: (1) si 3 es clave,
+  (2) si 10 es clave.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True
+
+    False'
+starter_code: ''

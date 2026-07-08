@@ -1,0 +1,16 @@
+id: A66
+level: A
+page: 66
+set: 7
+block: B
+block_id: A.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s='variable', imprime el primer y ultimo caracter separados por un guion.
+hints:
+- s[i] accede a un caracter; s[:n] toma los primeros n; s[::-1] invierte.
+validation:
+  type: run_and_match_stdout
+  expected: v-e
+starter_code: ''

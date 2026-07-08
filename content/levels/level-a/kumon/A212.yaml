@@ -1,0 +1,19 @@
+id: A212
+level: A
+page: 212
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Tienes el diccionario {1: 99, 2: 88}. Imprime True o False segun si 99 es
+  una clave (ojo: 99 es un valor, no una clave).'
+hints:
+- x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido debe ser la llave
+  (ej. el numero), no el indice.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: print(___)
+reference_code: 'print(99 in {1: 99, 2: 88})'

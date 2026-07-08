@@ -1,0 +1,17 @@
+id: A92
+level: A
+page: 92
+set: 10
+block: B
+block_id: A.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Repite 'o' 5 veces
+hints:
+- texto * n repite el texto n veces.
+validation:
+  type: run_and_match_stdout
+  expected: ooooo
+starter_code: print(___)
+reference_code: print('o' * 5)

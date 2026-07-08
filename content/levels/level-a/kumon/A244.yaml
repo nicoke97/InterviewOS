@@ -1,0 +1,18 @@
+id: A244
+level: A
+page: 244
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Ya viste el 2 en el indice 0. El complemento es 2 y el indice actual es 1.
+  Imprime la lista [indice_viejo, indice_actual] (no el diccionario entero).
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: A218
+level: A
+page: 218
+set: 22
+block: EXTRA
+block_id: A.EXTRA
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Tienes el diccionario {5: ''x'', 9: ''y''}. Imprime True o False segun si
+  5 es una clave.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

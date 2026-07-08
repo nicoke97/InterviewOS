@@ -1,0 +1,18 @@
+id: A234
+level: A
+page: 234
+set: 24
+block: EXTRA
+block_id: A.EXTRA
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Cuenta cuantas veces aparece cada letra en 'aabbc'. Imprime el diccionario
+  de frecuencias.
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '{''a'': 2, ''b'': 2, ''c'': 1}'
+starter_code: ''

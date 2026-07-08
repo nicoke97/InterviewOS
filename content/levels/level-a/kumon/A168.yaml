@@ -1,0 +1,15 @@
+id: A168
+level: A
+page: 168
+set: 17
+block: D
+block_id: A.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Calcula el total de 3 articulos de 19.99 cada uno
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '59.97'
+starter_code: ''

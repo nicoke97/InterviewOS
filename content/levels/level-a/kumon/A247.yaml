@@ -1,0 +1,17 @@
+id: A247
+level: A
+page: 247
+set: 25
+block: EXTRA
+block_id: A.EXTRA
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: En [1, 5, 3, 7], encuentra dos numeros que sumen 8. Imprime la lista de sus
+  indices.
+hints:
+- Usa break para salir del bucle cuando se cumple la condicion.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: ''

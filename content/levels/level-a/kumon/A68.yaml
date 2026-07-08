@@ -1,0 +1,15 @@
+id: A68
+level: A
+page: 68
+set: 7
+block: B
+block_id: A.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Dada s='objeto', imprime el primer y ultimo caracter separados por un guion.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: o-o
+starter_code: ''

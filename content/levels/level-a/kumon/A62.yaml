@@ -1,0 +1,21 @@
+id: A62
+level: A
+page: 62
+set: 7
+block: B
+block_id: A.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Dada s='odoo', imprime el ultimo caracter con s[-1]
+hints:
+- 'Los indices negativos cuentan desde el final: s[-1] es el ultimo.'
+validation:
+  type: run_and_match_stdout
+  expected: o
+starter_code: 's = ___
+
+  print(___)'
+reference_code: 's = ''odoo''
+
+  print(s[-1])'

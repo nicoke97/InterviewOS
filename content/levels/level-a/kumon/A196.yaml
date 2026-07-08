@@ -1,0 +1,16 @@
+id: A196
+level: A
+page: 196
+set: 20
+block: D
+block_id: A.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Calcula el promedio de las notas 80, 90 y 70 sin usar listas
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '80.0'
+starter_code: ''

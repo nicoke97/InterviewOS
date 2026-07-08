@@ -1,0 +1,16 @@
+id: A187
+level: A
+page: 187
+set: 19
+block: D
+block_id: A.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado pwd=''abc12'': True si len>=5 AND contiene el digito ''1'''
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

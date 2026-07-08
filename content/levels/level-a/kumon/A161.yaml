@@ -1,0 +1,21 @@
+id: A161
+level: A
+page: 161
+set: 17
+block: D
+block_id: A.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Calcula el area de un rectangulo base=8, altura=5
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '40'
+starter_code: 'base, altura = 8, 5
+
+  print(___)'
+reference_code: 'base, altura = 8, 5
+
+  print(base * altura)'

@@ -1,0 +1,17 @@
+id: A41
+level: A
+page: 41
+set: 5
+block: A
+block_id: A.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Convierte '5' a entero con int() y sumale 3
+hints:
+- int(texto) convierte texto a entero. Imprime el resultado con print().
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: print(___)
+reference_code: print(int('5') + 3)
