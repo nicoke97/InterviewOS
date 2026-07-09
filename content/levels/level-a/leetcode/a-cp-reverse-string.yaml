@@ -9,18 +9,33 @@ test_cases:
 - args:
   - ana
   expected: ana
+hints:
+- 'Los strings son secuencias: prueba s[::-1] o un bucle.'
+- ¿Qué pasa con string vacío?
+approach: Lee el enunciado, identifica entradas/salida y resuelve paso a paso con
+  la lógica que ya conoces.
+learning:
+- Traducir enunciado a código Python
+- Probar con los ejemplos dados
+- Manejar casos borde antes de enviar
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "def invertir(s):\n    return s[::-1]"
 tiers:
   1:
     starter_code: "def invertir(s):\n    return ___"
     explain_checklist:
-    - Identifica entradas y salidas
-    - Piensa en casos borde
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
     hints_allowed: true
   2:
     starter_code: "def invertir(*args):\n    pass"
     narration_prompts:
-    - Explica tu enfoque en voz alta
-    - Cual es la complejidad?
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
     hints_allowed: true
   3:
     starter_code: "def invertir(*args):\n    pass"

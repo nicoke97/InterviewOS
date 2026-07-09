@@ -15,18 +15,35 @@ test_cases:
 - args:
   - 50
   expected: F
+hints:
+- 'Define rangos: A >= 90, B >= 80, etc.'
+- Compara de mayor a menor con if/elif.
+approach: Lee el enunciado, identifica entradas/salida y resuelve paso a paso con
+  la lógica que ya conoces.
+learning:
+- Traducir enunciado a código Python
+- Probar con los ejemplos dados
+- Manejar casos borde antes de enviar
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "def nota(score):\n    if score >= 90:\n        return 'A'\n    if\
+  \ score >= 80:\n        return 'B'\n    if score >= 70:\n        return 'C'\n  \
+  \  return 'F'"
 tiers:
   1:
     starter_code: "def nota(score):\n    return ___"
     explain_checklist:
-    - Identifica entradas y salidas
-    - Piensa en casos borde
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
     hints_allowed: true
   2:
     starter_code: "def nota(*args):\n    pass"
     narration_prompts:
-    - Explica tu enfoque en voz alta
-    - Cual es la complejidad?
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
     hints_allowed: true
   3:
     starter_code: "def nota(*args):\n    pass"

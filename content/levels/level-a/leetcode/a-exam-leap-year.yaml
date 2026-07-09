@@ -12,18 +12,34 @@ test_cases:
 - args:
   - 2000
   expected: true
+hints:
+- Divisible por 400 → sí; por 100 (no 400) → no; por 4 → sí.
+- Orden de las condiciones importa.
+approach: Lee el enunciado, identifica entradas/salida y resuelve paso a paso con
+  la lógica que ya conoces.
+learning:
+- Traducir enunciado a código Python
+- Probar con los ejemplos dados
+- Manejar casos borde antes de enviar
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "def bisiesto(a):\n    if a % 400 == 0:\n        return True\n    if\
+  \ a % 100 == 0:\n        return False\n    return a % 4 == 0"
 tiers:
   1:
     starter_code: "def bisiesto(a):\n    return ___"
     explain_checklist:
-    - Identifica entradas y salidas
-    - Piensa en casos borde
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
     hints_allowed: true
   2:
     starter_code: "def bisiesto(*args):\n    pass"
     narration_prompts:
-    - Explica tu enfoque en voz alta
-    - Cual es la complejidad?
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
     hints_allowed: true
   3:
     starter_code: "def bisiesto(*args):\n    pass"
