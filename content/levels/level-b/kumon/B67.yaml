@@ -1,0 +1,16 @@
+id: B67
+level: B
+page: 67
+set: 7
+block: B
+block_id: B.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Suma los digitos de 1234 usando while (modulo y //)
+hints:
+- Calcula la expresion dentro de print() e imprime el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

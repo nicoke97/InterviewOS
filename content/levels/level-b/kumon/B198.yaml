@@ -1,0 +1,15 @@
+id: B198
+level: B
+page: 198
+set: 20
+block: D
+block_id: B.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Aplica una lambda de suma a 5 y 8
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '13'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: B156
+level: B
+page: 156
+set: 16
+block: D
+block_id: B.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define longitud(s) que retorne len(s) y llamala con 'odoo'
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

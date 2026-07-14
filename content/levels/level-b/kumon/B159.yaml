@@ -1,0 +1,15 @@
+id: B159
+level: B
+page: 159
+set: 16
+block: D
+block_id: B.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define triple(n) que retorne n*3 y llamala con 5
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ''

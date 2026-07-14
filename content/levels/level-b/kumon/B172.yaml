@@ -1,0 +1,17 @@
+id: B172
+level: B
+page: 172
+set: 18
+block: D
+block_id: B.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define potencia(base, exp=2) y llamala con 5
+hints:
+- Calcula la expresion dentro de print() e imprime el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: ___
+reference_code: "def potencia(base, exp=2):\n    return base ** exp\nprint(potencia(5))"

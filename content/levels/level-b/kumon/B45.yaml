@@ -1,0 +1,16 @@
+id: B45
+level: B
+page: 45
+set: 5
+block: A
+block_id: B.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime cada caracter de 'abc' en mayuscula
+hints:
+- 'Los metodos de string van despues del punto: texto.upper(), texto.lower().'
+validation:
+  type: run_and_match_stdout
+  expected: ABC
+starter_code: ''

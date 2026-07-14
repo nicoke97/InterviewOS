@@ -1,0 +1,18 @@
+id: B117
+level: B
+page: 117
+set: 12
+block: C
+block_id: B.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dadas las listas ['r', 'g', 'b'] y [255, 0, 128], imprime cada par unido usando
+  zip.
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: 'r255 g0 b128 '
+starter_code: ''

@@ -1,0 +1,17 @@
+id: B31
+level: B
+page: 31
+set: 4
+block: A
+block_id: B.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Imprime una cuenta regresiva de 5 a 1 separada por espacio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5 4 3 2 1 '
+starter_code: "for i in ___:\n    print(i, end=' ')"
+reference_code: "for i in range(5, 0, -1):\n    print(i, end=' ')"

@@ -1,0 +1,16 @@
+id: B157
+level: B
+page: 157
+set: 16
+block: D
+block_id: B.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define negativo(n) que retorne -n y llamala con 7
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '-7'
+starter_code: ''

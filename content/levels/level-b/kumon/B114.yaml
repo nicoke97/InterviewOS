@@ -1,0 +1,18 @@
+id: B114
+level: B
+page: 114
+set: 12
+block: C
+block_id: B.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dadas las listas ['Ana', 'Leo'] y [22, 30], imprime cada par unido usando
+  zip.
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: 'Ana22 Leo30 '
+starter_code: ''

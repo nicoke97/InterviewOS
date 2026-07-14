@@ -1,0 +1,15 @@
+id: B170
+level: B
+page: 170
+set: 17
+block: D
+block_id: B.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define sumar(a, b) que retorne a+b y llamala con 6 y 6.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: ''

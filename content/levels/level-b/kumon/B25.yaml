@@ -1,0 +1,16 @@
+id: B25
+level: B
+page: 25
+set: 3
+block: A
+block_id: B.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime de 10 a 101 de 10 en 10 separados por espacio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10 20 30 40 50 60 70 80 90 100 '
+starter_code: ''

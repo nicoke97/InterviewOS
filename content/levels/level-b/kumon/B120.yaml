@@ -1,0 +1,16 @@
+id: B120
+level: B
+page: 120
+set: 12
+block: C
+block_id: B.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dadas las listas ['lun', 'mar'] y ['L', 'M'], imprime cada par unido usando
+  zip.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'lunL marM '
+starter_code: ''

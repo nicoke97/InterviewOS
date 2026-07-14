@@ -1,0 +1,20 @@
+id: B181
+level: B
+page: 181
+set: 19
+block: D
+block_id: B.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define nota_letra(score) (>=90 'A', >=80 'B', >=70 'C', si no 'F') y llamala
+  con 95.
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: A
+starter_code: ___
+reference_code: "def nota_letra(score):\n    if score >= 90:\n        return 'A'\n\
+  \    if score >= 80:\n        return 'B'\n    if score >= 70:\n        return 'C'\n\
+  \    return 'F'\nprint(nota_letra(95))"

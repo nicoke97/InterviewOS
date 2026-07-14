@@ -1,0 +1,15 @@
+id: B169
+level: B
+page: 169
+set: 17
+block: D
+block_id: B.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define sumar(a, b) que retorne a+b y llamala con 8 y 17.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: ''

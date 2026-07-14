@@ -1,0 +1,20 @@
+id: B141
+level: B
+page: 141
+set: 15
+block: C
+block_id: B.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado ['a', 'b', 'a', 'c', 'a'], cuenta cuantas veces aparece 'a' e imprime
+  el conteo.
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: "data = ___\nc = ___\nfor x in ___:\n    if x == 'a':\n        c +=\
+  \ 1\nprint(c)"
+reference_code: "data = ['a', 'b', 'a', 'c', 'a']\nc = 0\nfor x in data:\n    if x\
+  \ == 'a':\n        c += 1\nprint(c)"

@@ -1,0 +1,16 @@
+id: B65
+level: B
+page: 65
+set: 7
+block: B
+block_id: B.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Cuenta cuantas veces cabe 3 en 20 (sin usar //)
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

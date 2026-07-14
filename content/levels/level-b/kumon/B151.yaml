@@ -1,0 +1,18 @@
+id: B151
+level: B
+page: 151
+set: 16
+block: D
+block_id: B.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define saludar(nombre) que retorne 'Hola, <nombre>!' y llamala con 'Ana'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Hola, Ana!
+starter_code: ___
+reference_code: "def saludar(nombre):\n    return f'Hola, {nombre}!'\nprint(saludar('Ana'))"

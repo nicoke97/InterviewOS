@@ -1,0 +1,18 @@
+id: B102
+level: B
+page: 102
+set: 11
+block: C
+block_id: B.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado ['x', 'y'], imprime 'indice:valor' por cada elemento usando enumerate.
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: '0:x 1:y '
+starter_code: "for i, v in enumerate(['x', 'y']):\n    print(___)"
+reference_code: "for i, v in enumerate(['x', 'y']):\n    print(f'{i}:{v}', end=' ')"

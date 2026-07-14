@@ -1,0 +1,21 @@
+id: B42
+level: B
+page: 42
+set: 5
+block: A
+block_id: B.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Imprime cada elemento de [10, 20, 30] en su propia linea
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10
+
+    20
+
+    30'
+starter_code: "for n in ___:\n    print(___)"
+reference_code: "for n in [10, 20, 30]:\n    print(n)"

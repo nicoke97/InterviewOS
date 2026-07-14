@@ -1,0 +1,17 @@
+id: B61
+level: B
+page: 61
+set: 7
+block: B
+block_id: B.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Empieza en 100 y mientras sea >1 divide entre 2, imprime cuantos pasos
+hints:
+- Calcula la expresion dentro de print() e imprime el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: "n = ___\nc = ___\nwhile ___:\n    n //= 2\n    c += 1\nprint(c)"
+reference_code: "n = 100\nc = 0\nwhile n > 1:\n    n //= 2\n    c += 1\nprint(c)"

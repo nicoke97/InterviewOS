@@ -1,0 +1,16 @@
+id: B174
+level: B
+page: 174
+set: 18
+block: D
+block_id: B.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define multiplicar(a, b=10) y llamala con 4
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '40'
+starter_code: ''

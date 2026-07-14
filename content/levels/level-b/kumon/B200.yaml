@@ -1,0 +1,15 @@
+id: B200
+level: B
+page: 200
+set: 20
+block: D
+block_id: B.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Mapea el cuadrado sobre [1,2,3,4] con una lambda y muestralo
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 4, 9, 16]'
+starter_code: ''

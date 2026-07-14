@@ -1,0 +1,16 @@
+id: B88
+level: B
+page: 88
+set: 9
+block: B
+block_id: B.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Recorre de 1 a 10 e imprime solo los numeros que NO sean multiplos de 7 (usa
+  continue).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 3 4 5 6 8 9 10 '
+starter_code: ''

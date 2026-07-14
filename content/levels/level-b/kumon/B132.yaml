@@ -1,0 +1,19 @@
+id: B132
+level: B
+page: 132
+set: 14
+block: C
+block_id: B.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado [1, 5, 4], encuentra e imprime el valor MAXIMO sin usar max().
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: "nums = ___\nm = ___\nfor n in ___:\n    if n > m:\n        m = ___\n\
+  print(___)"
+reference_code: "nums = [1, 5, 4]\nm = nums[0]\nfor n in nums:\n    if n > m:\n  \
+  \      m = n\nprint(m)"

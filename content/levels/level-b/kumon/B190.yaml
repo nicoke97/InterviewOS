@@ -1,0 +1,16 @@
+id: B190
+level: B
+page: 190
+set: 19
+block: D
+block_id: B.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define nota_letra(score) (>=90 'A', >=80 'B', >=70 'C', si no 'F') y llamala
+  con 88.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: ''

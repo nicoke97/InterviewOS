@@ -1,0 +1,16 @@
+id: B195
+level: B
+page: 195
+set: 20
+block: D
+block_id: B.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Usa una lambda que multiplique por 10 sobre el valor 7
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '70'
+starter_code: ''

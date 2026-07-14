@@ -1,0 +1,15 @@
+id: B59
+level: B
+page: 59
+set: 6
+block: B
+block_id: B.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Usa while para imprimir de 1 a 2 separados por espacio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 '
+starter_code: ''

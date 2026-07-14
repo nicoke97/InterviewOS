@@ -1,0 +1,17 @@
+id: B163
+level: B
+page: 163
+set: 17
+block: D
+block_id: B.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define sumar(a, b) que retorne a+b y llamala con 7 y 8.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ___
+reference_code: "def sumar(a, b):\n    return a + b\nprint(sumar(7, 8))"

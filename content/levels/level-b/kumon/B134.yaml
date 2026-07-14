@@ -1,0 +1,16 @@
+id: B134
+level: B
+page: 134
+set: 14
+block: C
+block_id: B.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado [8], encuentra e imprime el valor MAXIMO sin usar max().
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

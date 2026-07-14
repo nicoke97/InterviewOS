@@ -1,0 +1,15 @@
+id: B48
+level: B
+page: 48
+set: 5
+block: A
+block_id: B.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Imprime las vocales de 'murcielago'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: uieao
+starter_code: ''

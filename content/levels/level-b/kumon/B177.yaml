@@ -1,0 +1,16 @@
+id: B177
+level: B
+page: 177
+set: 18
+block: D
+block_id: B.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define contar(items=None) que devuelva 0 si es None
+hints:
+- Usa if/elif/else con sangria de 4 espacios. Imprime dentro de cada rama.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

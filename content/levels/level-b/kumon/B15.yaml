@@ -1,0 +1,16 @@
+id: B15
+level: B
+page: 15
+set: 2
+block: A
+block_id: B.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Suma los numeros de 1 a 100 e imprime el total.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5050'
+starter_code: ''

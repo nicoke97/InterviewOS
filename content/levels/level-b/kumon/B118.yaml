@@ -1,0 +1,15 @@
+id: B118
+level: B
+page: 118
+set: 12
+block: C
+block_id: B.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dadas las listas [1] y ['a'], imprime cada par unido usando zip.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1a '
+starter_code: ''

@@ -1,0 +1,16 @@
+id: B129
+level: B
+page: 129
+set: 13
+block: C
+block_id: B.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Usa dos bucles anidados para contar cuantas parejas (i,j) hay con i,j en range(4).
+  Imprime el total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '16'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: B56
+level: B
+page: 56
+set: 6
+block: B
+block_id: B.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Usa while para imprimir de 1 a 4 separados por espacio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1 2 3 4 '
+starter_code: ''

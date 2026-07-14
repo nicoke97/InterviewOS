@@ -1,0 +1,16 @@
+id: B44
+level: B
+page: 44
+set: 5
+block: A
+block_id: B.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Cuenta cuantos caracteres tiene 'odoo' usando un bucle
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

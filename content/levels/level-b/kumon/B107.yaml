@@ -1,0 +1,18 @@
+id: B107
+level: B
+page: 107
+set: 11
+block: C
+block_id: B.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado ['a', 'e', 'i', 'o', 'u'], imprime 'indice:valor' por cada elemento usando
+  enumerate.
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: '0:a 1:e 2:i 3:o 4:u '
+starter_code: ''
