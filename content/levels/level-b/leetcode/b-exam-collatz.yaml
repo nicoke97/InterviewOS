@@ -9,19 +9,37 @@ test_cases:
 - args:
   - 8
   expected: 3
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuelve paso a paso con
+  la lógica que ya conoces.
+learning:
+- Traducir enunciado a código Python
+- Probar con los ejemplos dados
+- Manejar casos borde antes de enviar
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "def collatz(n):\n    pasos = 0\n    while n > 1:\n        if n % 2\
+  \ == 0:\n            n //= 2\n        else:\n            n = n * 3 + 1\n       \
+  \ pasos += 1\n    return pasos"
 tiers:
   1:
     starter_code: "def collatz(n):\n    pasos = 0\n    while n > 1:\n        # ...\n\
       \        pasos += 1\n    return pasos"
     explain_checklist:
-    - Identifica entradas y salidas
-    - Piensa en casos borde
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
     hints_allowed: true
   2:
     starter_code: "def collatz(*args):\n    pass"
     narration_prompts:
-    - Explica tu enfoque en voz alta
-    - Cual es la complejidad?
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
     hints_allowed: true
   3:
     starter_code: "def collatz(*args):\n    pass"
