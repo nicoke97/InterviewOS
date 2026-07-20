@@ -1,0 +1,15 @@
+id: C80
+level: C
+page: 80
+set: 8
+block: B
+block_id: C.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime el menor de [7,3,9,1] usando sorted()[0]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

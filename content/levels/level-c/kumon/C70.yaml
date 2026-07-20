@@ -1,0 +1,15 @@
+id: C70
+level: C
+page: 70
+set: 7
+block: B
+block_id: C.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada [1,2,3,4,5,6], imprime el centro [2:4]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[3, 4]'
+starter_code: ''

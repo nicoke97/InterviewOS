@@ -1,0 +1,15 @@
+id: C170
+level: C
+page: 170
+set: 17
+block: D
+block_id: C.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Elimina las comas de '1,000,000'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1000000'
+starter_code: ''

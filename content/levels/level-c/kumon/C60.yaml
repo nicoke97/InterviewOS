@@ -1,0 +1,15 @@
+id: C60
+level: C
+page: 60
+set: 6
+block: B
+block_id: C.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada [1, 2, 3, 4, 5, 6], imprime el slice [2:5].
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[3, 4, 5]'
+starter_code: ''

@@ -1,0 +1,20 @@
+id: C22
+level: C
+page: 22
+set: 3
+block: A
+block_id: C.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada [10, 20, 30], imprime su longitud, suma, minimo y maximo separados por
+  espacio.
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: 3 60 10 30
+starter_code: ___
+reference_code: 'n = [10, 20, 30]
+
+  print(len(n), sum(n), min(n), max(n))'

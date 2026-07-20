@@ -1,0 +1,15 @@
+id: C49
+level: C
+page: 49
+set: 5
+block: A
+block_id: C.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dada [11, 22, 33], recorre con un bucle y acumula la suma; imprime el total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '66'
+starter_code: ''

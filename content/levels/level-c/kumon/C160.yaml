@@ -1,0 +1,15 @@
+id: C160
+level: C
+page: 160
+set: 16
+block: D
+block_id: C.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Separa 'a, b, c' por ', ' (con espacio)
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''a'', ''b'', ''c'']'
+starter_code: ''

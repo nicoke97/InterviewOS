@@ -1,0 +1,17 @@
+id: C162
+level: C
+page: 162
+set: 17
+block: D
+block_id: C.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Reemplaza 'gato' por 'perro' en 'mi gato'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: mi perro
+starter_code: print(___)
+reference_code: print('mi gato'.replace('gato', 'perro'))

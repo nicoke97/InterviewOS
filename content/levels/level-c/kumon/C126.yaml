@@ -1,0 +1,16 @@
+id: C126
+level: C
+page: 126
+set: 13
+block: C
+block_id: C.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Usa una list comprehension para crear los cuadrados de 1 a 2 e imprimelos.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 4]'
+starter_code: ''

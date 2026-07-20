@@ -1,0 +1,16 @@
+id: C37
+level: C
+page: 37
+set: 4
+block: A
+block_id: C.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [1,2,3], vaciala con clear
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[]'
+starter_code: ''

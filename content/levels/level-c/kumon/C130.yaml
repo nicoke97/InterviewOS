@@ -1,0 +1,15 @@
+id: C130
+level: C
+page: 130
+set: 13
+block: C
+block_id: C.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Usa una list comprehension para crear los cuadrados de 1 a 10 e imprimelos.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: C26
+level: C
+page: 26
+set: 3
+block: A
+block_id: C.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [1, 2, 3, 4, 5], imprime su longitud, suma, minimo y maximo separados
+  por espacio.
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: 5 15 1 5
+starter_code: ''

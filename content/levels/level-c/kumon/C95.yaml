@@ -1,0 +1,16 @@
+id: C95
+level: C
+page: 95
+set: 10
+block: B
+block_id: C.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea una copia de ['x','y'] y agrega 'z' solo a la copia
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''x'', ''y'', ''z'']'
+starter_code: ''

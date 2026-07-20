@@ -1,0 +1,21 @@
+id: C2
+level: C
+page: 2
+set: 1
+block: A
+block_id: C.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dada la lista ['a', 'b', 'c'], imprime el elemento en el indice 0.
+hints:
+- s[i] accede a un caracter; s[:n] toma los primeros n; s[::-1] invierte.
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: 'items = ___
+
+  print(___)'
+reference_code: 'items = [''a'', ''b'', ''c'']
+
+  print(items[0])'

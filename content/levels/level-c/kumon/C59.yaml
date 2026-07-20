@@ -1,0 +1,15 @@
+id: C59
+level: C
+page: 59
+set: 6
+block: B
+block_id: C.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada [9, 8, 7, 6], imprime el slice [0:2].
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[9, 8]'
+starter_code: ''

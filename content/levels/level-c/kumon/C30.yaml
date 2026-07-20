@@ -1,0 +1,16 @@
+id: C30
+level: C
+page: 30
+set: 3
+block: A
+block_id: C.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada [4, 4, 9, 1], imprime su longitud, suma, minimo y maximo separados por
+  espacio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 4 18 1 9
+starter_code: ''

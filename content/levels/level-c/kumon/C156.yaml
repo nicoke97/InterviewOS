@@ -1,0 +1,16 @@
+id: C156
+level: C
+page: 156
+set: 16
+block: D
+block_id: C.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Separa 'a-b-c-d' por guiones e imprime el primero
+hints:
+- .split(sep) divide un texto usando el separador (espacio por defecto).
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: ''

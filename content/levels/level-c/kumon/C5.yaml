@@ -1,0 +1,16 @@
+id: C5
+level: C
+page: 5
+set: 1
+block: A
+block_id: C.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada la lista ['x', 'y', 'z'], imprime el elemento en el indice 2.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: z
+starter_code: ''

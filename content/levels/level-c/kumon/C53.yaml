@@ -1,0 +1,19 @@
+id: C53
+level: C
+page: 53
+set: 6
+block: B
+block_id: C.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada ['a', 'b', 'c', 'd'], imprime el slice [1:3].
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''b'', ''c'']'
+starter_code: ___
+reference_code: 'items = [''a'', ''b'', ''c'', ''d'']
+
+  print(items[1:3])'

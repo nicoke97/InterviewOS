@@ -1,0 +1,15 @@
+id: C120
+level: C
+page: 120
+set: 12
+block: C
+block_id: C.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Desempaqueta coords=(4,5); imprime 'x=4 y=5'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: x=4 y=5
+starter_code: ''

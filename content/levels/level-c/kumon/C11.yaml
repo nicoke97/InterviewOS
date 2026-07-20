@@ -1,0 +1,25 @@
+id: C11
+level: C
+page: 11
+set: 2
+block: A
+block_id: C.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea [1,2,3], agrega 4 con append e imprime la lista
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3, 4]'
+starter_code: 'items = ___
+
+  items.append(4)
+
+  print(items)'
+reference_code: 'items = [1, 2, 3]
+
+  items.append(4)
+
+  print(items)'

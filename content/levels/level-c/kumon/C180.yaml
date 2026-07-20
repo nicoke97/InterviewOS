@@ -1,0 +1,15 @@
+id: C180
+level: C
+page: 180
+set: 18
+block: D
+block_id: C.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Convierte 'Mixed Case' a mayusculas
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: MIXED CASE
+starter_code: ''

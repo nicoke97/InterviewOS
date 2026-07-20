@@ -1,0 +1,16 @@
+id: C85
+level: C
+page: 85
+set: 9
+block: B
+block_id: C.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dada la matriz [[10, 20], [30, 40]], imprime el elemento fila 1, columna 1.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '40'
+starter_code: ''

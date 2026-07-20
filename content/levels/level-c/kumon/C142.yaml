@@ -1,0 +1,17 @@
+id: C142
+level: C
+page: 142
+set: 15
+block: C
+block_id: C.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Crea una lista con la longitud de cada palabra en ['sol','luna','mar']
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '[3, 4, 3]'
+starter_code: print(___)
+reference_code: print([len(w) for w in ['sol', 'luna', 'mar']])

@@ -1,0 +1,17 @@
+id: C172
+level: C
+page: 172
+set: 18
+block: D
+block_id: C.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Pon 'MUNDO' en minusculas
+hints:
+- 'Los metodos de string van despues del punto: texto.upper(), texto.lower().'
+validation:
+  type: run_and_match_stdout
+  expected: mundo
+starter_code: print(___)
+reference_code: print('MUNDO'.lower())

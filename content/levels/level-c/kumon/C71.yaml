@@ -1,0 +1,17 @@
+id: C71
+level: C
+page: 71
+set: 8
+block: B
+block_id: C.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Ordena [3,1,2] de menor a mayor con sorted
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: print(___)
+reference_code: print(sorted([3, 1, 2]))

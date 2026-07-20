@@ -1,0 +1,16 @@
+id: C35
+level: C
+page: 35
+set: 4
+block: A
+block_id: C.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [1,2,2,3], elimina la primera 2 con remove
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ''

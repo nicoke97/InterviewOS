@@ -1,0 +1,16 @@
+id: C94
+level: C
+page: 94
+set: 10
+block: B
+block_id: C.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Demuestra que b=a comparte la lista: modifica b e imprime a'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: C188
+level: C
+page: 188
+set: 19
+block: D
+block_id: C.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Verifica si '12345'.isdigit()
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: C194
+level: C
+page: 194
+set: 20
+block: D
+block_id: C.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Imprime 0.25 como porcentaje (25.00%)
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: 25.00%
+starter_code: ''

@@ -1,0 +1,21 @@
+id: C93
+level: C
+page: 93
+set: 10
+block: B
+block_id: C.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Copia [1,2,3] con slicing [:] y muestra la copia
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ___
+reference_code: 'a = [1, 2, 3]
+
+  b = a[:]
+
+  print(b)'

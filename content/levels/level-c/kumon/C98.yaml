@@ -1,0 +1,15 @@
+id: C98
+level: C
+page: 98
+set: 10
+block: B
+block_id: C.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Copia [1,2] y concatena [3] a la copia
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: C24
+level: C
+page: 24
+set: 3
+block: A
+block_id: C.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [9, 2, 6, 4], imprime su longitud, suma, minimo y maximo separados por
+  espacio.
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: 4 21 2 9
+starter_code: ''

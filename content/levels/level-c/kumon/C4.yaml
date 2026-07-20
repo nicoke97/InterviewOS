@@ -1,0 +1,16 @@
+id: C4
+level: C
+page: 4
+set: 1
+block: A
+block_id: C.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada la lista [100], imprime el elemento en el indice 0.
+hints:
+- s[i] accede a un caracter; s[:n] toma los primeros n; s[::-1] invierte.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

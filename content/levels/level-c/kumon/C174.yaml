@@ -1,0 +1,16 @@
+id: C174
+level: C
+page: 174
+set: 18
+block: D
+block_id: C.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Capitaliza 'soporte tecnico'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Soporte tecnico
+starter_code: ''

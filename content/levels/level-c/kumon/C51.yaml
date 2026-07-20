@@ -1,0 +1,21 @@
+id: C51
+level: C
+page: 51
+set: 6
+block: B
+block_id: C.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada [1, 2, 3, 4, 5], imprime el slice [0:2].
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: 'items = ___
+
+  print(___)'
+reference_code: 'items = [1, 2, 3, 4, 5]
+
+  print(items[0:2])'

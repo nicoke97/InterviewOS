@@ -1,0 +1,17 @@
+id: C62
+level: C
+page: 62
+set: 7
+block: B
+block_id: C.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Invierte [1,2,3,4] con [::-1]
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[4, 3, 2, 1]'
+starter_code: print(___)
+reference_code: print([1, 2, 3, 4][::-1])
