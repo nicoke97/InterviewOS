@@ -231,6 +231,80 @@ class LevelExamProgress(Base):
     passed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
 
+class SdeCursor(Base):
+    __tablename__ = "sde_cursors"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    next_section_index: Mapped[int] = mapped_column(Integer, default=0)
+    active_algo_id: Mapped[str] = mapped_column(String(64), default="two-sum")
+    active_lang: Mapped[str] = mapped_column(String(16), default="csharp")
+    algo_phase: Mapped[str] = mapped_column(String(16), default="day1")  # day1|day2|voice
+    day1_index: Mapped[int] = mapped_column(Integer, default=0)
+    last_sheet_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    last_evidence_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    session_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    session_kind: Mapped[str] = mapped_column(String(16), default="advance")  # advance|flojo|return
+    session_complete: Mapped[bool] = mapped_column(Boolean, default=False)
+    today_assignments: Mapped[list] = mapped_column(JSON, default=list)
+    pending_voice_algo: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    pending_voice_lang: Mapped[str | None] = mapped_column(String(16), nullable=True)
+
+
+class SdeAlgoProgress(Base):
+    __tablename__ = "sde_algo_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    algo_id: Mapped[str] = mapped_column(String(64), index=True)
+    lang: Mapped[str] = mapped_column(String(16), index=True)
+    status: Mapped[str] = mapped_column(String(16), default="active")  # active|completed|failed
+    pool_fails: Mapped[int] = mapped_column(Integer, default=0)
+    voice_passed: Mapped[bool] = mapped_column(Boolean, default=False)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+
+class SdeSectionProgress(Base):
+    __tablename__ = "sde_section_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    section_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    status: Mapped[str] = mapped_column(String(16), default="unseen")  # unseen|current|dirty|mastered
+    dirty_fails: Mapped[int] = mapped_column(Integer, default=0)
+    last_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+
+
+class SdeCardProgress(Base):
+    __tablename__ = "sde_card_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    card_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    section_id: Mapped[str] = mapped_column(String(64), index=True)
+    fails: Mapped[int] = mapped_column(Integer, default=0)
+    seen: Mapped[int] = mapped_column(Integer, default=0)
+    last_ok: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+
+
+class SdeOfflineLog(Base):
+    __tablename__ = "sde_offline_logs"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    date: Mapped[date] = mapped_column(Date, index=True)
+    kinds: Mapped[list] = mapped_column(JSON, default=list)
+    section_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    verified: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+
+class SdeAnalysis(Base):
+    __tablename__ = "sde_analyses"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    cause: Mapped[str] = mapped_column(String(64), default="")
+    line: Mapped[str] = mapped_column(Text, default="")
+    cta: Mapped[str] = mapped_column(String(128), default="")
+    payload: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
 class ReturnExam(Base):
     """Retention quiz after several days away. Failed items force a full set repeat."""
 
