@@ -1,0 +1,18 @@
+id: D63
+level: D
+page: 63
+set: 7
+block: B
+block_id: D.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'x y z' e imprime el dict.
+hints:
+- .split(sep) divide un texto usando el separador (espacio por defecto).
+validation:
+  type: run_and_match_stdout
+  expected: '{''x'': 1, ''y'': 1, ''z'': 1}'
+starter_code: ___
+reference_code: "texto = 'x y z'\nfreq = {}\nfor w in texto.split():\n    freq[w]\
+  \ = freq.get(w, 0) + 1\nprint(freq)"

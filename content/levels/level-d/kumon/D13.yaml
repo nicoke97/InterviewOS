@@ -1,0 +1,21 @@
+id: D13
+level: D
+page: 13
+set: 2
+block: A
+block_id: D.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea {'n':1} y actualiza 'n' a 99
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''n'': 99}'
+starter_code: ___
+reference_code: 'd = {''n'': 1}
+
+  d[''n''] = 99
+
+  print(d)'

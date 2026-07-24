@@ -1,0 +1,15 @@
+id: D38
+level: D
+page: 38
+set: 4
+block: A
+block_id: D.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado {'a':1,'b':2,'c':3}, imprime las claves ordenadas
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''a'', ''b'', ''c'']'
+starter_code: ''

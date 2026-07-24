@@ -1,0 +1,15 @@
+id: D178
+level: D
+page: 178
+set: 18
+block: D
+block_id: D.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Usa get() para evitar KeyError en {} con clave 'k'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: default
+starter_code: ''

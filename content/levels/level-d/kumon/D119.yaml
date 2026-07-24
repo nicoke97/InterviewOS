@@ -1,0 +1,15 @@
+id: D119
+level: D
+page: 119
+set: 12
+block: C
+block_id: D.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea {1,2,3,4} y quita los pares; imprime ordenado
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 3]'
+starter_code: ''

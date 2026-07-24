@@ -1,0 +1,16 @@
+id: D17
+level: D
+page: 17
+set: 2
+block: A
+block_id: D.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea {'a':1,'b':2} y saca 'a' con pop e imprime el dict
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''b'': 2}'
+starter_code: ''

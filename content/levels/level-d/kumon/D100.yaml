@@ -1,0 +1,15 @@
+id: D100
+level: D
+page: 100
+set: 10
+block: B
+block_id: D.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Crea dict con zip(['a','b'],[1,2])
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''a'': 1, ''b'': 2}'
+starter_code: ''

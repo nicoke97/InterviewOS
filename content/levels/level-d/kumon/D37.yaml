@@ -1,0 +1,16 @@
+id: D37
+level: D
+page: 37
+set: 4
+block: A
+block_id: D.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {'p':3,'q':7}, imprime el valor maximo
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

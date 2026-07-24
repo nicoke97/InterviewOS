@@ -1,0 +1,17 @@
+id: D172
+level: D
+page: 172
+set: 18
+block: D
+block_id: D.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Accede a la clave 'x' de {} capturando KeyError -> 'sin clave'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: sin clave
+starter_code: "try:\n    {}['x']\nexcept KeyError:\n    print(___)"
+reference_code: "try:\n    {}['x']\nexcept KeyError:\n    print('sin clave')"

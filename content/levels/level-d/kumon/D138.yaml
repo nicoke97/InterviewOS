@@ -1,0 +1,16 @@
+id: D138
+level: D
+page: 138
+set: 14
+block: C
+block_id: D.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dados ['x', 'y'] y ['y'], imprime los elementos de A que NO estan en B (diferencia,
+  ordenada).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[''x'']'
+starter_code: ''

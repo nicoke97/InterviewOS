@@ -1,0 +1,16 @@
+id: D75
+level: D
+page: 75
+set: 8
+block: B
+block_id: D.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Crea un dict con una lista de dicts y cuenta los elementos
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

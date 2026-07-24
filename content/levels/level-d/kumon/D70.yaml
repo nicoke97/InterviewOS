@@ -1,0 +1,15 @@
+id: D70
+level: D
+page: 70
+set: 7
+block: B
+block_id: D.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'rojo azul rojo' e imprime el dict.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''rojo'': 2, ''azul'': 1}'
+starter_code: ''

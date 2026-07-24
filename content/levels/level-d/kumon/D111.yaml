@@ -1,0 +1,21 @@
+id: D111
+level: D
+page: 111
+set: 12
+block: C
+block_id: D.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un set {1,2}, agrega 3 e imprime ordenado
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2, 3]'
+starter_code: ___
+reference_code: 's = {1, 2}
+
+  s.add(3)
+
+  print(sorted(s))'

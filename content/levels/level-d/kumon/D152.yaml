@@ -1,0 +1,17 @@
+id: D152
+level: D
+page: 152
+set: 16
+block: D
+block_id: D.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Divide 10/0 y captura ZeroDivisionError imprimiendo 'error'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: error
+starter_code: "try:\n    print(___)\nexcept ZeroDivisionError:\n    print(___)"
+reference_code: "try:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print('error')"

@@ -1,0 +1,17 @@
+id: D7
+level: D
+page: 7
+set: 1
+block: A
+block_id: D.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''fruta'': ''mango'', ''precio'': 5} e imprime el valor de
+  la clave ''precio''.'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

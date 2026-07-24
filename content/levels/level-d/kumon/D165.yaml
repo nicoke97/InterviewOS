@@ -1,0 +1,16 @@
+id: D165
+level: D
+page: 165
+set: 17
+block: D
+block_id: D.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Convierte '3.14' a float e imprimelo
+hints:
+- float(valor) convierte a numero decimal. Imprime el resultado con print().
+validation:
+  type: run_and_match_stdout
+  expected: '3.14'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: D145
+level: D
+page: 145
+set: 15
+block: C
+block_id: D.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Verifica si dos listas tienen algun elemento en comun
+hints:
+- bool(valor) convierte un valor a True o False. Imprime con print().
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: D150
+level: D
+page: 150
+set: 15
+block: C
+block_id: D.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Verifica si {1,2,3} es superconjunto de {2}
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

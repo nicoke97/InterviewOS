@@ -1,0 +1,16 @@
+id: D9
+level: D
+page: 9
+set: 1
+block: A
+block_id: D.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''a'': ''x'', ''b'': ''y'', ''c'': ''z''} e imprime el valor
+  de la clave ''c''.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: z
+starter_code: ''

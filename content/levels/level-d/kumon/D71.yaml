@@ -1,0 +1,21 @@
+id: D71
+level: D
+page: 71
+set: 8
+block: B
+block_id: D.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dado {'user':{'name':'Bob'}}, imprime el name interno
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Bob
+starter_code: 'd = ___
+
+  print(___)'
+reference_code: 'd = {''user'': {''name'': ''Bob''}}
+
+  print(d[''user''][''name''])'

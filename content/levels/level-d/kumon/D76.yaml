@@ -1,0 +1,16 @@
+id: D76
+level: D
+page: 76
+set: 8
+block: B
+block_id: D.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {'a':[1,2,3]}, imprime la suma de la lista interna
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

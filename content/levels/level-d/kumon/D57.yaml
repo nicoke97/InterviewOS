@@ -1,0 +1,16 @@
+id: D57
+level: D
+page: 57
+set: 6
+block: B
+block_id: D.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Usa un dict comprehension para mapear cada numero de 1 a 7 con su cuadrado.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49}'
+starter_code: ''

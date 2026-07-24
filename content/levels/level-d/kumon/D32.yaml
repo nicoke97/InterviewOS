@@ -1,0 +1,19 @@
+id: D32
+level: D
+page: 32
+set: 4
+block: A
+block_id: D.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {'a':1,'b':2}, imprime la lista de valores
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: ___
+reference_code: 'd = {''a'': 1, ''b'': 2}
+
+  print(list(d.values()))'

@@ -1,0 +1,16 @@
+id: D105
+level: D
+page: 105
+set: 11
+block: C
+block_id: D.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada [1, 2, 3, 4], conviertela en set y muestra cuantos elementos UNICOS tiene.
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

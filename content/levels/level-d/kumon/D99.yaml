@@ -1,0 +1,15 @@
+id: D99
+level: D
+page: 99
+set: 10
+block: B
+block_id: D.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Une tres dicts con {**a,**b,**c}
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''a'': 1, ''b'': 2, ''c'': 3}'
+starter_code: ''

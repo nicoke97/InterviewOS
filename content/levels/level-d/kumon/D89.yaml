@@ -1,0 +1,15 @@
+id: D89
+level: D
+page: 89
+set: 9
+block: B
+block_id: D.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado {''m'': 5}, invierte el dict (valor->clave) e imprime el resultado.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{5: ''m''}'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: D8
+level: D
+page: 8
+set: 1
+block: A
+block_id: D.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''k'': ''v''} e imprime el valor de la clave ''k''.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: v
+starter_code: ''

@@ -1,0 +1,15 @@
+id: D39
+level: D
+page: 39
+set: 4
+block: A
+block_id: D.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Verifica si el valor 2 esta en {'a':1,'b':2}
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

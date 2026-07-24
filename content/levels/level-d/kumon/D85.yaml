@@ -1,0 +1,17 @@
+id: D85
+level: D
+page: 85
+set: 9
+block: B
+block_id: D.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado {''k1'': ''v1'', ''k2'': ''v2''}, invierte el dict (valor->clave) e
+  imprime el resultado.'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''v1'': ''k1'', ''v2'': ''k2''}'
+starter_code: ''

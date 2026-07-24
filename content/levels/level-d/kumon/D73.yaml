@@ -1,0 +1,21 @@
+id: D73
+level: D
+page: 73
+set: 8
+block: B
+block_id: D.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Crea {'cliente':{'pedidos':2}} y aumenta pedidos a 3
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''cliente'': {''pedidos'': 3}}'
+starter_code: ___
+reference_code: 'd = {''cliente'': {''pedidos'': 2}}
+
+  d[''cliente''][''pedidos''] = 3
+
+  print(d)'

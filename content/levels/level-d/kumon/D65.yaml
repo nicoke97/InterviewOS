@@ -1,0 +1,16 @@
+id: D65
+level: D
+page: 65
+set: 7
+block: B
+block_id: D.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de cada palabra en 'hola hola hola' e imprime el dict.
+hints:
+- .split(sep) divide un texto usando el separador (espacio por defecto).
+validation:
+  type: run_and_match_stdout
+  expected: '{''hola'': 3}'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: D34
+level: D
+page: 34
+set: 4
+block: A
+block_id: D.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {'x':10,'y':20}, imprime cuantas claves tiene
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

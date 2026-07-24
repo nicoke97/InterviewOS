@@ -1,0 +1,18 @@
+id: D141
+level: D
+page: 141
+set: 15
+block: C
+block_id: D.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Verifica si 3 esta en el set {1,2,3}
+hints:
+- x in d busca por LLAVE en O(1). Lo que necesitas encontrar rapido debe ser la llave
+  (ej. el numero), no el indice.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: print(___)
+reference_code: print(3 in {1, 2, 3})

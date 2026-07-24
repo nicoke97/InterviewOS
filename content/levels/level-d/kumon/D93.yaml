@@ -1,0 +1,21 @@
+id: D93
+level: D
+page: 93
+set: 10
+block: B
+block_id: D.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Combina dos dicts con {**a, **b}
+hints:
+- Calcula la expresion dentro de print() e imprime el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '{''x'': 1, ''y'': 2}'
+starter_code: ___
+reference_code: 'a = {''x'': 1}
+
+  b = {''y'': 2}
+
+  print({**a, **b})'

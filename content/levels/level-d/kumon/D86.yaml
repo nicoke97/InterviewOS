@@ -1,0 +1,16 @@
+id: D86
+level: D
+page: 86
+set: 9
+block: B
+block_id: D.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dado {''p'': 100}, invierte el dict (valor->clave) e imprime el resultado.'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{100: ''p''}'
+starter_code: ''

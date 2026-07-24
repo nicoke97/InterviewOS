@@ -1,0 +1,18 @@
+id: D103
+level: D
+page: 103
+set: 11
+block: C
+block_id: D.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada ['a', 'b', 'a'], conviertela en set y muestra cuantos elementos UNICOS
+  tiene.
+hints:
+- len(x) devuelve cuantos elementos tiene x.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: print(len(set(['a', 'b', 'a'])))

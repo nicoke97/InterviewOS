@@ -1,0 +1,16 @@
+id: D90
+level: D
+page: 90
+set: 9
+block: B
+block_id: D.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado {''i'': ''j'', ''k'': ''l''}, invierte el dict (valor->clave) e imprime
+  el resultado.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''j'': ''i'', ''l'': ''k''}'
+starter_code: ''

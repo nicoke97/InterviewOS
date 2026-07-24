@@ -1,0 +1,18 @@
+id: D185
+level: D
+page: 185
+set: 19
+block: D
+block_id: D.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Combina except + else + finally con 10/2
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5.0
+
+    listo'
+starter_code: ''

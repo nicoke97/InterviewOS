@@ -1,0 +1,16 @@
+id: D16
+level: D
+page: 16
+set: 2
+block: A
+block_id: D.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea {'lista':[]} y agrega 5 a la lista interna
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''lista'': [5]}'
+starter_code: ''

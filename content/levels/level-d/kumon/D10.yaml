@@ -1,0 +1,15 @@
+id: D10
+level: D
+page: 10
+set: 1
+block: A
+block_id: D.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''activo'': True} e imprime el valor de la clave ''activo''.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

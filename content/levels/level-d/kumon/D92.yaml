@@ -1,0 +1,25 @@
+id: D92
+level: D
+page: 92
+set: 10
+block: B
+block_id: D.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Combina {'a':1} y {'b':2} con update
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''a'': 1, ''b'': 2}'
+starter_code: 'a = ___
+
+  a.update({''b'': 2})
+
+  print(___)'
+reference_code: 'a = {''a'': 1}
+
+  a.update({''b'': 2})
+
+  print(a)'

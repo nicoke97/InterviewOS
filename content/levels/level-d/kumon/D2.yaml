@@ -1,0 +1,22 @@
+id: D2
+level: D
+page: 2
+set: 1
+block: A
+block_id: D.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Crea el dict {''nombre'': ''Ana'', ''edad'': 22} e imprime el valor de la
+  clave ''nombre''.'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Ana
+starter_code: 'd = ___
+
+  print(___)'
+reference_code: 'd = {''nombre'': ''Ana'', ''edad'': 22}
+
+  print(d[''nombre''])'

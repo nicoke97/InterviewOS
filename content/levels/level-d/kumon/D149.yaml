@@ -1,0 +1,15 @@
+id: D149
+level: D
+page: 149
+set: 15
+block: C
+block_id: D.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Cuenta cuantos numeros unicos hay en [1,1,2,3,3,3,4]
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

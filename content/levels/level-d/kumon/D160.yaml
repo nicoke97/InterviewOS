@@ -1,0 +1,15 @@
+id: D160
+level: D
+page: 160
+set: 16
+block: D
+block_id: D.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Maneja 7/0 imprimiendo un mensaje personalizado
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: No se puede dividir entre cero
+starter_code: ''

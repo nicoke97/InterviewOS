@@ -1,0 +1,16 @@
+id: D50
+level: D
+page: 50
+set: 5
+block: A
+block_id: D.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Dado {''m'': 5, ''n'': 6}, recorre items() e imprime ''clave:valor'' por
+  cada par.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'm:5 n:6 '
+starter_code: ''

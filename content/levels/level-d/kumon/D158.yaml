@@ -1,0 +1,15 @@
+id: D158
+level: D
+page: 158
+set: 16
+block: D
+block_id: D.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Captura ZeroDivisionError dentro de un bucle sobre [2,0,4] (10/n)
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5.0 x 2.5 '
+starter_code: ''

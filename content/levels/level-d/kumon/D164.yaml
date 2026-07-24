@@ -1,0 +1,16 @@
+id: D164
+level: D
+page: 164
+set: 17
+block: D
+block_id: D.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Recorre ['1','dos','3'] sumando los que sean numeros
+hints:
+- int(valor) convierte a entero. Imprime el resultado con print().
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

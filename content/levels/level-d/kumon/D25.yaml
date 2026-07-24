@@ -1,0 +1,18 @@
+id: D25
+level: D
+page: 25
+set: 3
+block: A
+block_id: D.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Dado {''p'': 5}, usa .get(''q'', 99) y muestra el resultado (la clave puede
+  no existir).'
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '99'
+starter_code: ''

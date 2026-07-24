@@ -1,0 +1,15 @@
+id: D189
+level: D
+page: 189
+set: 19
+block: D
+block_id: D.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Usa else para sumar tras un acceso valido a lista
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '11'
+starter_code: ''

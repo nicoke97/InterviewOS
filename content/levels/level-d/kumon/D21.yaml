@@ -1,0 +1,23 @@
+id: D21
+level: D
+page: 21
+set: 3
+block: A
+block_id: D.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Dado {''a'': 1}, usa .get(''b'', 0) y muestra el resultado (la clave puede
+  no existir).'
+hints:
+- 'La llave es lo que buscas despues (ej. el numero). El valor es informacion extra
+  (ej. el indice): seen[num] = i.'
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: 'd = ___
+
+  print(d.get(''b'', 0))'
+reference_code: 'd = {''a'': 1}
+
+  print(d.get(''b'', 0))'

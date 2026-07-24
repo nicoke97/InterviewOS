@@ -1,0 +1,18 @@
+id: D156
+level: D
+page: 156
+set: 16
+block: D
+block_id: D.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Suma 8/4 y 6/2 en un try, imprime ambos
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2.0
+
+    3.0'
+starter_code: ''

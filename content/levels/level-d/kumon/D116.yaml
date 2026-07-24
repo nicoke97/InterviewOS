@@ -1,0 +1,16 @@
+id: D116
+level: D
+page: 116
+set: 12
+block: C
+block_id: D.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea un set desde 'banana' e imprime sus letras ordenadas
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''a'', ''b'', ''n'']'
+starter_code: ''

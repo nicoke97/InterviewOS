@@ -1,0 +1,15 @@
+id: D79
+level: D
+page: 79
+set: 8
+block: B
+block_id: D.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {'x':{'y':[10,20]}}, imprime el ultimo de la lista
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''
