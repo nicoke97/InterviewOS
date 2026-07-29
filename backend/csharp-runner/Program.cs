@@ -321,13 +321,32 @@ namespace CsharpRunner
                     var raw = el.GetRawText();
                     return raw.Contains('.') || raw.Contains('e') || raw.Contains('E') ? raw + "d" : raw;
                 case JsonValueKind.Array:
-                    var items = el.EnumerateArray().ToList();
-                    if (items.Count == 0) return "new int[]{}";
-                    var inner = string.Join(", ", items.Select(LiteralOf));
-                    return "new[]{" + inner + "}";
+                    return ArrayLiteral(el);
                 default:
                     return "null";
             }
+        }
+
+        private static string ArrayLiteral(JsonElement el)
+        {
+            var items = el.EnumerateArray().ToList();
+            if (items.Count == 0) return "new int[]{}";
+
+            var kinds = items.Select(i => i.ValueKind).Distinct().ToList();
+            var hasNull = kinds.Contains(JsonValueKind.Null);
+            var hasNumber = kinds.Contains(JsonValueKind.Number);
+            var hasString = kinds.Contains(JsonValueKind.String);
+            var hasArray = kinds.Contains(JsonValueKind.Array);
+            var hasBool = kinds.Contains(JsonValueKind.True) || kinds.Contains(JsonValueKind.False);
+            var inner = string.Join(", ", items.Select(LiteralOf));
+
+            if (hasString && (hasNumber || hasBool || hasNull))
+                return "new object[]{" + inner + "}";
+            if (hasNull && hasNumber && !hasString && !hasArray)
+                return "new int?[]{" + inner + "}";
+            if (hasNull && !hasNumber && !hasString && !hasArray)
+                return "new object[]{" + inner + "}";
+            return "new[]{" + inner + "}";
         }
 
         private static bool DeepEqual(JsonElement a, JsonElement b)
@@ -352,9 +371,16 @@ namespace CsharpRunner
                     var ae = a.EnumerateArray().ToList();
                     var be = b.EnumerateArray().ToList();
                     if (ae.Count != be.Count) return false;
+                    var ordered = true;
                     for (int i = 0; i < ae.Count; i++)
-                        if (!DeepEqual(ae[i], be[i])) return false;
-                    return true;
+                    {
+                        if (!DeepEqual(ae[i], be[i]))
+                        {
+                            ordered = false;
+                            break;
+                        }
+                    }
+                    return ordered || UnorderedArrayEqual(ae, be);
                 case JsonValueKind.Object:
                     var ao = a.EnumerateObject().OrderBy(p => p.Name).ToList();
                     var bo = b.EnumerateObject().OrderBy(p => p.Name).ToList();
@@ -368,6 +394,28 @@ namespace CsharpRunner
                 default:
                     return a.GetRawText() == b.GetRawText();
             }
+        }
+
+        private static bool UnorderedArrayEqual(List<JsonElement> a, List<JsonElement> b)
+        {
+            if (a.Count == 0) return b.Count == 0;
+            if (a[0].ValueKind == JsonValueKind.Array || (b.Count > 0 && b[0].ValueKind == JsonValueKind.Array))
+            {
+                var na = a.Select(NormalizeNested).OrderBy(x => x, StringComparer.Ordinal).ToList();
+                var nb = b.Select(NormalizeNested).OrderBy(x => x, StringComparer.Ordinal).ToList();
+                return na.SequenceEqual(nb, StringComparer.Ordinal);
+            }
+            var sa = a.Select(e => e.GetRawText()).OrderBy(x => x, StringComparer.Ordinal).ToList();
+            var sb = b.Select(e => e.GetRawText()).OrderBy(x => x, StringComparer.Ordinal).ToList();
+            return sa.SequenceEqual(sb, StringComparer.Ordinal);
+        }
+
+        private static string NormalizeNested(JsonElement e)
+        {
+            if (e.ValueKind != JsonValueKind.Array)
+                return e.GetRawText();
+            var inner = e.EnumerateArray().Select(x => x.GetRawText()).OrderBy(x => x, StringComparer.Ordinal);
+            return "[" + string.Join(",", inner) + "]";
         }
 
         private static object JsonToObject(JsonElement el)

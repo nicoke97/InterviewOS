@@ -6,8 +6,9 @@ from datetime import date, datetime
 from sqlalchemy.orm import Session
 
 from .content_i18n import localize_starter_code
-from .content_loader import get_leetcode_problem, guide_fields, load_curriculum, problem_description
+from .content_loader import guide_fields, load_curriculum, problem_description
 from .executor import run_leetcode_code
+from .leetcodes_csharp import csharp_spec, normalize_exec_language
 from .models import Attempt, LeetCodeProgress
 
 from .i18n import tier_label as i18n_tier_label
@@ -101,7 +102,24 @@ def leetcodes_roadmap(db: Session) -> dict:
     }
 
 
-def get_leetcodes_problem_detail(problem_id: str, tier: int = 1, *, locale: str = "en") -> dict:
+def _language_fields(p, tier_data: dict, tier: int, language: str | None, locale: str) -> tuple[str, str, str, str]:
+    lang = normalize_exec_language(language)
+    if lang == "csharp":
+        spec = csharp_spec(p.id, tier)
+        if spec:
+            return lang, spec["fn_name"], spec["starter_code"], spec["solution_code"]
+        lang = "python"
+    starter = localize_starter_code(tier_data.get("starter_code", ""), locale)
+    return lang, p.fn_name, starter, p.solution_code
+
+
+def get_leetcodes_problem_detail(
+    problem_id: str,
+    tier: int = 1,
+    *,
+    locale: str = "en",
+    language: str | None = None,
+) -> dict:
     curriculum = load_curriculum()
     p = curriculum.leetcodes.get(problem_id)
     if not p:
@@ -110,17 +128,21 @@ def get_leetcodes_problem_detail(problem_id: str, tier: int = 1, *, locale: str 
     guide = guide_fields(p, tier_data, tier, locale)
     explain_checklist = guide.pop("explain_checklist", tier_data.get("explain_checklist", []))
     narration_prompts = guide.pop("narration_prompts", tier_data.get("narration_prompts", []))
+    lang, fn_name, starter, solution = _language_fields(p, tier_data, tier, language, locale)
+    if guide.get("solution_code"):
+        guide["solution_code"] = solution
     return {
         "id": p.id,
         "title": p.title,
         "description": problem_description(p, locale),
         "tier": tier,
         "tier_label": i18n_tier_label(tier, locale),
-        "fn_name": p.fn_name,
+        "fn_name": fn_name,
+        "language": lang,
         "topic": p.topic,
         "difficulty": p.difficulty,
         "leetcode_ref": p.leetcode_ref,
-        "starter_code": localize_starter_code(tier_data.get("starter_code", ""), locale),
+        "starter_code": starter,
         "explain_checklist": explain_checklist,
         "narration_prompts": narration_prompts,
         "test_cases_preview": p.test_cases[:2],
@@ -128,14 +150,30 @@ def get_leetcodes_problem_detail(problem_id: str, tier: int = 1, *, locale: str 
     }
 
 
-def submit_practice(db: Session, problem_id: str, tier: int, code: str, *, locale: str = "en") -> dict:
+def submit_practice(
+    db: Session,
+    problem_id: str,
+    tier: int,
+    code: str,
+    *,
+    locale: str = "en",
+    language: str | None = None,
+) -> dict:
     curriculum = load_curriculum()
     p = curriculum.leetcodes.get(problem_id)
     if not p:
         return {"passed": False, "error": "Problema no encontrado"}
 
     tier = max(1, min(3, tier))
-    res = run_leetcode_code(code, p.test_cases, p.fn_name)
+    lang = normalize_exec_language(language)
+    fn_name = p.fn_name
+    if lang == "csharp":
+        spec = csharp_spec(p.id, tier)
+        if spec:
+            fn_name = spec["fn_name"]
+        else:
+            lang = "python"
+    res = run_leetcode_code(code, p.test_cases, fn_name, language=lang)
     passed = bool(res.get("passed"))
 
     prog = _get_or_create_progress(db, problem_id)

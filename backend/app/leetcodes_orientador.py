@@ -369,6 +369,7 @@ def submit_guided_step(
     index: int,
     tier: int,
     code: str,
+    language: str | None = None,
 ) -> dict:
     plan = db.query(DailyPlan).filter_by(id=plan_id).first()
     if not plan or plan.track != TRACK:
@@ -388,7 +389,7 @@ def submit_guided_step(
     if tier != expected_tier:
         tier = expected_tier
 
-    result = submit_practice(db, assignment["problem_id"], tier, code)
+    result = submit_practice(db, assignment["problem_id"], tier, code, language=language)
     if result.get("passed"):
         completed.append(step_index)
         assignment["completed_steps"] = completed
