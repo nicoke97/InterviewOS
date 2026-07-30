@@ -1,0 +1,20 @@
+id: E23
+level: E
+page: 23
+set: 3
+block: A
+block_id: E.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Producto con __init__(self, nombre, precio); crea Producto('Teclado',
+  45) e imprime el precio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '45'
+starter_code: ___
+reference_code: "class Producto:\n    def __init__(self, nombre, precio):\n      \
+  \  self.nombre = nombre\n        self.precio = precio\np = Producto('Teclado', 45)\n\
+  print(p.precio)"

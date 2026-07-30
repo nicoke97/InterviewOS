@@ -1,0 +1,16 @@
+id: E80
+level: E
+page: 80
+set: 8
+block: B
+block_id: E.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Saludo con nombre en __init__ y metodo saludar(self, otro) que retorne
+  'Hola <otro>, soy <nombre>'; usa nombre='Beto', otro='Ana'.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Hola Ana, soy Beto
+starter_code: ''

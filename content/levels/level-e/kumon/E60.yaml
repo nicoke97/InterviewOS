@@ -1,0 +1,16 @@
+id: E60
+level: E
+page: 60
+set: 6
+block: B
+block_id: E.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Calc con metodo sumar(self, a, b) que retorne a+b; crea Calc() e imprime
+  sumar(8, 8).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '16'
+starter_code: ''

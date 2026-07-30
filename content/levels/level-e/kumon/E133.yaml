@@ -1,0 +1,20 @@
+id: E133
+level: E
+page: 133
+set: 14
+block: C
+block_id: E.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Temperatura con celsius en __init__ y metodo fahrenheit() (c*9/5+32);
+  imprime la fahrenheit de Temperatura(25).
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '77.0'
+starter_code: ___
+reference_code: "class Temperatura:\n    def __init__(self, celsius):\n        self.celsius\
+  \ = celsius\n    def fahrenheit(self):\n        return self.celsius * 9 / 5 + 32\n\
+  print(Temperatura(25).fahrenheit())"

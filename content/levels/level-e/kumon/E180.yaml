@@ -1,0 +1,17 @@
+id: E180
+level: E
+page: 180
+set: 18
+block: D
+block_id: E.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 78
+prompt: Define Base con __init__(self, x) que guarde self.x; define Hija(Base) con
+  __init__(self, x, y) que llame super().__init__(x) y guarde self.y; crea Hija(7,
+  8) e imprime x+y.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ''

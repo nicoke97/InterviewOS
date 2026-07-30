@@ -1,0 +1,18 @@
+id: E104
+level: E
+page: 104
+set: 11
+block: C
+block_id: E.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Punto con x,y y __str__ que devuelva '(x, y)'; imprime el objeto Punto(5,
+  9).
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: (5, 9)
+starter_code: ''

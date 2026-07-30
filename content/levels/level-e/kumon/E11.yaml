@@ -1,0 +1,20 @@
+id: E11
+level: E
+page: 11
+set: 2
+block: A
+block_id: E.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define clase Perro con __init__(self, nombre); crea Perro('Rex') e imprime
+  su .nombre.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Rex
+starter_code: "class Perro:\n    def __init__(self, nombre):\n        self.nombre\
+  \ = nombre\nd = ___\nprint(___)"
+reference_code: "class Perro:\n    def __init__(self, nombre):\n        self.nombre\
+  \ = nombre\nd = Perro('Rex')\nprint(d.nombre)"

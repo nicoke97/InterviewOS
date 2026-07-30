@@ -1,0 +1,16 @@
+id: E194
+level: E
+page: 194
+set: 20
+block: D
+block_id: E.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 84
+prompt: Define Gato(Animal); imprime isinstance de un int como Animal (False)
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

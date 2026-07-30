@@ -1,0 +1,17 @@
+id: E164
+level: E
+page: 164
+set: 17
+block: D
+block_id: E.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Empleado con metodo rol() -> 'empleado'; define QA(Empleado) que sobrescriba
+  rol() -> 'tester'; imprime QA().rol().
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: tester
+starter_code: ''

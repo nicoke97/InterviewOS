@@ -1,0 +1,17 @@
+id: E147
+level: E
+page: 147
+set: 15
+block: C
+block_id: E.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Carrito con una lista interna; metodo agregar(p) y total() que sume
+  los precios. Agrega [200, 300] e imprime el total.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '500'
+starter_code: ''

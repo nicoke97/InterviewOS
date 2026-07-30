@@ -1,0 +1,16 @@
+id: E195
+level: E
+page: 195
+set: 20
+block: D
+block_id: E.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 84
+prompt: 'Polimorfismo: dos clases con hablar(); recorre e imprime cada sonido'
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'guau miau '
+starter_code: ''

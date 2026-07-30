@@ -1,0 +1,20 @@
+id: E62
+level: E
+page: 62
+set: 7
+block: B
+block_id: E.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Circulo con radio en __init__ y metodo diametro(self) que retorne radio*2;
+  crea Circulo(5) e imprime su diametro.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ___
+reference_code: "class Circulo:\n    def __init__(self, radio):\n        self.radio\
+  \ = radio\n    def diametro(self):\n        return self.radio * 2\nc = Circulo(5)\n\
+  print(c.diametro())"

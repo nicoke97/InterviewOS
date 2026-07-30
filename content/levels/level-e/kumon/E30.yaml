@@ -1,0 +1,16 @@
+id: E30
+level: E
+page: 30
+set: 3
+block: A
+block_id: E.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Producto con __init__(self, nombre, precio); crea Producto('Mochila',
+  80) e imprime el precio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '80'
+starter_code: ''

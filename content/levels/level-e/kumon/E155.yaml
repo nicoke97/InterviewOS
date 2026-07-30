@@ -1,0 +1,17 @@
+id: E155
+level: E
+page: 155
+set: 16
+block: D
+block_id: E.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Animal con metodo hablar() que retorne 'sonido'; define Leon(Animal)
+  que sobrescriba hablar() para retornar 'roar'; imprime Leon().hablar().
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: roar
+starter_code: ''

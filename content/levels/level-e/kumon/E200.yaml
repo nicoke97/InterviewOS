@@ -1,0 +1,15 @@
+id: E200
+level: E
+page: 200
+set: 20
+block: D
+block_id: E.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 84
+prompt: Define Forma base con area()=0 y Circulo que la sobrescribe; imprime ambas
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 0 3.14
+starter_code: ''

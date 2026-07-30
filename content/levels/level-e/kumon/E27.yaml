@@ -1,0 +1,17 @@
+id: E27
+level: E
+page: 27
+set: 3
+block: A
+block_id: E.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Producto con __init__(self, nombre, precio); crea Producto('Lampara',
+  33) e imprime el precio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '33'
+starter_code: ''

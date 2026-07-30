@@ -1,0 +1,22 @@
+id: E41
+level: E
+page: 41
+set: 5
+block: A
+block_id: E.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Define Ticket con titulo y estado; crea Ticket(''Bug login'', ''abierto'')
+  e imprime: ''<titulo> [<estado>]''.'
+hints:
+- Pon f delante de las comillas e inserta variables con {nombre}. Puedes calcular
+  expresiones dentro de { }.
+validation:
+  type: run_and_match_stdout
+  expected: Bug login [abierto]
+starter_code: "class Ticket:\n    def __init__(self, titulo, estado):\n        self.titulo\
+  \ = titulo\n        self.estado = estado\nt = ___\nprint(___)"
+reference_code: "class Ticket:\n    def __init__(self, titulo, estado):\n        self.titulo\
+  \ = titulo\n        self.estado = estado\nt = Ticket('Bug login', 'abierto')\nprint(f'{t.titulo}\
+  \ [{t.estado}]')"

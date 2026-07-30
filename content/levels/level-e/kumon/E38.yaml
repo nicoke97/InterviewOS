@@ -1,0 +1,16 @@
+id: E38
+level: E
+page: 38
+set: 4
+block: A
+block_id: E.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Persona con nombre y edad; crea Persona('Ian', 18) e imprime ambos
+  atributos separados por espacio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Ian 18
+starter_code: ''

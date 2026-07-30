@@ -1,0 +1,19 @@
+id: E161
+level: E
+page: 161
+set: 17
+block: D
+block_id: E.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Empleado con metodo rol() -> 'empleado'; define Gerente(Empleado) que
+  sobrescriba rol() -> 'gerente'; imprime Gerente().rol().
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: gerente
+starter_code: ___
+reference_code: "class Empleado:\n    def rol(self):\n        return 'empleado'\n\
+  class Gerente(Empleado):\n    def rol(self):\n        return 'gerente'\nprint(Gerente().rol())"

@@ -1,0 +1,20 @@
+id: E143
+level: E
+page: 143
+set: 15
+block: C
+block_id: E.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define Carrito con una lista interna; metodo agregar(p) y total() que sume
+  los precios. Agrega [100] e imprime el total.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ___
+reference_code: "class Carrito:\n    def __init__(self):\n        self.items = []\n\
+  \    def agregar(self, p):\n        self.items.append(p)\n    def total(self):\n\
+  \        return sum(self.items)\nc = Carrito()\nc.agregar(100)\nprint(c.total())"

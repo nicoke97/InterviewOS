@@ -1,0 +1,19 @@
+id: E182
+level: E
+page: 182
+set: 19
+block: D
+block_id: E.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define A con metodo saludo() -> 'Hola'; define B(A) cuyo saludo() retorne
+  super().saludo() + ' mundo'; imprime B().saludo().
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Hola mundo
+starter_code: ___
+reference_code: "class A:\n    def saludo(self):\n        return 'Hola'\nclass B(A):\n\
+  \    def saludo(self):\n        return super().saludo() + ' mundo'\nprint(B().saludo())"

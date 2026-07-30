@@ -1,0 +1,17 @@
+id: E24
+level: E
+page: 24
+set: 3
+block: A
+block_id: E.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Producto con __init__(self, nombre, precio); crea Producto('Monitor',
+  300) e imprime el precio.
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '300'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: E198
+level: E
+page: 198
+set: 20
+block: D
+block_id: E.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 84
+prompt: Recorre figuras [Cuadrado(2),Cuadrado(4)] e imprime areas separadas
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4 16 '
+starter_code: ''

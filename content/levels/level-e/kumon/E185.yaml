@@ -1,0 +1,17 @@
+id: E185
+level: E
+page: 185
+set: 19
+block: D
+block_id: E.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define A con metodo saludo() -> 'Hola'; define B(A) cuyo saludo() retorne
+  super().saludo() + ' Odoo'; imprime B().saludo().
+hints:
+- Lee con atención lo que se pide imprimir y construye el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Hola Odoo
+starter_code: ''

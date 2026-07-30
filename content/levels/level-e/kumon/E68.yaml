@@ -1,0 +1,16 @@
+id: E68
+level: E
+page: 68
+set: 7
+block: B
+block_id: E.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Circulo con radio en __init__ y metodo diametro(self) que retorne radio*2;
+  crea Circulo(4) e imprime su diametro.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''
