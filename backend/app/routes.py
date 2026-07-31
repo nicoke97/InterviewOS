@@ -64,6 +64,7 @@ from .set_engine import (
     submit_exam,
     submit_set,
 )
+from . import sde_engine
 
 router = APIRouter()
 
@@ -77,6 +78,7 @@ class RunRequest(BaseModel):
     exercise_id: str
     exercise_type: str = "kumon"
     tier: int = 1
+    language: str | None = None
 
 
 class SheetAnswerItem(BaseModel):
@@ -130,6 +132,7 @@ class LeetcodesPracticeSubmitRequest(BaseModel):
     code: str
     plan_id: int | None = None
     assignment_index: int | None = None
+    language: str | None = None
 
 
 class ReturnExamSubmitRequest(BaseModel):
@@ -140,6 +143,34 @@ class SettingsUpdate(BaseModel):
     focus_mode: bool | None = None
     dev_mode: bool | None = None
     locale: str | None = None
+
+
+class SdeCardReview(BaseModel):
+    results: list[dict]
+
+
+class SdeSheetSubmit(BaseModel):
+    code: str
+
+
+class SdeVoiceSubmit(BaseModel):
+    transcript: str
+    algo_id: str
+    lang: str
+
+
+class SdeTheorySubmit(BaseModel):
+    answers: list[int]
+
+
+class SdeOfflineBody(BaseModel):
+    kinds: list[str] = []
+    section_id: str | None = None
+    passed: bool | None = None
+
+
+class SdeSqlSubmit(BaseModel):
+    sql: str
 
 
 def _require_level(level: str, locale: str = "en") -> str:
@@ -271,9 +302,9 @@ def leetcodes_roadmap_route(db: Session = Depends(get_db)):
 
 
 @router.get("/leetcodes/problem/{problem_id}")
-def leetcodes_problem(problem_id: str, request: Request, tier: int = 1):
+def leetcodes_problem(problem_id: str, request: Request, tier: int = 1, language: str | None = None):
     locale = locale_from_request(request)
-    detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale)
+    detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale, language=language)
     if not detail:
         raise HTTPException(404, t("problem_not_found", locale))
     return detail
@@ -285,8 +316,9 @@ def leetcodes_practice_submit(req: LeetcodesPracticeSubmitRequest, request: Requ
     if req.plan_id is not None and req.assignment_index is not None:
         return submit_guided_step(
             db, req.plan_id, req.assignment_index, req.tier, req.code,
+            language=req.language,
         )
-    return submit_practice(db, req.problem_id, req.tier, req.code, locale=locale)
+    return submit_practice(db, req.problem_id, req.tier, req.code, locale=locale, language=req.language)
 
 
 # ---------------------------------------------------------------------------
@@ -329,11 +361,11 @@ def exam_submit(req: ExamSubmitRequest, db: Session = Depends(get_db)):
 # ---------------------------------------------------------------------------
 
 @router.get("/problem/{problem_id}")
-def get_problem(problem_id: str, request: Request, tier: int = 1, db: Session = Depends(get_db)):
+def get_problem(problem_id: str, request: Request, tier: int = 1, language: str | None = None, db: Session = Depends(get_db)):
     locale = locale_from_request(request)
     c = load_curriculum()
     if problem_id in c.leetcodes:
-        detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale)
+        detail = get_leetcodes_problem_detail(problem_id, tier, locale=locale, language=language)
         if detail:
             return detail
     p = c.leetcode.get(problem_id)
@@ -381,6 +413,17 @@ def run_code(req: RunRequest):
         p = c.leetcodes.get(req.exercise_id) or c.leetcode.get(req.exercise_id)
         if not p:
             raise HTTPException(404)
+        from .leetcodes_csharp import csharp_spec, normalize_exec_language
+        if p.track == "leetcodes":
+            lang = normalize_exec_language(req.language)
+            fn_name = p.fn_name
+            if lang == "csharp":
+                spec = csharp_spec(p.id, req.tier)
+                if spec:
+                    fn_name = spec["fn_name"]
+                else:
+                    lang = "python"
+            return run_leetcode_code(req.code, p.test_cases, fn_name, language=lang)
         return run_leetcode_code(req.code, p.test_cases, p.fn_name, language=language_for_level(p.level))
     raise HTTPException(400, "Tipo de ejercicio desconocido")
 
@@ -532,9 +575,64 @@ def update_settings(req: SettingsUpdate, db: Session = Depends(get_db)):
     return get_settings(db)
 
 
-# ---------------------------------------------------------------------------
-# export
-# ---------------------------------------------------------------------------
+@router.get("/sde/today")
+def sde_today(request: Request, db: Session = Depends(get_db)):
+    return sde_engine.ensure_today(db, locale_from_request(request))
+
+
+@router.post("/sde/cards/review")
+def sde_cards_review(req: SdeCardReview, db: Session = Depends(get_db)):
+    return sde_engine.review_cards(db, req.results)
+
+
+@router.get("/sde/section/{section_id}")
+def sde_section(section_id: str, request: Request):
+    sec = sde_engine.get_section(section_id, locale_from_request(request))
+    if not sec:
+        raise HTTPException(404, "section not found")
+    return sec
+
+
+@router.post("/sde/section/{section_id}/quiz")
+def sde_section_quiz(section_id: str, req: SdeTheorySubmit, request: Request, db: Session = Depends(get_db)):
+    return sde_engine.submit_theory(db, section_id, req.answers, locale_from_request(request))
+
+
+@router.get("/sde/algo/{algo_id}/{lang}/{sheet_id}")
+def sde_sheet(algo_id: str, lang: str, sheet_id: str, request: Request):
+    payload = sde_engine.get_sheet_payload(algo_id, lang, sheet_id, locale_from_request(request))
+    if not payload:
+        raise HTTPException(404, "sheet not found")
+    return payload
+
+
+@router.post("/sde/algo/{algo_id}/{lang}/{sheet_id}/submit")
+def sde_sheet_submit(algo_id: str, lang: str, sheet_id: str, req: SdeSheetSubmit, db: Session = Depends(get_db)):
+    return sde_engine.submit_sheet(db, algo_id, lang, sheet_id, req.code)
+
+
+@router.post("/sde/voice")
+def sde_voice(req: SdeVoiceSubmit, db: Session = Depends(get_db)):
+    return sde_engine.submit_voice(db, req.algo_id, req.lang, req.transcript)
+
+
+@router.post("/sde/offline")
+def sde_offline(req: SdeOfflineBody, db: Session = Depends(get_db)):
+    if req.passed is not None:
+        return sde_engine.verify_offline(db, req.passed)
+    return sde_engine.log_offline(db, req.kinds, req.section_id)
+
+
+@router.get("/sde/travel-pack")
+def sde_pack(request: Request, db: Session = Depends(get_db)):
+    from fastapi.responses import PlainTextResponse
+    return PlainTextResponse(sde_engine.travel_pack(db, locale_from_request(request)), media_type="text/markdown")
+
+
+@router.post("/sde/sql/{drill_id}")
+def sde_sql(drill_id: str, req: SdeSqlSubmit, db: Session = Depends(get_db)):
+    return sde_engine.submit_sql(db, drill_id, req.sql)
+
 
 @router.get("/export")
 def export_progress(db: Session = Depends(get_db)):

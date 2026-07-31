@@ -60,7 +60,10 @@ def startup():
     init_db()
     _disable_dev_mode_in_production()
     invalidate_curriculum_cache()
+    from .sde_content import invalidate_sde_cache, load_sde
+    invalidate_sde_cache()
     load_curriculum()
+    load_sde()
     _mount_static_files()
 
 
