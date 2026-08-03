@@ -10,6 +10,24 @@ test_cases:
 - args:
   - 3
   expected: 9
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuelve paso a paso con
+  la lógica que ya conoces.
+learning:
+- Traducir enunciado a código Python
+- Probar con los ejemplos dados
+- Manejar casos borde antes de enviar
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "def square_area(side):\n    class Shape:\n        def area(self):\n\
+  \            return 0\n    class Square(Shape):\n        def __init__(self, s):\n\
+  \            self.s = s\n        def area(self):\n            return self.s * self.s\n\
+  \    return Square(side).area()"
 tiers:
   1:
     starter_code: "def square_area(side):\n    class Shape:\n        def area(self):\n\
@@ -17,14 +35,15 @@ tiers:
       \ s):\n            self.s = s\n        def area(self):\n            return ___\n\
       \    return Square(side).area()"
     explain_checklist:
-    - Identifica entradas y salidas
-    - Piensa en casos borde
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
     hints_allowed: true
   2:
     starter_code: "def square_area(*args):\n    pass"
     narration_prompts:
-    - Explica tu enfoque en voz alta
-    - Cual es la complejidad?
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
     hints_allowed: true
   3:
     starter_code: "def square_area(*args):\n    pass"
