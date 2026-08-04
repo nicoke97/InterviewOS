@@ -1,0 +1,15 @@
+id: OA48
+level: OA
+page: 48
+set: 5
+block: A
+block_id: OA.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Suma los amounts y aplica 18% IGV al total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '354.0'
+starter_code: ''

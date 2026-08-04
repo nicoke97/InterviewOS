@@ -1,0 +1,17 @@
+id: OA5
+level: OA
+page: 5
+set: 1
+block: A
+block_id: OA.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea una orden con amount=150; aplicale 10% de descuento e imprime el nuevo
+  amount.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '135.0'
+starter_code: ''

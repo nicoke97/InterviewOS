@@ -1,0 +1,16 @@
+id: OA6
+level: OA
+page: 6
+set: 1
+block: A
+block_id: OA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea un partner con name='Globex'; imprime cuantos campos tiene el registro.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

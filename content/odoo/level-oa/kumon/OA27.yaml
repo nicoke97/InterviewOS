@@ -1,0 +1,16 @@
+id: OA27
+level: OA
+page: 27
+set: 3
+block: A
+block_id: OA.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Dominio combinado: tickets ''open'' Y priority>=2; cuenta cuantos cumplen.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

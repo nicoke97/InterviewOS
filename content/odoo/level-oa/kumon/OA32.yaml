@@ -1,0 +1,21 @@
+id: OA32
+level: OA
+page: 32
+set: 4
+block: A
+block_id: OA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'mapped(''amount''): imprime la lista de montos de las ordenes.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[10, 20]'
+starter_code: 'orders = ___
+
+  print(___)'
+reference_code: 'orders = [{''amount'': 10}, {''amount'': 20}]
+
+  print([o[''amount''] for o in orders])'

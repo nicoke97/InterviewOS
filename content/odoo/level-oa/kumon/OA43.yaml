@@ -1,0 +1,20 @@
+id: OA43
+level: OA
+page: 43
+set: 5
+block: A
+block_id: OA.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Suma solo los amounts de ordenes 'done'.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '130'
+starter_code: ___
+reference_code: 'orders = [{''amount'': 100, ''state'': ''done''}, {''amount'': 50,
+  ''state'': ''open''}, {''amount'': 30, ''state'': ''done''}]
+
+  print(sum(o[''amount''] for o in orders if o[''state''] == ''done''))'

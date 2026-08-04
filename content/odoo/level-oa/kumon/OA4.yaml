@@ -1,0 +1,17 @@
+id: OA4
+level: OA
+page: 4
+set: 1
+block: A
+block_id: OA.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea un registro con name='Bob' y agrega despues el campo email='b@x.com';
+  imprime el dict.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''name'': ''Bob'', ''email'': ''b@x.com''}'
+starter_code: ''

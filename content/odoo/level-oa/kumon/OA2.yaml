@@ -1,0 +1,21 @@
+id: OA2
+level: OA
+page: 2
+set: 1
+block: A
+block_id: OA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Crea un registro producto con name='Laptop' y price=900; imprime el price.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '900'
+starter_code: 'rec = ___
+
+  print(___)'
+reference_code: 'rec = {''name'': ''Laptop'', ''price'': 900}
+
+  print(rec[''price''])'

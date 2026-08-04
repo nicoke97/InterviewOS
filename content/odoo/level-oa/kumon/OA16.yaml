@@ -1,0 +1,16 @@
+id: OA16
+level: OA
+page: 16
+set: 2
+block: A
+block_id: OA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado un recordset de productos con price, imprime una lista de precios.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[10, 20, 5]'
+starter_code: ''

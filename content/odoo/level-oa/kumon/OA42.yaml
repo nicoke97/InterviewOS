@@ -1,0 +1,19 @@
+id: OA42
+level: OA
+page: 42
+set: 5
+block: A
+block_id: OA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Calcula el promedio de price de los productos.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20.0'
+starter_code: ___
+reference_code: 'products = [{''price'': 10}, {''price'': 20}, {''price'': 30}]
+
+  print(sum(p[''price''] for p in products) / len(products))'
