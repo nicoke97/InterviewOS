@@ -1,0 +1,26 @@
+id: OB41
+level: OB
+page: 41
+set: 5
+block: A
+block_id: OB.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'many2one: dado partner_id=2, busca el name del partner en el diccionario
+  de partners.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Globex
+starter_code: 'partners = ___
+
+  order = ___
+
+  print(___)'
+reference_code: 'partners = {1: ''ACME'', 2: ''Globex''}
+
+  order = {''partner_id'': 2}
+
+  print(partners[order[''partner_id'']])'

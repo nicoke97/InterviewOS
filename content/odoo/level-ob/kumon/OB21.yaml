@@ -1,0 +1,19 @@
+id: OB21
+level: OB
+page: 21
+set: 3
+block: A
+block_id: OB.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'write: actualiza el price del registro id=1 a 99 e imprime el registro.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''id'': 1, ''price'': 99}'
+starter_code: "records = ___\nfor r in ___:\n    if r['id'] == 1:\n        r['price']\
+  \ = 99\nprint(___)"
+reference_code: "records = [{'id': 1, 'price': 10}]\nfor r in records:\n    if r['id']\
+  \ == 1:\n        r['price'] = 99\nprint(records[0])"

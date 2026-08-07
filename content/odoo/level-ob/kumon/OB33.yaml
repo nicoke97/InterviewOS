@@ -1,0 +1,19 @@
+id: OB33
+level: OB
+page: 33
+set: 4
+block: A
+block_id: OB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'search_count: cuenta los tickets con priority>=2.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: 'tickets = [{''priority'': 1}, {''priority'': 3}, {''priority'': 2}]
+
+  print(len([t for t in tickets if t[''priority''] >= 2]))'

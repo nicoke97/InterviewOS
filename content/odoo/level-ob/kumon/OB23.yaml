@@ -1,0 +1,18 @@
+id: OB23
+level: OB
+page: 23
+set: 3
+block: A
+block_id: OB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'write masivo: pon active=False en todos los registros; imprime la lista.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[{''active'': False}, {''active'': False}]'
+starter_code: ___
+reference_code: "records = [{'active': True}, {'active': True}]\nfor r in records:\n\
+  \    r['active'] = False\nprint(records)"

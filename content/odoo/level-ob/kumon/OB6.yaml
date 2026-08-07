@@ -1,0 +1,16 @@
+id: OB6
+level: OB
+page: 6
+set: 1
+block: A
+block_id: OB.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define un modelo con campo Boolean active=True; niegalo e imprime.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

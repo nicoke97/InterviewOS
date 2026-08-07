@@ -1,0 +1,17 @@
+id: OB26
+level: OB
+page: 26
+set: 3
+block: A
+block_id: OB.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'write: aplica 10% de descuento al price de cada producto; imprime los nuevos
+  precios.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[90.0, 45.0]'
+starter_code: ''

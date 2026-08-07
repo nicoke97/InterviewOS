@@ -1,0 +1,16 @@
+id: OB44
+level: OB
+page: 44
+set: 5
+block: A
+block_id: OB.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'many2one con default: si partner_id no existe, imprime ''Sin cliente''.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Sin cliente
+starter_code: ''

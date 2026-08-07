@@ -1,0 +1,15 @@
+id: OB9
+level: OB
+page: 9
+set: 1
+block: A
+block_id: OB.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define un modelo con default qty=1; imprime qty.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

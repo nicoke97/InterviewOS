@@ -1,0 +1,16 @@
+id: OB37
+level: OB
+page: 37
+set: 4
+block: A
+block_id: OB.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'browse(2): busca el registro con id=2 e imprime su name.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Y
+starter_code: ''

@@ -1,0 +1,16 @@
+id: OB24
+level: OB
+page: 24
+set: 3
+block: A
+block_id: OB.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'write: incrementa el stock de todos los productos en 10; imprime los stocks.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[15, 10]'
+starter_code: ''

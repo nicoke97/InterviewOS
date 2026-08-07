@@ -1,0 +1,16 @@
+id: OB34
+level: OB
+page: 34
+set: 4
+block: A
+block_id: OB.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'search con limit=1: imprime el name del primer producto activo.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: ''

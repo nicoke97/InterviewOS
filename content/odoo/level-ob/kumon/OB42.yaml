@@ -1,0 +1,25 @@
+id: OB42
+level: OB
+page: 42
+set: 5
+block: A
+block_id: OB.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'many2one: imprime el name del partner de cada orden.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''A'', ''B'']'
+starter_code: 'partners = ___
+
+  orders = ___
+
+  print(___)'
+reference_code: 'partners = {1: ''A'', 2: ''B''}
+
+  orders = [{''partner_id'': 1}, {''partner_id'': 2}]
+
+  print([partners[o[''partner_id'']] for o in orders])'
