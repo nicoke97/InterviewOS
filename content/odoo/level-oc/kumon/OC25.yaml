@@ -1,0 +1,16 @@
+id: OC25
+level: OC
+page: 25
+set: 3
+block: A
+block_id: OC.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Ordena tickets por (priority desc, horas desc); imprime el primer subject.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: b
+starter_code: ''

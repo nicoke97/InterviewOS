@@ -1,0 +1,15 @@
+id: OC38
+level: OC
+page: 38
+set: 4
+block: A
+block_id: OC.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Reporte: promedio de amount por orden, redondeado a 2 decimales.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '77.5'
+starter_code: ''

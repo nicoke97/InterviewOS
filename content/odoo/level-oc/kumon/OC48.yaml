@@ -1,0 +1,15 @@
+id: OC48
+level: OC
+page: 48
+set: 5
+block: A
+block_id: OC.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Suma el total facturado por cliente combinando ordenes; imprime el dict.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '{''A'': 125, ''B'': 50}'
+starter_code: ''

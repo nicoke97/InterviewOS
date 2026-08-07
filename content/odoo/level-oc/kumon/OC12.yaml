@@ -1,0 +1,18 @@
+id: OC12
+level: OC
+page: 12
+set: 2
+block: A
+block_id: OC.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Guard clause: no cerrar un ticket sin solucion; imprime ''falta solucion''.'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: falta solucion
+starter_code: ___
+reference_code: "def cerrar(t):\n    if not t.get('solucion'):\n        return 'falta\
+  \ solucion'\n    return 'cerrado'\nprint(cerrar({'subject': 'X'}))"

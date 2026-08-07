@@ -1,0 +1,18 @@
+id: OC33
+level: OC
+page: 33
+set: 4
+block: A
+block_id: OC.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'Reporte: cuantos productos hay por categoria (dict).'
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '{''A'': 2, ''B'': 1}'
+starter_code: ___
+reference_code: "products = [{'cat': 'A'}, {'cat': 'B'}, {'cat': 'A'}]\nrep = {}\n\
+  for p in products:\n    rep[p['cat']] = rep.get(p['cat'], 0) + 1\nprint(rep)"

@@ -1,0 +1,17 @@
+id: OC4
+level: OC
+page: 4
+set: 1
+block: A
+block_id: OC.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Si el estado es 'done', next_state lo deja igual; imprime el resultado con
+  'done'.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: done
+starter_code: ''

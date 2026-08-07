@@ -1,0 +1,15 @@
+id: OC28
+level: OC
+page: 28
+set: 3
+block: A
+block_id: OC.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Calcula el tiempo promedio de resolucion (horas) de los tickets.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20.0'
+starter_code: ''

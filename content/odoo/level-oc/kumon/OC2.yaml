@@ -1,0 +1,21 @@
+id: OC2
+level: OC
+page: 2
+set: 1
+block: A
+block_id: OC.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: De 'in_progress' el ticket pasa a 'done'; imprime el nuevo estado.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: done
+starter_code: 'flujo = ___
+
+  print(___)'
+reference_code: 'flujo = {''new'': ''in_progress'', ''in_progress'': ''done''}
+
+  print(flujo[''in_progress''])'

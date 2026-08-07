@@ -1,0 +1,16 @@
+id: OC17
+level: OC
+page: 17
+set: 2
+block: A
+block_id: OC.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Valida que el state este en los permitidos; imprime True para 'open'.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

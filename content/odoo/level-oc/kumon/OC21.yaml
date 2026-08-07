@@ -1,0 +1,22 @@
+id: OC21
+level: OC
+page: 21
+set: 3
+block: A
+block_id: OC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Ordena los tickets por priority descendente; imprime los subjects.
+hints:
+- Modela los registros como diccionarios y aplica el patron de Odoo paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '[''b'', ''c'', ''a'']'
+starter_code: 'tickets = ___
+
+  print([t[''subject''] for t in sorted(tickets, key=lambda x: x[''priority''], reverse=True)])'
+reference_code: 'tickets = [{''subject'': ''a'', ''priority'': 1}, {''subject'': ''b'',
+  ''priority'': 3}, {''subject'': ''c'', ''priority'': 2}]
+
+  print([t[''subject''] for t in sorted(tickets, key=lambda x: x[''priority''], reverse=True)])'
