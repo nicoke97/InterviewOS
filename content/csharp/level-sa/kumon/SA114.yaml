@@ -1,0 +1,16 @@
+id: SA114
+level: SA
+page: 114
+set: 12
+block: C
+block_id: SA.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada nota=55, imprime "aprobado" si nota >= 60, si no "reprobado".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: reprobado
+starter_code: ''

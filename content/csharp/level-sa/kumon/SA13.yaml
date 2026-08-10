@@ -1,0 +1,19 @@
+id: SA13
+level: SA
+page: 13
+set: 2
+block: A
+block_id: SA.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 42
+prompt: Crea la variable color de tipo string con el valor 'azul' e imprímela.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: azul
+starter_code: ___
+reference_code: 'string color = "azul";
+
+  Console.WriteLine(color);'

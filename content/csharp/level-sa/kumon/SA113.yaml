@@ -1,0 +1,18 @@
+id: SA113
+level: SA
+page: 113
+set: 12
+block: C
+block_id: SA.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dada edad=20, imprime "mayor" si edad >= 18, si no "menor".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: mayor
+starter_code: ___
+reference_code: "int edad = 20;\nif (edad >= 18)\n    Console.WriteLine(\"mayor\"\
+  );\nelse\n    Console.WriteLine(\"menor\");"

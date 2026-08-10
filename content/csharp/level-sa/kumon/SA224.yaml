@@ -1,0 +1,16 @@
+id: SA224
+level: SA
+page: 224
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con "banana", cuenta las "a" con un Dictionary e imprime.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

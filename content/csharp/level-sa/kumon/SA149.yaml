@@ -1,0 +1,16 @@
+id: SA149
+level: SA
+page: 149
+set: 15
+block: C
+block_id: SA.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dada year=2000, imprime "bisiesto" si divisible por 400 o (por 4 y no por
+  100), si no "comun".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: bisiesto
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SA50
+level: SA
+page: 50
+set: 5
+block: A
+block_id: SA.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime la longitud del texto "dotnet".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

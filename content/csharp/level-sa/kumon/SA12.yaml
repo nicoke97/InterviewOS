@@ -1,0 +1,21 @@
+id: SA12
+level: SA
+page: 12
+set: 2
+block: A
+block_id: SA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 42
+prompt: Crea la variable pais de tipo string con el valor 'Peru' e imprímela.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Peru
+starter_code: 'string pais = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string pais = "Peru";
+
+  Console.WriteLine(pais);'

@@ -1,0 +1,18 @@
+id: SA93
+level: SA
+page: 93
+set: 10
+block: B
+block_id: SA.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime "ab" repetido 3 veces (ababab) con string.Concat(Enumerable.Repeat("ab",
+  3)).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ababab
+starter_code: ___
+reference_code: Console.WriteLine(string.Concat(Enumerable.Repeat("ab", 3)));

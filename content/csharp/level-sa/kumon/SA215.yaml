@@ -1,0 +1,16 @@
+id: SA215
+level: SA
+page: 215
+set: 22
+block: Extra
+block_id: SA.Extra
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con d vacío, usa GetValueOrDefault("a") e imprime (0).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

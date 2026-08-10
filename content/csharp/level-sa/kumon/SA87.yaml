@@ -1,0 +1,16 @@
+id: SA87
+level: SA
+page: 87
+set: 9
+block: B
+block_id: SA.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Con nota1=80 y nota2=90, imprime "Promedio: 85".'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Promedio: 85'
+starter_code: ''

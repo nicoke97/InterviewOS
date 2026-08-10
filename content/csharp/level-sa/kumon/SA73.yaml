@@ -1,0 +1,19 @@
+id: SA73
+level: SA
+page: 73
+set: 8
+block: B
+block_id: SA.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dada s="  hola  ", quita los espacios de los extremos con Trim().
+hints:
+- Trim() elimina espacios al inicio y al final.
+validation:
+  type: run_and_match_stdout
+  expected: hola
+starter_code: ___
+reference_code: 'string s = "  hola  ";
+
+  Console.WriteLine(s.Trim());'

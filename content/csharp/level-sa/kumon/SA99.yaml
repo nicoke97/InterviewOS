@@ -1,0 +1,15 @@
+id: SA99
+level: SA
+page: 99
+set: 10
+block: B
+block_id: SA.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime 3.5 con 2 decimales (3.50) usando ToString("F2").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3.50'
+starter_code: ''

@@ -1,0 +1,20 @@
+id: SA232
+level: SA
+page: 232
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con nums {1,2,3,1}, imprime el primer repetido (1).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: "var seen = ___;\nforeach (int n in new[] { 1, 2, 3, 1 })\n{\n    if\
+  \ (seen.Contains(n)) { Console.WriteLine(n); break; }\n    seen.Add(n);\n}"
+reference_code: "var seen = new HashSet<int>();\nforeach (int n in new[] { 1, 2, 3,\
+  \ 1 })\n{\n    if (seen.Contains(n)) { Console.WriteLine(n); break; }\n    seen.Add(n);\n\
+  }"

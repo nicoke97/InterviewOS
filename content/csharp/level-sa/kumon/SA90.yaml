@@ -1,0 +1,15 @@
+id: SA90
+level: SA
+page: 90
+set: 9
+block: B
+block_id: SA.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Con a=20 y b=6, imprime "20 / 6 = 3 (resto 2)" usando / y %.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 20 / 6 = 3 (resto 2)
+starter_code: ''

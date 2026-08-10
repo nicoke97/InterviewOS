@@ -1,0 +1,16 @@
+id: SA55
+level: SA
+page: 55
+set: 6
+block: B
+block_id: SA.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Une "hasta" y "luego" con un espacio e imprime el resultado.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: hasta luego
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA247
+level: SA
+page: 247
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con nums {3,3,3} y target=6, imprime los índices del primer par (Two Sum).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ''

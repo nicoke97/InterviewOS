@@ -1,0 +1,10 @@
+id: sa-int-2
+question: ¿Qué es la interpolación de strings ($"") en C# y por qué es útil? Muestra
+  un ejemplo.
+rubric:
+- inserta variables/expresiones dentro del texto
+- sintaxis $"...{var}..."
+- más legible que concatenar con +
+sample_answer: 'La interpolación inserta el valor de variables o expresiones dentro
+  de un texto: $"{nombre} tiene {edad} anios". Es más legible que concatenar con +.'
+category: csharp

@@ -1,0 +1,17 @@
+id: SA186
+level: SA
+page: 186
+set: 19
+block: D
+block_id: SA.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dada mes=2, imprime cuántos días base tiene (28 si feb, 30 si abr/jun/sep/nov,
+  si no 31). Prueba mes=2.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '28'
+starter_code: ''

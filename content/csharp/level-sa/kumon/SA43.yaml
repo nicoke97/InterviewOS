@@ -1,0 +1,17 @@
+id: SA43
+level: SA
+page: 43
+set: 5
+block: A
+block_id: SA.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Convierte el número 42 a texto y agrégale "!".
+hints:
+- numero.ToString() convierte un número a texto.
+validation:
+  type: run_and_match_stdout
+  expected: 42!
+starter_code: ___
+reference_code: Console.WriteLine(42.ToString() + "!");

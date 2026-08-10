@@ -1,0 +1,15 @@
+id: SA189
+level: SA
+page: 189
+set: 19
+block: D
+block_id: SA.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dada n=100, imprime "grande" si >50, "mediano" si >10, si no "chico".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: grande
+starter_code: ''

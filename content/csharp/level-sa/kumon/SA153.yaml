@@ -1,0 +1,21 @@
+id: SA153
+level: SA
+page: 153
+set: 16
+block: D
+block_id: SA.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Crea nombre="Mia" y edad=8, imprime "Mia tiene 8 anios".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Mia tiene 8 anios
+starter_code: ___
+reference_code: 'string nombre = "Mia";
+
+  int edad = 8;
+
+  Console.WriteLine($"{nombre} tiene {edad} anios");'

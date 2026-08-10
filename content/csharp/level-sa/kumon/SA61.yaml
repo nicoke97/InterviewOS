@@ -1,0 +1,21 @@
+id: SA61
+level: SA
+page: 61
+set: 7
+block: B
+block_id: SA.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Dada s="csharp", imprime el primer caracter con s[0].
+hints:
+- s[0] es el primer caracter; s[s.Length - 1] es el último.
+validation:
+  type: run_and_match_stdout
+  expected: c
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "csharp";
+
+  Console.WriteLine(s[0]);'

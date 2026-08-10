@@ -1,0 +1,15 @@
+id: SA79
+level: SA
+page: 79
+set: 8
+block: B
+block_id: SA.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dada s="reporte.pdf", imprime si termina en ".pdf" con EndsWith.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

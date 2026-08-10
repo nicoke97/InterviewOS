@@ -1,0 +1,18 @@
+id: SA233
+level: SA
+page: 233
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con "abca", imprime el primer caracter repetido (a).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: ___
+reference_code: "var seen = new HashSet<char>();\nforeach (char c in \"abca\")\n{\n\
+  \    if (seen.Contains(c)) { Console.WriteLine(c); break; }\n    seen.Add(c);\n}"

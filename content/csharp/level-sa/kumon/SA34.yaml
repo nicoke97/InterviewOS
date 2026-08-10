@@ -1,0 +1,17 @@
+id: SA34
+level: SA
+page: 34
+set: 4
+block: A
+block_id: SA.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Asigna lenguaje="CSharp" y anio=2000. Imprime en qué año apareció (formato:
+  lenguaje nacio en anio).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: CSharp nacio en 2000
+starter_code: ''

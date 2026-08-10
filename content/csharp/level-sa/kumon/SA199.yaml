@@ -1,0 +1,15 @@
+id: SA199
+level: SA
+page: 199
+set: 20
+block: D
+block_id: SA.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dada nums {4, 8, 15, 16}, imprime su suma con Sum().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '43'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA227
+level: SA
+page: 227
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Guarda booleanos: d["activo"]=true. Imprime d["activo"].'
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

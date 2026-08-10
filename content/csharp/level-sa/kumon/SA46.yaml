@@ -1,0 +1,16 @@
+id: SA46
+level: SA
+page: 46
+set: 5
+block: A
+block_id: SA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Imprime el booleano de (0 > 1).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

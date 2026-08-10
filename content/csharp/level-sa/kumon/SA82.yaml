@@ -1,0 +1,25 @@
+id: SA82
+level: SA
+page: 82
+set: 9
+block: B
+block_id: SA.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Con a=9 y b=4, imprime "9 - 4 = 5" con interpolación.
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 9 - 4 = 5
+starter_code: 'int a = ___;
+
+  int b = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int a = 9;
+
+  int b = 4;
+
+  Console.WriteLine($"{a} - {b} = {a - b}");'

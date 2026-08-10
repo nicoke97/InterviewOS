@@ -1,0 +1,16 @@
+id: SA97
+level: SA
+page: 97
+set: 10
+block: B
+block_id: SA.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Une {"Lima", "Peru"} con " - " usando string.Join.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lima - Peru
+starter_code: ''

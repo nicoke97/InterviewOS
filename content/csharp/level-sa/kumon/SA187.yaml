@@ -1,0 +1,17 @@
+id: SA187
+level: SA
+page: 187
+set: 19
+block: D
+block_id: SA.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dada punt=85, imprime "medalla" si >=80, con "oro" si >=90 dentro. Prueba
+  85 -> "medalla plata".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: medalla plata
+starter_code: ''

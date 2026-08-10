@@ -1,0 +1,18 @@
+id: SA111
+level: SA
+page: 111
+set: 12
+block: C
+block_id: SA.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dada x=7, imprime "positivo" si x > 0, si no "no positivo".
+hints:
+- Usa if (condicion) { ... } else { ... }.
+validation:
+  type: run_and_match_stdout
+  expected: positivo
+starter_code: "int x = ___;\nif (x > 0)\n    Console.WriteLine(___);\nelse\n    Console.WriteLine(___);"
+reference_code: "int x = 7;\nif (x > 0)\n    Console.WriteLine(\"positivo\");\nelse\n\
+  \    Console.WriteLine(\"no positivo\");"

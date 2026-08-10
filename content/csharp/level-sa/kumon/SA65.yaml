@@ -1,0 +1,16 @@
+id: SA65
+level: SA
+page: 65
+set: 7
+block: B
+block_id: SA.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s="abc", invierte el texto usando Reverse().
+hints:
+- s.Reverse() invierte los caracteres; new string(...) los une.
+validation:
+  type: run_and_match_stdout
+  expected: cba
+starter_code: ''

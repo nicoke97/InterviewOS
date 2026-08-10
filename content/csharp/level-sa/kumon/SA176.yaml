@@ -1,0 +1,17 @@
+id: SA176
+level: SA
+page: 176
+set: 18
+block: D
+block_id: SA.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada s="racecar", imprime "palindromo" si s es igual a su reverso, si no "no".
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: palindromo
+starter_code: ''

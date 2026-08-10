@@ -1,0 +1,15 @@
+id: SA59
+level: SA
+page: 59
+set: 6
+block: B
+block_id: SA.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Dada palabra="csharp", imprime palabra.Length.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

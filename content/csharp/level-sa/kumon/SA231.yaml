@@ -1,0 +1,20 @@
+id: SA231
+level: SA
+page: 231
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con nums {2,3,3}, imprime el primer número repetido usando un HashSet "seen".
+hints:
+- Guarda lo visto en un HashSet; si vuelve a aparecer, es el repetido.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: "var seen = ___;\nforeach (int n in new[] { 2, 3, 3 })\n{\n    if (seen.Contains(n))\
+  \ { Console.WriteLine(n); break; }\n    seen.Add(n);\n}"
+reference_code: "var seen = new HashSet<int>();\nforeach (int n in new[] { 2, 3, 3\
+  \ })\n{\n    if (seen.Contains(n)) { Console.WriteLine(n); break; }\n    seen.Add(n);\n\
+  }"

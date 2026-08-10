@@ -1,0 +1,16 @@
+id: SA47
+level: SA
+page: 47
+set: 5
+block: A
+block_id: SA.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Redondea 3.14159 a 2 decimales con Math.Round.
+hints:
+- Math.Round(numero, decimales) redondea.
+validation:
+  type: run_and_match_stdout
+  expected: '3.14'
+starter_code: ''

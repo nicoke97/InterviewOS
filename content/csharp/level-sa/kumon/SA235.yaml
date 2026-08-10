@@ -1,0 +1,16 @@
+id: SA235
+level: SA
+page: 235
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con nums {4,4}, imprime true si existe algún duplicado.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA85
+level: SA
+page: 85
+set: 9
+block: B
+block_id: SA.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Con precio=100 y cantidad=3, imprime "Total: 300".'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Total: 300'
+starter_code: ''

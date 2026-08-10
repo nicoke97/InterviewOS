@@ -1,0 +1,21 @@
+id: SA71
+level: SA
+page: 71
+set: 8
+block: B
+block_id: SA.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dada s="hola", imprímela en MAYÚSCULAS con ToUpper().
+hints:
+- s.ToUpper() pasa todo a mayúsculas.
+validation:
+  type: run_and_match_stdout
+  expected: HOLA
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "hola";
+
+  Console.WriteLine(s.ToUpper());'

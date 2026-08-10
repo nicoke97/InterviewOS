@@ -1,0 +1,16 @@
+id: SA246
+level: SA
+page: 246
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con nums {4,1,2,3} y target=5, imprime cuántos pares (i<j) suman 5 (2).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

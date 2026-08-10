@@ -1,0 +1,18 @@
+id: SA143
+level: SA
+page: 143
+set: 15
+block: C
+block_id: SA.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada x=5, imprime "en rango" si 1<=x<=10 (usa &&), si no "fuera".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: en rango
+starter_code: ___
+reference_code: "int x = 5;\nif (x >= 1 && x <= 10)\n    Console.WriteLine(\"en rango\"\
+  );\nelse\n    Console.WriteLine(\"fuera\");"

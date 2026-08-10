@@ -1,0 +1,15 @@
+id: SA130
+level: SA
+page: 130
+set: 13
+block: C
+block_id: SA.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada n=-4, imprime "cero" si ==0, "par" si par, si no "impar".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: par
+starter_code: ''

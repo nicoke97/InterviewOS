@@ -1,0 +1,16 @@
+id: SA56
+level: SA
+page: 56
+set: 6
+block: B
+block_id: SA.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s="interview", imprime cuántos caracteres tiene con .Length.
+hints:
+- s.Length devuelve cuántos caracteres tiene la cadena.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

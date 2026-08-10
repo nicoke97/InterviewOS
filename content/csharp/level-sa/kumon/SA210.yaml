@@ -1,0 +1,15 @@
+id: SA210
+level: SA
+page: 210
+set: 21
+block: Extra
+block_id: SA.Extra
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea d con {"gato":"miau"}, imprime d["gato"].
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: miau
+starter_code: ''

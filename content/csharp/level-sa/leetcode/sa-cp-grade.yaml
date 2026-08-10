@@ -1,0 +1,51 @@
+id: sa-cp-grade
+title: Nota a letra
+fn_name: Nota
+description: Retorna 'A','B','C' o 'F' según el score.
+test_cases:
+- args:
+  - 95
+  expected: A
+- args:
+  - 82
+  expected: B
+- args:
+  - 71
+  expected: C
+- args:
+  - 50
+  expected: F
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "string Nota(int score)\n{\n    if (score >= 90) return \"A\";\n  \
+  \  if (score >= 80) return \"B\";\n    if (score >= 70) return \"C\";\n    return\
+  \ \"F\";\n}"
+tiers:
+  1:
+    starter_code: "string Nota(int score)\n{\n    return \"F\"; // reemplaza\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "string Nota(int score)\n{\n    return \"F\"; // reemplaza\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "string Nota(int score)\n{\n    return \"F\"; // reemplaza\n}"
+    narration_prompts: []
+    hints_allowed: false

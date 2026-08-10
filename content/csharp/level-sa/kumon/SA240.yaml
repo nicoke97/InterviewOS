@@ -1,0 +1,15 @@
+id: SA240
+level: SA
+page: 240
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con "abcdef", imprime "todos unicos" si no hay repetidos.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: todos unicos
+starter_code: ''

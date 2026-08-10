@@ -1,0 +1,16 @@
+id: SA57
+level: SA
+page: 57
+set: 6
+block: B
+block_id: SA.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s="odoo", imprime la longitud de s.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

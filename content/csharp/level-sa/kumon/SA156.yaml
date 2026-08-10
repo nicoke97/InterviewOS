@@ -1,0 +1,16 @@
+id: SA156
+level: SA
+page: 156
+set: 16
+block: D
+block_id: SA.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea nombre="Juan" y edad=60, imprime "Juan tiene 60 anios".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Juan tiene 60 anios
+starter_code: ''

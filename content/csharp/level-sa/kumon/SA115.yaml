@@ -1,0 +1,16 @@
+id: SA115
+level: SA
+page: 115
+set: 12
+block: C
+block_id: SA.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada temp=30, imprime "calor" si temp > 25, si no "templado".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: calor
+starter_code: ''

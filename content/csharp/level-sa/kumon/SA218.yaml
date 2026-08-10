@@ -1,0 +1,15 @@
+id: SA218
+level: SA
+page: 218
+set: 22
+block: Extra
+block_id: SA.Extra
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con d={"perro":4}, imprime "si" si ContainsKey("perro").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: si
+starter_code: ''

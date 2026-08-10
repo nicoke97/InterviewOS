@@ -1,0 +1,16 @@
+id: SA194
+level: SA
+page: 194
+set: 20
+block: D
+block_id: SA.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dada base=5 y exp=3, imprime base^exp usando Math.Pow y (int).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '125'
+starter_code: ''

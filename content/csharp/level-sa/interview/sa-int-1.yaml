@@ -1,0 +1,10 @@
+id: sa-int-1
+question: ¿Cuál es la diferencia entre int y string en C#? Da un ejemplo de cada uno.
+rubric:
+- int representa números enteros
+- string representa texto entre comillas dobles
+- se convierten con int.Parse / .ToString()
+sample_answer: Un int es un número entero (ej. 42) con el que puedes hacer aritmética;
+  un string es texto entre comillas dobles (ej. "42"). Conviertes con int.Parse("42")
+  o 42.ToString().
+category: csharp

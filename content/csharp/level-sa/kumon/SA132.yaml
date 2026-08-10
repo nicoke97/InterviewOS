@@ -1,0 +1,17 @@
+id: SA132
+level: SA
+page: 132
+set: 14
+block: C
+block_id: SA.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Imprime el resultado (true/false) de: true || false'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine(true || false);

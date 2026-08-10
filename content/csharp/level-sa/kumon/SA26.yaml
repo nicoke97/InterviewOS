@@ -1,0 +1,16 @@
+id: SA26
+level: SA
+page: 26
+set: 3
+block: A
+block_id: SA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de (int)Math.Pow(2, 5) (potencia 2^5)
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '32'
+starter_code: ''

@@ -1,0 +1,19 @@
+id: SA171
+level: SA
+page: 171
+set: 18
+block: D
+block_id: SA.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada s="password", imprime "valida" si Length >= 8, si no "corta".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: valida
+starter_code: "string s = ___;\nif (s.Length >= 8)\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "string s = \"password\";\nif (s.Length >= 8)\n    Console.WriteLine(\"\
+  valida\");\nelse\n    Console.WriteLine(\"corta\");"

@@ -1,0 +1,15 @@
+id: SA129
+level: SA
+page: 129
+set: 13
+block: C
+block_id: SA.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada s="B", imprime "primero" si =="A", "segundo" si =="B", si no "otro".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: segundo
+starter_code: ''

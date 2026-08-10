@@ -1,0 +1,15 @@
+id: SA120
+level: SA
+page: 120
+set: 12
+block: C
+block_id: SA.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dada stock=3, imprime "hay" si stock > 0, si no "agotado".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: hay
+starter_code: ''

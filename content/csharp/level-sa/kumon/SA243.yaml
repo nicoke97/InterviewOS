@@ -1,0 +1,20 @@
+id: SA243
+level: SA
+page: 243
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Con nums {1,2,3,4} y target=7, imprime los índices (Two Sum).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '[2, 3]'
+starter_code: ___
+reference_code: "var nums = new[] { 1, 2, 3, 4 };\nint target = 7;\nvar seen = new\
+  \ Dictionary<int, int>();\nfor (int i = 0; i < nums.Length; i++)\n{\n    int need\
+  \ = target - nums[i];\n    if (seen.ContainsKey(need)) { Console.WriteLine($\"[{seen[need]},\
+  \ {i}]\"); break; }\n    seen[nums[i]] = i;\n}"

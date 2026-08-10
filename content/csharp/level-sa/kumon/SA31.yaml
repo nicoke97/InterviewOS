@@ -1,0 +1,26 @@
+id: SA31
+level: SA
+page: 31
+set: 4
+block: A
+block_id: SA.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Asigna name="Ana" y age=22. Usa interpolación para presentarla (formato:
+  nombre tiene edad anios).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Ana tiene 22 anios
+starter_code: 'string name = ___;
+
+  int age = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string name = "Ana";
+
+  int age = 22;
+
+  Console.WriteLine($"{name} tiene {age} anios");'

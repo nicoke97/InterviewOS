@@ -1,0 +1,15 @@
+id: SA209
+level: SA
+page: 209
+set: 21
+block: Extra
+block_id: SA.Extra
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea d con {"a":10,"b":20}, imprime cuántas llaves tiene con d.Count.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

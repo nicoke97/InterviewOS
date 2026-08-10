@@ -1,0 +1,21 @@
+id: SA212
+level: SA
+page: 212
+set: 22
+block: Extra
+block_id: SA.Extra
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con d={"a":1}, imprime d.ContainsKey("z").
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: 'var d = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1 };
+
+  Console.WriteLine(d.ContainsKey("z"));'

@@ -1,0 +1,17 @@
+id: SA41
+level: SA
+page: 41
+set: 5
+block: A
+block_id: SA.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Convierte "5" a entero con int.Parse y súmale 3.
+hints:
+- int.Parse(texto) convierte texto a entero.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine(int.Parse("5") + 3);

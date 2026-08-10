@@ -1,0 +1,17 @@
+id: SA91
+level: SA
+page: 91
+set: 10
+block: B
+block_id: SA.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime "=" repetido 5 veces (=====) con new string('=', 5).
+hints:
+- new string(caracter, n) repite un caracter n veces.
+validation:
+  type: run_and_match_stdout
+  expected: =====
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine(new string('=', 5));

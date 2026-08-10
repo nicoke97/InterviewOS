@@ -1,0 +1,43 @@
+id: sa-cp-reverse-string
+title: Invertir texto
+fn_name: Invertir
+description: Retorna el texto al revés.
+test_cases:
+- args:
+  - csharp
+  expected: prahsc
+- args:
+  - ana
+  expected: ana
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: string Invertir(string s) => new string(s.Reverse().ToArray());
+tiers:
+  1:
+    starter_code: "string Invertir(string s)\n{\n    return s; // reemplaza\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "string Invertir(string s)\n{\n    return s; // reemplaza\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "string Invertir(string s)\n{\n    return s; // reemplaza\n}"
+    narration_prompts: []
+    hints_allowed: false

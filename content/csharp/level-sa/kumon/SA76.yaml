@@ -1,0 +1,16 @@
+id: SA76
+level: SA
+page: 76
+set: 8
+block: B
+block_id: SA.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada s="csharp", indica si contiene "har" (true/false) con Contains.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

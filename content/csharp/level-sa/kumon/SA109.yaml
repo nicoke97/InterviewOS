@@ -1,0 +1,15 @@
+id: SA109
+level: SA
+page: 109
+set: 11
+block: C
+block_id: SA.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (true/false) de: 8 / 2 == 4'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

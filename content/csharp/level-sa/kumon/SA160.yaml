@@ -1,0 +1,15 @@
+id: SA160
+level: SA
+page: 160
+set: 16
+block: D
+block_id: SA.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Crea nombre="Marco" y edad=51, imprime "Marco tiene 51 anios".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Marco tiene 51 anios
+starter_code: ''

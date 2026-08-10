@@ -1,0 +1,21 @@
+id: SA222
+level: SA
+page: 222
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Usa un int como llave: d[1]="uno". Imprime d[1].'
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: uno
+starter_code: 'var d = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<int, string> { [1] = "uno" };
+
+  Console.WriteLine(d[1]);'

@@ -1,0 +1,16 @@
+id: SA226
+level: SA
+page: 226
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con lista {1,1,2}, cuenta apariciones de 1 en un Dictionary e imprime.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

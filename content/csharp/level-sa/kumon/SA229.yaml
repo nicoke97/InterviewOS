@@ -1,0 +1,15 @@
+id: SA229
+level: SA
+page: 229
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Mapea dia->numero: d["lun"]=1. Imprime d["lun"].'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

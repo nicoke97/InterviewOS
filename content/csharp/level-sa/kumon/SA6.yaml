@@ -1,0 +1,16 @@
+id: SA6
+level: SA
+page: 6
+set: 1
+block: A
+block_id: SA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 36
+prompt: 'Imprime exactamente el texto: Listo'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Listo
+starter_code: ''

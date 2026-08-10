@@ -1,0 +1,16 @@
+id: SA64
+level: SA
+page: 64
+set: 7
+block: B
+block_id: SA.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Dada s="csharp", imprime los primeros 3 caracteres con Substring(0, 3).
+hints:
+- Substring(inicio, largo) extrae una parte del texto.
+validation:
+  type: run_and_match_stdout
+  expected: csh
+starter_code: ''

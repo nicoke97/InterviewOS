@@ -1,0 +1,15 @@
+id: SA249
+level: SA
+page: 249
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Con nums {1,-1,2} y target=0, imprime los índices que suman 0 (Two Sum).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: ''

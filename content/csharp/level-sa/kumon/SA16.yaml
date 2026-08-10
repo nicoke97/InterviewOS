@@ -1,0 +1,16 @@
+id: SA16
+level: SA
+page: 16
+set: 2
+block: A
+block_id: SA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 42
+prompt: Crea la variable lenguaje de tipo string con el valor 'CSharp' e imprímela.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: CSharp
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SA178
+level: SA
+page: 178
+set: 18
+block: D
+block_id: SA.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dada s="abc", imprime la cantidad de caracteres y luego "corto" si <5.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: corto
+starter_code: ''

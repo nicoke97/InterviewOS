@@ -1,0 +1,16 @@
+id: SA125
+level: SA
+page: 125
+set: 13
+block: C
+block_id: SA.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada t=5, imprime "frio" si <10, "templado" si <25, si no "calor".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: frio
+starter_code: ''

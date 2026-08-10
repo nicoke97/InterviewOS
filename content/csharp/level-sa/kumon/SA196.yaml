@@ -1,0 +1,16 @@
+id: SA196
+level: SA
+page: 196
+set: 20
+block: D
+block_id: SA.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dada n=7, imprime "primo" si es primo (para 7 verifica 2..6), si no "no".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: primo
+starter_code: ''

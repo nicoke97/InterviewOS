@@ -1,0 +1,21 @@
+id: SA62
+level: SA
+page: 62
+set: 7
+block: B
+block_id: SA.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Dada s="odoo", imprime el último caracter con s[s.Length - 1].
+hints:
+- El último índice es s.Length - 1.
+validation:
+  type: run_and_match_stdout
+  expected: o
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "odoo";
+
+  Console.WriteLine(s[s.Length - 1]);'

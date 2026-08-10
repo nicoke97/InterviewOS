@@ -1,0 +1,16 @@
+id: SA40
+level: SA
+page: 40
+set: 4
+block: A
+block_id: SA.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: 'Presenta a Pablo, 29 años (formato: nombre tiene edad anios). Crea las variables
+  que necesites.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Pablo tiene 29 anios
+starter_code: ''

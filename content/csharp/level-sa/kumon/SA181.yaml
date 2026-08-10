@@ -1,0 +1,22 @@
+id: SA181
+level: SA
+page: 181
+set: 19
+block: D
+block_id: SA.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada n=18, imprime "FizzBuzz/Fizz/Buzz/numero" según divisibilidad por 3 y
+  5.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: Fizz
+starter_code: "int n = ___;\nif (n % 15 == 0)\n    Console.WriteLine(___);\nelse if\
+  \ (n % 3 == 0)\n    Console.WriteLine(___);\nelse if (n % 5 == 0)\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(n);"
+reference_code: "int n = 18;\nif (n % 15 == 0)\n    Console.WriteLine(\"FizzBuzz\"\
+  );\nelse if (n % 3 == 0)\n    Console.WriteLine(\"Fizz\");\nelse if (n % 5 == 0)\n\
+  \    Console.WriteLine(\"Buzz\");\nelse\n    Console.WriteLine(n);"

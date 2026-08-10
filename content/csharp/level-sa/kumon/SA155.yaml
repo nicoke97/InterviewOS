@@ -1,0 +1,16 @@
+id: SA155
+level: SA
+page: 155
+set: 16
+block: D
+block_id: SA.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea nombre="Sofia" y edad=19, imprime "Sofia tiene 19 anios".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Sofia tiene 19 anios
+starter_code: ''

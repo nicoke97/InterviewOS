@@ -1,0 +1,15 @@
+id: SA100
+level: SA
+page: 100
+set: 10
+block: B
+block_id: SA.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Une {"1", "2", "3"} con "+" (1+2+3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 1+2+3
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA95
+level: SA
+page: 95
+set: 10
+block: B
+block_id: SA.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Imprime "*" repetido 7 veces.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '*******'
+starter_code: ''

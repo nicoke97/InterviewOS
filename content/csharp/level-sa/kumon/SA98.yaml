@@ -1,0 +1,15 @@
+id: SA98
+level: SA
+page: 98
+set: 10
+block: B
+block_id: SA.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime el número 7 con 3 dígitos (007) usando ToString("D3").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '007'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA234
+level: SA
+page: 234
+set: 24
+block: Extra
+block_id: SA.Extra
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con nums {5,6,7}, imprime "sin repetidos" si no hay ninguno.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: sin repetidos
+starter_code: ''

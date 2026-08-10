@@ -1,0 +1,16 @@
+id: SA245
+level: SA
+page: 245
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con nums {1,2,3} y target=100, imprime false (no hay par que sume target).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

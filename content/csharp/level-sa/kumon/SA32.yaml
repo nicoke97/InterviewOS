@@ -1,0 +1,26 @@
+id: SA32
+level: SA
+page: 32
+set: 4
+block: A
+block_id: SA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: 'Asigna city="Lima" y country="Peru". Imprime la ubicación con interpolación
+  (formato: ciudad, pais).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Lima, Peru
+starter_code: 'string city = ___;
+
+  string country = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string city = "Lima";
+
+  string country = "Peru";
+
+  Console.WriteLine($"{city}, {country}");'

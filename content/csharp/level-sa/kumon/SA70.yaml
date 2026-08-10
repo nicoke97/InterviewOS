@@ -1,0 +1,15 @@
+id: SA70
+level: SA
+page: 70
+set: 7
+block: B
+block_id: SA.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Dada s="entero", imprime el primer y último caracter separados por un guion.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: e-o
+starter_code: ''

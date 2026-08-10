@@ -1,0 +1,16 @@
+id: SA54
+level: SA
+page: 54
+set: 6
+block: B
+block_id: SA.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Une "CSharp" y "rocks" con un espacio e imprime el resultado.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: CSharp rocks
+starter_code: ''

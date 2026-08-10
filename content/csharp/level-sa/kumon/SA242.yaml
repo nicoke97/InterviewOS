@@ -1,0 +1,23 @@
+id: SA242
+level: SA
+page: 242
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Con nums {2,7,11,15} y target=9, imprime los índices (patrón Two Sum).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '[0, 1]'
+starter_code: "var nums = ___;\nint target = ___;\nvar seen = ___;\nfor (int i = 0;\
+  \ i < nums.Length; i++)\n{\n    int need = ___;\n    if (seen.ContainsKey(need))\
+  \ { Console.WriteLine($\"[{seen[need]}, {i}]\"); break; }\n    seen[nums[i]] = ___;\n\
+  }"
+reference_code: "var nums = new[] { 2, 7, 11, 15 };\nint target = 9;\nvar seen = new\
+  \ Dictionary<int, int>();\nfor (int i = 0; i < nums.Length; i++)\n{\n    int need\
+  \ = target - nums[i];\n    if (seen.ContainsKey(need)) { Console.WriteLine($\"[{seen[need]},\
+  \ {i}]\"); break; }\n    seen[nums[i]] = i;\n}"

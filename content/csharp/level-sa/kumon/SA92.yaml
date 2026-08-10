@@ -1,0 +1,17 @@
+id: SA92
+level: SA
+page: 92
+set: 10
+block: B
+block_id: SA.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime "-" repetido 10 veces.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '----------'
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine(new string('-', 10));

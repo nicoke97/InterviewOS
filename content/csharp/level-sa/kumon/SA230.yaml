@@ -1,0 +1,15 @@
+id: SA230
+level: SA
+page: 230
+set: 23
+block: Extra
+block_id: SA.Extra
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con {5,5,5}, cuenta apariciones de 5 e imprime (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

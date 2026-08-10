@@ -1,0 +1,17 @@
+id: SA2
+level: SA
+page: 2
+set: 1
+block: A
+block_id: SA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 36
+prompt: 'Imprime exactamente el texto: C#'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: C#
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine("C#");

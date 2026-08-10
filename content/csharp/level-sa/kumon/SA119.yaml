@@ -1,0 +1,15 @@
+id: SA119
+level: SA
+page: 119
+set: 12
+block: C
+block_id: SA.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dada x=-2, imprime "negativo" si x < 0, si no "no negativo".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: negativo
+starter_code: ''

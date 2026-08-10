@@ -1,0 +1,16 @@
+id: SA135
+level: SA
+page: 135
+set: 14
+block: C
+block_id: SA.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Imprime el resultado (true/false) de: 1 > 2 || 3 > 2'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

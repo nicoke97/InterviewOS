@@ -1,0 +1,16 @@
+id: SA244
+level: SA
+page: 244
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con nums {5,5} y target=10, imprime true si existen dos que sumen target.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

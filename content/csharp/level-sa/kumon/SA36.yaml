@@ -1,0 +1,17 @@
+id: SA36
+level: SA
+page: 36
+set: 4
+block: A
+block_id: SA.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Asigna equipo="Odoo" e integrantes=5. Imprime cuántas personas hay (formato:
+  equipo tiene N integrantes).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Odoo tiene 5 integrantes
+starter_code: ''

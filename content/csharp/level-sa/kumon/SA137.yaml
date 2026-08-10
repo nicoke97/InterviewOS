@@ -1,0 +1,16 @@
+id: SA137
+level: SA
+page: 137
+set: 14
+block: C
+block_id: SA.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Imprime el resultado (true/false) de: 10 > 0 && 10 < 100'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

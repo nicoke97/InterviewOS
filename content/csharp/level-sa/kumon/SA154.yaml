@@ -1,0 +1,16 @@
+id: SA154
+level: SA
+page: 154
+set: 16
+block: D
+block_id: SA.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea nombre="Pablo" y edad=45, imprime "Pablo tiene 45 anios".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Pablo tiene 45 anios
+starter_code: ''

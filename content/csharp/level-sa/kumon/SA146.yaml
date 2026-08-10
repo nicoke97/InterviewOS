@@ -1,0 +1,16 @@
+id: SA146
+level: SA
+page: 146
+set: 15
+block: C
+block_id: SA.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dada n=7, imprime "impar y positivo" si n>0 y n impar, si no "otro".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: impar y positivo
+starter_code: ''

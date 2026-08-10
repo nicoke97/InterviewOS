@@ -1,0 +1,17 @@
+id: SA84
+level: SA
+page: 84
+set: 9
+block: B
+block_id: SA.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: 'Con base_=5 y altura=4, imprime "Area: 20" (base*altura para un rectángulo...
+  aquí base*altura).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Area: 20'
+starter_code: ''

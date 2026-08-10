@@ -1,0 +1,21 @@
+id: SA11
+level: SA
+page: 11
+set: 2
+block: A
+block_id: SA.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 42
+prompt: Crea la variable ciudad de tipo string con el valor 'Lima' e imprímela.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lima
+starter_code: 'string ciudad = ___;
+
+  Console.WriteLine(ciudad);'
+reference_code: 'string ciudad = "Lima";
+
+  Console.WriteLine(ciudad);'

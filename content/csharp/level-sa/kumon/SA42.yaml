@@ -1,0 +1,17 @@
+id: SA42
+level: SA
+page: 42
+set: 5
+block: A
+block_id: SA.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime el booleano de (1 == 1).
+hints:
+- Una comparación devuelve true o false.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: Console.WriteLine(___);
+reference_code: Console.WriteLine(1 == 1);

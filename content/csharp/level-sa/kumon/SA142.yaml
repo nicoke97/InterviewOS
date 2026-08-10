@@ -1,0 +1,20 @@
+id: SA142
+level: SA
+page: 142
+set: 15
+block: C
+block_id: SA.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada n=12, imprime "divisible por 6" si es divisible por 2 y por 3, si no
+  "no".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: divisible por 6
+starter_code: "int n = ___;\nif (n % 2 == 0 && n % 3 == 0)\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "int n = 12;\nif (n % 2 == 0 && n % 3 == 0)\n    Console.WriteLine(\"\
+  divisible por 6\");\nelse\n    Console.WriteLine(\"no\");"

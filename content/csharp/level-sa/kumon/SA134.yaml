@@ -1,0 +1,16 @@
+id: SA134
+level: SA
+page: 134
+set: 14
+block: C
+block_id: SA.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Imprime el resultado (true/false) de: 5 > 3 && 2 < 4'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

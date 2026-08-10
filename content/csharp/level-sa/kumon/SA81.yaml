@@ -1,0 +1,25 @@
+id: SA81
+level: SA
+page: 81
+set: 9
+block: B
+block_id: SA.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Con a=8 y b=3, imprime "8 + 3 = 11" usando interpolación y el cálculo dentro.
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 8 + 3 = 11
+starter_code: 'int a = ___;
+
+  int b = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int a = 8;
+
+  int b = 3;
+
+  Console.WriteLine($"{a} + {b} = {a + b}");'

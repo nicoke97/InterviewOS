@@ -1,0 +1,15 @@
+id: SA198
+level: SA
+page: 198
+set: 20
+block: D
+block_id: SA.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dada temp_c=25, conviértela a Fahrenheit (c*9/5+32) e imprime.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '77'
+starter_code: ''

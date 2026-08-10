@@ -1,0 +1,16 @@
+id: SA207
+level: SA
+page: 207
+set: 21
+block: Extra
+block_id: SA.Extra
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea d con {"nombre":"Ana"}, imprime la longitud de d["nombre"].
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

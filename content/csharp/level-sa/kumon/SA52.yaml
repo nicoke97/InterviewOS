@@ -1,0 +1,25 @@
+id: SA52
+level: SA
+page: 52
+set: 6
+block: B
+block_id: SA.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Une "buen" y "dia" con un espacio e imprime el resultado.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: buen dia
+starter_code: 'string a = ___;
+
+  string b = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string a = "buen";
+
+  string b = "dia";
+
+  Console.WriteLine(a + " " + b);'

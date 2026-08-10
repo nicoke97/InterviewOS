@@ -1,0 +1,22 @@
+id: SA191
+level: SA
+page: 191
+set: 20
+block: D
+block_id: SA.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dada s="hola mundo", imprime cuántos caracteres tiene sin contar espacios
+  (usa Replace).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "hola mundo";
+
+  Console.WriteLine(s.Replace(" ", "").Length);'

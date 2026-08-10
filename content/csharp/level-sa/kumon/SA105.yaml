@@ -1,0 +1,16 @@
+id: SA105
+level: SA
+page: 105
+set: 11
+block: C
+block_id: SA.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Imprime el resultado (true/false) de: 9 < 1'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

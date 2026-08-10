@@ -1,0 +1,16 @@
+id: SA44
+level: SA
+page: 44
+set: 5
+block: A
+block_id: SA.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Convierte "2.5" a double con double.Parse y súmale 0.5.
+hints:
+- double.Parse(texto) convierte texto a decimal.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

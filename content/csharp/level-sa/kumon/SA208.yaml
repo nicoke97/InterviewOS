@@ -1,0 +1,15 @@
+id: SA208
+level: SA
+page: 208
+set: 21
+block: Extra
+block_id: SA.Extra
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea d con {"uno":1}, cambia d["uno"]=100 e imprímelo.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

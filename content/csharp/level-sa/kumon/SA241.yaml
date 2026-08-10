@@ -1,0 +1,24 @@
+id: SA241
+level: SA
+page: 241
+set: 25
+block: Extra
+block_id: SA.Extra
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Con nums {3,2,4} y target=6, imprime los índices que suman 6 usando un Dictionary
+  (patrón Two Sum).
+hints:
+- Guarda numero->indice; para cada n, busca need=target-n con ContainsKey en O(1).
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 2]'
+starter_code: "var nums = ___;\nint target = ___;\nvar seen = ___;\nfor (int i = 0;\
+  \ i < nums.Length; i++)\n{\n    int need = ___;\n    if (seen.ContainsKey(need))\
+  \ { Console.WriteLine($\"[{seen[need]}, {i}]\"); break; }\n    seen[nums[i]] = ___;\n\
+  }"
+reference_code: "var nums = new[] { 3, 2, 4 };\nint target = 6;\nvar seen = new Dictionary<int,\
+  \ int>();\nfor (int i = 0; i < nums.Length; i++)\n{\n    int need = target - nums[i];\n\
+  \    if (seen.ContainsKey(need)) { Console.WriteLine($\"[{seen[need]}, {i}]\");\
+  \ break; }\n    seen[nums[i]] = i;\n}"

@@ -1,0 +1,15 @@
+id: SA60
+level: SA
+page: 60
+set: 6
+block: B
+block_id: SA.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 48
+prompt: Dada frase="buen dia", imprime cuántos caracteres tiene (incluye el espacio).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

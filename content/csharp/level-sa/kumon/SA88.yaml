@@ -1,0 +1,15 @@
+id: SA88
+level: SA
+page: 88
+set: 9
+block: B
+block_id: SA.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Con km=10, imprime "10 km = 10000 m".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 10 km = 10000 m
+starter_code: ''

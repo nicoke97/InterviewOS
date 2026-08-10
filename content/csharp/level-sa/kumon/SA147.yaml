@@ -1,0 +1,17 @@
+id: SA147
+level: SA
+page: 147
+set: 15
+block: C
+block_id: SA.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dada temp=20 y llueve=false, imprime "salir" si temp>15 y no llueve, si no
+  "quedarse".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: salir
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SA25
+level: SA
+page: 25
+set: 3
+block: A
+block_id: SA.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: Calcula e imprime el resultado de 4 * 6
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '24'
+starter_code: ''

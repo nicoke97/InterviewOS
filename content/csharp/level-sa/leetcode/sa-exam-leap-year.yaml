@@ -1,0 +1,46 @@
+id: sa-exam-leap-year
+title: Año bisiesto
+fn_name: Bisiesto
+description: Retorna true si el año es bisiesto.
+test_cases:
+- args:
+  - 2024
+  expected: true
+- args:
+  - 1900
+  expected: false
+- args:
+  - 2000
+  expected: true
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: bool Bisiesto(int a) => a % 400 == 0 || (a % 4 == 0 && a % 100 != 0);
+tiers:
+  1:
+    starter_code: "bool Bisiesto(int a)\n{\n    return false; // reemplaza\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "bool Bisiesto(int a)\n{\n    return false; // reemplaza\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "bool Bisiesto(int a)\n{\n    return false; // reemplaza\n}"
+    narration_prompts: []
+    hints_allowed: false

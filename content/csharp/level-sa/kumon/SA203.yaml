@@ -1,0 +1,19 @@
+id: SA203
+level: SA
+page: 203
+set: 21
+block: Extra
+block_id: SA.Extra
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Crea d con {"x": 5, "y": 9} e imprime d["y"].'
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ___
+reference_code: 'var d = new Dictionary<string, int> { ["x"] = 5, ["y"] = 9 };
+
+  Console.WriteLine(d["y"]);'

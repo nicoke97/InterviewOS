@@ -1,0 +1,16 @@
+id: SA177
+level: SA
+page: 177
+set: 18
+block: D
+block_id: SA.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dada s="HOLA", imprime "grita" si es igual a su ToUpper(), si no "normal".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: grita
+starter_code: ''

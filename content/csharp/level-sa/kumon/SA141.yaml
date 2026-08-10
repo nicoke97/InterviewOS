@@ -1,0 +1,21 @@
+id: SA141
+level: SA
+page: 141
+set: 15
+block: C
+block_id: SA.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada edad=20 y licencia=true, imprime "puede conducir" solo si edad>=18 Y
+  licencia; si no "no puede".
+hints:
+- Combina condiciones con &&.
+validation:
+  type: run_and_match_stdout
+  expected: puede conducir
+starter_code: "int edad = ___;\nbool licencia = ___;\nif (edad >= 18 && licencia)\n\
+  \    Console.WriteLine(___);\nelse\n    Console.WriteLine(___);"
+reference_code: "int edad = 20;\nbool licencia = true;\nif (edad >= 18 && licencia)\n\
+  \    Console.WriteLine(\"puede conducir\");\nelse\n    Console.WriteLine(\"no puede\"\
+  );"

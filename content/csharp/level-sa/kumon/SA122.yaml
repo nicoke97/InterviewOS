@@ -1,0 +1,20 @@
+id: SA122
+level: SA
+page: 122
+set: 13
+block: C
+block_id: SA.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada x=0, imprime "positivo" si >0, "cero" si ==0, si no "negativo".
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: cero
+starter_code: "int x = ___;\nif (x > 0)\n    Console.WriteLine(___);\nelse if (x ==\
+  \ 0)\n    Console.WriteLine(___);\nelse\n    Console.WriteLine(___);"
+reference_code: "int x = 0;\nif (x > 0)\n    Console.WriteLine(\"positivo\");\nelse\
+  \ if (x == 0)\n    Console.WriteLine(\"cero\");\nelse\n    Console.WriteLine(\"\
+  negativo\");"

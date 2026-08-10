@@ -1,0 +1,19 @@
+id: SA182
+level: SA
+page: 182
+set: 19
+block: D
+block_id: SA.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dada x=5 y y=10, imprime el mayor de los dos.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: "int x = ___;\nint y = ___;\nif (x > y)\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "int x = 5;\nint y = 10;\nif (x > y)\n    Console.WriteLine(x);\n\
+  else\n    Console.WriteLine(y);"

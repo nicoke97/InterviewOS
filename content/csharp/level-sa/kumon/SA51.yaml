@@ -1,0 +1,25 @@
+id: SA51
+level: SA
+page: 51
+set: 6
+block: B
+block_id: SA.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 48
+prompt: Une "Hola" y "mundo" con un espacio e imprime el resultado.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Hola mundo
+starter_code: 'string a = ___;
+
+  string b = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string a = "Hola";
+
+  string b = "mundo";
+
+  Console.WriteLine(a + " " + b);'

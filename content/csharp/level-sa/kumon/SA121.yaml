@@ -1,0 +1,21 @@
+id: SA121
+level: SA
+page: 121
+set: 13
+block: C
+block_id: SA.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dada nota=82, imprime "A" si >=90, "B" si >=80, "C" si >=70, si no "F".
+hints:
+- Compara de mayor a menor con else if.
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: "int nota = ___;\nif (nota >= 90)\n    Console.WriteLine(___);\nelse\
+  \ if (nota >= 80)\n    Console.WriteLine(___);\nelse if (nota >= 70)\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "int nota = 82;\nif (nota >= 90)\n    Console.WriteLine(\"A\");\n\
+  else if (nota >= 80)\n    Console.WriteLine(\"B\");\nelse if (nota >= 70)\n    Console.WriteLine(\"\
+  C\");\nelse\n    Console.WriteLine(\"F\");"

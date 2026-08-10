@@ -1,0 +1,15 @@
+id: SA89
+level: SA
+page: 89
+set: 9
+block: B
+block_id: SA.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Con horas=3, imprime "3 horas = 180 minutos".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 3 horas = 180 minutos
+starter_code: ''

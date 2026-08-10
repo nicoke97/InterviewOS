@@ -1,0 +1,16 @@
+id: SA74
+level: SA
+page: 74
+set: 8
+block: B
+block_id: SA.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dada s="csharp", reemplaza "s" por "C" con Replace.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: cCharp
+starter_code: ''

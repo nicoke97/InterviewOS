@@ -1,0 +1,17 @@
+id: SA37
+level: SA
+page: 37
+set: 4
+block: A
+block_id: SA.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 48
+prompt: 'Con a=4 y b=6, calcula la suma en una variable e imprímela (formato: Suma:
+  resultado).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Suma: 10'
+starter_code: ''
