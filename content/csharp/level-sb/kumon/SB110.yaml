@@ -1,0 +1,19 @@
+id: SB110
+level: SB
+page: 110
+set: 11
+block: C
+block_id: SB.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Recorre {100,200,300} e imprime "item indice: valor".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'item 0: 100
+
+    item 1: 200
+
+    item 2: 300'
+starter_code: ''

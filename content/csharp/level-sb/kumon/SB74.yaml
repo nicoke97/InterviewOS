@@ -1,0 +1,17 @@
+id: SB74
+level: SB
+page: 74
+set: 8
+block: B
+block_id: SB.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un for de 2 a 20, imprime números hasta que la suma acumulada pase 10;
+  imprime esa suma.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '14'
+starter_code: ''

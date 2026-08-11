@@ -1,0 +1,15 @@
+id: SB199
+level: SB
+page: 199
+set: 20
+block: D
+block_id: SB.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Triple y Neg; imprime Neg(Triple(4)) (-12).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '-12'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SB19
+level: SB
+page: 19
+set: 2
+block: A
+block_id: SB.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime la suma de 1 a 20.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '210'
+starter_code: ''

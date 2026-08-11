@@ -1,0 +1,17 @@
+id: SB135
+level: SB
+page: 135
+set: 14
+block: C
+block_id: SB.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Encuentra el string más largo de {"a","abc","ab"} e imprímelo.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: abc
+starter_code: ''

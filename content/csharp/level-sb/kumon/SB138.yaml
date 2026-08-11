@@ -1,0 +1,15 @@
+id: SB138
+level: SB
+page: 138
+set: 14
+block: C
+block_id: SB.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime el máximo de {1,2,3,4,5} sin usar Max().
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

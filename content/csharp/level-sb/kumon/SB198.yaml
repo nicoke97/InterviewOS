@@ -1,0 +1,15 @@
+id: SB198
+level: SB
+page: 198
+set: 20
+block: D
+block_id: SB.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Suma3 usando Suma dos veces; imprime Suma(Suma(1,2),3) (6).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

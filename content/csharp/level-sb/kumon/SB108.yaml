@@ -1,0 +1,15 @@
+id: SB108
+level: SB
+page: 108
+set: 11
+block: C
+block_id: SB.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Imprime el índice del valor 9 en {3,9,7} (busca y muestra 1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

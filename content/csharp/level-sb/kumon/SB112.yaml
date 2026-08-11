@@ -1,0 +1,23 @@
+id: SB112
+level: SB
+page: 112
+set: 12
+block: C
+block_id: SB.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dadas {1,2,3} y {4,5,6}, imprime la suma de cada par (5,7,9).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5
+
+    7
+
+    9'
+starter_code: "int[] a = ___;\nint[] b = ___;\nfor (int i = 0; i < a.Length; i++)\n\
+  \    Console.WriteLine(___);"
+reference_code: "int[] a = { 1, 2, 3 };\nint[] b = { 4, 5, 6 };\nfor (int i = 0; i\
+  \ < a.Length; i++)\n    Console.WriteLine(a[i] + b[i]);"

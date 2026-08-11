@@ -1,0 +1,17 @@
+id: SB134
+level: SB
+page: 134
+set: 14
+block: C
+block_id: SB.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Imprime la diferencia entre el máximo y el mínimo de {2,9,4} (7).
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

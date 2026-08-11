@@ -1,0 +1,18 @@
+id: SB117
+level: SB
+page: 117
+set: 12
+block: C
+block_id: SB.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dadas {"a","b"} y {"c","d"}, imprime "ac" y "bd" (concatenado).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'ac
+
+    bd'
+starter_code: ''

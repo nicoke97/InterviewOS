@@ -1,0 +1,16 @@
+id: SB70
+level: SB
+page: 70
+set: 7
+block: B
+block_id: SB.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con un while, cuenta cuántas veces multiplicas 3 hasta pasar 50, e imprime
+  el conteo.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SB126
+level: SB
+page: 126
+set: 13
+block: C
+block_id: SB.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Cuenta las celdas de una grilla 3x4 (imprime 12).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: ''

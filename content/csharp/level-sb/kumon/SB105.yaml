@@ -1,0 +1,20 @@
+id: SB105
+level: SB
+page: 105
+set: 11
+block: C
+block_id: SB.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Recorre {5,6,7} imprimiendo "i=indice n=valor".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'i=0 n=5
+
+    i=1 n=6
+
+    i=2 n=7'
+starter_code: ''

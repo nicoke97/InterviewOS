@@ -1,0 +1,16 @@
+id: SB14
+level: SB
+page: 14
+set: 2
+block: A
+block_id: SB.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Imprime la suma de 1 a 7.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '28'
+starter_code: ''

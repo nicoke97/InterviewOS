@@ -1,0 +1,10 @@
+id: sb-int-2
+question: ¿Qué hacen break y continue dentro de un bucle? Da un ejemplo de cada uno.
+rubric:
+- break termina el bucle
+- continue salta a la siguiente iteración
+- ejemplos concretos
+sample_answer: break sale por completo del bucle (ej. al encontrar un valor). continue
+  omite el resto de la iteración actual y pasa a la siguiente (ej. saltar números
+  pares).
+category: csharp

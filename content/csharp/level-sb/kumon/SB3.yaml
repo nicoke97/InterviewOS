@@ -1,0 +1,23 @@
+id: SB3
+level: SB
+page: 3
+set: 1
+block: A
+block_id: SB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime los números del 1 al 4, uno por línea.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3
+
+    4'
+starter_code: ___
+reference_code: "for (int i = 1; i <= 4; i++)\n    Console.WriteLine(i);"

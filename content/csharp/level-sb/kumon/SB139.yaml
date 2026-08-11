@@ -1,0 +1,15 @@
+id: SB139
+level: SB
+page: 139
+set: 14
+block: C
+block_id: SB.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime el promedio entero de {2,4,6} calculando suma con bucle (4).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

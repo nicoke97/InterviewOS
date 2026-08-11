@@ -1,0 +1,24 @@
+id: SB53
+level: SB
+page: 53
+set: 6
+block: B
+block_id: SB.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Usa un while para imprimir de 1 a 4.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3
+
+    4'
+starter_code: ___
+reference_code: "int i = 1;\nwhile (i <= 4)\n{\n    Console.WriteLine(i);\n    i++;\n\
+  }"

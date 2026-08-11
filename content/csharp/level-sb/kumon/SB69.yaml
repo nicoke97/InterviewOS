@@ -1,0 +1,15 @@
+id: SB69
+level: SB
+page: 69
+set: 7
+block: B
+block_id: SB.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con un while, imprime la suma de los primeros 3 múltiplos de 5 (5+10+15).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ''

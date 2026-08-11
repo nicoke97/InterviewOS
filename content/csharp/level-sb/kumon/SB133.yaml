@@ -1,0 +1,19 @@
+id: SB133
+level: SB
+page: 133
+set: 14
+block: C
+block_id: SB.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Encuentra el máximo de {-3,-7,-1} manualmente.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '-1'
+starter_code: ___
+reference_code: "int[] nums = { -3, -7, -1 };\nint max = nums[0];\nforeach (int n\
+  \ in nums)\n    if (n > max) max = n;\nConsole.WriteLine(max);"

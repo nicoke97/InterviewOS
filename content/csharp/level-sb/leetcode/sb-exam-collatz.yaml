@@ -1,0 +1,48 @@
+id: sb-exam-collatz
+title: Pasos de Collatz
+fn_name: Collatz
+description: Cuenta pasos hasta llegar a 1 (par->/2, impar->*3+1).
+test_cases:
+- args:
+  - 1
+  expected: 0
+- args:
+  - 8
+  expected: 3
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "int Collatz(int n)\n{\n    int pasos = 0;\n    while (n > 1)\n   \
+  \ {\n        if (n % 2 == 0) n /= 2; else n = n * 3 + 1;\n        pasos++;\n   \
+  \ }\n    return pasos;\n}"
+tiers:
+  1:
+    starter_code: "int Collatz(int n)\n{\n    int pasos = 0;\n    while (n > 1)\n\
+      \    {\n        // ...\n        pasos++;\n    }\n    return pasos;\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int Collatz(int n)\n{\n    int pasos = 0;\n    while (n > 1)\n\
+      \    {\n        // ...\n        pasos++;\n    }\n    return pasos;\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int Collatz(int n)\n{\n    int pasos = 0;\n    while (n > 1)\n\
+      \    {\n        // ...\n        pasos++;\n    }\n    return pasos;\n}"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,20 @@
+id: SB45
+level: SB
+page: 45
+set: 5
+block: A
+block_id: SB.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {"a", "b", "c"}, imprime cada string con foreach.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'a
+
+    b
+
+    c'
+starter_code: ''

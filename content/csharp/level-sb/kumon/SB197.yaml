@@ -1,0 +1,16 @@
+id: SB197
+level: SB
+page: 197
+set: 20
+block: D
+block_id: SB.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Largo y EsPar; imprime EsPar(Largo("dotnet")) (true).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

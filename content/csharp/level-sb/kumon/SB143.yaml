@@ -1,0 +1,18 @@
+id: SB143
+level: SB
+page: 143
+set: 15
+block: C
+block_id: SB.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Cuenta cuántos elementos de {5,2,8,1} son mayores a 3 (2).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: "int[] nums = { 5, 2, 8, 1 };\nint c = 0;\nforeach (int n in nums)\n\
+  \    if (n > 3) c++;\nConsole.WriteLine(c);"

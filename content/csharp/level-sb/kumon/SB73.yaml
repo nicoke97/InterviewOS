@@ -1,0 +1,18 @@
+id: SB73
+level: SB
+page: 73
+set: 8
+block: B
+block_id: SB.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Busca en {3, 8, 5, 9} el primer número mayor a 6 e imprímelo (break).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ___
+reference_code: "int[] nums = { 3, 8, 5, 9 };\nforeach (int n in nums)\n{\n    if\
+  \ (n > 6) { Console.WriteLine(n); break; }\n}"

@@ -1,0 +1,16 @@
+id: SB176
+level: SB
+page: 176
+set: 18
+block: D
+block_id: SB.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Linea(char c = '-', int n = 5) que retorne n veces c; llámalo sin argumentos.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '-----'
+starter_code: ''

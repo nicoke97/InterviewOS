@@ -1,0 +1,17 @@
+id: SB96
+level: SB
+page: 96
+set: 10
+block: B
+block_id: SB.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con un while, cuenta cuántas veces cabe 7 en 50 (50/7 entero) sin usar división
+  directa.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

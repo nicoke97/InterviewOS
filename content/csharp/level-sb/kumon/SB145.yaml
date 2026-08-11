@@ -1,0 +1,16 @@
+id: SB145
+level: SB
+page: 145
+set: 15
+block: C
+block_id: SB.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Cuenta cuántos ceros hay en {0,1,0,2,0} (3).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

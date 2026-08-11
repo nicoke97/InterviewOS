@@ -1,0 +1,20 @@
+id: SB91
+level: SB
+page: 91
+set: 10
+block: B
+block_id: SB.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con un while, acumula la suma de {1,2,3,4} recorriendo por índice; imprime
+  el total.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: "int[] nums = ___;\nint i = ___;\nint total = ___;\nwhile (i < nums.Length)\n\
+  {\n    total += nums[i];\n    i++;\n}\nConsole.WriteLine(total);"
+reference_code: "int[] nums = { 1, 2, 3, 4 };\nint i = 0;\nint total = 0;\nwhile (i\
+  \ < nums.Length)\n{\n    total += nums[i];\n    i++;\n}\nConsole.WriteLine(total);"

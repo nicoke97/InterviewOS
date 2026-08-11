@@ -1,0 +1,15 @@
+id: SB80
+level: SB
+page: 80
+set: 8
+block: B
+block_id: SB.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 50, imprime el primer múltiplo de 13 y detente.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '13'
+starter_code: ''

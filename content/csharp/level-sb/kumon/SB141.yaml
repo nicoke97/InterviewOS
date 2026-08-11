@@ -1,0 +1,19 @@
+id: SB141
+level: SB
+page: 141
+set: 15
+block: C
+block_id: SB.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Cuenta cuántas veces aparece 'a' en "banana" con un bucle.
+hints:
+- Recorre los caracteres y suma 1 cuando coincide.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: "string s = ___;\nint c = ___;\nforeach (char ch in s)\n    if (ch ==\
+  \ 'a') c++;\nConsole.WriteLine(c);"
+reference_code: "string s = \"banana\";\nint c = 0;\nforeach (char ch in s)\n    if\
+  \ (ch == 'a') c++;\nConsole.WriteLine(c);"

@@ -1,0 +1,25 @@
+id: SB23
+level: SB
+page: 23
+set: 3
+block: A
+block_id: SB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Imprime los múltiplos de 5 del 5 al 25.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5
+
+    10
+
+    15
+
+    20
+
+    25'
+starter_code: ___
+reference_code: "for (int i = 5; i <= 25; i += 5)\n    Console.WriteLine(i);"

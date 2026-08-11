@@ -1,0 +1,47 @@
+id: sb-cp-sum-range
+title: Suma de 1 a n
+fn_name: SumRange
+description: Retorna la suma de 1..n con un bucle.
+test_cases:
+- args:
+  - 5
+  expected: 15
+- args:
+  - 10
+  expected: 55
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "int SumRange(int n)\n{\n    int total = 0;\n    for (int i = 1; i\
+  \ <= n; i++) total += i;\n    return total;\n}"
+tiers:
+  1:
+    starter_code: "int SumRange(int n)\n{\n    int total = 0;\n    // bucle for\n\
+      \    return total;\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int SumRange(int n)\n{\n    int total = 0;\n    // bucle for\n\
+      \    return total;\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int SumRange(int n)\n{\n    int total = 0;\n    // bucle for\n\
+      \    return total;\n}"
+    narration_prompts: []
+    hints_allowed: false

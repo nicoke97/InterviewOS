@@ -1,0 +1,16 @@
+id: SB166
+level: SB
+page: 166
+set: 17
+block: D
+block_id: SB.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Promedio(int a, int b) entero y llámalo con 4 y 8.
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SB165
+level: SB
+page: 165
+set: 17
+block: D
+block_id: SB.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Resta(int a, int b) y llámalo con 10 y 6.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

@@ -1,0 +1,20 @@
+id: SB113
+level: SB
+page: 113
+set: 12
+block: C
+block_id: SB.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dadas {2,3} y {5,7}, imprime el producto de cada par (10, 21).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10
+
+    21'
+starter_code: ___
+reference_code: "int[] a = { 2, 3 };\nint[] b = { 5, 7 };\nfor (int i = 0; i < a.Length;\
+  \ i++)\n    Console.WriteLine(a[i] * b[i]);"

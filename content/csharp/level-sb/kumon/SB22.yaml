@@ -1,0 +1,25 @@
+id: SB22
+level: SB
+page: 22
+set: 3
+block: A
+block_id: SB.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Imprime los impares del 1 al 9, uno por línea.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    3
+
+    5
+
+    7
+
+    9'
+starter_code: "for (int i = 1; i <= 9; i += 2)\n    Console.WriteLine(___);"
+reference_code: "for (int i = 1; i <= 9; i += 2)\n    Console.WriteLine(i);"

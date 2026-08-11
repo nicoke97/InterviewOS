@@ -1,0 +1,16 @@
+id: SB170
+level: SB
+page: 170
+set: 17
+block: D
+block_id: SB.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Distancia(int a, int b) que retorne el valor absoluto de a-b; llámalo
+  con 3 y 9.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SB149
+level: SB
+page: 149
+set: 15
+block: C
+block_id: SB.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Cuenta cuántos múltiplos de 3 hay en {3,6,7,9,10} (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

@@ -1,0 +1,18 @@
+id: SB72
+level: SB
+page: 72
+set: 8
+block: B
+block_id: SB.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 100, imprime el primer número divisible por 7 y detente.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ___
+reference_code: "for (int i = 1; i <= 100; i++)\n{\n    if (i % 7 == 0) { Console.WriteLine(i);\
+  \ break; }\n}"

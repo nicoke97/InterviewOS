@@ -1,0 +1,20 @@
+id: SB103
+level: SB
+page: 103
+set: 11
+block: C
+block_id: SB.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Recorre {"lun","mar"} imprimiendo "dia 1: lun" (1-based).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'dia 1: lun
+
+    dia 2: mar'
+starter_code: ___
+reference_code: "string[] xs = { \"lun\", \"mar\" };\nfor (int i = 0; i < xs.Length;\
+  \ i++)\n    Console.WriteLine($\"dia {i + 1}: {xs[i]}\");"

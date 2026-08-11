@@ -1,0 +1,21 @@
+id: SB161
+level: SB
+page: 161
+set: 17
+block: D
+block_id: SB.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define Suma(int a, int b) y llámalo con 3 y 4.
+hints:
+- Los parámetros van separados por comas.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: 'int Suma(int a, int b) => a + b;
+
+  Console.WriteLine(___);'
+reference_code: 'int Suma(int a, int b) => a + b;
+
+  Console.WriteLine(Suma(3, 4));'

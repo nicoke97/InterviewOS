@@ -1,0 +1,24 @@
+id: SB64
+level: SB
+page: 64
+set: 7
+block: B
+block_id: SB.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un while, imprime los pares del 2 al 10.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2
+
+    4
+
+    6
+
+    8
+
+    10'
+starter_code: ''

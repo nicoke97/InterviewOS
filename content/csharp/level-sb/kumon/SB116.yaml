@@ -1,0 +1,17 @@
+id: SB116
+level: SB
+page: 116
+set: 12
+block: C
+block_id: SB.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dadas {1,1,1} y {2,3,4}, imprime la suma total de sumar cada par (2+... =
+  12).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: ''

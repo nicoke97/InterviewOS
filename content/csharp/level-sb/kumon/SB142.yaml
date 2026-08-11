@@ -1,0 +1,19 @@
+id: SB142
+level: SB
+page: 142
+set: 15
+block: C
+block_id: SB.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Cuenta cuántos números pares hay en {1,2,3,4,5,6} (3).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: "int[] nums = ___;\nint c = ___;\nforeach (int n in nums)\n    if (n\
+  \ % 2 == 0) c++;\nConsole.WriteLine(___);"
+reference_code: "int[] nums = { 1, 2, 3, 4, 5, 6 };\nint c = 0;\nforeach (int n in\
+  \ nums)\n    if (n % 2 == 0) c++;\nConsole.WriteLine(c);"

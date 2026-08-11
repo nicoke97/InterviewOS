@@ -1,0 +1,19 @@
+id: SB123
+level: SB
+page: 123
+set: 13
+block: C
+block_id: SB.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta cuántos pares (i,j) con i en 1..3 y j en 1..3 cumplen i==j (imprime
+  3).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ___
+reference_code: "int c = 0;\nfor (int i = 1; i <= 3; i++)\n    for (int j = 1; j <=\
+  \ 3; j++)\n        if (i == j) c++;\nConsole.WriteLine(c);"

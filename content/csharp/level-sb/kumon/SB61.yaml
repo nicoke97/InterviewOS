@@ -1,0 +1,19 @@
+id: SB61
+level: SB
+page: 61
+set: 7
+block: B
+block_id: SB.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con un while, imprime la suma de 1 a 5.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: "int i = ___;\nint total = ___;\nwhile (i <= 5)\n{\n    total += i;\n\
+  \    i++;\n}\nConsole.WriteLine(total);"
+reference_code: "int i = 1;\nint total = 0;\nwhile (i <= 5)\n{\n    total += i;\n\
+  \    i++;\n}\nConsole.WriteLine(total);"

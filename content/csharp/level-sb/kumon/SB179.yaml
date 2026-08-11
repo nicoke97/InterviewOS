@@ -1,0 +1,16 @@
+id: SB179
+level: SB
+page: 179
+set: 18
+block: D
+block_id: SB.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Descuento(int precio, int pct = 10) que reste el pct%; llámalo con
+  100.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '90'
+starter_code: ''

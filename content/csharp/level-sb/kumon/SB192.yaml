@@ -1,0 +1,25 @@
+id: SB192
+level: SB
+page: 192
+set: 20
+block: D
+block_id: SB.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Cuadrado y Suma; imprime Suma(Cuadrado(2), Cuadrado(3)) (13).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '13'
+starter_code: 'int Cuadrado(int n) => n * n;
+
+  int Suma(int a, int b) => a + b;
+
+  Console.WriteLine(___);'
+reference_code: 'int Cuadrado(int n) => n * n;
+
+  int Suma(int a, int b) => a + b;
+
+  Console.WriteLine(Suma(Cuadrado(2), Cuadrado(3)));'

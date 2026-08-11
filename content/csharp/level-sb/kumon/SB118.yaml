@@ -1,0 +1,17 @@
+id: SB118
+level: SB
+page: 118
+set: 12
+block: C
+block_id: SB.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dadas {5,10} y {2,5}, imprime a/b de cada par (2, 2).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2
+
+    2'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: SB11
+level: SB
+page: 11
+set: 2
+block: A
+block_id: SB.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime la suma de 1 a 5.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: "int total = ___;\nfor (int i = 1; i <= 5; i++)\n    total += i;\nConsole.WriteLine(total);"
+reference_code: "int total = 0;\nfor (int i = 1; i <= 5; i++)\n    total += i;\nConsole.WriteLine(total);"

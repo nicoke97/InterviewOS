@@ -1,0 +1,18 @@
+id: SB183
+level: SB
+page: 183
+set: 19
+block: D
+block_id: SB.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Max(int a, int b) con if; llámalo con 4 y 9.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ___
+reference_code: "int Max(int a, int b)\n{\n    if (a > b) return a;\n    return b;\n\
+  }\nConsole.WriteLine(Max(4, 9));"

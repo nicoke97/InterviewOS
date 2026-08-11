@@ -1,0 +1,34 @@
+id: SB66
+level: SB
+page: 66
+set: 7
+block: B
+block_id: SB.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un while, imprime de 10 a 1 (regresivo).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10
+
+    9
+
+    8
+
+    7
+
+    6
+
+    5
+
+    4
+
+    3
+
+    2
+
+    1'
+starter_code: ''

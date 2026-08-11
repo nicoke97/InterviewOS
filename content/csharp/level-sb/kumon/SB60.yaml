@@ -1,0 +1,29 @@
+id: SB60
+level: SB
+page: 60
+set: 6
+block: B
+block_id: SB.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Usa un while para imprimir de 1 a 8.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3
+
+    4
+
+    5
+
+    6
+
+    7
+
+    8'
+starter_code: ''

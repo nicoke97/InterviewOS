@@ -1,0 +1,18 @@
+id: SB106
+level: SB
+page: 106
+set: 11
+block: C
+block_id: SB.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime "1) x" para cada elemento de {"x","y"} (1-based con paréntesis).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '1) x
+
+    2) y'
+starter_code: ''

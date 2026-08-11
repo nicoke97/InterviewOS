@@ -1,0 +1,16 @@
+id: SB164
+level: SB
+page: 164
+set: 17
+block: D
+block_id: SB.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Concat(string a, string b) que una con espacio y llámalo con "buen","dia".
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: buen dia
+starter_code: ''

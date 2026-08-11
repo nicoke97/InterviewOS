@@ -1,0 +1,11 @@
+id: sb-int-1
+question: ¿Cuál es la diferencia entre un bucle for y un bucle while en C#? ¿Cuándo
+  usarías cada uno?
+rubric:
+- for cuando conoces el número de iteraciones
+- while cuando dependes de una condición
+- for combina init/condición/incremento
+sample_answer: El for reúne inicialización, condición e incremento en una línea y
+  es ideal cuando sabes cuántas veces iterar. El while repite mientras una condición
+  sea verdadera, útil cuando no conoces el número de vueltas de antemano.
+category: csharp

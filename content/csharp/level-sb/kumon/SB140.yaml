@@ -1,0 +1,16 @@
+id: SB140
+level: SB
+page: 140
+set: 14
+block: C
+block_id: SB.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Encuentra el segundo elemento más grande NO haría falta; imprime el máximo
+  de {7,3,7,1} (7).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

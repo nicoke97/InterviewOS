@@ -1,0 +1,15 @@
+id: SB160
+level: SB
+page: 160
+set: 16
+block: D
+block_id: SB.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Mitad(int n) que retorne n/2 y llámalo con 10.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

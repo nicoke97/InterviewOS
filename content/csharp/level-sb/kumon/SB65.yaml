@@ -1,0 +1,16 @@
+id: SB65
+level: SB
+page: 65
+set: 7
+block: B
+block_id: SB.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un while, suma los números del 1 al 10 e imprime el total.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '55'
+starter_code: ''

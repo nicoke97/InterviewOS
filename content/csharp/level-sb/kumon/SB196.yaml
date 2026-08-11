@@ -1,0 +1,16 @@
+id: SB196
+level: SB
+page: 196
+set: 20
+block: D
+block_id: SB.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Mitad y Doble; imprime Doble(Mitad(10)) (10).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

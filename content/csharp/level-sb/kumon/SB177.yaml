@@ -1,0 +1,16 @@
+id: SB177
+level: SB
+page: 177
+set: 18
+block: D
+block_id: SB.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Linea(char c = '-', int n = 5) y llámalo con '*' y 3.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '***'
+starter_code: ''

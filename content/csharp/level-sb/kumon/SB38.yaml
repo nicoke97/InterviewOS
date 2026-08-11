@@ -1,0 +1,21 @@
+id: SB38
+level: SB
+page: 38
+set: 4
+block: A
+block_id: SB.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Cuenta regresiva: imprime de 4 a 1, uno por línea.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4
+
+    3
+
+    2
+
+    1'
+starter_code: ''

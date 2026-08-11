@@ -1,0 +1,24 @@
+id: SB26
+level: SB
+page: 26
+set: 3
+block: A
+block_id: SB.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime los pares del 0 al 8.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0
+
+    2
+
+    4
+
+    6
+
+    8'
+starter_code: ''

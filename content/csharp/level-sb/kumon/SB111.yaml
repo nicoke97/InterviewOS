@@ -1,0 +1,23 @@
+id: SB111
+level: SB
+page: 111
+set: 12
+block: C
+block_id: SB.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dadas {"Ana","Luis"} y {20,30}, imprime "Ana 20" y "Luis 30" recorriendo por
+  índice.
+hints:
+- Usa el mismo índice i para ambos arrays.
+validation:
+  type: run_and_match_stdout
+  expected: 'Ana 20
+
+    Luis 30'
+starter_code: "string[] nombres = ___;\nint[] edades = ___;\nfor (int i = 0; i < nombres.Length;\
+  \ i++)\n    Console.WriteLine(___);"
+reference_code: "string[] nombres = { \"Ana\", \"Luis\" };\nint[] edades = { 20, 30\
+  \ };\nfor (int i = 0; i < nombres.Length; i++)\n    Console.WriteLine($\"{nombres[i]}\
+  \ {edades[i]}\");"

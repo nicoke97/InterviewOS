@@ -1,0 +1,16 @@
+id: SB194
+level: SB
+page: 194
+set: 20
+block: D
+block_id: SB.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Mayuscula y Repite; imprime Repite(Mayuscula("ab"),2) (ABAB).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ABAB
+starter_code: ''

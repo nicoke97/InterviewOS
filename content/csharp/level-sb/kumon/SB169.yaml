@@ -1,0 +1,15 @@
+id: SB169
+level: SB
+page: 169
+set: 17
+block: D
+block_id: SB.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Repite(string s, int n) que repita s n veces y llámalo con "ab",3.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ababab
+starter_code: ''

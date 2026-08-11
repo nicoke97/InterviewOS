@@ -1,0 +1,16 @@
+id: SB185
+level: SB
+page: 185
+set: 19
+block: D
+block_id: SB.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Abs(int n) que retorne el valor absoluto con if; llámalo con -8.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

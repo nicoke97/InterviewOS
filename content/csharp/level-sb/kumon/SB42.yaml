@@ -1,0 +1,19 @@
+id: SB42
+level: SB
+page: 42
+set: 5
+block: A
+block_id: SB.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {1, 2, 3}, imprime la suma con un for.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: "int[] nums = ___;\nint total = ___;\nfor (int i = 0; i < nums.Length;\
+  \ i++)\n    total += nums[i];\nConsole.WriteLine(___);"
+reference_code: "int[] nums = { 1, 2, 3 };\nint total = 0;\nfor (int i = 0; i < nums.Length;\
+  \ i++)\n    total += nums[i];\nConsole.WriteLine(total);"

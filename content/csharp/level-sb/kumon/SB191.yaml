@@ -1,0 +1,25 @@
+id: SB191
+level: SB
+page: 191
+set: 20
+block: D
+block_id: SB.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Inc(int n)=>n+1 y Doble(int n)=>n*2, imprime Doble(Inc(3)) (8).
+hints:
+- Puedes pasar el resultado de un método como argumento de otro.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: 'int Inc(int n) => n + 1;
+
+  int Doble(int n) => n * 2;
+
+  Console.WriteLine(___);'
+reference_code: 'int Inc(int n) => n + 1;
+
+  int Doble(int n) => n * 2;
+
+  Console.WriteLine(Doble(Inc(3)));'

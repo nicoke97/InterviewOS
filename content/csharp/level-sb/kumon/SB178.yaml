@@ -1,0 +1,15 @@
+id: SB178
+level: SB
+page: 178
+set: 18
+block: D
+block_id: SB.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Saluda(string s = "Hola", string quien = "mundo") y llámalo sin argumentos.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Hola, mundo
+starter_code: ''

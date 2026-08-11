@@ -1,0 +1,21 @@
+id: SB75
+level: SB
+page: 75
+set: 8
+block: B
+block_id: SB.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Recorre {1, 2, 3, 4} e imprime cada uno hasta encontrar el 3 (inclusive, luego
+  break).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3'
+starter_code: ''

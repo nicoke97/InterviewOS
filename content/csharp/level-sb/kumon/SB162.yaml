@@ -1,0 +1,21 @@
+id: SB162
+level: SB
+page: 162
+set: 17
+block: D
+block_id: SB.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define Area(int b, int h) que retorne b*h y llámalo con 5 y 4.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: 'int Area(int b, int h) => b * h;
+
+  Console.WriteLine(___);'
+reference_code: 'int Area(int b, int h) => b * h;
+
+  Console.WriteLine(Area(5, 4));'

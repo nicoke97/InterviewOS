@@ -1,0 +1,22 @@
+id: SB171
+level: SB
+page: 171
+set: 18
+block: D
+block_id: SB.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Saludo(string nombre = "amigo") con valor por defecto y llámalo sin
+  argumentos.
+hints:
+- Un parámetro con = valor usa ese valor si no lo pasas.
+validation:
+  type: run_and_match_stdout
+  expected: Hola amigo
+starter_code: 'string Saludo(string nombre = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string Saludo(string nombre = "amigo") => $"Hola {nombre}";
+
+  Console.WriteLine(Saludo());'

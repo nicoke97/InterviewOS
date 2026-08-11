@@ -1,0 +1,20 @@
+id: SB107
+level: SB
+page: 107
+set: 11
+block: C
+block_id: SB.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Suma indice+valor para {10,20,30} e imprime cada suma parcial.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10
+
+    21
+
+    32'
+starter_code: ''

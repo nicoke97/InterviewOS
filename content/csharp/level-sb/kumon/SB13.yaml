@@ -1,0 +1,17 @@
+id: SB13
+level: SB
+page: 13
+set: 2
+block: A
+block_id: SB.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Imprime la suma de 1 a 3.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ___
+reference_code: "int total = 0;\nfor (int i = 1; i <= 3; i++)\n    total += i;\nConsole.WriteLine(total);"

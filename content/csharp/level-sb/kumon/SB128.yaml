@@ -1,0 +1,15 @@
+id: SB128
+level: SB
+page: 128
+set: 13
+block: C
+block_id: SB.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Suma la diagonal de una matriz {{1,2},{3,4}} (1+4=5).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

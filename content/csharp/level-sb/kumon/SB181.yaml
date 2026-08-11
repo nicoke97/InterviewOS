@@ -1,0 +1,20 @@
+id: SB181
+level: SB
+page: 181
+set: 19
+block: D
+block_id: SB.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Nota(int s) que retorne 'A' si >=90, 'B' si >=80, si no 'F'; llámalo
+  con 85.
+hints:
+- Un método puede tener varios return según condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: "string Nota(int s)\n{\n    if (s >= 90) return \"A\";\n    if (s >=\
+  \ 80) return \"B\";\n    return \"F\";\n}\nConsole.WriteLine(___);"
+reference_code: "string Nota(int s)\n{\n    if (s >= 90) return \"A\";\n    if (s\
+  \ >= 80) return \"B\";\n    return \"F\";\n}\nConsole.WriteLine(Nota(85));"

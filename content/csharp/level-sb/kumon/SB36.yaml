@@ -1,0 +1,28 @@
+id: SB36
+level: SB
+page: 36
+set: 4
+block: A
+block_id: SB.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: 'Cuenta regresiva: imprime de 7 a 1, uno por línea.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '7
+
+    6
+
+    5
+
+    4
+
+    3
+
+    2
+
+    1'
+starter_code: ''

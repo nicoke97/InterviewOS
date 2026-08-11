@@ -1,0 +1,26 @@
+id: SB81
+level: SB
+page: 81
+set: 9
+block: B
+block_id: SB.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 6, usa continue para saltar el 3 e imprime el resto.
+hints:
+- continue salta a la siguiente iteración sin ejecutar lo que sigue.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    4
+
+    5
+
+    6'
+starter_code: ___
+reference_code: "for (int i = 1; i <= 6; i++)\n{\n    if (i == 3) continue;\n    Console.WriteLine(i);\n\
+  }"

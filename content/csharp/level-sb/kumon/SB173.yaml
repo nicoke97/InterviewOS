@@ -1,0 +1,19 @@
+id: SB173
+level: SB
+page: 173
+set: 18
+block: D
+block_id: SB.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Incrementa(int n, int paso = 1) y llámalo con 5 y 10.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '15'
+starter_code: ___
+reference_code: 'int Incrementa(int n, int paso = 1) => n + paso;
+
+  Console.WriteLine(Incrementa(5, 10));'

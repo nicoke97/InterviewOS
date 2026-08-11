@@ -1,0 +1,19 @@
+id: SB131
+level: SB
+page: 131
+set: 14
+block: C
+block_id: SB.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Encuentra el máximo de {3,7,2,9,4} con un bucle manual e imprímelo.
+hints:
+- Empieza asumiendo que el primero es el máximo y compara.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: "int[] nums = ___;\nint max = ___;\nforeach (int n in nums)\n    if\
+  \ (n > max) max = ___;\nConsole.WriteLine(max);"
+reference_code: "int[] nums = { 3, 7, 2, 9, 4 };\nint max = nums[0];\nforeach (int\
+  \ n in nums)\n    if (n > max) max = n;\nConsole.WriteLine(max);"

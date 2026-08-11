@@ -1,0 +1,15 @@
+id: SB159
+level: SB
+page: 159
+set: 16
+block: D
+block_id: SB.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Largo(string s) que retorne su longitud y llámalo con "dotnet".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

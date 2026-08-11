@@ -1,0 +1,29 @@
+id: SB9
+level: SB
+page: 9
+set: 1
+block: A
+block_id: SB.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Imprime los números del 1 al 8, uno por línea.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3
+
+    4
+
+    5
+
+    6
+
+    7
+
+    8'
+starter_code: ''

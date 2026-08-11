@@ -1,0 +1,20 @@
+id: SB132
+level: SB
+page: 132
+set: 14
+block: C
+block_id: SB.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Encuentra el mínimo de {5,3,8,1,4} manualmente e imprímelo.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: "int[] nums = ___;\nint min = ___;\nforeach (int n in nums)\n    if\
+  \ (n < min) min = ___;\nConsole.WriteLine(___);"
+reference_code: "int[] nums = { 5, 3, 8, 1, 4 };\nint min = nums[0];\nforeach (int\
+  \ n in nums)\n    if (n < min) min = n;\nConsole.WriteLine(min);"

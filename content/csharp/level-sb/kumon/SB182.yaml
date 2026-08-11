@@ -1,0 +1,20 @@
+id: SB182
+level: SB
+page: 182
+set: 19
+block: D
+block_id: SB.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Signo(int n) que retorne 'positivo'/'cero'/'negativo'; llámalo con
+  -3.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: negativo
+starter_code: "string Signo(int n)\n{\n    if (n > 0) return \"positivo\";\n    if\
+  \ (n == 0) return \"cero\";\n    return \"negativo\";\n}\nConsole.WriteLine(___);"
+reference_code: "string Signo(int n)\n{\n    if (n > 0) return \"positivo\";\n   \
+  \ if (n == 0) return \"cero\";\n    return \"negativo\";\n}\nConsole.WriteLine(Signo(-3));"

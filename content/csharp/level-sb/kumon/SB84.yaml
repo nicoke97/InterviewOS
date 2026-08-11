@@ -1,0 +1,24 @@
+id: SB84
+level: SB
+page: 84
+set: 9
+block: B
+block_id: SB.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 15, imprime solo los múltiplos de 3 (continue si no).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '3
+
+    6
+
+    9
+
+    12
+
+    15'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SB189
+level: SB
+page: 189
+set: 19
+block: D
+block_id: SB.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Factorial(int n) con bucle; llámalo con 5.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '120'
+starter_code: ''

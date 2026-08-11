@@ -1,0 +1,19 @@
+id: SB92
+level: SB
+page: 92
+set: 10
+block: B
+block_id: SB.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con un while, cuenta cuántos elementos de {5,0,3,0} son cero.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: "int[] nums = ___;\nint i = ___;\nint c = ___;\nwhile (i < nums.Length)\n\
+  {\n    if (nums[i] == 0) c++;\n    i++;\n}\nConsole.WriteLine(___);"
+reference_code: "int[] nums = { 5, 0, 3, 0 };\nint i = 0;\nint c = 0;\nwhile (i <\
+  \ nums.Length)\n{\n    if (nums[i] == 0) c++;\n    i++;\n}\nConsole.WriteLine(c);"

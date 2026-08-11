@@ -1,0 +1,17 @@
+id: SB76
+level: SB
+page: 76
+set: 8
+block: B
+block_id: SB.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 10, detente en el primer cuadrado perfecto > 1 (i*i coincide)
+  — imprime 4.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

@@ -1,0 +1,18 @@
+id: SB55
+level: SB
+page: 55
+set: 6
+block: B
+block_id: SB.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Usa un while para imprimir de 1 a 2.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2'
+starter_code: ''

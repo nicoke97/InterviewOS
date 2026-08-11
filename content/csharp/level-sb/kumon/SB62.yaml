@@ -1,0 +1,17 @@
+id: SB62
+level: SB
+page: 62
+set: 7
+block: B
+block_id: SB.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con un while, duplica 1 hasta pasar 100 e imprime el valor final.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '128'
+starter_code: "int n = ___;\nwhile (n <= 100)\n    n *= 2;\nConsole.WriteLine(___);"
+reference_code: "int n = 1;\nwhile (n <= 100)\n    n *= 2;\nConsole.WriteLine(n);"

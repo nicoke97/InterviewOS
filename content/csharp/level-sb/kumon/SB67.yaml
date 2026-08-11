@@ -1,0 +1,16 @@
+id: SB67
+level: SB
+page: 67
+set: 7
+block: B
+block_id: SB.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un while, resta 3 a 20 hasta que sea negativo e imprime el valor final.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '-1'
+starter_code: ''

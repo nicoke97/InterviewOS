@@ -1,0 +1,18 @@
+id: SB93
+level: SB
+page: 93
+set: 10
+block: B
+block_id: SB.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con un while, multiplica los elementos de {2,3,4} (producto) e imprime.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '24'
+starter_code: ___
+reference_code: "int[] nums = { 2, 3, 4 };\nint i = 0;\nint prod = 1;\nwhile (i <\
+  \ nums.Length)\n{\n    prod *= nums[i];\n    i++;\n}\nConsole.WriteLine(prod);"

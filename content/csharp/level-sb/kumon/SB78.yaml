@@ -1,0 +1,20 @@
+id: SB78
+level: SB
+page: 78
+set: 8
+block: B
+block_id: SB.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con un while infinito controlado, imprime i de 1 en 1 y usa break al llegar
+  a 3.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3'
+starter_code: ''

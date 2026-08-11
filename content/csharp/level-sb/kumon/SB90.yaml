@@ -1,0 +1,15 @@
+id: SB90
+level: SB
+page: 90
+set: 9
+block: B
+block_id: SB.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Suma solo los pares de 1 a 8 (continue si impar) e imprime el total.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

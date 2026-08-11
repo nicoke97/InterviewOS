@@ -1,0 +1,16 @@
+id: SB195
+level: SB
+page: 195
+set: 20
+block: D
+block_id: SB.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Abs y Resta; imprime Abs(Resta(3,9)) (6).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

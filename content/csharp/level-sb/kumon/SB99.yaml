@@ -1,0 +1,15 @@
+id: SB99
+level: SB
+page: 99
+set: 10
+block: B
+block_id: SB.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con un while, cuenta cuántos números pares hay en {2,3,4,5,6}.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

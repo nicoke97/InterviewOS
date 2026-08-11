@@ -1,0 +1,16 @@
+id: SB154
+level: SB
+page: 154
+set: 16
+block: D
+block_id: SB.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define EsPar(int n) que retorne true/false y llámalo con 6.
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

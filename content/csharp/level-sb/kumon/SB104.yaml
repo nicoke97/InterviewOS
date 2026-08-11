@@ -1,0 +1,20 @@
+id: SB104
+level: SB
+page: 104
+set: 11
+block: C
+block_id: SB.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Imprime cada caracter de "abc" con su índice (0 a, ...).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '0 a
+
+    1 b
+
+    2 c'
+starter_code: ''

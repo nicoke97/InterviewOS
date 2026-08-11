@@ -1,0 +1,22 @@
+id: SB101
+level: SB
+page: 101
+set: 11
+block: C
+block_id: SB.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: 'Recorre {"a","b","c"} imprimiendo "indice: valor" (0: a, ...).'
+hints:
+- Usa el índice i del for para numerar.
+validation:
+  type: run_and_match_stdout
+  expected: '0: a
+
+    1: b
+
+    2: c'
+starter_code: "string[] xs = ___;\nfor (int i = 0; i < xs.Length; i++)\n    Console.WriteLine(___);"
+reference_code: "string[] xs = { \"a\", \"b\", \"c\" };\nfor (int i = 0; i < xs.Length;\
+  \ i++)\n    Console.WriteLine($\"{i}: {xs[i]}\");"

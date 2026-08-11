@@ -1,0 +1,22 @@
+id: SB87
+level: SB
+page: 87
+set: 9
+block: B
+block_id: SB.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con un for de 1 a 20, imprime solo múltiplos de 5.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '5
+
+    10
+
+    15
+
+    20'
+starter_code: ''

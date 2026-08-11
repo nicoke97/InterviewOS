@@ -1,0 +1,27 @@
+id: SB89
+level: SB
+page: 89
+set: 9
+block: B
+block_id: SB.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Imprime de 1 a 10 saltando los múltiplos de 3.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    4
+
+    5
+
+    7
+
+    8
+
+    10'
+starter_code: ''

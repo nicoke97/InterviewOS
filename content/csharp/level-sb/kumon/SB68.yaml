@@ -1,0 +1,15 @@
+id: SB68
+level: SB
+page: 68
+set: 7
+block: B
+block_id: SB.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con un while, cuenta los dígitos de 12345 (usa /10).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

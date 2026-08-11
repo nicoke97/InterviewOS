@@ -1,0 +1,15 @@
+id: SB88
+level: SB
+page: 88
+set: 9
+block: B
+block_id: SB.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Cuenta cuántos positivos hay en {3, -1, 4, -1, 5} usando continue.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

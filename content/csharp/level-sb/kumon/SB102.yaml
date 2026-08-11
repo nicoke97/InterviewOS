@@ -1,0 +1,22 @@
+id: SB102
+level: SB
+page: 102
+set: 11
+block: C
+block_id: SB.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Recorre {10,20,30} imprimiendo "posicion valor" (0 10, ...).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '0 10
+
+    1 20
+
+    2 30'
+starter_code: "int[] xs = ___;\nfor (int i = 0; i < xs.Length; i++)\n    Console.WriteLine(___);"
+reference_code: "int[] xs = { 10, 20, 30 };\nfor (int i = 0; i < xs.Length; i++)\n\
+  \    Console.WriteLine($\"{i} {xs[i]}\");"
