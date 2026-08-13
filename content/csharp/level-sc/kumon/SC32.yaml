@@ -1,0 +1,26 @@
+id: SC32
+level: SC
+page: 32
+set: 4
+block: A
+block_id: SC.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea List<int> {10,20,30}, borra el índice 0 con RemoveAt e imprime nums[0].
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: 'var nums = ___;
+
+  nums.RemoveAt(0);
+
+  Console.WriteLine(___);'
+reference_code: 'var nums = new List<int> { 10, 20, 30 };
+
+  nums.RemoveAt(0);
+
+  Console.WriteLine(nums[0]);'

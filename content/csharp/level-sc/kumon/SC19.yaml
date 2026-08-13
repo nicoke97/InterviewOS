@@ -1,0 +1,15 @@
+id: SC19
+level: SC
+page: 19
+set: 2
+block: A
+block_id: SC.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea List<int> {1,2,3}, agrega 4 e imprime el último.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

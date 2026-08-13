@@ -1,0 +1,15 @@
+id: SC129
+level: SC
+page: 129
+set: 13
+block: C
+block_id: SC.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado {1,2,3}, imprime cada uno como negativo unido por coma (-1,-2,-3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: -1,-2,-3
+starter_code: ''

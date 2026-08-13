@@ -1,0 +1,19 @@
+id: SC53
+level: SC
+page: 53
+set: 6
+block: B
+block_id: SC.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {10,20,30,40}, imprime los primeros 2 (Take) unidos por coma.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 10,20
+starter_code: ___
+reference_code: 'int[] nums = { 10, 20, 30, 40 };
+
+  Console.WriteLine(string.Join(",", nums.Take(2)));'

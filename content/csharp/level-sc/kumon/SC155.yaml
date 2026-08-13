@@ -1,0 +1,16 @@
+id: SC155
+level: SC
+page: 155
+set: 16
+block: D
+block_id: SC.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Divide "hola mundo" e imprime la última palabra.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: mundo
+starter_code: ''

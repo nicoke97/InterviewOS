@@ -1,0 +1,16 @@
+id: SC87
+level: SC
+page: 87
+set: 9
+block: B
+block_id: SC.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con {{2,4},{6,8}}, imprime el máximo de la segunda fila (8).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

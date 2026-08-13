@@ -1,0 +1,23 @@
+id: SC43
+level: SC
+page: 43
+set: 5
+block: A
+block_id: SC.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Recorre {5, 10, 15} imprimiendo cada uno dividido por 5.
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2
+
+    3'
+starter_code: ___
+reference_code: 'int[] nums = { 5, 10, 15 };
+
+  foreach (int n in nums) Console.WriteLine(n / 5);'

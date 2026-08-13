@@ -1,0 +1,15 @@
+id: SC40
+level: SC
+page: 40
+set: 4
+block: A
+block_id: SC.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea List<int> {2,4,6,8}, elimina 6 e imprime el Count (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

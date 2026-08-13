@@ -1,0 +1,15 @@
+id: SC178
+level: SC
+page: 178
+set: 18
+block: D
+block_id: SC.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: 'Dado "TITULO", pásalo a minúsculas y capitaliza: "Titulo".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Titulo
+starter_code: ''

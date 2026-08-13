@@ -1,0 +1,19 @@
+id: SC103
+level: SC
+page: 103
+set: 11
+block: C
+block_id: SC.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea tupla con nombres (int a, int b) = (5, 6) e imprime a*b (30).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ___
+reference_code: '(int a, int b) = (5, 6);
+
+  Console.WriteLine(a * b);'

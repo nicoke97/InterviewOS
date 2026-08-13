@@ -1,0 +1,16 @@
+id: SC97
+level: SC
+page: 97
+set: 10
+block: B
+block_id: SC.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Copia solo los pares de {1,2,3,4} a una nueva lista e imprime el Count (2).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

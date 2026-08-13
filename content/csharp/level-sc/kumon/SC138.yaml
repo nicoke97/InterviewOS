@@ -1,0 +1,15 @@
+id: SC138
+level: SC
+page: 138
+set: 14
+block: C
+block_id: SC.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {1,2,3,4}, imprime los impares unido por coma (1,3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 1,3
+starter_code: ''

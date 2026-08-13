@@ -1,0 +1,15 @@
+id: SC78
+level: SC
+page: 78
+set: 8
+block: B
+block_id: SC.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado {"pera","ana","kiwi"}, imprime ordenado por longitud unido por coma.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ana,pera,kiwi
+starter_code: ''

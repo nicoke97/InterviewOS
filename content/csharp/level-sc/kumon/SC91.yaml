@@ -1,0 +1,30 @@
+id: SC91
+level: SC
+page: 91
+set: 10
+block: B
+block_id: SC.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Copia {1,2,3} a una nueva List con ToList(), agrega 4 a la copia e imprime
+  el Count original (3).
+hints:
+- ToList() crea una copia independiente.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'int[] nums = ___;
+
+  var copia = ___;
+
+  copia.Add(4);
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3 };
+
+  var copia = nums.ToList();
+
+  copia.Add(4);
+
+  Console.WriteLine(nums.Length);'

@@ -1,0 +1,15 @@
+id: SC20
+level: SC
+page: 20
+set: 2
+block: A
+block_id: SC.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea List<int> {5,6}, inserta 99 en índice 1 e imprime nums[1].
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '99'
+starter_code: ''

@@ -1,0 +1,19 @@
+id: SC163
+level: SC
+page: 163
+set: 17
+block: D
+block_id: SC.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado "hola mundo", quita los espacios con Replace e imprime (holamundo).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: holamundo
+starter_code: ___
+reference_code: 'string s = "hola mundo";
+
+  Console.WriteLine(s.Replace(" ", ""));'

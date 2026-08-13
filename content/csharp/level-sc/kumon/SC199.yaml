@@ -1,0 +1,15 @@
+id: SC199
+level: SC
+page: 199
+set: 20
+block: D
+block_id: SC.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Imprime 1234.5 con 1 decimal "1234.5" usando ToString("F1").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1234.5'
+starter_code: ''

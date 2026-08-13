@@ -1,0 +1,24 @@
+id: SC93
+level: SC
+page: 93
+set: 10
+block: B
+block_id: SC.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea List<int> {1,2}, cópiala con new List<int>(orig), agrega 3 a la copia
+  e imprime el Count original (2).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: 'var orig = new List<int> { 1, 2 };
+
+  var copia = new List<int>(orig);
+
+  copia.Add(3);
+
+  Console.WriteLine(orig.Count);'

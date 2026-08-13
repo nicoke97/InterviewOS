@@ -1,0 +1,49 @@
+id: sc-exam-second-largest
+title: Segundo mayor
+fn_name: SecondLargest
+description: Retorna el segundo número más grande (distintos).
+test_cases:
+- args:
+  - - 3
+    - 1
+    - 4
+    - 1
+    - 5
+  expected: 4
+- args:
+  - - 10
+    - 20
+  expected: 10
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: int SecondLargest(int[] nums) => nums.Distinct().OrderByDescending(n
+  => n).Skip(1).First();
+tiers:
+  1:
+    starter_code: "int SecondLargest(int[] nums)\n{\n    return 0;\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int SecondLargest(int[] nums)\n{\n    return 0;\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int SecondLargest(int[] nums)\n{\n    return 0;\n}"
+    narration_prompts: []
+    hints_allowed: false

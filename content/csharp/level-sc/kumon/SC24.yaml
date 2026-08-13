@@ -1,0 +1,16 @@
+id: SC24
+level: SC
+page: 24
+set: 3
+block: A
+block_id: SC.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {2, 4, 6}, imprime el promedio entero (suma/Length).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

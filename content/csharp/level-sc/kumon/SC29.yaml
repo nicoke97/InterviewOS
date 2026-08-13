@@ -1,0 +1,15 @@
+id: SC29
+level: SC
+page: 29
+set: 3
+block: A
+block_id: SC.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado {7, 2, 9, 4}, imprime la suma del mínimo y el máximo (11).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '11'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SC156
+level: SC
+page: 156
+set: 16
+block: D
+block_id: SC.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Une {"2024","09","05"} con "-" (formato fecha).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2024-09-05'
+starter_code: ''

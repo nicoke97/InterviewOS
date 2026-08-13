@@ -1,0 +1,17 @@
+id: SC37
+level: SC
+page: 37
+set: 4
+block: A
+block_id: SC.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea List<int> {4,5,6}, elimina 4 e imprime nums[0].
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

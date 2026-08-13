@@ -1,0 +1,16 @@
+id: SC140
+level: SC
+page: 140
+set: 14
+block: C
+block_id: SC.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {"hola","hi","hey"}, imprime cuántos empiezan con "h" y tienen >2 letras
+  (2).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

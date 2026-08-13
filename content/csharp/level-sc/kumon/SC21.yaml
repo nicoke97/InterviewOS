@@ -1,0 +1,21 @@
+id: SC21
+level: SC
+page: 21
+set: 3
+block: A
+block_id: SC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {3, 1, 4, 1, 5}, imprime la suma con Sum().
+hints:
+- Sum(), Min(), Max() y Count() vienen de LINQ.
+validation:
+  type: run_and_match_stdout
+  expected: '14'
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 3, 1, 4, 1, 5 };
+
+  Console.WriteLine(nums.Sum());'

@@ -1,0 +1,16 @@
+id: SC165
+level: SC
+page: 165
+set: 17
+block: D
+block_id: SC.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado "1-2-3", reemplaza "-" por "/" e imprime (1/2/3).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 1/2/3
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SC120
+level: SC
+page: 120
+set: 12
+block: C
+block_id: SC.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Desestructura (100, 200) y suma; imprime 300.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '300'
+starter_code: ''

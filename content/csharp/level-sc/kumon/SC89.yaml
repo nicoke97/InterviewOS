@@ -1,0 +1,15 @@
+id: SC89
+level: SC
+page: 89
+set: 9
+block: B
+block_id: SC.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Con {{10,20}}, imprime el segundo elemento de la primera fila (20).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

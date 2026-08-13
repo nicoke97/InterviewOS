@@ -1,0 +1,16 @@
+id: SC125
+level: SC
+page: 125
+set: 13
+block: C
+block_id: SC.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {"pera","kiwi"}, imprime la longitud de cada uno unido por coma (4,4).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 4,4
+starter_code: ''

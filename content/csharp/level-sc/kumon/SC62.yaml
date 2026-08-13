@@ -1,0 +1,22 @@
+id: SC62
+level: SC
+page: 62
+set: 7
+block: B
+block_id: SC.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {5,10,15}, imprime invertido unido por coma.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: 15,10,5
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 5, 10, 15 };
+
+  Console.WriteLine(string.Join(",", nums.Reverse()));'

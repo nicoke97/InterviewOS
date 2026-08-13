@@ -1,0 +1,16 @@
+id: SC136
+level: SC
+page: 136
+set: 14
+block: C
+block_id: SC.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {3,6,9,12}, imprime los múltiplos de 6 unido por coma (6,12).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 6,12
+starter_code: ''

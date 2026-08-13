@@ -1,0 +1,21 @@
+id: SC111
+level: SC
+page: 111
+set: 12
+block: C
+block_id: SC.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Desestructura (int a, int b) = (7, 3) e imprime a-b (4).
+hints:
+- Puedes asignar varias variables a la vez desde una tupla.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: '(int a, int b) = ___;
+
+  Console.WriteLine(___);'
+reference_code: '(int a, int b) = (7, 3);
+
+  Console.WriteLine(a - b);'

@@ -1,0 +1,15 @@
+id: SC79
+level: SC
+page: 79
+set: 8
+block: B
+block_id: SC.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado {9,9,1}, imprime ordenado ascendente unido por coma.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 1,9,9
+starter_code: ''

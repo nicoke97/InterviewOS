@@ -1,0 +1,21 @@
+id: SC121
+level: SC
+page: 121
+set: 13
+block: C
+block_id: SC.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {1,2,3}, usa Select para duplicar e imprime unido por coma (2,4,6).
+hints:
+- Select(x => ...) transforma cada elemento.
+validation:
+  type: run_and_match_stdout
+  expected: 2,4,6
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3 };
+
+  Console.WriteLine(string.Join(",", nums.Select(n => n * 2)));'

@@ -1,0 +1,16 @@
+id: SC126
+level: SC
+page: 126
+set: 13
+block: C
+block_id: SC.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {1,2,3,4}, imprime la suma de los cuadrados con Select+Sum (30).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ''

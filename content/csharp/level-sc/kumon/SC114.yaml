@@ -1,0 +1,16 @@
+id: SC114
+level: SC
+page: 114
+set: 12
+block: C
+block_id: SC.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Desestructura (10, 20, 30) en (x,y,z) e imprime z (30).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ''

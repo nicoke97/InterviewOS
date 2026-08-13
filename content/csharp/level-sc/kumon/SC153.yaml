@@ -1,0 +1,17 @@
+id: SC153
+level: SC
+page: 153
+set: 16
+block: D
+block_id: SC.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Une {"a","b","c"} con "-" usando string.Join.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: a-b-c
+starter_code: ___
+reference_code: Console.WriteLine(string.Join("-", new[] { "a", "b", "c" }));

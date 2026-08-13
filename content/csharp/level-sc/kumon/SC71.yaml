@@ -1,0 +1,21 @@
+id: SC71
+level: SC
+page: 71
+set: 8
+block: B
+block_id: SC.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {3,1,2}, imprime ordenado ascendente con OrderBy unido por coma.
+hints:
+- OrderBy(n => n) ordena ascendente; OrderByDescending desc.
+validation:
+  type: run_and_match_stdout
+  expected: 1,2,3
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 3, 1, 2 };
+
+  Console.WriteLine(string.Join(",", nums.OrderBy(n => n)));'

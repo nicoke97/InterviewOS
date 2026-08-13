@@ -1,0 +1,21 @@
+id: SC1
+level: SC
+page: 1
+set: 1
+block: A
+block_id: SC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Crea un array {10, 20, 30} e imprime el elemento en el índice 1 (20).
+hints:
+- 'Los índices empiezan en 0: nums[0] es el primero.'
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 10, 20, 30 };
+
+  Console.WriteLine(nums[1]);'

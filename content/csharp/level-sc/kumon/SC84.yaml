@@ -1,0 +1,16 @@
+id: SC84
+level: SC
+page: 84
+set: 9
+block: B
+block_id: SC.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con {{1,1},{1,1}}, imprime la suma total (4).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

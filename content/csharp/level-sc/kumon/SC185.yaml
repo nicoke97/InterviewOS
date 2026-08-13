@@ -1,0 +1,16 @@
+id: SC185
+level: SC
+page: 185
+set: 19
+block: D
+block_id: SC.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado "banana", cuenta las "a" con Count (3).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

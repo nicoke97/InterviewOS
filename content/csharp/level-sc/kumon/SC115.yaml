@@ -1,0 +1,16 @@
+id: SC115
+level: SC
+page: 115
+set: 12
+block: C
+block_id: SC.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Un método que retorne (int, int) MinMax de {3,1,4}; imprime el min.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

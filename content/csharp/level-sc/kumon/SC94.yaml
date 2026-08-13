@@ -1,0 +1,16 @@
+id: SC94
+level: SC
+page: 94
+set: 10
+block: B
+block_id: SC.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Copia {10,20,30} con ToArray() e imprime su Length (3).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

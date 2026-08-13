@@ -1,0 +1,21 @@
+id: SC52
+level: SC
+page: 52
+set: 6
+block: B
+block_id: SC.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {1,2,3,4,5}, imprime los que quedan tras Skip(2) unidos por coma.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 3,4,5
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3, 4, 5 };
+
+  Console.WriteLine(string.Join(",", nums.Skip(2)));'

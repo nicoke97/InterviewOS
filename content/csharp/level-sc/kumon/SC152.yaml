@@ -1,0 +1,22 @@
+id: SC152
+level: SC
+page: 152
+set: 16
+block: D
+block_id: SC.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Divide "uno dos tres" por espacio e imprime la primera palabra.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: uno
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "uno dos tres";
+
+  Console.WriteLine(s.Split(" ")[0]);'

@@ -1,0 +1,21 @@
+id: SC112
+level: SC
+page: 112
+set: 12
+block: C
+block_id: SC.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con var (nombre, edad) = ("Luis", 30), imprime edad (30).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: 'var (nombre, edad) = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var (nombre, edad) = ("Luis", 30);
+
+  Console.WriteLine(edad);'

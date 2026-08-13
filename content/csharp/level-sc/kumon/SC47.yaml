@@ -1,0 +1,16 @@
+id: SC47
+level: SC
+page: 47
+set: 5
+block: A
+block_id: SC.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Une {"a","b","c"} en un solo string acumulando; imprime "abc".
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: abc
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SC194
+level: SC
+page: 194
+set: 20
+block: D
+block_id: SC.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Con precio=1000, imprime "Total: $1000" con interpolación.'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Total: $1000'
+starter_code: ''

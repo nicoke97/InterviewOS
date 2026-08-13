@@ -1,0 +1,10 @@
+id: sc-int-2
+question: ¿Cuál es la diferencia entre un array (int[]) y una List<int> en C#?
+rubric:
+- array tamaño fijo
+- List redimensionable con Add/Remove
+- elegir según necesidad
+sample_answer: Un array tiene tamaño fijo al crearse; una List<int> crece y encoge
+  dinámicamente con Add/Remove. Usa array si el tamaño es fijo y List si necesitas
+  modificar la colección.
+category: csharp

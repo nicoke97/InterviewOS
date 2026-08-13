@@ -1,0 +1,15 @@
+id: SC189
+level: SC
+page: 189
+set: 19
+block: D
+block_id: SC.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado "https://x.com", imprime si empieza con "https" (true).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

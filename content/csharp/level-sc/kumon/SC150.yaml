@@ -1,0 +1,15 @@
+id: SC150
+level: SC
+page: 150
+set: 15
+block: C
+block_id: SC.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {2,4,6,8,10}, imprime cuántos hay tras filtrar > 5 y su suma (24).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '24'
+starter_code: ''

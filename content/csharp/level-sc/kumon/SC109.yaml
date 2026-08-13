@@ -1,0 +1,15 @@
+id: SC109
+level: SC
+page: 109
+set: 11
+block: C
+block_id: SC.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea (string dia, int num) = ("lun", 1) e imprime "lun=1".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: lun=1
+starter_code: ''

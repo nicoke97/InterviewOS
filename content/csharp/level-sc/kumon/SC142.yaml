@@ -1,0 +1,21 @@
+id: SC142
+level: SC
+page: 142
+set: 15
+block: C
+block_id: SC.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dado {"a","bb","ccc"}, imprime la longitud total con Select+Sum (6).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: 'string[] xs = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string[] xs = { "a", "bb", "ccc" };
+
+  Console.WriteLine(xs.Select(x => x.Length).Sum());'

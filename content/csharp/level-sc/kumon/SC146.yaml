@@ -1,0 +1,16 @@
+id: SC146
+level: SC
+page: 146
+set: 15
+block: C
+block_id: SC.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {10,20,30}, imprime cada uno como "$valor" unido por coma.
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: $10,$20,$30
+starter_code: ''

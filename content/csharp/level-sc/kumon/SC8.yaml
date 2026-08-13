@@ -1,0 +1,15 @@
+id: SC8
+level: SC
+page: 8
+set: 1
+block: A
+block_id: SC.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Crea {2, 4, 6, 8} e imprime la suma de nums[0] y nums[3] (10).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

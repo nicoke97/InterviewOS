@@ -1,0 +1,19 @@
+id: SC73
+level: SC
+page: 73
+set: 8
+block: B
+block_id: SC.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {"c","a","b"}, imprime ordenado alfabéticamente unido por coma.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: a,b,c
+starter_code: ___
+reference_code: 'string[] xs = { "c", "a", "b" };
+
+  Console.WriteLine(string.Join(",", xs.OrderBy(x => x)));'

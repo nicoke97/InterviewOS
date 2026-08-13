@@ -1,0 +1,18 @@
+id: SC144
+level: SC
+page: 144
+set: 15
+block: C
+block_id: SC.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {"ana","luis"}, imprime cada uno capitalizado (primera mayúscula) unido
+  por coma.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: Ana,Luis
+starter_code: ''

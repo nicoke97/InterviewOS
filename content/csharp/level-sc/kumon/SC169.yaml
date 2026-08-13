@@ -1,0 +1,15 @@
+id: SC169
+level: SC
+page: 169
+set: 17
+block: D
+block_id: SC.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado "gato gato", reemplaza "gato" por "perro" e imprime.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: perro perro
+starter_code: ''

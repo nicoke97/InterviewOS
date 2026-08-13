@@ -1,0 +1,17 @@
+id: SC64
+level: SC
+page: 64
+set: 7
+block: B
+block_id: SC.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {1,2,3,4}, imprime el primero tras invertir (4).
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

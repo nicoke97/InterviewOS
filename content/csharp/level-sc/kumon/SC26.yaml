@@ -1,0 +1,16 @@
+id: SC26
+level: SC
+page: 26
+set: 3
+block: A
+block_id: SC.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {10, 20, 30}, imprime Max - Min (20).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

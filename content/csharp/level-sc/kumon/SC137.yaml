@@ -1,0 +1,16 @@
+id: SC137
+level: SC
+page: 137
+set: 14
+block: C
+block_id: SC.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {5,10,15,20}, imprime la suma de los > 10 (35).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '35'
+starter_code: ''

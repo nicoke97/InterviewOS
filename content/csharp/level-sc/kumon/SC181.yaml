@@ -1,0 +1,21 @@
+id: SC181
+level: SC
+page: 181
+set: 19
+block: D
+block_id: SC.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado "hello", imprime la posición de "l" con IndexOf (2).
+hints:
+- IndexOf devuelve -1 si no encuentra; Contains da true/false.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "hello";
+
+  Console.WriteLine(s.IndexOf("l"));'

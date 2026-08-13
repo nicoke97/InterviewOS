@@ -1,0 +1,16 @@
+id: SC98
+level: SC
+page: 98
+set: 10
+block: B
+block_id: SC.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Copia {7,8,9} y ordénala descendente en la copia; imprime el primero de la
+  copia (9).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

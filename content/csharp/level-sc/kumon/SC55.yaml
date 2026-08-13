@@ -1,0 +1,16 @@
+id: SC55
+level: SC
+page: 55
+set: 6
+block: B
+block_id: SC.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {1,2,3,4,5,6}, imprime la suma de los primeros 3 (Take(3).Sum()).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

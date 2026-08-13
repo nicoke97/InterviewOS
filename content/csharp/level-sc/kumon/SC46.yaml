@@ -1,0 +1,16 @@
+id: SC46
+level: SC
+page: 46
+set: 5
+block: A
+block_id: SC.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Suma solo los mayores a 10 en {5, 15, 25} e imprime (40).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '40'
+starter_code: ''

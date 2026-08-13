@@ -1,0 +1,15 @@
+id: SC128
+level: SC
+page: 128
+set: 13
+block: C
+block_id: SC.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Dado {"x","y","z"}, imprime cada uno con "!" unido por coma.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: x!,y!,z!
+starter_code: ''

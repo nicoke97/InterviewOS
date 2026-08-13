@@ -1,0 +1,19 @@
+id: SC143
+level: SC
+page: 143
+set: 15
+block: C
+block_id: SC.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dado {1,2,3,4}, imprime el máximo de los cuadrados (16).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '16'
+starter_code: ___
+reference_code: 'int[] nums = { 1, 2, 3, 4 };
+
+  Console.WriteLine(nums.Select(n => n * n).Max());'

@@ -1,0 +1,16 @@
+id: SC4
+level: SC
+page: 4
+set: 1
+block: A
+block_id: SC.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea una List<int> con {7, 8, 9} e imprime el elemento 2 (9).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

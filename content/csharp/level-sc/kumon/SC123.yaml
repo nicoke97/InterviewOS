@@ -1,0 +1,19 @@
+id: SC123
+level: SC
+page: 123
+set: 13
+block: C
+block_id: SC.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {"a","b"}, imprime cada uno en mayúscula unido por coma (A,B).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: A,B
+starter_code: ___
+reference_code: 'string[] xs = { "a", "b" };
+
+  Console.WriteLine(string.Join(",", xs.Select(x => x.ToUpper())));'

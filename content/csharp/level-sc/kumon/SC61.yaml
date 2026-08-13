@@ -1,0 +1,21 @@
+id: SC61
+level: SC
+page: 61
+set: 7
+block: B
+block_id: SC.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {1,2,3}, imprime la lista invertida con Reverse() unida por coma.
+hints:
+- Reverse() de LINQ invierte el orden.
+validation:
+  type: run_and_match_stdout
+  expected: 3,2,1
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3 };
+
+  Console.WriteLine(string.Join(",", nums.Reverse()));'

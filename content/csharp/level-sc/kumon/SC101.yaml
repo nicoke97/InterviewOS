@@ -1,0 +1,22 @@
+id: SC101
+level: SC
+page: 101
+set: 11
+block: C
+block_id: SC.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea una tupla (nombre, edad) = ("Ana", 22) e imprime nombre y edad separados
+  por espacio.
+hints:
+- Accede a los elementos con Item1, Item2 o nombrándolos.
+validation:
+  type: run_and_match_stdout
+  expected: Ana 22
+starter_code: 'var persona = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var persona = ("Ana", 22);
+
+  Console.WriteLine($"{persona.Item1} {persona.Item2}");'

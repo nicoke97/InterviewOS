@@ -1,0 +1,16 @@
+id: SC147
+level: SC
+page: 147
+set: 15
+block: C
+block_id: SC.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Dado {5,3,8,1}, imprime los 2 mayores ordenados desc unidos por coma (8,5).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 8,5
+starter_code: ''

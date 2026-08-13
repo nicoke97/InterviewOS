@@ -1,0 +1,15 @@
+id: SC159
+level: SC
+page: 159
+set: 16
+block: D
+block_id: SC.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Divide "x=5" por "=" e imprime el valor "5".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

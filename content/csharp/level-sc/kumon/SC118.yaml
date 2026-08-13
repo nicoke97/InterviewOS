@@ -1,0 +1,16 @@
+id: SC118
+level: SC
+page: 118
+set: 12
+block: C
+block_id: SC.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Desestructura una tupla dentro de un método que retorna (bool, string); imprime
+  el string.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ok
+starter_code: ''

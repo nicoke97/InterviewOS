@@ -1,0 +1,15 @@
+id: SC100
+level: SC
+page: 100
+set: 10
+block: B
+block_id: SC.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Copia {5,5,5} y usa Distinct() en la copia; imprime el Count (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

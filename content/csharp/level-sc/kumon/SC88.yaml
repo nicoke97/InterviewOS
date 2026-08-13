@@ -1,0 +1,15 @@
+id: SC88
+level: SC
+page: 88
+set: 9
+block: B
+block_id: SC.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Con {{1,2},{3,4}}, imprime la diagonal sumada (1+4=5).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SC139
+level: SC
+page: 139
+set: 14
+block: C
+block_id: SC.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Dado {2,4,6,8}, filtra > 4 y duplica (Where+Select) unido por coma (12,16).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 12,16
+starter_code: ''

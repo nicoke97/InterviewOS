@@ -1,0 +1,16 @@
+id: SC174
+level: SC
+page: 174
+set: 18
+block: D
+block_id: SC.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dado "hOlA", imprímelo todo en minúsculas.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: hola
+starter_code: ''

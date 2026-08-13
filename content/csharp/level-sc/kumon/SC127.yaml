@@ -1,0 +1,16 @@
+id: SC127
+level: SC
+page: 127
+set: 13
+block: C
+block_id: SC.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {5,10,15}, imprime cada uno /5 unido por coma (1,2,3).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 1,2,3
+starter_code: ''

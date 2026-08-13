@@ -1,0 +1,16 @@
+id: SC105
+level: SC
+page: 105
+set: 11
+block: C
+block_id: SC.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea (int min, int max) = (1, 9) e imprime la diferencia (8).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

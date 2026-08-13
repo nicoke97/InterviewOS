@@ -1,0 +1,16 @@
+id: SC117
+level: SC
+page: 117
+set: 12
+block: C
+block_id: SC.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con (int suma, int prod) = (2+3, 2*3), imprime suma y prod (5 6).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 5 6
+starter_code: ''

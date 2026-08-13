@@ -1,0 +1,11 @@
+id: sc-int-1
+question: ¿Qué es LINQ en C# y para qué sirve? Menciona métodos como Where, Select
+  y Sum.
+rubric:
+- consultas sobre colecciones
+- Where filtra, Select transforma, Sum agrega
+- estilo declarativo
+sample_answer: 'LINQ permite consultar colecciones de forma declarativa: Where filtra
+  elementos, Select los transforma y Sum/Count/Max agregan. Ej: nums.Where(n => n
+  % 2 == 0).Sum().'
+category: csharp

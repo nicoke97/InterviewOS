@@ -1,0 +1,21 @@
+id: SC171
+level: SC
+page: 171
+set: 18
+block: D
+block_id: SC.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Dado "hola", imprímelo en MAYÚSCULAS.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: HOLA
+starter_code: 'string s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'string s = "hola";
+
+  Console.WriteLine(s.ToUpper());'

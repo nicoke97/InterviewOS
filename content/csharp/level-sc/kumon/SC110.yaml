@@ -1,0 +1,16 @@
+id: SC110
+level: SC
+page: 110
+set: 11
+block: C
+block_id: SC.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea (int x, int y) = (10, 20), intercámbialos con (x,y)=(y,x) e imprime x
+  (20).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SC59
+level: SC
+page: 59
+set: 6
+block: B
+block_id: SC.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado {2,4,6,8,10}, imprime la suma tras Skip(2) (24).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '24'
+starter_code: ''

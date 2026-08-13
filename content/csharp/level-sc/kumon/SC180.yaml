@@ -1,0 +1,15 @@
+id: SC180
+level: SC
+page: 180
+set: 18
+block: D
+block_id: SC.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dado "python", imprime la primera en mayúscula y el resto igual (Python).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Python
+starter_code: ''

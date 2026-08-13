@@ -1,0 +1,15 @@
+id: SC38
+level: SC
+page: 38
+set: 4
+block: A
+block_id: SC.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea List<int> {1,2,3}, usa Clear() e imprime el Count (0).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

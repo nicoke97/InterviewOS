@@ -1,0 +1,15 @@
+id: SC69
+level: SC
+page: 69
+set: 7
+block: B
+block_id: SC.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Comprueba si {1,2,1} es igual a su reverso; imprime true/false.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

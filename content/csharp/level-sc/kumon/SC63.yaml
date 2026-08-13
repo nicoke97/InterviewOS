@@ -1,0 +1,20 @@
+id: SC63
+level: SC
+page: 63
+set: 7
+block: B
+block_id: SC.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {"a","b","c"}, imprime invertido unido por "-".
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: c-b-a
+starter_code: ___
+reference_code: 'string[] xs = { "a", "b", "c" };
+
+  Console.WriteLine(string.Join("-", xs.Reverse()));'

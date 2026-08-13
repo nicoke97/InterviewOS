@@ -1,0 +1,16 @@
+id: SC177
+level: SC
+page: 177
+set: 18
+block: D
+block_id: SC.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Dado "abc", imprime en mayúsculas y su longitud "ABC 3".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: ABC 3
+starter_code: ''

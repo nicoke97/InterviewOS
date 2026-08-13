@@ -1,0 +1,29 @@
+id: SC41
+level: SC
+page: 41
+set: 5
+block: A
+block_id: SC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Recorre {2, 4, 6} con foreach acumulando la suma; imprime el total.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: 'int[] nums = ___;
+
+  int total = ___;
+
+  foreach (int n in nums) total += n;
+
+  Console.WriteLine(total);'
+reference_code: 'int[] nums = { 2, 4, 6 };
+
+  int total = 0;
+
+  foreach (int n in nums) total += n;
+
+  Console.WriteLine(total);'

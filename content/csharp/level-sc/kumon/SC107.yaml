@@ -1,0 +1,16 @@
+id: SC107
+level: SC
+page: 107
+set: 11
+block: C
+block_id: SC.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea (a, b, c) = (1, 2, 3) e imprime la suma (6).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

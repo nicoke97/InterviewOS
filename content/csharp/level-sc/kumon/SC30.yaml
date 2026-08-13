@@ -1,0 +1,15 @@
+id: SC30
+level: SC
+page: 30
+set: 3
+block: A
+block_id: SC.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado {8, 8}, imprime el promedio (8).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

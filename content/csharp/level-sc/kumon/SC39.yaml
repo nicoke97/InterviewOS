@@ -1,0 +1,15 @@
+id: SC39
+level: SC
+page: 39
+set: 4
+block: A
+block_id: SC.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea List<int> {3,6,9}, borra el índice 2 e imprime la suma (9).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

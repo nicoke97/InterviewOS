@@ -1,0 +1,16 @@
+id: SC16
+level: SC
+page: 16
+set: 2
+block: A
+block_id: SC.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea List<int> {10}, agrega 20 y 30, imprime la suma con Sum().
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '60'
+starter_code: ''

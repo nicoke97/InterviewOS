@@ -1,0 +1,21 @@
+id: SC113
+level: SC
+page: 113
+set: 12
+block: C
+block_id: SC.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Intercambia a=1, b=2 con (a,b)=(b,a) e imprime a (2).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: 'int a = 1, b = 2;
+
+  (a, b) = (b, a);
+
+  Console.WriteLine(a);'

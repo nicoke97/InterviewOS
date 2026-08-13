@@ -1,0 +1,33 @@
+id: SC11
+level: SC
+page: 11
+set: 2
+block: A
+block_id: SC.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea una List<int> vacía, agrega 1, 2, 3 con Add e imprime su Count.
+hints:
+- Add agrega al final de la lista.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'var nums = ___;
+
+  nums.Add(1);
+
+  nums.Add(2);
+
+  nums.Add(3);
+
+  Console.WriteLine(___);'
+reference_code: 'var nums = new List<int>();
+
+  nums.Add(1);
+
+  nums.Add(2);
+
+  nums.Add(3);
+
+  Console.WriteLine(nums.Count);'

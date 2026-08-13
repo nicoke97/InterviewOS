@@ -1,0 +1,21 @@
+id: SC51
+level: SC
+page: 51
+set: 6
+block: B
+block_id: SC.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Dado {1,2,3,4,5}, imprime los primeros 3 con Take(3) unidos por coma.
+hints:
+- Take(n) toma los primeros n; Skip(n) los omite.
+validation:
+  type: run_and_match_stdout
+  expected: 1,2,3
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3, 4, 5 };
+
+  Console.WriteLine(string.Join(",", nums.Take(3)));'

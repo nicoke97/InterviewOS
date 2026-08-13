@@ -1,0 +1,21 @@
+id: SC122
+level: SC
+page: 122
+set: 13
+block: C
+block_id: SC.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Dado {1,2,3}, imprime cada uno al cuadrado unido por coma (1,4,9).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 1,4,9
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3 };
+
+  Console.WriteLine(string.Join(",", nums.Select(n => n * n)));'

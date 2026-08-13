@@ -1,0 +1,16 @@
+id: SC6
+level: SC
+page: 6
+set: 1
+block: A
+block_id: SC.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 54
+prompt: Crea {3, 6, 9} e imprime cuántos elementos hay (Length).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

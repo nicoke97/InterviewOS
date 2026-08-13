@@ -1,0 +1,15 @@
+id: SC198
+level: SC
+page: 198
+set: 20
+block: D
+block_id: SC.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con dia=5, mes=9, imprime "05/09" con ToString("D2").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 05/09
+starter_code: ''

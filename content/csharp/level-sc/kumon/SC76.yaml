@@ -1,0 +1,16 @@
+id: SC76
+level: SC
+page: 76
+set: 8
+block: B
+block_id: SC.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Dado {4,2,7,1}, imprime los 2 menores (OrderBy.Take(2)) unidos por coma.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 1,2
+starter_code: ''

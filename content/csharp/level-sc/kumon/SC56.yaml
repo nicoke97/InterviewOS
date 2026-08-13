@@ -1,0 +1,16 @@
+id: SC56
+level: SC
+page: 56
+set: 6
+block: B
+block_id: SC.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Dado {1,2,3,4}, imprime el primero con First().
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

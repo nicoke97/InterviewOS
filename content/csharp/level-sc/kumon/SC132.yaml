@@ -1,0 +1,21 @@
+id: SC132
+level: SC
+page: 132
+set: 14
+block: C
+block_id: SC.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Dado {1,2,3,4,5}, imprime los mayores a 3 unido por coma (4,5).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 4,5
+starter_code: 'int[] nums = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[] nums = { 1, 2, 3, 4, 5 };
+
+  Console.WriteLine(string.Join(",", nums.Where(n => n > 3)));'

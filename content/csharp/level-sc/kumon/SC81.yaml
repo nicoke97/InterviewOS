@@ -1,0 +1,21 @@
+id: SC81
+level: SC
+page: 81
+set: 9
+block: B
+block_id: SC.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Crea una matriz {{1,2},{3,4}} e imprime el elemento [1][0] (3).
+hints:
+- m[fila][columna] accede a listas anidadas.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'int[][] m = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'int[][] m = { new[] { 1, 2 }, new[] { 3, 4 } };
+
+  Console.WriteLine(m[1][0]);'

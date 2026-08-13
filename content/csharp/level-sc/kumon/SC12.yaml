@@ -1,0 +1,25 @@
+id: SC12
+level: SC
+page: 12
+set: 2
+block: A
+block_id: SC.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea List<int> {1,2}, agrega 3 con Add e imprime el último.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'var nums = ___;
+
+  nums.Add(3);
+
+  Console.WriteLine(___);'
+reference_code: 'var nums = new List<int> { 1, 2 };
+
+  nums.Add(3);
+
+  Console.WriteLine(nums[nums.Count - 1]);'

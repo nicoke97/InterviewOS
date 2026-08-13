@@ -1,0 +1,15 @@
+id: SC179
+level: SC
+page: 179
+set: 18
+block: D
+block_id: SC.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Dado "hola mundo", imprime la inicial de cada palabra en mayúscula unida (HM).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: HM
+starter_code: ''

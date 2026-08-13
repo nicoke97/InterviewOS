@@ -1,0 +1,16 @@
+id: SC116
+level: SC
+page: 116
+set: 12
+block: C
+block_id: SC.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Desestructura ("a", "b") e imprime ambos unidos (ab).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: ab
+starter_code: ''

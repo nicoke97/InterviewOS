@@ -1,0 +1,15 @@
+id: SC99
+level: SC
+page: 99
+set: 10
+block: B
+block_id: SC.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Concatena {1,2} y {3,4} con Concat e imprime el Count (4).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

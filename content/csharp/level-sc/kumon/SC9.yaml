@@ -1,0 +1,15 @@
+id: SC9
+level: SC
+page: 9
+set: 1
+block: A
+block_id: SC.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 54
+prompt: Crea {100, 200, 300}, cambia nums[1]=0 e imprímelo.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

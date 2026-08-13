@@ -1,0 +1,19 @@
+id: SC3
+level: SC
+page: 3
+set: 1
+block: A
+block_id: SC.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 54
+prompt: Crea {1, 2, 3, 4} e imprime el último con nums[nums.Length-1].
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ___
+reference_code: 'int[] nums = { 1, 2, 3, 4 };
+
+  Console.WriteLine(nums[nums.Length - 1]);'

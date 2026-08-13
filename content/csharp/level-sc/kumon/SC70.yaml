@@ -1,0 +1,15 @@
+id: SC70
+level: SC
+page: 70
+set: 7
+block: B
+block_id: SC.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Dado {3,6,9}, imprime la suma tras invertir (18, igual).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '18'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: SC86
+level: SC
+page: 86
+set: 9
+block: B
+block_id: SC.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con {{1,2,3}}, imprime la longitud de la primera fila (3).
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''
