@@ -1,0 +1,15 @@
+id: SD98
+level: SD
+page: 98
+set: 10
+block: B
+block_id: SD.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Combina {"a":5} y {} (vacío); imprime c["a"] (5).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

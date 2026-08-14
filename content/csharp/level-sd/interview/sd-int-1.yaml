@@ -1,0 +1,9 @@
+id: sd-int-1
+question: ¿Qué es un Dictionary<TKey, TValue> en C# y cuándo lo usarías?
+rubric:
+- mapea claves a valores
+- búsqueda rápida por clave
+- claves únicas
+sample_answer: Un Dictionary asocia claves únicas a valores y permite búsquedas rápidas
+  por clave. Se usa para conteos de frecuencia, cachés o cualquier mapeo clave->valor.
+category: csharp

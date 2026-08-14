@@ -1,0 +1,15 @@
+id: SD30
+level: SD
+page: 30
+set: 3
+block: A
+block_id: SD.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con d={"total":10}, usa TryGetValue e imprime el doble del valor (20).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

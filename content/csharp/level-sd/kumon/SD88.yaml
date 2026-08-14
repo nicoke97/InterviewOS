@@ -1,0 +1,15 @@
+id: SD88
+level: SD
+page: 88
+set: 9
+block: B
+block_id: SD.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Invierte {"a":1} y comprueba inv.ContainsKey(1) (true).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SD137
+level: SD
+page: 137
+set: 14
+block: C
+block_id: SD.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Diferencia {10,20,30} menos {20} e imprime el máximo restante (30).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ''

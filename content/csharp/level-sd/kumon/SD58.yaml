@@ -1,0 +1,15 @@
+id: SD58
+level: SD
+page: 58
+set: 6
+block: B
+block_id: SD.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Cuenta números en {5,5,5,5} e imprime la frecuencia de 5 (4).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

@@ -1,0 +1,19 @@
+id: SD23
+level: SD
+page: 23
+set: 3
+block: A
+block_id: SD.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con d={"a":9}, usa GetValueOrDefault("z", -1) e imprime -1.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '-1'
+starter_code: ___
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 9 };
+
+  Console.WriteLine(d.GetValueOrDefault("z", -1));'

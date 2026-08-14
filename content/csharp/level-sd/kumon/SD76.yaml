@@ -1,0 +1,16 @@
+id: SD76
+level: SD
+page: 76
+set: 8
+block: B
+block_id: SD.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con d anidado, imprime cuántas llaves de nivel 1 hay ({"a":{},"b":{}}) (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

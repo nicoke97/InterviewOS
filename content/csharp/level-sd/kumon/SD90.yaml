@@ -1,0 +1,15 @@
+id: SD90
+level: SD
+page: 90
+set: 9
+block: B
+block_id: SD.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Invierte {"a":1,"b":2,"c":3} e imprime inv[2] ("b").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: b
+starter_code: ''

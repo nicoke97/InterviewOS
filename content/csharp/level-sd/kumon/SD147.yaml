@@ -1,0 +1,17 @@
+id: SD147
+level: SD
+page: 147
+set: 15
+block: C
+block_id: SD.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: ¿Hay duplicados en {1,2,3,1}? Compara Count del array vs HashSet; imprime
+  true.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

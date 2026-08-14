@@ -1,0 +1,17 @@
+id: SD163
+level: SD
+page: 163
+set: 17
+block: D
+block_id: SD.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: int.TryParse("50", out n) y súmale 10 si funciona (60).
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '60'
+starter_code: ___
+reference_code: "if (int.TryParse(\"50\", out int n))\n    Console.WriteLine(n + 10);"

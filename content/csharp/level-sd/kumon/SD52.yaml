@@ -1,0 +1,25 @@
+id: SD52
+level: SD
+page: 52
+set: 6
+block: B
+block_id: SD.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta letras en "banana" e imprime cuántas "n" (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'var freq = ___;
+
+  foreach (char c in "banana") freq[c] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var freq = new Dictionary<char, int>();
+
+  foreach (char c in "banana") freq[c] = freq.GetValueOrDefault(c) + 1;
+
+  Console.WriteLine(freq[''n'']);'

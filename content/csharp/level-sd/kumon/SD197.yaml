@@ -1,0 +1,17 @@
+id: SD197
+level: SD
+page: 197
+set: 20
+block: D
+block_id: SD.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Primero({7,8}) imprime 7.
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

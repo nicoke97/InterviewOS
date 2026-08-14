@@ -1,0 +1,16 @@
+id: SD125
+level: SD
+page: 125
+set: 13
+block: C
+block_id: SD.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Une {"a","b"} y {"b","c"}; imprime el Count (3).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

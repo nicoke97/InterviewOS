@@ -1,0 +1,25 @@
+id: SD93
+level: SD
+page: 93
+set: 10
+block: B
+block_id: SD.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Combina {"x":1,"y":2} y {"z":3}; imprime la suma de valores (6).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ___
+reference_code: 'var a = new Dictionary<string, int> { ["x"] = 1, ["y"] = 2 };
+
+  var b = new Dictionary<string, int> { ["z"] = 3 };
+
+  var c = new Dictionary<string, int>(a);
+
+  foreach (var kv in b) c[kv.Key] = kv.Value;
+
+  Console.WriteLine(c.Values.Sum());'

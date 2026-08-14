@@ -1,0 +1,16 @@
+id: SD96
+level: SD
+page: 96
+set: 10
+block: B
+block_id: SD.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Suma dos inventarios {"pan":2} y {"pan":3} sumando valores; imprime pan (5).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

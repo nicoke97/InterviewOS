@@ -1,0 +1,16 @@
+id: SD45
+level: SD
+page: 45
+set: 5
+block: A
+block_id: SD.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2,"c":3}, cuenta cuántos valores son pares (1).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

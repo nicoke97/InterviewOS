@@ -1,0 +1,19 @@
+id: SD161
+level: SD
+page: 161
+set: 17
+block: D
+block_id: SD.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Usa int.TryParse("123", out n): si funciona imprime n, si no "invalido".'
+hints:
+- 'TryParse no lanza excepción: devuelve true/false.'
+validation:
+  type: run_and_match_stdout
+  expected: '123'
+starter_code: "if (int.TryParse(\"123\", out int n))\n    Console.WriteLine(n);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "if (int.TryParse(\"123\", out int n))\n    Console.WriteLine(n);\n\
+  else\n    Console.WriteLine(\"invalido\");"

@@ -1,0 +1,29 @@
+id: SD82
+level: SD
+page: 82
+set: 9
+block: B
+block_id: SD.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Invierte {"x":10} e imprime inv[10] ("x").
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: x
+starter_code: 'var d = ___;
+
+  var inv = ___;
+
+  foreach (var kv in d) inv[kv.Value] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["x"] = 10 };
+
+  var inv = new Dictionary<int, string>();
+
+  foreach (var kv in d) inv[kv.Value] = kv.Key;
+
+  Console.WriteLine(inv[10]);'

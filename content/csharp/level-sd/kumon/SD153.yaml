@@ -1,0 +1,18 @@
+id: SD153
+level: SD
+page: 153
+set: 16
+block: D
+block_id: SD.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'try/catch: parsea "42" (válido) e imprime el número.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '42'
+starter_code: ___
+reference_code: "try\n{\n    int x = int.Parse(\"42\");\n    Console.WriteLine(x);\n\
+  }\ncatch (FormatException)\n{\n    Console.WriteLine(\"invalido\");\n}"

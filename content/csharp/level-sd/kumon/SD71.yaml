@@ -1,0 +1,25 @@
+id: SD71
+level: SD
+page: 71
+set: 8
+block: B
+block_id: SD.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Crea un dict anidado d["user"]=nuevo dict {"edad":30}; imprime d["user"]["edad"].
+hints:
+- El valor de un dict puede ser otro dict.
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: 'var d = ___;
+
+  d["user"] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, Dictionary<string, int>>();
+
+  d["user"] = new Dictionary<string, int> { ["edad"] = 30 };
+
+  Console.WriteLine(d["user"]["edad"]);'

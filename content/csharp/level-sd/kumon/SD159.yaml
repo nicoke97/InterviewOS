@@ -1,0 +1,15 @@
+id: SD159
+level: SD
+page: 159
+set: 16
+block: D
+block_id: SD.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'try/catch: parsea "3.5" como int (falla) e imprime "no es entero".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: no es entero
+starter_code: ''

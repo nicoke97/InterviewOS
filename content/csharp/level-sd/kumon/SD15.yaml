@@ -1,0 +1,16 @@
+id: SD15
+level: SD
+page: 15
+set: 2
+block: A
+block_id: SD.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea {"a":1,"b":2}, agrega d["c"]=3 e imprime d.Count (3).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

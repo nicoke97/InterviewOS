@@ -1,0 +1,27 @@
+id: SD62
+level: SD
+page: 62
+set: 7
+block: B
+block_id: SD.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Agrupa palabras por longitud en {"a","bb","cc"}; imprime cuántas de longitud
+  2 (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'var g = ___;
+
+  foreach (string w in new[] { "a", "bb", "cc" }) g[w.Length] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var g = new Dictionary<int, int>();
+
+  foreach (string w in new[] { "a", "bb", "cc" }) g[w.Length] = g.GetValueOrDefault(w.Length)
+  + 1;
+
+  Console.WriteLine(g[2]);'

@@ -1,0 +1,16 @@
+id: SD25
+level: SD
+page: 25
+set: 3
+block: A
+block_id: SD.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Con d vacío, usa TryGetValue("x", out v) e imprime v (0) si falla.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

@@ -1,0 +1,25 @@
+id: SD112
+level: SD
+page: 112
+set: 12
+block: C
+block_id: SD.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea HashSet {1,2,3}, quita el 2 con Remove; imprime el Count (2).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'var s = ___;
+
+  s.Remove(2);
+
+  Console.WriteLine(___);'
+reference_code: 'var s = new HashSet<int> { 1, 2, 3 };
+
+  s.Remove(2);
+
+  Console.WriteLine(s.Count);'

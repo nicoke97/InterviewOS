@@ -1,0 +1,16 @@
+id: SD34
+level: SD
+page: 34
+set: 4
+block: A
+block_id: SD.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, imprime las llaves ordenadas unidas por coma (a,b).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: a,b
+starter_code: ''

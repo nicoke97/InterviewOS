@@ -1,0 +1,16 @@
+id: SD135
+level: SD
+page: 135
+set: 14
+block: C
+block_id: SD.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Resta {1,2,3} menos {1,2,3} e imprime el Count (0).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

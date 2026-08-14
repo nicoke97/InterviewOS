@@ -1,0 +1,16 @@
+id: SD68
+level: SD
+page: 68
+set: 7
+block: B
+block_id: SD.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Agrupa notas {95,82,75,60} por letra (A>=90,B>=80,...); imprime cuántas A
+  (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

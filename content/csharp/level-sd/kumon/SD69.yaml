@@ -1,0 +1,16 @@
+id: SD69
+level: SD
+page: 69
+set: 7
+block: B
+block_id: SD.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Cuenta cuántas categorías distintas hay al agrupar {1,2,3,4} en par/impar
+  (2).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

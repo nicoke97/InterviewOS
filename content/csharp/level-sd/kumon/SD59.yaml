@@ -1,0 +1,15 @@
+id: SD59
+level: SD
+page: 59
+set: 6
+block: B
+block_id: SD.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: En "uno dos uno tres uno", imprime la palabra más frecuente (uno).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: uno
+starter_code: ''

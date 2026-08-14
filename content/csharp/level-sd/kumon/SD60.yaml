@@ -1,0 +1,15 @@
+id: SD60
+level: SD
+page: 60
+set: 6
+block: B
+block_id: SD.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Cuenta letras en "aabbbc" e imprime la frecuencia máxima (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

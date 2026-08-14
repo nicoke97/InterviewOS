@@ -1,0 +1,16 @@
+id: SD55
+level: SD
+page: 55
+set: 6
+block: B
+block_id: SD.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Cuenta letras en "mississippi" e imprime la frecuencia de "s" (4).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

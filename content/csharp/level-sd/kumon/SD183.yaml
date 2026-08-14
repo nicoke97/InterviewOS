@@ -1,0 +1,20 @@
+id: SD183
+level: SD
+page: 183
+set: 19
+block: D
+block_id: SD.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'try/finally con éxito: imprime 42 y luego "cerrado".'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '42
+
+    cerrado'
+starter_code: ___
+reference_code: "try\n{\n    Console.WriteLine(42);\n}\nfinally\n{\n    Console.WriteLine(\"\
+  cerrado\");\n}"

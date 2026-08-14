@@ -1,0 +1,16 @@
+id: SD49
+level: SD
+page: 49
+set: 5
+block: A
+block_id: SD.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con d={"x":1,"y":2,"z":3}, imprime la concatenación de las llaves ordenadas
+  (xyz).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: xyz
+starter_code: ''

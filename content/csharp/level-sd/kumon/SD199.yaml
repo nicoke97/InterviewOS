@@ -1,0 +1,15 @@
+id: SD199
+level: SD
+page: 199
+set: 20
+block: D
+block_id: SD.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Descuento(100,10) válido imprime 90.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '90'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SD7
+level: SD
+page: 7
+set: 1
+block: A
+block_id: SD.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea {"pan":3,"leche":4} e imprime el precio de "leche".
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

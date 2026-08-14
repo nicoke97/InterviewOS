@@ -1,0 +1,16 @@
+id: SD44
+level: SD
+page: 44
+set: 5
+block: A
+block_id: SD.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"a":2,"b":3}, imprime el producto de los valores (6).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '6'
+starter_code: ''

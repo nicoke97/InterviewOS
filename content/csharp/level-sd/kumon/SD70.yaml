@@ -1,0 +1,15 @@
+id: SD70
+level: SD
+page: 70
+set: 7
+block: B
+block_id: SD.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Agrupa {"rojo","azul","rojo"} y cuenta; imprime cuántos "rojo" (2).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

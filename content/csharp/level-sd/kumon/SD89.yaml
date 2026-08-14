@@ -1,0 +1,15 @@
+id: SD89
+level: SD
+page: 89
+set: 9
+block: B
+block_id: SD.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Invierte {"x":5,"y":6} e imprime la concatenación inv[5]+inv[6] (xy).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: xy
+starter_code: ''

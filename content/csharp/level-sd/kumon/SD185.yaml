@@ -1,0 +1,18 @@
+id: SD185
+level: SD
+page: 185
+set: 19
+block: D
+block_id: SD.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'catch + finally: parsea "x" (falla), catch "malo", finally "siempre".'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'malo
+
+    siempre'
+starter_code: ''

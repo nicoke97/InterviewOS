@@ -1,0 +1,16 @@
+id: SD35
+level: SD
+page: 35
+set: 4
+block: A
+block_id: SD.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"pan":3,"leche":4}, imprime la suma de los precios (7).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

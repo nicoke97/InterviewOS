@@ -1,0 +1,18 @@
+id: SD186
+level: SD
+page: 186
+set: 19
+block: D
+block_id: SD.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Cuenta pasos: imprime "1" en try y "2" en finally.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1
+
+    2'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SD129
+level: SD
+page: 129
+set: 13
+block: C
+block_id: SD.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Une {1} y {1,2,3,4} e imprime el máximo (4).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

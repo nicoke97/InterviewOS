@@ -1,0 +1,16 @@
+id: SD126
+level: SD
+page: 126
+set: 13
+block: C
+block_id: SD.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Interseca {5,6,7} y {6,7,8}; imprime la suma de la intersección (13).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '13'
+starter_code: ''

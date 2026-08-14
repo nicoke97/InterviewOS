@@ -1,0 +1,16 @@
+id: SD115
+level: SD
+page: 115
+set: 12
+block: C
+block_id: SD.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea HashSet {"a","b"}, quita "a" e imprime si Contains("a") (false).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

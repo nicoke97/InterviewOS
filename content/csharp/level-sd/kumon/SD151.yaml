@@ -1,0 +1,19 @@
+id: SD151
+level: SD
+page: 151
+set: 16
+block: D
+block_id: SD.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'Usa try/catch: divide 10/0 y en el catch imprime "error".'
+hints:
+- El código riesgoso va en try; el manejo en catch.
+validation:
+  type: run_and_match_stdout
+  expected: error
+starter_code: "try\n{\n    int cero = ___;\n    int x = ___;\n    Console.WriteLine(x);\n\
+  }\ncatch (DivideByZeroException)\n{\n    Console.WriteLine(___);\n}"
+reference_code: "try\n{\n    int cero = 0;\n    int x = 10 / cero;\n    Console.WriteLine(x);\n\
+  }\ncatch (DivideByZeroException)\n{\n    Console.WriteLine(\"error\");\n}"

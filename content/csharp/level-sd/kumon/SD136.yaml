@@ -1,0 +1,16 @@
+id: SD136
+level: SD
+page: 136
+set: 14
+block: C
+block_id: SD.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Elementos en {1,2,3,4,5} que no están en {2,4}; imprime la suma (9).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

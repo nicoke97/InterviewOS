@@ -1,0 +1,16 @@
+id: SD116
+level: SD
+page: 116
+set: 12
+block: C
+block_id: SD.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea HashSet {1,2,3}, intenta agregar 2 e imprime el resultado de Add (false).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

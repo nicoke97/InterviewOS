@@ -1,0 +1,15 @@
+id: SD200
+level: SD
+page: 200
+set: 20
+block: D
+block_id: SD.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: ParseaPositivo(s) que lance si el número es <=0; para "5" imprime 5.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

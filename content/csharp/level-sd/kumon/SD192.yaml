@@ -1,0 +1,19 @@
+id: SD192
+level: SD
+page: 192
+set: 20
+block: D
+block_id: SD.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Raiz(16) válido imprime 4.
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: "int Raiz(int n)\n{\n    if (n < 0) throw new ArgumentException();\n\
+  \    return (int)Math.Sqrt(n);\n}\nConsole.WriteLine(___);"
+reference_code: "int Raiz(int n)\n{\n    if (n < 0) throw new ArgumentException();\n\
+  \    return (int)Math.Sqrt(n);\n}\nConsole.WriteLine(Raiz(16));"

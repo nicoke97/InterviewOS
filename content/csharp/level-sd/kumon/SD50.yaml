@@ -1,0 +1,15 @@
+id: SD50
+level: SD
+page: 50
+set: 5
+block: A
+block_id: SD.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con d={"a":10,"b":20,"c":30}, imprime el promedio de los valores (20).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

@@ -1,0 +1,21 @@
+id: SD101
+level: SD
+page: 101
+set: 11
+block: C
+block_id: SD.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un HashSet con {1,2,2,3}; imprime cuántos elementos únicos hay (3).
+hints:
+- Un HashSet descarta duplicados automáticamente.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'var s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var s = new HashSet<int> { 1, 2, 2, 3 };
+
+  Console.WriteLine(s.Count);'

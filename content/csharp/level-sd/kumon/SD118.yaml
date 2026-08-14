@@ -1,0 +1,15 @@
+id: SD118
+level: SD
+page: 118
+set: 12
+block: C
+block_id: SD.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea HashSet {10}, quita 10 e imprime el Count (0).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

@@ -1,0 +1,21 @@
+id: SD31
+level: SD
+page: 31
+set: 4
+block: A
+block_id: SD.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, imprime cuántas llaves hay con d.Keys.Count (2).
+hints:
+- d.Keys son las llaves; d.Values los valores.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'var d = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1, ["b"] = 2 };
+
+  Console.WriteLine(d.Keys.Count);'

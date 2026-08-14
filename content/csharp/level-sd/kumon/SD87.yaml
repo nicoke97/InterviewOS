@@ -1,0 +1,16 @@
+id: SD87
+level: SD
+page: 87
+set: 9
+block: B
+block_id: SD.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Invierte {"A":90,"B":80} e imprime inv[80] ("B").
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: ''

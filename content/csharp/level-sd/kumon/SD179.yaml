@@ -1,0 +1,15 @@
+id: SD179
+level: SD
+page: 179
+set: 18
+block: D
+block_id: SD.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Lee el primer caracter de "hola" (válido) e imprime "h".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: h
+starter_code: ''

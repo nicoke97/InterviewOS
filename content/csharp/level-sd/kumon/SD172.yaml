@@ -1,0 +1,20 @@
+id: SD172
+level: SD
+page: 172
+set: 18
+block: D
+block_id: SD.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Captura KeyNotFoundException al leer d["z"] de {"a":1}; imprime "sin llave".
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: sin llave
+starter_code: "var d = ___;\ntry\n{\n    Console.WriteLine(___);\n}\ncatch (KeyNotFoundException)\n\
+  {\n    Console.WriteLine(___);\n}"
+reference_code: "var d = new Dictionary<string, int> { [\"a\"] = 1 };\ntry\n{\n  \
+  \  Console.WriteLine(d[\"z\"]);\n}\ncatch (KeyNotFoundException)\n{\n    Console.WriteLine(\"\
+  sin llave\");\n}"

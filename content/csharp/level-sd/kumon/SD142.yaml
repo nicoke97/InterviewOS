@@ -1,0 +1,21 @@
+id: SD142
+level: SD
+page: 142
+set: 15
+block: C
+block_id: SD.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Imprime si 3 está en {1,2,3} usando Contains (true).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: 'var s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var s = new HashSet<int> { 1, 2, 3 };
+
+  Console.WriteLine(s.Contains(3));'

@@ -1,0 +1,15 @@
+id: SD140
+level: SD
+page: 140
+set: 14
+block: C
+block_id: SD.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Diferencia {4,5,6} menos {} e imprime el Count (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

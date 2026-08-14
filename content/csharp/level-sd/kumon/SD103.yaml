@@ -1,0 +1,19 @@
+id: SD103
+level: SD
+page: 103
+set: 11
+block: C
+block_id: SD.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Cuenta caracteres únicos en "hola" con un HashSet (4).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ___
+reference_code: 'var s = new HashSet<char>("hola");
+
+  Console.WriteLine(s.Count);'

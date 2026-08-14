@@ -1,0 +1,19 @@
+id: SD63
+level: SD
+page: 63
+set: 7
+block: B
+block_id: SD.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Agrupa {5,-3,2,-1} en "pos"/"neg"; imprime cuántos negativos (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ___
+reference_code: "var g = new Dictionary<string, int>();\nforeach (int n in new[] {\
+  \ 5, -3, 2, -1 })\n{\n    string k = n >= 0 ? \"pos\" : \"neg\";\n    g[k] = g.GetValueOrDefault(k)\
+  \ + 1;\n}\nConsole.WriteLine(g[\"neg\"]);"

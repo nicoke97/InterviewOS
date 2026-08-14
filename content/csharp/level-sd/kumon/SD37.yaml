@@ -1,0 +1,16 @@
+id: SD37
+level: SD
+page: 37
+set: 4
+block: A
+block_id: SD.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2,"c":3}, imprime cuántos valores son > 1 (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

@@ -1,0 +1,21 @@
+id: SD21
+level: SD
+page: 21
+set: 3
+block: A
+block_id: SD.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Con d={"a":1}, usa GetValueOrDefault("z") para imprimir 0 cuando no existe.
+hints:
+- GetValueOrDefault evita el error de llave inexistente.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: 'var d = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1 };
+
+  Console.WriteLine(d.GetValueOrDefault("z"));'

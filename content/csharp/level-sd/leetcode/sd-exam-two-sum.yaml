@@ -1,0 +1,52 @@
+id: sd-exam-two-sum
+title: Two Sum
+fn_name: TwoSum
+description: Retorna los índices de los dos números que suman target.
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 0
+  - 1
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "int[] TwoSum(int[] nums, int target)\n{\n    var seen = new Dictionary<int,\
+  \ int>();\n    for (int i = 0; i < nums.Length; i++)\n    {\n        int need =\
+  \ target - nums[i];\n        if (seen.ContainsKey(need)) return new[] { seen[need],\
+  \ i };\n        seen[nums[i]] = i;\n    }\n    return new int[0];\n}"
+tiers:
+  1:
+    starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    // usa un Dictionary\
+      \ de vistos\n    return new int[0];\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    // usa un Dictionary\
+      \ de vistos\n    return new int[0];\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int[] TwoSum(int[] nums, int target)\n{\n    // usa un Dictionary\
+      \ de vistos\n    return new int[0];\n}"
+    narration_prompts: []
+    hints_allowed: false

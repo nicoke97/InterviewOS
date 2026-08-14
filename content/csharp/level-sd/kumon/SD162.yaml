@@ -1,0 +1,19 @@
+id: SD162
+level: SD
+page: 162
+set: 17
+block: D
+block_id: SD.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'int.TryParse("abc", out n): imprime "invalido" si falla.'
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: invalido
+starter_code: "if (int.TryParse(\"abc\", out int n))\n    Console.WriteLine(___);\n\
+  else\n    Console.WriteLine(___);"
+reference_code: "if (int.TryParse(\"abc\", out int n))\n    Console.WriteLine(n);\n\
+  else\n    Console.WriteLine(\"invalido\");"

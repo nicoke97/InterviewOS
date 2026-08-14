@@ -1,0 +1,15 @@
+id: SD100
+level: SD
+page: 100
+set: 10
+block: B
+block_id: SD.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Combina {"a":1,"b":1} y {"a":1,"b":1} sumando; imprime la suma total (4).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

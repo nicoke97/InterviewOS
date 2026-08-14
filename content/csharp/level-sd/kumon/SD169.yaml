@@ -1,0 +1,15 @@
+id: SD169
+level: SD
+page: 169
+set: 17
+block: D
+block_id: SD.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Cuenta cuántos de {"1","a","3"} son números con TryParse (2).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

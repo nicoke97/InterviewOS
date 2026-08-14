@@ -1,0 +1,16 @@
+id: SD144
+level: SD
+page: 144
+set: 15
+block: C
+block_id: SD.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Imprime si "banana" tiene la letra "z" con un HashSet (false).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

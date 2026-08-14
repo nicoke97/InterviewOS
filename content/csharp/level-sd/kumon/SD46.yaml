@@ -1,0 +1,16 @@
+id: SD46
+level: SD
+page: 46
+set: 5
+block: A
+block_id: SD.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"lun":1,"mar":2}, imprime todas las llaves ordenadas unidas por coma.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: lun,mar
+starter_code: ''

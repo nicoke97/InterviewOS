@@ -1,0 +1,16 @@
+id: SD29
+level: SD
+page: 29
+set: 3
+block: A
+block_id: SD.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: 'Con d={"a":1}, comprueba y suma: GetValueOrDefault("a")+GetValueOrDefault("b")
+  (1).'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SD39
+level: SD
+page: 39
+set: 4
+block: A
+block_id: SD.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, imprime el promedio de los valores (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

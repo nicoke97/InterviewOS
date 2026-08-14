@@ -1,0 +1,16 @@
+id: SD75
+level: SD
+page: 75
+set: 8
+block: B
+block_id: SD.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Con d anidado {"a":{"n":1}}, actualiza d["a"]["n"]=9 e imprímelo.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

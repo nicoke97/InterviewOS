@@ -1,0 +1,21 @@
+id: SD42
+level: SD
+page: 42
+set: 5
+block: A
+block_id: SD.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, imprime cada "llave=valor" ordenado por llave.
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'a=1
+
+    b=2'
+starter_code: "var d = ___;\nforeach (var kv in d.OrderBy(k => k.Key))\n    Console.WriteLine(___);"
+reference_code: "var d = new Dictionary<string, int> { [\"a\"] = 1, [\"b\"] = 2 };\n\
+  foreach (var kv in d.OrderBy(k => k.Key))\n    Console.WriteLine($\"{kv.Key}={kv.Value}\"\
+  );"

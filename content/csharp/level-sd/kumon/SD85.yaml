@@ -1,0 +1,16 @@
+id: SD85
+level: SD
+page: 85
+set: 9
+block: B
+block_id: SD.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Invierte {"lun":1} e imprime inv[1].
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: lun
+starter_code: ''

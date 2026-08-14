@@ -1,0 +1,18 @@
+id: SD66
+level: SD
+page: 66
+set: 7
+block: B
+block_id: SD.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Agrupa por primera letra en {"ana","alba","bob"}; imprime cuántas empiezan
+  con "a" (2).
+hints:
+- Los índices empiezan en 0; s[0] es el primer caracter y Substring(inicio, largo)
+  recorta.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SD9
+level: SD
+page: 9
+set: 1
+block: A
+block_id: SD.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea {"gato":"miau","perro":"guau"} e imprime d["perro"].
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: guau
+starter_code: ''

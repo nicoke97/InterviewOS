@@ -1,0 +1,15 @@
+id: SD8
+level: SD
+page: 8
+set: 1
+block: A
+block_id: SD.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea {"a":1} y usa d.ContainsKey("a") para imprimir true.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

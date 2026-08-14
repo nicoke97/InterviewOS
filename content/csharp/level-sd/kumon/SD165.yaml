@@ -1,0 +1,16 @@
+id: SD165
+level: SD
+page: 165
+set: 17
+block: D
+block_id: SD.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'int.TryParse("", out n): imprime 0 (valor por defecto) si falla.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

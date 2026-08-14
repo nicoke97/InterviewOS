@@ -1,0 +1,15 @@
+id: SD20
+level: SD
+page: 20
+set: 2
+block: A
+block_id: SD.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea {"a":5,"b":5}, duplica el valor de "a" e imprímelo (10).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

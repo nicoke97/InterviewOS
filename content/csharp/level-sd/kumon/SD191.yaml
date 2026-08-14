@@ -1,0 +1,22 @@
+id: SD191
+level: SD
+page: 191
+set: 20
+block: D
+block_id: SD.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'Guard clause: define Raiz(int n) que lance ArgumentException si n<0; captúralo
+  con try/catch imprimiendo "negativo" para -4.'
+hints:
+- throw lanza una excepción; una guard clause valida al inicio.
+validation:
+  type: run_and_match_stdout
+  expected: negativo
+starter_code: "int Raiz(int n)\n{\n    if (n < 0) throw new ArgumentException();\n\
+  \    return (int)Math.Sqrt(n);\n}\ntry\n{\n    Console.WriteLine(___);\n}\ncatch\
+  \ (ArgumentException)\n{\n    Console.WriteLine(___);\n}"
+reference_code: "int Raiz(int n)\n{\n    if (n < 0) throw new ArgumentException();\n\
+  \    return (int)Math.Sqrt(n);\n}\ntry\n{\n    Console.WriteLine(Raiz(-4));\n}\n\
+  catch (ArgumentException)\n{\n    Console.WriteLine(\"negativo\");\n}"

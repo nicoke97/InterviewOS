@@ -1,0 +1,22 @@
+id: SD53
+level: SD
+page: 53
+set: 6
+block: B
+block_id: SD.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta números en {1,2,2,3,3,3} e imprime cuántas veces el 3 (3).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ___
+reference_code: 'var freq = new Dictionary<int, int>();
+
+  foreach (int n in new[] { 1, 2, 2, 3, 3, 3 }) freq[n] = freq.GetValueOrDefault(n)
+  + 1;
+
+  Console.WriteLine(freq[3]);'

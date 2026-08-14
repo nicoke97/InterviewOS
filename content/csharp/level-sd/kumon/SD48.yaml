@@ -1,0 +1,15 @@
+id: SD48
+level: SD
+page: 48
+set: 5
+block: A
+block_id: SD.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, imprime la llave del menor valor (a).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: ''

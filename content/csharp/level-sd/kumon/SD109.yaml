@@ -1,0 +1,15 @@
+id: SD109
+level: SD
+page: 109
+set: 11
+block: C
+block_id: SD.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea HashSet {10,20,30,10}; imprime su Count (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

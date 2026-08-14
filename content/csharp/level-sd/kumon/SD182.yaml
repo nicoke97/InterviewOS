@@ -1,0 +1,22 @@
+id: SD182
+level: SD
+page: 182
+set: 19
+block: D
+block_id: SD.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: 'try/catch/finally: divide 10/0, catch imprime "error", finally imprime "fin".'
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: 'error
+
+    fin'
+starter_code: "try\n{\n    int cero = ___;\n    int x = ___;\n}\ncatch (DivideByZeroException)\n\
+  {\n    Console.WriteLine(___);\n}\nfinally\n{\n    Console.WriteLine(___);\n}"
+reference_code: "try\n{\n    int cero = 0;\n    int x = 10 / cero;\n}\ncatch (DivideByZeroException)\n\
+  {\n    Console.WriteLine(\"error\");\n}\nfinally\n{\n    Console.WriteLine(\"fin\"\
+  );\n}"

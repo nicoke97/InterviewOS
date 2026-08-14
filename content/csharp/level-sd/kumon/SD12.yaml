@@ -1,0 +1,25 @@
+id: SD12
+level: SD
+page: 12
+set: 2
+block: A
+block_id: SD.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea {"a":1}, actualiza d["a"]=100 e imprímelo.
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: 'var d = ___;
+
+  d["a"] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1 };
+
+  d["a"] = 100;
+
+  Console.WriteLine(d["a"]);'

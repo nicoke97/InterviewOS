@@ -1,0 +1,16 @@
+id: SD36
+level: SD
+page: 36
+set: 4
+block: A
+block_id: SD.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Con d={"a":5}, imprime si "a" está en d.Keys (true).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

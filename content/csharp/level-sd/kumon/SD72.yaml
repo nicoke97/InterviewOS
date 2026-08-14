@@ -1,0 +1,22 @@
+id: SD72
+level: SD
+page: 72
+set: 8
+block: B
+block_id: SD.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Con d anidado {"a":{"x":1}}, imprime d["a"]["x"] (1).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: 'var d = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, Dictionary<string, int>> { ["a"] =
+  new() { ["x"] = 1 } };
+
+  Console.WriteLine(d["a"]["x"]);'

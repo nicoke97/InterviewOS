@@ -1,0 +1,30 @@
+id: SD111
+level: SD
+page: 111
+set: 12
+block: C
+block_id: SD.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un HashSet vacío, agrega 1 y 2 con Add; imprime si Add(1) devuelve false
+  (ya existe).
+hints:
+- Add devuelve false si el elemento ya estaba.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: 'var s = ___;
+
+  s.Add(1);
+
+  s.Add(2);
+
+  Console.WriteLine(___);'
+reference_code: 'var s = new HashSet<int>();
+
+  s.Add(1);
+
+  s.Add(2);
+
+  Console.WriteLine(s.Add(1));'

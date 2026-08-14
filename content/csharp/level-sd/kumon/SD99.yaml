@@ -1,0 +1,16 @@
+id: SD99
+level: SD
+page: 99
+set: 10
+block: B
+block_id: SD.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Con default: para llave nueva usa GetValueOrDefault y suma 10; imprime resultado
+  (10).'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

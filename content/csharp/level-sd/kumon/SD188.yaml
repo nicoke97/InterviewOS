@@ -1,0 +1,17 @@
+id: SD188
+level: SD
+page: 188
+set: 19
+block: D
+block_id: SD.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'finally tras index error: catch "idx", finally "limpio".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'idx
+
+    limpio'
+starter_code: ''

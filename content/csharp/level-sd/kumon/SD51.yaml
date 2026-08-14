@@ -1,0 +1,21 @@
+id: SD51
+level: SD
+page: 51
+set: 6
+block: B
+block_id: SD.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Cuenta la frecuencia de palabras en "a b a" y imprime cuántas veces aparece
+  "a" (2).
+hints:
+- 'El patrón de conteo: freq[x] = freq.GetValueOrDefault(x) + 1.'
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: "var freq = ___;\nforeach (string w in \"a b a\".Split(\" \"))\n   \
+  \ freq[w] = ___;\nConsole.WriteLine(___);"
+reference_code: "var freq = new Dictionary<string, int>();\nforeach (string w in \"\
+  a b a\".Split(\" \"))\n    freq[w] = freq.GetValueOrDefault(w) + 1;\nConsole.WriteLine(freq[\"\
+  a\"]);"

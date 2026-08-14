@@ -1,0 +1,15 @@
+id: SD10
+level: SD
+page: 10
+set: 1
+block: A
+block_id: SD.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea {"n":7} e imprime d["n"]*2 (14).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '14'
+starter_code: ''

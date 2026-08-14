@@ -1,0 +1,16 @@
+id: SD175
+level: SD
+page: 175
+set: 18
+block: D
+block_id: SD.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Evita el error con ContainsKey antes de leer d["z"]; imprime "no existe".
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: no existe
+starter_code: ''

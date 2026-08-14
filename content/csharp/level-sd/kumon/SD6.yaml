@@ -1,0 +1,17 @@
+id: SD6
+level: SD
+page: 6
+set: 1
+block: A
+block_id: SD.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea {"a":10} e imprime la longitud de la llave de d["a"] no; imprime d["a"]
+  (10).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

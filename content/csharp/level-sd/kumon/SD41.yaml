@@ -1,0 +1,29 @@
+id: SD41
+level: SD
+page: 41
+set: 5
+block: A
+block_id: SD.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Con d={"a":1,"b":2}, recorre con foreach y suma los valores; imprime 3.
+hints:
+- foreach (var kv in d) te da kv.Key y kv.Value.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'var d = ___;
+
+  int total = ___;
+
+  foreach (var kv in d) total += kv.Value;
+
+  Console.WriteLine(total);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1, ["b"] = 2 };
+
+  int total = 0;
+
+  foreach (var kv in d) total += kv.Value;
+
+  Console.WriteLine(total);'

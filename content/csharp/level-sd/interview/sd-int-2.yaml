@@ -1,0 +1,10 @@
+id: sd-int-2
+question: ¿Cómo manejas errores en C# con try/catch? ¿Por qué es útil?
+rubric:
+- try envuelve código riesgoso
+- catch captura la excepción
+- evita que el programa se caiga
+sample_answer: Envuelves el código riesgoso en try y capturas la excepción en catch
+  para manejarla sin que el programa termine abruptamente, por ejemplo una división
+  por cero o parseo inválido.
+category: csharp

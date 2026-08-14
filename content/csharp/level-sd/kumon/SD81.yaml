@@ -1,0 +1,29 @@
+id: SD81
+level: SD
+page: 81
+set: 9
+block: B
+block_id: SD.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Invierte {"a":1,"b":2} para que el valor sea la llave; imprime inv[1] ("a").
+hints:
+- Recorre el dict y guarda valor -> llave en uno nuevo.
+validation:
+  type: run_and_match_stdout
+  expected: a
+starter_code: 'var d = ___;
+
+  var inv = ___;
+
+  foreach (var kv in d) inv[kv.Value] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int> { ["a"] = 1, ["b"] = 2 };
+
+  var inv = new Dictionary<int, string>();
+
+  foreach (var kv in d) inv[kv.Value] = kv.Key;
+
+  Console.WriteLine(inv[1]);'

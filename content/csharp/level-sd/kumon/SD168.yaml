@@ -1,0 +1,15 @@
+id: SD168
+level: SD
+page: 168
+set: 17
+block: D
+block_id: SD.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'int.TryParse("7x", out n): imprime "no" si falla.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'no'
+starter_code: ''

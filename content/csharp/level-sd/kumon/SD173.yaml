@@ -1,0 +1,19 @@
+id: SD173
+level: SD
+page: 173
+set: 18
+block: D
+block_id: SD.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Lee nums[2] de {1,2,3} (válido) e imprime 3.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ___
+reference_code: "int[] nums = { 1, 2, 3 };\ntry\n{\n    Console.WriteLine(nums[2]);\n\
+  }\ncatch (IndexOutOfRangeException)\n{\n    Console.WriteLine(\"indice malo\");\n\
+  }"

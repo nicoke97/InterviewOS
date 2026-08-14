@@ -1,0 +1,15 @@
+id: SD80
+level: SD
+page: 80
+set: 8
+block: B
+block_id: SD.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Con d anidado {"x":{"a":1},"y":{"a":2}}, imprime d["x"]["a"]+d["y"]["a"] (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

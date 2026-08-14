@@ -1,0 +1,15 @@
+id: SD180
+level: SD
+page: 180
+set: 18
+block: D
+block_id: SD.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Captura cualquier excepción con catch (Exception e) e imprime "capturado".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: capturado
+starter_code: ''

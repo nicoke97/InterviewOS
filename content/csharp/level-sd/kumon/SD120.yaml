@@ -1,0 +1,15 @@
+id: SD120
+level: SD
+page: 120
+set: 12
+block: C
+block_id: SD.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea HashSet {"x"}, agrega "x" de nuevo e imprime el Count (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

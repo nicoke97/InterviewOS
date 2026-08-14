@@ -1,0 +1,15 @@
+id: SD128
+level: SD
+page: 128
+set: 13
+block: C
+block_id: SD.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Interseca {1,2} y {3,4} (sin comunes); imprime el Count (0).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

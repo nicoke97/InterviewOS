@@ -1,0 +1,15 @@
+id: SD170
+level: SD
+page: 170
+set: 17
+block: D
+block_id: SD.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'int.TryParse("100", out n): imprime n/4 si funciona (25).'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: ''

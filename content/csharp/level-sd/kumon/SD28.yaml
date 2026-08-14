@@ -1,0 +1,15 @@
+id: SD28
+level: SD
+page: 28
+set: 3
+block: A
+block_id: SD.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Con d={"x":5}, imprime GetValueOrDefault("y", 99) (99).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '99'
+starter_code: ''

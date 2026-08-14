@@ -1,0 +1,16 @@
+id: SD167
+level: SD
+page: 167
+set: 17
+block: D
+block_id: SD.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'int.TryParse("-5", out n): imprime el valor absoluto (5).'
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

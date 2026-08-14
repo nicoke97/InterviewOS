@@ -1,0 +1,15 @@
+id: SD178
+level: SD
+page: 178
+set: 18
+block: D
+block_id: SD.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con d vacío, usa GetValueOrDefault para imprimir 0 sin excepción.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

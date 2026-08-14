@@ -1,0 +1,15 @@
+id: SD110
+level: SD
+page: 110
+set: 11
+block: C
+block_id: SD.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Cuenta palabras únicas en "a b a c b" con HashSet (3).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

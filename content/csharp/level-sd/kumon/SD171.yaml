@@ -1,0 +1,21 @@
+id: SD171
+level: SD
+page: 171
+set: 18
+block: D
+block_id: SD.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Captura IndexOutOfRangeException al leer nums[10] de {1,2,3}; imprime "indice
+  malo".
+hints:
+- Cada tipo de error tiene su clase de excepción.
+validation:
+  type: run_and_match_stdout
+  expected: indice malo
+starter_code: "int[] nums = ___;\ntry\n{\n    Console.WriteLine(___);\n}\ncatch (IndexOutOfRangeException)\n\
+  {\n    Console.WriteLine(___);\n}"
+reference_code: "int[] nums = { 1, 2, 3 };\ntry\n{\n    Console.WriteLine(nums[10]);\n\
+  }\ncatch (IndexOutOfRangeException)\n{\n    Console.WriteLine(\"indice malo\");\n\
+  }"

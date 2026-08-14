@@ -1,0 +1,33 @@
+id: SD92
+level: SD
+page: 92
+set: 10
+block: B
+block_id: SD.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Combina {"a":1} y {"a":9} (el segundo gana); imprime c["a"] (9).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: 'var a = ___;
+
+  var b = ___;
+
+  var c = ___;
+
+  foreach (var kv in b) c[kv.Key] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var a = new Dictionary<string, int> { ["a"] = 1 };
+
+  var b = new Dictionary<string, int> { ["a"] = 9 };
+
+  var c = new Dictionary<string, int>(a);
+
+  foreach (var kv in b) c[kv.Key] = kv.Value;
+
+  Console.WriteLine(c["a"]);'

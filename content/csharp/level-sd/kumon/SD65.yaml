@@ -1,0 +1,16 @@
+id: SD65
+level: SD
+page: 65
+set: 7
+block: B
+block_id: SD.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Agrupa {10,20,5,30} en "grande"(>=20)/"chico"; imprime cuántos grandes (2).
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

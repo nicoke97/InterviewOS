@@ -1,0 +1,16 @@
+id: SD86
+level: SD
+page: 86
+set: 9
+block: B
+block_id: SD.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Invierte {"perro":4,"gato":3} e imprime inv[4] ("perro").
+hints:
+- Un Dictionary busca por llave en O(1). Usa ContainsKey antes de leer d[llave].
+validation:
+  type: run_and_match_stdout
+  expected: perro
+starter_code: ''

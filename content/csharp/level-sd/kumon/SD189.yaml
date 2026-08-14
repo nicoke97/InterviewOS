@@ -1,0 +1,17 @@
+id: SD189
+level: SD
+page: 189
+set: 19
+block: D
+block_id: SD.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'try con return-like: imprime "a", luego finally "b".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'a
+
+    b'
+starter_code: ''

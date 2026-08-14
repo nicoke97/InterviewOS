@@ -1,0 +1,16 @@
+id: SD155
+level: SD
+page: 155
+set: 16
+block: D
+block_id: SD.D
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'try/catch genérico (catch Exception): divide 5/0 e imprime "fallo".'
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: fallo
+starter_code: ''

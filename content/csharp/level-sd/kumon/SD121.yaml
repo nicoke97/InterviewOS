@@ -1,0 +1,25 @@
+id: SD121
+level: SD
+page: 121
+set: 13
+block: C
+block_id: SD.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Une {1,2,3} y {3,4,5} con UnionWith; imprime cuántos elementos hay (5).
+hints:
+- UnionWith combina; IntersectWith deja solo los comunes.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: 'var a = ___;
+
+  a.UnionWith(new[] { 3, 4, 5 });
+
+  Console.WriteLine(___);'
+reference_code: 'var a = new HashSet<int> { 1, 2, 3 };
+
+  a.UnionWith(new[] { 3, 4, 5 });
+
+  Console.WriteLine(a.Count);'

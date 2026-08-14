@@ -1,0 +1,29 @@
+id: SD11
+level: SD
+page: 11
+set: 2
+block: A
+block_id: SD.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea un dict vacío, asigna d["a"]=1 y d["b"]=2, imprime d.Count (2).
+hints:
+- Asignar una llave nueva la agrega; asignar una existente la actualiza.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: 'var d = ___;
+
+  d["a"] = ___;
+
+  d["b"] = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'var d = new Dictionary<string, int>();
+
+  d["a"] = 1;
+
+  d["b"] = 2;
+
+  Console.WriteLine(d.Count);'

@@ -1,0 +1,15 @@
+id: SD138
+level: SD
+page: 138
+set: 14
+block: C
+block_id: SD.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Con LINQ, {"x","y","z"}.Except({"y","z"}) e imprime el Count (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''
