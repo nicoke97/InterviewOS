@@ -1,0 +1,28 @@
+id: SE171
+level: SE
+page: 171
+set: 18
+block: D
+block_id: SE.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 78
+prompt: 'Define Animal(nombre) con constructor; Perro : Animal usa base(nombre); crea
+  Perro("Fido") e imprime Nombre.'
+hints:
+- base(...) llama al constructor de la clase base.
+validation:
+  type: run_and_match_stdout
+  expected: Fido
+starter_code: 'class Animal { public string Nombre; public Animal(string n) { Nombre
+  = n; } }
+
+  class Perro : Animal { public Perro(string n) : base(n) { } }
+
+  Console.WriteLine(___);'
+reference_code: 'class Animal { public string Nombre; public Animal(string n) { Nombre
+  = n; } }
+
+  class Perro : Animal { public Perro(string n) : base(n) { } }
+
+  Console.WriteLine(new Perro("Fido").Nombre);'

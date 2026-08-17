@@ -1,0 +1,16 @@
+id: SE177
+level: SE
+page: 177
+set: 18
+block: D
+block_id: SE.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: 'Define Animal(patas); Araña : Animal base(8); crea e imprime Patas (8).'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

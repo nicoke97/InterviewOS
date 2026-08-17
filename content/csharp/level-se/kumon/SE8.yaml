@@ -1,0 +1,15 @@
+id: SE8
+level: SE
+page: 8
+set: 1
+block: A
+block_id: SE.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Gato con Nombre; crea "Michi", cámbialo a "Tom" e imprime Nombre.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Tom
+starter_code: ''

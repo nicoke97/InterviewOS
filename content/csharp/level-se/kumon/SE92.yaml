@@ -1,0 +1,35 @@
+id: SE92
+level: SE
+page: 92
+set: 10
+block: B
+block_id: SE.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Robot con Pos=0 y Avanza(n); avanza 2 y 3 e imprime Pos (5).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: 'class Robot { public int Pos = 0; public void Avanza(int n) { Pos +=
+  n; } }
+
+  var r = ___;
+
+  r.Avanza(2);
+
+  r.Avanza(3);
+
+  Console.WriteLine(___);'
+reference_code: 'class Robot { public int Pos = 0; public void Avanza(int n) { Pos
+  += n; } }
+
+  var r = new Robot();
+
+  r.Avanza(2);
+
+  r.Avanza(3);
+
+  Console.WriteLine(r.Pos);'

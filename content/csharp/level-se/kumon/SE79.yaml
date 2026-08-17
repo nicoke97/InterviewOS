@@ -1,0 +1,15 @@
+id: SE79
+level: SE
+page: 79
+set: 8
+block: B
+block_id: SE.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Potencia con Eleva(b,e) usando Math.Pow; imprime Eleva(2,5) (32).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '32'
+starter_code: ''

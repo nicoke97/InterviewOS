@@ -1,0 +1,16 @@
+id: SE56
+level: SE
+page: 56
+set: 6
+block: B
+block_id: SE.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Numero(valor) con Doble(); crea 7 e imprime 14.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '14'
+starter_code: ''

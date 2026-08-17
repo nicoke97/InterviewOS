@@ -1,0 +1,17 @@
+id: SE125
+level: SE
+page: 125
+set: 13
+block: C
+block_id: SE.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Diferencia instancia vs estático: cada objeto tiene su Id, pero Total es
+  compartido; crea 2 e imprime Total (2).'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '2'
+starter_code: ''

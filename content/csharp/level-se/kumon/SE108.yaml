@@ -1,0 +1,15 @@
+id: SE108
+level: SE
+page: 108
+set: 11
+block: C
+block_id: SE.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Libro(titulo,anio) con ToString()="titulo (anio)"; imprime new Libro("C#",2020).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: C# (2020)
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE197
+level: SE
+page: 197
+set: 20
+block: D
+block_id: SE.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 84
+prompt: 'Con pattern: if (f is Cuadrado c) imprime c.Area() (9) para Cuadrado(3).'
+hints:
+- Compara con ==, <, > y decide con if/else. Recuerda el orden de las condiciones.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE4
+level: SE
+page: 4
+set: 1
+block: A
+block_id: SE.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Caja con Ancho; crea una con 3 e imprime Ancho.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

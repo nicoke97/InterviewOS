@@ -1,0 +1,16 @@
+id: SE180
+level: SE
+page: 180
+set: 18
+block: D
+block_id: SE.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 78
+prompt: 'Define Ciudad(nombre); Capital : Ciudad base(nombre); crea "Lima" e imprime
+  Nombre.'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Lima
+starter_code: ''

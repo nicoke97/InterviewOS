@@ -1,0 +1,15 @@
+id: SE69
+level: SE
+page: 69
+set: 7
+block: B
+block_id: SE.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Carrito con Total=0 y Agrega(precio); agrega 10 y 20 e imprime 30.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '30'
+starter_code: ''

@@ -1,0 +1,17 @@
+id: SE105
+level: SE
+page: 105
+set: 11
+block: C
+block_id: SE.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Define Producto(nombre,precio) con ToString()="nombre: $precio"; imprime
+  new Producto("Pan",3).'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Pan: $3'
+starter_code: ''

@@ -1,0 +1,30 @@
+id: SE1
+level: SE
+page: 1
+set: 1
+block: A
+block_id: SE.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define una clase Perro con propiedad Nombre; crea uno con Nombre="Fido" e
+  imprime Nombre.
+hints:
+- Una propiedad guarda un dato del objeto.
+validation:
+  type: run_and_match_stdout
+  expected: Fido
+starter_code: 'class Perro { public string Nombre; }
+
+  var p = ___;
+
+  p.Nombre = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Perro { public string Nombre; }
+
+  var p = new Perro();
+
+  p.Nombre = "Fido";
+
+  Console.WriteLine(p.Nombre);'

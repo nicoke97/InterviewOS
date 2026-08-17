@@ -1,0 +1,16 @@
+id: SE188
+level: SE
+page: 188
+set: 19
+block: D
+block_id: SE.D
+order: 8
+scaffolding: none
+time_estimate_seconds: 78
+prompt: Define Producto Precio()=100 virtual; ConEnvio override base.Precio()+20;
+  imprime 120.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '120'
+starter_code: ''

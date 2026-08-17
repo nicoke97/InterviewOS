@@ -1,0 +1,15 @@
+id: SE18
+level: SE
+page: 18
+set: 2
+block: A
+block_id: SE.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Temperatura(grados); crea con 25 e imprime Grados.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: ''

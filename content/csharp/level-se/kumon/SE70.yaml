@@ -1,0 +1,15 @@
+id: SE70
+level: SE
+page: 70
+set: 7
+block: B
+block_id: SE.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Contador con Suma(n); crea, suma 5 y suma 3 e imprime 8.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

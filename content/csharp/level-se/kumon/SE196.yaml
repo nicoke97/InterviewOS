@@ -1,0 +1,16 @@
+id: SE196
+level: SE
+page: 196
+set: 20
+block: D
+block_id: SE.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 84
+prompt: 'Usa as: Animal a = new Perro(); (a as Perro) no es null -> imprime "perro".'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: perro
+starter_code: ''

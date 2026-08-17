@@ -1,0 +1,15 @@
+id: SE189
+level: SE
+page: 189
+set: 19
+block: D
+block_id: SE.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 78
+prompt: Define Base Lista()="a"; Sub override base.Lista()+"b"; imprime "ab".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: ab
+starter_code: ''

@@ -1,0 +1,36 @@
+id: SE121
+level: SE
+page: 121
+set: 13
+block: C
+block_id: SE.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define un campo estático Contador.Total; crea 3 objetos que lo incrementen
+  e imprime Total (3).
+hints:
+- Un campo static es compartido por todas las instancias.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'class Item { public static int Total = 0; public Item() { Total++;
+  } }
+
+  new Item();
+
+  new Item();
+
+  new Item();
+
+  Console.WriteLine(___);'
+reference_code: 'class Item { public static int Total = 0; public Item() { Total++;
+  } }
+
+  new Item();
+
+  new Item();
+
+  new Item();
+
+  Console.WriteLine(Item.Total);'

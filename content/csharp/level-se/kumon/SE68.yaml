@@ -1,0 +1,15 @@
+id: SE68
+level: SE
+page: 68
+set: 7
+block: B
+block_id: SE.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Termostato con Grados=20 y Sube(); llama 2 veces e imprime 22.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '22'
+starter_code: ''

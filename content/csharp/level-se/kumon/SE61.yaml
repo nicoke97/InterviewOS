@@ -1,0 +1,32 @@
+id: SE61
+level: SE
+page: 61
+set: 7
+block: B
+block_id: SE.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Contador con Valor=0 y método Inc() que suma 1 a this.Valor; incrementa
+  una vez e imprime Valor (1).
+hints:
+- Un método puede modificar las propiedades del propio objeto.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: 'class Contador { public int Valor = 0; public void Inc() { Valor++;
+  } }
+
+  var c = ___;
+
+  c.Inc();
+
+  Console.WriteLine(___);'
+reference_code: 'class Contador { public int Valor = 0; public void Inc() { Valor++;
+  } }
+
+  var c = new Contador();
+
+  c.Inc();
+
+  Console.WriteLine(c.Valor);'

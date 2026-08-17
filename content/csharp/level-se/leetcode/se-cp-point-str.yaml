@@ -1,0 +1,44 @@
+id: se-cp-point-str
+title: Punto como texto
+fn_name: PointStr
+description: Retorna un punto como texto '(x, y)'.
+test_cases:
+- args:
+  - 1
+  - 2
+  expected: (1, 2)
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: 'class Punto { public int X; public int Y; public Punto(int x, int
+  y) { X = x; Y = y; } public override string ToString() => $"({X}, {Y})"; }
+
+  string PointStr(int x, int y) => new Punto(x, y).ToString();'
+tiers:
+  1:
+    starter_code: "string PointStr(int x, int y)\n{\n    return \"\";\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "string PointStr(int x, int y)\n{\n    return \"\";\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "string PointStr(int x, int y)\n{\n    return \"\";\n}"
+    narration_prompts: []
+    hints_allowed: false

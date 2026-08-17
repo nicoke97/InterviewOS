@@ -1,0 +1,15 @@
+id: SE109
+level: SE
+page: 109
+set: 11
+block: C
+block_id: SE.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Coord(lat,lon) con ToString()="lat,lon"; imprime new Coord(10,20).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 10,20
+starter_code: ''

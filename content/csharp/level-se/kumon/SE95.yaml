@@ -1,0 +1,17 @@
+id: SE95
+level: SE
+page: 95
+set: 10
+block: B
+block_id: SE.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Termometro con Grados=0, Sube(n) y Baja(n); sube 5, baja 2 e imprime
+  3.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

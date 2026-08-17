@@ -1,0 +1,16 @@
+id: SE147
+level: SE
+page: 147
+set: 15
+block: C
+block_id: SE.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Caja(l,a,p) con Volumen()=l*a*p; crea (2,3,4) e imprime 24.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '24'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE45
+level: SE
+page: 45
+set: 5
+block: A
+block_id: SE.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Define Cuenta(titular,saldo) e imprime "Ana: $100".'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Ana: $100'
+starter_code: ''

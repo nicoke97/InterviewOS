@@ -1,0 +1,16 @@
+id: SE100
+level: SE
+page: 100
+set: 10
+block: B
+block_id: SE.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Cuenta con Saldo=0, Deposita(n) y Retira(n) sin negativo; deposita
+  100, retira 30 e imprime 70.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '70'
+starter_code: ''

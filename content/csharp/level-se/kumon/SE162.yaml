@@ -1,0 +1,25 @@
+id: SE162
+level: SE
+page: 162
+set: 17
+block: D
+block_id: SE.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Animal Sonido() virtual; Gato override "miau"; imprime.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: miau
+starter_code: 'class Animal { public virtual string Sonido() => "..."; }
+
+  class Gato : Animal { public override string Sonido() => "miau"; }
+
+  Console.WriteLine(___);'
+reference_code: 'class Animal { public virtual string Sonido() => "..."; }
+
+  class Gato : Animal { public override string Sonido() => "miau"; }
+
+  Console.WriteLine(new Gato().Sonido());'

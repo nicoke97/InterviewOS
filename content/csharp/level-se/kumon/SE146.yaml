@@ -1,0 +1,16 @@
+id: SE146
+level: SE
+page: 146
+set: 15
+block: C
+block_id: SE.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Triangulo(b,h) con Area()=b*h/2; crea (6,4) e imprime 12.
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: ''

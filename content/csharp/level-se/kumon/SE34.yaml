@@ -1,0 +1,16 @@
+id: SE34
+level: SE
+page: 34
+set: 4
+block: A
+block_id: SE.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea Producto("A",10) y Producto("B",20); imprime el más caro (20).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

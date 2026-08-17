@@ -1,0 +1,15 @@
+id: SE148
+level: SE
+page: 148
+set: 15
+block: C
+block_id: SE.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 78
+prompt: Define Temperatura(c) con AFahrenheit()=c*9/5+32; crea 100 e imprime 212.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '212'
+starter_code: ''

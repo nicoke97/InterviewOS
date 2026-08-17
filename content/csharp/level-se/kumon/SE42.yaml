@@ -1,0 +1,27 @@
+id: SE42
+level: SE
+page: 42
+set: 5
+block: A
+block_id: SE.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Producto(nombre,precio) e imprime "Pan cuesta 3".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Pan cuesta 3
+starter_code: 'class Producto { public string Nombre; public int Precio; public Producto(string
+  n, int p) { Nombre = n; Precio = p; } }
+
+  var prod = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Producto { public string Nombre; public int Precio; public
+  Producto(string n, int p) { Nombre = n; Precio = p; } }
+
+  var prod = new Producto("Pan", 3);
+
+  Console.WriteLine($"{prod.Nombre} cuesta {prod.Precio}");'

@@ -1,0 +1,39 @@
+id: SE62
+level: SE
+page: 62
+set: 7
+block: B
+block_id: SE.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Contador con Inc(); incrementa 3 veces e imprime Valor (3).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: 'class Contador { public int Valor = 0; public void Inc() { Valor++;
+  } }
+
+  var c = ___;
+
+  c.Inc();
+
+  c.Inc();
+
+  c.Inc();
+
+  Console.WriteLine(___);'
+reference_code: 'class Contador { public int Valor = 0; public void Inc() { Valor++;
+  } }
+
+  var c = new Contador();
+
+  c.Inc();
+
+  c.Inc();
+
+  c.Inc();
+
+  Console.WriteLine(c.Valor);'

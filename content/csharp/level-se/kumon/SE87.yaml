@@ -1,0 +1,17 @@
+id: SE87
+level: SE
+page: 87
+set: 9
+block: B
+block_id: SE.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Termostato con Sube, Baja y Grados(); sube 3, baja 1 e imprime 22 (base
+  20).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '22'
+starter_code: ''

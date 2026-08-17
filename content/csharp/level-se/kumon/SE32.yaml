@@ -1,0 +1,31 @@
+id: SE32
+level: SE
+page: 32
+set: 4
+block: A
+block_id: SE.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Crea Persona("Ana",20) y Persona("Luis",30); imprime la suma de edades (50).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '50'
+starter_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var a = ___;
+
+  var b = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var a = new Persona("Ana", 20);
+
+  var b = new Persona("Luis", 30);
+
+  Console.WriteLine(a.Edad + b.Edad);'

@@ -1,0 +1,28 @@
+id: SE182
+level: SE
+page: 182
+set: 19
+block: D
+block_id: SE.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define Base Saluda()="hola"; Sub override base.Saluda()+" mundo"; imprime
+  "hola mundo".
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: hola mundo
+starter_code: 'class Base { public virtual string Saluda() => "hola"; }
+
+  class Sub : Base { public override string Saluda() => base.Saluda() + " mundo";
+  }
+
+  Console.WriteLine(___);'
+reference_code: 'class Base { public virtual string Saluda() => "hola"; }
+
+  class Sub : Base { public override string Saluda() => base.Saluda() + " mundo";
+  }
+
+  Console.WriteLine(new Sub().Saluda());'

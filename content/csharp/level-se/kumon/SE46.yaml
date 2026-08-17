@@ -1,0 +1,16 @@
+id: SE46
+level: SE
+page: 46
+set: 5
+block: A
+block_id: SE.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: 'Define Rectangulo(a,b) e imprime "Area: 20".'
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 'Area: 20'
+starter_code: ''

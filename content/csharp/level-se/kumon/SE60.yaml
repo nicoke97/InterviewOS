@@ -1,0 +1,16 @@
+id: SE60
+level: SE
+page: 60
+set: 6
+block: B
+block_id: SE.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Producto(precio) con ConIva()=precio+precio*18/100; crea 100 e imprime
+  118.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '118'
+starter_code: ''

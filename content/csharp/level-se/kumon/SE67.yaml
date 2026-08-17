@@ -1,0 +1,16 @@
+id: SE67
+level: SE
+page: 67
+set: 7
+block: B
+block_id: SE.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Contador con Reset(); incrementa y luego Reset, imprime 0.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

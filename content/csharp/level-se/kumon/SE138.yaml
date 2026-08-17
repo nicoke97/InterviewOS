@@ -1,0 +1,16 @@
+id: SE138
+level: SE
+page: 138
+set: 14
+block: C
+block_id: SE.C
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Cola con List<int>, Enqueue y Peek() (primero); agrega 1,2 e imprime
+  1.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE44
+level: SE
+page: 44
+set: 5
+block: A
+block_id: SE.A
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Libro(titulo,paginas) e imprime "C# - 200 pags".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: C# - 200 pags
+starter_code: ''

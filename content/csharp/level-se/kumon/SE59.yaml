@@ -1,0 +1,15 @@
+id: SE59
+level: SE
+page: 59
+set: 6
+block: B
+block_id: SE.B
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Nota(valor) con Letra() (A>=90,B>=80,F); crea 85 e imprime "B".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: B
+starter_code: ''

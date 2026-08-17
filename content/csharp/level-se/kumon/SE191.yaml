@@ -1,0 +1,19 @@
+id: SE191
+level: SE
+page: 191
+set: 20
+block: D
+block_id: SE.D
+order: 1
+scaffolding: full
+time_estimate_seconds: 84
+prompt: 'Usa is: Figura f = new Cuadrado(); imprime "es cuadrado" si f is Cuadrado.'
+hints:
+- '''is'' comprueba el tipo real de un objeto.'
+validation:
+  type: run_and_match_stdout
+  expected: es cuadrado
+starter_code: "class Figura { }\nclass Cuadrado : Figura { }\nFigura f = ___;\nif\
+  \ (f is Cuadrado)\n    Console.WriteLine(___);"
+reference_code: "class Figura { }\nclass Cuadrado : Figura { }\nFigura f = new Cuadrado();\n\
+  if (f is Cuadrado)\n    Console.WriteLine(\"es cuadrado\");"

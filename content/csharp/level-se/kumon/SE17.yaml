@@ -1,0 +1,16 @@
+id: SE17
+level: SE
+page: 17
+set: 2
+block: A
+block_id: SE.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Ciudad(nombre); crea "Cusco" e imprime Nombre.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Cusco
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SE28
+level: SE
+page: 28
+set: 3
+block: A
+block_id: SE.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Nota(materia,valor); crea ("Mate",95) e imprime "Mate=95".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Mate=95
+starter_code: ''

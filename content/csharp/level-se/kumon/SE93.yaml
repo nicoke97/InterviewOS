@@ -1,0 +1,26 @@
+id: SE93
+level: SE
+page: 93
+set: 10
+block: B
+block_id: SE.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Vaso con Nivel=0 y Llena(ml); llena 100 y 50 e imprime 150.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '150'
+starter_code: ___
+reference_code: 'class Vaso { public int Nivel = 0; public void Llena(int ml) { Nivel
+  += ml; } }
+
+  var v = new Vaso();
+
+  v.Llena(100);
+
+  v.Llena(50);
+
+  Console.WriteLine(v.Nivel);'

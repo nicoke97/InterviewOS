@@ -1,0 +1,48 @@
+id: se-exam-stack
+title: Pila (Stack)
+fn_name: StackTop
+description: Crea una pila con Push; aplica los valores y retorna el tope.
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+  expected: 3
+- args:
+  - - 5
+  expected: 5
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: "class Stack { public List<int> Data = new(); public void Push(int\
+  \ x) { Data.Add(x); } public int Top() => Data[Data.Count - 1]; }\nint StackTop(int[]\
+  \ valores)\n{\n    var s = new Stack();\n    foreach (int v in valores) s.Push(v);\n\
+  \    return s.Top();\n}"
+tiers:
+  1:
+    starter_code: "int StackTop(int[] valores)\n{\n    return 0;\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int StackTop(int[] valores)\n{\n    return 0;\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int StackTop(int[] valores)\n{\n    return 0;\n}"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,16 @@
+id: SE86
+level: SE
+page: 86
+set: 9
+block: B
+block_id: SE.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Cuenta con Deposita y Saldo(); deposita 40 dos veces e imprime 80.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '80'
+starter_code: ''

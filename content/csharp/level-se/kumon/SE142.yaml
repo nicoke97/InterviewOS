@@ -1,0 +1,28 @@
+id: SE142
+level: SE
+page: 142
+set: 15
+block: C
+block_id: SE.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define Circulo(r) con Area()=r*r*3 y Diametro()=2*r; crea r=2 e imprime "12
+  4".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 12 4
+starter_code: 'class Circulo { public int R; public Circulo(int r) { R = r; } public
+  int Area() => R * R * 3; public int Diametro() => 2 * R; }
+
+  var c = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Circulo { public int R; public Circulo(int r) { R = r; } public
+  int Area() => R * R * 3; public int Diametro() => 2 * R; }
+
+  var c = new Circulo(2);
+
+  Console.WriteLine($"{c.Area()} {c.Diametro()}");'

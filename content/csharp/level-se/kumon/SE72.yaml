@@ -1,0 +1,26 @@
+id: SE72
+level: SE
+page: 72
+set: 8
+block: B
+block_id: SE.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Saludador con Saluda(nombre); imprime Saluda("Ana") = "Hola Ana".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: Hola Ana
+starter_code: 'class Saludador { public string Saluda(string n) => $"Hola {n}"; }
+
+  var s = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Saludador { public string Saluda(string n) => $"Hola {n}";
+  }
+
+  var s = new Saludador();
+
+  Console.WriteLine(s.Saluda("Ana"));'

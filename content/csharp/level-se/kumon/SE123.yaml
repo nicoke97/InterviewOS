@@ -1,0 +1,20 @@
+id: SE123
+level: SE
+page: 123
+set: 13
+block: C
+block_id: SE.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define un campo static Config.Version="1.0"; imprime Config.Version sin crear
+  objeto.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1.0'
+starter_code: ___
+reference_code: 'class Config { public static string Version = "1.0"; }
+
+  Console.WriteLine(Config.Version);'

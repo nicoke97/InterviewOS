@@ -1,0 +1,16 @@
+id: SE159
+level: SE
+page: 159
+set: 16
+block: D
+block_id: SE.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: 'Define Figura con Area()=0; Cuadrado : Figura hereda; crea Cuadrado e imprime
+  Area() (0).'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '0'
+starter_code: ''

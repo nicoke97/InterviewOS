@@ -1,0 +1,27 @@
+id: SE41
+level: SE
+page: 41
+set: 5
+block: A
+block_id: SE.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Persona(nombre,edad) e imprime con interpolación "Ana (22)".
+hints:
+- Puedes usar las propiedades dentro de una interpolación.
+validation:
+  type: run_and_match_stdout
+  expected: Ana (22)
+starter_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var p = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var p = new Persona("Ana", 22);
+
+  Console.WriteLine($"{p.Nombre} ({p.Edad})");'

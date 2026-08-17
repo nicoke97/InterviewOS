@@ -1,0 +1,28 @@
+id: SE51
+level: SE
+page: 51
+set: 6
+block: B
+block_id: SE.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Circulo(radio) con método Area() = radio*radio*3 (aprox); crea radio=2
+  e imprime Area() (12).
+hints:
+- Un método de instancia usa las propiedades del objeto.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: 'class Circulo { public int Radio; public Circulo(int r) { Radio = r;
+  } public int Area() => Radio * Radio * 3; }
+
+  var c = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Circulo { public int Radio; public Circulo(int r) { Radio =
+  r; } public int Area() => Radio * Radio * 3; }
+
+  var c = new Circulo(2);
+
+  Console.WriteLine(c.Area());'

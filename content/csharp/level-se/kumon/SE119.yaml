@@ -1,0 +1,15 @@
+id: SE119
+level: SE
+page: 119
+set: 12
+block: C
+block_id: SE.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Numero(valor) con propiedad EsPar; crea 6 e imprime true.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SE48
+level: SE
+page: 48
+set: 5
+block: A
+block_id: SE.A
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Ciudad(nombre,pais) e imprime "Lima, Peru".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Lima, Peru
+starter_code: ''

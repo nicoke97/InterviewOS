@@ -1,0 +1,15 @@
+id: SE9
+level: SE
+page: 9
+set: 1
+block: A
+block_id: SE.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Define Circulo con Radio; crea uno con 7 e imprime Radio.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: ''

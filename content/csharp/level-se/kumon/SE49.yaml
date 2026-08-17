@@ -1,0 +1,15 @@
+id: SE49
+level: SE
+page: 49
+set: 5
+block: A
+block_id: SE.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Pelicula(titulo,anio) e imprime "Matrix (1999)".
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: Matrix (1999)
+starter_code: ''

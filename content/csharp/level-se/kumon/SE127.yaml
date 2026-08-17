@@ -1,0 +1,16 @@
+id: SE127
+level: SE
+page: 127
+set: 13
+block: C
+block_id: SE.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: 'Cuenta objetos creados con static: crea 5 en un bucle e imprime el conteo.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: ''

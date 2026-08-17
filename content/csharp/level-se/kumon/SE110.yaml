@@ -1,0 +1,15 @@
+id: SE110
+level: SE
+page: 110
+set: 11
+block: C
+block_id: SE.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Usuario(nombre) con ToString()="@nombre"; imprime new Usuario("bob").
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '@bob'
+starter_code: ''

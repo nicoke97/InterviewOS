@@ -1,0 +1,16 @@
+id: SE199
+level: SE
+page: 199
+set: 20
+block: D
+block_id: SE.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 84
+prompt: Suma sueldos polimórficos de {Empleado(1000),Gerente()} (Gerente=2000) ->
+  3000.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '3000'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE179
+level: SE
+page: 179
+set: 18
+block: D
+block_id: SE.D
+order: 9
+scaffolding: none
+time_estimate_seconds: 78
+prompt: 'Define Producto(precio); Descuento : Producto base(precio-10); crea 100 e
+  imprime Precio (90).'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '90'
+starter_code: ''

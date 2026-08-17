@@ -1,0 +1,15 @@
+id: SE39
+level: SE
+page: 39
+set: 4
+block: A
+block_id: SE.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 60
+prompt: Crea dos Usuario con Activo true/false; imprime cuántos activos hay (1).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

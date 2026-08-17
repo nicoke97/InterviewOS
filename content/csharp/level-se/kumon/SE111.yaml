@@ -1,0 +1,28 @@
+id: SE111
+level: SE
+page: 111
+set: 12
+block: C
+block_id: SE.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Circulo(r) con propiedad calculada Area (=r*r*3); crea r=2 e imprime
+  Area (12).
+hints:
+- Una propiedad calculada usa => y no se asigna.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: 'class Circulo { public int R; public Circulo(int r) { R = r; } public
+  int Area => R * R * 3; }
+
+  var c = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Circulo { public int R; public Circulo(int r) { R = r; } public
+  int Area => R * R * 3; }
+
+  var c = new Circulo(2);
+
+  Console.WriteLine(c.Area);'

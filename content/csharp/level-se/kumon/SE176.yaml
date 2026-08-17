@@ -1,0 +1,16 @@
+id: SE176
+level: SE
+page: 176
+set: 18
+block: D
+block_id: SE.D
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: 'Define Base(x); Sub : Base pasa base(x*2); crea Sub(5) e imprime X (10).'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '10'
+starter_code: ''

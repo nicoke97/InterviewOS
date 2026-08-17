@@ -1,0 +1,25 @@
+id: SE71
+level: SE
+page: 71
+set: 8
+block: B
+block_id: SE.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Calculadora con Suma(a,b); imprime Suma(3,4) (7).
+hints:
+- Un método puede recibir parámetros además de usar this.
+validation:
+  type: run_and_match_stdout
+  expected: '7'
+starter_code: 'class Calculadora { public int Suma(int a, int b) => a + b; }
+
+  var c = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Calculadora { public int Suma(int a, int b) => a + b; }
+
+  var c = new Calculadora();
+
+  Console.WriteLine(c.Suma(3, 4));'

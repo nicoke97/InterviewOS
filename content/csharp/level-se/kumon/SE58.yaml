@@ -1,0 +1,16 @@
+id: SE58
+level: SE
+page: 58
+set: 6
+block: B
+block_id: SE.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Triangulo(base,altura) con Area()=base*altura/2; crea (6,4) e imprime
+  12.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: ''

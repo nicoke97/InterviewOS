@@ -1,0 +1,15 @@
+id: SE129
+level: SE
+page: 129
+set: 13
+block: C
+block_id: SE.C
+order: 9
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define un método estático Mate.Max(a,b); imprime Mate.Max(3,9) (9).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

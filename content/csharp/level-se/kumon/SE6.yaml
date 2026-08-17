@@ -1,0 +1,16 @@
+id: SE6
+level: SE
+page: 6
+set: 1
+block: A
+block_id: SE.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Ciudad con Nombre; crea "Lima" e imprime Nombre.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Lima
+starter_code: ''

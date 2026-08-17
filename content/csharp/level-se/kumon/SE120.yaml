@@ -1,0 +1,15 @@
+id: SE120
+level: SE
+page: 120
+set: 12
+block: C
+block_id: SE.C
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Rango(a,b) con propiedad Tamano (=b-a); crea (2,10) e imprime 8.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

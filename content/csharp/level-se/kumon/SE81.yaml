@@ -1,0 +1,36 @@
+id: SE81
+level: SE
+page: 81
+set: 9
+block: B
+block_id: SE.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Cuenta con Deposita y Retira; crea saldo=100, deposita 50, retira 30
+  e imprime 120.
+hints:
+- Una clase puede tener varios métodos que colaboran.
+validation:
+  type: run_and_match_stdout
+  expected: '120'
+starter_code: 'class Cuenta { public int Saldo = 100; public void Deposita(int n)
+  { Saldo += n; } public void Retira(int n) { Saldo -= n; } }
+
+  var c = ___;
+
+  c.Deposita(50);
+
+  c.Retira(30);
+
+  Console.WriteLine(___);'
+reference_code: 'class Cuenta { public int Saldo = 100; public void Deposita(int n)
+  { Saldo += n; } public void Retira(int n) { Saldo -= n; } }
+
+  var c = new Cuenta();
+
+  c.Deposita(50);
+
+  c.Retira(30);
+
+  Console.WriteLine(c.Saldo);'

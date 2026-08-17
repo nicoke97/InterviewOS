@@ -1,0 +1,16 @@
+id: SE35
+level: SE
+page: 35
+set: 4
+block: A
+block_id: SE.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea dos Rectangulo(2,3) y (4,5); imprime la suma de áreas (26).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '26'
+starter_code: ''

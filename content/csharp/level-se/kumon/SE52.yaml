@@ -1,0 +1,27 @@
+id: SE52
+level: SE
+page: 52
+set: 6
+block: B
+block_id: SE.B
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Cuadrado(lado) con Area()=lado*lado; crea lado=5 e imprime Area() (25).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '25'
+starter_code: 'class Cuadrado { public int Lado; public Cuadrado(int l) { Lado = l;
+  } public int Area() => Lado * Lado; }
+
+  var c = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Cuadrado { public int Lado; public Cuadrado(int l) { Lado =
+  l; } public int Area() => Lado * Lado; }
+
+  var c = new Cuadrado(5);
+
+  Console.WriteLine(c.Area());'

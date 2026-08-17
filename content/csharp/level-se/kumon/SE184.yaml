@@ -1,0 +1,17 @@
+id: SE184
+level: SE
+page: 184
+set: 19
+block: D
+block_id: SE.D
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Empleado Sueldo()=1000; Gerente override base.Sueldo()+500; imprime
+  1500.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1500'
+starter_code: ''

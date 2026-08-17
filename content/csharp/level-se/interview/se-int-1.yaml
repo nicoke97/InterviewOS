@@ -1,0 +1,9 @@
+id: se-int-1
+question: ¿Qué es una clase en C# y en qué se diferencia de un objeto? Da un ejemplo.
+rubric:
+- clase es la plantilla
+- objeto es una instancia
+- ejemplo con new
+sample_answer: 'Una clase es una plantilla que define campos y métodos; un objeto
+  es una instancia concreta creada con new. Ej: class Perro {...} y var p = new Perro();.'
+category: csharp

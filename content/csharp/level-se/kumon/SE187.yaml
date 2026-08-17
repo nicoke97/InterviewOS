@@ -1,0 +1,17 @@
+id: SE187
+level: SE
+page: 187
+set: 19
+block: D
+block_id: SE.D
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Animal Describe()="animal"; Perro override base+" perro"; imprime "animal
+  perro".
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: animal perro
+starter_code: ''

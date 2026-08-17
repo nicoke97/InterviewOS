@@ -1,0 +1,16 @@
+id: SE55
+level: SE
+page: 55
+set: 6
+block: B
+block_id: SE.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Cuenta(saldo) con TieneFondos() (>0); crea saldo=0 e imprime false.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

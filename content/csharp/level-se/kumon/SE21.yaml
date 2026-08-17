@@ -1,0 +1,28 @@
+id: SE21
+level: SE
+page: 21
+set: 3
+block: A
+block_id: SE.A
+order: 1
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Persona con constructor(nombre, edad); crea ("Ana",22) e imprime "Ana
+  22".
+hints:
+- Un constructor puede recibir varios argumentos.
+validation:
+  type: run_and_match_stdout
+  expected: Ana 22
+starter_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var p = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Persona { public string Nombre; public int Edad; public Persona(string
+  n, int e) { Nombre = n; Edad = e; } }
+
+  var p = new Persona("Ana", 22);
+
+  Console.WriteLine($"{p.Nombre} {p.Edad}");'

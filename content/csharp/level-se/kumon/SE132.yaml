@@ -1,0 +1,40 @@
+id: SE132
+level: SE
+page: 132
+set: 14
+block: C
+block_id: SE.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Carrito con List<int> Precios y Total(); agrega 10,20,30 e imprime
+  60.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '60'
+starter_code: 'class Carrito { public List<int> Precios = new(); public void Agrega(int
+  p) { Precios.Add(p); } public int Total() => Precios.Sum(); }
+
+  var c = ___;
+
+  c.Agrega(10);
+
+  c.Agrega(20);
+
+  c.Agrega(30);
+
+  Console.WriteLine(___);'
+reference_code: 'class Carrito { public List<int> Precios = new(); public void Agrega(int
+  p) { Precios.Add(p); } public int Total() => Precios.Sum(); }
+
+  var c = new Carrito();
+
+  c.Agrega(10);
+
+  c.Agrega(20);
+
+  c.Agrega(30);
+
+  Console.WriteLine(c.Total());'

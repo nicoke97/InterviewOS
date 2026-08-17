@@ -1,0 +1,23 @@
+id: SE152
+level: SE
+page: 152
+set: 16
+block: D
+block_id: SE.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'Define Vehiculo con Arranca()="arranca"; Auto : Vehiculo; crea Auto y llama
+  Arranca().'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: arranca
+starter_code: ___
+reference_code: 'class Vehiculo { public void Arranca() { Console.WriteLine("arranca");
+  } }
+
+  class Auto : Vehiculo { }
+
+  new Auto().Arranca();'

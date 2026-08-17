@@ -1,0 +1,25 @@
+id: SE12
+level: SE
+page: 12
+set: 2
+block: A
+block_id: SE.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Punto con constructor(x); crea con 8 e imprime X.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: 'class Punto { public int X; public Punto(int x) { X = x; } }
+
+  var p = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Punto { public int X; public Punto(int x) { X = x; } }
+
+  var p = new Punto(8);
+
+  Console.WriteLine(p.X);'

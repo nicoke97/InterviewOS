@@ -1,0 +1,16 @@
+id: SE116
+level: SE
+page: 116
+set: 12
+block: C
+block_id: SE.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Persona(edad) con propiedad EsMayor; crea 20 e imprime true.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,26 @@
+id: SE153
+level: SE
+page: 153
+set: 16
+block: D
+block_id: SE.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: 'Define Base con propiedad Nombre; Derivada : Base; crea Derivada, Nombre="X"
+  e imprime Nombre.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: X
+starter_code: ___
+reference_code: 'class Base { public string Nombre; }
+
+  class Derivada : Base { }
+
+  var d = new Derivada();
+
+  d.Nombre = "X";
+
+  Console.WriteLine(d.Nombre);'

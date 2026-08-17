@@ -1,0 +1,16 @@
+id: SE37
+level: SE
+page: 37
+set: 4
+block: A
+block_id: SE.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Crea 3 Nota(80),(90),(100) en un array; imprime el promedio (90).
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '90'
+starter_code: ''

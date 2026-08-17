@@ -1,0 +1,20 @@
+id: SE103
+level: SE
+page: 103
+set: 11
+block: C
+block_id: SE.C
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Dinero(monto) con ToString()="$monto"; imprime new Dinero(50).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: $50
+starter_code: ___
+reference_code: 'class Dinero { public int Monto; public Dinero(int m) { Monto = m;
+  } public override string ToString() => $"${Monto}"; }
+
+  Console.WriteLine(new Dinero(50));'

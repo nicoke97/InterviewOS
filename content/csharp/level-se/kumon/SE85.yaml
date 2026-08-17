@@ -1,0 +1,16 @@
+id: SE85
+level: SE
+page: 85
+set: 9
+block: B
+block_id: SE.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Luz con On, Off y Estado(); enciende y apaga, imprime Estado() (false).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'False'
+starter_code: ''

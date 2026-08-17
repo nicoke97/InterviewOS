@@ -1,0 +1,36 @@
+id: SE91
+level: SE
+page: 91
+set: 10
+block: B
+block_id: SE.B
+order: 1
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Jugador con Puntos=0 y Anota(p) que suma p; anota 3 y 5 e imprime Puntos
+  (8).
+hints:
+- Un método puede modificar el estado del objeto varias veces.
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: 'class Jugador { public int Puntos = 0; public void Anota(int p) { Puntos
+  += p; } }
+
+  var j = ___;
+
+  j.Anota(3);
+
+  j.Anota(5);
+
+  Console.WriteLine(___);'
+reference_code: 'class Jugador { public int Puntos = 0; public void Anota(int p) {
+  Puntos += p; } }
+
+  var j = new Jugador();
+
+  j.Anota(3);
+
+  j.Anota(5);
+
+  Console.WriteLine(j.Puntos);'

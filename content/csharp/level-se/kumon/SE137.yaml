@@ -1,0 +1,16 @@
+id: SE137
+level: SE
+page: 137
+set: 14
+block: C
+block_id: SE.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Inventario con List<int> y Max(); agrega 5,9,2 e imprime 9.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

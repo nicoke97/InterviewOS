@@ -1,0 +1,23 @@
+id: SE102
+level: SE
+page: 102
+set: 11
+block: C
+block_id: SE.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Persona(nombre) con ToString()=nombre; imprime new Persona("Ana").
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Ana
+starter_code: 'class Persona { public string Nombre; public Persona(string n) { Nombre
+  = n; } public override string ToString() => Nombre; }
+
+  Console.WriteLine(___);'
+reference_code: 'class Persona { public string Nombre; public Persona(string n) {
+  Nombre = n; } public override string ToString() => Nombre; }
+
+  Console.WriteLine(new Persona("Ana"));'

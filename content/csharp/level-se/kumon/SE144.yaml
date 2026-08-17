@@ -1,0 +1,17 @@
+id: SE144
+level: SE
+page: 144
+set: 15
+block: C
+block_id: SE.C
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Persona(nacimiento) con Edad(actual)=actual-nacimiento; crea 2000 e
+  imprime Edad(2020) (20).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ''

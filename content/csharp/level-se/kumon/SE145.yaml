@@ -1,0 +1,16 @@
+id: SE145
+level: SE
+page: 145
+set: 15
+block: C
+block_id: SE.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 78
+prompt: Define Notas(a,b) con Promedio()=(a+b)/2; crea (80,90) e imprime 85.
+hints:
+- Calcula la expresión y pásala a Console.WriteLine para imprimir el resultado.
+validation:
+  type: run_and_match_stdout
+  expected: '85'
+starter_code: ''

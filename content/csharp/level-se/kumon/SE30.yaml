@@ -1,0 +1,15 @@
+id: SE30
+level: SE
+page: 30
+set: 3
+block: A
+block_id: SE.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Usuario(nombre,activo); crea ("bob",true) e imprime Activo.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE117
+level: SE
+page: 117
+set: 12
+block: C
+block_id: SE.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Texto(valor) con propiedad Largo; crea "hola" e imprime 4.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '4'
+starter_code: ''

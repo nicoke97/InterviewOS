@@ -1,0 +1,22 @@
+id: SE23
+level: SE
+page: 23
+set: 3
+block: A
+block_id: SE.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Rectangulo(ancho,alto); crea (5,4) e imprime el área (20).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '20'
+starter_code: ___
+reference_code: 'class Rectangulo { public int Ancho; public int Alto; public Rectangulo(int
+  a, int b) { Ancho = a; Alto = b; } }
+
+  var r = new Rectangulo(5, 4);
+
+  Console.WriteLine(r.Ancho * r.Alto);'

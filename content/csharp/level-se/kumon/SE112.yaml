@@ -1,0 +1,27 @@
+id: SE112
+level: SE
+page: 112
+set: 12
+block: C
+block_id: SE.C
+order: 2
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Rectangulo(a,b) con propiedad Area; crea (3,4) e imprime 12.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '12'
+starter_code: 'class Rectangulo { public int A; public int B; public Rectangulo(int
+  a, int b) { A = a; B = b; } public int Area => A * B; }
+
+  var r = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Rectangulo { public int A; public int B; public Rectangulo(int
+  a, int b) { A = a; B = b; } public int Area => A * B; }
+
+  var r = new Rectangulo(3, 4);
+
+  Console.WriteLine(r.Area);'

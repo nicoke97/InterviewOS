@@ -1,0 +1,16 @@
+id: SE65
+level: SE
+page: 65
+set: 7
+block: B
+block_id: SE.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Pila con lista interna y Push(x); agrega 5 e imprime el Count (1).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '1'
+starter_code: ''

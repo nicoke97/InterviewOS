@@ -1,0 +1,16 @@
+id: SE66
+level: SE
+page: 66
+set: 7
+block: B
+block_id: SE.B
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Cuenta con Retira(n); crea 100, retira 40 e imprime 60.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '60'
+starter_code: ''

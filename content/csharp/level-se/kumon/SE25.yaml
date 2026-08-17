@@ -1,0 +1,16 @@
+id: SE25
+level: SE
+page: 25
+set: 3
+block: A
+block_id: SE.A
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Fecha(dia,mes); crea (5,9) e imprime "5/9".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 5/9
+starter_code: ''

@@ -1,0 +1,23 @@
+id: SE173
+level: SE
+page: 173
+set: 18
+block: D
+block_id: SE.D
+order: 3
+scaffolding: full
+time_estimate_seconds: 78
+prompt: 'Define Persona(nombre); Estudiante : Persona con base(nombre); crea "Ana"
+  e imprime.'
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: Ana
+starter_code: ___
+reference_code: 'class Persona { public string Nombre; public Persona(string n) {
+  Nombre = n; } }
+
+  class Estudiante : Persona { public Estudiante(string n) : base(n) { } }
+
+  Console.WriteLine(new Estudiante("Ana").Nombre);'

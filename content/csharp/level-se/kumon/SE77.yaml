@@ -1,0 +1,16 @@
+id: SE77
+level: SE
+page: 77
+set: 8
+block: B
+block_id: SE.B
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Rango(min,max) con Contiene(n); crea (1,10) e imprime Contiene(5) (true).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE7
+level: SE
+page: 7
+set: 1
+block: A
+block_id: SE.A
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 60
+prompt: Define Producto con Precio; crea uno con 100 e imprime Precio.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

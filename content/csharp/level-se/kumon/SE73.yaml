@@ -1,0 +1,23 @@
+id: SE73
+level: SE
+page: 73
+set: 8
+block: B
+block_id: SE.B
+order: 3
+scaffolding: full
+time_estimate_seconds: 72
+prompt: Define Cuenta(saldo) con PuedePagar(monto); crea 100 e imprime PuedePagar(50)
+  (true).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ___
+reference_code: 'class Cuenta { public int Saldo; public Cuenta(int s) { Saldo = s;
+  } public bool PuedePagar(int m) => Saldo >= m; }
+
+  var c = new Cuenta(100);
+
+  Console.WriteLine(c.PuedePagar(50));'

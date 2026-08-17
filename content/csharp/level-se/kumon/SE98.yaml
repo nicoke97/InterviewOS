@@ -1,0 +1,16 @@
+id: SE98
+level: SE
+page: 98
+set: 10
+block: B
+block_id: SE.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Contador con Valor=1 y Multiplica(n); multiplica por 2 tres veces e
+  imprime 8.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

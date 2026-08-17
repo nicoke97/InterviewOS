@@ -1,0 +1,15 @@
+id: SE29
+level: SE
+page: 29
+set: 3
+block: A
+block_id: SE.A
+order: 9
+scaffolding: none
+time_estimate_seconds: 66
+prompt: Define Par(a,b); crea (6,7) e imprime el producto (42).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '42'
+starter_code: ''

@@ -1,0 +1,10 @@
+id: se-int-2
+question: ¿Qué es la herencia y el polimorfismo en C#? Menciona virtual y override.
+rubric:
+- herencia reutiliza una clase base
+- override redefine métodos virtual
+- 'polimorfismo: mismo método, comportamiento distinto'
+sample_answer: La herencia permite que una clase derive de otra y reutilice su código.
+  Con virtual/override una subclase redefine un método, y el polimorfismo hace que
+  el mismo método se comporte distinto según el tipo real del objeto.
+category: csharp

@@ -1,0 +1,29 @@
+id: SE2
+level: SE
+page: 2
+set: 1
+block: A
+block_id: SE.A
+order: 2
+scaffolding: full
+time_estimate_seconds: 60
+prompt: Define Punto con campo X; crea uno con X=5 e imprime X.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '5'
+starter_code: 'class Punto { public int X; }
+
+  var p = ___;
+
+  p.X = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Punto { public int X; }
+
+  var p = new Punto();
+
+  p.X = 5;
+
+  Console.WriteLine(p.X);'

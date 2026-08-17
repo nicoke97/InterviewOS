@@ -1,0 +1,16 @@
+id: SE26
+level: SE
+page: 26
+set: 3
+block: A
+block_id: SE.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Rango(min,max); crea (1,10) e imprime la diferencia (9).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '9'
+starter_code: ''

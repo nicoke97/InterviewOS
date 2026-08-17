@@ -1,0 +1,16 @@
+id: SE75
+level: SE
+page: 75
+set: 8
+block: B
+block_id: SE.B
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Caja con Cabe(peso) (<=10); imprime Cabe(8) (true).
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

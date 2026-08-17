@@ -1,0 +1,48 @@
+id: se-cp-shape-area
+title: Área por herencia
+fn_name: SquareArea
+description: Define Shape base y Square que sobrescribe Area(); retorna el área.
+test_cases:
+- args:
+  - 4
+  expected: 16
+- args:
+  - 3
+  expected: 9
+hints:
+- Identifica qué operación pide el enunciado.
+- Empieza con el caso más simple y luego los casos borde.
+- Prueba con los ejemplos del enunciado.
+approach: Lee el enunciado, identifica entradas/salida y resuélvelo paso a paso.
+learning:
+- Traducir el enunciado a C#
+- Probar con los ejemplos
+- Manejar casos borde
+interview_questions:
+- ¿Cuál es la complejidad de tu solución?
+- ¿Qué casos borde consideraste?
+- ¿Hay una forma más eficiente?
+solution_code: 'class Shape { public virtual int Area() => 0; }
+
+  class Square : Shape { public int L; public Square(int l) { L = l; } public override
+  int Area() => L * L; }
+
+  int SquareArea(int side) => new Square(side).Area();'
+tiers:
+  1:
+    starter_code: "int SquareArea(int side)\n{\n    return 0;\n}"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "int SquareArea(int side)\n{\n    return 0;\n}"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    hints_allowed: true
+  3:
+    starter_code: "int SquareArea(int side)\n{\n    return 0;\n}"
+    narration_prompts: []
+    hints_allowed: false

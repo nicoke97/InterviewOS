@@ -1,0 +1,16 @@
+id: SE106
+level: SE
+page: 106
+set: 11
+block: C
+block_id: SE.C
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Temperatura(g) con ToString()="gC"; imprime new Temperatura(25).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: 25C
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SE200
+level: SE
+page: 200
+set: 20
+block: D
+block_id: SE.D
+order: 10
+scaffolding: none
+time_estimate_seconds: 84
+prompt: Base b = new Sub(); imprime true si b is Base (siempre) para cualquier Sub.
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: ''

@@ -1,0 +1,16 @@
+id: SE107
+level: SE
+page: 107
+set: 11
+block: C
+block_id: SE.C
+order: 7
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Rango(a,b) con ToString()="[a, b]"; imprime new Rango(1,9).
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: '[1, 9]'
+starter_code: ''

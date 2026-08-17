@@ -1,0 +1,22 @@
+id: SE43
+level: SE
+page: 43
+set: 5
+block: A
+block_id: SE.A
+order: 3
+scaffolding: full
+time_estimate_seconds: 66
+prompt: Define Punto(x,y) e imprime "(3, 4)".
+hints:
+- 'Usa interpolación: $"...{variable}..." inserta valores dentro del texto.'
+validation:
+  type: run_and_match_stdout
+  expected: (3, 4)
+starter_code: ___
+reference_code: 'class Punto { public int X; public int Y; public Punto(int x, int
+  y) { X = x; Y = y; } }
+
+  var p = new Punto(3, 4);
+
+  Console.WriteLine($"({p.X}, {p.Y})");'

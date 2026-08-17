@@ -1,0 +1,17 @@
+id: SE135
+level: SE
+page: 135
+set: 14
+block: C
+block_id: SE.C
+order: 5
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Pila con List<int> y Pop() que quita y devuelve el último; push 1,2,3,
+  pop e imprime 3.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '3'
+starter_code: ''

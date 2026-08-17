@@ -1,0 +1,16 @@
+id: SE94
+level: SE
+page: 94
+set: 10
+block: B
+block_id: SE.B
+order: 4
+scaffolding: minimal
+time_estimate_seconds: 72
+prompt: Define Bateria con Nivel=0 y Carga(n); carga 20 dos veces e imprime 40.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '40'
+starter_code: ''

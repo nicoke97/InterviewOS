@@ -1,0 +1,15 @@
+id: SE78
+level: SE
+page: 78
+set: 8
+block: B
+block_id: SE.B
+order: 8
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Descuento(pct) con Aplica(precio); crea 10 e imprime Aplica(100) (90).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '90'
+starter_code: ''

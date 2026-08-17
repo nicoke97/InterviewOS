@@ -1,0 +1,30 @@
+id: SE141
+level: SE
+page: 141
+set: 15
+block: C
+block_id: SE.C
+order: 1
+scaffolding: full
+time_estimate_seconds: 78
+prompt: Define Rectangulo(a,b) con Area() y Perimetro(); crea (3,4) e imprime "12
+  14".
+hints:
+- Una clase puede tener varios métodos que calculan resultados distintos.
+validation:
+  type: run_and_match_stdout
+  expected: 12 14
+starter_code: 'class Rectangulo { public int A; public int B; public Rectangulo(int
+  a, int b) { A = a; B = b; } public int Area() => A * B; public int Perimetro() =>
+  2 * (A + B); }
+
+  var r = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Rectangulo { public int A; public int B; public Rectangulo(int
+  a, int b) { A = a; B = b; } public int Area() => A * B; public int Perimetro() =>
+  2 * (A + B); }
+
+  var r = new Rectangulo(3, 4);
+
+  Console.WriteLine($"{r.Area()} {r.Perimetro()}");'

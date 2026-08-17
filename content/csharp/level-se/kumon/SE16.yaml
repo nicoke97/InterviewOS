@@ -1,0 +1,16 @@
+id: SE16
+level: SE
+page: 16
+set: 2
+block: A
+block_id: SE.A
+order: 6
+scaffolding: minimal
+time_estimate_seconds: 66
+prompt: Define Cuenta(saldo); crea con 100 e imprime Saldo.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: '100'
+starter_code: ''

@@ -1,0 +1,15 @@
+id: SE80
+level: SE
+page: 80
+set: 8
+block: B
+block_id: SE.B
+order: 10
+scaffolding: none
+time_estimate_seconds: 72
+prompt: Define Comparador con Mayor(a,b); imprime Mayor(8,3) (8).
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: '8'
+starter_code: ''

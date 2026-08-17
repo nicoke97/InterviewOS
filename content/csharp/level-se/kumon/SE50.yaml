@@ -1,0 +1,15 @@
+id: SE50
+level: SE
+page: 50
+set: 5
+block: A
+block_id: SE.A
+order: 10
+scaffolding: none
+time_estimate_seconds: 66
+prompt: 'Define Temperatura(ciudad,grados) e imprime "Lima: 25C".'
+hints: []
+validation:
+  type: run_and_match_stdout
+  expected: 'Lima: 25C'
+starter_code: ''

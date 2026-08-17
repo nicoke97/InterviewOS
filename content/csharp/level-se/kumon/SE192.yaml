@@ -1,0 +1,29 @@
+id: SE192
+level: SE
+page: 192
+set: 20
+block: D
+block_id: SE.D
+order: 2
+scaffolding: full
+time_estimate_seconds: 84
+prompt: Figura f = new Circulo(); imprime true si f is Circulo.
+hints:
+- Lee con atención qué se pide imprimir y arma el código paso a paso.
+validation:
+  type: run_and_match_stdout
+  expected: 'True'
+starter_code: 'class Figura { }
+
+  class Circulo : Figura { }
+
+  Figura f = ___;
+
+  Console.WriteLine(___);'
+reference_code: 'class Figura { }
+
+  class Circulo : Figura { }
+
+  Figura f = new Circulo();
+
+  Console.WriteLine(f is Circulo);'
