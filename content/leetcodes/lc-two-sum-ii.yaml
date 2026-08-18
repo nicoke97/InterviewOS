@@ -1,0 +1,73 @@
+id: lc-two-sum-ii
+title: Two Sum II
+fn_name: two_sum_ii
+description: 'Dado un arreglo de enteros numbers ordenado en orden no decreciente
+  y un entero target, devuelve los índices (basados en 1) de los dos números que sumen
+  target.
+
+
+  Puedes asumir que cada entrada tiene exactamente una solución y no puedes usar el
+  mismo elemento dos veces. Debes resolverlo con complejidad O(n) usando solo memoria
+  extra constante.'
+topic: two_pointers
+difficulty: medium
+global_order: 8
+leetcode_ref: 167
+track: leetcodes
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 1
+  - 2
+- args:
+  - - 2
+    - 3
+    - 4
+  - 6
+  expected:
+  - 1
+  - 3
+hints:
+- 'Array ordenado: punteros left=0, right=len-1.'
+- Si suma < target, left++; si suma > target, right--.
+- 'Retorna índices 1-based: [left+1, right+1].'
+approach: Con dos punteros (o uno a cada extremo) puedes reducir búsquedas O(n²) a
+  O(n). Funciona bien en arrays ordenados o cuando buscas pares/tripletas con condiciones
+  monótonas.
+learning:
+- Puntero izquierdo/derecho en arrays ordenados
+- Cuándo mover cada puntero según la suma o comparación
+- Evitar tripletas duplicadas con sort + skip
+interview_questions:
+- ¿Por qué two pointers y no hash map aquí?
+- ¿Qué casos borde hay (array vacío, sin solución)?
+- ¿Cuál es la complejidad y se puede mejorar?
+solution_code: "def two_sum_ii(numbers, target):\n    left, right = 0, len(numbers)\
+  \ - 1\n    while left < right:\n        s = numbers[left] + numbers[right]\n   \
+  \     if s == target:\n            return [left + 1, right + 1]\n        if s <\
+  \ target:\n            left += 1\n        else:\n            right -= 1\n    return\
+  \ []"
+tiers:
+  1:
+    starter_code: "def two_sum_ii(numbers, target):\n    return []"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def two_sum_ii(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def two_sum_ii(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

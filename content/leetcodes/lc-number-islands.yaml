@@ -1,0 +1,99 @@
+id: lc-number-islands
+title: Number of Islands
+fn_name: num_islands
+description: 'Dado un grid m x n de caracteres ''1'' (tierra) y ''0'' (agua), devuelve
+  el número de islas.
+
+
+  Una isla está rodeada de agua y se forma conectando tierras adyacentes horizontal
+  o verticalmente.'
+topic: graphs
+difficulty: medium
+global_order: 26
+leetcode_ref: 200
+track: leetcodes
+test_cases:
+- args:
+  - - - '1'
+      - '1'
+      - '1'
+      - '1'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '1'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '0'
+      - '0'
+  expected: 1
+- args:
+  - - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '1'
+      - '1'
+      - '0'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '1'
+      - '0'
+      - '0'
+    - - '0'
+      - '0'
+      - '0'
+      - '1'
+      - '1'
+  expected: 3
+hints:
+- Por cada '1' no visitado, DFS/BFS marca toda la isla como visitada.
+- Incrementa contador por cada componente nueva.
+- Marca visitados in-place o con set de (r,c).
+approach: Modela nodos y aristas; elige BFS (mínimos pasos/capa), DFS (componentes,
+  ciclos) o topological sort (dependencias). Marca visitados para no repetir.
+learning:
+- BFS vs DFS — cuándo cada uno
+- Detección de ciclos y orden topológico
+- Grid como grafo implícito (4/8 direcciones)
+interview_questions:
+- '¿Representación: lista de adyacencia vs matriz?'
+- ¿Cómo detectas un ciclo?
+- Complejidad en V vértices y E aristas
+solution_code: "def num_islands(grid):\n    if not grid:\n        return 0\n    rows,\
+  \ cols = len(grid), len(grid[0])\n    count = 0\n    def dfs(r, c):\n        if\
+  \ r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] != '1':\n            return\n\
+  \        grid[r][c] = '0'\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n      \
+  \  dfs(r, c + 1)\n        dfs(r, c - 1)\n    for r in range(rows):\n        for\
+  \ c in range(cols):\n            if grid[r][c] == '1':\n                count +=\
+  \ 1\n                dfs(r, c)\n    return count"
+tiers:
+  1:
+    starter_code: "def num_islands(grid):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def num_islands(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def num_islands(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

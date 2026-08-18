@@ -1,0 +1,57 @@
+id: lc-longest-substring
+title: Longest Substring Without Repeating
+fn_name: length_of_longest
+description: Dada una cadena s, encuentra la longitud de la subcadena más larga sin
+  caracteres repetidos.
+topic: sliding_window
+difficulty: medium
+global_order: 11
+leetcode_ref: 3
+track: leetcodes
+test_cases:
+- args:
+  - abcabcbb
+  expected: 3
+- args:
+  - bbbbb
+  expected: 1
+- args:
+  - pwwkew
+  expected: 3
+hints:
+- Ventana [left, right] con set o dict de última posición de cada char.
+- Expande right; si char repetido, mueve left después de la última ocurrencia.
+- Guarda max(right - left + 1) en cada paso.
+approach: Mantén una ventana [left, right] que cumple una condición y expande/contrae
+  según crece o viola la regla. Ideal para substrings/subarrays contiguos.
+learning:
+- Ventana fija vs ventana variable
+- Actualizar contadores al entrar/salir de la ventana
+- Cuándo mover left vs right
+interview_questions:
+- ¿Cómo garantizas que no revisas de más cada posición?
+- ¿Qué estructura auxiliar necesitas (set, dict de frecuencias)?
+- Complejidad temporal y espacial de tu solución
+solution_code: "def length_of_longest(s):\n    last = {}\n    left = best = 0\n  \
+  \  for right, ch in enumerate(s):\n        if ch in last and last[ch] >= left:\n\
+  \            left = last[ch] + 1\n        last[ch] = right\n        best = max(best,\
+  \ right - left + 1)\n    return best"
+tiers:
+  1:
+    starter_code: "def length_of_longest(s):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def length_of_longest(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def length_of_longest(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

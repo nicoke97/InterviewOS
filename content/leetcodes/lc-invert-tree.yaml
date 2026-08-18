@@ -1,0 +1,72 @@
+id: lc-invert-tree
+title: Invert Binary Tree
+fn_name: invert_tree
+description: Dado un árbol binario en representación por niveles (arreglo con None
+  para nodos vacíos), invierte el árbol (intercambia hijo izquierdo y derecho en cada
+  nodo) y devuelve la nueva representación por niveles.
+topic: trees
+difficulty: easy
+global_order: 21
+leetcode_ref: 226
+track: leetcodes
+test_cases:
+- args:
+  - - 4
+    - 2
+    - 7
+    - 1
+    - 3
+    - 6
+    - 9
+  expected:
+  - 4
+  - 7
+  - 2
+  - 9
+  - 6
+  - 3
+  - 1
+hints:
+- Swap hijos izquierdo y derecho en cada nodo (DFS o BFS).
+- 'Recursivo: invert(left), invert(right), swap.'
+- Retorna la raíz (misma referencia).
+approach: Recorridos DFS (pre/in/post) o BFS por niveles. Define el caso base (None),
+  qué retornas en cada nodo y cómo combinas hijos izquierdo/derecho.
+learning:
+- DFS recursivo vs iterativo con stack
+- BFS con cola para niveles
+- Propagar min/max en BST validation
+interview_questions:
+- ¿Recursivo o iterativo — cuándo cada uno?
+- ¿Complejidad en árbol balanceado vs degenerado?
+- ¿Cómo serializar/deserializar el árbol?
+solution_code: "def invert_tree(nodes):\n    if not nodes:\n        return nodes\n\
+  \    def build(i):\n        if i >= len(nodes) or nodes[i] is None:\n          \
+  \  return None\n        return {'v': nodes[i], 'l': build(2 * i + 1), 'r': build(2\
+  \ * i + 2)}\n    def invert(node):\n        if not node:\n            return None\n\
+  \        node['l'], node['r'] = invert(node['r']), invert(node['l'])\n        return\
+  \ node\n    def serialize(node):\n        if not node:\n            return []\n\
+  \        out = []\n        q = [node]\n        while q:\n            cur = q.pop(0)\n\
+  \            if cur is None:\n                out.append(None)\n               \
+  \ continue\n            out.append(cur['v'])\n            q.append(cur.get('l'))\n\
+  \            q.append(cur.get('r'))\n        while out and out[-1] is None:\n  \
+  \          out.pop()\n        return out\n    return serialize(invert(build(0)))"
+tiers:
+  1:
+    starter_code: "def invert_tree(nodes):\n    return nodes"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def invert_tree(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def invert_tree(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

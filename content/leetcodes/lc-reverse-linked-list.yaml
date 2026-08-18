@@ -1,0 +1,66 @@
+id: lc-reverse-linked-list
+title: Reverse Linked List
+fn_name: reverse_list
+description: 'Dada una lista enlazada representada como un arreglo de valores en orden,
+  inviértela y devuelve los valores en el nuevo orden.
+
+
+  Por ejemplo, [1, 2, 3, 4, 5] se convierte en [5, 4, 3, 2, 1].'
+topic: linked_list
+difficulty: easy
+global_order: 17
+leetcode_ref: 206
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  expected:
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+- args:
+  - - 1
+    - 2
+  expected:
+  - 2
+  - 1
+hints:
+- 'Tres punteros: prev, curr, next mientras recorres.'
+- curr.next = prev; avanza los tres.
+- Retorna prev al final (nueva head).
+approach: En listas enlazadas usa punteros lentos/rápidos (Floyd), prev para invertir,
+  o dummy head para simplificar bordes. Dibuja los punteros antes de codear.
+learning:
+- Dummy node para evitar casos especiales en head
+- Fast/slow pointers para ciclos y mitad
+- Invertir y fusionar reconectando next
+interview_questions:
+- ¿Complejidad temporal y espacial?
+- ¿Cómo detectarías un ciclo sin set extra?
+- ¿Iterativo vs recursivo — trade-offs?
+solution_code: "def reverse_list(nums):\n    return list(reversed(nums))"
+tiers:
+  1:
+    starter_code: "def reverse_list(nums):\n    return nums"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def reverse_list(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def reverse_list(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

@@ -1,0 +1,62 @@
+id: lc-valid-parentheses
+title: Valid Parentheses
+fn_name: is_valid_paren
+description: 'Dada una cadena s que contiene solo los caracteres ''('', '')'', ''{'',
+  ''}'', ''['' y '']'', determina si la cadena es válida.
+
+
+  Una cadena es válida si: cada paréntesis de apertura se cierra con el mismo tipo;
+  los paréntesis se cierran en el orden correcto; y cada cierre tiene su correspondiente
+  apertura.'
+topic: stack
+difficulty: easy
+global_order: 13
+leetcode_ref: 20
+track: leetcodes
+test_cases:
+- args:
+  - ()
+  expected: true
+- args:
+  - ()[]{}
+  expected: true
+- args:
+  - (]
+  expected: false
+hints:
+- Stack de aperturas; al ver cierre, debe matchear top.
+- Mapa {')':'(', '}':'{', ']':'['}.
+- Al final stack debe estar vacío.
+approach: Un stack (LIFO) resuelve problemas de emparejamiento, anidamiento o 'último
+  relevante'. Piensa en qué debes deshacer al encontrar un cierre o un valor menor.
+learning:
+- Stack para paréntesis y expresiones
+- Monotonic stack para mínimos/máximos en ventana
+- Simular operaciones con dos stacks si hace falta
+interview_questions:
+- ¿Por qué stack y no otro enfoque?
+- ¿Qué pasa con input vacío o un solo elemento?
+- ¿Se puede hacer en O(1) por operación?
+solution_code: "def is_valid_paren(s):\n    stack = []\n    pairs = {')': '(', '}':\
+  \ '{', ']': '['}\n    for c in s:\n        if c in pairs:\n            if not stack\
+  \ or stack[-1] != pairs[c]:\n                return False\n            stack.pop()\n\
+  \        else:\n            stack.append(c)\n    return not stack"
+tiers:
+  1:
+    starter_code: "def is_valid_paren(s):\n    return False"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def is_valid_paren(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def is_valid_paren(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

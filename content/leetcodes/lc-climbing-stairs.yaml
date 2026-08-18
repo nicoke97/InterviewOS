@@ -1,0 +1,59 @@
+id: lc-climbing-stairs
+title: Climbing Stairs
+fn_name: climb_stairs
+description: 'Estás subiendo una escalera. Cada vez puedes subir 1 o 2 escalones.
+
+
+  Dado n (número de escalones), devuelve cuántas formas distintas hay de llegar a
+  la cima.'
+topic: dp_1d
+difficulty: easy
+global_order: 23
+leetcode_ref: 70
+track: leetcodes
+test_cases:
+- args:
+  - 2
+  expected: 2
+- args:
+  - 3
+  expected: 3
+- args:
+  - 5
+  expected: 8
+hints:
+- dp[i] = formas de llegar al escalón i.
+- dp[i] = dp[i-1] + dp[i-2] — igual que Fibonacci.
+- 'Optimiza a dos variables: prev1, prev2.'
+approach: Define dp[i] = mejor respuesta hasta la posición i (o para amount i). La
+  transición suele mirar 1–2 estados anteriores. Optimiza espacio si solo necesitas
+  los últimos valores.
+learning:
+- Formular estado y transición antes de codear
+- Bottom-up vs top-down con memo
+- Rolling array para O(1) espacio extra
+interview_questions:
+- ¿Cuál es tu estado y por qué?
+- ¿Se puede reducir espacio a O(1)?
+- ¿Cómo detectarías solapamiento de subproblemas?
+solution_code: "def climb_stairs(n):\n    if n <= 2:\n        return n\n    a, b =\
+  \ 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b"
+tiers:
+  1:
+    starter_code: "def climb_stairs(n):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def climb_stairs(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def climb_stairs(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

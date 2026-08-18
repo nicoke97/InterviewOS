@@ -1,0 +1,67 @@
+id: lc-course-schedule
+title: Course Schedule
+fn_name: can_finish
+description: 'Hay numCourses cursos numerados de 0 a numCourses - 1. Recibes prerequisites
+  donde [a, b] indica que debes tomar el curso b antes del curso a.
+
+
+  Devuelve true si puedes terminar todos los cursos y false si existe un ciclo de
+  prerequisitos imposible de resolver.'
+topic: graphs
+difficulty: medium
+global_order: 27
+leetcode_ref: 207
+track: leetcodes
+test_cases:
+- args:
+  - 2
+  - - - 1
+      - 0
+  expected: true
+- args:
+  - 2
+  - - - 1
+      - 0
+    - - 0
+      - 1
+  expected: false
+hints:
+- Grafo de prerequisitos; ciclo => no se puede terminar.
+- Topological sort (Kahn BFS o DFS con estados visiting/visited).
+- n nodos, aristas prerequisites[i] = [a, b] significa b -> a.
+approach: Modela nodos y aristas; elige BFS (mínimos pasos/capa), DFS (componentes,
+  ciclos) o topological sort (dependencias). Marca visitados para no repetir.
+learning:
+- BFS vs DFS — cuándo cada uno
+- Detección de ciclos y orden topológico
+- Grid como grafo implícito (4/8 direcciones)
+interview_questions:
+- '¿Representación: lista de adyacencia vs matriz?'
+- ¿Cómo detectas un ciclo?
+- Complejidad en V vértices y E aristas
+solution_code: "def can_finish(numCourses, prerequisites):\n    adj = [[] for _ in\
+  \ range(numCourses)]\n    for a, b in prerequisites:\n        adj[b].append(a)\n\
+  \    state = [0] * numCourses\n    def dfs(u):\n        if state[u] == 1:\n    \
+  \        return False\n        if state[u] == 2:\n            return True\n    \
+  \    state[u] = 1\n        for v in adj[u]:\n            if not dfs(v):\n      \
+  \          return False\n        state[u] = 2\n        return True\n    return all(dfs(i)\
+  \ for i in range(numCourses))"
+tiers:
+  1:
+    starter_code: "def can_finish(numCourses, prerequisites):\n    return False"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def can_finish(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def can_finish(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

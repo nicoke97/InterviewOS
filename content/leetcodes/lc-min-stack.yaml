@@ -1,0 +1,80 @@
+id: lc-min-stack
+title: Min Stack
+fn_name: min_stack_ops
+description: 'Diseña una pila que soporte push, pop, top y recuperar el elemento mínimo
+  en O(1).
+
+
+  En este ejercicio recibes una lista ops con operaciones en orden: [''push'', val],
+  [''pop''], [''top''] o [''getMin'']. Devuelve una lista con el resultado de cada
+  top y getMin (None para las demás operaciones).'
+topic: stack
+difficulty: medium
+global_order: 15
+leetcode_ref: 155
+track: leetcodes
+test_cases:
+- args:
+  - - - push
+      - -2
+    - - push
+      - 0
+    - - push
+      - -3
+    - - getMin
+    - - pop
+    - - top
+    - - getMin
+  expected:
+  - null
+  - null
+  - null
+  - -3
+  - null
+  - 0
+  - -2
+hints:
+- 'Dos stacks: valores y mínimos actuales en paralelo.'
+- 'En push: apila valor y min(val, top_mins o val).'
+- getMin en O(1) leyendo top de mins.
+approach: Un stack (LIFO) resuelve problemas de emparejamiento, anidamiento o 'último
+  relevante'. Piensa en qué debes deshacer al encontrar un cierre o un valor menor.
+learning:
+- Stack para paréntesis y expresiones
+- Monotonic stack para mínimos/máximos en ventana
+- Simular operaciones con dos stacks si hace falta
+interview_questions:
+- ¿Por qué stack y no otro enfoque?
+- ¿Qué pasa con input vacío o un solo elemento?
+- ¿Se puede hacer en O(1) por operación?
+solution_code: "def min_stack_ops(ops):\n    stack = []\n    mins = []\n    out =\
+  \ []\n    for op in ops:\n        name = op[0]\n        if name == 'push':\n   \
+  \         v = op[1]\n            stack.append(v)\n            mins.append(v if not\
+  \ mins else min(v, mins[-1]))\n            out.append(None)\n        elif name ==\
+  \ 'pop':\n            stack.pop()\n            mins.pop()\n            out.append(None)\n\
+  \        elif name == 'top':\n            out.append(stack[-1])\n        elif name\
+  \ == 'getMin':\n            out.append(mins[-1])\n    return out"
+tiers:
+  1:
+    starter_code: "def min_stack_ops(ops):\n    stack = []\n    mins = []\n    out\
+      \ = []\n    for op in ops:\n        name = op[0]\n        if name == 'push':\n\
+      \            v = op[1]\n            stack.append(v)\n            # update mins\n\
+      \        elif name == 'pop':\n            pass\n        elif name == 'top':\n\
+      \            out.append(stack[-1])\n        elif name == 'getMin':\n       \
+      \     out.append(___)\n    return out"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def min_stack_ops(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def min_stack_ops(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

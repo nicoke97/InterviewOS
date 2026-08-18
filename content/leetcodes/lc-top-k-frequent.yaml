@@ -1,0 +1,63 @@
+id: lc-top-k-frequent
+title: Top K Frequent Elements
+fn_name: top_k_frequent
+description: Dado un arreglo de enteros nums y un entero k, devuelve los k elementos
+  más frecuentes. Puedes devolver la respuesta en cualquier orden.
+topic: arrays_hashing
+difficulty: medium
+global_order: 6
+leetcode_ref: 347
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 3
+  - 2
+  expected:
+  - 1
+  - 2
+- args:
+  - - 1
+  - 1
+  expected:
+  - 1
+hints:
+- Primero cuenta frecuencias con Counter o dict.
+- 'Luego extrae los k más frecuentes: bucket sort por freq o heap de tamaño k.'
+- 'Bucket: lista indexada por frecuencia — O(n) promedio.'
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def top_k_frequent(nums, k):\n    from collections import Counter\n\
+  \    return [x for x, _ in Counter(nums).most_common(k)]"
+tiers:
+  1:
+    starter_code: "def top_k_frequent(nums, k):\n    return []"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def top_k_frequent(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def top_k_frequent(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

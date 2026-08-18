@@ -1,0 +1,68 @@
+id: lc-container-water
+title: Container With Most Water
+fn_name: max_area
+description: 'Se te da n líneas verticales no negativas en un plano cartesiano, donde
+  la i-ésima línea va de (i, 0) a (i, height[i]).
+
+
+  Encuentra dos líneas que, junto con el eje x, formen un contenedor que almacene
+  la mayor cantidad de agua posible. Devuelve esa cantidad máxima.'
+topic: two_pointers
+difficulty: medium
+global_order: 10
+leetcode_ref: 11
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 8
+    - 6
+    - 2
+    - 5
+    - 4
+    - 8
+    - 3
+    - 7
+  expected: 49
+- args:
+  - - 1
+    - 1
+  expected: 1
+hints:
+- Two pointers en los extremos del array height.
+- Área = min(h[left], h[right]) * (right - left).
+- Mueve el puntero del lado más bajo — el otro no puede mejorar el área.
+approach: Con dos punteros (o uno a cada extremo) puedes reducir búsquedas O(n²) a
+  O(n). Funciona bien en arrays ordenados o cuando buscas pares/tripletas con condiciones
+  monótonas.
+learning:
+- Puntero izquierdo/derecho en arrays ordenados
+- Cuándo mover cada puntero según la suma o comparación
+- Evitar tripletas duplicadas con sort + skip
+interview_questions:
+- ¿Por qué two pointers y no hash map aquí?
+- ¿Qué casos borde hay (array vacío, sin solución)?
+- ¿Cuál es la complejidad y se puede mejorar?
+solution_code: "def max_area(height):\n    left, right = 0, len(height) - 1\n    best\
+  \ = 0\n    while left < right:\n        best = max(best, min(height[left], height[right])\
+  \ * (right - left))\n        if height[left] < height[right]:\n            left\
+  \ += 1\n        else:\n            right -= 1\n    return best"
+tiers:
+  1:
+    starter_code: "def max_area(height):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def max_area(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def max_area(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

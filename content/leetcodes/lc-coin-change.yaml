@@ -1,0 +1,63 @@
+id: lc-coin-change
+title: Coin Change
+fn_name: coin_change
+description: 'Dado un arreglo coins de distintas denominaciones y un entero amount,
+  devuelve la cantidad mínima de monedas necesarias para formar amount. Si no es posible,
+  devuelve -1.
+
+
+  Puedes usar cada denominación tantas veces como quieras.'
+topic: dp_1d
+difficulty: medium
+global_order: 25
+leetcode_ref: 322
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 5
+  - 11
+  expected: 3
+- args:
+  - - 2
+  - 3
+  expected: -1
+hints:
+- dp[a] = mínimo monedas para amount a; inicializa inf excepto dp[0]=0.
+- Para cada coin y cada amount, dp[a] = min(dp[a], dp[a-coin]+1).
+- Retorna dp[amount] si no es inf, else -1.
+approach: Define dp[i] = mejor respuesta hasta la posición i (o para amount i). La
+  transición suele mirar 1–2 estados anteriores. Optimiza espacio si solo necesitas
+  los últimos valores.
+learning:
+- Formular estado y transición antes de codear
+- Bottom-up vs top-down con memo
+- Rolling array para O(1) espacio extra
+interview_questions:
+- ¿Cuál es tu estado y por qué?
+- ¿Se puede reducir espacio a O(1)?
+- ¿Cómo detectarías solapamiento de subproblemas?
+solution_code: "def coin_change(coins, amount):\n    dp = [10 ** 9] * (amount + 1)\n\
+  \    dp[0] = 0\n    for a in range(1, amount + 1):\n        for c in coins:\n  \
+  \          if c <= a:\n                dp[a] = min(dp[a], dp[a - c] + 1)\n    return\
+  \ dp[amount] if dp[amount] != 10 ** 9 else -1"
+tiers:
+  1:
+    starter_code: "def coin_change(coins, amount):\n    return -1"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def coin_change(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def coin_change(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

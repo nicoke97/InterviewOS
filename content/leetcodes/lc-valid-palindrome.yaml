@@ -1,0 +1,56 @@
+id: lc-valid-palindrome
+title: Valid Palindrome
+fn_name: is_palindrome
+description: 'Dada una cadena s, devuelve true si es un palíndromo al considerar solo
+  caracteres alfanuméricos e ignorando mayúsculas/minúsculas.
+
+
+  Un palíndromo se lee igual de izquierda a derecha que de derecha a izquierda.'
+topic: two_pointers
+difficulty: easy
+global_order: 7
+leetcode_ref: 125
+track: leetcodes
+test_cases:
+- args:
+  - 'A man, a plan, a canal: Panama'
+  expected: true
+- args:
+  - race a car
+  expected: false
+hints:
+- 'Normaliza: solo alfanuméricos en minúsculas (two pointers o filtrar).'
+- Compara chars en left y right moviendo hacia el centro.
+- Salta chars no alfanuméricos antes de comparar.
+approach: Con dos punteros (o uno a cada extremo) puedes reducir búsquedas O(n²) a
+  O(n). Funciona bien en arrays ordenados o cuando buscas pares/tripletas con condiciones
+  monótonas.
+learning:
+- Puntero izquierdo/derecho en arrays ordenados
+- Cuándo mover cada puntero según la suma o comparación
+- Evitar tripletas duplicadas con sort + skip
+interview_questions:
+- ¿Por qué two pointers y no hash map aquí?
+- ¿Qué casos borde hay (array vacío, sin solución)?
+- ¿Cuál es la complejidad y se puede mejorar?
+solution_code: "def is_palindrome(s):\n    cleaned = [c.lower() for c in s if c.isalnum()]\n\
+  \    return cleaned == cleaned[::-1]"
+tiers:
+  1:
+    starter_code: "def is_palindrome(s):\n    return False"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def is_palindrome(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def is_palindrome(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

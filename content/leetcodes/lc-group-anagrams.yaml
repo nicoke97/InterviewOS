@@ -1,0 +1,63 @@
+id: lc-group-anagrams
+title: Group Anagrams
+fn_name: group_anagrams
+description: Dado un arreglo de cadenas strs, agrupa los anagramas entre sí. Puedes
+  devolver la respuesta en cualquier orden y el orden dentro de cada grupo tampoco
+  importa.
+topic: arrays_hashing
+difficulty: medium
+global_order: 5
+leetcode_ref: 49
+track: leetcodes
+test_cases:
+- args:
+  - - eat
+    - tea
+    - tan
+    - ate
+    - nat
+    - bat
+  expected:
+  - - bat
+  - - nat
+    - tan
+  - - ate
+    - eat
+    - tea
+hints:
+- 'Anagramas comparten la misma ''firma'': letras ordenadas o tupla de conteos.'
+- dict[firma] -> lista de strings; agrupa strs por firma.
+- Firma con tuple(sorted(s)) es simple y suficiente aquí.
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def group_anagrams(strs):\n    groups = {}\n    for s in strs:\n \
+  \       key = tuple(sorted(s))\n        groups.setdefault(key, []).append(s)\n \
+  \   return list(groups.values())"
+tiers:
+  1:
+    starter_code: "def group_anagrams(strs):\n    return []"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def group_anagrams(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def group_anagrams(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

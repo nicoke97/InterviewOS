@@ -1,0 +1,70 @@
+id: lc-binary-search
+title: Binary Search
+fn_name: binary_search
+description: 'Dado un arreglo nums ordenado en orden ascendente (sin duplicados) y
+  un entero target, devuelve el índice de target si está en nums, o -1 si no está.
+
+
+  Debes resolverlo con complejidad O(log n).'
+topic: binary_search
+difficulty: easy
+global_order: 14
+leetcode_ref: 704
+track: leetcodes
+test_cases:
+- args:
+  - - -1
+    - 0
+    - 3
+    - 5
+    - 9
+    - 12
+  - 9
+  expected: 4
+- args:
+  - - -1
+    - 0
+    - 3
+    - 5
+    - 9
+    - 12
+  - 2
+  expected: -1
+hints:
+- 'Clásico: lo, hi, mid = (lo+hi)//2.'
+- Si nums[mid] < target, lo = mid+1; si >, hi = mid-1.
+- Retorna -1 si lo > hi.
+approach: 'Si el espacio de búsqueda es monótono (sorted array o respuesta sí/no),
+  usa binary search. Define bien lo que buscas: índice, valor o condición mínima que
+  cumple.'
+learning:
+- 'Invariante: la respuesta está en [lo, hi]'
+- Diferencia entre buscar valor exacto vs primera posición válida
+- Binary search en espacio de respuestas (no solo arrays)
+interview_questions:
+- ¿Por qué O(log n) y cuándo no aplica?
+- ¿Cómo evitas off-by-one en los límites?
+- ¿Qué haces si el array está rotado?
+solution_code: "def binary_search(nums, target):\n    lo, hi = 0, len(nums) - 1\n\
+  \    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n\
+  \            return mid\n        if nums[mid] < target:\n            lo = mid +\
+  \ 1\n        else:\n            hi = mid - 1\n    return -1"
+tiers:
+  1:
+    starter_code: "def binary_search(nums, target):\n    return -1"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def binary_search(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def binary_search(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

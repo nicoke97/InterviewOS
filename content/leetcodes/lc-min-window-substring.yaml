@@ -1,0 +1,63 @@
+id: lc-min-window-substring
+title: Minimum Window Substring
+fn_name: min_window
+description: Dadas dos cadenas s y t, devuelve la subcadena mínima de s que contenga
+  todos los caracteres de t (incluidos duplicados). Si no existe, devuelve una cadena
+  vacía.
+topic: sliding_window
+difficulty: hard
+global_order: 12
+leetcode_ref: 76
+track: leetcodes
+test_cases:
+- args:
+  - ADOBECODEBANC
+  - ABC
+  expected: BANC
+- args:
+  - a
+  - a
+  expected: a
+hints:
+- Ventana variable con contadores de chars de t en s.
+- Expande right hasta cubrir t; luego contrae left minimizando ventana.
+- Lleva formed/required para saber cuándo la ventana es válida.
+approach: Mantén una ventana [left, right] que cumple una condición y expande/contrae
+  según crece o viola la regla. Ideal para substrings/subarrays contiguos.
+learning:
+- Ventana fija vs ventana variable
+- Actualizar contadores al entrar/salir de la ventana
+- Cuándo mover left vs right
+interview_questions:
+- ¿Cómo garantizas que no revisas de más cada posición?
+- ¿Qué estructura auxiliar necesitas (set, dict de frecuencias)?
+- Complejidad temporal y espacial de tu solución
+solution_code: "def min_window(s, t):\n    if not t:\n        return \"\"\n    need\
+  \ = {}\n    for c in t:\n        need[c] = need.get(c, 0) + 1\n    missing = len(t)\n\
+  \    left = start = 0\n    best_len = 0\n    best = \"\"\n    for right, c in enumerate(s):\n\
+  \        if c in need:\n            if need[c] > 0:\n                missing -=\
+  \ 1\n            need[c] -= 1\n        while missing == 0:\n            if best_len\
+  \ == 0 or right - left + 1 < best_len:\n                best_len = right - left\
+  \ + 1\n                start = left\n                best = s[left:right + 1]\n\
+  \            left_c = s[left]\n            if left_c in need:\n                need[left_c]\
+  \ += 1\n                if need[left_c] > 0:\n                    missing += 1\n\
+  \            left += 1\n    return best"
+tiers:
+  1:
+    starter_code: "def min_window(s, t):\n    return \"\""
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def min_window(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def min_window(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

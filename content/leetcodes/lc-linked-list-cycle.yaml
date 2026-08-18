@@ -1,0 +1,64 @@
+id: lc-linked-list-cycle
+title: Linked List Cycle
+fn_name: has_cycle
+description: 'Se te da una lista enlazada representada por values (valores en orden)
+  y pos (índice donde el último nodo apunta hacia atrás, o -1 si no hay ciclo).
+
+
+  Devuelve true si la lista tiene un ciclo y false en caso contrario.'
+topic: linked_list
+difficulty: easy
+global_order: 19
+leetcode_ref: 141
+track: leetcodes
+test_cases:
+- args:
+  - - 3
+    - 2
+    - 0
+    - -4
+  - 1
+  expected: true
+- args:
+  - - 1
+    - 2
+  - 0
+  expected: true
+- args:
+  - - 1
+  - -1
+  expected: false
+hints:
+- 'Floyd: slow avanza 1, fast avanza 2; ciclo si se encuentran.'
+- En este MVP, pos >= 0 indica ciclo en la representación dada.
+- 'En entrevista real: detectar ciclo sin modificar la lista.'
+approach: En listas enlazadas usa punteros lentos/rápidos (Floyd), prev para invertir,
+  o dummy head para simplificar bordes. Dibuja los punteros antes de codear.
+learning:
+- Dummy node para evitar casos especiales en head
+- Fast/slow pointers para ciclos y mitad
+- Invertir y fusionar reconectando next
+interview_questions:
+- ¿Complejidad temporal y espacial?
+- ¿Cómo detectarías un ciclo sin set extra?
+- ¿Iterativo vs recursivo — trade-offs?
+solution_code: "def has_cycle(values, pos):\n    return pos >= 0"
+tiers:
+  1:
+    starter_code: "def has_cycle(values, pos):\n    return pos >= 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def has_cycle(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def has_cycle(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

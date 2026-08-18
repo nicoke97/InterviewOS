@@ -1,0 +1,76 @@
+id: lc-merge-intervals
+title: Merge Intervals
+fn_name: merge_intervals
+description: 'Dado un arreglo de intervalos donde intervals[i] = [start, end], fusiona
+  todos los intervalos solapados y devuelve un arreglo con los intervalos resultantes.
+
+
+  Dos intervalos se solapan si el inicio de uno es menor o igual al final del otro.'
+topic: intervals
+difficulty: medium
+global_order: 28
+leetcode_ref: 56
+track: leetcodes
+test_cases:
+- args:
+  - - - 1
+      - 3
+    - - 2
+      - 6
+    - - 8
+      - 10
+    - - 15
+      - 18
+  expected:
+  - - 1
+    - 6
+  - - 8
+    - 10
+  - - 15
+    - 18
+- args:
+  - - - 1
+      - 4
+    - - 4
+      - 5
+  expected:
+  - - 1
+    - 5
+hints:
+- Ordena por start; fusiona si intervals[i].start <= merged[-1].end.
+- Si solapan, extiende end del último intervalo.
+- Si no, append nuevo intervalo.
+approach: 'Ordena por inicio (o fin). Fusiona o inserta comparando solapamientos:
+  intervalos se solapan si start <= prev_end.'
+learning:
+- Sort como primer paso casi siempre
+- Merge lineal después de ordenar
+- Insert con binary search en casos avanzados
+interview_questions:
+- ¿Por qué ordenar primero?
+- ¿Cómo manejas intervalos abiertos/cerrados?
+- Complejidad total de tu algoritmo
+solution_code: "def merge_intervals(intervals):\n    if not intervals:\n        return\
+  \ []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0][:]]\n \
+  \   for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n     \
+  \       merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start,\
+  \ end])\n    return merged"
+tiers:
+  1:
+    starter_code: "def merge_intervals(intervals):\n    return []"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def merge_intervals(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def merge_intervals(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

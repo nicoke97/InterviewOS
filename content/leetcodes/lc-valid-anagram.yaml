@@ -1,0 +1,61 @@
+id: lc-valid-anagram
+title: Valid Anagram
+fn_name: is_anagram
+description: 'Dadas dos cadenas s y t, devuelve true si t es un anagrama de s y false
+  en caso contrario.
+
+
+  Un anagrama es una palabra formada reordenando las letras de otra, usando todas
+  las letras originales exactamente una vez.'
+topic: arrays_hashing
+difficulty: easy
+global_order: 3
+leetcode_ref: 242
+track: leetcodes
+test_cases:
+- args:
+  - anagram
+  - nagaram
+  expected: true
+- args:
+  - rat
+  - car
+  expected: false
+hints:
+- Misma longitud y mismas frecuencias de letras.
+- Cuenta chars de s en un dict y resta con t; o usa Counter(s) == Counter(t).
+- Si len(s) != len(t), return False de inmediato.
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def is_anagram(s, t):\n    if len(s) != len(t):\n        return False\n\
+  \    count = {}\n    for c in s:\n        count[c] = count.get(c, 0) + 1\n    for\
+  \ c in t:\n        if count.get(c, 0) == 0:\n            return False\n        count[c]\
+  \ -= 1\n    return True"
+tiers:
+  1:
+    starter_code: "def is_anagram(s, t):\n    return False"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def is_anagram(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def is_anagram(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

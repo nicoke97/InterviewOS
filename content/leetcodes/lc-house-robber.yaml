@@ -1,0 +1,64 @@
+id: lc-house-robber
+title: House Robber
+fn_name: rob
+description: 'Eres un ladrón planeando robar casas en una calle. Cada casa tiene cierta
+  cantidad de dinero. No puedes robar dos casas adyacentes porque activarían la alarma.
+
+
+  Dado nums donde nums[i] es el dinero en la casa i, devuelve la cantidad máxima que
+  puedes robar sin alertar a la policía.'
+topic: dp_1d
+difficulty: medium
+global_order: 24
+leetcode_ref: 198
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 1
+  expected: 4
+- args:
+  - - 2
+    - 7
+    - 9
+    - 3
+    - 1
+  expected: 12
+hints:
+- dp[i] = max dinero robando hasta casa i.
+- dp[i] = max(dp[i-1], dp[i-2] + nums[i]) — no robas adyacentes.
+- Solo necesitas dos valores anteriores.
+approach: Define dp[i] = mejor respuesta hasta la posición i (o para amount i). La
+  transición suele mirar 1–2 estados anteriores. Optimiza espacio si solo necesitas
+  los últimos valores.
+learning:
+- Formular estado y transición antes de codear
+- Bottom-up vs top-down con memo
+- Rolling array para O(1) espacio extra
+interview_questions:
+- ¿Cuál es tu estado y por qué?
+- ¿Se puede reducir espacio a O(1)?
+- ¿Cómo detectarías solapamiento de subproblemas?
+solution_code: "def rob(nums):\n    prev2 = prev1 = 0\n    for n in nums:\n      \
+  \  prev2, prev1 = prev1, max(prev1, prev2 + n)\n    return prev1"
+tiers:
+  1:
+    starter_code: "def rob(nums):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def rob(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def rob(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

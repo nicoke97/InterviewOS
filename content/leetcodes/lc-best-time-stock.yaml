@@ -1,0 +1,68 @@
+id: lc-best-time-stock
+title: Best Time to Buy and Sell Stock
+fn_name: max_profit
+description: 'Se te da un arreglo prices donde prices[i] es el precio de una acción
+  en el día i.
+
+
+  Quieres maximizar tu beneficio eligiendo un día para comprar y otro posterior para
+  vender. Devuelve el beneficio máximo posible. Si no puedes obtener beneficio, devuelve
+  0.'
+topic: arrays_hashing
+difficulty: easy
+global_order: 4
+leetcode_ref: 121
+track: leetcodes
+test_cases:
+- args:
+  - - 7
+    - 1
+    - 5
+    - 3
+    - 6
+    - 4
+  expected: 5
+- args:
+  - - 7
+    - 6
+    - 4
+    - 3
+    - 1
+  expected: 0
+hints:
+- Quieres max(prices[j] - prices[i]) con j > i.
+- Recorre precios llevando min_price visto; actualiza max_profit con price - min_price.
+- Un pass O(n), O(1) espacio.
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def max_profit(prices):\n    best = 0\n    low = float('inf')\n  \
+  \  for p in prices:\n        low = min(low, p)\n        best = max(best, p - low)\n\
+  \    return best"
+tiers:
+  1:
+    starter_code: "def max_profit(prices):\n    return 0"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def max_profit(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def max_profit(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

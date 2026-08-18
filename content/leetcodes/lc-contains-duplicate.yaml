@@ -1,0 +1,58 @@
+id: lc-contains-duplicate
+title: Contains Duplicate
+fn_name: contains_duplicate
+description: Dado un arreglo de enteros nums, devuelve true si algún valor aparece
+  al menos dos veces y false si todos los elementos son distintos.
+topic: arrays_hashing
+difficulty: easy
+global_order: 2
+leetcode_ref: 217
+track: leetcodes
+test_cases:
+- args:
+  - - 1
+    - 2
+    - 3
+    - 1
+  expected: true
+- args:
+  - - 1
+    - 2
+    - 3
+    - 4
+  expected: false
+hints:
+- ¿Necesitas contar o solo saber si hay repetido?
+- 'Un set de valores vistos: si nums[i] ya está, return True.'
+- 'Alternativa: ordenar y comparar vecinos — O(n log n) sin espacio extra.'
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def contains_duplicate(nums):\n    return len(set(nums)) != len(nums)"
+tiers:
+  1:
+    starter_code: "def contains_duplicate(nums):\n    return False"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def contains_duplicate(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def contains_duplicate(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false

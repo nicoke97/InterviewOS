@@ -1,0 +1,70 @@
+id: lc-two-sum
+title: Two Sum
+fn_name: two_sum
+description: 'Dado un arreglo de enteros nums y un entero target, devuelve los índices
+  de los dos números tales que sumen target.
+
+
+  Puedes asumir que cada entrada tiene exactamente una solución y no puedes usar el
+  mismo elemento dos veces. Puedes devolver la respuesta en cualquier orden.'
+topic: arrays_hashing
+difficulty: easy
+global_order: 1
+leetcode_ref: 1
+track: leetcodes
+test_cases:
+- args:
+  - - 2
+    - 7
+    - 11
+    - 15
+  - 9
+  expected:
+  - 0
+  - 1
+- args:
+  - - 3
+    - 2
+    - 4
+  - 6
+  expected:
+  - 1
+  - 2
+hints:
+- Para cada número nums[i], el complemento es target - nums[i].
+- 'Guarda en un dict {valor: índice} mientras recorres; antes de guardar, revisa si
+  el complemento ya está.'
+- 'Un solo pass: O(n) tiempo, O(n) espacio.'
+approach: 'Muchos problemas de arrays se resuelven recorriendo una vez y usando un
+  hash map o set para lookup O(1). Pregúntate: ¿qué necesito recordar de lo que ya
+  vi?'
+learning:
+- Hash maps y sets para búsquedas y conteos en O(1)
+- Trade-off espacio extra vs tiempo de ejecución
+- Cuándo ordenar primero vs usar estructura auxiliar
+interview_questions:
+- ¿Cuál es la complejidad temporal y espacial?
+- ¿Qué pasa si el array está ordenado — cambiaría tu enfoque?
+- ¿Cómo manejarías duplicados o restricciones de memoria?
+solution_code: "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n\
+  \        need = target - n\n        if need in seen:\n            return [seen[need],\
+  \ i]\n        seen[n] = i\n    return []"
+tiers:
+  1:
+    starter_code: "def two_sum(nums, target):\n    # use a hash map\n    return []"
+    explain_checklist:
+    - Lee el enunciado y los ejemplos
+    - Identifica entradas, salida y casos borde
+    - Piensa en el patrón antes de escribir código
+    hints_allowed: true
+  2:
+    starter_code: "def two_sum(*args):\n    pass"
+    narration_prompts:
+    - Explica tu enfoque en voz alta paso a paso
+    - ¿Cuál es la complejidad temporal y espacial?
+    - ¿Qué casos borde probaste?
+    hints_allowed: true
+  3:
+    starter_code: "def two_sum(*args):\n    pass"
+    narration_prompts: []
+    hints_allowed: false
