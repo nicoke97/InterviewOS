@@ -1,0 +1,78 @@
+track: leetcodes
+topics:
+- id: arrays_hashing
+  title: Arrays & Hashing
+  problems:
+  - lc-two-sum
+  - lc-contains-duplicate
+  - lc-valid-anagram
+  - lc-best-time-stock
+  - lc-group-anagrams
+  - lc-top-k-frequent
+- id: two_pointers
+  title: Two Pointers
+  problems:
+  - lc-valid-palindrome
+  - lc-two-sum-ii
+  - lc-3sum
+  - lc-container-water
+- id: sliding_window
+  title: Sliding Window
+  problems:
+  - lc-longest-substring
+  - lc-min-window-substring
+- id: stack
+  title: Stack
+  problems:
+  - lc-valid-parentheses
+  - lc-min-stack
+- id: binary_search
+  title: Binary Search
+  problems:
+  - lc-binary-search
+  - lc-search-rotated
+- id: linked_list
+  title: Linked List
+  problems:
+  - lc-reverse-linked-list
+  - lc-merge-two-lists
+  - lc-linked-list-cycle
+- id: trees
+  title: Trees
+  problems:
+  - lc-max-depth-tree
+  - lc-invert-tree
+  - lc-validate-bst
+- id: dp_1d
+  title: 1D Dynamic Programming
+  problems:
+  - lc-climbing-stairs
+  - lc-house-robber
+  - lc-coin-change
+- id: graphs
+  title: Graphs
+  problems:
+  - lc-number-islands
+  - lc-course-schedule
+- id: intervals
+  title: Intervals
+  problems:
+  - lc-merge-intervals
+orientador:
+  minutes_per_tier_attempt: 50
+  minutes_per_problem_base: 10
+  steps_per_problem: 1
+  max_problems_per_session: 1
+  min_minutes: 30
+  max_minutes: 90
+  default_minutes: 60
+  minute_presets:
+  - 45
+  - 60
+  - 90
+  focus_topics:
+  - arrays_hashing
+  - two_pointers
+  skip_hard_until_focus_done: true
+  hint_lock_minutes: 25
+  repaso_days: 7

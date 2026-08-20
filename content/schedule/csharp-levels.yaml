@@ -1,0 +1,321 @@
+# C# track — 5 levels (SA–SE), 200 pages each (SA also has a 50-page Extra block).
+# Mirrors the Python Kumon model: level = 4 blocks x 50 pages = 20 sets x 10 pages.
+# Each set drills ONE micro-skill with 10 incremental variations
+# (scaffolding ramps full -> minimal -> none within the set).
+# Level letters are prefixed with S ("Sharp") so they don't collide with the
+# Python (A–E) or Odoo (OA–OC) tracks.
+
+track: csharp
+
+levels:
+  SA:
+    title: "Nivel A — Fundamentos de C#"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Variables y tipos"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Console.WriteLine", standard_seconds: 360 }
+          - { title: "Variables y asignación", standard_seconds: 420 }
+          - { title: "Aritmética con enteros", standard_seconds: 480 }
+          - { title: "Interpolación $\"\"", standard_seconds: 480 }
+          - { title: "Tipos y conversión", standard_seconds: 540 }
+      B:
+        title: "Strings"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Concatenación y Length", standard_seconds: 480 }
+          - { title: "Índices y Substring", standard_seconds: 480 }
+          - { title: "Métodos de string", standard_seconds: 540 }
+          - { title: "Interpolación con cálculo", standard_seconds: 540 }
+          - { title: "Repetición y formato", standard_seconds: 540 }
+      C:
+        title: "Operadores y condicionales"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Comparaciones", standard_seconds: 480 }
+          - { title: "if / else", standard_seconds: 540 }
+          - { title: "if / else if / else", standard_seconds: 600 }
+          - { title: "Operadores lógicos", standard_seconds: 600 }
+          - { title: "Condicionales anidados", standard_seconds: 660 }
+      D:
+        title: "Repaso de fundamentos"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Variables e interpolación (repaso)", standard_seconds: 540 }
+          - { title: "Aritmética aplicada", standard_seconds: 600 }
+          - { title: "Strings y condicionales", standard_seconds: 600 }
+          - { title: "Condicionales combinados", standard_seconds: 660 }
+          - { title: "Mini-retos integrados", standard_seconds: 720 }
+      Extra:
+        title: "Dictionaries O(1)"
+        extra: true
+        page_start: 201
+        page_end: 250
+        sets:
+          - { title: "Par llave → valor", standard_seconds: 600 }
+          - { title: "Buscar por llave (ContainsKey)", standard_seconds: 600 }
+          - { title: "Qué va como llave", standard_seconds: 660 }
+          - { title: "Patrón seen", standard_seconds: 660 }
+          - { title: "Two Sum y variantes", standard_seconds: 720 }
+  SB:
+    title: "Nivel B — Bucles y métodos"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "for"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "for básico", standard_seconds: 540 }
+          - { title: "Suma acumulada", standard_seconds: 540 }
+          - { title: "for con paso", standard_seconds: 600 }
+          - { title: "Cuenta regresiva", standard_seconds: 600 }
+          - { title: "Recorrer arrays", standard_seconds: 600 }
+      B:
+        title: "while, break y continue"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "while básico", standard_seconds: 540 }
+          - { title: "while con condición", standard_seconds: 600 }
+          - { title: "break", standard_seconds: 600 }
+          - { title: "continue", standard_seconds: 600 }
+          - { title: "Acumuladores con while", standard_seconds: 660 }
+      C:
+        title: "Patrones de bucle"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "foreach con índice", standard_seconds: 600 }
+          - { title: "Recorrer dos listas", standard_seconds: 600 }
+          - { title: "Bucles anidados", standard_seconds: 720 }
+          - { title: "Máximo y mínimo manual", standard_seconds: 660 }
+          - { title: "Contar coincidencias", standard_seconds: 660 }
+      D:
+        title: "Métodos"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Método con return", standard_seconds: 600 }
+          - { title: "Parámetros múltiples", standard_seconds: 600 }
+          - { title: "Valores por defecto", standard_seconds: 660 }
+          - { title: "Métodos con condicionales", standard_seconds: 720 }
+          - { title: "Componer métodos", standard_seconds: 720 }
+  SC:
+    title: "Nivel C — Colecciones y strings"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Arrays y List<T>"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Crear e indexar", standard_seconds: 540 }
+          - { title: "Add e Insert", standard_seconds: 600 }
+          - { title: "Count, Sum, Min, Max", standard_seconds: 600 }
+          - { title: "Remove y RemoveAt", standard_seconds: 600 }
+          - { title: "Recorrer y acumular", standard_seconds: 660 }
+      B:
+        title: "Rebanado y orden"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Take y Skip", standard_seconds: 600 }
+          - { title: "Reverse", standard_seconds: 600 }
+          - { title: "Sort y OrderBy", standard_seconds: 660 }
+          - { title: "Listas anidadas", standard_seconds: 720 }
+          - { title: "Copiar listas", standard_seconds: 600 }
+      C:
+        title: "Tuplas y LINQ"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Tuplas", standard_seconds: 600 }
+          - { title: "Desestructuración", standard_seconds: 600 }
+          - { title: "Select", standard_seconds: 660 }
+          - { title: "Where", standard_seconds: 720 }
+          - { title: "Select con transformación", standard_seconds: 720 }
+      D:
+        title: "Métodos de string"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Split y Join", standard_seconds: 600 }
+          - { title: "Trim y Replace", standard_seconds: 600 }
+          - { title: "ToUpper y Title", standard_seconds: 540 }
+          - { title: "IndexOf, Contains, StartsWith", standard_seconds: 600 }
+          - { title: "Format e interpolación", standard_seconds: 660 }
+  SD:
+    title: "Nivel D — Diccionarios, sets y errores"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Dictionary básico"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Crear y acceder", standard_seconds: 600 }
+          - { title: "Agregar y actualizar", standard_seconds: 600 }
+          - { title: "TryGetValue / GetValueOrDefault", standard_seconds: 600 }
+          - { title: "Keys, Values", standard_seconds: 660 }
+          - { title: "Recorrer con foreach", standard_seconds: 660 }
+      B:
+        title: "Dictionary avanzado"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Contar frecuencias", standard_seconds: 720 }
+          - { title: "Agrupar", standard_seconds: 720 }
+          - { title: "Diccionarios anidados", standard_seconds: 720 }
+          - { title: "Invertir un dict", standard_seconds: 660 }
+          - { title: "Merge y default", standard_seconds: 660 }
+      C:
+        title: "HashSet"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "Crear sets y unicidad", standard_seconds: 600 }
+          - { title: "Add y Remove", standard_seconds: 600 }
+          - { title: "Union e Intersect", standard_seconds: 660 }
+          - { title: "Except (diferencia)", standard_seconds: 660 }
+          - { title: "Contains y dedupe", standard_seconds: 660 }
+      D:
+        title: "Manejo de errores"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "try / catch", standard_seconds: 660 }
+          - { title: "FormatException y parseo", standard_seconds: 660 }
+          - { title: "IndexOutOfRange y KeyNotFound", standard_seconds: 660 }
+          - { title: "finally", standard_seconds: 660 }
+          - { title: "Guard clauses y throw", standard_seconds: 720 }
+  SE:
+    title: "Nivel E — Clases y POO"
+    pages_per_level: 200
+    pages_per_set: 10
+    pages_per_block: 50
+    blocks:
+      A:
+        title: "Objetos y propiedades"
+        page_start: 1
+        page_end: 50
+        sets:
+          - { title: "Clase y propiedad", standard_seconds: 600 }
+          - { title: "Constructor con un campo", standard_seconds: 660 }
+          - { title: "Constructor con dos campos", standard_seconds: 660 }
+          - { title: "Acceder propiedades", standard_seconds: 600 }
+          - { title: "Propiedades e impresión", standard_seconds: 660 }
+      B:
+        title: "Métodos"
+        page_start: 51
+        page_end: 100
+        sets:
+          - { title: "Método que retorna", standard_seconds: 660 }
+          - { title: "Método que usa this", standard_seconds: 660 }
+          - { title: "Método con parámetro", standard_seconds: 720 }
+          - { title: "Múltiples métodos", standard_seconds: 720 }
+          - { title: "Método que cambia estado", standard_seconds: 720 }
+      C:
+        title: "ToString y composición"
+        page_start: 101
+        page_end: 150
+        sets:
+          - { title: "ToString()", standard_seconds: 660 }
+          - { title: "Propiedades calculadas", standard_seconds: 660 }
+          - { title: "Campo estático vs instancia", standard_seconds: 720 }
+          - { title: "Métodos que calculan", standard_seconds: 720 }
+          - { title: "Objeto que contiene una lista", standard_seconds: 780 }
+      D:
+        title: "Herencia"
+        page_start: 151
+        page_end: 200
+        sets:
+          - { title: "Herencia básica", standard_seconds: 720 }
+          - { title: "override de método", standard_seconds: 720 }
+          - { title: "base(...) en constructor", standard_seconds: 780 }
+          - { title: "base en métodos", standard_seconds: 780 }
+          - { title: "is y polimorfismo", standard_seconds: 840 }
+
+# Instrucción mostrada arriba de cada hoja (por bloque).
+instructions:
+  SA.A: "Declara variables e imprime valores con Console.WriteLine. Escribe el código de cada problema."
+  SA.B: "Trabaja con cadenas de texto (string). Escribe C# para cada problema."
+  SA.C: "Usa comparaciones e if/else if/else. Escribe tu código debajo de cada pregunta."
+  SA.D: "Repaso de fundamentos. Resuelve cada problema en orden."
+  SA.Extra: "Práctica extra — Dictionary. Busca por llave (ContainsKey); guarda datos extra como valor. Siempre disponible."
+  SB.A: "Usa bucles for. Escribe código que produzca la salida esperada."
+  SB.B: "Usa while con break y continue. Resuelve cada problema."
+  SB.C: "Aplica patrones de bucle: índices, dos listas y anidados."
+  SB.D: "Escribe un método para cada problema y llámalo para imprimir el resultado."
+  SC.A: "Trabaja con arrays y List<T>: crear, indexar y modificar."
+  SC.B: "Usa Take/Skip, Reverse y ordenamiento."
+  SC.C: "Usa tuplas y LINQ (Select, Where)."
+  SC.D: "Usa métodos de string para resolver cada problema."
+  SD.A: "Trabaja con Dictionary: crear, acceder y recorrer."
+  SD.B: "Aplica técnicas avanzadas con Dictionary."
+  SD.C: "Usa HashSet para unicidad y operaciones de conjuntos."
+  SD.D: "Maneja errores con try/catch y guard clauses."
+  SE.A: "Define clases y trabaja con propiedades."
+  SE.B: "Agrega métodos a tus clases."
+  SE.C: "Usa ToString() y composición de objetos."
+  SE.D: "Aplica herencia y polimorfismo."
+
+# Checkpoint de LeetCode al cerrar cada bloque (cada 50 páginas).
+checkpoints:
+  sa:
+    A: [sa-cp-sum-pair]
+    B: [sa-cp-reverse-string]
+    C: [sa-cp-fizzbuzz]
+    D: [sa-cp-grade]
+  sb:
+    A: [sb-cp-sum-range]
+    B: [sb-cp-count-positive]
+    C: [sb-cp-pair-sums]
+    D: [sb-cp-apply-twice]
+  sc:
+    A: [sc-cp-list-sum]
+    B: [sc-cp-reverse-list]
+    C: [sc-cp-evens]
+    D: [sc-cp-word-count]
+  sd:
+    A: [sd-cp-merge-dicts]
+    B: [sd-cp-word-freq]
+    C: [sd-cp-unique]
+    D: [sd-cp-safe-div]
+  se:
+    A: [se-cp-counter]
+    B: [se-cp-bank]
+    C: [se-cp-point-str]
+    D: [se-cp-shape-area]
+
+# Examen de conclusión de nivel (página 200): LeetCode + Interview de todo el nivel.
+completion_exam:
+  sa:
+    leetcode: [sa-exam-temperature, sa-exam-leap-year]
+    interview: [sa-int-1, sa-int-2]
+  sb:
+    leetcode: [sb-exam-factorial, sb-exam-collatz]
+    interview: [sb-int-1, sb-int-2]
+  sc:
+    leetcode: [sc-exam-second-largest, sc-exam-anagram]
+    interview: [sc-int-1, sc-int-2]
+  sd:
+    leetcode: [sd-exam-group-by, sd-exam-two-sum]
+    interview: [sd-int-1, sd-int-2]
+  se:
+    leetcode: [se-exam-stack, se-exam-shapes]
+    interview: [se-int-1, se-int-2]
