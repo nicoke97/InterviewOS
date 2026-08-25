@@ -1,13 +1,14 @@
 {
-  "name": "pythonos",
+  "name": "codenda",
   "private": true,
   "scripts": {
     "dev": "npm run dev:clean && concurrently -k \"npm run dev:api\" \"npm run dev:web\"",
-    "dev:api": "cd backend && python -m uvicorn app.main:app --reload --reload-dir app --port 8001 --reload-delay 1",
-    "dev:api:stable": "cd backend && python -m uvicorn app.main:app --port 8001",
+    "dev:api": "cd backend && python -m uvicorn app.main:app --port 8011 --reload",
+    "dev:api:stable": "cd backend && python -m uvicorn app.main:app --port 8011",
     "dev:clean": "powershell -ExecutionPolicy Bypass -File scripts/dev-clean.ps1",
-    "dev:web": "cd frontend && npm run dev",
+    "dev:web": "powershell -ExecutionPolicy Bypass -File scripts/wait-api.ps1 && cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
+    "start:prod": "python scripts/start-prod.py",
     "init-db": "python scripts/init-db.py",
     "generate-content": "python scripts/generate-content.py",
     "validate-content": "python scripts/validate-content.py"
