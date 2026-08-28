@@ -4,15 +4,15 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
   BarChart, Bar, CartesianGrid,
 } from 'recharts';
-import { continueStudyPath } from '../lib/continueStudy';
 import { useCurriculumLevels } from '../lib/levels';
 import { dashboardReasonHint } from '../lib/reasonContext';
-import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig, type ReturnExamStatus } from '../lib/api';
+import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig, type ReturnExamStatus, type SdeAssignment, type SdeToday } from '../lib/api';
 import { assignmentLabel, orientadorAssignmentPath, reasonBadgeClass, reasonLabel } from '../lib/orientadorLabels';
-import { StudyCalendar } from '../components/StudyCalendar';
 import { CodiMascot } from '../components/CodiMascot';
+import { StudyCalendar } from '../components/StudyCalendar';
+import { SdeTodayPanel } from '../components/SdeTodayPanel';
 import { InterviewStoryCard } from '../components/StudyRitual';
-import { buildCodiMessage, useCodi } from '../lib/codi';
+import { buildCodiMessage, useCodi, type CodiData } from '../lib/codi';
 import { useI18n } from '../i18n/context';
 import {
   STUDY_LANG_LABEL,
@@ -48,6 +48,36 @@ function formatDate(iso: string, dateLocale: string): string {
     day: 'numeric',
     month: 'long',
   });
+}
+
+function sdeAssignmentHref(a: SdeAssignment): string | null {
+  if (a.type === 'flashcards') return '/sde/cards';
+  if (a.type === 'theory') return `/sde/section/${a.section_id || a.id}`;
+  if (a.type === 'algo_sheet') return `/sde/algo/${a.algo_id}/${a.lang}/${a.sheet_id}`;
+  if (a.type === 'voice') return '/sde/voice';
+  if (a.type === 'sql') return `/sde/sql/${a.id}`;
+  if (a.type === 'story') return '/stories';
+  return null;
+}
+
+function sdeNextHref(sde: SdeToday | null): string | null {
+  if (!sde) return null;
+  for (const a of sde.assignments) {
+    if (a.completed) continue;
+    const href = sdeAssignmentHref(a);
+    if (href) return href;
+  }
+  return null;
+}
+
+// Where the big "Code now" button should send you: the single best next thing to code.
+function codeTarget(codi: CodiData, ctaTo: string | null): string {
+  if (codi.returnExam?.needed) return '/return-exam';
+  const sde = sdeNextHref(codi.sde);
+  if (sde) return sde;
+  if (ctaTo && ctaTo !== '/') return ctaTo;
+  if (codi.continuePath) return codi.continuePath;
+  return '/sde/cards';
 }
 
 function applyOrientadorResponse(
@@ -115,7 +145,6 @@ export function Dashboard() {
 
   const load = useCallback((track: OrientadorTrack = orientadorTrack) => {
     void locale;
-    setOrientadorReady(false);
     setStatsLoading(true);
     setStatsError(false);
 
@@ -206,8 +235,6 @@ export function Dashboard() {
   const unlocks = (stats?.unlocks as Record<string, LevelProgress>) || {};
   const presets = config?.minute_presets ?? (orientadorTrack === 'leetcodes' ? [45, 60, 90] : [15, 20, 30, 40, 60]);
   const examNeeded = Boolean(returnExam?.needed);
-  const continuePath = examNeeded ? '/return-exam' : continueStudyPath(planActive ? plan : null);
-  const nextPending = plan?.assignments.find((a) => !a.completed);
 
   if (!orientadorReady) {
     return <p className="text-text-muted">{t('dashboard.loadingSession')}</p>;
@@ -218,67 +245,71 @@ export function Dashboard() {
   const statValue = (value: string | number) => (statsLoading && !stats ? '…' : String(value));
 
   return (
-    <div className="space-y-12">
-      <CodiGreeting />
+    <div className="space-y-10">
+      <CodeHero />
 
-      <div className="flex flex-wrap items-end justify-between gap-6">
+      <SdeTodayPanel />
+
+      <section className="space-y-4">
         <div>
-          <h1 className="page-title">{t('dashboard.title')}</h1>
-          <p className="page-subtitle">{t('dashboard.subtitle')}</p>
+          <p className="text-xs font-medium uppercase tracking-wide text-text-dim">{t('dashboard.sectionProgressKicker')}</p>
+          <h2 className="dash-section-title">{t('dashboard.sectionProgress')}</h2>
         </div>
-        <dl className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-          <div>
-            <dt className="text-text-dim">{t('dashboard.metricStreak')}</dt>
-            <dd className="mt-0.5 tabular-nums text-text">{statValue(streak?.current ?? 0)}</dd>
-          </div>
-          <div>
-            <dt className="text-text-dim">{t('dashboard.passRate')}</dt>
-            <dd className="mt-0.5 tabular-nums text-text">{statValue(`${stats?.pass_rate ?? 0}%`)}</dd>
-          </div>
-          <div>
-            <dt className="text-text-dim">{t('dashboard.metricActive')}</dt>
-            <dd className="mt-0.5 tabular-nums text-text">{statValue(Number(stats?.day_number ?? 0))}</dd>
-          </div>
-          <div>
-            <dt className="text-text-dim">{t('dashboard.pagesToday')}</dt>
-            <dd className="mt-0.5 tabular-nums text-text">{statValue(todayPages)}</dd>
-          </div>
-        </dl>
-      </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatTile label={t('dashboard.metricStreak')} value={statValue(streak?.current ?? 0)} hint={t('dashboard.metricStreakHint')} />
+          <StatTile label={t('dashboard.metricActive')} value={statValue(Number(stats?.day_number ?? 0))} hint={t('dashboard.metricActiveHint')} />
+          <StatTile label={t('dashboard.passRate')} value={statValue(`${stats?.pass_rate ?? 0}%`)} hint={t('dashboard.metricPassHint')} />
+          <StatTile label={t('dashboard.pagesToday')} value={statValue(todayPages)} hint={t('dashboard.metricPagesHint')} />
+        </div>
+      </section>
 
-      {examNeeded ? (
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-amber-500/30 pb-8">
-          <div>
-            <p className="text-base font-medium text-text">{t('dashboard.returnExamTitle')}</p>
-            <p className="mt-1 text-sm text-text-muted">
-              {t('dashboard.returnExamDesc', { days: returnExam?.inactivity_days ?? returnExam?.threshold_days ?? 3 })}
-            </p>
-          </div>
-          <Link to="/return-exam" className="btn-primary shrink-0">
-            {t('dashboard.returnExamStart')}
-          </Link>
+      <section className="space-y-4">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-wide text-text-dim">{t('dashboard.sectionMonthKicker')}</p>
+          <h2 className="dash-section-title">{t('dashboard.sectionMonth')}</h2>
         </div>
-      ) : continuePath && nextPending && plan?.status === 'active' ? (
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-8">
-          <div>
-            <p className="text-base font-medium text-text">{assignmentLabel(nextPending, locale)}</p>
-            <p className="mt-1 text-sm text-text-muted">
-              {dashboardReasonHint(nextPending, locale) ?? reasonLabel(nextPending.reason, locale, nextPending.type)}
-            </p>
-          </div>
-          <Link to={continuePath} className="btn-primary shrink-0">
-            {t('dashboard.startNow')}
-          </Link>
+        <StudyCalendar />
+      </section>
+
+      {statsError && (
+        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+          <p className="text-text-muted">{t('dashboard.statsError')}</p>
+          <button type="button" onClick={() => load()} className="text-brand">{t('common.retry')}</button>
         </div>
-      ) : sessions.length === 0 ? (
-        <p className="text-sm text-text-muted">
-          {t(orientadorTrack === 'leetcodes' ? 'dashboard.emptyHintLeetcodes' : 'dashboard.emptyHint').split(/(\*\*.*?\*\*)/g).map((part, i) =>
-            part.startsWith('**') && part.endsWith('**')
-              ? <strong key={i} className="font-medium text-text">{part.slice(2, -2)}</strong>
-              : part,
+      )}
+
+      <details className="group overflow-hidden rounded-2xl border border-border bg-surface/50">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-sm font-medium text-text [&::-webkit-details-marker]:hidden">
+          <span>{t('dashboard.moreDetails')}</span>
+          <svg className="h-4 w-4 shrink-0 text-text-dim transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+
+        <div className="space-y-12 border-t border-border p-5">
+          {examNeeded && (
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3">
+              <div>
+                <p className="text-base font-medium text-text">{t('dashboard.returnExamTitle')}</p>
+                <p className="mt-1 text-sm text-text-muted">
+                  {t('dashboard.returnExamDesc', { days: returnExam?.inactivity_days ?? returnExam?.threshold_days ?? 3 })}
+                </p>
+              </div>
+              <Link to="/return-exam" className="btn-primary shrink-0">
+                {t('dashboard.returnExamStart')}
+              </Link>
+            </div>
           )}
-        </p>
-      ) : null}
+
+          {sessions.length === 0 && !examNeeded && (
+            <p className="text-sm text-text-muted">
+              {t(orientadorTrack === 'leetcodes' ? 'dashboard.emptyHintLeetcodes' : 'dashboard.emptyHint').split(/(\*\*.*?\*\*)/g).map((part, i) =>
+                part.startsWith('**') && part.endsWith('**')
+                  ? <strong key={i} className="font-medium text-text">{part.slice(2, -2)}</strong>
+                  : part,
+              )}
+            </p>
+          )}
 
       <div className="space-y-6">
         <div className="flex gap-6 border-b border-border text-sm">
@@ -321,20 +352,8 @@ export function Dashboard() {
         />
       </div>
 
-      {statsError && (
-        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-          <p className="text-text-muted">{t('dashboard.statsError')}</p>
-          <button type="button" onClick={() => load()} className="text-brand">{t('common.retry')}</button>
-        </div>
-      )}
-
-      <div className="grid items-start gap-12 lg:grid-cols-2">
-        <section>
-          <StudyCalendar />
-        </section>
-
-        <section>
-          <h2 className="dash-section-title mb-4">{t('common.levels')}</h2>
+          <section>
+            <h2 className="dash-section-title mb-4">{t('common.levels')}</h2>
           <div className="divide-y divide-border">
             {levels.map((lvl) => {
               const u = unlocks[lvl.id];
@@ -370,7 +389,6 @@ export function Dashboard() {
             })}
           </div>
         </section>
-      </div>
 
       <section className="grid gap-10 lg:grid-cols-2">
         <div>
@@ -408,6 +426,8 @@ export function Dashboard() {
           )}
         </div>
       </section>
+        </div>
+      </details>
     </div>
   );
 }
@@ -688,14 +708,27 @@ function OrientadorCard({
   );
 }
 
-function CodiGreeting() {
+function StatTile({ label, value, hint }: { label: string; value: string; hint: string }) {
+  return (
+    <div className="rounded-xl border border-border bg-surface p-4">
+      <p className="text-xs text-text-dim">{label}</p>
+      <p className="mt-1 text-2xl font-semibold tabular-nums text-text">{value}</p>
+      <p className="mt-0.5 text-xs text-text-dim">{hint}</p>
+    </div>
+  );
+}
+
+// Hero: the one action that matters — arrive, hit "Code now", start coding.
+function CodeHero() {
   const { t } = useI18n();
   const codi = useCodi();
   const msg = buildCodiMessage(codi, t);
+  const target = codeTarget(codi, msg.ctaTo);
+  const dayDone = Boolean(codi.sde?.complete) && !codi.returnExam?.needed;
 
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-brand/20 bg-brand/5 p-4 sm:p-5">
-      <CodiMascot mood={msg.mood} size={76} className="shrink-0" />
+    <div className="flex flex-col gap-5 rounded-2xl border border-brand/20 bg-brand/5 p-5 sm:flex-row sm:items-center sm:p-6">
+      <CodiMascot mood={msg.mood} size={84} className="shrink-0 self-center sm:self-auto" />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <p className="text-sm font-semibold text-brand">{t('codi.name')}</p>
@@ -703,14 +736,17 @@ function CodiGreeting() {
             <span className="badge-brand">{t('codi.streakBadge', { n: codi.streakCurrent })}</span>
           )}
         </div>
-        <p className="mt-0.5 text-base font-medium text-text">{msg.headline}</p>
-        <p className="mt-0.5 text-sm text-text-muted">{msg.subline}</p>
+        <p className="mt-1 text-lg font-semibold text-text">{msg.headline}</p>
+        <p className="mt-0.5 text-sm text-text-muted">
+          {dayDone ? t('dashboard.codeDone') : (msg.subline || t('dashboard.codeReady'))}
+        </p>
       </div>
-      {msg.ctaLabel && msg.ctaTo && (
-        <Link to={msg.ctaTo} className="btn-primary shrink-0 max-sm:hidden">
-          {msg.ctaLabel}
-        </Link>
-      )}
+      <Link
+        to={target}
+        className="btn-primary w-full shrink-0 px-8 py-3 text-base sm:w-auto"
+      >
+        {t('dashboard.codeNow')}
+      </Link>
     </div>
   );
 }

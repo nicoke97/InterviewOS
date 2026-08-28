@@ -21,7 +21,7 @@ function pathLevelId(pathname: string): string | null {
   if (!match) return null;
   const id = match[1].toLowerCase();
   if (
-    ['stories', 'projects', 'leetcodes', 'orientador', 'settings', 'return-exam', 'kumon'].includes(id)
+    ['stories', 'projects', 'leetcodes', 'orientador', 'settings', 'return-exam', 'kumon', 'sde'].includes(id)
   ) {
     return null;
   }
