@@ -641,6 +641,18 @@ body {
   @apply inline-flex items-center gap-1.5 rounded-md bg-surface-2/80 px-2 py-0.5 text-[11px] font-medium text-text-dim ring-1 ring-border;
 }
 
+.lc-lang-toggle {
+  @apply inline-flex items-center gap-0.5 rounded-lg border border-border bg-surface p-0.5;
+}
+
+.lc-lang-toggle button {
+  @apply rounded-md px-2 py-0.5 text-[11px] font-semibold text-text-muted transition-colors hover:bg-surface-2 hover:text-text;
+}
+
+.lc-lang-toggle-active {
+  @apply bg-brand text-on-brand hover:bg-brand hover:text-on-brand;
+}
+
 .lc-result-cases {
   @apply mt-3 flex flex-wrap gap-2;
 }

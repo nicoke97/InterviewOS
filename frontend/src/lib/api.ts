@@ -98,14 +98,15 @@ export const api = {
 
   // LeetCodes interview track
   leetcodesRoadmap: () => request<LeetcodesRoadmap>('/leetcodes/roadmap'),
-  leetcodesProblem: (id: string, tier = 1) =>
-    request<ProblemDetail>(`/leetcodes/problem/${id}?tier=${tier}`),
+  leetcodesProblem: (id: string, tier = 1, language?: string) =>
+    request<ProblemDetail>(`/leetcodes/problem/${id}?tier=${tier}${language ? `&language=${language}` : ''}`),
   leetcodesPracticeSubmit: (body: {
     problem_id: string;
     tier: number;
     code: string;
     plan_id?: number;
     assignment_index?: number;
+    language?: string;
   }) => request<LeetcodesPracticeResult>('/leetcodes/practice/submit', {
     method: 'POST',
     body: JSON.stringify(body),
@@ -137,8 +138,45 @@ export const api = {
       body: JSON.stringify({ answers }),
     }),
 
+  sdeToday: () => request<SdeToday>('/sde/today'),
+  sdeCardsReview: (results: { id: string; ok: boolean; section_id?: string }[]) =>
+    request<{ ok: boolean; fails: number }>('/sde/cards/review', {
+      method: 'POST',
+      body: JSON.stringify({ results }),
+    }),
+  sdeSection: (id: string) => request<SdeSection>(`/sde/section/${id}`),
+  sdeSectionQuiz: (id: string, answers: number[]) =>
+    request<SdeTheoryResult>(`/sde/section/${id}/quiz`, {
+      method: 'POST',
+      body: JSON.stringify({ answers }),
+    }),
+  sdeSheet: (algoId: string, lang: string, sheetId: string) =>
+    request<SdeSheet>(`/sde/algo/${algoId}/${lang}/${sheetId}`),
+  sdeSheetSubmit: (algoId: string, lang: string, sheetId: string, code: string) =>
+    request<{ passed: boolean; error?: string; results?: unknown[] }>(
+      `/sde/algo/${algoId}/${lang}/${sheetId}/submit`,
+      { method: 'POST', body: JSON.stringify({ code }) },
+    ),
+  sdeVoice: (algoId: string, lang: string, transcript: string) =>
+    request<{ passed: boolean; hits: string[] }>('/sde/voice', {
+      method: 'POST',
+      body: JSON.stringify({ algo_id: algoId, lang, transcript }),
+    }),
+  sdeOffline: (body: { kinds?: string[]; section_id?: string; passed?: boolean }) =>
+    request<{ ok: boolean }>('/sde/offline', { method: 'POST', body: JSON.stringify(body) }),
+  sdeSql: (id: string, sql: string) =>
+    request<{ passed: boolean; expected?: string }>(`/sde/sql/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ sql }),
+    }),
+  sdePack: async () => {
+    const res = await fetch('/api/sde/travel-pack', { headers: { 'Accept-Language': currentLocale } });
+    return res.text();
+  },
+
   // problem / question detail
-  problem: (id: string, tier = 1) => request<ProblemDetail>(`/problem/${id}?tier=${tier}`),
+  problem: (id: string, tier = 1, language?: string) =>
+    request<ProblemDetail>(`/problem/${id}?tier=${tier}${language ? `&language=${language}` : ''}`),
   question: (id: string) => request<QuestionDetail>(`/question/${id}`),
 };
 
@@ -502,4 +540,51 @@ export interface CalendarMonth {
   month_name: string;
   days: CalendarDay[];
   stats: { complete: number; partial: number; none: number };
+}
+
+export interface SdeAssignment {
+  type: string;
+  id: string;
+  completed?: boolean;
+  [key: string]: unknown;
+}
+
+export interface SdeToday {
+  date: string;
+  kind: string;
+  complete: boolean;
+  assignments: SdeAssignment[];
+  cursor: Record<string, unknown>;
+  analysis: { cause: string; line: string; cta: string } | null;
+  codi: { mood: string; headline: string; cta: string; to: string };
+}
+
+export interface SdeSection {
+  id: string;
+  title: string;
+  reading: string;
+  week_title?: string;
+  anchor?: string;
+  questions: { id: string; q: string; choices: string[]; answer: number }[];
+  cards: { id: string; front: string; back: string }[];
+}
+
+export interface SdeTheoryResult {
+  passed: boolean;
+  correct: number;
+  total: number;
+  cards: { id: string; front: string; back: string; section_id: string }[];
+}
+
+export interface SdeSheet {
+  type: string;
+  algo_id: string;
+  lang: string;
+  sheet_id: string;
+  title: string;
+  prompt: string;
+  starter_code: string;
+  fn_name: string;
+  language: string;
+  description?: string;
 }

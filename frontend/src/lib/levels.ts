@@ -11,7 +11,7 @@ export interface CurriculumLevel {
 const FALLBACK_KEYS = ['a', 'b', 'c', 'd', 'e'] as const;
 
 export function useCurriculumLevels(): CurriculumLevel[] {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [levels, setLevels] = useState<CurriculumLevel[]>(() =>
     FALLBACK_KEYS.map((id) => ({
       id,
@@ -27,7 +27,7 @@ export function useCurriculumLevels(): CurriculumLevel[] {
         if (apiLevels?.length) setLevels(apiLevels);
       })
       .catch(() => {});
-  }, [t]);
+  }, [locale]);
 
   return levels;
 }
