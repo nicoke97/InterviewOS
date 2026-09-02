@@ -12,6 +12,32 @@ import {
   languageOfDay,
 } from '../lib/studySession';
 
+type ExecLang = 'python' | 'csharp';
+
+const LC_LANG_KEY = 'codenda-lc-lang';
+
+function readLcLang(): ExecLang {
+  try {
+    const stored = localStorage.getItem(LC_LANG_KEY);
+    if (stored === 'csharp' || stored === 'python') return stored;
+  } catch {
+    /* ignore */
+  }
+  return 'python';
+}
+
+function writeLcLang(lang: ExecLang) {
+  try {
+    localStorage.setItem(LC_LANG_KEY, lang);
+  } catch {
+    /* ignore */
+  }
+}
+
+function canSwitchLanguage(problemId: string, mode: string) {
+  return mode === 'practice' || mode === 'guided' || problemId.startsWith('lc-');
+}
+
 interface LeetcodePanelProps {
   problemId: string;
   passed: boolean;
@@ -19,7 +45,7 @@ interface LeetcodePanelProps {
   tierPassed?: number;
   mode?: 'official' | 'practice' | 'guided';
   hintLockMinutes?: number;
-  onSubmit: (code: string) => Promise<{ passed: boolean; result: Record<string, unknown> }>;
+  onSubmit: (code: string, language?: string) => Promise<{ passed: boolean; result: Record<string, unknown> }>;
 }
 
 /* ── Inline icons (no external lib) ── */
@@ -206,6 +232,8 @@ export function LeetcodePanel({
   onSubmit,
 }: LeetcodePanelProps) {
   const { t, locale } = useI18n();
+  const switchable = canSwitchLanguage(problemId, mode);
+  const [execLang, setExecLang] = useState<ExecLang>(() => (canSwitchLanguage(problemId, mode) ? readLcLang() : 'python'));
   const [problem, setProblem] = useState<ProblemDetail | null>(null);
   const [code, setCode] = useState('');
   const [result, setResult] = useState<Record<string, unknown> | null>(null);
@@ -223,11 +251,11 @@ export function LeetcodePanel({
   useEffect(() => {
     setDone(passed);
     setResult(null);
-    api.problem(problemId, tier).then((p) => {
+    api.problem(problemId, tier, switchable ? execLang : undefined).then((p) => {
       setProblem(p);
       setCode(p.starter_code || '');
     });
-  }, [problemId, tier, passed, locale]);
+  }, [problemId, tier, passed, locale, execLang, switchable]);
 
   useEffect(() => {
     if (mode !== 'guided' || !hintLockMinutes || !problemId) {
@@ -249,7 +277,13 @@ export function LeetcodePanel({
   const run = async () => {
     setBusy(true);
     try {
-      const res = await api.run({ code, exercise_id: problemId, exercise_type: 'leetcode', tier });
+      const res = await api.run({
+        code,
+        exercise_id: problemId,
+        exercise_type: 'leetcode',
+        tier,
+        language: switchable ? execLang : undefined,
+      });
       setResult(res);
     } finally {
       setBusy(false);
@@ -259,7 +293,7 @@ export function LeetcodePanel({
   const submit = async () => {
     setBusy(true);
     try {
-      const res = await onSubmit(code);
+      const res = await onSubmit(code, switchable ? execLang : (problem.language || 'python'));
       setResult(res.result);
       if (res.passed && mode === 'official') setDone(true);
     } finally {
@@ -300,10 +334,29 @@ export function LeetcodePanel({
               <span className="lc-editor-dot bg-emerald-500/80" />
             </div>
             <span className="text-xs font-medium text-text-muted">{t('leetcodePanel.yourSolution')}</span>
-            <span className="lc-lang-badge">
-              <Icon d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" className="h-3 w-3" />
-              Python
-            </span>
+            {switchable ? (
+              <div className="lc-lang-toggle" role="group" aria-label={t('common.languages')}>
+                <button
+                  type="button"
+                  className={execLang === 'python' ? 'lc-lang-toggle-active' : ''}
+                  onClick={() => { setExecLang('python'); writeLcLang('python'); }}
+                >
+                  {t('common.python')}
+                </button>
+                <button
+                  type="button"
+                  className={execLang === 'csharp' ? 'lc-lang-toggle-active' : ''}
+                  onClick={() => { setExecLang('csharp'); writeLcLang('csharp'); }}
+                >
+                  {t('common.csharp')}
+                </button>
+              </div>
+            ) : (
+              <span className="lc-lang-badge">
+                <Icon d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" className="h-3 w-3" />
+                {problem.language === 'csharp' ? t('common.csharp') : t('common.python')}
+              </span>
+            )}
             {isGuided ? (
               <span className="text-xs text-text-dim">
                 {t('studySession.langToday', { lang: STUDY_LANG_LABEL[studyLang] })}
@@ -326,7 +379,14 @@ export function LeetcodePanel({
           </div>
         </div>
         <div className="p-1">
-          <CodeEditor value={code} onChange={setCode} height="480px" drillId={problemId} language={problem.language ?? 'python'} chrome={false} />
+          <CodeEditor
+            value={code}
+            onChange={setCode}
+            height="480px"
+            drillId={`${problemId}:${switchable ? execLang : (problem.language ?? 'python')}`}
+            language={problem.language ?? execLang}
+            chrome={false}
+          />
         </div>
       </div>
 

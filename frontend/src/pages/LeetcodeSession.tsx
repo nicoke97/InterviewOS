@@ -46,13 +46,14 @@ export function LeetcodeSession() {
   const totalSteps = data.total_steps ?? 1;
   const lockMinutes = data.hint_lock_minutes ?? 25;
 
-  const submit = async (code: string) => {
+  const submit = async (code: string, language?: string) => {
     const res = await api.leetcodesPracticeSubmit({
       problem_id: problemId,
       tier,
       code,
       plan_id: planIdNum,
       assignment_index: index,
+      language,
     });
     if (res.assignment_complete) {
       if (res.next_assignment) {

@@ -40,8 +40,8 @@ export function LeetcodePractice() {
 
   if (!id) return null;
 
-  const submit = async (code: string, submitTier: number) => {
-    const res = await api.leetcodesPracticeSubmit({ problem_id: id, tier: submitTier, code });
+  const submit = async (code: string, submitTier: number, language?: string) => {
+    const res = await api.leetcodesPracticeSubmit({ problem_id: id, tier: submitTier, code, language });
     refreshMeta();
     if (res.passed && res.next_tier_suggestion) {
       setTier(res.next_tier_suggestion);
@@ -105,7 +105,7 @@ export function LeetcodePractice() {
         mode="practice"
         passed={solid}
         tierPassed={tierPassed}
-        onSubmit={(code) => submit(code, tier)}
+        onSubmit={(code, language) => submit(code, tier, language)}
       />
     </div>
   );

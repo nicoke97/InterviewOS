@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { api, type DailyPlanData, type OrientadorAssignment, type ReturnExamStatus } from './api';
+import { api, type DailyPlanData, type OrientadorAssignment, type ReturnExamStatus, type SdeToday } from './api';
 import { continueStudyPath } from './continueStudy';
 import { readOrientadorTrack } from './studySession';
 import type { CodiMood } from '../components/CodiMascot';
@@ -28,6 +28,7 @@ export interface CodiData {
   continuePath: string | null;
   level: LevelSummary | null;
   totalPagesDone: number;
+  sde: SdeToday | null;
   refresh: () => void;
 }
 
@@ -71,12 +72,13 @@ export function CodiProvider({ children }: { children: ReactNode }) {
   const [returnExam, setReturnExam] = useState<ReturnExamStatus | null>(null);
   const [stats, setStats] = useState<Record<string, unknown> | null>(null);
   const [plan, setPlan] = useState<DailyPlanData | null>(null);
+  const [sde, setSde] = useState<SdeToday | null>(null);
 
   const refresh = useCallback(() => {
     void locale;
     setLoading(true);
-    Promise.allSettled([api.stats(), api.orientadorActive(readOrientadorTrack())])
-      .then(([statsRes, orientadorRes]) => {
+    Promise.allSettled([api.stats(), api.orientadorActive(readOrientadorTrack()), api.sdeToday()])
+      .then(([statsRes, orientadorRes, sdeRes]) => {
         if (statsRes.status === 'fulfilled') {
           setStats(statsRes.value);
           const re = statsRes.value.return_exam as ReturnExamStatus | undefined;
@@ -89,6 +91,7 @@ export function CodiProvider({ children }: { children: ReactNode }) {
           const active = list.find((s) => s.status === 'active') ?? null;
           setPlan(active);
         }
+        if (sdeRes.status === 'fulfilled') setSde(sdeRes.value);
       })
       .finally(() => setLoading(false));
   }, [locale]);
@@ -128,9 +131,10 @@ export function CodiProvider({ children }: { children: ReactNode }) {
       continuePath: returnExam?.needed ? '/return-exam' : continueStudyPath(plan),
       level: pickActiveLevel(unlocks),
       totalPagesDone,
+      sde,
       refresh,
     };
-  }, [stats, plan, returnExam, loading, refresh]);
+  }, [stats, plan, returnExam, loading, refresh, sde]);
 
   return <CodiContext.Provider value={value}>{children}</CodiContext.Provider>;
 }
@@ -157,6 +161,18 @@ type Translate = (key: string, vars?: Record<string, string | number>) => string
  */
 export function buildCodiMessage(data: CodiData, t: Translate): CodiMessage {
   const levelUpper = data.level ? data.level.id.toUpperCase() : 'A';
+
+  if (data.sde?.codi) {
+    const mood = (data.sde.codi.mood as CodiMood) || 'happy';
+    const celebrate = data.sde.complete && !data.sde.analysis;
+    return {
+      mood: celebrate ? 'celebrate' : mood,
+      headline: data.sde.codi.headline,
+      subline: data.sde.analysis?.line || t('codi.nextSub'),
+      ctaLabel: data.sde.codi.cta,
+      ctaTo: data.sde.codi.to || '/',
+    };
+  }
 
   if (data.returnExam?.needed) {
     return {

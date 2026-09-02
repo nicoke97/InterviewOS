@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CodiMascot } from './CodiMascot';
 import { buildCodiMessage, useCodi } from '../lib/codi';
@@ -17,8 +17,14 @@ export function CodiCompanion() {
   const [open, setOpen] = useState(false);
   const [bubbleDismissed, setBubbleDismissed] = useState(false);
 
-  // Refresh Codi's snapshot whenever the route changes.
-  useEffect(() => { codi.refresh(); }, [loc.pathname, locale]); // eslint-disable-line react-hooks/exhaustive-deps
+  const firstPath = useRef(true);
+  useEffect(() => {
+    if (firstPath.current) {
+      firstPath.current = false;
+      return;
+    }
+    codi.refresh();
+  }, [loc.pathname, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Re-show the bubble once per day.
   useEffect(() => {
