@@ -68,7 +68,7 @@ No los borres si te piden historial continuo. **Una línea cada uno.**
 Tres, máximo. Links.
 
 1. **SlabHQ** — [slabhq.app](https://www.slabhq.app/) · Founder. Next.js, TypeScript, PostgreSQL. Inventory + public binder + Mercado Libre listings; AI scan/list. Live 2026.
-2. **Codenda** — Kumon-style Python + LeetCode trainer (React, FastAPI). [nicokelley.dev/projects/codenda](https://www.nicokelley.dev/projects/codenda)
+2. **Codenda** — SDE II trainer: queue, flashcards, Kumon-style algorithm sets + review pool. [nicokelley.dev/projects/codenda](https://www.nicokelley.dev/projects/codenda)
 3. **nicokelley.dev** — personal site (Next.js). Work write-ups: eLink, .NET 8, TFS.
 
 Unity / Falsify / Rankine: **fuera del CV** o una coma al final. El recruiter no va a un juego 2027.

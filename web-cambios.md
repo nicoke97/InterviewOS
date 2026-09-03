@@ -54,7 +54,7 @@ Orden actual: SlabHQ, Falsify, Codenda, Rankine al mismo peso.
 **Orden nuevo:**
 
 1. **SlabHQ** — hero del grid. Link enorme a [slabhq.app](https://www.slabhq.app/). 3 métricas (usuarios, listings, canales live — las que tengas).
-2. **Codenda** — una card. “Daily Python / interview drills.” Link repo si es público.
+2. **Codenda** — una card. “SDE II trainer: queue + flashcards + sets Kumon de algoritmos.” Link repo si es público.
 3. **Rankine OS** — una línea o card chica.
 4. **Falsify** — “Coming 2027”, no el mismo tamaño que SlabHQ.
 

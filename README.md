@@ -1,12 +1,12 @@
-# Codenda — Kumon × LeetCode × Odoo Interview Trainer
+# Codenda — SDE II trainer (cola + Codi)
 
-Local-first gamified Python learning app for Odoo Technical Support Engineer interview prep.
+Local-first interview trainer: adaptive SDE program (theory queue, weighted flashcards, Kumon-style algorithm sets with a completed/failed pool) plus optional Kumon tracks. Codi is the coach — incomplete is a light day, not a punishment; fail a pooled problem and you drop back to rungs.
 
 ## Stack
 
 - **Frontend:** Vite + React + TypeScript + Tailwind CSS v4 + Monaco Editor + Recharts
 - **Backend:** FastAPI + SQLite + Python code executor
-- **Content:** YAML drills under `content/levels/`
+- **Content:** SDE program under `content/sde/`; Kumon YAML under `content/levels/`
 
 ## Quick start
 
@@ -67,15 +67,24 @@ Copy `.env.example` to `.env` for local overrides. Key variables:
 | `APP_SECRET` | Reserved for future auth / billing |
 | `SERVE_STATIC` | Serve `frontend/dist` from FastAPI (on in Docker) |
 
-## Daily rhythm
+## Daily rhythm (SDE program — default)
 
-| Slot    | Duration | Content                          |
-|----------|----------|----------------------------------|
-| Morning | 15 min   | Kumon sheet (8–12 drills)        |
-| Evening | 15 min   | Kumon / LeetCode / Interview     |
+The engine picks the day. You do not follow a calendar date.
+
+| Block | What |
+|-------|------|
+| Cards | Up to 40 *distinct* cards, weighted random. No duplicates in one session. Light day: fewer cards. |
+| Pool | One random *completed* algorithm, full. Failed pool first. Miss twice → restart day-1 rungs. |
+| Active algo | Day 1: rung1×5 + rung2×5 + rung3×5 + full×2. Day 2: one full; pass → pool, start next algo with rung1×5 only. |
+| Theory | Only if code day was not light: read + quiz + new cards the same day. |
+| Voice | After C# (or Python) day-2 pass: speak the “why”, transcribe, approve or block the next language. |
+| Off / offline | Light day, not punishment. Warm-up = last sheet you actually touched. Offline needs a quiz when you return. |
+
+Study contract: [`plan-estudios.md`](plan-estudios.md).
 
 ## Scripts
 
+- `python scripts/generate_sde_content.py` — regenerate SDE theory/algorithm YAML
 - `npm run generate-content` — regenerate YAML curriculum
 - `npm run validate-content` — validate all content files
 - `npm run init-db` — create/reset SQLite database
