@@ -57,7 +57,7 @@ export function SdeVoicePage() {
 
   return (
     <div className="mx-auto max-w-lg space-y-4">
-      <h1 className="page-title">{asg.title}</h1>
+      <h1 className="page-title">{String(asg.title || '')}</h1>
       <p className="text-sm text-text-muted">{prompt}</p>
       <textarea className="w-full rounded-lg border border-border bg-surface p-3 text-sm" rows={5} value={text} onChange={(e) => setText(e.target.value)} />
       <div className="flex flex-wrap gap-3">

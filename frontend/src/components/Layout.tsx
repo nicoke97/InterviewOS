@@ -166,7 +166,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <header className="app-topbar md:hidden">
           <button
             type="button"
-            className="rounded-lg p-2 text-text-muted hover:bg-surface-2 hover:text-text"
+            className="rounded-xl p-2 text-text-muted transition hover:bg-surface-2 hover:text-text"
             onClick={() => setDrawerOpen((o) => !o)}
             aria-label={t('common.toggleMenu')}
             aria-expanded={drawerOpen}
@@ -196,7 +196,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         )}
 
-        <main className={`mx-auto px-5 py-8 ${isLeetcodeWorkspace ? 'max-w-[1920px]' : 'max-w-5xl'}`}>
+        <main className={`mx-auto px-5 py-8 md:px-8 ${isLeetcodeWorkspace ? 'max-w-[1920px]' : 'max-w-5xl'}`}>
           {children}
         </main>
       </div>
@@ -208,7 +208,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function SidebarBrand({ compact = false }: { compact?: boolean }) {
   return (
-    <Link to="/" className={`brand-mark shrink-0 ${compact ? '' : 'px-1 py-1'}`}>
+    <Link to="/" className={`brand-mark shrink-0 ${compact ? '' : 'px-1 py-1.5'}`}>
       <span className="brand-mark-badge" aria-hidden>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M4 2h4v2.2H6.4C5.1 4.2 4.2 5.2 4.2 7S5.1 9.8 6.4 9.8H8V12H4c-2.2 0-3.6-1.8-3.6-5S1.8 2 4 2Z" fill="currentColor"/>
@@ -217,7 +217,14 @@ function SidebarBrand({ compact = false }: { compact?: boolean }) {
           <rect x="9.2" y="5" width="2.2" height="2.2" fill="currentColor"/>
         </svg>
       </span>
-      <span className="brand-mark-word">Codenda</span>
+      <span className="flex flex-col">
+        <span className="brand-mark-word">Codenda</span>
+        {!compact && (
+          <span className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-[#7dffd8]">
+            SDE trainer
+          </span>
+        )}
+      </span>
     </Link>
   );
 }
@@ -233,7 +240,7 @@ function SidebarFooter({
     <div className="mt-auto space-y-1 border-t border-border pt-3">
       <SidebarLink to="/settings" label={settingsLabel} active={settingsActive} icon={<IconSettings />} />
       <div className="px-1 pt-1">
-        <LanguageToggle compact />
+        <LanguageToggle compact tone="dark" />
       </div>
     </div>
   );

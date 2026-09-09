@@ -1,8 +1,15 @@
 import { useI18n } from './context';
 import type { Locale } from './types';
 
-export function LanguageToggle({ compact = false }: { compact?: boolean }) {
+export function LanguageToggle({
+  compact = false,
+  tone = 'light',
+}: {
+  compact?: boolean;
+  tone?: 'light' | 'dark';
+}) {
   const { locale, setLocale, t } = useI18n();
+  const dark = tone === 'dark';
 
   const btn = (lang: Locale, label: string) => (
     <button
@@ -12,7 +19,9 @@ export function LanguageToggle({ compact = false }: { compact?: boolean }) {
       className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
         locale === lang
           ? 'bg-brand text-on-brand'
-          : 'text-text-muted hover:bg-surface-2 hover:text-text'
+          : dark
+            ? 'text-[#95a6b8] hover:bg-white/10 hover:text-[#f2f6fa]'
+            : 'text-text-muted hover:bg-surface-2 hover:text-text'
       }`}
       aria-pressed={locale === lang}
     >
@@ -23,7 +32,11 @@ export function LanguageToggle({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <div
-        className="inline-flex items-center gap-0.5 rounded-lg border border-border bg-surface p-0.5"
+        className={`inline-flex items-center gap-0.5 rounded-lg border p-0.5 ${
+          dark
+            ? 'border-white/10 bg-white/5'
+            : 'border-border bg-surface'
+        }`}
         role="group"
         aria-label={t('settings.language.title')}
       >
