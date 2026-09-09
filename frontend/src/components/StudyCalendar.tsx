@@ -264,7 +264,7 @@ export function StudyCalendar({ className = '' }: { className?: string }) {
     </div>
 
     {guideVisible && sde && (
-      <StudyGuidePanel sde={sde} locale={locale} t={t} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+      <StudyGuidePanel sde={sde} locale={locale} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
     )}
     </div>
   );
@@ -281,11 +281,10 @@ function LegendItem({ color, label, count }: { color: string; label: string; cou
 }
 
 function StudyGuidePanel({
-  sde, locale, t, onMouseEnter, onMouseLeave,
+  sde, locale, onMouseEnter, onMouseLeave,
 }: {
   sde: SdeToday;
   locale: string;
-  t: (key: string, vars?: Record<string, string | number>) => string;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }) {

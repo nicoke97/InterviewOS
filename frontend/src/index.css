@@ -41,7 +41,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(1200px 500px at 12% -10%, rgb(37 99 235) / 0.14), transparent 55%),
+    radial-gradient(1200px 500px at 12% -10%, rgb(37 99 235 / 0.14), transparent 55%),
     radial-gradient(900px 420px at 92% 8%, rgb(255 107 53 / 0.10), transparent 50%),
     linear-gradient(180deg, #f4f7fb 0%, var(--color-bg) 40%, #e4eaf1 100%);
   color: var(--color-text);
@@ -75,9 +75,9 @@ body::before {
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgb(37 99 235) / 0.45); }
-  70% { box-shadow: 0 0 0 12px rgb(37 99 235) / 0); }
-  100% { box-shadow: 0 0 0 0 rgb(37 99 235) / 0); }
+  0% { box-shadow: 0 0 0 0 rgb(37 99 235 / 0.45); }
+  70% { box-shadow: 0 0 0 12px rgb(37 99 235 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(37 99 235 / 0); }
 }
 
 @keyframes shimmer {
@@ -278,7 +278,7 @@ body::before {
 
 .btn-primary {
   @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 disabled:pointer-events-none disabled:opacity-40 bg-brand text-on-brand hover:bg-brand-hover;
-  box-shadow: 0 8px 20px -10px rgb(37 99 235) / 0.7);
+  box-shadow: 0 8px 20px -10px rgb(37 99 235 / 0.7);
 }
 
 .btn-primary:hover {
@@ -450,10 +450,10 @@ body::before {
   position: relative;
   overflow: hidden;
   border-radius: 1.35rem;
-  border: 1px solid rgb(37 99 235) / 0.28);
+  border: 1px solid rgb(37 99 235 / 0.28);
   background:
     radial-gradient(700px 280px at 85% 20%, rgb(255 107 53 / 0.18), transparent 55%),
-    radial-gradient(600px 320px at 10% 80%, rgb(37 99 235) / 0.22), transparent 50%),
+    radial-gradient(600px 320px at 10% 80%, rgb(37 99 235 / 0.22), transparent 50%),
     linear-gradient(135deg, #0b1420 0%, #132536 55%, #0f2a28 100%);
   color: #eef4f8;
   padding: 1.4rem 1.35rem;
@@ -650,7 +650,7 @@ body::before {
   border-radius: 1.25rem;
   border: 1px solid var(--color-border);
   background:
-    radial-gradient(500px 220px at 10% 0%, rgb(37 99 235) / 0.12), transparent 55%),
+    radial-gradient(500px 220px at 10% 0%, rgb(37 99 235 / 0.12), transparent 55%),
     var(--color-surface);
   padding: 1.5rem;
   backface-visibility: hidden;
