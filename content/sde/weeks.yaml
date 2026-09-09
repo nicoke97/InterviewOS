@@ -1,0 +1,543 @@
+weeks:
+- id: w01-big-o
+  title: Big O
+  title_es: Big O
+  minutes: 8
+  intro: |
+    Big O is how you talk about how work grows when the input grows. Interviewers rarely want a proof;
+    they want you to look at a loop and say the growth rate out loud without freezing.
+
+    O(1) means the work does not grow with n — array index, hash map lookup, returning a field.
+    O(n) is one pass: each element about once. O(n²) is nested loops — for every i you scan j.
+    O(log n) shows up when you repeatedly cut the search space in half (binary search).
+    O(n log n) is typical of comparison sorts.
+
+    Time and space are different axes. A hash map can buy O(n) time with O(n) extra memory.
+    Brute Two Sum is O(n²) time / O(1) space; the dictionary version is O(n) time / O(n) space.
+
+    How you say it: "One pass with a dictionary — O(n) time, O(n) space." Practice that sentence.
+    After this reading, the cards drill the phrases; the LeetCode block forces you to feel the cost.
+  intro_es: |
+    Big O es cómo hablas de cómo crece el trabajo cuando crece la entrada. En entrevista casi nunca
+    piden demostración; quieren que mires un loop y digas la tasa de crecimiento sin trabarte.
+
+    O(1): el trabajo no crece con n — índice de arreglo, lookup en hash map, devolver un campo.
+    O(n): un pass — cada elemento se toca aproximadamente una vez.
+    O(n²): loops anidados — por cada i escaneás j. El Two Sum bruto es así.
+    O(log n): en cada paso cortás el espacio de búsqueda a la mitad (binary search).
+    O(n log n): los sorts por comparación típicos (merge sort, quicksort promedio).
+
+    Tiempo y espacio son ejes distintos. Un hash map compra O(n) tiempo al costo de O(n) memoria.
+    Two Sum bruto: O(n²) tiempo / O(1) espacio. Two Sum con dict: O(n) tiempo / O(n) espacio.
+
+    Cómo lo decís en entrevista: "Un pass con un diccionario — O(n) tiempo, O(n) espacio."
+    Practicá esa frase en voz alta. Las cartas clavan los términos; LeetCode te hace sentir el costo.
+- id: w02-rest
+  title: REST
+  title_es: REST
+  minutes: 8
+  intro: |
+    REST is how most HTTP APIs are shaped: resources, verbs, status codes. You will be asked why
+    200 vs 201 vs 204, what idempotent means, and how pagination or versioning works.
+
+    GET reads. POST creates (not always idempotent). PUT/PATCH update. DELETE removes.
+    2xx success, 4xx client fault, 5xx server fault. 404 is missing resource; 409 is conflict.
+
+    Idempotent: repeating the same request leaves the same state (GET, PUT, DELETE usually).
+    Pagination: cursor or offset so clients do not pull millions of rows. Versioning: URL or header
+    so you can evolve contracts without breaking old clients.
+
+    Your Solera work (SOAP→REST on eBay sync) is the story: one interface, dual-run, cutover when
+    REST was the only writer. Cards will lock vocabulary; later you sell the migration in the project block.
+  intro_es: |
+    REST es la forma típica de las APIs HTTP: recursos, verbos, status codes. Te van a preguntar
+    por qué 200 vs 201 vs 204, qué significa idempotente, y cómo funciona la paginación o el versionado.
+
+    GET lee. POST crea (no siempre es idempotente — puede crear dos órdenes si se manda dos veces).
+    PUT/PATCH actualizan. DELETE borra.
+    2xx: éxito. 4xx: error del cliente. 5xx: error del servidor.
+    200 ok, 201 recurso creado, 204 sin contenido, 400 request inválida, 401/403 auth,
+    404 no existe, 409 conflicto, 500 fallo nuestro.
+
+    Idempotente: mandar la misma request dos veces deja el mismo estado que mandarla una.
+    GET, PUT, DELETE son idempotentes. POST no — a menos que uses una Idempotency-Key.
+
+    Paginación: cursor (dame los siguientes después de este id) o offset (saltá 50 filas).
+    El cursor no se rompe si alguien inserta una fila mientras paginás.
+
+    Tu trabajo en Solera (SOAP→REST en sync con eBay) es la historia central de esta semana:
+    una interfaz, dual-run, cutover cuando REST fue el único writer. Las cartas fijan el vocabulario.
+- id: w03-sql
+  title: SQL
+  title_es: SQL
+  minutes: 8
+  intro: |
+    SQL is how you ask a relational database for rows and how you keep data consistent.
+    Know joins (inner / left), why indexes exist, what a transaction is, and how normalization
+    reduces duplication at the cost of more joins.
+
+    INNER JOIN: rows that match both sides. LEFT JOIN: keep all left rows, nulls on the right.
+    Indexes speed lookups and filters; they cost write time and disk. Transactions (BEGIN/COMMIT)
+    give ACID for multi-statement changes — inventory + order updates need this.
+
+    You used SQL Server at Solera for high-volume sync workflows. Say: "We needed consistent
+    reads while dual-running writers during cutover." Cards cover the vocabulary; keep queries short.
+  intro_es: |
+    SQL es cómo pedís filas a una base relacional y cómo mantenés consistencia.
+    Necesitás dominar joins, por qué existen los índices, qué es una transacción, y normalización.
+
+    INNER JOIN: solo las filas que hacen match en ambos lados.
+    LEFT JOIN: todas las filas del lado izquierdo, con NULL en el derecho donde no hay match.
+    Un JOIN cartesiano sin ON es una bomba — O(n*m) filas.
+
+    Índices: accesos directos para que la base no lea toda la tabla. Aceleran lecturas y filtros,
+    pero agregan costo en escrituras y espacio en disco. No indexés todo — solo lo que filtrás y ordenás.
+
+    Transacciones: ACID — Atomicidad, Consistencia, Isolación, Durabilidad.
+    BEGIN / COMMIT hace que todas las operaciones caigan juntas o no caigan ninguna.
+    Actualizar inventario + crear orden necesita transacción — si una falla, ninguna persiste.
+
+    N+1: una query para la lista, más una query por cada item. El fix es Include, un JOIN, o proyección.
+
+    En Solera usaste SQL Server para sync de alto volumen con eBay. Decí: "Necesitábamos lecturas
+    consistentes mientras corríamos dos writers en paralelo durante el cutover."
+- id: w04-git
+  title: Git, PRs, CR
+  title_es: Git, PRs, CR
+  minutes: 7
+  intro: |
+    Git is the history of the codebase. Branches isolate work; PRs are the review surface;
+    code review is how the team shares ownership and catches risk before merge.
+
+    Commit small, message the why. PR description: what changed, how to test, risk.
+    Review for correctness, readability, and operational impact — not nit style only.
+    You led TFVC→GitHub: compare that to "we moved repos" — you compared build artifacts
+    before cutting TFS. That is the senior signal in this week's language.
+  intro_es: |
+    Git es la historia del codebase. Las branches aíslan trabajo; las PRs son la superficie de review;
+    el code review es cómo el equipo comparte ownership y atrapa riesgos antes del merge.
+
+    Commits chicos con mensaje que diga el POR QUÉ, no el qué (el qué lo ves en el diff).
+    PR description: qué cambió, cómo testearlo, qué puede romperse.
+    Review: bloqueá en bugs, seguridad, tests faltantes, contratos rotos.
+    No bloqueés en estilo de llaves — eso lo resuelve un formatter.
+
+    Merge vs rebase: merge agrega un commit de unión y preserva historia.
+    Rebase replantea tus commits encima del main — historia lineal, pero reescribe SHAs.
+    Nunca rebaseés branches públicas compartidas.
+
+    Vos lideraste la migración TFVC→GitHub en Solera. No digas "movimos los repos" — decí:
+    "Corrimos ambos sistemas en paralelo, comparamos artefactos de build antes de cortar TFS,
+    y bloqueamos el push a TFVC solo cuando los pipelines de GitHub eran consistentes."
+    Esa es la señal SDE3 de esta semana.
+- id: w05-azdo
+  title: Azure DevOps
+  title_es: Azure DevOps
+  minutes: 7
+  intro: |
+    CI/CD is evidence that the same build ships every time. Pipelines, artifacts, environments,
+    gates. Azure DevOps (and GitHub Actions / TeamCity / Octopus from your stack) automate build,
+    test, and deploy.
+
+    A green pipeline is not vanity — it is how you dual-ran Framework and Core services and
+    trusted the cutover. Speak to: YAML pipelines, artifact comparison, fail-closed deploys.
+  intro_es: |
+    CI/CD es evidencia de que el mismo build se despliega igual cada vez. No es vanidad —
+    es la forma en que confiás en un cutover sin quedarte despierto rogando que funcione.
+
+    Pipeline YAML: trigger (cuándo corre), stages (fases grandes), jobs (una máquina),
+    steps (un comando). La misma definición que ves en el repo es lo que se ejecuta en prod.
+
+    Artefactos: el zip o imagen que realmente desplegás. Construís una vez, promovés ese mismo
+    artefacto de dev → staging → prod. Nunca construyas de nuevo en cada ambiente.
+
+    Secrets: en vault o variables secretas del pipeline. Nunca en el repo, nunca en el YAML hardcodeado.
+
+    Tu historia: corriste Framework y .NET Core en paralelo durante la migración. El pipeline fue
+    la confianza del cutover — comparabas builds antes de cortar el servicio viejo.
+    Eso es lo que decís en entrevista, no una lista de menús de Azure.
+- id: w06-tests
+  title: Tests and mocks
+  title_es: Tests y mocks
+  minutes: 7
+  intro: |
+    Tests lock behavior. Unit tests isolate a unit; integration tests cross boundaries;
+    mocks replace dependencies you do not want to hit (HTTP, DB) so failures are about your code.
+
+    Good tests name the behavior, fail clearly, and avoid testing the mock. For APIs: contract
+    tests around payload shape helped SOAP→REST dual-run (diff payloads before REST-only write).
+  intro_es: |
+    Los tests fijan comportamiento — son la red de seguridad que te permite refactorizar sin miedo.
+
+    Unit test: prueba una sola unidad en aislamiento. Las dependencias (HTTP, DB, email) se mockean.
+    Integration test: cruza fronteras reales — base de datos real, HTTP real. Más lento, más frágil.
+    Contract test: verifica la forma del payload — status, campos, tipos. No todo el producto.
+
+    Estructura AAA (Arrange/Act/Assert): primero armás el contexto, después llamás lo que testás,
+    después verificás UN resultado. Un assert por test — si falla, sabés exactamente qué.
+
+    Qué mockear: todo lo lento o inestable — clientes HTTP, email, el reloj del sistema.
+    Qué no mockear: el código que estás testeando. Si mockeas todo, no testeas nada.
+
+    En C#: xUnit corre los tests, Moq crea fakes. Fact es un caso, Theory es múltiples inputs.
+
+    Tu historia: en el dual-run SOAP→REST, los contract tests (diff de payloads) eran la validación
+    antes de que REST se convirtiera en el único writer. Eso es un test de alto valor real.
+- id: w07-async-cs
+  title: C# async
+  title_es: C# async
+  minutes: 8
+  intro: |
+    async/await in C# frees threads while waiting on I/O. Task represents ongoing work;
+    await yields until completion. Avoid async void except event handlers; prefer async Task.
+    ConfigureAwait(false) in libraries; beware sync-over-async deadlocks on UI/ASP.NET classic.
+
+    Your services talked to eBay and DBs — classic async I/O. Say: "We awaited outbound HTTP
+    so the thread pool was not blocked on SOAP latency."
+  intro_es: |
+    async/await libera threads mientras esperan I/O. En vez de tener un thread bloqueado esperando
+    que la red responda, le decís "volvé cuando termines" y el thread sirve otras requests.
+
+    Task: representa trabajo que va a terminar. await pausa el método hasta que ese trabajo termine,
+    luego continúa en el contexto correcto. No crea un nuevo thread por defecto.
+
+    async void: solo para event handlers. En todos los demás casos usá async Task o async Task<T>.
+    Si hacés void y explota una excepción adentro, nadie la atrapa — el proceso puede caerse.
+
+    ConfigureAwait(false): en librerías, decís "no me importa volver al contexto original."
+    Evita deadlocks en ASP.NET classic y UI threads. En ASP.NET Core no importa, pero es buena práctica.
+
+    Deadlock clásico: .Result o .Wait() sobre un Task async en el UI thread o ASP.NET classic.
+    El await espera al thread principal, el thread principal espera al await. Ninguno avanza.
+
+    Tu historia: tus servicios hablaban con eBay vía SOAP y con SQL Server. Decí:
+    "Esperábamos el HTTP outbound de forma asíncrona para que el thread pool no se bloqueara
+    con la latencia del SOAP de eBay."
+- id: w08-concurrency
+  title: Concurrency
+  title_es: Concurrencia
+  minutes: 8
+  intro: |
+    Concurrency is multiple tasks in progress; parallelism is running at the same time.
+    Shared mutable state needs locks, immutable data, or message passing. Race conditions
+    appear when order of access changes results. Deadlocks: A waits B waits A.
+
+    Dual-run cutovers are concurrency problems: two writers must not both own the truth.
+    You solved it by making one writer the sole authority after validation.
+  intro_es: |
+    Concurrencia: múltiples tareas en progreso al mismo tiempo. Paralelismo: múltiples tareas
+    corriendo literalmente al mismo tiempo en distintas CPUs. Podés tener concurrencia sin paralelismo.
+
+    Race condition: dos threads leen y modifican la misma variable sin coordinación.
+    Thread A lee x=5, Thread B lee x=5, ambos suman 1, ambos escriben x=6. Debería ser 7.
+    Fix: lock (Monitor), Interlocked, o datos inmutables.
+
+    Deadlock: A espera a B, B espera a A. Ninguno avanza.
+    Fix clásico: siempre adquirir locks en el mismo orden, usar timeouts.
+
+    Sync I/O: bloquea el thread mientras el disco o la red piensan. El thread no puede hacer otra cosa.
+    Async I/O: el thread queda libre. Cuando el I/O termina, una callback retoma el trabajo.
+    En APIs de alto volumen, async I/O multiplica el throughput — no gastás un thread por request en espera.
+
+    Cola + worker: la API acepta el trabajo en milisegundos, lo encola, y un worker lo procesa después.
+    El cliente recibe 202 Accepted inmediatamente. El trabajo pesado no bloquea la request.
+
+    Tu historia de dual-run es un problema de concurrencia: dos writers no pueden ambos ser
+    la verdad. Lo resolviste convirtiendo uno en el único writer después de validación. Eso es SDE3.
+- id: w09-linq
+  title: LINQ
+  title_es: LINQ
+  minutes: 7
+  intro: |
+    LINQ queries collections (and EF translates to SQL). Deferred execution: the query runs
+    when you enumerate. Where/Select/GroupBy are the everyday tools. Be careful materializing
+    early (ToList) and N+1 patterns when mixed with EF.
+  intro_es: |
+    LINQ es cómo consultás colecciones en C#. Con Entity Framework, LINQ se traduce a SQL.
+    Es la misma sintaxis — la diferencia es en dónde corre: en memoria o en la base de datos.
+
+    Ejecución diferida: cuando escribís var q = lista.Where(x => x.Age > 30), todavía no corrió nada.
+    Corre cuando enumerás: foreach, ToList(), First(), Count(). Esto permite componer queries
+    sin evaluar hasta el último momento.
+
+    IEnumerable<T>: corre en memoria en C#. Cualquier filtro después de ToList() es en memoria.
+    IQueryable<T>: construye la query y la manda a SQL. Podés agregar Where() y se traduce a SQL WHERE.
+    Nunca devuelvas IQueryable de un repositorio — filtrás en la capa equivocada.
+
+    Operadores clave: Where (filtro), Select (proyección), GroupBy, OrderBy, First/FirstOrDefault,
+    Any/All, Include (para EF — carga relaciones), Skip/Take (paginación).
+
+    N+1 con LINQ: si hacés foreach en una lista y adentro consultás una relación, EF manda una
+    query por cada elemento. Fix: Include o proyectá con Select desde el inicio.
+
+    ToList() temprano: si materializás antes de filtrar, traés todas las filas al servidor C# y
+    filtrás en memoria. Con tablas grandes, eso mata el performance.
+- id: w10-ef
+  title: EF Core
+  title_es: EF Core
+  minutes: 8
+  intro: |
+    EF Core maps objects to tables. Change tracker knows what to INSERT/UPDATE/DELETE on SaveChanges.
+    Migrations evolve schema. AsNoTracking for read-only. Avoid lazy-load surprises in web requests.
+  intro_es: |
+    EF Core mapea objetos C# a tablas relacionales. Es el ORM estándar en .NET y vas a usarlo o
+    encontrarlo en la mayoría de empresas que usan C# en el backend.
+
+    DbContext: la unidad de trabajo. Tenés las DbSet<T> (una por tabla), y EF trackea los cambios.
+    SaveChanges(): escribe todos los cambios trackeados en una sola transacción. Si falla uno, falla todo.
+
+    Change tracker: EF recuerda las entidades que cargó y detecta qué cambió. Esto tiene costo.
+    AsNoTracking(): para queries de solo lectura, skipeá el tracking — es más rápido y usa menos memoria.
+    Regla: si no vas a modificar y guardar, usá AsNoTracking.
+
+    Migraciones: recetas que cambian la base para que coincida con el modelo. Agregás la migración,
+    revisás el SQL generado, y la aplicás. Nunca editás migraciones aplicadas — creás una nueva.
+
+    N+1 en EF: cargar usuarios y después hacer user.Orders dentro del foreach manda una query por usuario.
+    Fix: Include(u => u.Orders) al cargar, o proyectá con Select a un DTO desde el inicio.
+
+    Lazy loading: parece cómodo pero es un N+1 silencioso. En producción con tablas grandes, destruye.
+    Preferí eager loading con Include o explicit loading cuando lo necesitás.
+- id: w11-di-asp
+  title: DI + ASP.NET
+  title_es: DI + ASP.NET
+  minutes: 8
+  intro: |
+    Dependency injection registers services with lifetimes: transient, scoped, singleton.
+    ASP.NET Core pipelines middleware then endpoints. Constructor injection keeps classes testable.
+    Scoped DbContext per request is the default pattern.
+  intro_es: |
+    Dependency Injection (DI) registra servicios con tiempos de vida. En vez de hacer new MiServicio()
+    adentro de las clases, las dependencias se inyectan — así podés mockear en tests y cambiar
+    implementaciones sin tocar el código cliente.
+
+    Transient: una instancia nueva cada vez que se pide. Para servicios stateless livianos.
+    Scoped: una instancia por HTTP request. DbContext va aquí — es la unidad de trabajo por request.
+    Singleton: una instancia para toda la vida del app. Para cachés, configuración, servicios thread-safe.
+    Error común: inyectar un servicio Scoped en un Singleton — el Singleton vive para siempre y
+    captura el Scoped, que debería morir al terminar la request.
+
+    Pipeline de ASP.NET Core: la lista ordenada de middleware. Cada middleware envuelve al siguiente.
+    Primero entra, último sale — como una pila. El orden importa.
+    Middleware: logging, auth, CORS, compression — envuelven todas las requests.
+    Filters: validan o transforman solo en el contexto MVC (actions específicas).
+
+    Constructor injection: declarás las dependencias en el constructor. DI las resuelve.
+    Esto hace la clase testeable — en tests, pasás fakes en el constructor.
+- id: w12-solid
+  title: SOLID + patterns
+  title_es: SOLID + patrones
+  minutes: 8
+  intro: |
+    SOLID is a vocabulary for design pressure: single responsibility, open/closed, Liskov,
+    interface segregation, dependency inversion. Patterns (strategy, adapter, facade) are tools —
+    name the problem they solve. Your SOAP→REST adapter is a real adapter/facade story.
+  intro_es: |
+    SOLID es el vocabulario para describir presiones de diseño en código orientado a objetos.
+    No es una ley — es una guía para detectar cuándo una clase está haciendo demasiado.
+
+    S — Single Responsibility: una clase, una razón para cambiar. Si la clase guarda, manda email
+    y loguea, tiene tres razones. Cuando cambie el formato del email, también tocás la clase de guardado.
+
+    O — Open/Closed: abierto para extensión, cerrado para modificación. En vez de editar el switch
+    cada vez que llega un nuevo tipo de pago, agregás un nuevo tipo que implementa la interfaz.
+    Un switch chico y estable está bien — no sobre-patterns todo.
+
+    L — Liskov Substitution: si B hereda de A, podés usar B donde esperás A sin surpresas.
+    Si override viola las precondiciones/postcondiciones del padre, violás Liskov.
+
+    I — Interface Segregation: interfaces pequeñas y enfocadas. No forzés a una clase a implementar
+    métodos que no necesita solo porque la interfaz es gigante.
+
+    D — Dependency Inversion: dependé de abstracciones (interfaces), no de implementaciones concretas.
+    IOrderRepository, no SqlOrderRepository. Así podés switchear la implementación o mockear en tests.
+
+    Patrones útiles: Repository (esconde cómo guardás/cargás), Strategy (intercambia el algoritmo),
+    Decorator (agrega comportamiento sin modificar), Facade (simplifica un subsistema complejo).
+
+    Tu historia: el adapter SOAP→REST en Solera es un Adapter/Facade real. Usalo.
+- id: w13-scale
+  title: Scale + logs
+  title_es: Escala + logs
+  minutes: 8
+  intro: |
+    Scale: vertical (bigger box) vs horizontal (more instances). Caching, queues, and idempotent
+    consumers help load. Logs/metrics/traces tell you what broke in production. Structured logs
+    with correlation IDs beat string soup. You unblocked production with clients — root cause,
+    not ticket ping-pong.
+  intro_es: |
+    Escalar es manejar más carga. Dos formas: vertical (máquina más grande, más RAM/CPU) o
+    horizontal (más instancias del mismo servicio detrás de un load balancer).
+
+    Horizontal requiere que el servicio sea stateless — no podés guardar estado de usuario en memoria
+    local si hay tres instancias. El estado va a Redis, DB, o un store compartido.
+    Load balancer distribuye las requests. Sticky sessions son una trampa — evitalas.
+
+    Cache: copia de una respuesta costosa para no preguntarle a la DB cada vez.
+    TTL (Time To Live): cuánto tiempo vive la copia antes de considerarse vieja.
+    Cuándo no usar cache: balances bancarios, stock en tiempo real, cualquier cosa que deba ser exacta ahora.
+    Cache invalidation: invalidar al escribir (write-through) o aceptar eventual consistency.
+
+    Cola + consumer: trabajo lento va a una cola (RabbitMQ, SQS, Service Bus). La API devuelve 202.
+    El consumer procesa cuando puede. Si el consumer falla, el mensaje se reencola — idempotencia importa.
+
+    Logs estructurados: JSON con campos fijos (timestamp, level, correlationId, userId).
+    Beats los logs de string — podés filtrar, agregar, y buscar en Kibana/Splunk.
+    Trace: el mismo correlationId a través de todos los servicios — seguís una request de punta a punta.
+
+    Tu historia: desbloqueabas producción con clientes. No le dabas el ticket al equipo de turno —
+    identificabas la causa raíz. Eso es lo que un SDE3 hace. Usá esa historia.
+- id: w14-gc-asyncio
+  title: GC + asyncio
+  title_es: GC + asyncio
+  minutes: 7
+  intro: |
+    .NET GC reclaims managed memory; know gen0/1/2 at a high level. Python asyncio is cooperative
+    concurrency on one thread — await yields. Different runtimes, same idea: do not block the loop/thread
+    on slow I/O without yielding.
+  intro_es: |
+    .NET GC (Garbage Collector) recupera memoria automáticamente. Tres generaciones:
+    Gen0: objetos recién creados, se recolectan frecuentemente y rápido.
+    Gen1: sobrevivientes de Gen0, colectados menos frecuentemente.
+    Gen2: objetos de larga vida (cachés, singletons), colectados raramente.
+
+    Lo que necesitás saber para la entrevista: no olvides cerrar streams, conexiones y DbContext —
+    "managed memory" lo maneja GC, pero los recursos no administrados (handles de archivo, conexiones
+    de DB) los cerrás vos con using o IDisposable. Memory leaks en .NET son casi siempre referencias
+    que se quedan vivas más de lo esperado (cachés sin expiración, event handlers no desuscriptos).
+
+    Python asyncio: concurrencia cooperativa en un solo thread. El event loop es un cocinero que
+    pone una olla a hervir, trabaja en otra cosa, y vuelve cuando suena el timer.
+    await cede el control: "esperá esta operación I/O y mientras tanto hacé otra cosa."
+    No crea nuevos threads — es un modelo de interleaving en un solo thread.
+
+    La diferencia clave con C# async/await: C# usa un thread pool y puede correr en múltiples threads.
+    Python asyncio es un solo thread — no hay paralelismo real de CPU (el GIL lo bloquea).
+    Para CPU-bound en Python: multiprocessing. Para I/O-bound: asyncio o threads.
+
+    Concepto unificador: en ambos runtimes, bloquear el thread/loop en I/O lento es el error.
+    No hagas requests HTTP síncronas en el event loop de Python, ni .Result() en C#.
+- id: w15-gil-py
+  title: GIL + Python shape
+  title_es: GIL + forma Python
+  minutes: 7
+  intro: |
+    The GIL means one Python bytecode thread at a time in CPython — use multiprocessing or native
+    extensions for CPU-bound parallel work; asyncio/threads still help I/O. Python style: explicit,
+    readable, batteries included. You still write C# first for the offer; Python is the second ladder.
+  intro_es: |
+    GIL (Global Interpreter Lock): en CPython solo un thread ejecuta bytecode Python a la vez.
+    Esto significa que los threads en Python no dan paralelismo real para trabajo CPU-intensivo.
+
+    Para I/O-bound (HTTP, DB, disco): threads o asyncio siguen siendo útiles porque el GIL
+    se libera mientras esperás I/O. El thread cede mientras espera la red.
+    Para CPU-bound (imágenes, cálculos, ML): usás multiprocessing — cada proceso tiene su propio
+    GIL y su propia memoria. O extensiones nativas (NumPy) que liberan el GIL.
+
+    Forma Python que necesitás conocer:
+    Decoradores: una función que envuelve a otra. @property, @staticmethod, @classmethod son ejemplos.
+    `with`: bloque que siempre limpia, como `using` en C#. with open(file) as f: — el archivo se cierra sí o sí.
+    Generadores: yield uno a la vez, no construye toda la lista en memoria. Útil con archivos grandes.
+    Type hints: anotaciones para humanos y checkers (mypy). No hacen a Python compilado — son sugerencias.
+
+    Contexto para la entrevista: C# es tu primer idioma para conseguir la oferta. Python es la
+    segunda escalera — lo usás para scripts, data pipelines, o si la empresa lo tiene en su stack.
+    No finjas ser Python senior si no lo sos — sé honesto sobre el nivel y vendé la transferencia de conceptos.
+- id: w16-sa-pytest
+  title: SQLAlchemy + pytest
+  title_es: SQLAlchemy + pytest
+  minutes: 7
+  intro: |
+    SQLAlchemy is Python's common ORM/SQL toolkit; pytest is the test runner. Fixtures set up
+    DB/session cleanly. Same ideas as EF + xUnit: isolate, name behavior, tear down.
+  intro_es: |
+    SQLAlchemy es el ORM y toolkit SQL más común en Python. Las mismas ideas que EF Core,
+    pero en Python — útil si la empresa usa FastAPI o Flask con bases relacionales.
+
+    Session es como DbContext: la unidad de trabajo. db.add(obj), db.commit(), db.rollback().
+    Modelos: clases que heredan de Base y mapean a tablas con columnas declaradas.
+    Query: session.query(User).filter(User.age > 18).all() — similar a IQueryable en EF.
+    N+1 y tracking existen igual que en EF — los mismos patrones, distinta sintaxis.
+
+    pytest: el test runner estándar en Python. Más limpio que unittest.
+    Fixtures: funciones con @pytest.fixture que proveen dependencias (DB session, cliente HTTP, etc.)
+    pytest las inyecta por nombre en los argumentos de la función de test — no heredás de nada.
+    scope: "function" (default, una por test), "module" (una por módulo), "session" (una para todos los tests).
+
+    Mocks en Python: unittest.mock.patch reemplaza un objeto en su namespace mientras dura el test.
+    from unittest.mock import patch, MagicMock — similar a Moq.
+    Regla: mockea el cliente HTTP, no la función que estás testeando.
+
+    Patrón típico: fixture crea una DB de tests (SQLite en memoria), test usa esa DB,
+    la fixture hace rollback o borra al terminar. Tests aislados, rápidos, sin estado compartido.
+- id: w17-perf
+  title: Performance
+  title_es: Performance
+  minutes: 8
+  intro: |
+    Interviewers love "how would you make this faster?" Measure first: network, TTFB, JS cost, DB,
+    downstream HTTP. Frontend: smaller bundles, code-split, cache static, lazy images. Backend: kill N+1,
+    indexes, cache hot reads, async slow work. Look at p95, not only averages. Perceived speed (skeletons,
+    optimistic UI) counts too.
+  intro_es: |
+    "¿Cómo lo harías más rápido?" es una de las preguntas favoritas en entrevistas SDE3.
+    La respuesta correcta empieza siempre igual: "Primero mediría dónde se va el tiempo."
+
+    Medición frontend: Lighthouse, Chrome DevTools, Network waterfall.
+    LCP (Largest Contentful Paint): cuándo el contenido principal es visible.
+    TTFB (Time To First Byte): cuánto tarda el servidor en responder.
+    CLS, FID: estabilidad visual y respuesta a interacción.
+
+    Optimizaciones frontend en orden de impacto:
+    1. Reducir y comprimir JS/CSS (bundles más chicos, code-splitting por rutas)
+    2. Cache de estáticos (hashes en nombres de archivo + Cache-Control largo)
+    3. Lazy-load de imágenes y rutas no críticas
+    4. CDN para assets estáticos
+    5. Skeleton/loading states para velocidad percibida
+
+    Medición backend: logs de latencia, query EXPLAIN, profiling de código, p95/p99 (no solo promedio).
+    El promedio miente — p95 te dice lo que sufre el 5% de usuarios, y suele ser 10x el promedio.
+
+    Optimizaciones backend en orden de impacto:
+    1. Matar N+1 (Join + Include, o proyección desde el inicio)
+    2. Índice correcto (EXPLAIN en la query lenta)
+    3. Cache de lecturas calientes (Redis, memoria)
+    4. Trabajo lento a cola asíncrona (no bloquear la request del usuario)
+    5. Paginación correcta (cursor, no offset en tablas grandes)
+
+    Velocidad percibida: skeleton screens, optimistic UI, progressive loading. El usuario siente
+    que es rápido aunque tarde lo mismo. Importa en las entrevistas de producto.
+- id: w18-arch
+  title: Architecture patterns
+  title_es: Patrones de arquitectura
+  minutes: 8
+  intro: |
+    Repository hides persistence behind an interface so services stay testable. Unit of Work is the
+    commit boundary (often DbContext). Adapters wrap SOAP/REST behind one port. Don't return IQueryable
+    from a repository — that leaks EF. Your eBay dual-run is an adapter story; say it that way.
+  intro_es: |
+    Los patrones de arquitectura son herramientas para manejar complejidad — no dogmas.
+    El error es usarlos sin entender el problema que resuelven.
+
+    Repository: esconde cómo cargás y guardás entidades. El servicio habla con IOrderRepository,
+    no con DbContext directamente. Ventaja: podés mockear en tests, cambiar la DB sin tocar servicios.
+    Trampa: no devuelvas IQueryable desde el repositorio — filtrás en la capa equivocada y tu
+    "abstracción" es una fuga de EF.
+
+    Unit of Work: el límite de commit. En EF, DbContext ya es un Unit of Work — agrupa todos los
+    cambios de una operación y los escribe en una transacción. Envolver DbContext en otro UoW
+    suele ser overkill salvo casos específicos.
+
+    Adapter: traduce una interfaz a otra. Tu cliente SOAP de eBay envuelto en una interfaz IEbayClient
+    es un adapter real. REST o SOAP detrás — el servicio no lo sabe ni le importa.
+
+    Facade: simplifica un subsistema complejo en una interfaz limpia. Si tenés cinco llamadas SOAP
+    que siempre van juntas, una Facade las encapsula en un método claro.
+
+    Microservicios vs monolito: no hay respuesta correcta sin contexto. Un monolito bien diseñado
+    supera a microservicios mal diseñados. Conocé los trade-offs: microservicios dan escala
+    independiente y deploys independientes, pero agregan latencia de red, transacciones distribuidas,
+    y complejidad operacional.
+
+    Tu historia: SOAP→REST en Solera es un Adapter + Facade real, con dual-run como cutover seguro.
+    Eso es arquitectura con trade-offs explicados — exactamente lo que quiere ver un SDE3.
