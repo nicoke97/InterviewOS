@@ -1,6 +1,571 @@
 sections:
-- id: w01-big-o-s1
+- id: w00-fundamentos-s1
+  week_id: w00-fundamentos
+  week_title: Programming foundations
+  week_title_es: Fundamentos
+  anchor: ''
+  anchor_es: ''
+  title: What is OOP
+  title_es: Qué es POO
+  reading: Object-oriented programming (OOP) structures a program around objects. An object holds data
+    (state) and the operations that use that data (behavior). A class is the definition; an object is
+    one instance of that class in memory. You use OOP so related data and rules live together, instead
+    of a pile of loose functions and global variables.
+  reading_es: La programación orientada a objetos (POO) organiza el programa alrededor de objetos. Un
+    objeto guarda datos (estado) y las operaciones que usan esos datos (comportamiento). La clase es la
+    definición; el objeto es una instancia de esa clase en memoria. Sirve para que datos y reglas vivan
+    juntos, no en un montón de funciones sueltas y variables globales.
+  reading_en: Object-oriented programming (OOP) structures a program around objects. An object holds data
+    (state) and the operations that use that data (behavior). A class is the definition; an object is
+    one instance of that class in memory. You use OOP so related data and rules live together, instead
+    of a pile of loose functions and global variables.
+  questions:
+  - id: w00-fundamentos-s1-q1
+    q: What is object-oriented programming?
+    q_es: ¿Qué es la programación orientada a objetos?
+    choices:
+    - A way to structure a program around objects that combine state and behavior
+    - A database engine
+    - A C# keyword
+    - The four HTTP verbs
+    choices_es:
+    - Una forma de organizar el programa alrededor de objetos que juntan estado y comportamiento
+    - Un motor de base de datos
+    - Una palabra clave de C#
+    - Los cuatro verbos HTTP
+    answer: 0
+  - id: w00-fundamentos-s1-q2
+    q: What is the difference between a class and an object?
+    q_es: ¿Cuál es la diferencia entre una clase y un objeto?
+    choices:
+    - The class is the definition; the object is one instance in memory
+    - They are the same thing
+    - The object is the file; the class is the database row
+    - A class is Python; an object is C#
+    choices_es:
+    - La clase es la definición; el objeto es una instancia en memoria
+    - Son lo mismo
+    - El objeto es el archivo; la clase es la fila de la base
+    - Clase es Python; objeto es C#
+    answer: 0
+  - id: w00-fundamentos-s1-q3
+    q: What does an object hold?
+    q_es: ¿Qué guarda un objeto?
+    choices:
+    - State (data) and behavior (methods)
+    - Only SQL queries
+    - Only the class name
+    - HTTP status codes
+    choices_es:
+    - Estado (datos) y comportamiento (métodos)
+    - Solo queries SQL
+    - Solo el nombre de la clase
+    - Status codes HTTP
+    answer: 0
+  - id: w00-fundamentos-s1-q4
+    q: Why use OOP instead of only loose functions?
+    q_es: ¿Para qué usar POO en vez de solo funciones sueltas?
+    choices:
+    - So related data and the rules that change it live in one place
+    - Because interviews require the word Codenda
+    - Because functions are illegal in C#
+    - To avoid writing any types
+    choices_es:
+    - Para que los datos relacionados y las reglas que los cambian vivan en un solo lugar
+    - Porque en entrevista hay que decir Codenda
+    - Porque las funciones son ilegales en C#
+    - Para no escribir tipos
+    answer: 0
+  cards:
+  - id: w00-fundamentos-s1-c1
+    front: What is OOP?
+    front_es: ¿Qué es POO?
+    back: A way to structure a program around objects that combine data (state) and operations (behavior).
+    back_es: Una forma de organizar el programa alrededor de objetos que juntan datos (estado) y operaciones
+      (comportamiento).
+  - id: w00-fundamentos-s1-c2
+    front: Class vs object?
+    front_es: ¿Clase vs objeto?
+    back: 'The class is the blueprint. The object is one living instance: var c = new Cuenta(100);'
+    back_es: 'La clase es el plano. El objeto es una instancia viva: var c = new Cuenta(100);'
+  - id: w00-fundamentos-s1-c3
+    front: What is state vs behavior?
+    front_es: ¿Qué es estado vs comportamiento?
+    back: State is the data the object keeps (Saldo). Behavior is the methods that use it (Deposita).
+    back_es: Estado es el dato que guarda el objeto (Saldo). Comportamiento son los métodos que lo usan
+      (Deposita).
+  - id: w00-fundamentos-s1-c4
+    front: Why OOP?
+    front_es: ¿Para qué sirve POO?
+    back: Keep related data and rules together, instead of loose functions plus global variables.
+    back_es: Juntar datos y reglas relacionados, en vez de funciones sueltas y variables globales.
+  standard_minutes: 35
   index: 0
+- id: w00-fundamentos-s2
+  week_id: w00-fundamentos
+  week_title: Programming foundations
+  week_title_es: Fundamentos
+  anchor: ''
+  anchor_es: ''
+  title: The four pillars
+  title_es: Los 4 pilares
+  reading: The four pillars of OOP are encapsulation, abstraction, inheritance, and polymorphism. Encapsulation
+    hides internal data and exposes a controlled interface (private fields, public methods). Abstraction
+    shows only what matters and hides the messy details behind a name. Inheritance lets a class reuse
+    and extend another (Square is a Shape). Polymorphism means the same message can run different code
+    (shape.Area() is the square version or the circle version).
+  reading_es: 'Los cuatro pilares de POO son encapsulación, abstracción, herencia y polimorfismo. Encapsulación:
+    escondes los datos internos y expones una interfaz controlada (campos private, métodos public). Abstracción:
+    muestras solo lo que importa y escondes el detalle detrás de un nombre. Herencia: una clase reutiliza
+    y extiende otra (Cuadrado es una Forma). Polimorfismo: el mismo mensaje ejecuta código distinto (forma.Area()
+    corre la versión del cuadrado o del círculo).'
+  reading_en: The four pillars of OOP are encapsulation, abstraction, inheritance, and polymorphism. Encapsulation
+    hides internal data and exposes a controlled interface (private fields, public methods). Abstraction
+    shows only what matters and hides the messy details behind a name. Inheritance lets a class reuse
+    and extend another (Square is a Shape). Polymorphism means the same message can run different code
+    (shape.Area() is the square version or the circle version).
+  questions:
+  - id: w00-fundamentos-s2-q1
+    q: What are the four pillars of OOP?
+    q_es: ¿Cuáles son los 4 pilares de POO?
+    choices:
+    - Encapsulation, abstraction, inheritance, polymorphism
+    - Class, object, method, Codenda
+    - GET, POST, PUT, DELETE
+    - Transient, scoped, singleton, static
+    choices_es:
+    - Encapsulación, abstracción, herencia, polimorfismo
+    - Clase, objeto, método, Codenda
+    - GET, POST, PUT, DELETE
+    - Transient, scoped, singleton, static
+    answer: 0
+  - id: w00-fundamentos-s2-q2
+    q: What is encapsulation?
+    q_es: ¿Qué es encapsulación?
+    choices:
+    - Hide internal data; change it only through a controlled interface (private + public methods).
+    - Make every field public.
+    - Copy methods from a parent class.
+    - Run two writers at the same time.
+    choices_es:
+    - Esconder los datos internos; cambiarlos solo por una interfaz controlada (private + métodos public).
+    - Hacer public todos los campos.
+    - Copiar métodos de la clase padre.
+    - Correr dos writers al mismo tiempo.
+    answer: 0
+  - id: w00-fundamentos-s2-q3
+    q: What is polymorphism?
+    q_es: ¿Qué es polimorfismo?
+    choices:
+    - The same call (Area()) runs different code depending on the real type
+    - A class with no methods
+    - Importing a namespace
+    - Mapping a class to a SQL table
+    choices_es:
+    - La misma llamada (Area()) corre código distinto según el tipo real
+    - Una clase sin métodos
+    - Importar un namespace
+    - Mapear una clase a una tabla SQL
+    answer: 0
+  - id: w00-fundamentos-s2-q4
+    q: What is inheritance?
+    q_es: ¿Qué es herencia?
+    choices:
+    - 'A class reuses and extends another: Square : Shape'
+    - Hiding all fields with private
+    - A function that is not on a class
+    - An ORM transaction
+    choices_es:
+    - 'Una clase reutiliza y extiende otra: Square : Shape'
+    - Esconder todos los campos con private
+    - Una función que no está en una clase
+    - Una transacción del ORM
+    answer: 0
+  cards:
+  - id: w00-fundamentos-s2-c1
+    front: What are the 4 pillars of OOP?
+    front_es: ¿Cuáles son los 4 pilares de POO?
+    back: Encapsulation, abstraction, inheritance, polymorphism.
+    back_es: Encapsulación, abstracción, herencia, polimorfismo.
+  - id: w00-fundamentos-s2-c2
+    front: What is encapsulation?
+    front_es: ¿Qué es encapsulación?
+    back: 'Hide internal data. Expose a controlled interface: private fields, public methods.'
+    back_es: 'Esconder los datos internos. Exponer una interfaz controlada: campos private, métodos public.'
+  - id: w00-fundamentos-s2-c3
+    front: What is abstraction?
+    front_es: ¿Qué es abstracción?
+    back: 'Show only what matters. Hide the messy details behind a name: client.Sync(), not 40 SOAP calls.'
+    back_es: 'Mostrar solo lo que importa. Esconder el detalle detrás de un nombre: client.Sync(), no
+      40 llamadas SOAP.'
+  - id: w00-fundamentos-s2-c4
+    front: What is inheritance?
+    front_es: ¿Qué es herencia?
+    back: 'A class reuses and extends another. Square is a Shape (class Square : Shape).'
+    back_es: 'Una clase reutiliza y extiende otra. Cuadrado es una Forma (class Square : Shape).'
+  - id: w00-fundamentos-s2-c5
+    front: What is polymorphism?
+    front_es: ¿Qué es polimorfismo?
+    back: Same message, different code. shape.Area() runs the square or circle implementation.
+    back_es: Mismo mensaje, código distinto. forma.Area() corre la implementación del cuadrado o del círculo.
+  standard_minutes: 35
+  index: 1
+- id: w00-fundamentos-s3
+  week_id: w00-fundamentos
+  week_title: Programming foundations
+  week_title_es: Fundamentos
+  anchor: ''
+  anchor_es: ''
+  title: Class, object, method, function
+  title_es: Clase, objeto, método, función
+  reading: 'A class declares fields, properties, methods, and a constructor. An object (instance) is created
+    with new. A function is a named block of code with inputs and a result; in Python it can live at module
+    level, in C# it is usually a static method. A method is a function that belongs to a class or object
+    and can use its state: cuenta.Deposita(50). The constructor (Cuenta(int saldo)) runs on new and sets
+    the initial state. public/private control who can see members. An interface is a contract of methods
+    with no implementation (or default implementations); a class implements it.'
+  reading_es: 'Una clase declara campos, propiedades, métodos y un constructor. Un objeto (instancia)
+    se crea con new. Una función es un bloque con nombre, entradas y un resultado; en Python puede vivir
+    suelta en el módulo, en C# casi siempre es un método static. Un método es una función que pertenece
+    a una clase u objeto y puede usar su estado: cuenta.Deposita(50). El constructor (Cuenta(int saldo))
+    corre al hacer new y deja el estado inicial. public/private controlan quién ve los miembros. Una interfaz
+    es un contrato de métodos sin implementación (o con defaults); una clase la implementa.'
+  reading_en: 'A class declares fields, properties, methods, and a constructor. An object (instance) is
+    created with new. A function is a named block of code with inputs and a result; in Python it can live
+    at module level, in C# it is usually a static method. A method is a function that belongs to a class
+    or object and can use its state: cuenta.Deposita(50). The constructor (Cuenta(int saldo)) runs on
+    new and sets the initial state. public/private control who can see members. An interface is a contract
+    of methods with no implementation (or default implementations); a class implements it.'
+  questions:
+  - id: w00-fundamentos-s3-q1
+    q: What is a class?
+    q_es: ¿Qué es una clase?
+    choices:
+    - 'The definition of a type: fields, properties, methods, constructor'
+    - One row in SQL Server
+    - A using statement
+    - An HTTP request
+    choices_es:
+    - 'La definición de un tipo: campos, propiedades, métodos, constructor'
+    - Una fila de SQL Server
+    - Un using
+    - Una request HTTP
+    answer: 0
+  - id: w00-fundamentos-s3-q2
+    q: What is a method vs a function?
+    q_es: ¿Método vs función?
+    choices:
+    - A method belongs to a class/object and can use its state; a function is a named block that does
+      not need an instance
+    - A method is Python; a function is C#
+    - They are identical in every language
+    - A function is only SQL
+    choices_es:
+    - El método pertenece a una clase/objeto y puede usar su estado; la función es un bloque con nombre
+      que no necesita instancia
+    - Método es Python; función es C#
+    - Son idénticos en todos los lenguajes
+    - Función es solo SQL
+    answer: 0
+  - id: w00-fundamentos-s3-q3
+    q: What does a constructor do?
+    q_es: ¿Qué hace un constructor?
+    choices:
+    - Runs when you new the object and sets initial state
+    - Deletes the object from the database
+    - Imports a namespace
+    - Starts the HTTP pipeline
+    choices_es:
+    - Corre cuando haces new y deja el estado inicial
+    - Borra el objeto de la base
+    - Importa un namespace
+    - Arranca el pipeline HTTP
+    answer: 0
+  - id: w00-fundamentos-s3-q4
+    q: What is an interface?
+    q_es: ¿Qué es una interfaz?
+    choices:
+    - A contract of methods a class must implement
+    - A SQL table
+    - A private field
+    - The C# garbage collector
+    choices_es:
+    - Un contrato de métodos que una clase debe implementar
+    - Una tabla SQL
+    - Un campo private
+    - El garbage collector de C#
+    answer: 0
+  cards:
+  - id: w00-fundamentos-s3-c1
+    front: What is a class?
+    front_es: ¿Qué es una clase?
+    back: 'The definition of a type: fields, properties, methods, constructor.'
+    back_es: 'La definición de un tipo: campos, propiedades, métodos, constructor.'
+  - id: w00-fundamentos-s3-c2
+    front: What is an object / instance?
+    front_es: ¿Qué es un objeto / instancia?
+    back: 'One living copy of a class in memory: var c = new Cuenta(100);'
+    back_es: 'Una copia viva de la clase en memoria: var c = new Cuenta(100);'
+  - id: w00-fundamentos-s3-c3
+    front: What is a function?
+    front_es: ¿Qué es una función?
+    back: A named block of code with inputs and a result. In Python it can be free; in C# it is usually
+      static.
+    back_es: Un bloque con nombre, entradas y un resultado. En Python puede ir suelta; en C# casi siempre
+      es static.
+  - id: w00-fundamentos-s3-c4
+    front: What is a method?
+    front_es: ¿Qué es un método?
+    back: 'A function that belongs to a class or object and can use its state: cuenta.Deposita(50).'
+    back_es: 'Una función que pertenece a una clase u objeto y puede usar su estado: cuenta.Deposita(50).'
+  - id: w00-fundamentos-s3-c5
+    front: What is a constructor?
+    front_es: ¿Qué es un constructor?
+    back: 'The method that runs on new and sets initial state: Cuenta(int saldo).'
+    back_es: 'El método que corre en el new y deja el estado inicial: Cuenta(int saldo).'
+  - id: w00-fundamentos-s3-c6
+    front: What is an interface?
+    front_es: ¿Qué es una interfaz?
+    back: 'A contract: methods a class must implement. The class provides the body.'
+    back_es: 'Un contrato: métodos que una clase debe implementar. La clase pone el cuerpo.'
+  - id: w00-fundamentos-s3-c7
+    front: What do public and private do?
+    front_es: ¿Qué hacen public y private?
+    back: 'public: callers can see it. private: only the class itself. That is encapsulation in syntax.'
+    back_es: 'public: los demás lo ven. private: solo la clase. Eso es encapsulación en sintaxis.'
+  standard_minutes: 35
+  index: 2
+- id: w00-fundamentos-s4
+  week_id: w00-fundamentos
+  week_title: Programming foundations
+  week_title_es: Fundamentos
+  anchor: ''
+  anchor_es: ''
+  title: using and namespace
+  title_es: using y namespace
+  reading: 'In C#, using has two meanings. using System.Text; imports a namespace so you can write StringBuilder
+    instead of System.Text.StringBuilder. using (var conn = new SqlConnection(...)) { } creates an IDisposable
+    and guarantees Dispose() runs when the block ends — the connection closes even if the code throws.
+    Modern form: using var conn = new SqlConnection(...); A namespace groups types. using is not a class
+    and not ''the OOP keyword''. Namespace using is like Python import / Java import. Disposable using
+    is like Python with.'
+  reading_es: 'En C#, using significa dos cosas distintas. using System.Text; importa un namespace para
+    escribir StringBuilder en vez de System.Text.StringBuilder. using (var conn = new SqlConnection(...))
+    { } crea un IDisposable y garantiza Dispose() al salir del bloque — la conexión se cierra aunque truene.
+    Forma moderna: using var conn = new SqlConnection(...); Un namespace agrupa tipos. using no es una
+    clase ni ''la palabra de POO''. El using de namespace es como import en Python o Java. El using de
+    Dispose es como with en Python.'
+  reading_en: 'In C#, using has two meanings. using System.Text; imports a namespace so you can write
+    StringBuilder instead of System.Text.StringBuilder. using (var conn = new SqlConnection(...)) { }
+    creates an IDisposable and guarantees Dispose() runs when the block ends — the connection closes even
+    if the code throws. Modern form: using var conn = new SqlConnection(...); A namespace groups types.
+    using is not a class and not ''the OOP keyword''. Namespace using is like Python import / Java import.
+    Disposable using is like Python with.'
+  questions:
+  - id: w00-fundamentos-s4-q1
+    q: What does using System.Linq; do?
+    q_es: ¿Qué hace using System.Linq;?
+    choices:
+    - Imports a namespace so you can use its types without the full path
+    - Opens a SQL connection
+    - Creates a class
+    - Starts a transaction
+    choices_es:
+    - Importa un namespace para usar sus tipos sin el path completo
+    - Abre una conexión SQL
+    - Crea una clase
+    - Arranca una transacción
+    answer: 0
+  - id: w00-fundamentos-s4-q2
+    q: What does using (var conn = new SqlConnection(...)) do?
+    q_es: ¿Qué hace using (var conn = new SqlConnection(...))?
+    choices:
+    - Creates an IDisposable and always calls Dispose() when the block ends
+    - Imports the SqlConnection namespace
+    - Makes conn public
+    - Maps conn to a table
+    choices_es:
+    - Crea un IDisposable y siempre llama Dispose() al terminar el bloque
+    - Importa el namespace de SqlConnection
+    - Hace public a conn
+    - Mapea conn a una tabla
+    answer: 0
+  - id: w00-fundamentos-s4-q3
+    q: What is a namespace?
+    q_es: ¿Qué es un namespace?
+    choices:
+    - A name prefix that groups types and avoids collisions
+    - A running object in memory
+    - An ORM
+    - A private field
+    choices_es:
+    - Un prefijo que agrupa tipos y evita choques de nombres
+    - Un objeto vivo en memoria
+    - Un ORM
+    - Un campo private
+    answer: 0
+  - id: w00-fundamentos-s4-q4
+    q: Python with is the same idea as which C# using?
+    q_es: ¿El with de Python es la misma idea que cuál using de C#?
+    choices:
+    - The IDisposable using that calls Dispose
+    - The namespace import using
+    - Neither
+    - The class keyword
+    choices_es:
+    - El using de IDisposable que llama Dispose
+    - El using que importa un namespace
+    - Ninguno
+    - La palabra class
+    answer: 0
+  cards:
+  - id: w00-fundamentos-s4-c1
+    front: What does using System.Text; do?
+    front_es: ¿Qué hace using System.Text;?
+    back: Imports a namespace. You write StringBuilder instead of System.Text.StringBuilder.
+    back_es: Importa un namespace. Escribes StringBuilder en vez de System.Text.StringBuilder.
+  - id: w00-fundamentos-s4-c2
+    front: What does using (var x = ...) { } do?
+    front_es: ¿Qué hace using (var x = ...) { }?
+    back: Creates an IDisposable and always calls Dispose() at the end of the block, even on throw.
+    back_es: Crea un IDisposable y siempre llama Dispose() al salir del bloque, aunque truene.
+  - id: w00-fundamentos-s4-c3
+    front: What is the modern form of disposable using?
+    front_es: ¿Cuál es la forma moderna del using que hace Dispose?
+    back: using var conn = new SqlConnection(...); Dispose still runs at the end of the scope.
+    back_es: using var conn = new SqlConnection(...); Dispose igual corre al terminar el scope.
+  - id: w00-fundamentos-s4-c4
+    front: What is a namespace?
+    front_es: ¿Qué es un namespace?
+    back: A name prefix that groups types (System.Text, MiApp.Ordenes) so names do not collide.
+    back_es: Un prefijo que agrupa tipos (System.Text, MiApp.Ordenes) para que no choquen los nombres.
+  - id: w00-fundamentos-s4-c5
+    front: Is using a class?
+    front_es: ¿using es una clase?
+    back: No. It is a directive (import) or a statement (Dispose). Not an OOP pillar.
+    back_es: No. Es una directiva (import) o una sentencia (Dispose). No es un pilar de POO.
+  - id: w00-fundamentos-s4-c6
+    front: Python with ≈ which C# using?
+    front_es: ¿with de Python ≈ cuál using de C#?
+    back: The IDisposable using. The other using is just import.
+    back_es: El using de IDisposable. El otro using es solo import.
+  standard_minutes: 35
+  index: 3
+- id: w00-fundamentos-s5
+  week_id: w00-fundamentos
+  week_title: Programming foundations
+  week_title_es: Fundamentos
+  anchor: ''
+  anchor_es: ''
+  title: What is EF
+  title_es: Qué es EF
+  reading: 'Entity Framework (EF / EF Core) is an ORM: Object-Relational Mapper. It maps C# classes to
+    database tables so you can query with LINQ instead of writing every SQL string by hand. DbContext
+    is the unit of work. DbSet<T> is a table. SaveChanges() writes the tracked inserts, updates, and deletes.
+    EF is not the database and not SQL — it talks to the database for you. You can still write SQL when
+    you need to. Later weeks cover tracking, N+1, and migrations; this section is only what EF is.'
+  reading_es: 'Entity Framework (EF / EF Core) es un ORM: Object-Relational Mapper. Mapea clases de C#
+    a tablas de la base para consultar con LINQ en vez de escribir cada SQL a mano. DbContext es la unidad
+    de trabajo. DbSet<T> es una tabla. SaveChanges() escribe los insert/update/delete que tenía rastreados.
+    EF no es la base ni es SQL — habla con la base por ti. Igual puedes escribir SQL cuando hace falta.
+    Semanas después cubren tracking, N+1 y migrations; aquí solo qué es EF.'
+  reading_en: 'Entity Framework (EF / EF Core) is an ORM: Object-Relational Mapper. It maps C# classes
+    to database tables so you can query with LINQ instead of writing every SQL string by hand. DbContext
+    is the unit of work. DbSet<T> is a table. SaveChanges() writes the tracked inserts, updates, and deletes.
+    EF is not the database and not SQL — it talks to the database for you. You can still write SQL when
+    you need to. Later weeks cover tracking, N+1, and migrations; this section is only what EF is.'
+  questions:
+  - id: w00-fundamentos-s5-q1
+    q: What is Entity Framework?
+    q_es: ¿Qué es Entity Framework?
+    choices:
+    - 'An ORM: it maps C# classes to database tables'
+    - The C# compiler
+    - A JavaScript framework
+    - A Git host
+    choices_es:
+    - 'Un ORM: mapea clases de C# a tablas de la base'
+    - El compilador de C#
+    - Un framework de JavaScript
+    - Un host de Git
+    answer: 0
+  - id: w00-fundamentos-s5-q2
+    q: What does ORM mean?
+    q_es: ¿Qué significa ORM?
+    choices:
+    - Object-Relational Mapper — objects on one side, relational tables on the other
+    - Only Raw MySQL
+    - Object Runtime Memory
+    - Open REST Method
+    choices_es:
+    - Object-Relational Mapper — objetos de un lado, tablas relacionales del otro
+    - Only Raw MySQL
+    - Object Runtime Memory
+    - Open REST Method
+    answer: 0
+  - id: w00-fundamentos-s5-q3
+    q: What is DbContext?
+    q_es: ¿Qué es DbContext?
+    choices:
+    - 'The unit of work: sets plus a change tracker; SaveChanges writes the batch'
+    - A single SQL table
+    - A namespace import
+    - The ASP.NET pipeline
+    choices_es:
+    - 'La unidad de trabajo: los sets más el change tracker; SaveChanges escribe el lote'
+    - Una sola tabla SQL
+    - Un import de namespace
+    - El pipeline de ASP.NET
+    answer: 0
+  - id: w00-fundamentos-s5-q4
+    q: Is EF the database?
+    q_es: ¿EF es la base de datos?
+    choices:
+    - No. EF talks to the database (SQL Server, Postgres, etc.) for you
+    - Yes. EF replaces SQL Server
+    - Yes. EF is a file format
+    - Only when you use Codenda
+    choices_es:
+    - No. EF habla con la base (SQL Server, Postgres, etc.) por ti
+    - Sí. EF reemplaza SQL Server
+    - Sí. EF es un formato de archivo
+    - Solo si usas Codenda
+    answer: 0
+  cards:
+  - id: w00-fundamentos-s5-c1
+    front: What is EF / Entity Framework?
+    front_es: ¿Qué es EF / Entity Framework?
+    back: An ORM for .NET. It maps C# classes to database tables.
+    back_es: Un ORM de .NET. Mapea clases de C# a tablas de la base.
+  - id: w00-fundamentos-s5-c2
+    front: What is an ORM?
+    front_es: ¿Qué es un ORM?
+    back: 'Object-Relational Mapper: objects in code, relational tables in the database.'
+    back_es: 'Object-Relational Mapper: objetos en el código, tablas relacionales en la base.'
+  - id: w00-fundamentos-s5-c3
+    front: What is DbContext?
+    front_es: ¿Qué es DbContext?
+    back: The unit of work. It holds DbSet<T> tables and tracks changes until SaveChanges().
+    back_es: La unidad de trabajo. Tiene los DbSet<T> y rastrea cambios hasta SaveChanges().
+  - id: w00-fundamentos-s5-c4
+    front: What is DbSet<T>?
+    front_es: ¿Qué es DbSet<T>?
+    back: 'A table (or queryable set of entities) on the context: context.Ordenes.'
+    back_es: 'Una tabla (o set consultable) en el context: context.Ordenes.'
+  - id: w00-fundamentos-s5-c5
+    front: What does SaveChanges() do?
+    front_es: ¿Qué hace SaveChanges()?
+    back: Writes tracked inserts, updates, and deletes to the database in one transaction.
+    back_es: Escribe en la base los insert, update y delete rastreados, en una transacción.
+  - id: w00-fundamentos-s5-c6
+    front: Is EF the database?
+    front_es: ¿EF es la base de datos?
+    back: No. EF is the mapper. The database is SQL Server, Postgres, SQLite, etc.
+    back_es: No. EF es el mapeador. La base es SQL Server, Postgres, SQLite, etc.
+  standard_minutes: 35
+  index: 4
+- id: w01-big-o-s1
+  index: 5
   week_id: w01-big-o
   week_title: Big O
   week_title_es: Big O
@@ -73,33 +638,37 @@ sections:
     answer: 0
   cards:
   - id: w01-big-o-s1-c1
-    front: O(1) does not grow with n?
-    front_es: O(1) no crece con n?
-    back: O(1) does not grow with n.
-    back_es: O(1) no crece con n.
+    front: What is O(1) time complexity?
+    front_es: ¿Qué es complejidad O(1)?
+    back: 'Constant time: the number of operations does not grow as the input n grows (array index access,
+      hash map lookup).'
+    back_es: 'Tiempo constante: el número de operaciones no crece con n (acceder un índice de arreglo,
+      lookup en hash map).'
   - id: w01-big-o-s1-c2
-    front: O(n) is one loop?
-    front_es: O(n) un loop?
-    back: O(n) is one loop.
-    back_es: O(n) un loop.
+    front: What is O(n) time complexity?
+    front_es: ¿Qué es complejidad O(n)?
+    back: 'Linear time: one pass through the input; work grows proportionally with n (a single loop over
+      the array).'
+    back_es: 'Tiempo lineal: un solo recorrido de la entrada; el trabajo crece proporcional a n (un solo
+      loop sobre el arreglo).'
   - id: w01-big-o-s1-c3
-    front: O(n²) is a loop inside a loop?
-    front_es: O(n²) loop dentro de loop?
-    back: O(n²) is a loop inside a loop.
-    back_es: O(n²) loop dentro de loop.
+    front: What is O(n²) time complexity, with an example?
+    front_es: ¿Qué es complejidad O(n²), con un ejemplo?
+    back: 'Quadratic time: a loop nested inside another loop over the same input — e.g. the brute-force
+      Two Sum that checks every pair.'
+    back_es: 'Tiempo cuadrático: un loop anidado dentro de otro sobre la misma entrada — ej. el Two Sum
+      brute force que revisa cada par.'
   - id: w01-big-o-s1-c4
-    front: Brute Two Sum is O(n²); with a dict it is O(n)?
-    front_es: Two Sum brute es O(n²); con dict es O(n)?
-    back: Brute Two Sum is O(n²); with a dict it is O(n).
-    back_es: Two Sum brute es O(n²); con dict es O(n).
-  - id: w01-big-o-s1-cA
-    front: Anchor for O(1), O(n), O(n²)?
-    front_es: ¿Ancla de O(1), O(n), O(n²)?
-    back: Codenda.
-    back_es: Codenda.
+    front: What's the time and space complexity of brute-force Two Sum vs the hash-map version?
+    front_es: ¿Cuál es la complejidad de tiempo y espacio de Two Sum brute force vs la versión con hash
+      map?
+    back: 'Brute force (nested loops over every pair): O(n²) time, O(1) space. Hash-map version (one pass,
+      check complement): O(n) time, O(n) space.'
+    back_es: 'Brute force (loops anidados sobre cada par): O(n²) tiempo, O(1) espacio. Versión con hash
+      map (un pass, revisa el complemento): O(n) tiempo, O(n) espacio.'
   standard_minutes: 35
 - id: w01-big-o-s2
-  index: 1
+  index: 6
   week_id: w01-big-o
   week_title: Big O
   week_title_es: Big O
@@ -172,28 +741,36 @@ sections:
     answer: 0
   cards:
   - id: w01-big-o-s2-c1
-    front: O(log n) splits the search space (binary search)?
-    front_es: O(log n) parte el espacio (binary search)?
-    back: O(log n) splits the search space (binary search).
-    back_es: O(log n) parte el espacio (binary search).
+    front: What is O(log n) time complexity, with a classic example?
+    front_es: ¿Qué es complejidad O(log n), con un ejemplo clásico?
+    back: 'Logarithmic time: each step cuts the remaining search space in half. Classic example: binary
+      search on a sorted array.'
+    back_es: 'Tiempo logarítmico: cada paso corta a la mitad el espacio de búsqueda restante. Ejemplo
+      clásico: binary search en un arreglo ordenado.'
   - id: w01-big-o-s2-c2
-    front: O(n log n) is sort?
-    front_es: O(n log n) es sort?
-    back: O(n log n) is sort.
-    back_es: O(n log n) es sort.
+    front: What is O(n log n) time complexity, with a classic example?
+    front_es: ¿Qué es complejidad O(n log n), con un ejemplo clásico?
+    back: 'Linearithmic time: typical of efficient comparison sorts like merge sort or quicksort (average
+      case).'
+    back_es: 'Tiempo linearítmico: típico de sorts por comparación eficientes como merge sort o quicksort
+      (caso promedio).'
   - id: w01-big-o-s2-c3
-    front: 'Do not recite the table: say what your code does?'
-    front_es: 'No recites la tabla: di qué hace tu código?'
-    back: 'Do not recite the table: say what your code does.'
-    back_es: 'No recites la tabla: di qué hace tu código.'
-  - id: w01-big-o-s2-cA
-    front: Anchor for O(log n) and O(n log n)?
-    front_es: ¿Ancla de O(log n) y O(n log n)?
-    back: Codenda.
-    back_es: Codenda.
+    front: What's the time complexity of binary search, and why?
+    front_es: ¿Cuál es la complejidad de binary search, y por qué?
+    back: O(log n) — each comparison halves the remaining search space, so it takes about log2(n) steps
+      to find the target or exhaust the array.
+    back_es: O(log n) — cada comparación corta a la mitad el espacio restante, así que toma como log2(n)
+      pasos encontrar el target o agotar el arreglo.
+  - id: w01-big-o-s2-c4
+    front: In an interview, how should you state the complexity of your solution?
+    front_es: En entrevista, ¿cómo deberías decir la complejidad de tu solución?
+    back: Say what your code actually does (e.g. 'one pass with a hash map, so O(n) time O(n) space'),
+      not a memorized Big-O table.
+    back_es: Diciendo qué hace tu código en realidad (ej. 'un pass con un hash map, entonces O(n) tiempo
+      O(n) espacio'), no una tabla de Big-O memorizada.
   standard_minutes: 35
 - id: w01-big-o-s3
-  index: 2
+  index: 7
   week_id: w01-big-o
   week_title: Big O
   week_title_es: Big O
@@ -263,23 +840,27 @@ sections:
     answer: 0
   cards:
   - id: w01-big-o-s3-c1
-    front: Sometimes you pay memory (the Two Sum dict) to cut time?
-    front_es: A veces pagas memoria (el dict de Two Sum) para bajar tiempo?
-    back: Sometimes you pay memory (the Two Sum dict) to cut time.
-    back_es: A veces pagas memoria (el dict de Two Sum) para bajar tiempo.
+    front: What is a time/space trade-off? Give an example.
+    front_es: ¿Qué es un trade-off de tiempo/espacio? Da un ejemplo.
+    back: 'Using extra memory to reduce runtime. Example: Two Sum''s hash map uses O(n) space to bring
+      the time down from O(n²) to O(n).'
+    back_es: 'Usar memoria extra para bajar el tiempo de ejecución. Ejemplo: el hash map de Two Sum usa
+      O(n) de espacio para bajar el tiempo de O(n²) a O(n).'
   - id: w01-big-o-s3-c2
-    front: State both when you finish an LC?
-    front_es: Di ambos al acabar un LC?
-    back: State both when you finish an LC.
-    back_es: Di ambos al acabar un LC.
-  - id: w01-big-o-s3-cA
-    front: Anchor for Time vs space?
-    front_es: ¿Ancla de Tiempo vs espacio?
-    back: Codenda.
-    back_es: Codenda.
+    front: When you finish a LeetCode problem in an interview, what should you always state?
+    front_es: Al terminar un problema de LeetCode en entrevista, ¿qué deberías decir siempre?
+    back: Both the time complexity and the space complexity of your final solution — not just one of them.
+    back_es: La complejidad de tiempo Y de espacio de tu solución final — no solo una de las dos.
+  - id: w01-big-o-s3-c3
+    front: Can you always trade space for time?
+    front_es: ¿Siempre puedes cambiar espacio por tiempo?
+    back: Often, but not always — some problems have a hard lower bound on time regardless of extra memory
+      (you still must read all n elements at least once).
+    back_es: Casi siempre, pero no siempre — algunos problemas tienen un límite mínimo de tiempo sin importar
+      cuánta memoria uses (igual tienes que leer los n elementos al menos una vez).
   standard_minutes: 35
 - id: w01-big-o-s4
-  index: 3
+  index: 8
   week_id: w01-big-o
   week_title: Big O
   week_title_es: Big O
@@ -349,18 +930,29 @@ sections:
     answer: 0
   cards:
   - id: w01-big-o-s4-c1
-    front: 'Phrase: ''One pass?'
-    front_es: 'Frase: ''Un pass?'
-    back: 'Phrase: ''One pass, map value→index, O(n) time O(n) space.'' Practice it out loud.'
-    back_es: 'Frase: ''Un pass, mapa valor→índice, O(n) tiempo O(n) espacio.'' Practícala en voz alta.'
-  - id: w01-big-o-s4-cA
-    front: Anchor for How you say it?
-    front_es: ¿Ancla de Cómo lo dices?
-    back: Codenda.
-    back_es: Codenda.
+    front: How would you concisely describe the Two Sum hash-map approach out loud, in one sentence?
+    front_es: ¿Cómo describirías en voz alta, en una frase, el approach de Two Sum con hash map?
+    back: '"One pass: for each number, check if its complement is already in the map; if not, store value→index.
+      O(n) time, O(n) space."'
+    back_es: '"Un pass: por cada número, checo si su complemento ya está en el map; si no, guardo valor→índice.
+      O(n) tiempo, O(n) espacio."'
+  - id: w01-big-o-s4-c2
+    front: Why does practicing your explanation out loud matter in interviews?
+    front_es: ¿Por qué importa practicar tu explicación en voz alta para la entrevista?
+    back: Interviewers grade communication, not just correct code — stating your approach and complexity
+      fluently, without re-reading your code, signals real understanding.
+    back_es: El entrevistador califica comunicación, no solo código correcto — decir tu approach y complejidad
+      con fluidez, sin releer tu código, demuestra que sí entendiste.
+  - id: w01-big-o-s4-c3
+    front: In the Two Sum hash map, should the key be the value or the index? Why?
+    front_es: En el hash map de Two Sum, ¿la llave debería ser el valor o el índice? ¿Por qué?
+    back: The value is the key, mapped to its index (value→index). You look up a number to find where
+      it is, so you need the number as the key.
+    back_es: El valor es la llave, mapeado a su índice (valor→índice). Buscas un número para saber dónde
+      está, así que el número tiene que ser la llave.
   standard_minutes: 35
 - id: w01-big-o-s5
-  index: 4
+  index: 9
   week_id: w01-big-o
   week_title: Big O
   week_title_es: Big O
@@ -430,18 +1022,27 @@ sections:
     answer: 0
   cards:
   - id: w01-big-o-s5-c1
-    front: If you cannot say Two Sum complexity without reading?
-    front_es: Si no puedes decir la complejidad de Two Sum sin leer?
-    back: If you cannot say Two Sum complexity without reading, the section is not closed.
-    back_es: Si no puedes decir la complejidad de Two Sum sin leer, la sección no está cerrada.
-  - id: w01-big-o-s5-cA
-    front: Anchor for Big O close?
-    front_es: ¿Ancla de Cierre Big O?
-    back: Codenda.
-    back_es: Codenda.
+    front: 'Rank from fastest to slowest growth: O(n log n), O(1), O(n²), O(log n), O(n).'
+    front_es: 'Ordena de menor a mayor crecimiento: O(n log n), O(1), O(n²), O(log n), O(n).'
+    back: O(1) < O(log n) < O(n) < O(n log n) < O(n²).
+    back_es: O(1) < O(log n) < O(n) < O(n log n) < O(n²).
+  - id: w01-big-o-s5-c2
+    front: 'Self-check: can you state Two Sum''s time and space complexity without looking at your code?'
+    front_es: 'Auto-check: ¿puedes decir la complejidad de tiempo y espacio de Two Sum sin ver tu código?'
+    back: You should be able to say 'O(n) time, O(n) space' immediately — if not, this section isn't closed
+      yet.
+    back_es: Deberías poder decir 'O(n) tiempo, O(n) espacio' de inmediato — si no, esta sección todavía
+      no está cerrada.
+  - id: w01-big-o-s5-c3
+    front: What does Big O notation actually measure?
+    front_es: ¿Qué mide en realidad la notación Big O?
+    back: The worst-case growth rate of an algorithm's running time (or space) as the input size n gets
+      large — not the exact operation count.
+    back_es: La tasa de crecimiento en el peor caso del tiempo de ejecución (o espacio) de un algoritmo
+      cuando n crece — no el número exacto de operaciones.
   standard_minutes: 35
 - id: w02-rest-s1
-  index: 5
+  index: 10
   week_id: w02-rest
   week_title: REST
   week_title_es: REST
@@ -514,23 +1115,31 @@ sections:
     answer: 0
   cards:
   - id: w02-rest-s1-c1
-    front: 2xx ok?
-    front_es: 2xx ok?
-    back: 2xx ok, 4xx client, 5xx server.
-    back_es: 2xx ok, 4xx cliente, 5xx servidor.
+    front: What do the HTTP status code ranges 2xx, 4xx, and 5xx mean?
+    front_es: ¿Qué significan los rangos de status code 2xx, 4xx y 5xx?
+    back: 2xx = success, 4xx = client error (bad request, auth, not found), 5xx = server error (something
+      broke server-side).
+    back_es: 2xx = éxito, 4xx = error del cliente (request mal formado, auth, not found), 5xx = error
+      del servidor (algo se rompió del lado del server).
   - id: w02-rest-s1-c2
-    front: '200 with a SOAP Fault XML (eBay) is a broken contract: the code lies?'
-    front_es: '200 con Fault XML (eBay SOAP) es un contrato roto: el código miente?'
-    back: '200 with a SOAP Fault XML (eBay) is a broken contract: the code lies.'
-    back_es: '200 con Fault XML (eBay SOAP) es un contrato roto: el código miente.'
-  - id: w02-rest-s1-cA
-    front: Anchor for Status codes?
-    front_es: ¿Ancla de Status codes?
-    back: eLink.
-    back_es: eLink.
+    front: Why is returning HTTP 200 with an error payload inside (e.g. a SOAP Fault as XML) a broken
+      contract?
+    front_es: ¿Por qué devolver HTTP 200 con un error adentro (ej. un SOAP Fault en XML) es un contrato
+      roto?
+    back: Callers, proxies, and monitoring that check only the status code will treat the call as successful
+      even though it actually failed — the status code lies.
+    back_es: Los callers, proxies y monitoreo que solo revisan el status code van a tratar la llamada
+      como exitosa aunque en realidad falló — el status code miente.
+  - id: w02-rest-s1-c3
+    front: What's the difference between 404, 400, and 409?
+    front_es: ¿Cuál es la diferencia entre 404, 400 y 409?
+    back: 404 = the resource doesn't exist, 400 = the request itself is malformed/invalid, 409 = conflict
+      with the resource's current state (e.g. duplicate, version mismatch).
+    back_es: 404 = el recurso no existe, 400 = el request está mal formado/es inválido, 409 = conflicto
+      con el estado actual del recurso (ej. duplicado, versión distinta).
   standard_minutes: 35
 - id: w02-rest-s2
-  index: 6
+  index: 11
   week_id: w02-rest
   week_title: REST
   week_title_es: REST
@@ -603,28 +1212,36 @@ sections:
     answer: 0
   cards:
   - id: w02-rest-s2-c1
-    front: GET/PUT/DELETE can be retried?
-    front_es: GET/PUT/DELETE se pueden retriar?
-    back: GET/PUT/DELETE can be retried.
-    back_es: GET/PUT/DELETE se pueden retriar.
+    front: What does it mean for an HTTP method to be idempotent?
+    front_es: ¿Qué significa que un método HTTP sea idempotente?
+    back: Calling it multiple times with the same input has the same effect on server state as calling
+      it once — no extra side effects on repeat.
+    back_es: Llamarlo varias veces con el mismo input tiene el mismo efecto en el estado del servidor
+      que llamarlo una sola vez — sin efectos extra al repetir.
   - id: w02-rest-s2-c2
-    front: POST /orders cannot?
-    front_es: POST /orders no?
-    back: POST /orders cannot.
-    back_es: POST /orders no.
+    front: Per RFC 9110, which standard HTTP methods are idempotent, and which is not?
+    front_es: Según RFC 9110, ¿cuáles métodos HTTP estándar son idempotentes, y cuál no?
+    back: GET, HEAD, OPTIONS, TRACE, PUT, and DELETE are idempotent. POST is not — calling POST /orders
+      twice can create two orders.
+    back_es: GET, HEAD, OPTIONS, TRACE, PUT y DELETE son idempotentes. POST no lo es — llamar POST /orders
+      dos veces puede crear dos órdenes.
   - id: w02-rest-s2-c3
-    front: 'eLink dual-run: one writer once the diff was 0?'
-    front_es: 'Dual-run eLink: un solo writer cuando el diff fue 0?'
-    back: 'eLink dual-run: one writer once the diff was 0.'
-    back_es: 'Dual-run eLink: un solo writer cuando el diff fue 0.'
-  - id: w02-rest-s2-cA
-    front: Anchor for Idempotency?
-    front_es: ¿Ancla de Idempotencia?
-    back: eLink.
-    back_es: eLink.
+    front: Why does idempotency matter for retries in distributed systems?
+    front_es: ¿Por qué importa la idempotencia para los retries en sistemas distribuidos?
+    back: A network failure makes it unclear whether a request actually succeeded; if the operation is
+      idempotent, you can safely retry it without risking duplicate side effects (like double-charging).
+    back_es: Una falla de red no te dice si el request de verdad tuvo éxito; si la operación es idempotente,
+      puedes reintentarla sin riesgo de efectos duplicados (como cobrar dos veces).
+  - id: w02-rest-s2-c4
+    front: How do you make a non-idempotent operation like 'create order' safe to retry?
+    front_es: ¿Cómo haces que una operación no idempotente como 'crear orden' sea segura de reintentar?
+    back: 'Use an idempotency key: a client-generated request ID the server stores, so it can detect and
+      ignore duplicate submissions of the same logical request.'
+    back_es: 'Usando una idempotency key: un ID de request generado por el cliente que el servidor guarda,
+      para detectar e ignorar envíos duplicados del mismo request lógico.'
   standard_minutes: 35
 - id: w02-rest-s3
-  index: 7
+  index: 12
   week_id: w02-rest
   week_title: REST
   week_title_es: REST
@@ -694,23 +1311,31 @@ sections:
     answer: 0
   cards:
   - id: w02-rest-s3-c1
-    front: Offset is simple and breaks if rows are inserted?
-    front_es: Offset es simple y se rompe si insertan filas?
-    back: Offset is simple and breaks if rows are inserted.
-    back_es: Offset es simple y se rompe si insertan filas.
+    front: What's the difference between offset-based and cursor-based pagination?
+    front_es: ¿Cuál es la diferencia entre paginación por offset y por cursor?
+    back: Offset (LIMIT/OFFSET) skips N rows and is simple, but can skip or duplicate rows if data changes
+      between page loads. Cursor pagination uses a pointer (last seen id/timestamp) to fetch the next
+      page, staying consistent even as rows are inserted.
+    back_es: Offset (LIMIT/OFFSET) salta N filas y es simple, pero puede saltarse o duplicar filas si
+      los datos cambian entre páginas. La paginación por cursor usa un puntero (último id/timestamp visto)
+      para la siguiente página, y se mantiene consistente aunque se inserten filas.
   - id: w02-rest-s3-c2
-    front: A cursor holds up for large listings/orders?
-    front_es: Cursor aguanta listings/orders grandes?
-    back: A cursor holds up for large listings/orders.
-    back_es: Cursor aguanta listings/orders grandes.
-  - id: w02-rest-s3-cA
-    front: Anchor for Pagination?
-    front_es: ¿Ancla de Paginación?
-    back: eLink.
-    back_es: eLink.
+    front: Why does offset pagination break when rows are inserted between page loads?
+    front_es: ¿Por qué se rompe la paginación por offset si insertan filas entre páginas?
+    back: OFFSET counts rows from the start every time; a new row inserted before the current offset shifts
+      everything, causing duplicates or missed rows on the next page.
+    back_es: OFFSET cuenta filas desde el inicio cada vez; una fila nueva insertada antes del offset actual
+      recorre todo, causando duplicados o filas que se saltan en la siguiente página.
+  - id: w02-rest-s3-c3
+    front: When would you prefer cursor-based pagination over offset?
+    front_es: ¿Cuándo preferirías paginación por cursor en vez de offset?
+    back: For large, frequently-changing datasets (e.g. live order or listing feeds) where consistency
+      across pages matters more than jumping to an arbitrary page number.
+    back_es: Para datasets grandes que cambian seguido (ej. feeds de orders o listings en vivo) donde
+      la consistencia entre páginas importa más que poder saltar a una página arbitraria.
   standard_minutes: 35
 - id: w02-rest-s4
-  index: 8
+  index: 13
   week_id: w02-rest
   week_title: REST
   week_title_es: REST
@@ -780,28 +1405,29 @@ sections:
     answer: 0
   cards:
   - id: w02-rest-s4-c1
-    front: URL /v2 vs a header?
-    front_es: URL /v2 vs header?
-    back: URL /v2 vs a header.
-    back_es: URL /v2 vs header.
+    front: What are the two common ways to version a REST API?
+    front_es: ¿Cuáles son las dos formas comunes de versionar una REST API?
+    back: URL versioning (e.g. /v2/orders) or a request header (e.g. an Accept/version header).
+    back_es: Versionado en la URL (ej. /v2/orders) o en un header del request (ej. un header de Accept/version).
   - id: w02-rest-s4-c2
-    front: A breaking change is what eBay did without notice?
-    front_es: Breaking change = lo que eBay hizo sin avisar?
-    back: A breaking change is what eBay did without notice.
-    back_es: Breaking change = lo que eBay hizo sin avisar.
+    front: What counts as a breaking API change?
+    front_es: ¿Qué cuenta como un breaking change en una API?
+    back: 'Anything that makes existing clients fail or misbehave: removing/renaming a field, changing
+      a field''s type or meaning, changing required params, or changing status code semantics.'
+    back_es: 'Cualquier cosa que haga fallar o comportarse mal a los clientes existentes: quitar/renombrar
+      un campo, cambiar su tipo o significado, cambiar params requeridos, o cambiar la semántica de los
+      status codes.'
   - id: w02-rest-s4-c3
-    front: Version or dual-run?
-    front_es: Versiona o dual-run?
-    back: Version or dual-run.
-    back_es: Versiona o dual-run.
-  - id: w02-rest-s4-cA
-    front: Anchor for Versioning?
-    front_es: ¿Ancla de Versionado?
-    back: eLink.
-    back_es: eLink.
+    front: If an upstream API makes a breaking change without notice, what's a safe migration strategy?
+    front_es: Si una API upstream hace un breaking change sin avisar, ¿cuál es una estrategia segura de
+      migración?
+    back: 'Dual-run: keep the old integration live while building and validating the new one side-by-side,
+      diffing responses, and only cut over once the new path is verified.'
+    back_es: 'Dual-run: mantener viva la integración vieja mientras construyes y validas la nueva en paralelo,
+      comparando las respuestas, y solo cortar cuando la nueva ya esté verificada.'
   standard_minutes: 35
 - id: w02-rest-s5
-  index: 9
+  index: 14
   week_id: w02-rest
   week_title: REST
   week_title_es: REST
@@ -874,28 +1500,23 @@ sections:
     answer: 0
   cards:
   - id: w02-rest-s5-c1
-    front: One interface for listings/orders/inventory?
-    front_es: Una interfaz listings/orders/inventory?
-    back: One interface for listings/orders/inventory.
-    back_es: Una interfaz listings/orders/inventory.
+    front: In your eLink project, what pattern did you use to safely migrate from SOAP to REST?
+    front_es: En tu proyecto de eLink, ¿qué patrón usaste para migrar de SOAP a REST de forma segura?
+    back: 'Dual-run: both SOAP and REST calls ran in parallel behind one interface for listings/orders/inventory,
+      diffing their outputs, until the diff was zero — only then did REST become the sole writer.'
+    back_es: 'Dual-run: las llamadas SOAP y REST corrían en paralelo detrás de una sola interfaz para
+      listings/orders/inventory, comparando sus resultados, hasta que el diff fue cero — recién ahí REST
+      se volvió el único writer.'
   - id: w02-rest-s5-c2
-    front: Dual-run SOAP+REST?
-    front_es: Dual-run SOAP+REST?
-    back: Dual-run SOAP+REST.
-    back_es: Dual-run SOAP+REST.
-  - id: w02-rest-s5-c3
-    front: REST as the only writer once diffs were zero?
-    front_es: REST único writer con diffs en cero?
-    back: REST as the only writer once diffs were zero.
-    back_es: REST único writer con diffs en cero.
-  - id: w02-rest-s5-cA
-    front: Anchor for eLink?
-    front_es: ¿Ancla de eLink?
-    back: eLink.
-    back_es: eLink.
+    front: Why keep a single interface over both SOAP and REST instead of switching call sites directly?
+    front_es: ¿Por qué mantener una sola interfaz sobre SOAP y REST en vez de cambiar los call sites directo?
+    back: It isolates callers from the transport detail, so you can swap the implementation underneath
+      without touching every call site, and can dual-run both paths transparently.
+    back_es: Aísla a quien llama del detalle de transporte, así puedes cambiar la implementación de abajo
+      sin tocar cada call site, y puedes correr los dos paths en paralelo sin que se note.
   standard_minutes: 35
 - id: w03-sql-s1
-  index: 10
+  index: 15
   week_id: w03-sql
   week_title: SQL
   week_title_es: SQL
@@ -967,28 +1588,29 @@ sections:
     answer: 0
   cards:
   - id: w03-sql-s1-c1
-    front: 'INNER: there is a match?'
-    front_es: 'INNER: hay match?'
-    back: 'INNER: there is a match.'
-    back_es: 'INNER: hay match.'
+    front: What's the difference between INNER JOIN and LEFT JOIN?
+    front_es: ¿Cuál es la diferencia entre INNER JOIN y LEFT JOIN?
+    back: INNER JOIN returns only rows with a match in both tables. LEFT JOIN returns all rows from the
+      left table, with NULLs for the right side when there's no match.
+    back_es: INNER JOIN regresa solo las filas con match en ambas tablas. LEFT JOIN regresa todas las
+      filas de la tabla izquierda, con NULL del lado derecho cuando no hay match.
   - id: w03-sql-s1-c2
-    front: 'LEFT: keep the left side?'
-    front_es: 'LEFT: conserva la izquierda?'
-    back: 'LEFT: keep the left side.'
-    back_es: 'LEFT: conserva la izquierda.'
+    front: When would you use RIGHT JOIN instead of LEFT JOIN?
+    front_es: ¿Cuándo usarías RIGHT JOIN en vez de LEFT JOIN?
+    back: They're symmetric — RIGHT JOIN is a LEFT JOIN with the tables swapped. Most people standardize
+      on LEFT JOIN and just reorder the tables instead.
+    back_es: Son simétricos — RIGHT JOIN es un LEFT JOIN con las tablas al revés. La mayoría estandariza
+      en LEFT JOIN y solo reordena las tablas.
   - id: w03-sql-s1-c3
-    front: 'Three tables: do not fire N queries in a loop?'
-    front_es: 'Tres tablas: no hagas N queries en un loop?'
-    back: 'Three tables: do not fire N queries in a loop.'
-    back_es: 'Tres tablas: no hagas N queries en un loop.'
-  - id: w03-sql-s1-cA
-    front: Anchor for Joins?
-    front_es: ¿Ancla de Joins?
-    back: .NET services.
-    back_es: servicios .NET.
+    front: You need data from three related tables. What's the anti-pattern to avoid?
+    front_es: Necesitas datos de tres tablas relacionadas. ¿Cuál es el anti-patrón que debes evitar?
+    back: Firing N queries in a loop (the N+1 problem) instead of one joined query — e.g. querying orders,
+      then querying customer and items separately per order.
+    back_es: Disparar N queries en un loop (el problema N+1) en vez de una sola query con join — ej. consultar
+      orders y luego consultar customer e items por separado por cada orden.
   standard_minutes: 35
 - id: w03-sql-s2
-  index: 11
+  index: 16
   week_id: w03-sql
   week_title: SQL
   week_title_es: SQL
@@ -1058,28 +1680,28 @@ sections:
     answer: 0
   cards:
   - id: w03-sql-s2-c1
-    front: They speed up WHERE/JOIN?
-    front_es: Aceleran WHERE/JOIN?
-    back: They speed up WHERE/JOIN.
-    back_es: Aceleran WHERE/JOIN.
+    front: What does a database index do, and what's the trade-off?
+    front_es: ¿Qué hace un índice en la base de datos, y cuál es el trade-off?
+    back: It speeds up WHERE filtering and JOINs by avoiding full table scans, at the cost of extra disk
+      space and slower writes (every insert/update/delete must also update the index).
+    back_es: Acelera el filtrado de WHERE y los JOINs evitando full table scans, a costa de más espacio
+      en disco y writes más lentos (cada insert/update/delete también actualiza el índice).
   - id: w03-sql-s2-c2
-    front: They cost writes and space?
-    front_es: Cuestan writes y espacio?
-    back: They cost writes and space.
-    back_es: Cuestan writes y espacio.
+    front: What happens if a foreign key column has no index and you join on it?
+    front_es: ¿Qué pasa si una columna de foreign key no tiene índice y haces join con ella?
+    back: The database does a full table scan on that table for the join, which is slow on large tables.
+    back_es: La base de datos hace un full table scan en esa tabla para el join, lo cual es lento en tablas
+      grandes.
   - id: w03-sql-s2-c3
-    front: No index on an FK and the join scans?
-    front_es: Sin índice en FK?
-    back: No index on an FK and the join scans.
-    back_es: Sin índice en FK, el join barre.
-  - id: w03-sql-s2-cA
-    front: Anchor for Indexes?
-    front_es: ¿Ancla de Índices?
-    back: .NET services.
-    back_es: servicios .NET.
+    front: Should you index every column? Why or why not?
+    front_es: ¿Deberías indexar todas las columnas? ¿Por qué sí o no?
+    back: No — indexes cost write performance and storage. Index the columns actually used in WHERE, JOIN,
+      and ORDER BY that meaningfully help query performance.
+    back_es: No — los índices cuestan rendimiento de escritura y espacio. Indexa las columnas que de verdad
+      se usan en WHERE, JOIN y ORDER BY y que ayudan al rendimiento.
   standard_minutes: 35
 - id: w03-sql-s3
-  index: 12
+  index: 17
   week_id: w03-sql
   week_title: SQL
   week_title_es: SQL
@@ -1149,23 +1771,25 @@ sections:
     answer: 0
   cards:
   - id: w03-sql-s3-c1
-    front: '1NF–3NF: one fact?'
-    front_es: '1NF–3NF: un hecho?'
-    back: '1NF–3NF: one fact, one place.'
-    back_es: '1NF–3NF: un hecho, un lugar.'
+    front: What's the core idea of database normalization (1NF–3NF)?
+    front_es: ¿Cuál es la idea central de la normalización de bases de datos (1NF–3NF)?
+    back: 'Each fact lives in exactly one place, avoiding duplication and inconsistency. Roughly: 1NF
+      = atomic columns, no repeating groups; 2NF = no partial dependency on part of a composite key; 3NF
+      = no transitive dependency on non-key columns.'
+    back_es: 'Cada dato vive en un solo lugar, evitando duplicación e inconsistencia. En resumen: 1NF
+      = columnas atómicas, sin grupos repetidos; 2NF = sin dependencia parcial de parte de una llave compuesta;
+      3NF = sin dependencia transitiva de columnas que no son llave.'
   - id: w03-sql-s3-c2
-    front: You denormalize on purpose for reads?
-    front_es: Desnormalizas a propósito para leer?
-    back: You denormalize on purpose for reads, not out of laziness.
-    back_es: Desnormalizas a propósito para leer, no por flojera.
-  - id: w03-sql-s3-cA
-    front: Anchor for Normalization?
-    front_es: ¿Ancla de Normalización?
-    back: .NET services.
-    back_es: servicios .NET.
+    front: What is denormalization, and when is it justified?
+    front_es: ¿Qué es la desnormalización, y cuándo se justifica?
+    back: Deliberately duplicating or combining data to speed up reads (fewer joins), usually for reporting
+      or high-read paths — a conscious trade-off, not a shortcut for skipping schema design.
+    back_es: Duplicar o combinar datos a propósito para acelerar lecturas (menos joins), normalmente para
+      reportes o rutas de alta lectura — un trade-off consciente, no un atajo por no diseñar el schema
+      bien.
   standard_minutes: 35
 - id: w03-sql-s4
-  index: 13
+  index: 18
   week_id: w03-sql
   week_title: SQL
   week_title_es: SQL
@@ -1237,28 +1861,30 @@ sections:
     answer: 0
   cards:
   - id: w03-sql-s4-c1
-    front: BEGIN/COMMIT?
-    front_es: BEGIN/COMMIT?
-    back: BEGIN/COMMIT.
-    back_es: BEGIN/COMMIT.
+    front: What is a database transaction, and what does BEGIN/COMMIT do?
+    front_es: ¿Qué es una transacción de base de datos, y qué hace BEGIN/COMMIT?
+    back: A transaction groups multiple statements into one atomic unit of work. BEGIN starts it; COMMIT
+      makes all its changes permanent (or ROLLBACK undoes them all).
+    back_es: Una transacción agrupa varias sentencias en una sola unidad atómica de trabajo. BEGIN la
+      inicia; COMMIT hace permanentes todos sus cambios (o ROLLBACK los deshace a todos).
   - id: w03-sql-s4-c2
-    front: 'Isolation: the minimum is ''do not read dirty''?'
-    front_es: 'Isolation: lo mínimo es ''no leas sucio''?'
-    back: 'Isolation: the minimum is ''do not read dirty''.'
-    back_es: 'Isolation: lo mínimo es ''no leas sucio''.'
+    front: What does 'atomicity' guarantee for an order insert across multiple tables?
+    front_es: ¿Qué garantiza la 'atomicidad' al insertar una orden en varias tablas?
+    back: The order and all its related rows (line items, inventory updates, etc.) either all get written,
+      or none do — no partial/half-written order.
+    back_es: La orden y todas sus filas relacionadas (líneas, actualización de inventario, etc.) se escriben
+      todas o ninguna — nunca una orden a medias.
   - id: w03-sql-s4-c3
-    front: An order inserts completely or not at all?
-    front_es: Un order se inserta entero o no?
-    back: An order inserts completely or not at all.
-    back_es: Un order se inserta entero o no.
-  - id: w03-sql-s4-cA
-    front: Anchor for Transactions?
-    front_es: ¿Ancla de Transacciones?
-    back: .NET services.
-    back_es: servicios .NET.
+    front: What is a 'dirty read', and why is preventing it usually the minimum isolation level?
+    front_es: ¿Qué es un 'dirty read', y por qué evitarlo suele ser el nivel mínimo de isolation?
+    back: A dirty read happens when a transaction reads uncommitted changes from another transaction that
+      might later roll back. Most systems default to at least READ COMMITTED to prevent this.
+    back_es: Un dirty read pasa cuando una transacción lee cambios sin commit de otra transacción que
+      después puede hacer rollback. La mayoría de sistemas usa por default al menos READ COMMITTED para
+      evitarlo.
   standard_minutes: 35
 - id: w03-sql-s5
-  index: 14
+  index: 19
   week_id: w03-sql
   week_title: SQL
   week_title_es: SQL
@@ -1329,28 +1955,30 @@ sections:
     answer: 0
   cards:
   - id: w03-sql-s5-c1
-    front: N+1 = 1 query + N queries?
-    front_es: N+1 = 1 query + N queries?
-    back: N+1 = 1 query + N queries.
-    back_es: N+1 = 1 query + N queries.
+    front: What is the N+1 query problem?
+    front_es: ¿Qué es el problema N+1 de queries?
+    back: Running one query to get a list, then N more queries — one per row — to fetch related data,
+      instead of one query (a join) that gets everything at once.
+    back_es: Correr una query para obtener una lista, y luego N queries más — una por fila — para traer
+      datos relacionados, en vez de una sola query (un join) que trae todo junto.
   - id: w03-sql-s5-c2
-    front: EXPLAIN at a high level?
-    front_es: EXPLAIN a alto nivel?
-    back: EXPLAIN at a high level.
-    back_es: EXPLAIN a alto nivel.
+    front: What does EXPLAIN (or EXPLAIN ANALYZE) show you, at a high level?
+    front_es: ¿Qué te muestra EXPLAIN (o EXPLAIN ANALYZE), a alto nivel?
+    back: 'The query''s execution plan: whether it uses an index or a full table scan, join order, and
+      estimated/actual row counts and cost — used to spot slow queries.'
+    back_es: 'El plan de ejecución de la query: si usa un índice o hace full table scan, el orden de los
+      joins, y el número de filas/costo estimado o real — se usa para detectar queries lentas.'
   - id: w03-sql-s5-c3
-    front: Include/projection in EF is the same bug?
-    front_es: Include/proyección en EF es el mismo bug?
-    back: Include/projection in EF is the same bug.
-    back_es: Include/proyección en EF es el mismo bug.
-  - id: w03-sql-s5-cA
-    front: Anchor for N+1 and tuning?
-    front_es: ¿Ancla de N+1 y tuning?
-    back: .NET services.
-    back_es: servicios .NET.
+    front: How does N+1 typically show up when using an ORM like EF Core?
+    front_es: ¿Cómo aparece típicamente el N+1 al usar un ORM como EF Core?
+    back: Lazy-loading a navigation property inside a loop fires one query per item. Fix it with eager
+      loading (Include) or a projection (Select) that pulls related data in the original query.
+    back_es: Cargar una navigation property de forma lazy dentro de un loop dispara una query por elemento.
+      Se arregla con eager loading (Include) o una proyección (Select) que trae los datos relacionados
+      en la query original.
   standard_minutes: 35
 - id: w04-git-s1
-  index: 15
+  index: 20
   week_id: w04-git
   week_title: Git, PRs, CR
   week_title_es: Git, PRs, CR
@@ -1422,28 +2050,31 @@ sections:
     answer: 0
   cards:
   - id: w04-git-s1-c1
-    front: Short branch?
-    front_es: Branch corta?
-    back: Short branch.
-    back_es: Branch corta.
+    front: Why keep feature branches short-lived?
+    front_es: ¿Por qué mantener las branches de features cortas?
+    back: Long-lived branches drift far from main, causing large, painful merge conflicts. Short branches
+      merge often and stay easy to integrate.
+    back_es: Las branches que viven mucho tiempo se alejan de main, causando conflictos de merge grandes
+      y dolorosos. Las branches cortas se mergean seguido y son fáciles de integrar.
   - id: w04-git-s1-c2
-    front: 'Rebase vs merge: be able to say the tradeoff?'
-    front_es: 'Rebase vs merge: sepas decir el tradeoff?'
-    back: 'Rebase vs merge: be able to say the tradeoff.'
-    back_es: 'Rebase vs merge: sepas decir el tradeoff.'
+    front: What's the trade-off between git rebase and git merge?
+    front_es: ¿Cuál es el trade-off entre git rebase y git merge?
+    back: Rebase rewrites commit history onto a new base for a clean linear history, but rewrites shared
+      commits (risky on shared branches). Merge preserves true history with a merge commit — safer for
+      shared branches but noisier.
+    back_es: Rebase reescribe el historial de commits sobre una base nueva para un historial lineal y
+      limpio, pero reescribe commits compartidos (riesgoso en branches compartidas). Merge conserva el
+      historial real con un merge commit — más seguro en branches compartidas pero más ruidoso.
   - id: w04-git-s1-c3
-    front: Conflicts get resolved?
-    front_es: Conflictos se resuelven?
-    back: Conflicts get resolved, not hidden.
-    back_es: Conflictos se resuelven, no se esconden.
-  - id: w04-git-s1-cA
-    front: Anchor for Branch and merge?
-    front_es: ¿Ancla de Branch y merge?
-    back: TFS → GitHub.
-    back_es: TFS → GitHub.
+    front: How should merge conflicts be handled?
+    front_es: ¿Cómo se deben resolver los conflictos de merge?
+    back: By deliberately understanding both changes and picking/combining the correct result — never
+      by blindly accepting one side or hiding the conflict.
+    back_es: Entendiendo a propósito ambos cambios y eligiendo/combinando el resultado correcto — nunca
+      aceptando un lado a ciegas o escondiendo el conflicto.
   standard_minutes: 35
 - id: w04-git-s2
-  index: 16
+  index: 21
   week_id: w04-git
   week_title: Git, PRs, CR
   week_title_es: Git, PRs, CR
@@ -1513,23 +2144,29 @@ sections:
     answer: 0
   cards:
   - id: w04-git-s2-c1
-    front: 'What you ask for: behavior?'
-    front_es: 'Qué pides: comportamiento?'
-    back: 'What you ask for: behavior, tests, the cut.'
-    back_es: 'Qué pides: comportamiento, tests, el corte.'
+    front: What should a good pull request description focus reviewers on?
+    front_es: ¿En qué debería enfocar a los reviewers una buena descripción de PR?
+    back: The behavior change, the tests that prove it, and the scope/cut of the change — not incidental
+      noise.
+    back_es: El cambio de comportamiento, los tests que lo prueban, y el alcance/corte del cambio — no
+      el ruido incidental.
   - id: w04-git-s2-c2
-    front: Not 40 formatting files?
-    front_es: No 40 archivos de format?
-    back: Not 40 formatting files.
-    back_es: No 40 archivos de format.
-  - id: w04-git-s2-cA
-    front: Anchor for Pull request?
-    front_es: ¿Ancla de Pull request?
-    back: TFS → GitHub.
-    back_es: TFS → GitHub.
+    front: Why is a PR with 40 unrelated formatting-only file changes a problem?
+    front_es: ¿Por qué es un problema un PR con 40 cambios de formato sin relación?
+    back: It buries the real change in noise, makes review harder, and increases the chance of an unrelated
+      regression slipping through unreviewed.
+    back_es: Esconde el cambio real entre ruido, hace el review más difícil, y aumenta el riesgo de que
+      una regresión sin relación pase sin revisarse.
+  - id: w04-git-s2-c3
+    front: What makes a PR easy to review?
+    front_es: ¿Qué hace que un PR sea fácil de revisar?
+    back: Small, focused scope; a clear description of intent; tests covering the new behavior; no unrelated
+      changes mixed in.
+    back_es: Alcance chico y enfocado; una descripción clara de la intención; tests que cubran el comportamiento
+      nuevo; sin cambios sin relación mezclados.
   standard_minutes: 35
 - id: w04-git-s3
-  index: 17
+  index: 22
   week_id: w04-git
   week_title: Git, PRs, CR
   week_title_es: Git, PRs, CR
@@ -1599,23 +2236,29 @@ sections:
     answer: 0
   cards:
   - id: w04-git-s3-c1
-    front: Bugs?
-    front_es: Bugs?
-    back: Bugs, names, tests, contract diffs.
-    back_es: Bugs, nombres, tests, el diff de contratos.
+    front: What should code review prioritize?
+    front_es: ¿En qué se debería enfocar un code review?
+    back: Correctness (bugs), clarity (naming), test coverage, and any change to a public contract (API
+      signature, response shape) — not personal style preferences.
+    back_es: Corrección (bugs), claridad (nombres), cobertura de tests, y cualquier cambio a un contrato
+      público (firma de API, forma de la respuesta) — no preferencias de estilo personales.
   - id: w04-git-s3-c2
-    front: Not brace taste?
-    front_es: No gustos de llaves?
-    back: Not brace taste.
-    back_es: No gustos de llaves.
-  - id: w04-git-s3-cA
-    front: Anchor for Code review?
-    front_es: ¿Ancla de Code review?
-    back: TFS → GitHub.
-    back_es: TFS → GitHub.
+    front: Why avoid nitpicking formatting/brace style in review?
+    front_es: ¿Por qué evitar comentarios de estilo de formato/llaves en el review?
+    back: It wastes review time on low-value issues a linter/formatter should handle automatically, distracting
+      from real bugs and design concerns.
+    back_es: Desperdicia tiempo de review en cosas de poco valor que un linter/formatter debería manejar
+      automático, distrayendo de bugs reales y temas de diseño.
+  - id: w04-git-s3-c3
+    front: What is a 'contract diff', and why does it deserve extra scrutiny in review?
+    front_es: ¿Qué es un 'contract diff', y por qué merece atención extra en el review?
+    back: A change to a public interface (API shape, method signature, response schema) that can break
+      other consumers — its impact reaches beyond the current PR.
+    back_es: Un cambio a una interfaz pública (forma de API, firma de método, schema de respuesta) que
+      puede romper a otros consumidores — su impacto va más allá del PR actual.
   standard_minutes: 35
 - id: w04-git-s4
-  index: 18
+  index: 23
   week_id: w04-git
   week_title: Git, PRs, CR
   week_title_es: Git, PRs, CR
@@ -1685,28 +2328,24 @@ sections:
     answer: 0
   cards:
   - id: w04-git-s4-c1
-    front: Build → test → deploy?
-    front_es: Build → test → deploy?
-    back: Build → test → deploy.
-    back_es: Build → test → deploy.
+    front: What are the three core stages of a CI/CD pipeline?
+    front_es: ¿Cuáles son las tres etapas centrales de un pipeline CI/CD?
+    back: Build (compile/package the code), test (run automated tests against it), and deploy (ship the
+      built artifact to an environment).
+    back_es: Build (compilar/empaquetar el código), test (correr tests automáticos), y deploy (llevar
+      el artefacto a un ambiente).
   - id: w04-git-s4-c2
-    front: A comparable artifact?
-    front_es: Artefacto comparable?
-    back: A comparable artifact.
-    back_es: Artefacto comparable.
-  - id: w04-git-s4-c3
-    front: That is how they cut TFS?
-    front_es: Así cortaron TFS?
-    back: That is how they cut TFS.
-    back_es: Así cortaron TFS.
-  - id: w04-git-s4-cA
-    front: Anchor for Pipeline?
-    front_es: ¿Ancla de Pipeline?
-    back: TFS → GitHub.
-    back_es: TFS → GitHub.
+    front: Why is producing a 'comparable artifact' important when migrating build systems (e.g. TFS →
+      Azure DevOps)?
+    front_es: ¿Por qué importa producir un 'artefacto comparable' al migrar sistemas de build (ej. TFS
+      → Azure DevOps)?
+    back: It lets you verify the new pipeline produces an equivalent output to the old one before fully
+      cutting over, reducing migration risk.
+    back_es: Te permite verificar que el pipeline nuevo produce una salida equivalente a la vieja antes
+      de cortar del todo, reduciendo el riesgo de la migración.
   standard_minutes: 35
 - id: w04-git-s5
-  index: 19
+  index: 24
   week_id: w04-git
   week_title: Git, PRs, CR
   week_title_es: Git, PRs, CR
@@ -1776,28 +2415,22 @@ sections:
     answer: 0
   cards:
   - id: w04-git-s5-c1
-    front: TFVC → GitHub + YAML?
-    front_es: TFVC → GitHub + YAML?
-    back: TFVC → GitHub + YAML.
-    back_es: TFVC → GitHub + YAML.
+    front: What are the main pieces of migrating from TFVC to Git + YAML pipelines?
+    front_es: ¿Cuáles son las piezas principales al migrar de TFVC a Git + pipelines YAML?
+    back: Moving source history/branches from TFVC to Git (GitHub), and translating the old build definitions
+      into YAML pipeline-as-code.
+    back_es: Mover el historial de fuentes/branches de TFVC a Git (GitHub), y traducir las definiciones
+      de build viejas a YAML como pipeline-as-code.
   - id: w04-git-s5-c2
-    front: Compare artifacts before turning TFS off?
-    front_es: Comparar artefactos antes de apagar TFS?
-    back: Compare artifacts before turning TFS off.
-    back_es: Comparar artefactos antes de apagar TFS.
-  - id: w04-git-s5-c3
-    front: The hero is the cutover?
-    front_es: El héroe es el corte?
-    back: The hero is the cutover.
-    back_es: El héroe es el corte.
-  - id: w04-git-s5-cA
-    front: Anchor for The migration?
-    front_es: ¿Ancla de La migración?
-    back: TFS → GitHub.
-    back_es: TFS → GitHub.
+    front: What's the safest way to cut over a build/deploy migration without breaking releases?
+    front_es: ¿Cuál es la forma más segura de cortar una migración de build/deploy sin romper releases?
+    back: Run both pipelines in parallel, compare their output artifacts for equivalence, and only decommission
+      the old one once you've confirmed parity.
+    back_es: Correr ambos pipelines en paralelo, comparar sus artefactos de salida para ver que sean equivalentes,
+      y apagar el viejo solo cuando confirmes que son iguales.
   standard_minutes: 35
 - id: w05-azdo-s1
-  index: 20
+  index: 25
   week_id: w05-azdo
   week_title: Azure DevOps
   week_title_es: Azure DevOps
@@ -1867,23 +2500,22 @@ sections:
     answer: 0
   cards:
   - id: w05-azdo-s1-c1
-    front: Boards?
-    front_es: Boards?
-    back: Boards, repos, pipelines.
-    back_es: Boards, repos, pipelines.
+    front: What are the main components of Azure DevOps?
+    front_es: ¿Cuáles son los componentes principales de Azure DevOps?
+    back: Boards (work item tracking), Repos (Git source control), Pipelines (CI/CD), Artifacts (package
+      feeds), and Test Plans.
+    back_es: Boards (tracking de work items), Repos (control de fuente Git), Pipelines (CI/CD), Artifacts
+      (feeds de paquetes), y Test Plans.
   - id: w05-azdo-s1-c2
-    front: What lived in TFS and what moved to GitHub?
-    front_es: Qué vivía en TFS y qué se fue a GitHub?
-    back: What lived in TFS and what moved to GitHub.
-    back_es: Qué vivía en TFS y qué se fue a GitHub.
-  - id: w05-azdo-s1-cA
-    front: Anchor for Map?
-    front_es: ¿Ancla de Mapa?
-    back: migration.
-    back_es: migración.
+    front: In a TFS → GitHub migration, what typically stays in Azure DevOps vs moves to GitHub?
+    front_es: En una migración TFS → GitHub, ¿qué normalmente se queda en Azure DevOps vs se va a GitHub?
+    back: Work tracking (Boards) and pipelines often stay in Azure DevOps, while source code moves to
+      GitHub repos, with pipelines pointed at the new GitHub repo.
+    back_es: El tracking de trabajo (Boards) y los pipelines suelen quedarse en Azure DevOps, mientras
+      el código fuente se mueve a repos de GitHub, y los pipelines apuntan al repo nuevo de GitHub.
   standard_minutes: 35
 - id: w05-azdo-s2
-  index: 21
+  index: 26
   week_id: w05-azdo
   week_title: Azure DevOps
   week_title_es: Azure DevOps
@@ -1953,23 +2585,22 @@ sections:
     answer: 0
   cards:
   - id: w05-azdo-s2-c1
-    front: trigger?
-    front_es: trigger?
-    back: trigger, stage, job.
-    back_es: trigger, stage, job.
+    front: What do trigger, stage, and job mean in an Azure DevOps YAML pipeline?
+    front_es: ¿Qué significan trigger, stage y job en un pipeline YAML de Azure DevOps?
+    back: trigger defines what starts the pipeline (e.g. a push to a branch); a stage is a major phase
+      (build, test, deploy); a job is a set of steps that run on one agent within a stage.
+    back_es: trigger define qué arranca el pipeline (ej. un push a una branch); un stage es una fase grande
+      (build, test, deploy); un job es un conjunto de steps que corren en un agent dentro de un stage.
   - id: w05-azdo-s2-c2
-    front: The YAML is the build contract?
-    front_es: El YAML es el contrato del build?
-    back: The YAML is the build contract.
-    back_es: El YAML es el contrato del build.
-  - id: w05-azdo-s2-cA
-    front: Anchor for YAML pipeline?
-    front_es: ¿Ancla de YAML pipeline?
-    back: migration.
-    back_es: migración.
+    front: Why call the pipeline YAML 'the build contract'?
+    front_es: ¿Por qué llamar al YAML del pipeline 'el contrato del build'?
+    back: It's the single source of truth, checked into source control, defining exactly how the code
+      is built, tested, and deployed — reviewable and versioned like any other code.
+    back_es: Es la única fuente de verdad, versionada en el control de fuente, que define exactamente
+      cómo se construye, prueba y despliega el código — revisable y versionada como cualquier otro código.
   standard_minutes: 35
 - id: w05-azdo-s3
-  index: 22
+  index: 27
   week_id: w05-azdo
   week_title: Azure DevOps
   week_title_es: Azure DevOps
@@ -2039,18 +2670,22 @@ sections:
     answer: 0
   cards:
   - id: w05-azdo-s3-c1
-    front: The package you compare before cutover?
-    front_es: El paquete que comparas antes del cutover?
-    back: The package you compare before cutover.
-    back_es: El paquete que comparas antes del cutover.
-  - id: w05-azdo-s3-cA
-    front: Anchor for Artifacts?
-    front_es: ¿Ancla de Artifacts?
-    back: migration.
-    back_es: migración.
+    front: What is a build artifact in a CI/CD pipeline?
+    front_es: ¿Qué es un artefacto de build en un pipeline CI/CD?
+    back: The packaged output of the build stage (a compiled binary, container image, or zip) that gets
+      promoted through test/deploy stages.
+    back_es: La salida empaquetada del stage de build (un binario compilado, imagen de contenedor, o zip)
+      que se promueve por los stages de test/deploy.
+  - id: w05-azdo-s3-c2
+    front: Why compare artifacts from the old and new pipeline before a cutover?
+    front_es: ¿Por qué comparar los artefactos del pipeline viejo y el nuevo antes de cortar?
+    back: To confirm the new pipeline produces an equivalent, correct output before you rely on it in
+      production and retire the old system.
+    back_es: Para confirmar que el pipeline nuevo produce una salida correcta y equivalente antes de depender
+      de él en producción y apagar el sistema viejo.
   standard_minutes: 35
 - id: w05-azdo-s4
-  index: 23
+  index: 28
   week_id: w05-azdo
   week_title: Azure DevOps
   week_title_es: Azure DevOps
@@ -2120,23 +2755,23 @@ sections:
     answer: 0
   cards:
   - id: w05-azdo-s4-c1
-    front: Variables and service connections?
-    front_es: Variables y service connections?
-    back: Variables and service connections.
-    back_es: Variables y service connections.
+    front: How should secrets (API keys, connection strings) be managed in Azure DevOps pipelines?
+    front_es: ¿Cómo se deben manejar los secrets (API keys, connection strings) en pipelines de Azure
+      DevOps?
+    back: As pipeline variables marked secret, or via service connections/variable groups (optionally
+      backed by Key Vault) — never committed into the repo.
+    back_es: Como variables del pipeline marcadas secret, o vía service connections/variable groups (opcionalmente
+      respaldadas por Key Vault) — nunca commiteadas al repo.
   - id: w05-azdo-s4-c2
-    front: Not in the repo?
-    front_es: No en el repo?
-    back: Not in the repo.
-    back_es: No en el repo.
-  - id: w05-azdo-s4-cA
-    front: Anchor for Secrets?
-    front_es: ¿Ancla de Secrets?
-    back: migration.
-    back_es: migración.
+    front: What's a 'service connection' in Azure DevOps used for?
+    front_es: ¿Para qué se usa una 'service connection' en Azure DevOps?
+    back: An authenticated link from the pipeline to an external service (Azure subscription, Docker registry,
+      etc.) so pipelines can deploy/access resources without hardcoding credentials.
+    back_es: Una conexión autenticada del pipeline hacia un servicio externo (suscripción de Azure, registro
+      de Docker, etc.) para que el pipeline pueda desplegar/acceder recursos sin hardcodear credenciales.
   standard_minutes: 35
 - id: w05-azdo-s5
-  index: 24
+  index: 29
   week_id: w05-azdo
   week_title: Azure DevOps
   week_title_es: Azure DevOps
@@ -2206,18 +2841,15 @@ sections:
     answer: 0
   cards:
   - id: w05-azdo-s5-c1
-    front: 'Vocabulary vs evidence: say the artifact diff?'
-    front_es: 'Vocabulario vs evidencia: di el diff de artefactos?'
-    back: 'Vocabulary vs evidence: say the artifact diff, not the Azure menu.'
-    back_es: 'Vocabulario vs evidencia: di el diff de artefactos, no el menú de Azure.'
-  - id: w05-azdo-s5-cA
-    front: Anchor for What you did?
-    front_es: ¿Ancla de Lo que tú hiciste?
-    back: migration.
-    back_es: migración.
+    front: In an interview, when describing a migration you did, what should you lead with?
+    front_es: En entrevista, al describir una migración que hiciste, ¿con qué deberías empezar?
+    back: Concrete evidence of what you built and verified (e.g. 'I diffed artifacts between the old and
+      new pipeline until they matched'), not just a list of Azure DevOps menu items.
+    back_es: Evidencia concreta de lo que construiste y verificaste (ej. 'comparé artefactos entre el
+      pipeline viejo y el nuevo hasta que coincidieron'), no solo una lista de menús de Azure DevOps.
   standard_minutes: 35
 - id: w06-tests-s1
-  index: 25
+  index: 30
   week_id: w06-tests
   week_title: Tests and mocks
   week_title_es: Tests y mock
@@ -2287,23 +2919,23 @@ sections:
     answer: 0
   cards:
   - id: w06-tests-s1-c1
-    front: 'Unit: one unit?'
-    front_es: 'Unit: una unidad?'
-    back: 'Unit: one unit, mocked deps.'
-    back_es: 'Unit: una unidad, deps mockeadas.'
+    front: What's the difference between a unit test and an integration test?
+    front_es: ¿Cuál es la diferencia entre un unit test y un integration test?
+    back: A unit test exercises one unit of code in isolation with its dependencies mocked/faked. An integration
+      test exercises real dependencies (an actual DB, an actual HTTP call).
+    back_es: Un unit test prueba una sola unidad de código aislada, con sus dependencias mockeadas. Un
+      integration test prueba dependencias reales (una DB real, una llamada HTTP real).
   - id: w06-tests-s1-c2
-    front: 'Integration: the real DB or HTTP?'
-    front_es: 'Integration: la DB o el HTTP de verdad?'
-    back: 'Integration: the real DB or HTTP.'
-    back_es: 'Integration: la DB o el HTTP de verdad.'
-  - id: w06-tests-s1-cA
-    front: Anchor for Unit vs integration?
-    front_es: ¿Ancla de Unit vs integration?
-    back: eLink.
-    back_es: eLink.
+    front: Why do you need both unit and integration tests?
+    front_es: ¿Por qué necesitas tanto unit tests como integration tests?
+    back: Unit tests are fast and pinpoint logic bugs in isolation. Integration tests catch problems that
+      only appear when real components interact (wrong SQL, serialization mismatches, network issues).
+    back_es: Los unit tests son rápidos y detectan bugs de lógica aislados. Los integration tests detectan
+      problemas que solo aparecen cuando los componentes reales interactúan (SQL mal, serialización que
+      no cuadra, problemas de red).
   standard_minutes: 35
 - id: w06-tests-s2
-  index: 26
+  index: 31
   week_id: w06-tests
   week_title: Tests and mocks
   week_title_es: Tests y mock
@@ -2373,23 +3005,22 @@ sections:
     answer: 0
   cards:
   - id: w06-tests-s2-c1
-    front: Arrange?
-    front_es: Arrange?
-    back: Arrange, Act, Assert.
-    back_es: Arrange, Act, Assert.
+    front: What does the AAA pattern in unit tests stand for?
+    front_es: ¿Qué significa el patrón AAA en unit tests?
+    back: Arrange (set up inputs/mocks), Act (call the code under test), Assert (verify the result).
+    back_es: Arrange (preparar inputs/mocks), Act (llamar el código bajo prueba), Assert (verificar el
+      resultado).
   - id: w06-tests-s2-c2
-    front: One strong assert beats ten weak ones?
-    front_es: Un assert fuerte vale más que diez flojos?
-    back: One strong assert beats ten weak ones.
-    back_es: Un assert fuerte vale más que diez flojos.
-  - id: w06-tests-s2-cA
-    front: Anchor for AAA?
-    front_es: ¿Ancla de AAA?
-    back: eLink.
-    back_es: eLink.
+    front: Why is one strong assertion better than ten weak ones?
+    front_es: ¿Por qué una sola aserción fuerte es mejor que diez débiles?
+    back: A strong assertion verifies the exact behavior that matters (return value or state change);
+      many weak/trivial assertions can pass without truly proving correctness, and just add noise.
+    back_es: Una aserción fuerte verifica el comportamiento exacto que importa (valor de retorno o cambio
+      de estado); muchas aserciones débiles pueden pasar sin probar de verdad que el código es correcto,
+      y solo agregan ruido.
   standard_minutes: 35
 - id: w06-tests-s3
-  index: 27
+  index: 32
   week_id: w06-tests
   week_title: Tests and mocks
   week_title_es: Tests y mock
@@ -2459,23 +3090,22 @@ sections:
     answer: 0
   cards:
   - id: w06-tests-s3-c1
-    front: I/O?
-    front_es: I/O?
-    back: I/O, the clock, the eBay client.
-    back_es: I/O, reloj, el cliente eBay.
+    front: What kinds of dependencies should you typically mock in a unit test?
+    front_es: ¿Qué tipo de dependencias deberías mockear normalmente en un unit test?
+    back: I/O (database, filesystem, network calls), time/the clock, and external service clients — anything
+      slow, non-deterministic, or outside your control.
+    back_es: I/O (base de datos, sistema de archivos, llamadas de red), el tiempo/reloj, y clientes de
+      servicios externos — cualquier cosa lenta, no determinística, o fuera de tu control.
   - id: w06-tests-s3-c2
-    front: Do not mock the system under test?
-    front_es: No mockees el sistema bajo prueba?
-    back: Do not mock the system under test.
-    back_es: No mockees el sistema bajo prueba.
-  - id: w06-tests-s3-cA
-    front: Anchor for What to mock?
-    front_es: ¿Ancla de Qué mockear?
-    back: eLink.
-    back_es: eLink.
+    front: What's the golden rule about what NOT to mock?
+    front_es: ¿Cuál es la regla de oro sobre qué NO mockear?
+    back: Never mock the system under test itself — you'd end up testing the mock instead of your actual
+      code.
+    back_es: Nunca mockees el sistema que estás probando — terminarías probando el mock en vez de tu código
+      real.
   standard_minutes: 35
 - id: w06-tests-s4
-  index: 28
+  index: 33
   week_id: w06-tests
   week_title: Tests and mocks
   week_title_es: Tests y mock
@@ -2545,23 +3175,21 @@ sections:
     answer: 0
   cards:
   - id: w06-tests-s4-c1
-    front: Whatever you use in .NET?
-    front_es: Lo que uses en .NET?
-    back: Whatever you use in .NET.
-    back_es: Lo que uses en .NET.
+    front: In .NET, what are the common libraries for unit testing and mocking?
+    front_es: En .NET, ¿cuáles son las librerías comunes para unit testing y mocking?
+    back: xUnit (or NUnit/MSTest) for the test framework, and Moq (or NSubstitute) for creating mock objects.
+    back_es: xUnit (o NUnit/MSTest) como framework de tests, y Moq (o NSubstitute) para crear objetos
+      mock.
   - id: w06-tests-s4-c2
-    front: The library name is not the point?
-    front_es: El nombre de la lib no es el punto?
-    back: The library name is not the point.
-    back_es: El nombre de la lib no es el punto.
-  - id: w06-tests-s4-cA
-    front: Anchor for xUnit / Moq?
-    front_es: ¿Ancla de xUnit / Moq?
-    back: eLink.
-    back_es: eLink.
+    front: In an interview, does it matter exactly which mocking library you name?
+    front_es: En entrevista, ¿importa exactamente cuál librería de mocking mencionas?
+    back: Not much — what matters is understanding the underlying concepts (arrange/act/assert, what to
+      mock, isolation) well enough to apply them in any framework.
+    back_es: No mucho — lo que importa es entender los conceptos de fondo (arrange/act/assert, qué mockear,
+      aislamiento) lo suficiente para aplicarlos en cualquier framework.
   standard_minutes: 35
 - id: w06-tests-s5
-  index: 29
+  index: 34
   week_id: w06-tests
   week_title: Tests and mocks
   week_title_es: Tests y mock
@@ -2631,18 +3259,16 @@ sections:
     answer: 0
   cards:
   - id: w06-tests-s5-c1
-    front: 'SOAP vs REST payload diff: that is a contract test?'
-    front_es: 'Diff de payload SOAP vs REST: eso es un test de contrato?'
-    back: 'SOAP vs REST payload diff: that is a contract test.'
-    back_es: 'Diff de payload SOAP vs REST: eso es un test de contrato.'
-  - id: w06-tests-s5-cA
-    front: Anchor for An eLink test?
-    front_es: ¿Ancla de Un test de eLink?
-    back: eLink.
-    back_es: eLink.
+    front: What is a 'contract test', using the eLink SOAP-vs-REST migration as an example?
+    front_es: ¿Qué es un 'contract test', usando la migración SOAP-vs-REST de eLink como ejemplo?
+    back: A test that verifies two implementations (the old SOAP client, the new REST client) produce
+      equivalent output for the same input — diffing payloads to catch behavioral regressions before cutover.
+    back_es: Un test que verifica que dos implementaciones (el cliente SOAP viejo, el cliente REST nuevo)
+      produzcan la misma salida para el mismo input — comparando payloads para detectar regresiones antes
+      de cortar.
   standard_minutes: 35
 - id: w07-async-cs-s1
-  index: 30
+  index: 35
   week_id: w07-async-cs
   week_title: C# async
   week_title_es: C# async
@@ -2712,23 +3338,22 @@ sections:
     answer: 0
   cards:
   - id: w07-async-cs-s1-c1
-    front: async is for I/O?
-    front_es: async es para I/O?
-    back: async is for I/O.
-    back_es: async es para I/O.
+    front: Does async/await in C# create a new thread?
+    front_es: ¿async/await en C# crea un thread nuevo?
+    back: No — async is about not blocking a thread while waiting on I/O. The continuation resumes on
+      a pooled thread; await does not spin up a dedicated thread per call.
+    back_es: No — async es sobre no bloquear un thread mientras esperas I/O. La continuación se reanuda
+      en un thread del pool; await no crea un thread dedicado por cada llamada.
   - id: w07-async-cs-s1-c2
-    front: It is not a new thread per request?
-    front_es: No es un thread nuevo por request?
-    back: It is not a new thread per request.
-    back_es: No es un thread nuevo por request.
-  - id: w07-async-cs-s1-cA
-    front: Anchor for Task vs thread?
-    front_es: ¿Ancla de Task vs thread?
-    back: .NET APIs.
-    back_es: APIs .NET.
+    front: 'What kind of work is async/await meant for: CPU-bound or I/O-bound?'
+    front_es: '¿Para qué tipo de trabajo es async/await: CPU-bound o I/O-bound?'
+    back: I/O-bound work (HTTP calls, database queries, file access) — the thread is freed to do other
+      work while waiting, instead of blocking.
+    back_es: Trabajo I/O-bound (llamadas HTTP, queries a base de datos, acceso a archivos) — el thread
+      queda libre para hacer otra cosa mientras espera, en vez de bloquearse.
   standard_minutes: 35
 - id: w07-async-cs-s2
-  index: 31
+  index: 36
   week_id: w07-async-cs
   week_title: C# async
   week_title_es: C# async
@@ -2798,23 +3423,22 @@ sections:
     answer: 0
   cards:
   - id: w07-async-cs-s2-c1
-    front: It releases the thread while waiting on HTTP/SQL?
-    front_es: Suelta el hilo mientras espera HTTP/SQL?
-    back: It releases the thread while waiting on HTTP/SQL.
-    back_es: Suelta el hilo mientras espera HTTP/SQL.
+    front: What does the await keyword actually do?
+    front_es: ¿Qué hace en realidad la palabra await?
+    back: It suspends the async method and releases the current thread back to the pool while the awaited
+      operation completes; when it finishes, the rest of the method resumes (possibly on a different thread).
+    back_es: Suspende el método async y libera el thread actual al pool mientras la operación esperada
+      termina; cuando acaba, el resto del método continúa (posiblemente en otro thread).
   - id: w07-async-cs-s2-c2
-    front: The rest of the method continues after?
-    front_es: El resto del método continúa después?
-    back: The rest of the method continues after.
-    back_es: El resto del método continúa después.
-  - id: w07-async-cs-s2-cA
-    front: Anchor for await?
-    front_es: ¿Ancla de await?
-    back: .NET APIs.
-    back_es: APIs .NET.
+    front: Why does async I/O improve server throughput compared to sync blocking calls?
+    front_es: ¿Por qué el I/O async mejora el throughput del servidor comparado con llamadas sync bloqueantes?
+    back: Threads aren't held hostage waiting on I/O, so the same thread pool can serve many more concurrent
+      requests.
+    back_es: Los threads no quedan atrapados esperando I/O, así que el mismo thread pool puede atender
+      muchas más requests concurrentes.
   standard_minutes: 35
 - id: w07-async-cs-s3
-  index: 32
+  index: 37
   week_id: w07-async-cs
   week_title: C# async
   week_title_es: C# async
@@ -2884,23 +3508,25 @@ sections:
     answer: 0
   cards:
   - id: w07-async-cs-s3-c1
-    front: .Result / .Wait on classic ASP.NET = deadlock?
-    front_es: .Result / .Wait en ASP.NET clásico = deadlock?
-    back: .Result / .Wait on classic ASP.NET = deadlock.
-    back_es: .Result / .Wait en ASP.NET clásico = deadlock.
+    front: Why can calling .Result or .Wait() on a Task cause a deadlock in classic (non-Core) ASP.NET?
+    front_es: ¿Por qué llamar .Result o .Wait() en un Task puede causar deadlock en ASP.NET clásico (no
+      Core)?
+    back: Classic ASP.NET's SynchronizationContext captures the calling context; blocking synchronously
+      while that same context is needed to resume the async continuation makes both wait on each other
+      forever.
+    back_es: El SynchronizationContext de ASP.NET clásico captura el contexto que llama; bloquear de forma
+      sincrónica mientras ese mismo contexto se necesita para reanudar la continuación async hace que
+      ambos se esperen entre sí para siempre.
   - id: w07-async-cs-s3-c2
-    front: await all the way?
-    front_es: await todo el camino?
-    back: await all the way.
-    back_es: await todo el camino.
-  - id: w07-async-cs-s3-cA
-    front: Anchor for Deadlocks?
-    front_es: ¿Ancla de Deadlocks?
-    back: .NET APIs.
-    back_es: APIs .NET.
+    front: What's the standard fix for the .Result/.Wait() deadlock problem?
+    front_es: ¿Cuál es la solución estándar al problema de deadlock de .Result/.Wait()?
+    back: '"Async all the way" — use await consistently up the whole call chain instead of mixing sync
+      blocking calls with async code.'
+    back_es: '"Async todo el camino" — usar await de forma consistente en toda la cadena de llamadas en
+      vez de mezclar llamadas bloqueantes sync con código async.'
   standard_minutes: 35
 - id: w07-async-cs-s4
-  index: 33
+  index: 38
   week_id: w07-async-cs
   week_title: C# async
   week_title_es: C# async
@@ -2970,28 +3596,25 @@ sections:
     answer: 0
   cards:
   - id: w07-async-cs-s4-c1
-    front: false in libraries?
-    front_es: false en librerías?
-    back: false in libraries.
-    back_es: false en librerías.
+    front: What does ConfigureAwait(false) do?
+    front_es: ¿Qué hace ConfigureAwait(false)?
+    back: It tells the awaiter not to resume the continuation on the original SynchronizationContext,
+      avoiding the cost (and deadlock risk) of capturing and restoring that context.
+    back_es: Le dice al awaiter que no reanude la continuación en el SynchronizationContext original,
+      evitando el costo (y riesgo de deadlock) de capturar y restaurar ese contexto.
   - id: w07-async-cs-s4-c2
-    front: On modern ASP.NET Core it almost never bites?
-    front_es: En ASP.NET Core moderno casi no muerde?
-    back: On modern ASP.NET Core it almost never bites.
-    back_es: En ASP.NET Core moderno casi no muerde.
-  - id: w07-async-cs-s4-c3
-    front: Say when?
-    front_es: Di cuándo?
-    back: Say when.
-    back_es: Di cuándo.
-  - id: w07-async-cs-s4-cA
-    front: Anchor for ConfigureAwait?
-    front_es: ¿Ancla de ConfigureAwait?
-    back: .NET APIs.
-    back_es: APIs .NET.
+    front: Do you need ConfigureAwait(false) in a modern ASP.NET Core controller? Why or why not?
+    front_es: ¿Necesitas ConfigureAwait(false) en un controller moderno de ASP.NET Core? ¿Por qué sí o
+      no?
+    back: Not really — ASP.NET Core doesn't install a SynchronizationContext, so there's nothing to capture;
+      it becomes a functional no-op there. It's still important in reusable library code, which might
+      run under a host (WPF, WinForms, classic ASP.NET) that does have one.
+    back_es: No de verdad — ASP.NET Core no instala un SynchronizationContext, así que no hay nada que
+      capturar; ahí es básicamente un no-op. Sigue siendo importante en código de librería reutilizable,
+      que puede correr en un host (WPF, WinForms, ASP.NET clásico) que sí tiene uno.
   standard_minutes: 35
 - id: w07-async-cs-s5
-  index: 34
+  index: 39
   week_id: w07-async-cs
   week_title: C# async
   week_title_es: C# async
@@ -3061,23 +3684,22 @@ sections:
     answer: 0
   cards:
   - id: w07-async-cs-s5-c1
-    front: CancellationToken on I/O?
-    front_es: CancellationToken en I/O?
-    back: CancellationToken on I/O.
-    back_es: CancellationToken en I/O.
+    front: What is a CancellationToken used for in async code?
+    front_es: ¿Para qué se usa un CancellationToken en código async?
+    back: A cooperative signal passed into I/O operations so they can stop early if the caller no longer
+      needs the result (e.g. the client disconnected, or a timeout elapsed).
+    back_es: Una señal cooperativa que se pasa a las operaciones de I/O para que puedan detenerse antes
+      si el caller ya no necesita el resultado (ej. el cliente se desconectó, o pasó un timeout).
   - id: w07-async-cs-s5-c2
-    front: 'The client left: do not keep calling eBay?'
-    front_es: 'El cliente se fue: no sigas el HTTP a eBay?'
-    back: 'The client left: do not keep calling eBay.'
-    back_es: 'El cliente se fue: no sigas el HTTP a eBay.'
-  - id: w07-async-cs-s5-cA
-    front: Anchor for Cancellation?
-    front_es: ¿Ancla de Cancelación?
-    back: .NET APIs.
-    back_es: APIs .NET.
+    front: Why does it matter to respect cancellation on outbound calls to a third-party API?
+    front_es: ¿Por qué importa respetar la cancelación en llamadas salientes a una API de terceros?
+    back: If the original caller already gave up, continuing to call an external service wastes resources
+      and rate-limit budget on work whose result nobody will use.
+    back_es: Si el caller original ya se rindió, seguir llamando a un servicio externo desperdicia recursos
+      y cuota de rate-limit en trabajo cuyo resultado nadie va a usar.
   standard_minutes: 35
 - id: w08-concurrency-s1
-  index: 35
+  index: 40
   week_id: w08-concurrency
   week_title: Concurrency
   week_title_es: Concurrencia
@@ -3147,23 +3769,22 @@ sections:
     answer: 0
   cards:
   - id: w08-concurrency-s1-c1
-    front: Two requests stomp the same state?
-    front_es: Dos requests pisan el mismo estado?
-    back: Two requests stomp the same state.
-    back_es: Dos requests pisan el mismo estado.
+    front: What is a race condition?
+    front_es: ¿Qué es una race condition?
+    back: When two or more threads/requests access and modify shared state concurrently, and the outcome
+      depends on unpredictable timing — leading to corrupted or inconsistent data.
+    back_es: Cuando dos o más threads/requests acceden y modifican estado compartido al mismo tiempo,
+      y el resultado depende del timing impredecible — llevando a datos corruptos o inconsistentes.
   - id: w08-concurrency-s1-c2
-    front: Lock or do not share?
-    front_es: Lock o no compartir?
-    back: Lock or do not share.
-    back_es: Lock o no compartir.
-  - id: w08-concurrency-s1-cA
-    front: Anchor for Race and lock?
-    front_es: ¿Ancla de Race y lock?
-    back: APIs.
-    back_es: APIs.
+    front: What are the two basic strategies to avoid a race condition?
+    front_es: ¿Cuáles son las dos estrategias básicas para evitar una race condition?
+    back: Synchronize access with a lock so only one thread mutates the state at a time, or avoid sharing
+      mutable state altogether (e.g. per-request/scoped state).
+    back_es: Sincronizar el acceso con un lock para que solo un thread mute el estado a la vez, o evitar
+      compartir estado mutable del todo (ej. estado por request/scoped).
   standard_minutes: 35
 - id: w08-concurrency-s2
-  index: 36
+  index: 41
   week_id: w08-concurrency
   week_title: Concurrency
   week_title_es: Concurrencia
@@ -3233,23 +3854,15 @@ sections:
     answer: 0
   cards:
   - id: w08-concurrency-s2-c1
-    front: Blocking the thread on HTTP is waste?
-    front_es: Bloquear el hilo en HTTP es desperdicio?
-    back: Blocking the thread on HTTP is waste.
-    back_es: Bloquear el hilo en HTTP es desperdicio.
-  - id: w08-concurrency-s2-c2
-    front: You already saw this in async?
-    front_es: Ya lo viste en async?
-    back: You already saw this in async.
-    back_es: Ya lo viste en async.
-  - id: w08-concurrency-s2-cA
-    front: Anchor for Sync vs async I/O?
-    front_es: ¿Ancla de Sync vs async I/O?
-    back: APIs.
-    back_es: APIs.
+    front: Why is a synchronous (blocking) HTTP call considered wasteful on a server?
+    front_es: ¿Por qué una llamada HTTP síncrona (bloqueante) es un desperdicio en un servidor?
+    back: The thread sits idle waiting on the network instead of doing other work; under load this exhausts
+      the thread pool and limits throughput, which async I/O avoids.
+    back_es: El thread se queda inactivo esperando la red en vez de hacer otra cosa; bajo carga esto agota
+      el thread pool y limita el throughput, lo cual el I/O async evita.
   standard_minutes: 35
 - id: w08-concurrency-s3
-  index: 37
+  index: 42
   week_id: w08-concurrency
   week_title: Concurrency
   week_title_es: Concurrencia
@@ -3319,23 +3932,17 @@ sections:
     answer: 0
   cards:
   - id: w08-concurrency-s3-c1
-    front: Parallel uses several cores for CPU?
-    front_es: Parallel usa varios cores en CPU?
-    back: Parallel uses several cores for CPU.
-    back_es: Parallel usa varios cores en CPU.
-  - id: w08-concurrency-s3-c2
-    front: Concurrent interleaves waits?
-    front_es: Concurrent entrelaza esperas?
-    back: Concurrent interleaves waits.
-    back_es: Concurrent entrelaza esperas.
-  - id: w08-concurrency-s3-cA
-    front: Anchor for Parallel vs concurrent?
-    front_es: ¿Ancla de Parallel vs concurrent?
-    back: APIs.
-    back_es: APIs.
+    front: What's the difference between parallelism and concurrency?
+    front_es: ¿Cuál es la diferencia entre paralelismo y concurrencia?
+    back: Parallelism runs multiple computations at the same time on multiple CPU cores (for CPU-bound
+      work). Concurrency manages multiple in-progress tasks that interleave — often by overlapping their
+      waiting time (I/O-bound), even on a single core.
+    back_es: El paralelismo corre varios cómputos al mismo tiempo en varios cores de CPU (para trabajo
+      CPU-bound). La concurrencia maneja varias tareas en progreso que se entrelazan — normalmente traslapando
+      su tiempo de espera (I/O-bound), incluso en un solo core.
   standard_minutes: 35
 - id: w08-concurrency-s4
-  index: 38
+  index: 43
   week_id: w08-concurrency
   week_title: Concurrency
   week_title_es: Concurrencia
@@ -3405,23 +4012,24 @@ sections:
     answer: 0
   cards:
   - id: w08-concurrency-s4-c1
-    front: You publish a message?
-    front_es: Publicas un mensaje?
-    back: You publish a message, another process works.
-    back_es: Publicas un mensaje, otro proceso trabaja.
+    front: What's the queue + worker pattern, and why use it?
+    front_es: ¿Qué es el patrón cola + worker, y por qué usarlo?
+    back: The request publishes a message to a queue and returns immediately; a separate worker consumes
+      the message and does the (possibly slow) work asynchronously — keeps the request/response fast and
+      decouples producer from consumer.
+    back_es: El request publica un mensaje a una cola y regresa de inmediato; un worker separado consume
+      el mensaje y hace el trabajo (posiblemente lento) de forma asíncrona — mantiene rápido el request/response
+      y desacopla productor de consumidor.
   - id: w08-concurrency-s4-c2
-    front: Do not do it on the request?
-    front_es: No lo hagas en el request?
-    back: Do not do it on the request.
-    back_es: No lo hagas en el request.
-  - id: w08-concurrency-s4-cA
-    front: Anchor for Queue + worker?
-    front_es: ¿Ancla de Cola + worker?
-    back: APIs.
-    back_es: APIs.
+    front: Why shouldn't slow or unreliable work happen inline during the HTTP request?
+    front_es: ¿Por qué el trabajo lento o poco confiable no debería hacerse dentro del request HTTP?
+    back: It ties up the request thread and makes the user wait on (or fail because of) work that doesn't
+      need to be synchronous; offloading it to a queue improves latency and resilience.
+    back_es: Ocupa el thread del request y hace que el usuario espere (o falle) por trabajo que no necesita
+      ser síncrono; mandarlo a una cola mejora la latencia y la resiliencia.
   standard_minutes: 35
 - id: w08-concurrency-s5
-  index: 39
+  index: 44
   week_id: w08-concurrency
   week_title: Concurrency
   week_title_es: Concurrencia
@@ -3491,23 +4099,21 @@ sections:
     answer: 0
   cards:
   - id: w08-concurrency-s5-c1
-    front: A mutable singleton is a race?
-    front_es: Singleton mutable = carrera?
-    back: A mutable singleton is a race.
-    back_es: Singleton mutable = carrera.
+    front: Why is a mutable singleton dangerous in a web API?
+    front_es: ¿Por qué es peligroso un singleton mutable en una web API?
+    back: It's shared across all concurrent requests; if multiple requests mutate it at the same time
+      without synchronization, you get race conditions and data corruption.
+    back_es: Se comparte entre todos los requests concurrentes; si varios requests lo mutan al mismo tiempo
+      sin sincronización, tienes race conditions y datos corruptos.
   - id: w08-concurrency-s5-c2
-    front: Scoped per request?
-    front_es: Scoped por request?
-    back: Scoped per request.
-    back_es: Scoped por request.
-  - id: w08-concurrency-s5-cA
-    front: Anchor for State in an API?
-    front_es: ¿Ancla de Estado en un API?
-    back: APIs.
-    back_es: APIs.
+    front: What's the safer DI lifetime for per-request state in ASP.NET Core?
+    front_es: ¿Cuál es el lifetime de DI más seguro para estado por request en ASP.NET Core?
+    back: Scoped — a new instance per HTTP request, so state isn't shared or raced across concurrent requests.
+    back_es: Scoped — una instancia nueva por request HTTP, así el estado no se comparte ni se pisa entre
+      requests concurrentes.
   standard_minutes: 35
 - id: w09-linq-s1
-  index: 40
+  index: 45
   week_id: w09-linq
   week_title: LINQ
   week_title_es: LINQ
@@ -3577,23 +4183,22 @@ sections:
     answer: 0
   cards:
   - id: w09-linq-s1-c1
-    front: Where does not run until you enumerate?
-    front_es: Where no corre hasta que enumeras?
-    back: Where does not run until you enumerate.
-    back_es: Where no corre hasta que enumeras.
+    front: What does 'deferred execution' mean for a LINQ query like .Where(...)?
+    front_es: ¿Qué significa 'ejecución diferida' para una query LINQ como .Where(...)?
+    back: The query isn't actually run when you write/define it — it only executes when you enumerate
+      the result (foreach, ToList(), etc.).
+    back_es: La query en realidad no corre cuando la escribes/defines — solo se ejecuta cuando enumeras
+      el resultado (foreach, ToList(), etc.).
   - id: w09-linq-s1-c2
-    front: ToList() materializes?
-    front_es: ToList() materializa?
-    back: ToList() materializes.
-    back_es: ToList() materializa.
-  - id: w09-linq-s1-cA
-    front: Anchor for Deferred?
-    front_es: ¿Ancla de Deferred?
-    back: Solera.
-    back_es: Solera.
+    front: What does .ToList() do to a LINQ query?
+    front_es: ¿Qué le hace .ToList() a una query LINQ?
+    back: It materializes the query immediately — runs it now and copies the results into a concrete List<T>,
+      ending deferred execution.
+    back_es: Materializa la query de inmediato — la corre ahora y copia los resultados a un List<T> concreto,
+      terminando la ejecución diferida.
   standard_minutes: 35
 - id: w09-linq-s2
-  index: 41
+  index: 46
   week_id: w09-linq
   week_title: LINQ
   week_title_es: LINQ
@@ -3663,28 +4268,23 @@ sections:
     answer: 0
   cards:
   - id: w09-linq-s2-c1
-    front: IQueryable goes to SQL?
-    front_es: IQueryable va a SQL?
-    back: IQueryable goes to SQL.
-    back_es: IQueryable va a SQL.
+    front: What's the key difference between IQueryable<T> and IEnumerable<T> in LINQ-to-SQL/EF?
+    front_es: ¿Cuál es la diferencia clave entre IQueryable<T> e IEnumerable<T> en LINQ-to-SQL/EF?
+    back: IQueryable builds an expression tree that gets translated into SQL and executed on the database.
+      IEnumerable operates in memory on objects already fetched.
+    back_es: IQueryable construye un árbol de expresión que se traduce a SQL y se ejecuta en la base de
+      datos. IEnumerable opera en memoria sobre objetos que ya fueron traídos.
   - id: w09-linq-s2-c2
-    front: IEnumerable is in memory?
-    front_es: IEnumerable es en memoria?
-    back: IEnumerable is in memory.
-    back_es: IEnumerable es en memoria.
-  - id: w09-linq-s2-c3
-    front: That is where N+1 is born?
-    front_es: Ahí nace el N+1?
-    back: That is where N+1 is born.
-    back_es: Ahí nace el N+1.
-  - id: w09-linq-s2-cA
-    front: Anchor for IEnumerable vs IQueryable?
-    front_es: ¿Ancla de IEnumerable vs IQueryable?
-    back: Solera.
-    back_es: Solera.
+    front: How does switching from IQueryable to IEnumerable too early cause the N+1 problem?
+    front_es: ¿Cómo cambiar de IQueryable a IEnumerable muy pronto causa el problema N+1?
+    back: Once you're on IEnumerable (in-memory), further navigation in a loop happens client-side, so
+      accessing related entities per item triggers separate DB round-trips instead of one SQL query.
+    back_es: Una vez que estás en IEnumerable (en memoria), navegar más en un loop pasa del lado del cliente,
+      así que acceder a entidades relacionadas por elemento dispara viajes separados a la base en vez
+      de una sola query.
   standard_minutes: 35
 - id: w09-linq-s3
-  index: 42
+  index: 47
   week_id: w09-linq
   week_title: LINQ
   week_title_es: LINQ
@@ -3754,18 +4354,23 @@ sections:
     answer: 0
   cards:
   - id: w09-linq-s3-c1
-    front: Where?
-    front_es: Where?
-    back: Where, Select, GroupBy — only the ones you control.
-    back_es: Where, Select, GroupBy — solo los que controlas.
-  - id: w09-linq-s3-cA
-    front: Anchor for Operators?
-    front_es: ¿Ancla de Operadores?
-    back: Solera.
-    back_es: Solera.
+    front: What do Where, Select, and GroupBy do in LINQ?
+    front_es: ¿Qué hacen Where, Select y GroupBy en LINQ?
+    back: Where filters elements by a predicate, Select projects/transforms each element into a new shape,
+      GroupBy buckets elements by a key.
+    back_es: Where filtra elementos por un predicado, Select proyecta/transforma cada elemento en una
+      forma nueva, GroupBy agrupa elementos por una llave.
+  - id: w09-linq-s3-c2
+    front: Why be cautious using a LINQ operator you don't fully understand against IQueryable?
+    front_es: ¿Por qué tener cuidado al usar un operador LINQ que no entiendes bien contra IQueryable?
+    back: Not every LINQ operator translates cleanly to SQL; using an unsupported one can force the whole
+      query to run client-side (losing DB optimization) or throw a translation error.
+    back_es: No todos los operadores LINQ se traducen bien a SQL; usar uno que no se soporta puede forzar
+      a que toda la query corra del lado del cliente (perdiendo la optimización de la base) o lanzar un
+      error de traducción.
   standard_minutes: 35
 - id: w09-linq-s4
-  index: 43
+  index: 48
   week_id: w09-linq
   week_title: LINQ
   week_title_es: LINQ
@@ -3835,23 +4440,22 @@ sections:
     answer: 0
   cards:
   - id: w09-linq-s4-c1
-    front: A navigation foreach fires queries?
-    front_es: Un foreach de navegación dispara queries?
-    back: A navigation foreach fires queries.
-    back_es: Un foreach de navegación dispara queries.
+    front: How does looping over a navigation property inside a foreach cause N+1 queries in EF?
+    front_es: ¿Cómo un loop sobre una navigation property dentro de un foreach causa N+1 queries en EF?
+    back: If the navigation is lazy-loaded, accessing it for each of N parent rows triggers a separate
+      query per row instead of one batched query.
+    back_es: Si la navegación es lazy-loaded, acceder a ella por cada una de N filas dispara una query
+      separada por fila en vez de una sola query agrupada.
   - id: w09-linq-s4-c2
-    front: Project or Include?
-    front_es: Proyecta o Include?
-    back: Project or Include.
-    back_es: Proyecta o Include.
-  - id: w09-linq-s4-cA
-    front: Anchor for LINQ and N+1?
-    front_es: ¿Ancla de LINQ y N+1?
-    back: Solera.
-    back_es: Solera.
+    front: What are the two standard fixes for N+1 in EF/LINQ?
+    front_es: ¿Cuáles son las dos soluciones estándar al N+1 en EF/LINQ?
+    back: Use .Include() to eager-load the related data in the original query, or use .Select() to project
+      exactly the fields you need in a single query.
+    back_es: Usar .Include() para cargar de forma eager los datos relacionados en la query original, o
+      usar .Select() para proyectar exactamente los campos que necesitas en una sola query.
   standard_minutes: 35
 - id: w09-linq-s5
-  index: 44
+  index: 49
   week_id: w09-linq
   week_title: LINQ
   week_title_es: LINQ
@@ -3921,18 +4525,23 @@ sections:
     answer: 0
   cards:
   - id: w09-linq-s5-c1
-    front: 'Five queries: say whether they run when defined or when enumerated?'
-    front_es: 'Cinco queries: di si se ejecutan al definirlas o al enumerar?'
-    back: 'Five queries: say whether they run when defined or when enumerated.'
-    back_es: 'Cinco queries: di si se ejecutan al definirlas o al enumerar.'
-  - id: w09-linq-s5-cA
-    front: Anchor for Now or later??
-    front_es: ¿Ancla de ¿Ahora o después??
-    back: Solera.
-    back_es: Solera.
+    front: If a LINQ query is assigned to a variable but not yet enumerated, has it run against the database?
+    front_es: Si una query LINQ se asigna a una variable pero no se ha enumerado aún, ¿ya corrió contra
+      la base de datos?
+    back: No — it's still just an expression tree/query definition. It only executes once you enumerate
+      it (foreach, ToList(), First(), Count(), etc.).
+    back_es: No — todavía es solo un árbol de expresión/definición de query. Solo se ejecuta cuando la
+      enumeras (foreach, ToList(), First(), Count(), etc.).
+  - id: w09-linq-s5-c2
+    front: Name three LINQ methods that force immediate execution.
+    front_es: Nombra tres métodos LINQ que fuerzan ejecución inmediata.
+    back: ToList(), ToArray(), and Count() (also First(), Single(), Sum(), etc.) all force immediate execution
+      instead of staying deferred.
+    back_es: ToList(), ToArray() y Count() (también First(), Single(), Sum(), etc.) fuerzan ejecución
+      inmediata en vez de quedarse diferidos.
   standard_minutes: 35
 - id: w10-ef-s1
-  index: 45
+  index: 50
   week_id: w10-ef
   week_title: EF Core
   week_title_es: EF Core
@@ -4002,23 +4611,23 @@ sections:
     answer: 0
   cards:
   - id: w10-ef-s1-c1
-    front: Versioned schema?
-    front_es: El schema versionado?
-    back: Versioned schema.
-    back_es: El schema versionado.
+    front: What are EF Core migrations?
+    front_es: ¿Qué son las migrations de EF Core?
+    back: Versioned, code-based scripts describing incremental changes to the database schema, generated
+      from changes to your entity model, and applied in order.
+    back_es: Scripts versionados, basados en código, que describen cambios incrementales al schema de
+      la base, generados a partir de cambios en tu modelo de entidades, y aplicados en orden.
   - id: w10-ef-s1-c2
-    front: Do not touch prod by hand?
-    front_es: No toques prod a mano?
-    back: Do not touch prod by hand.
-    back_es: No toques prod a mano.
-  - id: w10-ef-s1-cA
-    front: Anchor for Migrations?
-    front_es: ¿Ancla de Migrations?
-    back: services.
-    back_es: servicios.
+    front: Why is manually editing a production database schema a bad practice?
+    front_es: ¿Por qué es mala práctica editar a mano el schema de la base en producción?
+    back: It's undocumented, unrepeatable, and untracked — it breaks the migration history, making the
+      schema diverge from what migrations expect and hard to reproduce elsewhere.
+    back_es: No queda documentado, no es repetible ni rastreado — rompe el historial de migrations, haciendo
+      que el schema se desalinee de lo que las migrations esperan y sea difícil de reproducir en otro
+      lado.
   standard_minutes: 35
 - id: w10-ef-s2
-  index: 46
+  index: 51
   week_id: w10-ef
   week_title: EF Core
   week_title_es: EF Core
@@ -4088,23 +4697,22 @@ sections:
     answer: 0
   cards:
   - id: w10-ef-s2-c1
-    front: The change tracker?
-    front_es: El change tracker?
-    back: The change tracker.
-    back_es: El change tracker.
+    front: What does EF Core's change tracker do?
+    front_es: ¿Qué hace el change tracker de EF Core?
+    back: It keeps snapshots of loaded entities so it can detect what changed and generate the right INSERT/UPDATE/DELETE
+      statements when you call SaveChanges().
+    back_es: Guarda snapshots de las entidades cargadas para detectar qué cambió y generar los INSERT/UPDATE/DELETE
+      correctos cuando llamas SaveChanges().
   - id: w10-ef-s2-c2
-    front: AsNoTracking for reads?
-    front_es: AsNoTracking para lecturas?
-    back: AsNoTracking for reads.
-    back_es: AsNoTracking para lecturas.
-  - id: w10-ef-s2-cA
-    front: Anchor for Tracking?
-    front_es: ¿Ancla de Tracking?
-    back: services.
-    back_es: servicios.
+    front: Why use .AsNoTracking() for read-only queries?
+    front_es: ¿Por qué usar .AsNoTracking() en queries de solo lectura?
+    back: It skips the overhead of tracking changes for entities you're never going to update, improving
+      performance for pure read scenarios.
+    back_es: Se salta el costo de rastrear cambios en entidades que nunca vas a actualizar, mejorando
+      el rendimiento en escenarios de solo lectura.
   standard_minutes: 35
 - id: w10-ef-s3
-  index: 47
+  index: 52
   week_id: w10-ef
   week_title: EF Core
   week_title_es: EF Core
@@ -4174,23 +4782,19 @@ sections:
     answer: 0
   cards:
   - id: w10-ef-s3-c1
-    front: Include vs projection?
-    front_es: Include vs proyección?
-    back: Include vs projection.
-    back_es: Include vs proyección.
-  - id: w10-ef-s3-c2
-    front: Same idea as the join?
-    front_es: Lo mismo que el join?
-    back: Same idea as the join.
-    back_es: Lo mismo que el join.
-  - id: w10-ef-s3-cA
-    front: Anchor for N+1?
-    front_es: ¿Ancla de N+1?
-    back: services.
-    back_es: servicios.
+    front: In EF Core, what's the difference between .Include() and a projection (.Select()) to avoid
+      N+1?
+    front_es: En EF Core, ¿cuál es la diferencia entre .Include() y una proyección (.Select()) para evitar
+      el N+1?
+    back: Include eager-loads the full related entities alongside the parent in one query. A projection
+      selects just the specific fields you need — often more efficient when you don't need the whole related
+      entity.
+    back_es: Include carga de forma eager las entidades relacionadas completas junto con el padre en una
+      sola query. Una proyección selecciona solo los campos que necesitas — normalmente más eficiente
+      cuando no necesitas toda la entidad relacionada.
   standard_minutes: 35
 - id: w10-ef-s4
-  index: 48
+  index: 53
   week_id: w10-ef
   week_title: EF Core
   week_title_es: EF Core
@@ -4260,18 +4864,22 @@ sections:
     answer: 0
   cards:
   - id: w10-ef-s4-c1
-    front: One transaction of tracked changes?
-    front_es: Una transacción de cambios rastreados?
-    back: One transaction of tracked changes.
-    back_es: Una transacción de cambios rastreados.
-  - id: w10-ef-s4-cA
-    front: Anchor for SaveChanges?
-    front_es: ¿Ancla de SaveChanges?
-    back: services.
-    back_es: servicios.
+    front: What does DbContext.SaveChanges() do?
+    front_es: ¿Qué hace DbContext.SaveChanges()?
+    back: It looks at everything the change tracker recorded (added, modified, deleted entities) and writes
+      all of it to the database in a single transaction.
+    back_es: Revisa todo lo que el change tracker registró (entidades agregadas, modificadas, eliminadas)
+      y escribe todo a la base en una sola transacción.
+  - id: w10-ef-s4-c2
+    front: If one of several changes in SaveChanges() fails, what happens to the rest?
+    front_es: Si uno de varios cambios en SaveChanges() falla, ¿qué pasa con el resto?
+    back: The whole call is one transaction, so if any part fails, the entire batch rolls back — nothing
+      partial gets committed.
+    back_es: Toda la llamada es una sola transacción, así que si una parte falla, todo el lote hace rollback
+      — nada parcial queda commiteado.
   standard_minutes: 35
 - id: w10-ef-s5
-  index: 49
+  index: 54
   week_id: w10-ef
   week_title: EF Core
   week_title_es: EF Core
@@ -4341,18 +4949,15 @@ sections:
     answer: 0
   cards:
   - id: w10-ef-s5-c1
-    front: Tracking yes or no?
-    front_es: Tracking sí o no?
-    back: Tracking yes or no, and why.
-    back_es: Tracking sí o no, y por qué.
-  - id: w10-ef-s5-cA
-    front: Anchor for A query of yours?
-    front_es: ¿Ancla de Una query tuya?
-    back: services.
-    back_es: servicios.
+    front: How do you decide whether an EF Core query should use tracking or AsNoTracking?
+    front_es: ¿Cómo decides si una query de EF Core debería usar tracking o AsNoTracking?
+    back: If you're going to modify and save the entity, use tracking (the default). If it's purely for
+      display/read-only purposes, use AsNoTracking to skip the tracking overhead.
+    back_es: Si vas a modificar y guardar la entidad, usa tracking (el default). Si es puramente para
+      mostrar/solo lectura, usa AsNoTracking para saltarte el costo del tracking.
   standard_minutes: 35
 - id: w11-di-asp-s1
-  index: 50
+  index: 55
   week_id: w11-di-asp
   week_title: DI + ASP.NET
   week_title_es: DI + ASP.NET
@@ -4422,23 +5027,26 @@ sections:
     answer: 0
   cards:
   - id: w11-di-asp-s1-c1
-    front: Per resolve?
-    front_es: Por resolución?
-    back: Per resolve, per request, one for the app.
-    back_es: Por resolución, por request, uno para la app.
+    front: What's the difference between Transient, Scoped, and Singleton service lifetimes in ASP.NET
+      Core DI?
+    front_es: ¿Cuál es la diferencia entre los lifetimes Transient, Scoped y Singleton en DI de ASP.NET
+      Core?
+    back: 'Transient: a new instance every time it''s resolved. Scoped: one instance per HTTP request.
+      Singleton: one instance for the whole application''s lifetime.'
+    back_es: 'Transient: una instancia nueva cada vez que se resuelve. Scoped: una instancia por request
+      HTTP. Singleton: una instancia para toda la vida de la app.'
   - id: w11-di-asp-s1-c2
-    front: DbContext = scoped?
-    front_es: DbContext = scoped?
-    back: DbContext = scoped.
-    back_es: DbContext = scoped.
-  - id: w11-di-asp-s1-cA
-    front: Anchor for Transient / scoped / singleton?
-    front_es: ¿Ancla de Transient / scoped / singleton?
-    back: Solera.
-    back_es: Solera.
+    front: Why is EF Core's DbContext typically registered as Scoped?
+    front_es: ¿Por qué el DbContext de EF Core normalmente se registra como Scoped?
+    back: It should track changes for exactly one unit of work — shared within a request but not reused
+      across requests (which would leak stale tracked state) and not recreated on every resolve (which
+      would break tracking within the request).
+    back_es: Debe rastrear cambios para exactamente una unidad de trabajo — compartido dentro de un request
+      pero no reusado entre requests (lo que dejaría estado rastreado viejo) y no recreado en cada resolve
+      (lo que rompería el tracking dentro del request).
   standard_minutes: 35
 - id: w11-di-asp-s2
-  index: 51
+  index: 56
   week_id: w11-di-asp
   week_title: DI + ASP.NET
   week_title_es: DI + ASP.NET
@@ -4508,18 +5116,17 @@ sections:
     answer: 0
   cards:
   - id: w11-di-asp-s2-c1
-    front: The port (interface)?
-    front_es: El puerto (interfaz)?
-    back: The port (interface), not the concrete class if there is a test.
-    back_es: El puerto (interfaz), no la clase concreta si hay test.
-  - id: w11-di-asp-s2-cA
-    front: Anchor for What you inject?
-    front_es: ¿Ancla de Qué inyectas?
-    back: Solera.
-    back_es: Solera.
+    front: Why inject an interface rather than a concrete class when the code needs to be testable?
+    front_es: ¿Por qué inyectar una interfaz en vez de una clase concreta cuando el código necesita ser
+      testeable?
+    back: Depending on an abstraction (interface) lets you substitute a mock/fake implementation in tests,
+      and swap real implementations without changing the consumer — Dependency Inversion in practice.
+    back_es: Depender de una abstracción (interfaz) te permite sustituir una implementación mock/fake
+      en tests, y cambiar implementaciones reales sin tocar al consumidor — Dependency Inversion en la
+      práctica.
   standard_minutes: 35
 - id: w11-di-asp-s3
-  index: 52
+  index: 57
   week_id: w11-di-asp
   week_title: DI + ASP.NET
   week_title_es: DI + ASP.NET
@@ -4589,23 +5196,23 @@ sections:
     answer: 0
   cards:
   - id: w11-di-asp-s3-c1
-    front: Middleware = HTTP pipeline?
-    front_es: Middleware = pipeline HTTP?
-    back: Middleware = HTTP pipeline.
-    back_es: Middleware = pipeline HTTP.
+    front: What's the difference between ASP.NET Core middleware and MVC filters?
+    front_es: ¿Cuál es la diferencia entre el middleware de ASP.NET Core y los filters de MVC?
+    back: Middleware operates on the raw HTTP pipeline for every request (logging, auth, exception handling
+      globally). Filters hook into the MVC/endpoint execution pipeline around a specific controller action.
+    back_es: El middleware opera en el pipeline HTTP crudo para cada request (logging, auth, manejo de
+      excepciones global). Los filters se enganchan en el pipeline de ejecución de MVC/endpoint alrededor
+      de una acción de controller específica.
   - id: w11-di-asp-s3-c2
-    front: Filters = MVC/endpoint?
-    front_es: Filtros = MVC/endpoint?
-    back: Filters = MVC/endpoint.
-    back_es: Filtros = MVC/endpoint.
-  - id: w11-di-asp-s3-cA
-    front: Anchor for Middleware vs filters?
-    front_es: ¿Ancla de Middleware vs filtros?
-    back: Solera.
-    back_es: Solera.
+    front: Give an example of something you'd implement as middleware vs as an action filter.
+    front_es: Da un ejemplo de algo que implementarías como middleware vs como action filter.
+    back: Global request logging or a top-level exception handler → middleware. Validating one action's
+      model state or applying an authorization rule to one controller → filter.
+    back_es: Logging global de requests o un manejador de excepciones global → middleware. Validar el
+      model state de una acción o aplicar una regla de autorización a un controller → filter.
   standard_minutes: 35
 - id: w11-di-asp-s4
-  index: 53
+  index: 58
   week_id: w11-di-asp
   week_title: DI + ASP.NET
   week_title_es: DI + ASP.NET
@@ -4675,23 +5282,17 @@ sections:
     answer: 0
   cards:
   - id: w11-di-asp-s4-c1
-    front: Request in?
-    front_es: Request entra?
-    back: Request in, response out.
-    back_es: Request entra, sale la response.
-  - id: w11-di-asp-s4-c2
-    front: Draw four boxes?
-    front_es: Dibuja 4 cajas?
-    back: Draw four boxes.
-    back_es: Dibuja 4 cajas.
-  - id: w11-di-asp-s4-cA
-    front: Anchor for Pipeline?
-    front_es: ¿Ancla de Pipeline?
-    back: Solera.
-    back_es: Solera.
+    front: Describe the ASP.NET Core request pipeline at a high level.
+    front_es: Describe a alto nivel el pipeline de requests de ASP.NET Core.
+    back: An incoming request flows through a chain of middleware (each can inspect/modify it or short-circuit),
+      reaches routing, hits the matched endpoint/controller action which builds a response, and that response
+      flows back out through the same middleware chain in reverse.
+    back_es: Un request entrante pasa por una cadena de middleware (cada uno puede inspeccionarlo/modificarlo
+      o cortar el flujo), llega al routing, entra al endpoint/acción del controller que construye una
+      respuesta, y esa respuesta sale de nuevo por la misma cadena de middleware al revés.
   standard_minutes: 35
 - id: w11-di-asp-s5
-  index: 54
+  index: 59
   week_id: w11-di-asp
   week_title: DI + ASP.NET
   week_title_es: DI + ASP.NET
@@ -4761,23 +5362,16 @@ sections:
     answer: 0
   cards:
   - id: w11-di-asp-s5-c1
-    front: Only if you touched it?
-    front_es: Solo si lo tocaste?
-    back: Only if you touched it.
-    back_es: Solo si lo tocaste.
-  - id: w11-di-asp-s5-c2
-    front: If not?
-    front_es: Si no?
-    back: 'If not, say so: do not recite classic MVC.'
-    back_es: 'Si no, dilo: no recites MVC clásico.'
-  - id: w11-di-asp-s5-cA
-    front: Anchor for Razor?
-    front_es: ¿Ancla de Razor?
-    back: Solera.
-    back_es: Solera.
+    front: If you haven't actually worked with Razor views/classic MVC, what's the right move in an interview?
+    front_es: Si en realidad no has trabajado con vistas Razor/MVC clásico, ¿cuál es la jugada correcta
+      en entrevista?
+    back: Say so honestly instead of reciting textbook MVC theory you haven't applied — interviewers value
+      honesty about your real experience over rehearsed generic answers.
+    back_es: Decirlo honestamente en vez de recitar teoría de MVC de libro que no has aplicado — el entrevistador
+      valora la honestidad sobre tu experiencia real más que respuestas genéricas ensayadas.
   standard_minutes: 35
 - id: w12-solid-s1
-  index: 55
+  index: 60
   week_id: w12-solid
   week_title: SOLID + patterns
   week_title_es: SOLID + patterns
@@ -4847,23 +5441,23 @@ sections:
     answer: 0
   cards:
   - id: w12-solid-s1-c1
-    front: One reason to change?
-    front_es: Una razón de cambio?
-    back: One reason to change.
-    back_es: Una razón de cambio.
+    front: What does the Single Responsibility Principle (the S in SOLID) mean?
+    front_es: ¿Qué significa el Principio de Responsabilidad Única (la S de SOLID)?
+    back: A class/module should have one reason to change — one responsibility — so a change to one concern
+      doesn't force unrelated changes elsewhere.
+    back_es: Una clase/módulo debería tener una sola razón para cambiar — una responsabilidad — así un
+      cambio en un tema no obliga a cambios sin relación en otro lado.
   - id: w12-solid-s1-c2
-    front: Extend without blowing up eLink?
-    front_es: Extiende sin reventar eLink?
-    back: Extend without blowing up eLink.
-    back_es: Extiende sin reventar eLink.
-  - id: w12-solid-s1-cA
-    front: Anchor for S and O?
-    front_es: ¿Ancla de S y O?
-    back: your code.
-    back_es: tu código.
+    front: What does the Open/Closed Principle (the O in SOLID) mean, with an example?
+    front_es: ¿Qué significa el Principio Abierto/Cerrado (la O de SOLID), con un ejemplo?
+    back: Code should be open for extension but closed for modification — you can add new behavior (e.g.
+      a new writer strategy in eLink) without editing and risking existing, working code.
+    back_es: El código debería estar abierto a extensión pero cerrado a modificación — puedes agregar
+      comportamiento nuevo (ej. una estrategia de writer nueva en eLink) sin editar y arriesgar código
+      existente que ya funciona.
   standard_minutes: 35
 - id: w12-solid-s2
-  index: 56
+  index: 61
   week_id: w12-solid
   week_title: SOLID + patterns
   week_title_es: SOLID + patterns
@@ -4933,23 +5527,29 @@ sections:
     answer: 0
   cards:
   - id: w12-solid-s2-c1
-    front: One example or 'I do not have one'?
-    front_es: Un ejemplo o 'no lo tengo'?
-    back: One example or 'I do not have one'.
-    back_es: Un ejemplo o 'no lo tengo'.
+    front: What does the Liskov Substitution Principle (the L in SOLID) require?
+    front_es: ¿Qué exige el Principio de Sustitución de Liskov (la L de SOLID)?
+    back: A subclass must be substitutable for its base class without breaking correctness — callers using
+      the base type shouldn't notice or break when given a derived instance.
+    back_es: Una subclase debe poder sustituir a su clase base sin romper la corrección — quien usa el
+      tipo base no debería notar ni romperse al recibir una instancia derivada.
   - id: w12-solid-s2-c2
-    front: Honesty beats a list?
-    front_es: Honestidad > lista?
-    back: Honesty beats a list.
-    back_es: Honestidad > lista.
-  - id: w12-solid-s2-cA
-    front: Anchor for L, I, D?
-    front_es: ¿Ancla de L, I, D?
-    back: your code.
-    back_es: tu código.
+    front: What does the Interface Segregation Principle (the I in SOLID) say?
+    front_es: ¿Qué dice el Principio de Segregación de Interfaces (la I de SOLID)?
+    back: Prefer several small, specific interfaces over one large general-purpose interface, so clients
+      aren't forced to depend on methods they don't use.
+    back_es: Prefiere varias interfaces pequeñas y específicas en vez de una interfaz grande de propósito
+      general, así los clientes no dependen de métodos que no usan.
+  - id: w12-solid-s2-c3
+    front: What does the Dependency Inversion Principle (the D in SOLID) say?
+    front_es: ¿Qué dice el Principio de Inversión de Dependencias (la D de SOLID)?
+    back: High-level code should depend on abstractions (interfaces), not concrete low-level implementations
+      — both should depend on the abstraction, not on each other directly.
+    back_es: El código de alto nivel debería depender de abstracciones (interfaces), no de implementaciones
+      concretas de bajo nivel — ambos deberían depender de la abstracción, no uno del otro directamente.
   standard_minutes: 35
 - id: w12-solid-s3
-  index: 57
+  index: 62
   week_id: w12-solid
   week_title: SOLID + patterns
   week_title_es: SOLID + patterns
@@ -5019,23 +5619,26 @@ sections:
     answer: 0
   cards:
   - id: w12-solid-s3-c1
-    front: If it exists in your code?
-    front_es: Si existe en tu código?
-    back: If it exists in your code.
-    back_es: Si existe en tu código.
+    front: What is the Repository pattern?
+    front_es: ¿Qué es el patrón Repository?
+    back: An abstraction over data access that lets calling code work with domain objects without knowing
+      the underlying storage/query details (e.g. IOrderRepository hides the SQL/EF calls).
+    back_es: Una abstracción sobre el acceso a datos que le permite al código que llama trabajar con objetos
+      de dominio sin conocer los detalles de storage/query de abajo (ej. IOrderRepository esconde las
+      llamadas SQL/EF).
   - id: w12-solid-s3-c2
-    front: eLink's single interface is a facade?
-    front_es: La interfaz única de eLink es un facade?
-    back: eLink's single interface is a facade.
-    back_es: La interfaz única de eLink es un facade.
-  - id: w12-solid-s3-cA
-    front: Anchor for Repository / facade?
-    front_es: ¿Ancla de Repository / facade?
-    back: your code.
-    back_es: tu código.
+    front: What is the Facade pattern, and how does eLink's single interface over SOAP+REST demonstrate
+      it?
+    front_es: ¿Qué es el patrón Facade, y cómo la interfaz única de eLink sobre SOAP+REST lo demuestra?
+    back: A Facade provides a simple, unified interface over a more complex set of subsystems. eLink's
+      single interface hid whether the call went to SOAP or REST underneath, giving callers one simple
+      contract.
+    back_es: Un Facade da una interfaz simple y unificada sobre un conjunto de subsistemas más complejo.
+      La interfaz única de eLink escondía si la llamada iba a SOAP o REST por debajo, dando a quien llama
+      un solo contrato simple.
   standard_minutes: 35
 - id: w12-solid-s4
-  index: 58
+  index: 63
   week_id: w12-solid
   week_title: SOLID + patterns
   week_title_es: SOLID + patterns
@@ -5105,23 +5708,29 @@ sections:
     answer: 0
   cards:
   - id: w12-solid-s4-c1
-    front: Only with an anchor?
-    front_es: Solo con ancla?
-    back: Only with an anchor.
-    back_es: Solo con ancla.
+    front: What is the Strategy pattern?
+    front_es: ¿Qué es el patrón Strategy?
+    back: It defines a family of interchangeable algorithms/behaviors behind a common interface, so you
+      can swap which one runs at runtime without changing the caller.
+    back_es: Define una familia de algoritmos/comportamientos intercambiables detrás de una interfaz común,
+      así puedes cambiar cuál corre en tiempo de ejecución sin tocar a quien llama.
   - id: w12-solid-s4-c2
-    front: Dual-run is a writer strategy?
-    front_es: Dual-run es un strategy de writer?
-    back: Dual-run is a writer strategy.
-    back_es: Dual-run es un strategy de writer.
-  - id: w12-solid-s4-cA
-    front: Anchor for Strategy / decorator?
-    front_es: ¿Ancla de Strategy / decorator?
-    back: your code.
-    back_es: tu código.
+    front: How is eLink's dual-run (SOAP writer vs REST writer) an example of the Strategy pattern?
+    front_es: ¿Cómo el dual-run de eLink (writer SOAP vs writer REST) es un ejemplo del patrón Strategy?
+    back: Both writers implement the same interface; which concrete strategy actually performs the write
+      can be swapped (or run side-by-side) without changing the calling code.
+    back_es: Ambos writers implementan la misma interfaz; cuál estrategia concreta hace el write de verdad
+      se puede cambiar (o correr en paralelo) sin tocar el código que llama.
+  - id: w12-solid-s4-c3
+    front: What is the Decorator pattern?
+    front_es: ¿Qué es el patrón Decorator?
+    back: It wraps an object to add behavior (logging, caching, retries) transparently, without changing
+      the wrapped object's code or interface.
+    back_es: Envuelve un objeto para agregar comportamiento (logging, cache, retries) de forma transparente,
+      sin cambiar el código o la interfaz del objeto envuelto.
   standard_minutes: 35
 - id: w12-solid-s5
-  index: 59
+  index: 64
   week_id: w12-solid
   week_title: SOLID + patterns
   week_title_es: SOLID + patterns
@@ -5191,23 +5800,17 @@ sections:
     answer: 0
   cards:
   - id: w12-solid-s5-c1
-    front: Name 3 you actually used?
-    front_es: Nombra 3 que sí usaste?
-    back: Name 3 you actually used.
-    back_es: Nombra 3 que sí usaste.
-  - id: w12-solid-s5-c2
-    front: The rest is not recited?
-    front_es: El resto no se recita?
-    back: The rest is not recited.
-    back_es: El resto no se recita.
-  - id: w12-solid-s5-cA
-    front: Anchor for Three names?
-    front_es: ¿Ancla de Tres nombres?
-    back: your code.
-    back_es: tu código.
+    front: In an interview, if asked about design patterns, what's a stronger answer than listing the
+      GoF catalog?
+    front_es: En entrevista, si te preguntan de design patterns, ¿cuál es una respuesta más fuerte que
+      recitar el catálogo GoF?
+    back: Naming 2-3 patterns you actually used, with a concrete example from your own code — depth on
+      real usage beats a memorized list you can't back up.
+    back_es: Nombrar 2-3 patrones que de verdad usaste, con un ejemplo concreto de tu propio código —
+      profundidad en uso real gana a una lista memorizada que no puedes respaldar.
   standard_minutes: 35
 - id: w13-scale-s1
-  index: 60
+  index: 65
   week_id: w13-scale
   week_title: Scale + logs
   week_title_es: Escala + logs
@@ -5277,23 +5880,22 @@ sections:
     answer: 0
   cards:
   - id: w13-scale-s1-c1
-    front: What?
-    front_es: Qué?
-    back: What, where, invalidation.
-    back_es: Qué, dónde, invalidación.
+    front: What three questions should you answer when designing a cache?
+    front_es: ¿Qué tres preguntas deberías responder al diseñar un cache?
+    back: What are you caching (which data), where does it live (in-memory, distributed like Redis), and
+      how/when does it get invalidated or expire.
+    back_es: Qué estás cacheando (qué dato), dónde vive (en memoria, distribuido como Redis), y cómo/cuándo
+      se invalida o expira.
   - id: w13-scale-s1-c2
-    front: Cache without a TTL is a postponed bug?
-    front_es: Cache sin TTL es un bug aplazado?
-    back: Cache without a TTL is a postponed bug.
-    back_es: Cache sin TTL es un bug aplazado.
-  - id: w13-scale-s1-cA
-    front: Anchor for Cache?
-    front_es: ¿Ancla de Cache?
-    back: eLink / SlabHQ.
-    back_es: eLink / SlabHQ.
+    front: Why is a cache entry with no TTL or invalidation strategy risky?
+    front_es: ¿Por qué es riesgosa una entrada de cache sin TTL o estrategia de invalidación?
+    back: Stale data can live forever, silently serving outdated results — it's a bug waiting to surface
+      later rather than something handled up front.
+    back_es: Los datos viejos pueden vivir para siempre, sirviendo resultados desactualizados sin que
+      se note — es un bug esperando aparecer después en vez de algo resuelto desde el principio.
   standard_minutes: 35
 - id: w13-scale-s2
-  index: 61
+  index: 66
   week_id: w13-scale
   week_title: Scale + logs
   week_title_es: Escala + logs
@@ -5363,23 +5965,25 @@ sections:
     answer: 0
   cards:
   - id: w13-scale-s2-c1
-    front: More instances + balancing?
-    front_es: Más instancias + balanceo?
-    back: More instances + balancing.
-    back_es: Más instancias + balanceo.
+    front: What is horizontal scaling, and how does load balancing relate to it?
+    front_es: ¿Qué es el escalamiento horizontal, y cómo se relaciona con el load balancing?
+    back: Horizontal scaling adds more instances of your service; a load balancer distributes incoming
+      requests across those instances.
+    back_es: El escalamiento horizontal agrega más instancias de tu servicio; un load balancer distribuye
+      los requests entrantes entre esas instancias.
   - id: w13-scale-s2-c2
-    front: Session on the server breaks?
-    front_es: Sesión en el server se rompe?
-    back: Session on the server breaks.
-    back_es: Sesión en el server se rompe.
-  - id: w13-scale-s2-cA
-    front: Anchor for Horizontal and LB?
-    front_es: ¿Ancla de Horizontal y LB?
-    back: eLink / SlabHQ.
-    back_es: eLink / SlabHQ.
+    front: Why does storing session state in server memory break under horizontal scaling?
+    front_es: ¿Por qué guardar el estado de sesión en memoria del server se rompe con el escalamiento
+      horizontal?
+    back: A later request from the same user might land on a different instance that doesn't have that
+      in-memory session, causing inconsistent behavior — session state needs to be external or the load
+      balancer needs sticky sessions.
+    back_es: Un request posterior del mismo usuario puede caer en otra instancia que no tiene esa sesión
+      en memoria, causando comportamiento inconsistente — el estado de sesión necesita ser externo o el
+      load balancer necesita sticky sessions.
   standard_minutes: 35
 - id: w13-scale-s3
-  index: 62
+  index: 67
   week_id: w13-scale
   week_title: Scale + logs
   week_title_es: Escala + logs
@@ -5449,18 +6053,23 @@ sections:
     answer: 0
   cards:
   - id: w13-scale-s3-c1
-    front: 'At-least-once: your handler must be idempotent (like REST)?'
-    front_es: 'At-least-once: tu handler debe ser idempotente (como REST)?'
-    back: 'At-least-once: your handler must be idempotent (like REST).'
-    back_es: 'At-least-once: tu handler debe ser idempotente (como REST).'
-  - id: w13-scale-s3-cA
-    front: Anchor for Queue / Rabbit?
-    front_es: ¿Ancla de Cola / Rabbit?
-    back: eLink / SlabHQ.
-    back_es: eLink / SlabHQ.
+    front: What does 'at-least-once delivery' mean for a message queue like RabbitMQ?
+    front_es: ¿Qué significa 'entrega al menos una vez' para una cola de mensajes como RabbitMQ?
+    back: The queue guarantees a message will be delivered at least once, but might deliver the same message
+      more than once (e.g. after a redelivery due to an unacknowledged message).
+    back_es: La cola garantiza que un mensaje se entregará al menos una vez, pero puede entregar el mismo
+      mensaje más de una vez (ej. después de una redelivery por un mensaje sin ack).
+  - id: w13-scale-s3-c2
+    front: Why must a queue consumer's handler be idempotent?
+    front_es: ¿Por qué el handler de un consumidor de cola debe ser idempotente?
+    back: Because of at-least-once delivery, the same message can be processed twice; an idempotent handler
+      produces the same result either way instead of double-applying the effect.
+    back_es: Por la entrega al menos una vez, el mismo mensaje se puede procesar dos veces; un handler
+      idempotente produce el mismo resultado sin importar cuántas veces se ejecute, en vez de aplicar
+      el efecto doble.
   standard_minutes: 35
 - id: w13-scale-s4
-  index: 63
+  index: 68
   week_id: w13-scale
   week_title: Scale + logs
   week_title_es: Escala + logs
@@ -5530,23 +6139,22 @@ sections:
     answer: 0
   cards:
   - id: w13-scale-s4-c1
-    front: How you find out?
-    front_es: Cómo te enteras?
-    back: How you find out.
-    back_es: Cómo te enteras.
+    front: What's the difference between a log and a trace in observability?
+    front_es: ¿Cuál es la diferencia entre un log y un trace en observabilidad?
+    back: A log is a discrete event/message at a point in time. A trace follows a single request's path
+      across multiple services/components, showing timing and causality between steps.
+    back_es: Un log es un evento/mensaje discreto en un punto en el tiempo. Un trace sigue el camino de
+      un solo request a través de varios servicios/componentes, mostrando tiempos y causalidad entre pasos.
   - id: w13-scale-s4-c2
-    front: Dual-run = observability of diffs?
-    front_es: Dual-run = observabilidad de diffs?
-    back: Dual-run = observability of diffs.
-    back_es: Dual-run = observabilidad de diffs.
-  - id: w13-scale-s4-cA
-    front: Anchor for Logs and traces?
-    front_es: ¿Ancla de Logs y traces?
-    back: eLink / SlabHQ.
-    back_es: eLink / SlabHQ.
+    front: How does dual-running two implementations (like eLink's SOAP+REST) give you observability?
+    front_es: ¿Cómo el dual-run de dos implementaciones (como SOAP+REST de eLink) te da observabilidad?
+    back: By diffing the outputs of both paths for the same input, you get direct evidence of behavioral
+      differences/regressions, instead of just hoping logs would reveal a discrepancy.
+    back_es: Comparando las salidas de ambos paths para el mismo input, tienes evidencia directa de diferencias/regresiones
+      de comportamiento, en vez de solo esperar que los logs revelen una discrepancia.
   standard_minutes: 35
 - id: w13-scale-s5
-  index: 64
+  index: 69
   week_id: w13-scale
   week_title: Scale + logs
   week_title_es: Escala + logs
@@ -5616,18 +6224,15 @@ sections:
     answer: 0
   cards:
   - id: w13-scale-s5-c1
-    front: Log the request id?
-    front_es: Log del request id?
-    back: Log the request id, not 'check the server'.
-    back_es: Log del request id, no 'revisa el server'.
-  - id: w13-scale-s5-cA
-    front: Anchor for A 500?
-    front_es: ¿Ancla de Un 500?
-    back: eLink / SlabHQ.
-    back_es: eLink / SlabHQ.
+    front: When a 500 error happens in production, what's the most useful thing to have logged?
+    front_es: Cuando pasa un error 500 en producción, ¿qué es lo más útil que debería estar logueado?
+    back: A request/correlation ID that lets you trace that specific failing request through logs and
+      traces across every service it touched — 'go check the server' is not a debugging strategy.
+    back_es: Un request/correlation ID que te permita rastrear ese request específico que falló a través
+      de logs y traces en cada servicio que tocó — 've a revisar el server' no es una estrategia de debug.
   standard_minutes: 35
 - id: w14-gc-asyncio-s1
-  index: 65
+  index: 70
   week_id: w14-gc-asyncio
   week_title: GC + asyncio
   week_title_es: GC + asyncio
@@ -5697,23 +6302,26 @@ sections:
     answer: 0
   cards:
   - id: w14-gc-asyncio-s1-c1
-    front: Gen 0/1/2?
-    front_es: Gen 0/1/2?
-    back: Gen 0/1/2.
-    back_es: Gen 0/1/2.
+    front: What are Gen 0, 1, and 2 in the .NET garbage collector?
+    front_es: ¿Qué son las Gen 0, 1 y 2 en el garbage collector de .NET?
+    back: 'Generations based on object lifetime: Gen 0 holds short-lived objects and is collected most
+      often/cheaply; Gen 1 buffers between short and long-lived; Gen 2 holds long-lived objects and is
+      collected least often, at higher cost.'
+    back_es: 'Generaciones según la vida del objeto: Gen 0 tiene objetos de vida corta y se recolecta
+      más seguido/barato; Gen 1 es el buffer entre corta y larga vida; Gen 2 tiene objetos de vida larga
+      y se recolecta menos seguido, con más costo.'
   - id: w14-gc-asyncio-s1-c2
-    front: IDisposable for non-memory (sockets?
-    front_es: IDisposable para no-memoria (sockets?
-    back: IDisposable for non-memory (sockets, files).
-    back_es: IDisposable para no-memoria (sockets, files).
-  - id: w14-gc-asyncio-s1-cA
-    front: Anchor for GC .NET?
-    front_es: ¿Ancla de GC .NET?
-    back: contrast.
-    back_es: contraste.
+    front: Why doesn't the GC alone clean up things like open sockets or file handles?
+    front_es: ¿Por qué el GC solo no limpia cosas como sockets abiertos o file handles?
+    back: The GC only manages managed memory; unmanaged resources (sockets, file handles, DB connections)
+      need explicit cleanup via IDisposable/Dispose() (typically through a using block), since the GC
+      doesn't know when it's safe or timely to release them.
+    back_es: El GC solo maneja memoria administrada; los recursos no administrados (sockets, file handles,
+      conexiones de DB) necesitan limpieza explícita vía IDisposable/Dispose() (normalmente con un using),
+      porque el GC no sabe cuándo es seguro u oportuno liberarlos.
   standard_minutes: 35
 - id: w14-gc-asyncio-s2
-  index: 66
+  index: 71
   week_id: w14-gc-asyncio
   week_title: GC + asyncio
   week_title_es: GC + asyncio
@@ -5783,23 +6391,18 @@ sections:
     answer: 0
   cards:
   - id: w14-gc-asyncio-s2-c1
-    front: Do not pretend you are a runtime engineer?
-    front_es: No te hagas de runtime?
-    back: Do not pretend you are a runtime engineer.
-    back_es: No te hagas de runtime.
-  - id: w14-gc-asyncio-s2-c2
-    front: High level is enough?
-    front_es: Alto nivel basta?
-    back: High level is enough.
-    back_es: Alto nivel basta.
-  - id: w14-gc-asyncio-s2-cA
-    front: Anchor for What not to recite?
-    front_es: ¿Ancla de Qué no recitar?
-    back: contrast.
-    back_es: contraste.
+    front: In an interview, how deep should you go explaining garbage collection unless you're applying
+      for a runtime role?
+    front_es: En entrevista, ¿qué tan a fondo deberías explicar el garbage collector si no aplicas para
+      un puesto de runtime?
+    back: High level is enough — generations, roughly when collection happens, and why Dispose matters
+      for unmanaged resources. Don't overreach into GC internals you don't actually know.
+    back_es: Alto nivel es suficiente — generaciones, más o menos cuándo pasa la recolección, y por qué
+      importa Dispose para recursos no administrados. No te estires a detalles internos del GC que no
+      conoces de verdad.
   standard_minutes: 35
 - id: w14-gc-asyncio-s3
-  index: 67
+  index: 72
   week_id: w14-gc-asyncio
   week_title: GC + asyncio
   week_title_es: GC + asyncio
@@ -5869,18 +6472,22 @@ sections:
     answer: 0
   cards:
   - id: w14-gc-asyncio-s3-c1
-    front: 'Python async: one thread?'
-    front_es: 'Python async: un hilo?'
-    back: 'Python async: one thread, one I/O queue.'
-    back_es: 'Python async: un hilo, una cola de I/O.'
-  - id: w14-gc-asyncio-s3-cA
-    front: Anchor for Event loop?
-    front_es: ¿Ancla de Event loop?
-    back: contrast.
-    back_es: contraste.
+    front: How does Python's asyncio event loop work, at a high level?
+    front_es: ¿Cómo funciona el event loop de asyncio en Python, a alto nivel?
+    back: A single thread runs one event loop that schedules coroutines; when a coroutine awaits I/O,
+      it yields control back to the loop, which runs other ready coroutines until the I/O completes.
+    back_es: Un solo thread corre un event loop que agenda corrutinas; cuando una corrutina hace await
+      sobre I/O, le devuelve el control al loop, que corre otras corrutinas listas hasta que el I/O termina.
+  - id: w14-gc-asyncio-s3-c2
+    front: Does asyncio give you true parallelism on multiple CPU cores?
+    front_es: ¿asyncio te da paralelismo real en varios cores de CPU?
+    back: No — it's concurrency on a single thread (great for I/O-bound work), not parallelism. CPU-bound
+      work needs multiprocessing instead.
+    back_es: No — es concurrencia en un solo thread (genial para trabajo I/O-bound), no paralelismo. El
+      trabajo CPU-bound necesita multiprocessing en su lugar.
   standard_minutes: 35
 - id: w14-gc-asyncio-s4
-  index: 68
+  index: 73
   week_id: w14-gc-asyncio
   week_title: GC + asyncio
   week_title_es: GC + asyncio
@@ -5950,28 +6557,24 @@ sections:
     answer: 0
   cards:
   - id: w14-gc-asyncio-s4-c1
-    front: I/O → asyncio?
-    front_es: I/O → asyncio?
-    back: I/O → asyncio.
-    back_es: I/O → asyncio.
+    front: When should you choose asyncio vs threading vs multiprocessing in Python?
+    front_es: ¿Cuándo deberías elegir asyncio vs threading vs multiprocessing en Python?
+    back: asyncio for lots of I/O-bound concurrency on one thread; multiprocessing for CPU-bound work
+      that needs real parallel execution across cores; threading mainly helps with I/O-bound blocking
+      calls that aren't async-compatible.
+    back_es: asyncio para mucha concurrencia I/O-bound en un solo thread; multiprocessing para trabajo
+      CPU-bound que necesita paralelismo real entre cores; threading ayuda sobre todo con llamadas bloqueantes
+      I/O-bound que no son compatibles con async.
   - id: w14-gc-asyncio-s4-c2
-    front: CPU → processes?
-    front_es: CPU → procesos?
-    back: CPU → processes.
-    back_es: CPU → procesos.
-  - id: w14-gc-asyncio-s4-c3
-    front: GIL in the middle?
-    front_es: GIL en el medio?
-    back: GIL in the middle.
-    back_es: GIL en el medio.
-  - id: w14-gc-asyncio-s4-cA
-    front: Anchor for asyncio vs threads?
-    front_es: ¿Ancla de asyncio vs threads?
-    back: contrast.
-    back_es: contraste.
+    front: Why doesn't Python threading help much for CPU-bound work?
+    front_es: ¿Por qué el threading de Python no ayuda mucho para trabajo CPU-bound?
+    back: The GIL (Global Interpreter Lock) only lets one thread execute Python bytecode at a time, so
+      multiple threads doing CPU-bound work don't run in true parallel.
+    back_es: El GIL (Global Interpreter Lock) solo deja que un thread ejecute bytecode de Python a la
+      vez, así que varios threads haciendo trabajo CPU-bound no corren en paralelo real.
   standard_minutes: 35
 - id: w14-gc-asyncio-s5
-  index: 69
+  index: 74
   week_id: w14-gc-asyncio
   week_title: GC + asyncio
   week_title_es: GC + asyncio
@@ -6041,18 +6644,16 @@ sections:
     answer: 0
   cards:
   - id: w14-gc-asyncio-s5-c1
-    front: 'ConfigureAwait vs event loop: both mean ''do not block the I/O thread''?'
-    front_es: 'ConfigureAwait vs event loop: ambos ''no bloquees el hilo de I/O''?'
-    back: 'ConfigureAwait vs event loop: both mean ''do not block the I/O thread''.'
-    back_es: 'ConfigureAwait vs event loop: ambos ''no bloquees el hilo de I/O''.'
-  - id: w14-gc-asyncio-s5-cA
-    front: Anchor for Contrast?
-    front_es: ¿Ancla de Contraste?
-    back: contrast.
-    back_es: contraste.
+    front: What's the shared underlying idea between C#'s ConfigureAwait and Python's asyncio event loop?
+    front_es: ¿Cuál es la idea de fondo compartida entre ConfigureAwait de C# y el event loop de asyncio
+      en Python?
+    back: Both are mechanisms to keep the I/O-handling thread free — don't block it with synchronous work,
+      so it can keep servicing other pending I/O/continuations.
+    back_es: Ambos son mecanismos para mantener libre el thread que maneja I/O — no lo bloquees con trabajo
+      síncrono, para que pueda seguir atendiendo otro I/O/continuaciones pendientes.
   standard_minutes: 35
 - id: w15-gil-py-s1
-  index: 70
+  index: 75
   week_id: w15-gil-py
   week_title: GIL + Python shape
   week_title_es: GIL + forma Python
@@ -6122,23 +6723,22 @@ sections:
     answer: 0
   cards:
   - id: w15-gil-py-s1-c1
-    front: One bytecode thread at a time?
-    front_es: Un hilo de bytecode a la vez?
-    back: One bytecode thread at a time.
-    back_es: Un hilo de bytecode a la vez.
+    front: What is the GIL (Global Interpreter Lock) in CPython?
+    front_es: ¿Qué es el GIL (Global Interpreter Lock) en CPython?
+    back: A lock that allows only one thread to execute Python bytecode at a time, even on a multi-core
+      machine.
+    back_es: Un lock que permite que solo un thread ejecute bytecode de Python a la vez, incluso en una
+      máquina multi-core.
   - id: w15-gil-py-s1-c2
-    front: It exists because of CPython's memory model?
-    front_es: Existe por el memory model de CPython?
-    back: It exists because of CPython's memory model.
-    back_es: Existe por el memory model de CPython.
-  - id: w15-gil-py-s1-cA
-    front: Anchor for GIL?
-    front_es: ¿Ancla de GIL?
-    back: Codenda.
-    back_es: Codenda.
+    front: Why does CPython have the GIL?
+    front_es: ¿Por qué CPython tiene el GIL?
+    back: CPython's memory management (reference counting) isn't thread-safe by default; the GIL avoids
+      the overhead and complexity of fine-grained locking around every object's refcount.
+    back_es: El manejo de memoria de CPython (conteo de referencias) no es thread-safe por default; el
+      GIL evita el costo y la complejidad de poner locks finos alrededor del refcount de cada objeto.
   standard_minutes: 35
 - id: w15-gil-py-s2
-  index: 71
+  index: 76
   week_id: w15-gil-py
   week_title: GIL + Python shape
   week_title_es: GIL + forma Python
@@ -6208,28 +6808,17 @@ sections:
     answer: 0
   cards:
   - id: w15-gil-py-s2-c1
-    front: 'threading: I/O?'
-    front_es: 'threading: I/O?'
-    back: 'threading: I/O.'
-    back_es: 'threading: I/O.'
-  - id: w15-gil-py-s2-c2
-    front: 'multiprocessing: CPU?'
-    front_es: 'multiprocessing: CPU?'
-    back: 'multiprocessing: CPU.'
-    back_es: 'multiprocessing: CPU.'
-  - id: w15-gil-py-s2-c3
-    front: 'asyncio: lots of I/O on one thread?'
-    front_es: 'asyncio: mucho I/O en un hilo?'
-    back: 'asyncio: lots of I/O on one thread.'
-    back_es: 'asyncio: mucho I/O en un hilo.'
-  - id: w15-gil-py-s2-cA
-    front: Anchor for When which?
-    front_es: ¿Ancla de Cuándo qué?
-    back: Codenda.
-    back_es: Codenda.
+    front: In Python, when would you reach for threading vs multiprocessing vs asyncio?
+    front_es: En Python, ¿cuándo usarías threading vs multiprocessing vs asyncio?
+    back: threading for I/O-bound blocking calls (the GIL is released during I/O waits); multiprocessing
+      for CPU-bound work needing real parallelism across cores (separate processes, separate GILs); asyncio
+      for a large number of concurrent I/O-bound tasks on a single thread.
+    back_es: threading para llamadas bloqueantes I/O-bound (el GIL se libera durante la espera de I/O);
+      multiprocessing para trabajo CPU-bound que necesita paralelismo real entre cores (procesos separados,
+      GIL separado cada uno); asyncio para muchas tareas concurrentes I/O-bound en un solo thread.
   standard_minutes: 35
 - id: w15-gil-py-s3
-  index: 72
+  index: 77
   week_id: w15-gil-py
   week_title: GIL + Python shape
   week_title_es: GIL + forma Python
@@ -6299,23 +6888,22 @@ sections:
     answer: 0
   cards:
   - id: w15-gil-py-s3-c1
-    front: Decorator = a function that wraps?
-    front_es: Decorador = función que envuelve?
-    back: Decorator = a function that wraps.
-    back_es: Decorador = función que envuelve.
+    front: What is a Python decorator?
+    front_es: ¿Qué es un decorador en Python?
+    back: A function that takes another function (or class) and returns a wrapped version, adding behavior
+      before/after the original call without modifying its source (e.g. @lru_cache, @staticmethod).
+    back_es: Una función que recibe otra función (o clase) y regresa una versión envuelta, agregando comportamiento
+      antes/después de la llamada original sin modificar su código fuente (ej. @lru_cache, @staticmethod).
   - id: w15-gil-py-s3-c2
-    front: with = enter/exit?
-    front_es: with = enter/exit?
-    back: with = enter/exit.
-    back_es: with = enter/exit.
-  - id: w15-gil-py-s3-cA
-    front: Anchor for Decorators and with?
-    front_es: ¿Ancla de Decoradores y with?
-    back: Codenda.
-    back_es: Codenda.
+    front: What does Python's with statement do?
+    front_es: ¿Qué hace la sentencia with en Python?
+    back: It manages a context manager's setup/teardown (__enter__/__exit__), guaranteeing cleanup (like
+      closing a file) even if an exception occurs — similar to C#'s using.
+    back_es: Maneja el setup/teardown de un context manager (__enter__/__exit__), garantizando la limpieza
+      (como cerrar un archivo) incluso si hay una excepción — similar a using en C#.
   standard_minutes: 35
 - id: w15-gil-py-s4
-  index: 73
+  index: 78
   week_id: w15-gil-py
   week_title: GIL + Python shape
   week_title_es: GIL + forma Python
@@ -6385,28 +6973,22 @@ sections:
     answer: 0
   cards:
   - id: w15-gil-py-s4-c1
-    front: yield?
-    front_es: yield?
-    back: yield.
-    back_es: yield.
+    front: What does the yield keyword do in a Python function?
+    front_es: ¿Qué hace la palabra yield en una función de Python?
+    back: It turns the function into a generator that produces values lazily, one at a time, pausing its
+      state between each yield instead of computing the entire result at once.
+    back_es: Convierte la función en un generador que produce valores de forma perezosa, uno a la vez,
+      pausando su estado entre cada yield en vez de calcular todo el resultado de una vez.
   - id: w15-gil-py-s4-c2
-    front: One item at a time?
-    front_es: Un item a la vez?
-    back: One item at a time.
-    back_es: Un item a la vez.
-  - id: w15-gil-py-s4-c3
-    front: Not the whole list?
-    front_es: No la lista entera?
-    back: Not the whole list.
-    back_es: No la lista entera.
-  - id: w15-gil-py-s4-cA
-    front: Anchor for Generators?
-    front_es: ¿Ancla de Generadores?
-    back: Codenda.
-    back_es: Codenda.
+    front: Why use a generator instead of returning a full list for large data?
+    front_es: ¿Por qué usar un generador en vez de regresar una lista completa para datos grandes?
+    back: It avoids holding the entire dataset in memory at once — useful for large or infinite sequences,
+      or streaming data.
+    back_es: Evita tener todo el dataset en memoria a la vez — útil para secuencias grandes o infinitas,
+      o datos en streaming.
   standard_minutes: 35
 - id: w15-gil-py-s5
-  index: 74
+  index: 79
   week_id: w15-gil-py
   week_title: GIL + Python shape
   week_title_es: GIL + forma Python
@@ -6476,23 +7058,23 @@ sections:
     answer: 0
   cards:
   - id: w15-gil-py-s5-c1
-    front: 'def f(xs: list[int]) -> dict[int?'
-    front_es: 'def f(xs: list[int]) -> dict[int?'
-    back: 'def f(xs: list[int]) -> dict[int, int].'
-    back_es: 'def f(xs: list[int]) -> dict[int, int].'
+    front: What are Python type hints, and do they enforce types at runtime?
+    front_es: ¿Qué son los type hints de Python, y hacen cumplir los tipos en tiempo de ejecución?
+    back: 'Annotations like def f(xs: list[int]) -> dict[int, int] that document expected types — Python
+      itself doesn''t enforce them at runtime; a static checker like mypy verifies them separately.'
+    back_es: 'Anotaciones como def f(xs: list[int]) -> dict[int, int] que documentan los tipos esperados
+      — Python no los hace cumplir en tiempo de ejecución; un checker estático como mypy los verifica
+      por separado.'
   - id: w15-gil-py-s5-c2
-    front: mypy in Codenda counts?
-    front_es: mypy en Codenda cuenta?
-    back: mypy in Codenda counts.
-    back_es: mypy en Codenda cuenta.
-  - id: w15-gil-py-s5-cA
-    front: Anchor for Typing?
-    front_es: ¿Ancla de Typing?
-    back: Codenda.
-    back_es: Codenda.
+    front: Why bother with type hints and mypy in a dynamically-typed language?
+    front_es: ¿Por qué usar type hints y mypy en un lenguaje de tipado dinámico?
+    back: They catch type-related bugs before runtime, improve editor autocomplete/refactoring, and make
+      function contracts self-documenting for other developers.
+    back_es: Detectan bugs de tipos antes de correr, mejoran el autocompletado/refactor del editor, y
+      hacen que el contrato de la función se documente solo para otros desarrolladores.
   standard_minutes: 35
 - id: w16-sa-pytest-s1
-  index: 75
+  index: 80
   week_id: w16-sa-pytest
   week_title: SQLAlchemy + pytest
   week_title_es: SQLAlchemy + pytest
@@ -6562,23 +7144,22 @@ sections:
     answer: 0
   cards:
   - id: w16-sa-pytest-s1-c1
-    front: They isolate deps?
-    front_es: Aíslan deps?
-    back: They isolate deps.
-    back_es: Aíslan deps.
+    front: Why use a virtual environment (venv) or a tool like Poetry in Python projects?
+    front_es: ¿Por qué usar un entorno virtual (venv) o una herramienta como Poetry en proyectos de Python?
+    back: They isolate a project's dependencies (and versions) from the system Python and from other projects,
+      so builds are reproducible instead of depending on whatever happens to be globally installed.
+    back_es: Aíslan las dependencias (y versiones) de un proyecto del Python del sistema y de otros proyectos,
+      así los builds son reproducibles en vez de depender de lo que esté instalado globalmente.
   - id: w16-sa-pytest-s1-c2
-    front: The problem is 'works on my machine'?
-    front_es: El problema es 'en mi máquina sí'?
-    back: The problem is 'works on my machine'.
-    back_es: El problema es 'en mi máquina sí'.
-  - id: w16-sa-pytest-s1-cA
-    front: Anchor for venv / poetry?
-    front_es: ¿Ancla de venv / poetry?
-    back: if the role is Python.
-    back_es: si la vacante es Python.
+    front: What problem does dependency isolation solve, in one phrase?
+    front_es: ¿Qué problema resuelve el aislamiento de dependencias, en una frase?
+    back: '"Works on my machine" — without isolated, pinned dependencies, a project can behave differently
+      on different machines or CI.'
+    back_es: '"En mi máquina sí funciona" — sin dependencias aisladas y fijas, un proyecto puede comportarse
+      distinto en otra máquina o en CI.'
   standard_minutes: 35
 - id: w16-sa-pytest-s2
-  index: 76
+  index: 81
   week_id: w16-sa-pytest
   week_title: SQLAlchemy + pytest
   week_title_es: SQLAlchemy + pytest
@@ -6648,23 +7229,22 @@ sections:
     answer: 0
   cards:
   - id: w16-sa-pytest-s2-c1
-    front: Session ≈ DbContext?
-    front_es: Session ≈ DbContext?
-    back: Session ≈ DbContext.
-    back_es: Session ≈ DbContext.
+    front: What's the SQLAlchemy equivalent of EF Core's DbContext?
+    front_es: ¿Cuál es el equivalente en SQLAlchemy del DbContext de EF Core?
+    back: The Session — it tracks objects and their changes and is the unit of work that commits them
+      to the database.
+    back_es: El Session — rastrea los objetos y sus cambios, y es la unidad de trabajo que los commitea
+      a la base de datos.
   - id: w16-sa-pytest-s2-c2
-    front: Query vs IQueryable?
-    front_es: Query vs IQueryable?
-    back: Query vs IQueryable.
-    back_es: Query vs IQueryable.
-  - id: w16-sa-pytest-s2-cA
-    front: Anchor for SQLAlchemy vs EF?
-    front_es: ¿Ancla de SQLAlchemy vs EF?
-    back: if the role is Python.
-    back_es: si la vacante es Python.
+    front: How does a SQLAlchemy Query compare to EF's IQueryable?
+    front_es: ¿Cómo se compara un Query de SQLAlchemy con IQueryable de EF?
+    back: Both represent a deferred, composable query that gets translated to SQL and only executes when
+      you iterate/fetch results — the same lazy-query idea in each ORM.
+    back_es: Ambos representan una query diferida y componible que se traduce a SQL y solo se ejecuta
+      cuando iteras/traes resultados — la misma idea de query perezosa en cada ORM.
   standard_minutes: 35
 - id: w16-sa-pytest-s3
-  index: 77
+  index: 82
   week_id: w16-sa-pytest
   week_title: SQLAlchemy + pytest
   week_title_es: SQLAlchemy + pytest
@@ -6734,23 +7314,23 @@ sections:
     answer: 0
   cards:
   - id: w16-sa-pytest-s3-c1
-    front: Reusable setup?
-    front_es: Setup reutilizable?
-    back: Reusable setup.
-    back_es: Setup reutilizable.
+    front: What is a pytest fixture?
+    front_es: ¿Qué es un fixture de pytest?
+    back: A reusable, composable function (decorated with @pytest.fixture) that provides setup (and optional
+      teardown) for tests — injected into test functions as a parameter.
+    back_es: Una función reutilizable y componible (decorada con @pytest.fixture) que da setup (y opcionalmente
+      teardown) para los tests — se inyecta en las funciones de test como parámetro.
   - id: w16-sa-pytest-s3-c2
-    front: Skip TestCase setUp if you can?
-    front_es: No setUp de TestCase si puedes evitarlo?
-    back: Skip TestCase setUp if you can.
-    back_es: No setUp de TestCase si puedes evitarlo.
-  - id: w16-sa-pytest-s3-cA
-    front: Anchor for pytest fixtures?
-    front_es: ¿Ancla de pytest fixtures?
-    back: if the role is Python.
-    back_es: si la vacante es Python.
+    front: Why might pytest fixtures be preferred over unittest's TestCase.setUp()?
+    front_es: ¿Por qué se prefieren los fixtures de pytest sobre TestCase.setUp() de unittest?
+    back: Fixtures are more flexible and composable — shareable across test files, parametrizable, scoped
+      (function/class/module/session), and don't force a class-based test structure.
+    back_es: Los fixtures son más flexibles y componibles — se comparten entre archivos de test, se pueden
+      parametrizar, tienen scope (function/class/module/session), y no obligan a una estructura de test
+      basada en clases.
   standard_minutes: 35
 - id: w16-sa-pytest-s4
-  index: 78
+  index: 83
   week_id: w16-sa-pytest
   week_title: SQLAlchemy + pytest
   week_title_es: SQLAlchemy + pytest
@@ -6820,23 +7400,22 @@ sections:
     answer: 0
   cards:
   - id: w16-sa-pytest-s4-c1
-    front: unittest.mock?
-    front_es: unittest.mock?
-    back: unittest.mock.
-    back_es: unittest.mock.
+    front: What's the standard library tool for mocking in Python tests?
+    front_es: ¿Cuál es la herramienta de la librería estándar para mocking en tests de Python?
+    back: unittest.mock (Mock, MagicMock, and the patch() decorator/context manager to replace real objects
+      during a test).
+    back_es: unittest.mock (Mock, MagicMock, y el decorador/context manager patch() para reemplazar objetos
+      reales durante un test).
   - id: w16-sa-pytest-s4-c2
-    front: 'Same rule: mock I/O?'
-    front_es: 'Igual: mockea I/O?'
-    back: 'Same rule: mock I/O.'
-    back_es: 'Igual: mockea I/O.'
-  - id: w16-sa-pytest-s4-cA
-    front: Anchor for Python mocks?
-    front_es: ¿Ancla de mock Python?
-    back: if the role is Python.
-    back_es: si la vacante es Python.
+    front: What's the same 'what to mock' rule from earlier weeks, applied here?
+    front_es: ¿Cuál es la misma regla de 'qué mockear' de semanas anteriores, aplicada aquí?
+    back: Mock I/O and external dependencies (DB calls, HTTP clients, the clock) — not the logic you're
+      actually trying to test.
+    back_es: Mockea I/O y dependencias externas (llamadas a DB, clientes HTTP, el reloj) — no la lógica
+      que en realidad estás probando.
   standard_minutes: 35
 - id: w16-sa-pytest-s5
-  index: 79
+  index: 84
   week_id: w16-sa-pytest
   week_title: SQLAlchemy + pytest
   week_title_es: SQLAlchemy + pytest
@@ -6906,18 +7485,11 @@ sections:
     answer: 0
   cards:
   - id: w16-sa-pytest-s5-c1
-    front: 'What you say in a .NET interview: contrast?'
-    front_es: 'Qué sí dices en entrevista .NET: contraste?'
-    back: 'What you say in a .NET interview: contrast.'
-    back_es: 'Qué sí dices en entrevista .NET: contraste.'
-  - id: w16-sa-pytest-s5-c2
-    front: 'What you do not: a Flask course?'
-    front_es: 'Qué no: un curso Flask?'
-    back: 'What you do not: a Flask course.'
-    back_es: 'Qué no: un curso Flask.'
-  - id: w16-sa-pytest-s5-cA
-    front: Anchor for Python close?
-    front_es: ¿Ancla de Cierre Python?
-    back: if the role is Python.
-    back_es: si la vacante es Python.
+    front: If a .NET-focused interview asks about your Python experience, what framing works best?
+    front_es: Si en una entrevista enfocada en .NET te preguntan por tu experiencia en Python, ¿cuál framing
+      funciona mejor?
+    back: Contrast it against your .NET knowledge (e.g. Session vs DbContext, GIL vs thread pool) to show
+      transferable understanding — not reciting an unrelated Flask tutorial you took.
+    back_es: Contrastarlo con tu conocimiento de .NET (ej. Session vs DbContext, GIL vs thread pool) para
+      mostrar entendimiento transferible — no recitar un tutorial de Flask sin relación que hiciste.
   standard_minutes: 35

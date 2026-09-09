@@ -1,24 +1,15 @@
 import { Link } from 'react-router-dom';
 import { type SdeAssignment } from '../lib/api';
+import { sdeAssignmentHref } from '../lib/sdePaths';
 import { useCodi } from '../lib/codi';
 import { useI18n } from '../i18n/context';
 import { InterviewStoryCard } from './StudyRitual';
 
-function hrefFor(a: SdeAssignment): string | null {
-  if (a.type === 'flashcards') return '/sde/cards';
-  if (a.type === 'theory') return `/sde/section/${a.section_id || a.id}`;
-  if (a.type === 'algo_sheet') {
-    return `/sde/algo/${a.algo_id}/${a.lang}/${a.sheet_id}`;
-  }
-  if (a.type === 'voice') return '/sde/voice';
-  if (a.type === 'sql') return `/sde/sql/${a.id}`;
-  if (a.type === 'story') return '/stories';
-  return null;
-}
-
 function label(a: SdeAssignment, locale: string): string {
   if (a.type === 'flashcards') return locale === 'es' ? 'Mazo' : 'Cards';
-  if (a.type === 'theory') return String(a.title || a.id);
+  if (a.type === 'theory' || a.type === 'reading' || a.type === 'debug' || a.type === 'design' || a.type === 'project') {
+    return String(a.title || a.id);
+  }
   if (a.type === 'algo_sheet') {
     return `${a.title || a.algo_id} · ${a.lang} · ${a.sheet_id}`;
   }
@@ -31,7 +22,11 @@ function label(a: SdeAssignment, locale: string): string {
 
 function typeHint(a: SdeAssignment, locale: string): string {
   if (a.type === 'flashcards') return locale === 'es' ? 'Repaso rápido' : 'Quick recall';
+  if (a.type === 'reading') return locale === 'es' ? 'Lectura' : 'Reading';
   if (a.type === 'theory') return locale === 'es' ? 'Lee + quiz' : 'Read + quiz';
+  if (a.type === 'debug') return locale === 'es' ? 'Arregla el bug' : 'Fix the bug';
+  if (a.type === 'design') return locale === 'es' ? 'Diseño' : 'System design';
+  if (a.type === 'project') return locale === 'es' ? 'Proyecto' : 'Project story';
   if (a.type === 'algo_sheet') return locale === 'es' ? 'Escribe código' : 'Write code';
   if (a.type === 'voice') return locale === 'es' ? 'Explica en voz' : 'Explain out loud';
   if (a.type === 'sql') return locale === 'es' ? 'Consulta SQL' : 'SQL query';
@@ -100,7 +95,7 @@ export function SdeTodayPanel() {
 
       <ol className="mt-5 space-y-2">
         {data.assignments.map((a, idx) => {
-          const to = hrefFor(a);
+          const to = sdeAssignmentHref(a);
           const done = Boolean(a.completed);
           const current = idx === nextIndex;
           const className = `sde-step ${done ? 'sde-step-done' : ''} ${current ? 'sde-step-current' : ''}`;

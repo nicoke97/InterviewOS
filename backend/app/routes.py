@@ -173,6 +173,10 @@ class SdeSqlSubmit(BaseModel):
     sql: str
 
 
+class SdeDebugSubmit(BaseModel):
+    code: str = ""
+
+
 def _require_level(level: str, locale: str = "en") -> str:
     if not is_valid_route_level(level):
         raise HTTPException(404, t("unknown_level", locale, level=level))
@@ -585,6 +589,19 @@ def sde_cards_review(req: SdeCardReview, db: Session = Depends(get_db)):
     return sde_engine.review_cards(db, req.results)
 
 
+@router.get("/sde/reading/{week_id}")
+def sde_reading(week_id: str, request: Request):
+    payload = sde_engine.get_reading(week_id, locale_from_request(request))
+    if not payload:
+        raise HTTPException(404, "reading not found")
+    return payload
+
+
+@router.post("/sde/reading/{week_id}/complete")
+def sde_reading_complete(week_id: str, db: Session = Depends(get_db)):
+    return sde_engine.complete_reading(db, week_id)
+
+
 @router.get("/sde/section/{section_id}")
 def sde_section(section_id: str, request: Request):
     sec = sde_engine.get_section(section_id, locale_from_request(request))
@@ -632,6 +649,19 @@ def sde_pack(request: Request, db: Session = Depends(get_db)):
 @router.post("/sde/sql/{drill_id}")
 def sde_sql(drill_id: str, req: SdeSqlSubmit, db: Session = Depends(get_db)):
     return sde_engine.submit_sql(db, drill_id, req.sql)
+
+
+@router.get("/sde/debug/{bug_id}")
+def sde_debug(bug_id: str, request: Request):
+    payload = sde_engine.get_debug(bug_id, locale_from_request(request))
+    if not payload:
+        raise HTTPException(404, "debug bug not found")
+    return payload
+
+
+@router.post("/sde/debug/{bug_id}/submit")
+def sde_debug_submit(bug_id: str, req: SdeDebugSubmit, request: Request, db: Session = Depends(get_db)):
+    return sde_engine.submit_debug(db, bug_id, req.code, locale_from_request(request))
 
 
 @router.get("/export")

@@ -24,7 +24,9 @@ export function SdeSectionPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <p className="text-xs uppercase text-brand">{sec.week_title} · {sec.anchor}</p>
+      <p className="text-xs uppercase text-brand">
+        {sec.anchor ? `${sec.week_title} · ${sec.anchor}` : sec.week_title}
+      </p>
       <h1 className="page-title">{sec.title}</h1>
       <p className="text-sm leading-relaxed text-text-muted">{sec.reading}</p>
       {!result && (

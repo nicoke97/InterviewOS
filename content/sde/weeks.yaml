@@ -1,4 +1,62 @@
 weeks:
+- id: w00-fundamentos
+  title: Programming foundations
+  title_es: Fundamentos
+  minutes: 12
+  intro: |
+    This week is definitions. Not stories. If someone asks what OOP is, you name the idea, not a project.
+
+    OOP (object-oriented programming) structures a program around objects. An object holds data
+    (state) and the operations that use that data (behavior). The class is the definition; the
+    object is one instance in memory.
+
+    The four pillars: encapsulation, abstraction, inheritance, polymorphism.
+    Encapsulation: hide internal data; change it through a controlled interface (private + methods).
+    Abstraction: show only what matters; hide the messy details behind a name.
+    Inheritance: a class reuses and extends another (Square is a Shape).
+    Polymorphism: the same call runs different code depending on the real type (shape.Area()).
+
+    Class = type definition (fields, properties, methods, constructor).
+    Object / instance = one living copy (`new Cuenta(100)`).
+    Function = named block with inputs and a result. Method = function that belongs to a class/object.
+    Constructor = runs on `new` and sets initial state.
+    Interface = a contract of methods a class must implement.
+    public / private = who can see a member.
+
+    `using` in C# is two things:
+    1. `using System.Text;` imports a namespace (like Python/Java import).
+    2. `using (var conn = ...)` / `using var conn = ...` always calls Dispose() (like Python `with`).
+
+    Entity Framework (EF / EF Core) is an ORM: it maps C# classes to database tables.
+    DbContext is the unit of work. DbSet<T> is a table. SaveChanges() writes tracked changes.
+    EF is not the database. Later weeks cover tracking, N+1, and migrations.
+  intro_es: |
+    Esta semana son definiciones. No historias. Si te preguntan qué es POO, nombras la idea, no un proyecto.
+
+    POO (programación orientada a objetos) organiza el programa alrededor de objetos. Un objeto
+    guarda datos (estado) y las operaciones que usan esos datos (comportamiento). La clase es la
+    definición; el objeto es una instancia en memoria.
+
+    Los cuatro pilares: encapsulación, abstracción, herencia, polimorfismo.
+    Encapsulación: escondes los datos internos; los cambias por una interfaz controlada (private + métodos).
+    Abstracción: muestras solo lo que importa; escondes el detalle detrás de un nombre.
+    Herencia: una clase reutiliza y extiende otra (Cuadrado es una Forma).
+    Polimorfismo: la misma llamada corre código distinto según el tipo real (forma.Area()).
+
+    Clase = definición del tipo (campos, propiedades, métodos, constructor).
+    Objeto / instancia = una copia viva (`new Cuenta(100)`).
+    Función = bloque con nombre, entradas y resultado. Método = función que pertenece a una clase/objeto.
+    Constructor = corre en el `new` y deja el estado inicial.
+    Interfaz = contrato de métodos que una clase debe implementar.
+    public / private = quién puede ver un miembro.
+
+    `using` en C# es dos cosas:
+    1. `using System.Text;` importa un namespace (como import en Python o Java).
+    2. `using (var conn = ...)` / `using var conn = ...` siempre llama Dispose() (como `with` en Python).
+
+    Entity Framework (EF / EF Core) es un ORM: mapea clases de C# a tablas de la base.
+    DbContext es la unidad de trabajo. DbSet<T> es una tabla. SaveChanges() escribe los cambios rastreados.
+    EF no es la base de datos. Semanas después cubren tracking, N+1 y migrations.
 - id: w01-big-o
   title: Big O
   title_es: Big O

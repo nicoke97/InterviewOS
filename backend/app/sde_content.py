@@ -20,11 +20,13 @@ def _load(path: Path) -> dict:
 def load_sde() -> dict[str, Any]:
     program = _load(SDE_DIR / "program.yaml")
     sections = _load(SDE_DIR / "sections.yaml").get("sections") or []
+    weeks = _load(SDE_DIR / "weeks.yaml").get("weeks") or []
     sql = _load(SDE_DIR / "sql.yaml").get("drills") or []
     algos: dict[str, dict] = {}
     for p in sorted((SDE_DIR / "algos").glob("*.yaml")):
         data = _load(p)
         algos[data["id"]] = data
+    debug = _load(SDE_DIR / "debug.yaml").get("bugs") or [] if (SDE_DIR / "debug.yaml").exists() else []
     by_id = {s["id"]: s for s in sections}
     cards: list[dict] = []
     for s in sections:
@@ -34,9 +36,13 @@ def load_sde() -> dict[str, Any]:
         "program": program,
         "sections": sections,
         "section_by_id": by_id,
+        "weeks": weeks,
+        "week_by_id": {w["id"]: w for w in weeks if w.get("id")},
         "cards": cards,
         "sql": sql,
         "algos": algos,
+        "debug": debug,
+        "debug_by_id": {b["id"]: b for b in debug},
         "algo_order": program.get("algos") or [],
         "first_lang": program.get("first_lang", "csharp"),
         "second_lang": program.get("second_lang", "python"),

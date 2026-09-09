@@ -21,6 +21,8 @@ const SdeAlgoPage = lazy(() => import('./pages/SdeAlgo').then((m) => ({ default:
 const SdeVoicePage = lazy(() => import('./pages/SdeVoice').then((m) => ({ default: m.SdeVoicePage })));
 const SdeSqlPage = lazy(() => import('./pages/SdeSql').then((m) => ({ default: m.SdeSqlPage })));
 const SdePackPage = lazy(() => import('./pages/SdeSql').then((m) => ({ default: m.SdePackPage })));
+const SdeDebugPage = lazy(() => import('./pages/SdeDebug').then((m) => ({ default: m.SdeDebugPage })));
+const SdeReadingPage = lazy(() => import('./pages/SdeReading').then((m) => ({ default: m.SdeReadingPage })));
 
 function PageFallback() {
   const { t } = useI18n();
@@ -35,11 +37,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/sde/cards" element={<SdeCardsPage />} />
+            <Route path="/sde/reading/:weekId" element={<SdeReadingPage />} />
             <Route path="/sde/section/:id" element={<SdeSectionPage />} />
             <Route path="/sde/algo/:algoId/:lang/:sheetId" element={<SdeAlgoPage />} />
             <Route path="/sde/voice" element={<SdeVoicePage />} />
             <Route path="/sde/sql/:id" element={<SdeSqlPage />} />
             <Route path="/sde/pack" element={<SdePackPage />} />
+            <Route path="/sde/debug/:bugId" element={<SdeDebugPage />} />
             <Route path="/return-exam" element={<ReturnExamPage />} />
             <Route path="/orientador" element={<OrientadorPage />} />
             <Route path="/settings" element={<Settings />} />

@@ -34,6 +34,21 @@ card_cap: 40
 card_cap_light: 12
 inactivity_days: 3
 sections:
+- id: w00-fundamentos-s1
+  title: What is OOP
+  week_id: w00-fundamentos
+- id: w00-fundamentos-s2
+  title: The four pillars
+  week_id: w00-fundamentos
+- id: w00-fundamentos-s3
+  title: Class, object, method, function
+  week_id: w00-fundamentos
+- id: w00-fundamentos-s4
+  title: using and namespace
+  week_id: w00-fundamentos
+- id: w00-fundamentos-s5
+  title: What is EF
+  week_id: w00-fundamentos
 - id: w01-big-o-s1
   title: O(1), O(n), O(n²)
   week_id: w01-big-o

@@ -1,0 +1,616 @@
+# Interview debug pool. One planted bug per snippet (Amazon OA / fix-the-code).
+# Sources: techinterview.org debugging round (2026-07), PapersAdda fix-the-code (2026-06),
+# SpaceComplexity interview bugs, LeetCopilot BS/window mistakes, Bloch/JDK binary-search overflow,
+# Microsoft common-async-bugs (verbal; harness blocks Task), Articuler/Full Scale EF N+1.
+bugs:
+- id: dbg-bs-last-candidate
+  title: Binary search drops the last candidate
+  title_es: Binary search se come el último candidato
+  family: off-by-one
+  source: SpaceComplexity / LeetCopilot binary-search mistakes
+  difficulty: medium
+  lang: csharp
+  error_hint: "Search([1,3,5], 5) and Search([5], 5) return -1."
+  error_hint_es: "Search([1,3,5], 5) y Search([5], 5) devuelven -1."
+  cause: "while (left < right) exits when left == right and never inspects the last candidate."
+  cause_es: "while (left < right) sale cuando left == right y no mira el último candidato."
+  fn_name: Search
+  broken_code: |
+    int Search(int[] nums, int target)
+    {
+        int left = 0, right = nums.Length - 1;
+        while (left < right)
+        {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return mid;
+            if (nums[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return -1;
+    }
+  test_cases:
+  - args: [[1, 3, 5], 5]
+    expected: 2
+  - args: [[5], 5]
+    expected: 0
+  - args: [[1, 3, 5], 1]
+    expected: 0
+  - args: [[1, 3, 5], 2]
+    expected: -1
+
+- id: dbg-bs-mid-overflow
+  title: Binary-search mid overflow
+  title_es: Overflow al calcular mid
+  family: overflow
+  source: Joshua Bloch / JDK Arrays.binarySearch (Google Research, 2006)
+  difficulty: medium
+  lang: csharp
+  error_hint: "Mid(2000000000, 2000000002) is wrong (lo+hi overflows int)."
+  error_hint_es: "Mid(2000000000, 2000000002) sale mal (lo+hi desborda int)."
+  cause: "(lo + hi) / 2 overflows; use lo + (hi - lo) / 2."
+  cause_es: "(lo + hi) / 2 desborda; usa lo + (hi - lo) / 2."
+  fn_name: Mid
+  broken_code: |
+    int Mid(int lo, int hi)
+    {
+        return (lo + hi) / 2;
+    }
+  test_cases:
+  - args: [0, 4]
+    expected: 2
+  - args: [2000000000, 2000000002]
+    expected: 2000000001
+
+- id: dbg-two-ptr-overlap
+  title: Two pointers reuse the same index
+  title_es: Two pointers reusa el mismo índice
+  family: two-pointers
+  source: SpaceComplexity coding-interview debugging (left <= right)
+  difficulty: medium
+  lang: csharp
+  error_hint: "TwoSumSorted([3,3], 6) returns [1,1] — same element twice."
+  error_hint_es: "TwoSumSorted([3,3], 6) devuelve [1,1] — el mismo elemento dos veces."
+  cause: "while (left <= right) lets left == right; need left < right."
+  cause_es: "while (left <= right) permite left == right; debe ser left < right."
+  fn_name: TwoSumSorted
+  broken_code: |
+    int[] TwoSumSorted(int[] nums, int target)
+    {
+        int left = 0, right = nums.Length - 1;
+        while (left <= right)
+        {
+            int s = nums[left] + nums[right];
+            if (s == target) return new[] { left + 1, right + 1 };
+            if (s < target) left++;
+            else right--;
+        }
+        return new int[] {};
+    }
+  test_cases:
+  - args: [[2, 7, 11, 15], 9]
+    expected: [1, 2]
+  - args: [[3, 3], 6]
+    expected: [1, 2]
+  - args: [[1, 2, 4], 8]
+    expected: []
+
+- id: dbg-window-size
+  title: Sliding window size off-by-one
+  title_es: Tamaño de sliding window off-by-one
+  family: sliding-window
+  source: LeetCopilot sliding-window mistakes (right-left vs +1)
+  difficulty: medium
+  lang: csharp
+  error_hint: "LongestUnique(\"abc\") expected 3, got 2. \"bbbb\" expected 1, got 0."
+  error_hint_es: "LongestUnique(\"abc\") esperaba 3, obtuvo 2."
+  cause: "Window length is right - left; inclusive span needs + 1."
+  cause_es: "El largo es right - left; el span inclusivo necesita + 1."
+  fn_name: LongestUnique
+  broken_code: |
+    int LongestUnique(string s)
+    {
+        var seen = new HashSet<char>();
+        int left = 0, best = 0;
+        for (int right = 0; right < s.Length; right++)
+        {
+            while (seen.Contains(s[right]))
+            {
+                seen.Remove(s[left]);
+                left++;
+            }
+            seen.Add(s[right]);
+            best = Math.Max(best, right - left);
+        }
+        return best;
+    }
+  test_cases:
+  - args: ["abc"]
+    expected: 3
+  - args: ["bbbb"]
+    expected: 1
+  - args: ["pwwkew"]
+    expected: 3
+  - args: [""]
+    expected: 0
+
+- id: dbg-window-if-shrink
+  title: Window shrinks with if, not while
+  title_es: La ventana encoge con if, no while
+  family: sliding-window
+  source: LeetCopilot — shrink must be while (k-distinct)
+  difficulty: medium
+  lang: csharp
+  error_hint: "LongestKDistinct(\"aaab\", 1) expected 3, got 4 (invalid window counted)."
+  error_hint_es: "LongestKDistinct(\"aaab\", 1) esperaba 3, obtuvo 4."
+  cause: "One `if` shrink leaves count > k and still updates best. Need while."
+  cause_es: "Un `if` deja count > k y aún así actualiza best. Hace falta while."
+  fn_name: LongestKDistinct
+  broken_code: |
+    int LongestKDistinct(string s, int k)
+    {
+        var freq = new Dictionary<char, int>();
+        int left = 0, best = 0;
+        for (int right = 0; right < s.Length; right++)
+        {
+            if (!freq.ContainsKey(s[right])) freq[s[right]] = 0;
+            freq[s[right]]++;
+            if (freq.Count > k)
+            {
+                freq[s[left]]--;
+                if (freq[s[left]] == 0) freq.Remove(s[left]);
+                left++;
+            }
+            best = Math.Max(best, right - left + 1);
+        }
+        return best;
+    }
+  test_cases:
+  - args: ["aaab", 1]
+    expected: 3
+  - args: ["eceba", 2]
+    expected: 3
+  - args: ["a", 1]
+    expected: 1
+
+- id: dbg-reverse-lost-next
+  title: Reverse list loses the forward link
+  title_es: Reverse pierde el enlace hacia adelante
+  family: linked-list
+  source: DSA Handbook / Abstract Algorithms — snapshot before clobber
+  difficulty: medium
+  lang: csharp
+  error_hint: "ReverseList([1,2,3,4,5]) returns [1] instead of [5,4,3,2,1]."
+  error_hint_es: "ReverseList([1,2,3,4,5]) devuelve [1] en vez de [5,4,3,2,1]."
+  cause: "Rewires nxt[curr] before saving the old next; the walk dies after node 0."
+  cause_es: "Reescribe nxt[curr] antes de guardar el next; el walk muere en el nodo 0."
+  fn_name: ReverseList
+  broken_code: |
+    int[] ReverseList(int[] nums)
+    {
+        int n = nums.Length;
+        if (n == 0) return new int[] {};
+        int[] nxt = new int[n];
+        for (int i = 0; i < n; i++)
+            nxt[i] = i + 1 < n ? i + 1 : -1;
+        int prev = -1, curr = 0;
+        while (curr != -1)
+        {
+            nxt[curr] = prev;
+            int next = nxt[curr];
+            prev = curr;
+            curr = next;
+        }
+        var output = new List<int>();
+        for (int i = prev; i != -1; i = nxt[i])
+            output.Add(nums[i]);
+        return output.ToArray();
+    }
+  test_cases:
+  - args: [[1, 2, 3, 4, 5]]
+    expected: [5, 4, 3, 2, 1]
+  - args: [[1, 2]]
+    expected: [2, 1]
+  - args: [[1]]
+    expected: [1]
+  - args: [[]]
+    expected: []
+
+- id: dbg-reverse-wrong-return
+  title: Reverse returns the wrong head
+  title_es: Reverse devuelve la head incorrecta
+  family: linked-list
+  source: Abstract Algorithms — new head is prev, never curr
+  difficulty: medium
+  lang: csharp
+  error_hint: "ReverseList returns [] after a correct-looking reverse walk."
+  error_hint_es: "ReverseList devuelve [] tras un walk que parece correcto."
+  cause: "Walks from curr after the loop; curr is -1. The new head is prev."
+  cause_es: "Camina desde curr al terminar; curr es -1. La nueva head es prev."
+  fn_name: ReverseList
+  broken_code: |
+    int[] ReverseList(int[] nums)
+    {
+        int n = nums.Length;
+        if (n == 0) return new int[] {};
+        int[] nxt = new int[n];
+        for (int i = 0; i < n; i++)
+            nxt[i] = i + 1 < n ? i + 1 : -1;
+        int prev = -1, curr = 0;
+        while (curr != -1)
+        {
+            int next = nxt[curr];
+            nxt[curr] = prev;
+            prev = curr;
+            curr = next;
+        }
+        var output = new List<int>();
+        for (int i = curr; i != -1; i = nxt[i])
+            output.Add(nums[i]);
+        return output.ToArray();
+    }
+  test_cases:
+  - args: [[1, 2, 3]]
+    expected: [3, 2, 1]
+  - args: [[1, 2]]
+    expected: [2, 1]
+
+- id: dbg-cycle-fast-null
+  title: Fast pointer walks off a null next
+  title_es: El puntero fast cae en next nulo
+  family: linked-list
+  source: Floyd cycle — check fast and fast.next before advancing
+  difficulty: medium
+  lang: csharp
+  error_hint: "HasCycle([1,2,-1]) crashes (IndexOutOfRange). Acyclic list must return false."
+  error_hint_es: "HasCycle([1,2,-1]) crashea. Lista acíclica debe devolver false."
+  cause: "next[next[fast]] runs when next[fast] is -1. Guard both hops."
+  cause_es: "next[next[fast]] corre cuando next[fast] es -1. Guarda los dos hops."
+  fn_name: HasCycle
+  broken_code: |
+    bool HasCycle(int[] next)
+    {
+        if (next.Length == 0) return false;
+        int slow = 0, fast = 0;
+        while (fast != -1)
+        {
+            slow = next[slow];
+            fast = next[next[fast]];
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+  test_cases:
+  - args: [[1, 2, 0]]
+    expected: true
+  - args: [[1, 2, -1]]
+    expected: false
+  - args: [[-1]]
+    expected: false
+  - args: [[]]
+    expected: false
+
+- id: dbg-kadane-init
+  title: Max subarray init cannot see negatives
+  title_es: Max subarray no ve negativos
+  family: initial-state
+  source: SpaceComplexity — wrong initial state / Kadane
+  difficulty: easy
+  lang: csharp
+  error_hint: "MaxSubArray([-2,-1]) expected -1, got 0."
+  error_hint_es: "MaxSubArray([-2,-1]) esperaba -1, obtuvo 0."
+  cause: "best starts at 0; all-negative input never beats it. Init from nums[0]."
+  cause_es: "best empieza en 0; todo-negativo nunca gana. Init desde nums[0]."
+  fn_name: MaxSubArray
+  broken_code: |
+    int MaxSubArray(int[] nums)
+    {
+        int best = 0, cur = 0;
+        foreach (var n in nums)
+        {
+            cur = Math.Max(n, cur + n);
+            best = Math.Max(best, cur);
+        }
+        return best;
+    }
+  test_cases:
+  - args: [[-2, 1, -3, 4, -1, 2, 1, -5, 4]]
+    expected: 6
+  - args: [[-2, -1]]
+    expected: -1
+  - args: [[5]]
+    expected: 5
+
+- id: dbg-twosum-early-return
+  title: Early return skips the rest of the work
+  title_es: Return temprano se salta el resto
+  family: early-return
+  source: Amazon OA planted bug — return one line too high (techinterview.org)
+  difficulty: easy
+  lang: csharp
+  error_hint: "TwoSum([2,7,11,15], 9) returns [] — loop bails before the pair is stored."
+  error_hint_es: "TwoSum([2,7,11,15], 9) devuelve [] — el loop se sale antes de guardar."
+  cause: "return sits above seen[nums[i]] = i, so the map never fills."
+  cause_es: "el return está encima de seen[nums[i]] = i; el mapa nunca se llena."
+  fn_name: TwoSum
+  broken_code: |
+    int[] TwoSum(int[] nums, int target)
+    {
+        var seen = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int want = target - nums[i];
+            if (seen.ContainsKey(want))
+                return new[] { seen[want], i };
+            return new int[] {};
+            seen[nums[i]] = i;
+        }
+        return new int[] {};
+    }
+  test_cases:
+  - args: [[2, 7, 11, 15], 9]
+    expected: [0, 1]
+  - args: [[3, 2, 4], 6]
+    expected: [1, 2]
+
+- id: dbg-pagination-pages
+  title: Pagination drops the last page
+  title_es: Paginación se come la última página
+  family: off-by-one
+  source: techinterview.org practice prompt — last row / last page
+  difficulty: easy
+  lang: csharp
+  error_hint: "PageCount(10, 3) expected 4, got 3. Remainder page is dropped."
+  error_hint_es: "PageCount(10, 3) esperaba 4, obtuvo 3."
+  cause: "Integer division truncates; last partial page needs a ceiling."
+  cause_es: "La división entera trunca; la última página parcial necesita techo."
+  fn_name: PageCount
+  broken_code: |
+    int PageCount(int total, int size)
+    {
+        return total / size;
+    }
+  test_cases:
+  - args: [10, 3]
+    expected: 4
+  - args: [9, 3]
+    expected: 3
+  - args: [1, 10]
+    expected: 1
+  - args: [0, 10]
+    expected: 0
+
+- id: dbg-rate-limit-extra
+  title: Rate limiter lets one extra request through
+  title_es: Rate limiter deja pasar un request de más
+  family: off-by-one
+  source: techinterview.org — "rate limiter lets one extra request through"
+  difficulty: easy
+  lang: csharp
+  error_hint: "Allow(5, 5) is true; at-capacity request should be rejected."
+  error_hint_es: "Allow(5, 5) es true; en el tope debería rechazar."
+  cause: "used <= limit allows the request that sits on the cap; need used < limit."
+  cause_es: "used <= limit deja pasar el request en el tope; debe ser used < limit."
+  fn_name: Allow
+  broken_code: |
+    bool Allow(int used, int limit)
+    {
+        return used <= limit;
+    }
+  test_cases:
+  - args: [4, 5]
+    expected: true
+  - args: [5, 5]
+    expected: false
+  - args: [0, 1]
+    expected: true
+
+- id: dbg-retry-on-success
+  title: Retry wrapper retries even on success
+  title_es: Retry reintenta aunque ya hubo éxito
+  family: control-flow
+  source: techinterview.org — "retry wrapper retries even on success"
+  difficulty: easy
+  lang: csharp
+  error_hint: "RunWithRetry(true) expected 1 try, got 3."
+  error_hint_es: "RunWithRetry(true) esperaba 1 intento, obtuvo 3."
+  cause: "Loop never breaks on success; always burns the retry budget."
+  cause_es: "El loop no hace break al éxito; siempre gasta el presupuesto."
+  fn_name: RunWithRetry
+  broken_code: |
+    int RunWithRetry(bool firstOk)
+    {
+        int tries = 0;
+        while (tries < 3)
+        {
+            tries++;
+            bool ok = firstOk && tries == 1;
+            if (!ok) { }
+        }
+        return tries;
+    }
+  test_cases:
+  - args: [true]
+    expected: 1
+  - args: [false]
+    expected: 3
+
+- id: dbg-int-div-percent
+  title: Integer division where a ratio was needed
+  title_es: División entera donde hacía falta ratio
+  family: integer-division
+  source: techinterview.org bug classes / PapersAdda type-or-overflow
+  difficulty: easy
+  lang: csharp
+  error_hint: "Percent(1, 2) expected 50, got 0."
+  error_hint_es: "Percent(1, 2) esperaba 50, obtuvo 0."
+  cause: "part / whole truncates to 0 before * 100. Multiply first."
+  cause_es: "part / whole trunca a 0 antes de * 100. Multiplica primero."
+  fn_name: Percent
+  broken_code: |
+    int Percent(int part, int whole)
+    {
+        if (whole == 0) return 0;
+        return part / whole * 100;
+    }
+  test_cases:
+  - args: [1, 2]
+    expected: 50
+  - args: [1, 1]
+    expected: 100
+  - args: [0, 4]
+    expected: 0
+
+- id: dbg-mutate-iterate
+  title: Mutating a list while iterating
+  title_es: Mutar la lista mientras se itera
+  family: mutation
+  source: techinterview.org — mutate-while-iterate
+  difficulty: medium
+  lang: csharp
+  error_hint: "DropOdds([1,2,3,4]) throws InvalidOperationException."
+  error_hint_es: "DropOdds([1,2,3,4]) lanza InvalidOperationException."
+  cause: "foreach + List.Remove mutates the enumerator. Filter/copy first."
+  cause_es: "foreach + List.Remove muta el enumerador. Filtra/copia primero."
+  fn_name: DropOdds
+  broken_code: |
+    int[] DropOdds(int[] nums)
+    {
+        var list = new List<int>(nums);
+        foreach (var n in list)
+            if (n % 2 != 0)
+                list.Remove(n);
+        return list.ToArray();
+    }
+  test_cases:
+  - args: [[1, 2, 3, 4]]
+    expected: [2, 4]
+  - args: [[2, 4]]
+    expected: [2, 4]
+  - args: [[1, 3]]
+    expected: []
+
+- id: dbg-nplusone-queries
+  title: N+1 queries instead of one join
+  title_es: N+1 queries en vez de un join
+  family: n-plus-one
+  source: Articuler / Full Scale .NET 2026 — EF lazy load N+1
+  difficulty: medium
+  lang: csharp
+  error_hint: "QueryCount(3) is 4 (1+N). Eager load / Include should be 1."
+  error_hint_es: "QueryCount(3) es 4 (1+N). Include debería ser 1."
+  cause: "Loop fires one query per user after the list query. One Include/join is enough."
+  cause_es: "El loop dispara una query por user. Un Include/join alcanza."
+  fn_name: QueryCount
+  broken_code: |
+    int QueryCount(int users)
+    {
+        int q = 1;
+        for (int i = 0; i < users; i++)
+            q++;
+        return q;
+    }
+  test_cases:
+  - args: [3]
+    expected: 1
+  - args: [10]
+    expected: 1
+  - args: [0]
+    expected: 1
+
+- id: dbg-sql-join-shape
+  title: JOIN condition is 1=1
+  title_es: El JOIN está en 1=1
+  family: sql
+  source: SQL interview + Amazon OA inverted/missing filter
+  difficulty: medium
+  lang: csharp
+  error_hint: "BuildJoinSql produces CROSS-like ON 1=1 instead of matching keys."
+  error_hint_es: "BuildJoinSql produce ON 1=1 en vez de keys."
+  cause: "ON 1=1 is a cartesian product; need a.id = b.a_id."
+  cause_es: "ON 1=1 es producto cartesiano; debe ser a.id = b.a_id."
+  fn_name: BuildJoinSql
+  broken_code: |
+    string BuildJoinSql()
+    {
+        return "SELECT * FROM a JOIN b ON 1=1";
+    }
+  test_cases:
+  - args: []
+    expected: "SELECT * FROM a JOIN b ON a.id = b.a_id"
+
+- id: dbg-duplicate-add
+  title: Duplicate detector never reads Add
+  title_es: El detector de duplicados no lee Add
+  family: hashing
+  source: LC 217 Contains Duplicate — Amazon OA "missing state update"
+  difficulty: easy
+  lang: csharp
+  error_hint: "ContainsDuplicate always returns false."
+  error_hint_es: "ContainsDuplicate siempre devuelve false."
+  cause: "Adds every value then returns false; never checks whether Add failed."
+  cause_es: "Agrega todo y devuelve false; nunca chequea si Add falló."
+  fn_name: ContainsDuplicate
+  broken_code: |
+    bool ContainsDuplicate(int[] nums)
+    {
+        var seen = new HashSet<int>();
+        foreach (var n in nums)
+            seen.Add(n);
+        return false;
+    }
+  test_cases:
+  - args: [[1, 2, 3, 1]]
+    expected: true
+  - args: [[1, 2, 3, 4]]
+    expected: false
+
+- id: dbg-py-backtrack-alias
+  title: Backtracking appends a reference
+  title_es: Backtracking appendea la referencia
+  family: mutation
+  source: SpaceComplexity — result.append(path) aliasing
+  difficulty: medium
+  lang: python
+  error_hint: "subsets([1,2]) is a list of empty lists."
+  error_hint_es: "subsets([1,2]) es una lista de listas vacías."
+  cause: "append(path) stores the same list object; snapshot with path[:]."
+  cause_es: "append(path) guarda el mismo objeto; copia con path[:]."
+  fn_name: subsets
+  broken_code: |
+    def subsets(nums):
+        result = []
+        path = []
+        def bt(start):
+            result.append(path)
+            for i in range(start, len(nums)):
+                path.append(nums[i])
+                bt(i + 1)
+                path.pop()
+        bt(0)
+        return result
+  test_cases:
+  - args: [[1, 2]]
+    expected: [[], [1], [1, 2], [2]]
+  - args: [[]]
+    expected: [[]]
+
+- id: dbg-py-tax-round
+  title: Money rounded to the whole dollar
+  title_es: Dinero redondeado al dólar entero
+  family: rounding
+  source: techinterview.org invoice_total / tax round()
+  difficulty: easy
+  lang: python
+  error_hint: "invoice_tax(88) expected 7.7, got 8."
+  error_hint_es: "invoice_tax(88) esperaba 7.7, obtuvo 8."
+  cause: "round(x) with no ndigits snaps to an integer. Need 2 decimal places."
+  cause_es: "round(x) sin ndigits va a entero. Hacen falta 2 decimales."
+  fn_name: invoice_tax
+  broken_code: |
+    def invoice_tax(subtotal):
+        return round(subtotal * 0.0875)
+  test_cases:
+  - args: [88]
+    expected: 7.7
+  - args: [100]
+    expected: 8.75

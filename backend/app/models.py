@@ -248,6 +248,7 @@ class SdeCursor(Base):
     today_assignments: Mapped[list] = mapped_column(JSON, default=list)
     pending_voice_algo: Mapped[str | None] = mapped_column(String(64), nullable=True)
     pending_voice_lang: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    next_debug_index: Mapped[int] = mapped_column(Integer, default=0)
 
 
 class SdeAlgoProgress(Base):
@@ -281,6 +282,16 @@ class SdeCardProgress(Base):
     fails: Mapped[int] = mapped_column(Integer, default=0)
     seen: Mapped[int] = mapped_column(Integer, default=0)
     last_ok: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+
+
+class SdeDebugProgress(Base):
+    __tablename__ = "sde_debug_progress"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    bug_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    status: Mapped[str] = mapped_column(String(16), default="unseen")  # unseen|failed|completed
+    fails: Mapped[int] = mapped_column(Integer, default=0)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
 
 class SdeOfflineLog(Base):
@@ -361,6 +372,11 @@ def _migrate_schema() -> None:
                 conn.execute(
                     text("ALTER TABLE daily_plans ADD COLUMN session_number INTEGER DEFAULT 1")
                 )
+    if "sde_cursors" in insp.get_table_names():
+        cols = {c["name"] for c in insp.get_columns("sde_cursors")}
+        if "next_debug_index" not in cols:
+            with engine.begin() as conn:
+                conn.execute(text("ALTER TABLE sde_cursors ADD COLUMN next_debug_index INTEGER DEFAULT 0"))
     if "leetcode_progress" in insp.get_table_names():
         cols = {c["name"] for c in insp.get_columns("leetcode_progress")}
         lc_migrations = [

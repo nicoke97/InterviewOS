@@ -13,6 +13,7 @@ from .models import (
     SdeAnalysis,
     SdeCardProgress,
     SdeCursor,
+    SdeDebugProgress,
     SdeOfflineLog,
     SdeSectionProgress,
     Streak,
@@ -31,6 +32,40 @@ from .sde_i18n import (
 )
 
 LANG_LABEL = {"csharp": "C#", "python": "Python"}
+FOUNDATION_WEEK = "w00-fundamentos"
+
+
+def _is_foundation(section: dict) -> bool:
+    return section.get("week_id") == FOUNDATION_WEEK
+
+
+def _mastered_section_ids(db: Session) -> set[str]:
+    return {
+        r.section_id
+        for r in db.query(SdeSectionProgress).filter(SdeSectionProgress.status == "mastered").all()
+    }
+
+
+def _sync_section_cursor(db: Session, cur: SdeCursor, sections: list[dict]) -> None:
+    """If foundations were inserted at the front after the user already progressed, keep the later pointer."""
+    n = sum(1 for s in sections if _is_foundation(s))
+    if n == 0 or cur.next_section_index >= n:
+        return
+    later = db.query(SdeSectionProgress).filter(
+        SdeSectionProgress.status.in_(["mastered", "current", "dirty"]),
+    ).all()
+    if any(r.section_id and not str(r.section_id).startswith("w00-") for r in later):
+        cur.next_section_index += n
+
+
+def _pick_theory_section(db: Session, cur: SdeCursor, sections: list[dict]) -> dict | None:
+    mastered = _mastered_section_ids(db)
+    for sec in sections:
+        if _is_foundation(sec) and sec["id"] not in mastered:
+            return sec
+    if cur.next_section_index < len(sections):
+        return sections[cur.next_section_index]
+    return None
 
 
 def _norm(text: str) -> str:
@@ -66,6 +101,7 @@ def get_cursor(db: Session) -> SdeCursor:
         db.add(row)
         db.commit()
         db.refresh(row)
+    _sync_section_cursor(db, row, data["sections"])
     return row
 
 
@@ -134,6 +170,9 @@ def _unlocked_cards(db: Session) -> list[dict]:
     sections = data["sections"]
     if cur.next_section_index < len(sections):
         mastered.add(sections[cur.next_section_index]["id"])
+    for sec in sections:
+        if _is_foundation(sec):
+            mastered.add(sec["id"])
     seen_ids = {c.card_id for c in db.query(SdeCardProgress).all()}
     out = []
     for c in data["cards"]:
@@ -196,6 +235,65 @@ def _assignment_sheet(algo_id: str, lang: str, sheet_id: str, reason: str) -> di
     }
 
 
+def _debug_row(db: Session, bug_id: str) -> SdeDebugProgress:
+    row = db.query(SdeDebugProgress).filter_by(bug_id=bug_id).first()
+    if not row:
+        row = SdeDebugProgress(bug_id=bug_id, status="unseen")
+        db.add(row)
+        db.flush()
+    return row
+
+
+def _debug_assignment(bug: dict, reason: str) -> dict:
+    return {
+        "type": "debug",
+        "id": f"debug:{bug['id']}:{reason}",
+        "bug_id": bug["id"],
+        "reason": reason,
+        "title": bug.get("title"),
+        "title_es": bug.get("title_es"),
+        "difficulty": bug.get("difficulty"),
+        "family": bug.get("family"),
+        "lang": bug.get("lang", "csharp"),
+        "error_hint": bug.get("error_hint"),
+        "error_hint_es": bug.get("error_hint_es"),
+    }
+
+
+def _pick_debug_assignments(db: Session, cur: SdeCursor) -> list[dict]:
+    data = load_sde()
+    bugs = data.get("debug") or []
+    if not bugs:
+        return []
+    by_id = data["debug_by_id"]
+    items: list[dict] = []
+    taken: set[str] = set()
+
+    failed = db.query(SdeDebugProgress).filter_by(status="failed").all()
+    if failed:
+        bug = by_id.get(failed[0].bug_id)
+        if bug:
+            items.append(_debug_assignment(bug, "pool"))
+            taken.add(bug["id"])
+    else:
+        done = [r for r in db.query(SdeDebugProgress).filter_by(status="completed").all() if r.bug_id in by_id]
+        if done:
+            pick = random.choice(done)
+            items.append(_debug_assignment(by_id[pick.bug_id], "pool"))
+            taken.add(pick.bug_id)
+
+    unseen = [b for b in bugs if b["id"] not in taken]
+    rows = {r.bug_id: r for r in db.query(SdeDebugProgress).all()}
+    fresh = [b for b in unseen if rows.get(b["id"], None) is None or rows[b["id"]].status == "unseen"]
+    if fresh:
+        items.append(_debug_assignment(fresh[0], "new"))
+    elif unseen:
+        idx = cur.next_debug_index % len(unseen)
+        items.append(_debug_assignment(unseen[idx], "new"))
+        cur.next_debug_index = (idx + 1) % max(1, len(unseen))
+    return items
+
+
 def _build_assignments(db: Session, cur: SdeCursor, kind: str) -> list[dict]:
     data = load_sde()
     items: list[dict] = []
@@ -206,6 +304,9 @@ def _build_assignments(db: Session, cur: SdeCursor, kind: str) -> list[dict]:
         "cards": _pick_cards(db, light),
         "cap": data["card_cap_light"] if light else data["card_cap"],
     })
+
+    if kind == "advance":
+        items.extend(_pick_debug_assignments(db, cur))
 
     if kind == "return":
         items.append({
@@ -258,8 +359,8 @@ def _build_assignments(db: Session, cur: SdeCursor, kind: str) -> list[dict]:
 
     if kind == "advance":
         sections = data["sections"]
-        if cur.next_section_index < len(sections):
-            sec = sections[cur.next_section_index]
+        sec = _pick_theory_section(db, cur, sections)
+        if sec:
             dirty = db.query(SdeSectionProgress).filter_by(section_id=sec["id"], status="dirty").first()
             items.append({
                 "type": "theory",
@@ -312,12 +413,13 @@ def _codi_for(kind: str, assignments: list[dict], analysis: dict | None, locale:
         return {**codi_copy("return", locale), "mood": "think", "to": "/sde/cards"}
     if kind == "flojo":
         return {**codi_copy("flojo", locale), "mood": "idle", "to": _cta_path(assignments)}
-    first = next((a for a in assignments if a.get("type") != "flashcards"), None)
+    first = next((a for a in assignments if not a.get("completed")), None)
+    to = _cta_path(assignments)
     if first and first.get("type") == "algo_sheet" and first.get("reason") == "pool":
         return {
             **codi_copy("pool", locale, title=first.get("title") or ""),
             "mood": "happy",
-            "to": f"/sde/algo/{first['algo_id']}/{first['lang']}/{first['sheet_id']}",
+            "to": to,
         }
     if first and first.get("type") == "algo_sheet":
         return {
@@ -329,9 +431,9 @@ def _codi_for(kind: str, assignments: list[dict], analysis: dict | None, locale:
                 prompt=(first.get("prompt") or "")[:80],
             ),
             "mood": "happy",
-            "to": f"/sde/algo/{first['algo_id']}/{first['lang']}/{first['sheet_id']}",
+            "to": to,
         }
-    return {**codi_copy("ready", locale), "mood": "happy", "to": "/sde/cards"}
+    return {**codi_copy("ready", locale), "mood": "happy", "to": to or "/sde/cards"}
 
 
 def _localize_assignment(a: dict, locale: str) -> dict:
@@ -362,21 +464,59 @@ def _localize_assignment(a: dict, locale: str) -> dict:
     elif typ == "sql":
         drill = next((d for d in data["sql"] if d["id"] == out.get("id")), None)
         out["prompt"] = pick_field(drill or out, "prompt", locale)
+    elif typ == "debug":
+        bug = data["debug_by_id"].get(out.get("bug_id") or "")
+        src = bug or out
+        out["title"] = pick_field(src, "title", locale) or src.get("title")
+        out["error_hint"] = pick_field(src, "error_hint", locale) or src.get("error_hint")
     elif typ == "return":
         out["prompt"] = pick_field(out, "prompt", locale)
+    elif typ == "reading":
+        week = data.get("week_by_id", {}).get(out.get("week_id") or "")
+        if week:
+            out["title"] = pick_field(week, "title", locale) or out.get("title")
+            out["intro"] = pick_field(week, "intro", locale) or out.get("intro")
+        else:
+            out["title"] = pick_field(out, "title", locale) or out.get("title")
+            out["intro"] = pick_field(out, "intro", locale) or out.get("intro")
+    elif typ in {"debug", "design", "project"}:
+        out["title"] = pick_field(out, "title", locale) or out.get("title")
     return out
+
+
+def _assignment_href(a: dict) -> str | None:
+    typ = a.get("type")
+    if typ == "reading":
+        week_id = a.get("week_id") or str(a.get("id") or "").removeprefix("reading:")
+        return f"/sde/reading/{week_id}" if week_id else None
+    if typ == "flashcards":
+        return "/sde/cards"
+    if typ == "algo_sheet":
+        return f"/sde/algo/{a['algo_id']}/{a['lang']}/{a['sheet_id']}"
+    if typ == "theory":
+        return f"/sde/section/{a.get('section_id') or a.get('id')}"
+    if typ == "voice":
+        return "/sde/voice"
+    if typ == "sql":
+        return f"/sde/sql/{a.get('id')}"
+    if typ == "story":
+        return "/stories"
+    if typ == "debug":
+        bug_id = a.get("bug_id")
+        if not bug_id:
+            raw = str(a.get("id") or "").removeprefix("debug:")
+            bug_id = raw.rsplit(":", 1)[0] if raw else ""
+        return f"/sde/debug/{bug_id}" if bug_id else None
+    return None
 
 
 def _cta_path(assignments: list[dict]) -> str:
     for a in assignments:
-        if a.get("type") == "flashcards":
-            return "/sde/cards"
-        if a.get("type") == "algo_sheet":
-            return f"/sde/algo/{a['algo_id']}/{a['lang']}/{a['sheet_id']}"
-        if a.get("type") == "theory":
-            return f"/sde/section/{a['section_id']}"
-        if a.get("type") == "voice":
-            return "/sde/voice"
+        if a.get("completed"):
+            continue
+        href = _assignment_href(a)
+        if href:
+            return href
     return "/"
 
 
@@ -662,6 +802,79 @@ def submit_theory(db: Session, section_id: str, answers: list[int], locale: str 
 def get_section(section_id: str, locale: str = "en") -> dict | None:
     sec = load_sde()["section_by_id"].get(section_id)
     return localize_section(sec, locale) if sec else None
+
+
+def get_reading(week_id: str, locale: str = "en") -> dict | None:
+    week = load_sde().get("week_by_id", {}).get(week_id)
+    if not week:
+        return None
+    return {
+        "id": f"reading:{week_id}",
+        "type": "reading",
+        "week_id": week_id,
+        "title": pick_field(week, "title", locale) or week.get("title"),
+        "intro": pick_field(week, "intro", locale) or week.get("intro"),
+        "minutes": week.get("minutes"),
+    }
+
+
+def complete_reading(db: Session, week_id: str) -> dict:
+    cur = get_cursor(db)
+    _mark_assignment_done(cur, f"reading:{week_id}")
+    _touch(db, cur)
+    db.commit()
+    return {"ok": True}
+
+
+def get_debug(bug_id: str, locale: str = "en") -> dict | None:
+    data = load_sde()
+    bug = data["debug_by_id"].get(bug_id)
+    if not bug:
+        return None
+    return {
+        "id": bug["id"],
+        "title": pick_field(bug, "title", locale) or bug.get("title"),
+        "difficulty": bug.get("difficulty"),
+        "family": bug.get("family"),
+        "lang": bug.get("lang", "csharp"),
+        "error_hint": pick_field(bug, "error_hint", locale) or bug.get("error_hint"),
+        "fn_name": bug.get("fn_name"),
+        "broken_code": bug.get("broken_code", ""),
+        "test_cases": bug.get("test_cases") or [],
+        "cause_locked": True,
+    }
+
+
+def submit_debug(db: Session, bug_id: str, code: str, locale: str = "en") -> dict:
+    data = load_sde()
+    bug = data["debug_by_id"].get(bug_id)
+    if not bug:
+        return {"passed": False, "error": "debug bug not found"}
+    lang = bug.get("lang", "csharp")
+    try:
+        result = run_leetcode_code(code, bug.get("test_cases") or [], fn_name=bug.get("fn_name") or "solution", language=lang)
+    except FileNotFoundError:
+        return {"passed": False, "error": "C# runner is not available (dotnet missing)."}
+    except Exception as exc:
+        return {"passed": False, "error": str(exc)}
+    row = _debug_row(db, bug_id)
+    cur = get_cursor(db)
+    if result.get("passed"):
+        row.status = "completed"
+        row.completed_at = datetime.utcnow()
+        for a in cur.today_assignments or []:
+            if a.get("type") == "debug" and a.get("bug_id") == bug_id:
+                _mark_assignment_done(cur, a.get("id") or f"debug:{bug_id}")
+                break
+        else:
+            _mark_assignment_done(cur, f"debug:{bug_id}")
+        _touch(db, cur)
+        db.commit()
+        return {**result, "cause": pick_field(bug, "cause", locale) or bug.get("cause")}
+    row.status = "failed"
+    row.fails = (row.fails or 0) + 1
+    db.commit()
+    return result
 
 
 def get_sheet_payload(algo_id: str, lang: str, sheet_id: str, locale: str = "en") -> dict | None:

@@ -139,6 +139,15 @@ export const api = {
     }),
 
   sdeToday: () => request<SdeToday>('/sde/today'),
+  sdeReading: (weekId: string) =>
+    request<{ title: string; intro: string; minutes?: number; week_id?: string }>(
+      `/sde/reading/${weekId}`,
+    ),
+  sdeReadingComplete: (weekId: string) =>
+    request<{ ok: boolean }>(`/sde/reading/${weekId}/complete`, {
+      method: 'POST',
+      body: JSON.stringify({}),
+    }),
   sdeCardsReview: (results: { id: string; ok: boolean; section_id?: string }[]) =>
     request<{ ok: boolean; fails: number }>('/sde/cards/review', {
       method: 'POST',
@@ -169,6 +178,13 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ sql }),
     }),
+  sdeDebug: (bugId: string) =>
+    request<SdeDebugBug>(`/sde/debug/${bugId}`),
+  sdeDebugSubmit: (bugId: string, code: string) =>
+    request<{ passed: boolean; error?: string; results?: unknown[]; cause?: string }>(
+      `/sde/debug/${bugId}/submit`,
+      { method: 'POST', body: JSON.stringify({ code }) },
+    ),
   sdePack: async () => {
     const res = await fetch('/api/sde/travel-pack', { headers: { 'Accept-Language': currentLocale } });
     return res.text();
@@ -587,4 +603,17 @@ export interface SdeSheet {
   fn_name: string;
   language: string;
   description?: string;
+}
+
+export interface SdeDebugBug {
+  id: string;
+  title: string;
+  difficulty?: string;
+  family?: string;
+  lang: string;
+  error_hint: string;
+  fn_name: string;
+  broken_code: string;
+  test_cases?: { args: unknown[]; expected: unknown }[];
+  cause_locked?: boolean;
 }

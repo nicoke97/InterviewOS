@@ -6,8 +6,9 @@ import {
 } from 'recharts';
 import { useCurriculumLevels } from '../lib/levels';
 import { dashboardReasonHint } from '../lib/reasonContext';
-import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig, type ReturnExamStatus, type SdeAssignment, type SdeToday } from '../lib/api';
+import { api, type DailyPlanData, type OrientadorActiveResponse, type OrientadorConfig, type ReturnExamStatus } from '../lib/api';
 import { assignmentLabel, orientadorAssignmentPath, reasonBadgeClass, reasonLabel } from '../lib/orientadorLabels';
+import { sdeNextHref as nextSdeHref } from '../lib/sdePaths';
 import { CodiMascot } from '../components/CodiMascot';
 import { StudyCalendar } from '../components/StudyCalendar';
 import { SdeTodayPanel } from '../components/SdeTodayPanel';
@@ -50,30 +51,10 @@ function formatDate(iso: string, dateLocale: string): string {
   });
 }
 
-function sdeAssignmentHref(a: SdeAssignment): string | null {
-  if (a.type === 'flashcards') return '/sde/cards';
-  if (a.type === 'theory') return `/sde/section/${a.section_id || a.id}`;
-  if (a.type === 'algo_sheet') return `/sde/algo/${a.algo_id}/${a.lang}/${a.sheet_id}`;
-  if (a.type === 'voice') return '/sde/voice';
-  if (a.type === 'sql') return `/sde/sql/${a.id}`;
-  if (a.type === 'story') return '/stories';
-  return null;
-}
-
-function sdeNextHref(sde: SdeToday | null): string | null {
-  if (!sde) return null;
-  for (const a of sde.assignments) {
-    if (a.completed) continue;
-    const href = sdeAssignmentHref(a);
-    if (href) return href;
-  }
-  return null;
-}
-
-// Where the big "Code now" button should send you: the single best next thing to code.
+// "Code now" follows the block marked Now — do not skip reading/debug to jump to cards.
 function codeTarget(codi: CodiData, ctaTo: string | null): string {
   if (codi.returnExam?.needed) return '/return-exam';
-  const sde = sdeNextHref(codi.sde);
+  const sde = nextSdeHref(codi.sde?.assignments);
   if (sde) return sde;
   if (ctaTo && ctaTo !== '/') return ctaTo;
   if (codi.continuePath) return codi.continuePath;
