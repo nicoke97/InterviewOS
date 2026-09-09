@@ -403,7 +403,7 @@ export function Dashboard() {
               <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#6b7c90' }} axisLine={false} tickLine={false} />
               <YAxis stroke="#6b7c90" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Line type="monotone" dataKey="minutes" stroke="#0d9f8a" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="minutes" stroke="#2563eb" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
           )}
@@ -420,7 +420,7 @@ export function Dashboard() {
               <XAxis dataKey="block_title" tick={{ fontSize: 9, fill: '#6b7c90' }} axisLine={false} tickLine={false} />
               <YAxis stroke="#6b7c90" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Bar dataKey="accuracy" fill="#0d9f8a" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="accuracy" fill="#2563eb" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           )}

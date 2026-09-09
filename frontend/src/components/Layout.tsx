@@ -220,7 +220,7 @@ function SidebarBrand({ compact = false }: { compact?: boolean }) {
       <span className="flex flex-col">
         <span className="brand-mark-word">Codenda</span>
         {!compact && (
-          <span className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-[#7dffd8]">
+          <span className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-[#93c5fd]">
             SDE trainer
           </span>
         )}

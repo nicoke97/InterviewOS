@@ -324,7 +324,7 @@ function StudyGuidePanel({
       <div className="study-guide-section">
         <p className="study-guide-label">{isEs ? 'Posición actual' : 'Current position'}</p>
         <p className="study-guide-value">
-          {isEs ? 'Algo' : 'Algo'} {algoIdx + 1}/{ALGO_ORDER.length} —{' '}
+          {isEs ? 'Algoritmo' : 'Algo'} {algoIdx + 1}/{ALGO_ORDER.length} —{' '}
           <span className="font-medium text-text">{ALGO_LABEL[algoId] ?? algoId}</span>
           {' '}
           <span className="study-guide-badge">{phaseLabel[phase] ?? phase}</span>
@@ -344,7 +344,7 @@ function StudyGuidePanel({
             style={{ width: `${Math.round((algoIdx / ALGO_ORDER.length) * 100)}%` }}
           />
         </div>
-        <p className="study-guide-sub">{algoIdx}/{ALGO_ORDER.length} {isEs ? 'completados' : 'completed'}</p>
+        <p className="study-guide-sub">{algoIdx}/{ALGO_ORDER.length} {isEs ? 'algoritmos completados' : 'completed'}</p>
       </div>
 
       {/* Theory progress */}

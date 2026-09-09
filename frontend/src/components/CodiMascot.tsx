@@ -8,7 +8,7 @@ interface CodiMascotProps {
 }
 
 /**
- * Codi — the tutor mascot. Mint-ink companion whose face tracks learner mood.
+ * Codi — the tutor mascot. Blue companion whose face tracks learner mood.
  */
 export function CodiMascot({ mood = 'idle', size = 72, className = '', animate = true }: CodiMascotProps) {
   const bob = animate && mood !== 'sleep';
@@ -25,33 +25,33 @@ export function CodiMascot({ mood = 'idle', size = 72, className = '', animate =
     >
       <ellipse cx="60" cy="109" rx="28" ry="5" fill="#0b1420" opacity="0.14" />
 
-      <line x1="60" y1="20" x2="60" y2="8" stroke="#34c4ad" strokeWidth="3" strokeLinecap="round" />
+      <line x1="60" y1="20" x2="60" y2="8" stroke="#60a5fa" strokeWidth="3" strokeLinecap="round" />
       <rect
         x="55.5"
         y="2"
         width="9"
         height="9"
         rx="2"
-        fill="#0d9f8a"
+        fill="#2563eb"
         className={animate ? 'codi-antenna' : ''}
       />
 
       <path
         d="M60 18C33 18 20 38 20 63c0 24 17 41 40 41s40-17 40-41C100 38 87 18 60 18Z"
-        fill="#0d9f8a"
+        fill="#2563eb"
       />
       <ellipse cx="60" cy="70" rx="27" ry="25" fill="#ffffff" opacity="0.16" />
 
       <path
         d="M22 66c-6 1-10 6-9 12"
-        stroke="#0b8876"
+        stroke="#1d4ed8"
         strokeWidth="6"
         strokeLinecap="round"
         className={mood === 'celebrate' && animate ? 'codi-wave-l' : ''}
       />
       <path
         d="M98 66c6 1 10 6 9 12"
-        stroke="#0b8876"
+        stroke="#1d4ed8"
         strokeWidth="6"
         strokeLinecap="round"
         className={mood === 'celebrate' && animate ? 'codi-wave-r' : ''}
@@ -67,7 +67,7 @@ export function CodiMascot({ mood = 'idle', size = 72, className = '', animate =
       )}
 
       {mood === 'sleep' && (
-        <g fill="#34c4ad" className={animate ? 'codi-zzz' : ''}>
+        <g fill="#60a5fa" className={animate ? 'codi-zzz' : ''}>
           <text x="92" y="34" fontFamily="'JetBrains Mono', monospace" fontSize="13" fontWeight="700">z</text>
           <text x="101" y="24" fontFamily="'JetBrains Mono', monospace" fontSize="10" fontWeight="700">z</text>
         </g>
