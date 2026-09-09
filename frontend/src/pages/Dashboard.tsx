@@ -24,11 +24,11 @@ import {
 } from '../lib/studySession';
 
 const chartTooltip = {
-  background: '#ffffff',
-  border: '1px solid #ddd6f3',
+  background: '#f7f9fc',
+  border: '1px solid #c9d3e0',
   borderRadius: '12px',
   fontSize: '12px',
-  color: '#242746',
+  color: '#0b1420',
 };
 
 interface LevelProgress {
@@ -250,22 +250,22 @@ export function Dashboard() {
 
       <SdeTodayPanel />
 
-      <section className="space-y-4">
+      <section className="space-y-4 rise-in rise-in-delay-2">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-text-dim">{t('dashboard.sectionProgressKicker')}</p>
+          <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-text-dim">{t('dashboard.sectionProgressKicker')}</p>
           <h2 className="dash-section-title">{t('dashboard.sectionProgress')}</h2>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatTile label={t('dashboard.metricStreak')} value={statValue(streak?.current ?? 0)} hint={t('dashboard.metricStreakHint')} />
+          <StatTile label={t('dashboard.metricStreak')} value={statValue(streak?.current ?? 0)} hint={t('dashboard.metricStreakHint')} accent="streak" />
           <StatTile label={t('dashboard.metricActive')} value={statValue(Number(stats?.day_number ?? 0))} hint={t('dashboard.metricActiveHint')} />
           <StatTile label={t('dashboard.passRate')} value={statValue(`${stats?.pass_rate ?? 0}%`)} hint={t('dashboard.metricPassHint')} />
           <StatTile label={t('dashboard.pagesToday')} value={statValue(todayPages)} hint={t('dashboard.metricPagesHint')} />
         </div>
       </section>
 
-      <section className="space-y-4">
+      <section className="space-y-4 rise-in rise-in-delay-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-text-dim">{t('dashboard.sectionMonthKicker')}</p>
+          <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-text-dim">{t('dashboard.sectionMonthKicker')}</p>
           <h2 className="dash-section-title">{t('dashboard.sectionMonth')}</h2>
         </div>
         <StudyCalendar />
@@ -399,11 +399,11 @@ export function Dashboard() {
           ) : (
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={minutesChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#eceaf3" vertical={false} />
-              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#8b8eaa' }} axisLine={false} tickLine={false} />
-              <YAxis stroke="#8b8eaa" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#c9d3e0" vertical={false} />
+              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#6b7c90' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="#6b7c90" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Line type="monotone" dataKey="minutes" stroke="#7e4bde" strokeWidth={1.75} dot={false} />
+              <Line type="monotone" dataKey="minutes" stroke="#2563eb" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
           )}
@@ -416,11 +416,11 @@ export function Dashboard() {
           ) : (
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={blockAccuracy}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#eceaf3" vertical={false} />
-              <XAxis dataKey="block_title" tick={{ fontSize: 9, fill: '#8b8eaa' }} axisLine={false} tickLine={false} />
-              <YAxis stroke="#8b8eaa" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#c9d3e0" vertical={false} />
+              <XAxis dataKey="block_title" tick={{ fontSize: 9, fill: '#6b7c90' }} axisLine={false} tickLine={false} />
+              <YAxis stroke="#6b7c90" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
               <Tooltip contentStyle={chartTooltip} />
-              <Bar dataKey="accuracy" fill="#7e4bde" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="accuracy" fill="#2563eb" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
           )}
@@ -530,10 +530,10 @@ function OrientadorCard({
                 key={s.id}
                 type="button"
                 onClick={() => onSelectSession(s)}
-                className={`rounded-full px-3 py-1 text-sm transition ${
+                className={`rounded-lg px-3 py-1.5 text-sm transition ${
                   selected
                     ? 'bg-brand text-on-brand'
-                    : 'text-text-muted hover:text-text'
+                    : 'border border-border bg-surface text-text-muted hover:text-text'
                 }`}
               >
                 {t('dashboard.sessionTab', { n: s.session_number })}
@@ -559,8 +559,8 @@ function OrientadorCard({
               key={p}
               type="button"
               onClick={() => setMinutes(p)}
-              className={`rounded-full px-3 py-1 text-sm transition ${
-                minutes === p ? 'bg-brand text-on-brand' : 'text-text-muted hover:text-text'
+              className={`rounded-lg px-3 py-1.5 text-sm transition ${
+                minutes === p ? 'bg-brand text-on-brand' : 'border border-border bg-surface text-text-muted hover:text-text'
               }`}
             >
               {t('dashboard.minutesN', { n: p })}
@@ -708,12 +708,22 @@ function OrientadorCard({
   );
 }
 
-function StatTile({ label, value, hint }: { label: string; value: string; hint: string }) {
+function StatTile({
+  label,
+  value,
+  hint,
+  accent,
+}: {
+  label: string;
+  value: string;
+  hint: string;
+  accent?: 'streak';
+}) {
   return (
-    <div className="rounded-xl border border-border bg-surface p-4">
-      <p className="text-xs text-text-dim">{label}</p>
-      <p className="mt-1 text-2xl font-semibold tabular-nums text-text">{value}</p>
-      <p className="mt-0.5 text-xs text-text-dim">{hint}</p>
+    <div className={`stat-tile ${accent === 'streak' ? 'stat-tile-streak' : ''}`}>
+      <p className="text-xs font-medium text-text-dim">{label}</p>
+      <p className="stat-tile-value tabular-nums">{value}</p>
+      <p className="mt-1 text-xs text-text-dim">{hint}</p>
     </div>
   );
 }
@@ -727,25 +737,30 @@ function CodeHero() {
   const dayDone = Boolean(codi.sde?.complete) && !codi.returnExam?.needed;
 
   return (
-    <div className="flex flex-col gap-5 rounded-2xl border border-brand/20 bg-brand/5 p-5 sm:flex-row sm:items-center sm:p-6">
-      <CodiMascot mood={msg.mood} size={84} className="shrink-0 self-center sm:self-auto" />
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          <p className="text-sm font-semibold text-brand">{t('codi.name')}</p>
+    <div className="code-hero rise-in flex flex-col gap-5 sm:flex-row sm:items-center">
+      <CodiMascot mood={msg.mood} size={92} className="relative z-[1] shrink-0 self-center sm:self-auto" />
+      <div className="relative z-[1] min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="code-hero-kicker">{t('codi.name')}</p>
           {codi.streakCurrent > 0 && (
-            <span className="badge-brand">{t('codi.streakBadge', { n: codi.streakCurrent })}</span>
+            <span className="rounded-md bg-[#ff6b35]/20 px-2 py-0.5 text-xs font-semibold text-[#ffb089]">
+              {t('codi.streakBadge', { n: codi.streakCurrent })}
+            </span>
           )}
         </div>
-        <p className="mt-1 text-lg font-semibold text-text">{msg.headline}</p>
-        <p className="mt-0.5 text-sm text-text-muted">
+        <p className="code-hero-title">{msg.headline}</p>
+        <p className="code-hero-sub">
           {dayDone ? t('dashboard.codeDone') : (msg.subline || t('dashboard.codeReady'))}
         </p>
       </div>
       <Link
         to={target}
-        className="btn-primary w-full shrink-0 px-8 py-3 text-base sm:w-auto"
+        className="code-hero-cta relative z-[1] w-full shrink-0 sm:w-auto"
       >
         {t('dashboard.codeNow')}
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
       </Link>
     </div>
   );

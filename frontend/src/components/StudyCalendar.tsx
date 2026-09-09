@@ -1,8 +1,70 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { api, type CalendarDay, type CalendarMonth } from '../lib/api';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { api, type CalendarDay, type CalendarMonth, type SdeToday } from '../lib/api';
 import { en } from '../i18n/en';
 import { es } from '../i18n/es';
 import { useI18n } from '../i18n/context';
+
+const ALGO_ORDER = [
+  'two-sum', 'contains-duplicate', 'valid-anagram', 'best-time-stock',
+  'group-anagrams', 'top-k-frequent', 'valid-palindrome', 'two-sum-ii',
+  '3sum', 'container-water', 'longest-substring', 'min-window-substring',
+  'valid-parentheses', 'min-stack', 'binary-search', 'search-rotated',
+  'reverse-linked-list', 'merge-two-lists', 'linked-list-cycle',
+  'max-depth-tree', 'invert-tree', 'validate-bst', 'climbing-stairs',
+  'house-robber', 'coin-change', 'number-islands', 'course-schedule',
+  'merge-intervals',
+];
+
+const ALGO_LABEL: Record<string, string> = {
+  'two-sum': 'Two Sum', 'contains-duplicate': 'Contains Duplicate',
+  'valid-anagram': 'Valid Anagram', 'best-time-stock': 'Best Time to Buy Stock',
+  'group-anagrams': 'Group Anagrams', 'top-k-frequent': 'Top K Frequent',
+  'valid-palindrome': 'Valid Palindrome', 'two-sum-ii': 'Two Sum II',
+  '3sum': '3Sum', 'container-water': 'Container With Most Water',
+  'longest-substring': 'Longest Substring Without Repeating',
+  'min-window-substring': 'Minimum Window Substring',
+  'valid-parentheses': 'Valid Parentheses', 'min-stack': 'Min Stack',
+  'binary-search': 'Binary Search', 'search-rotated': 'Search in Rotated Sorted Array',
+  'reverse-linked-list': 'Reverse Linked List', 'merge-two-lists': 'Merge Two Sorted Lists',
+  'linked-list-cycle': 'Linked List Cycle', 'max-depth-tree': 'Maximum Depth of Binary Tree',
+  'invert-tree': 'Invert Binary Tree', 'validate-bst': 'Validate BST',
+  'climbing-stairs': 'Climbing Stairs', 'house-robber': 'House Robber',
+  'coin-change': 'Coin Change', 'number-islands': 'Number of Islands',
+  'course-schedule': 'Course Schedule', 'merge-intervals': 'Merge Intervals',
+};
+
+const THEORY_WEEKS = [
+  'Big O', 'REST', 'SQL', 'Git / PRs', 'Azure DevOps',
+  'Tests', 'C# async', 'Concurrencia', 'LINQ', 'EF Core',
+  'DI + ASP.NET', 'SOLID', 'Escala + logs', 'GC + asyncio',
+  'GIL + Python', 'SQLAlchemy + pytest',
+];
+
+function estimateMonths(sde: SdeToday): { algoIdx: number; sectionIdx: number; remainingMonths: number } {
+  const cursor = sde.cursor as {
+    active_algo_id?: string; algo_phase?: string;
+    next_section_index?: number; day1_index?: number;
+  };
+  const algoId = cursor.active_algo_id || 'two-sum';
+  const algoIdx = Math.max(0, ALGO_ORDER.indexOf(algoId));
+  const phase = cursor.algo_phase || 'day1';
+  const sectionIdx = Math.min(cursor.next_section_index ?? 0, 80);
+
+  // Algo cost: each remaining algo ~5 advance days (day1+day2+voice C# + rung1+day2+voice Python)
+  // Partial credit for current algo
+  const phaseOffset = phase === 'day2' ? 2 : phase === 'voice' ? 3 : phase === 'rung1' ? 3.5 : 0;
+  const remainingAlgoDays = (ALGO_ORDER.length - algoIdx - 1) * 5 + Math.max(0, 5 - phaseOffset);
+
+  // Theory cost: 1 section per advance day
+  const remainingTheoryDays = 80 - sectionIdx;
+
+  // Total: they interleave, so take max + some buffer for pool reviews and off-days
+  const rawDays = Math.max(remainingAlgoDays, remainingTheoryDays);
+  const withBuffer = rawDays * 1.25; // 25% buffer for missed days, pool repeats, etc.
+  const months = withBuffer / 26; // ~26 study days per month (6 days/week)
+
+  return { algoIdx, sectionIdx, remainingMonths: Math.round(months) };
+}
 
 const TRACKING_START_MONTH = 6;
 const TRACKING_START_DAY = 25;
@@ -92,6 +154,13 @@ export function StudyCalendar({ className = '' }: { className?: string }) {
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth() + 1);
   const [completion, setCompletion] = useState<CalendarMonth | null>(null);
+  const [sde, setSde] = useState<SdeToday | null>(null);
+  const [guideVisible, setGuideVisible] = useState(false);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    api.sdeToday().then(setSde).catch(() => {});
+  }, []);
 
   const days = useMemo(() => {
     const grid = buildMonthGrid(year, month);
@@ -142,8 +211,21 @@ export function StudyCalendar({ className = '' }: { className?: string }) {
     repeats: inMonth.filter((d) => (d.repeat_scheduled ?? 0) > 0).length,
   };
 
+  const handleMouseEnter = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setGuideVisible(true);
+  };
+  const handleMouseLeave = () => {
+    hideTimer.current = setTimeout(() => setGuideVisible(false), 200);
+  };
+
   return (
-    <div className={`calendar-widget ${className}`.trim()}>
+    <div
+      className={`calendar-widget-wrap relative ${className}`.trim()}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+    <div className="calendar-widget">
       <div className="calendar-header">
         <h2 className="text-base font-semibold capitalize text-text">{title}</h2>
         <div className="flex items-center gap-0.5">
@@ -180,6 +262,11 @@ export function StudyCalendar({ className = '' }: { className?: string }) {
         <LegendItem color="calendar-legend-complete" label={t('calendar.legendComplete')} count={stats.complete} />
       </div>
     </div>
+
+    {guideVisible && sde && (
+      <StudyGuidePanel sde={sde} locale={locale} t={t} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+    )}
+    </div>
   );
 }
 
@@ -190,6 +277,113 @@ function LegendItem({ color, label, count }: { color: string; label: string; cou
       <span>{label}</span>
       <span className="text-text-dim">({count})</span>
     </span>
+  );
+}
+
+function StudyGuidePanel({
+  sde, locale, t, onMouseEnter, onMouseLeave,
+}: {
+  sde: SdeToday;
+  locale: string;
+  t: (key: string, vars?: Record<string, string | number>) => string;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) {
+  const cursor = sde.cursor as {
+    active_algo_id?: string; algo_phase?: string;
+    next_section_index?: number;
+  };
+  const algoId = cursor.active_algo_id || 'two-sum';
+  const phase = cursor.algo_phase || 'day1';
+  const { algoIdx, sectionIdx, remainingMonths } = estimateMonths(sde);
+  const currentWeekIdx = Math.min(Math.floor(sectionIdx / 5), THEORY_WEEKS.length - 1);
+  const isEs = locale === 'es';
+
+  const phaseLabel: Record<string, string> = {
+    day1: isEs ? 'Día 1' : 'Day 1',
+    day2: isEs ? 'Día 2' : 'Day 2',
+    voice: isEs ? 'Voz' : 'Voice',
+    rung1: isEs ? 'Py — Rung 1' : 'Py — Rung 1',
+  };
+
+  return (
+    <div
+      className="study-guide-panel"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* Header */}
+      <div className="study-guide-header">
+        <span className="study-guide-icon">📚</span>
+        <span className="study-guide-title">
+          {isEs ? 'Plan de estudio — SDE II' : 'Study plan — SDE II'}
+        </span>
+      </div>
+
+      {/* Current position */}
+      <div className="study-guide-section">
+        <p className="study-guide-label">{isEs ? 'Posición actual' : 'Current position'}</p>
+        <p className="study-guide-value">
+          {isEs ? 'Algoritmo' : 'Algo'} {algoIdx + 1}/{ALGO_ORDER.length} —{' '}
+          <span className="font-medium text-text">{ALGO_LABEL[algoId] ?? algoId}</span>
+          {' '}
+          <span className="study-guide-badge">{phaseLabel[phase] ?? phase}</span>
+        </p>
+        <p className="study-guide-value mt-0.5">
+          {isEs ? 'Semana' : 'Week'} {currentWeekIdx + 1}/{THEORY_WEEKS.length} —{' '}
+          <span className="font-medium text-text">{THEORY_WEEKS[currentWeekIdx]}</span>
+        </p>
+      </div>
+
+      {/* Algo progress bar */}
+      <div className="study-guide-section">
+        <p className="study-guide-label">{isEs ? 'Algoritmos' : 'Algorithms'}</p>
+        <div className="study-guide-bar-track">
+          <div
+            className="study-guide-bar-fill"
+            style={{ width: `${Math.round((algoIdx / ALGO_ORDER.length) * 100)}%` }}
+          />
+        </div>
+        <p className="study-guide-sub">{algoIdx}/{ALGO_ORDER.length} {isEs ? 'algoritmos completados' : 'completed'}</p>
+      </div>
+
+      {/* Theory progress */}
+      <div className="study-guide-section">
+        <p className="study-guide-label">{isEs ? 'Temario' : 'Theory'}</p>
+        <div className="study-guide-weeks">
+          {THEORY_WEEKS.map((w, i) => (
+            <span
+              key={w}
+              className={`study-guide-week-chip ${
+                i < currentWeekIdx
+                  ? 'study-guide-week-done'
+                  : i === currentWeekIdx
+                  ? 'study-guide-week-current'
+                  : 'study-guide-week-pending'
+              }`}
+              title={w}
+            >
+              {i < currentWeekIdx ? '✓' : i + 1}
+            </span>
+          ))}
+        </div>
+        <p className="study-guide-sub">
+          {currentWeekIdx}/{THEORY_WEEKS.length}{' '}
+          {isEs ? 'semanas · siguiente:' : 'weeks · next:'}{' '}
+          <span className="text-brand">{THEORY_WEEKS[Math.min(currentWeekIdx, THEORY_WEEKS.length - 1)]}</span>
+        </p>
+      </div>
+
+      {/* Time estimate */}
+      <div className="study-guide-estimate">
+        <span className="study-guide-clock">⏱</span>
+        <span>
+          {isEs
+            ? `~${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'} para estar listo para SDE 2/3`
+            : `~${remainingMonths} ${remainingMonths === 1 ? 'month' : 'months'} to be SDE 2/3 ready`}
+        </span>
+      </div>
+    </div>
   );
 }
 
